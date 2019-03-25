@@ -1,0 +1,229 @@
+header {
+	background: @header-background;
+	border-top: @header-border-top;
+	border-right: @header-border-right;
+	border-bottom: @header-border-bottom;
+	border-left: @header-border-left;
+	padding-top: @header-padding-top;
+	padding-right: @header-padding-right;
+	padding-bottom: @header-padding-bottom;
+	padding-left: @header-padding-left;
+	width: @header-width;
+	nav.navbar-menu {
+		padding: 0;
+		a.navbar-brand {
+			padding: @header-navbar-brand-paddding-top @header-navbar-brand-paddding-right @header-navbar-brand-paddding-bottom @header-navbar-brand-paddding-left;
+		}
+		.navbar-buttons {
+			height: @header-navbar-menu-height;
+			ul.navbar-nav {
+				margin-left: 30px;
+				li {
+					vertical-align: top;
+					a {
+						display: @header-navbar-menu-item-link-display;
+						font-family: @header-navbar-menu-item-link-font-family;
+						font-size: @header-navbar-menu-item-link-font-size;
+						font-weight: @header-navbar-menu-item-link-font-weight;
+						color: @header-navbar-menu-item-link-color;
+						padding: @header-navbar-menu-item-link-padding-top @header-navbar-menu-item-link-padding-right @header-navbar-menu-item-link-padding-bottom @header-navbar-menu-item-link-padding-left;
+					}
+					&:hover {
+						.dropdown-menu {
+							display: block;
+							&:after {
+								border-left: 10px solid transparent;
+								border-right: 10px solid transparent;
+								border-bottom: 10px solid white;
+								display: block;
+								content: "";
+								height: 0px;
+								left: 30px;
+								position: absolute;
+								top: -10px;
+								width: 0px;
+								z-index: 10;	
+							}
+						}
+					}
+				}
+				.dropdown-menu {
+					border: 0;
+					box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+					clear: both;
+					margin: 0;
+					padding: 8px;
+					width: 634px;
+					ul.dropdown-menu-submenu {
+						width: 150px;
+						li.item {
+							line-height: 20px;
+							margin: 0;
+							padding: 0 0 5px 0;
+							a {
+								font-family: 'Nunito', sans-serif;
+								font-size: 11pt;
+								font-weight: 400;
+								line-height: 20px;
+								padding: 6px 8px;
+								.border-radius(4px);
+								&:hover {
+									background: @color-second;
+									color: white;
+								}
+							}
+						}
+					}
+					.dropdown-menu-content {
+						width: 458px;
+						height: 400px;
+						margin: 0 0 0 10px;
+						padding: 10px;
+						background: #f7f7f7;
+						.border-radius(4px);
+
+						h2 {
+							color: black;
+							font-family: 'Nunito', sans-serif;
+							font-weight: 700;
+							font-size: 10pt;
+							margin: 0 0 5px 0;
+						}
+						.leagues {
+							ul.list-leagues {
+								li {
+									display: inline-block;
+									max-width: 69px;
+									height: 80px;
+									margin-right: 0;
+									margin-bottom: 5px;
+									a {
+										display: block;
+										width: 70px;
+										height: 80px;
+										padding: 0 0 5px 0;
+										.card {
+											background: none;
+											border: 0;
+											display: table;
+											height: 50px;
+											margin: 0 auto;
+											padding: 0;
+											text-align: center;
+											width: 45px;
+											.card-img {
+												display: table-cell;
+												margin: 0;
+												padding: 0;
+												vertical-align: middle;
+												width: auto;												
+												img {
+													height: 34px;
+													margin: 0 auto;
+													transition: transform 1s;
+													width: auto;
+												}
+											}
+										}
+										h5.card-title {
+											text-align: center;
+											font-size: 7pt;
+											color: #666;
+											margin: 0;
+										}
+										&:hover {
+											.card img {
+												.transform(scale(1.1));
+											}
+											h5.card-title {
+												color: black;
+											}
+										}
+									}
+								}
+							}
+
+							  section.leagues ul.list-leagues li a .card img {
+								width: auto;
+								height: 50px;
+								margin: 0 auto;
+								transition: transform 1s;
+							  }
+							  section.leagues ul.list-leagues li a h5.card-title {
+								text-align: center;
+								font-size: 9pt;
+								color: #666;
+							  }
+							  section.leagues ul.list-leagues li a:hover .card img {
+								transform: scale(1.5);
+								-ms-transform: scale(1.5);
+								-webkit-transform: scale(1.5);
+							  }
+							  section.leagues ul.list-leagues li a:hover h5.card-title {
+								color: black;
+							  }
+						}
+						.news {
+							a {
+								display: block;
+								width: 100%;
+								padding: 0;
+								margin: 0;
+								overflow: hidden;
+								position: relative;
+								&:hover {
+									.image-container span {
+										.transform(scale(1.2));
+									}
+									h3 {
+										color: @color-second;
+									}
+								}
+								.image-container {
+									position: relative;
+									display: block;
+									overflow: hidden;
+									margin-bottom: 10px;
+									&:before {
+										content: "";
+										display: block;
+										width: 100%;
+										padding-top: 56.25%;
+									}
+									span {
+										.background-size(cover);
+										bottom: 0;
+										position: absolute;
+										height: 100%;
+										left: 0;
+										min-height: 100%;
+										overflow: hidden;
+										right: 0;
+										top: 0;
+										.transition(all 1s ease);
+										width: 100%;
+										z-index: 0;
+									}
+								}
+								h3 {
+									color: black;
+									font-family: 'Nunito', sans-serif;
+									font-weight: 400;
+									font-size: 11pt;
+									line-height: 20px;
+								}
+							}
+							
+						}
+					}
+					.dropdown-menu-content.football {
+						height: 400px;
+					}
+					.dropdown-menu-content.news {
+						height: 220px;
+					}
+				}
+			}
+		}
+	}
+}

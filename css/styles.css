@@ -1,0 +1,385 @@
+/*****************************************
+ *			Common Styles
+ * 
+ * Global styles
+ * Author: Tomas Malio
+ * Date: 2019-03-18
+ * Version: 1.0
+ *****************************************/
+/* Settings */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+input,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-weight: normal;
+  text-decoration: none !important;
+}
+ol,
+ul {
+  list-style: none;
+}
+/* Common functions */
+/*****************************************
+ *			Common Styles
+ * 
+ * Functions used in order to avoid rewriting.
+ * Author: Tomas Malio
+ * Date: 2016-10-21
+ * Version: 1.5
+ *****************************************/
+/* Config */
+/****************************************
+			COLORS
+****************************************/
+/****************************************
+            CONFIG
+****************************************/
+/* Rute path of the image's aplication */
+/* Rute path of import fonts */
+/****************************************
+            ICONS
+****************************************/
+/****************************************
+            FONTS
+****************************************/
+/**/
+html,
+body {
+  width: 100%;
+  height: 100% !important;
+  min-height: 100%;
+}
+body {
+  background: #f7f7f7;
+  position: relative;
+  /* Required for static Slidebars to function properly. */
+}
+/* Variables */
+/* Header */
+/* Brand / Header */
+/* Eof Brand / Header */
+/* Menu / Header */
+/* Eof Menu / Header */
+/* Footer */
+header {
+  background: #ffe800;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  width: 100%;
+}
+header nav.navbar-menu {
+  padding: 0;
+}
+header nav.navbar-menu a.navbar-brand {
+  padding: 5px 0 0 0;
+}
+header nav.navbar-menu .navbar-buttons {
+  height: 65px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav {
+  margin-left: 30px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav li {
+  vertical-align: top;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav li a {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12pt;
+  font-weight: 700;
+  color: #008995;
+  padding: 20px 15px 20px 15px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav li:hover .dropdown-menu {
+  display: block;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav li:hover .dropdown-menu:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
+  display: block;
+  content: "";
+  height: 0px;
+  left: 30px;
+  position: absolute;
+  top: -10px;
+  width: 0px;
+  z-index: 10;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu {
+  border: 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  clear: both;
+  margin: 0;
+  padding: 8px;
+  width: 634px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-menu-submenu {
+  width: 150px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-menu-submenu li.item {
+  line-height: 20px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-menu-submenu li.item a {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 6px 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-menu-submenu li.item a:hover {
+  background: #008995;
+  color: white;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content {
+  width: 458px;
+  height: 400px;
+  margin: 0 0 0 10px;
+  padding: 10px;
+  background: #f7f7f7;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content h2 {
+  color: black;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 10pt;
+  margin: 0 0 5px 0;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li {
+  display: inline-block;
+  max-width: 69px;
+  height: 80px;
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a {
+  display: block;
+  width: 70px;
+  height: 80px;
+  padding: 0 0 5px 0;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a .card {
+  background: none;
+  border: 0;
+  display: table;
+  height: 50px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  width: 45px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a .card .card-img {
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  width: auto;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a .card .card-img img {
+  height: 34px;
+  margin: 0 auto;
+  transition: transform 1s;
+  width: auto;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a h5.card-title {
+  text-align: center;
+  font-size: 7pt;
+  color: #666;
+  margin: 0;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a:hover .card img {
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues ul.list-leagues li a:hover h5.card-title {
+  color: black;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues section.leagues ul.list-leagues li a .card img {
+  width: auto;
+  height: 50px;
+  margin: 0 auto;
+  transition: transform 1s;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues section.leagues ul.list-leagues li a h5.card-title {
+  text-align: center;
+  font-size: 9pt;
+  color: #666;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues section.leagues ul.list-leagues li a:hover .card img {
+  transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .leagues section.leagues ul.list-leagues li a:hover h5.card-title {
+  color: black;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a:hover .image-container span {
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a:hover h3 {
+  color: #008995;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a .image-container {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a .image-container:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 56.25%;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a .image-container span {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  bottom: 0;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  min-height: 100%;
+  overflow: hidden;
+  right: 0;
+  top: 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  width: 100%;
+  z-index: 0;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a h3 {
+  color: black;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 20px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content.football {
+  height: 400px;
+}
+header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content.news {
+  height: 220px;
+}
+footer {
+  background: #ffe800;
+  padding-top: 8px;
+  padding-right: 0;
+  padding-bottom: 8px;
+  padding-left: 0;
+}
+footer p {
+  font-size: 10pt;
+  text-align: center;
+}
+article {
+  padding-top: 82px;
+}
+section.featured-content {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  -moz-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  background: #ffffff;
+}
+section.featured-content .featured-news a .content {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: inset 0px -84px 10px #00000040;
+  -webkit-box-shadow: inset 0px -84px 10px #00000040;
+  box-shadow: inset 0px -84px 10px #00000040;
+  position: relative;
+  height: 350px;
+  width: 100%;
+}
+section.featured-content .featured-news a h3 {
+  padding: 15px 0 0 0;
+}
+section.featured-content .featured-news a h3 span {
+  background: #008995;
+  color: white;
+  font-size: 11pt;
+  padding: 5px 8px 5px 20px;
+}
+section.featured-content .featured-news a h2 {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-size: 22pt;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+}

@@ -1,0 +1,150 @@
+/*****************************************
+ *			Common Styles
+ * 
+ * Functions used in order to avoid rewriting.
+ * Author: Tomas Malio
+ * Date: 2016-10-21
+ * Version: 1.5
+ *****************************************/
+.border-radius (@radius) {
+	-webkit-border-radius:@radius;
+	-moz-border-radius:@radius;
+	border-radius:@radius;
+}
+.box-shadow (@style) {
+	-webkit-box-shadow:@style;
+	-moz-box-shadow:@style;
+	box-shadow:@style;
+}
+.box-sizing (@style) {
+	-webkit-box-sizing:@style;
+	-moz-box-sizing:@style;
+	box-sizing:@style;
+}
+.text-shadow (@style) {
+	-webkit-text-shadow:@style;
+	-moz-text-shadow:@style;
+	text-shadow:@style;
+}
+.background-size (@style) {
+	-webkit-background-size:@style;
+	-moz-background-size:@style;
+	-o-background-size:@style;
+	background-size:@style;
+}
+.transition (@style) {
+	-webkit-transition:@style;
+	-moz-transition:@style;
+	-o-transition:@style;
+	transition:@style;
+}
+.transform (@transform) {
+	-webkit-transform:@transform;
+	-o-transform:@transform;								
+	-ms-transform:@transform;
+	-webkit-transform:@transform;
+	transform:@transform;
+}
+.column-break-inside (@column) {
+	-webkit-column-break-inside:@column;
+	-moz-column-break-inside:@column;
+	column-break-inside:@column;
+}
+.column-count (@count) {
+	-webkit-column-count:@count;
+	-moz-column-count:@count;
+	column-count:@count;
+}
+.column-gap (@gap) {
+	-webkit-column-gap:@gap;
+	-moz-column-gap:@gap;
+	column-gap:@gap;
+}
+.column-fill (@fill) {
+	-webkit-column-fill:@fill;
+	-moz-column-fill:@fill;
+	column-fill:@fill;
+}
+.filter (@filter) {
+	-webkit-filter:@filter;
+	-moz-filter:@filter;
+	-o-filter:@filter;
+	-ms-filter:@filter;
+	filter:@filter;
+}
+.opacity (@opacity) {
+	opacity:@opacity;
+	-moz-opacity:@opacity;
+	-khtml-opacity:@opacity;
+}
+.checkbox (@float, @width, @margin, @background, @color) {
+	float:@float;
+	width:@width;
+	margin:@margin;
+	position:relative;					
+	label.checkbox {
+		cursor:pointer;
+		position:absolute;
+		width:3px;
+		height:20px;
+		top:0;
+		border-radius:4px;
+		background:@background;
+		&:after {
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			filter: alpha(opacity=0);
+			opacity:0;
+			content:'';
+			position:absolute;
+			width:9px;
+			height:5px;
+			background:transparent;
+			top:4px;
+			left:4px;
+			border:3px solid @color;
+			border-top:none;
+			border-right:none;
+			.transform(rotate(-45deg));
+		}
+		&:hover::after {
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+			filter:alpha(opacity=30);
+			opacity:0.3;
+		}
+	}
+	input[type=checkbox]:checked + label:after {
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter:alpha(opacity=100);
+		opacity:1;
+	}
+}
+.placeHolder (@font-family, @font-size, @font-weight, @color, @text-align) {
+	&::-webkit-input-placeholder {
+        color:@color;
+        font-size:@font-size;
+        .fonts(@font-family, @font-weight);
+        text-align:@text-align;
+      
+    }
+    &:-moz-input-placeholder {
+        color:@color;
+        font-size:@font-size;
+        .fonts(@font-family, @font-weight);
+        text-align:@text-align;
+      
+    }
+    &:-ms-input-placeholder {
+        color:@color;
+        font-size:@font-size;
+        .fonts(@font-family, @font-weight);
+        text-align:@text-align;
+        
+    }
+    &::-moz-placeholder {
+        color:@color;
+        font-size:@font-size;
+        .fonts(@font-family, @font-weight);
+        text-align:@text-align;
+        
+    }
+}

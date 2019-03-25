@@ -1,0 +1,60 @@
+/*****************************************
+ *			Common Styles
+ * 
+ * Global styles
+ * Author: Tomas Malio
+ * Date: 2019-03-18
+ * Version: 1.0
+ *****************************************/
+/* Settings */ 
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, input, button {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	vertical-align:baseline;
+	background:transparent;
+	font-weight:normal;
+	text-decoration:none !important;
+}
+
+ol, ul {
+	list-style:none;
+}
+
+/* Common functions */
+@import "common.less";
+
+/* Config */
+@import "config.less";
+
+// @import "variables.less";
+
+html, body {
+	width: 100%;
+	height: 100% !important;
+	min-height: 100%;
+}
+body {
+	background: @body-background;
+	position: relative; /* Required for static Slidebars to function properly. */
+}
+// End of Settings
+
+/* Variables */
+@import "variables.less";
+
+@import "header.less";
+@import "footer.less";
+
+article {
+    padding-top: 82px;
+}
+
+
+@import "featured-content.less";
