@@ -2,7 +2,7 @@
 
 GoMovil Deportes 
 
-## LESS Installation in Visual Studio Code
+## Less Installation in Visual Studio Code
 
 Use the steps recommend by Visual Studio [CSS, SCSS and Less](https://code.visualstudio.com/docs/languages/css#_transpiling-sass-and-less-into-css) to integrate with Less transpilers through a task runner. 
 Important: you must have Node.js and the npm package manager already installed.
@@ -72,4 +72,4 @@ Then when you know the active user do the execute the following command:
 sudo chown -R [owner]:wheel /usr/local/lib/node_modules
 ```
 
-If you need more info go [here](https://stackoverflow.com/questions/48910876/error-eacces-permission-denied-access-usr-local-lib-node-modules-react)
+If you need more information we recommend to read it [here](https://stackoverflow.com/questions/48910876/error-eacces-permission-denied-access-usr-local-lib-node-modules-react).
