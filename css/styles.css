@@ -437,6 +437,9 @@ section.next-matches .sport i.football {
 section.next-matches .sport i.basket {
   color: #ff7f00;
 }
+section.next-matches .sport i.tenis {
+  color: #eeff00;
+}
 section.next-matches .sport span {
   color: #555555;
   font-size: 8pt;
@@ -449,17 +452,21 @@ section.next-matches .competition {
   /* Match content / Competition / Next matches */
   /* Eof match content / Competition / Next matches */
 }
-section.next-matches .competition .competition-name {
+section.next-matches .competition a.competition-name {
   color: #555555;
+  display: block;
   font-family: 'Nunito', sans-serif;
   font-size: 14pt;
   font-weight: 400;
   text-align: center;
 }
+section.next-matches .competition a.competition-name:hover span {
+  border-bottom: 1px solid #000000;
+}
 section.next-matches .competition .competition-divider {
   background: #f3f3f3;
   height: 1px;
-  margin: 3px 0;
+  margin: 0 0 3px 0;
   width: 100%;
 }
 section.next-matches .competition .competition-situation {
@@ -661,6 +668,53 @@ section.next-matches .competition .match a .match-teams .match-info .penalty-sco
   right: 0;
   position: absolute;
   text-align: center;
+}
+section.next-matches .competition .match a .match-tenis {
+  margin-left: 0;
+  margin-right: 0;
+}
+section.next-matches .competition .match a .match-tenis .time {
+  color: #555555;
+  font-size: 9pt;
+  text-align: left;
+}
+section.next-matches .competition .match a .match-tenis .flag {
+  width: 25px;
+}
+section.next-matches .competition .match a .match-tenis .flag img {
+  width: 100%;
+}
+section.next-matches .competition .match a .match-tenis .player {
+  font-size: 9pt;
+  padding: 4px 0 0 5px;
+  color: #555555;
+}
+section.next-matches .competition .match a .match-tenis .player-info {
+  display: inline-block;
+  line-height: 14px;
+  width: 100%;
+}
+section.next-matches .competition .match a .match-tenis .results-player {
+  display: inline-block;
+  width: 100%;
+}
+section.next-matches .competition .match a .match-tenis .column {
+  border: 1px solid #ececec;
+  color: #555555;
+  font-size: 10pt;
+  margin-right: 4px;
+  padding: 2px 4px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+}
+section.next-matches .competition .match a .match-tenis .column span {
+  font-size: 8pt;
+  position: absolute;
+  top: 0;
+}
+section.next-matches .competition .match a .match-tenis .column.tie-break {
+  text-align: left;
 }
 section.next-matches .competition .match.live {
   margin-top: 30px;
