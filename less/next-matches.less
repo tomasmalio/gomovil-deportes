@@ -102,17 +102,23 @@ section.next-matches {
 									.cell {
 										display: table-cell;
 										vertical-align: middle;
-										text-align: center;
+										// text-align: center;
 									}
 								}
 							}
 							.team-name.right {
-								margin-right: 60px;
-								right: 0;
-							}
-							.team-name.left {
 								margin-left: 60px;
 								left: 0;
+								.team-name-container .cell {
+									text-align: left;
+								}
+							}
+							.team-name.left {
+								margin-right: 60px;
+								right: 0;
+								.team-name-container .cell {
+									text-align: right;
+								}
 							}
 							.shield {
 								position: absolute;
@@ -123,17 +129,59 @@ section.next-matches {
 									max-height: 35px;
 								}
 							}
-							.shield.right {
+							.shield.left {
 								right: 5px;
 							}
-							.shield.left {
+							.shield.right {
 								left: 5px;
+							}
+						}
+						.penalties {
+							margin-top: 10px;
+							.shoot {
+								background: #dedede;
+								-webkit-border-radius: 50%;
+								-moz-border-radius: 50%;
+								border-radius: 50%;
+								height: 8px;
+								margin: 0 5px 0 0;
+								width: 8px;
+							}
+							.shoot.goal {
+								background: #00d200;
+							}
+							.shoot.no-goal {
+								background: red;
+							}
+						}
+						.penalties.left {
+							float: right;
+							margin-right: 5px;
+							.shoot {
+								float: right;
+							}
+						}
+						.penalties.right {
+							float: left;
+							margin-left: 5px;
+							.shoot {
+								float: left;
 							}
 						}
 					}
 					.match-info {
 						padding-left: 0;
 						padding-right: 0;
+						position: relative;
+						.time-playing {
+							color: #555555;
+							left: 0;
+							font-size: 7pt;
+							position: absolute;
+							right: 0;
+							text-align: center;
+							top: -12px;
+						}
 						.match-divider {
 							display: table;
 							width: 100%;
@@ -143,6 +191,7 @@ section.next-matches {
 								text-align: center;
 								width: 100%;
 								height: 35px;
+
 								.time-to-play {
 									background: #F4F4F4;
 									-webkit-border-radius: 6px;
@@ -157,7 +206,37 @@ section.next-matches {
 									position: relative;
 									text-align: center;
 								}
+
+								.result {
+									background: #F4F4F4;
+									-webkit-border-radius: 6px;
+									-moz-border-radius: 6px;
+									border-radius: 6px;
+									color: #b9b9b9;
+									font-family: @p-font-family;
+									font-size: 14pt;
+									font-weight: @p-font-weight;
+									height: 25px;
+									line-height: 20px;
+									padding: 4px;
+									position: relative;
+									text-align: center;
+									span.number {
+										color: #5d5d5d;
+										font-size: 14pt;
+										font-weight: 400;
+									}
+								}
 							}
+						}
+						.penalty-score {
+							bottom: -5px;
+							color: #555555;
+							font-size: 10pt;
+							left: 0;
+							right: 0;
+							position: absolute;
+							text-align: center;
 						}
 					}
 				}

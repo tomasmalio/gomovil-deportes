@@ -501,15 +501,20 @@ section.next-matches .competition .match a .match-teams .match-team .team .team-
 section.next-matches .competition .match a .match-teams .match-team .team .team-name .team-name-container .cell {
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
 }
 section.next-matches .competition .match a .match-teams .match-team .team .team-name.right {
+  margin-left: 60px;
+  left: 0;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name.right .team-name-container .cell {
+  text-align: left;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name.left {
   margin-right: 60px;
   right: 0;
 }
-section.next-matches .competition .match a .match-teams .match-team .team .team-name.left {
-  margin-left: 60px;
-  left: 0;
+section.next-matches .competition .match a .match-teams .match-team .team .team-name.left .team-name-container .cell {
+  text-align: right;
 }
 section.next-matches .competition .match a .match-teams .match-team .team .shield {
   position: absolute;
@@ -520,15 +525,57 @@ section.next-matches .competition .match a .match-teams .match-team .team .shiel
 section.next-matches .competition .match a .match-teams .match-team .team .shield img {
   max-height: 35px;
 }
-section.next-matches .competition .match a .match-teams .match-team .team .shield.right {
+section.next-matches .competition .match a .match-teams .match-team .team .shield.left {
   right: 5px;
 }
-section.next-matches .competition .match a .match-teams .match-team .team .shield.left {
+section.next-matches .competition .match a .match-teams .match-team .team .shield.right {
   left: 5px;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties {
+  margin-top: 10px;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties .shoot {
+  background: #dedede;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 8px;
+  margin: 0 5px 0 0;
+  width: 8px;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties .shoot.goal {
+  background: green;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties .shoot.no-goal {
+  background: red;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties.left {
+  float: right;
+  margin-right: 5px;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties.left .shoot {
+  float: right;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties.right {
+  float: left;
+  margin-left: 5px;
+}
+section.next-matches .competition .match a .match-teams .match-team .penalties.right .shoot {
+  float: left;
 }
 section.next-matches .competition .match a .match-teams .match-info {
   padding-left: 0;
   padding-right: 0;
+  position: relative;
+}
+section.next-matches .competition .match a .match-teams .match-info .time-playing {
+  color: #555555;
+  left: 0;
+  font-size: 7pt;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -12px;
 }
 section.next-matches .competition .match a .match-teams .match-info .match-divider {
   display: table;
@@ -553,6 +600,35 @@ section.next-matches .competition .match a .match-teams .match-info .match-divid
   height: 25px;
   padding: 4px;
   position: relative;
+  text-align: center;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .result {
+  background: #F4F4F4;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  color: #b9b9b9;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14pt;
+  font-weight: 400;
+  height: 25px;
+  line-height: 20px;
+  padding: 4px;
+  position: relative;
+  text-align: center;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .result span.number {
+  color: #5d5d5d;
+  font-size: 14pt;
+  font-weight: 400;
+}
+section.next-matches .competition .match a .match-teams .match-info .penalty-score {
+  bottom: -5px;
+  color: #555555;
+  font-size: 10pt;
+  left: 0;
+  right: 0;
+  position: absolute;
   text-align: center;
 }
 section.next-matches a.btn-more-content {
