@@ -38,6 +38,12 @@ section.next-matches {
 		i {
 			font-size: 11pt;
 		}
+		i.football {
+			color: black;
+		}
+		i.basket {
+			color: #ff7f00;
+		}
 		span {
 			color: #555555;
 			font-size: 8pt;
@@ -173,6 +179,28 @@ section.next-matches {
 						padding-left: 0;
 						padding-right: 0;
 						position: relative;
+						.playing-status {
+							color: #555555;
+							font-size: 6pt;
+							left: 0;
+							right: 0;
+							text-align: center;
+							text-transform: uppercase;
+							top: -30px;
+							position: absolute;
+							.situation {
+								background: #41da41;
+								-webkit-border-radius: 50%;
+								-moz-border-radius: 50%;
+								border-radius: 50%;
+								left: 5px;
+								height: 5px;
+								position: absolute;
+								width: 5px;
+								top: 3px;
+							}
+							
+						}
 						.time-playing {
 							color: #555555;
 							left: 0;
@@ -180,7 +208,7 @@ section.next-matches {
 							position: absolute;
 							right: 0;
 							text-align: center;
-							top: -12px;
+							top: -14px;
 						}
 						.match-divider {
 							display: table;
@@ -214,17 +242,25 @@ section.next-matches {
 									border-radius: 6px;
 									color: #b9b9b9;
 									font-family: @p-font-family;
-									font-size: 14pt;
+									font-size: 7pt;
 									font-weight: @p-font-weight;
-									height: 25px;
 									line-height: 20px;
 									padding: 4px;
 									position: relative;
 									text-align: center;
+								}
+								.result.football {
 									span.number {
 										color: #5d5d5d;
-										font-size: 14pt;
-										font-weight: 400;
+										font-size: 12pt;
+										font-weight: 700;
+									}
+								}
+								.result.basket {
+									span.number {
+										color: #5d5d5d;
+										font-size: 9pt;
+										font-weight: 700;
 									}
 								}
 							}
@@ -241,6 +277,9 @@ section.next-matches {
 					}
 				}
 			}
+		}
+		.match.live {
+			margin-top: 30px;
 		}
 		/* Eof match content / Competition / Next matches */
 	}

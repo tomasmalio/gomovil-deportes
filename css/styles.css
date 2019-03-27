@@ -431,6 +431,12 @@ section.next-matches .sport {
 section.next-matches .sport i {
   font-size: 11pt;
 }
+section.next-matches .sport i.football {
+  color: black;
+}
+section.next-matches .sport i.basket {
+  color: #ff7f00;
+}
 section.next-matches .sport span {
   color: #555555;
   font-size: 8pt;
@@ -544,7 +550,7 @@ section.next-matches .competition .match a .match-teams .match-team .penalties .
   width: 8px;
 }
 section.next-matches .competition .match a .match-teams .match-team .penalties .shoot.goal {
-  background: green;
+  background: #00d200;
 }
 section.next-matches .competition .match a .match-teams .match-team .penalties .shoot.no-goal {
   background: red;
@@ -568,6 +574,27 @@ section.next-matches .competition .match a .match-teams .match-info {
   padding-right: 0;
   position: relative;
 }
+section.next-matches .competition .match a .match-teams .match-info .playing-status {
+  color: #555555;
+  font-size: 6pt;
+  left: 0;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  top: -30px;
+  position: absolute;
+}
+section.next-matches .competition .match a .match-teams .match-info .playing-status .situation {
+  background: #41da41;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  left: 5px;
+  height: 5px;
+  position: absolute;
+  width: 5px;
+  top: 3px;
+}
 section.next-matches .competition .match a .match-teams .match-info .time-playing {
   color: #555555;
   left: 0;
@@ -575,7 +602,7 @@ section.next-matches .competition .match a .match-teams .match-info .time-playin
   position: absolute;
   right: 0;
   text-align: center;
-  top: -12px;
+  top: -14px;
 }
 section.next-matches .competition .match a .match-teams .match-info .match-divider {
   display: table;
@@ -609,18 +636,22 @@ section.next-matches .competition .match a .match-teams .match-info .match-divid
   border-radius: 6px;
   color: #b9b9b9;
   font-family: 'Nunito', sans-serif;
-  font-size: 14pt;
+  font-size: 7pt;
   font-weight: 400;
-  height: 25px;
   line-height: 20px;
   padding: 4px;
   position: relative;
   text-align: center;
 }
-section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .result span.number {
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .result.football span.number {
   color: #5d5d5d;
-  font-size: 14pt;
-  font-weight: 400;
+  font-size: 12pt;
+  font-weight: 700;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .result.basket span.number {
+  color: #5d5d5d;
+  font-size: 9pt;
+  font-weight: 700;
 }
 section.next-matches .competition .match a .match-teams .match-info .penalty-score {
   bottom: -5px;
@@ -630,6 +661,9 @@ section.next-matches .competition .match a .match-teams .match-info .penalty-sco
   right: 0;
   position: absolute;
   text-align: center;
+}
+section.next-matches .competition .match.live {
+  margin-top: 30px;
 }
 section.next-matches a.btn-more-content {
   background: #008995;
