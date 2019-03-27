@@ -1,0 +1,187 @@
+section.next-matches {
+	background: #ffffff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+	-moz-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+	box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+	padding: 15px 0 0 0;
+	h2 {
+		color: #555555;
+		font-family: @h2-font-family;
+		font-size: 14pt;
+		font-weight: @h2-font-weight;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.date-matches {
+		color: #555555;
+		font-family: @h2-font-family;
+		font-size: 12pt;
+		font-weight: 300;
+		padding: 10px 0;
+		text-align: center;
+	}
+	.sport {
+		border: 1px solid #f3f3f3;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0px 0px 10px 0px #eaeaea;
+		-moz-box-shadow: 0px 0px 10px 0px #eaeaea;
+		box-shadow: 0px 0px 10px 0px #eaeaea;
+		padding: 0 8px;
+		position: relative;
+		margin: 0 auto 15px auto;
+		width: 90px;
+		i {
+			font-size: 11pt;
+		}
+		span {
+			color: #555555;
+			font-size: 8pt;
+			left: 30px;
+			position: absolute;
+			text-transform: uppercase;
+			top: 5px;
+		}
+	}
+	/* Competition */
+	.competition {
+		.competition-name {
+			color: #555555;
+			font-family: @h2-font-family;
+			font-size: 14pt;
+			font-weight: 400;
+			text-align: center;
+		}
+		.competition-divider {
+			background: #f3f3f3;
+			height: 1px;
+			margin: 3px 0;
+			width: 100%;
+		}
+		.competition-situation {
+			color: #555555;
+			font-family: @h3-font-family;
+			font-size: 10pt;
+			font-weight: 300;
+			
+			text-align: center;
+		}
+		/* Match content / Competition / Next matches */
+		.match {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			a {
+				display: block;
+				padding: 10px 0;
+				.match-teams {
+					margin-left: 0;
+					margin-right: 0;
+					.match-team {
+						position: relative;
+						text-align: center;
+						padding-right: 0;
+						padding-left: 0;
+						.team {
+							margin: 0;
+							width: 100%;
+							height: 35px;
+							position: relative;
+							.team-name {
+								color: #333;
+								font-size: 9pt;
+								height: 35px;
+								position: absolute;
+								.team-name-container {
+									display: table;
+									width: 100%;
+									height: 100%;
+									.cell {
+										display: table-cell;
+										vertical-align: middle;
+										text-align: center;
+									}
+								}
+							}
+							.team-name.right {
+								margin-right: 60px;
+								right: 0;
+							}
+							.team-name.left {
+								margin-left: 60px;
+								left: 0;
+							}
+							.shield {
+								position: absolute;
+								padding: 0 0 5px 0;
+								width: 46px;
+								text-align: center;
+								img {
+									max-height: 35px;
+								}
+							}
+							.shield.right {
+								right: 5px;
+							}
+							.shield.left {
+								left: 5px;
+							}
+						}
+					}
+					.match-info {
+						padding-left: 0;
+						padding-right: 0;
+						.match-divider {
+							display: table;
+							width: 100%;
+							.match-divider-content {
+								display: table-cell;
+								vertical-align: middle;
+								text-align: center;
+								width: 100%;
+								height: 35px;
+								.time-to-play {
+									background: #F4F4F4;
+									-webkit-border-radius: 6px;
+									-moz-border-radius: 6px;
+									border-radius: 6px;
+									color: #585858;
+									font-family: @p-font-family;
+									font-size: 8pt;
+									font-weight: @p-font-weight;
+									height: 25px;
+									padding: 4px;
+									position: relative;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/* Eof match content / Competition / Next matches */
+	}
+	/* Eof competition / Next matches */
+	a.btn-more-content {
+		background: @color-second;
+		-webkit-border-radius: 0 0 10px 10px;
+		-moz-border-radius: 0 0 10px 10px;
+		border-radius: 0 0 10px 10px;
+		color: @color-first;
+		display: block;
+		font-family: @button-font-family;
+		font-weight: @button-font-weight;
+		padding: 6px 0;
+		text-align: center;
+		text-transform: uppercase;
+		width: 100%;
+		&:hover {
+			background: @color-first;
+			color: @color-second;
+		}
+	}
+}

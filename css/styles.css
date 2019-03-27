@@ -351,6 +351,7 @@ section.featured-content {
   -moz-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
   box-shadow: 0px 0px 10px -3px #d4d4d4cc;
   background: #ffffff;
+  margin-bottom: 30px;
 }
 section.featured-content .featured-news a .content {
   -webkit-background-size: cover;
@@ -372,14 +373,252 @@ section.featured-content .featured-news a h3 {
 section.featured-content .featured-news a h3 span {
   background: #008995;
   color: white;
-  font-size: 11pt;
+  font-size: 12pt;
   padding: 5px 8px 5px 20px;
+  text-transform: uppercase;
 }
 section.featured-content .featured-news a h2 {
-  position: absolute;
-  left: 15px;
-  bottom: 15px;
-  font-size: 22pt;
+  bottom: 30px;
   color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22pt;
+  font-weight: 800;
+  left: 30px;
+  position: absolute;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+}
+section.next-matches {
+  background: #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  -moz-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+  padding: 15px 0 0 0;
+  /* Competition */
+  /* Eof competition / Next matches */
+}
+section.next-matches h2 {
+  color: #555555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14pt;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+section.next-matches .date-matches {
+  color: #555555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12pt;
+  font-weight: 300;
+  padding: 10px 0;
+  text-align: center;
+}
+section.next-matches .sport {
+  border: 1px solid #f3f3f3;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px 0px #eaeaea;
+  -moz-box-shadow: 0px 0px 10px 0px #eaeaea;
+  box-shadow: 0px 0px 10px 0px #eaeaea;
+  padding: 0 8px;
+  position: relative;
+  margin: 0 auto 15px auto;
+  width: 90px;
+}
+section.next-matches .sport i {
+  font-size: 11pt;
+}
+section.next-matches .sport span {
+  color: #555555;
+  font-size: 8pt;
+  left: 30px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 5px;
+}
+section.next-matches .competition {
+  /* Match content / Competition / Next matches */
+  /* Eof match content / Competition / Next matches */
+}
+section.next-matches .competition .competition-name {
+  color: #555555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14pt;
+  font-weight: 400;
+  text-align: center;
+}
+section.next-matches .competition .competition-divider {
+  background: #f3f3f3;
+  height: 1px;
+  margin: 3px 0;
+  width: 100%;
+}
+section.next-matches .competition .competition-situation {
+  color: #555555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 10pt;
+  font-weight: 300;
+  text-align: center;
+}
+section.next-matches .competition .match {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+section.next-matches .competition .match a {
+  display: block;
+  padding: 10px 0;
+}
+section.next-matches .competition .match a .match-teams {
+  margin-left: 0;
+  margin-right: 0;
+}
+section.next-matches .competition .match a .match-teams .match-team {
+  position: relative;
+  text-align: center;
+  padding-right: 0;
+  padding-left: 0;
+}
+section.next-matches .competition .match a .match-teams .match-team .team {
+  margin: 0;
+  width: 100%;
+  height: 35px;
+  position: relative;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name {
+  color: #333;
+  font-size: 9pt;
+  height: 35px;
+  position: absolute;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name .team-name-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name .team-name-container .cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name.right {
+  margin-right: 60px;
+  right: 0;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .team-name.left {
+  margin-left: 60px;
+  left: 0;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .shield {
+  position: absolute;
+  padding: 0 0 5px 0;
+  width: 46px;
+  text-align: center;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .shield img {
+  max-height: 35px;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .shield.right {
+  right: 5px;
+}
+section.next-matches .competition .match a .match-teams .match-team .team .shield.left {
+  left: 5px;
+}
+section.next-matches .competition .match a .match-teams .match-info {
+  padding-left: 0;
+  padding-right: 0;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider {
+  display: table;
+  width: 100%;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  height: 35px;
+}
+section.next-matches .competition .match a .match-teams .match-info .match-divider .match-divider-content .time-to-play {
+  background: #F4F4F4;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  color: #585858;
+  font-family: 'Nunito', sans-serif;
+  font-size: 8pt;
+  font-weight: 400;
+  height: 25px;
+  padding: 4px;
+  position: relative;
+  text-align: center;
+}
+section.next-matches a.btn-more-content {
+  background: #008995;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+  color: #ffe800;
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  padding: 6px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+section.next-matches a.btn-more-content:hover {
+  background: #ffe800;
+  color: #008995;
+}
+section.last-news .list-news li {
+  background: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+section.last-news .list-news li:last-child {
+  margin-bottom: 0;
+}
+section.last-news .list-news li a {
+  display: block;
+}
+section.last-news .list-news li a .image {
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+  width: 260px;
+  height: auto;
+  line-height: 0;
+}
+section.last-news .list-news li a .image img {
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+  width: 100%;
+}
+section.last-news .list-news li a .news-content {
+  padding-left: 10px;
+}
+section.last-news .list-news li a .news-content time {
+  color: #3B3B3B;
+  font-size: 10pt;
+  padding-bottom: 10px;
+}
+section.last-news .list-news li a .news-content h2 {
+  color: #3B3B3B;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+section.last-news .list-news li a .news-content h3 {
+  color: #3B3B3B;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12pt;
+  font-weight: 400;
 }
