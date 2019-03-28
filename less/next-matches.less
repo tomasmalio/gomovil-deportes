@@ -85,10 +85,15 @@ section.next-matches {
 			
 			text-align: center;
 		}
+		ul {
+			li:last-child {
+				margin-bottom: 30px;
+			}
+		}
 		/* Match content / Competition / Next matches */
 		.match {
-			margin-top: 15px;
-			margin-bottom: 15px;
+			//margin-top: 15px;
+			//margin-bottom: 15px;
 			a {
 				display: block;
 				padding: 10px 0;
@@ -309,9 +314,16 @@ section.next-matches {
 						line-height: 14px;
 						width: 100%;
 					}
+					.player-info.double:first-child {
+						margin-bottom: 15px;
+					}
 					.results-player {
 						display: inline-block;
 						width: 100%;
+					}
+					.results-player.double {
+						margin-top: 15px;
+						margin-bottom: 15px;
 					}
 					.column {
 						border: 1px solid #ececec;

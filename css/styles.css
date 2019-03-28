@@ -476,9 +476,8 @@ section.next-matches .competition .competition-situation {
   font-weight: 300;
   text-align: center;
 }
-section.next-matches .competition .match {
-  margin-top: 15px;
-  margin-bottom: 15px;
+section.next-matches .competition ul li:last-child {
+  margin-bottom: 30px;
 }
 section.next-matches .competition .match a {
   display: block;
@@ -694,9 +693,16 @@ section.next-matches .competition .match a .match-tenis .player-info {
   line-height: 14px;
   width: 100%;
 }
+section.next-matches .competition .match a .match-tenis .player-info.double:first-child {
+  margin-bottom: 15px;
+}
 section.next-matches .competition .match a .match-tenis .results-player {
   display: inline-block;
   width: 100%;
+}
+section.next-matches .competition .match a .match-tenis .results-player.double {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 section.next-matches .competition .match a .match-tenis .column {
   border: 1px solid #ececec;
