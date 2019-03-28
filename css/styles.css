@@ -674,8 +674,8 @@ section.next-matches .competition .match a .match-tenis {
   margin-right: 0;
 }
 section.next-matches .competition .match a .match-tenis .time {
-  color: #555555;
-  font-size: 9pt;
+  color: #777777;
+  font-size: 8pt;
   text-align: left;
 }
 section.next-matches .competition .match a .match-tenis .flag {
@@ -715,6 +715,10 @@ section.next-matches .competition .match a .match-tenis .column span {
 }
 section.next-matches .competition .match a .match-tenis .column.tie-break {
   text-align: left;
+}
+section.next-matches .competition .match a .match-tenis .column.not-play {
+  background: #f7f7f7;
+  height: 25px;
 }
 section.next-matches .competition .match.live {
   margin-top: 30px;
