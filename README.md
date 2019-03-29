@@ -2,6 +2,20 @@
 
 GoMovil Deportes 
 
+## Install Composer
+Follow the instructions from [here](https://getcomposer.org/download/) and the continue the instructions of the [Basic Usage](https://getcomposer.org/doc/01-basic-usage.md). The most important thing is that the composer.json must be created.
+
+## Install Twig
+The first thing that you must do is install the [Twig](https://twig.readthedocs.io/en/latest/installation.html) with your composer.
+
+```bash
+php composer require twig/twig
+```
+Then you must update the extension add in your composer.lock to the composer.json
+```bash
+php composer install
+```
+
 ## Less Installation in Visual Studio Code
 
 Use the steps recommend by Visual Studio [CSS, SCSS and Less](https://code.visualstudio.com/docs/languages/css#_transpiling-sass-and-less-into-css) to integrate with Less transpilers through a task runner. 
