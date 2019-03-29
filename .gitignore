@@ -3,3 +3,7 @@
 
 # MacOS files
 .DS_Store
+
+# Ignore file
+composer.phar
+composer.lock

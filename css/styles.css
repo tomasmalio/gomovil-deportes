@@ -344,6 +344,7 @@ article {
   padding-top: 82px;
 }
 section.featured-content {
+  background-repeat: no-repeat;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -415,7 +416,7 @@ section.next-matches .date-matches {
   padding: 10px 0;
   text-align: center;
 }
-section.next-matches .sport {
+section.next-matches a.sport {
   border: 1px solid #f3f3f3;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -423,30 +424,52 @@ section.next-matches .sport {
   -webkit-box-shadow: 0px 0px 10px 0px #eaeaea;
   -moz-box-shadow: 0px 0px 10px 0px #eaeaea;
   box-shadow: 0px 0px 10px 0px #eaeaea;
+  display: block;
   padding: 0 8px;
   position: relative;
   margin: 0 auto 15px auto;
   width: 90px;
 }
-section.next-matches .sport i {
+section.next-matches a.sport i {
   font-size: 11pt;
 }
-section.next-matches .sport i.football {
+section.next-matches a.sport i.football {
   color: black;
 }
-section.next-matches .sport i.basket {
+section.next-matches a.sport i.basket {
   color: #ff7f00;
 }
-section.next-matches .sport i.tenis {
+section.next-matches a.sport i.tenis {
   color: #eeff00;
 }
-section.next-matches .sport span {
+section.next-matches a.sport span {
   color: #555555;
   font-size: 8pt;
   left: 30px;
   position: absolute;
   text-transform: uppercase;
   top: 5px;
+}
+section.next-matches a.sport.football:hover {
+  background: black;
+}
+section.next-matches a.sport.football:hover i,
+section.next-matches a.sport.football:hover span {
+  color: white;
+}
+section.next-matches a.sport.basket:hover {
+  background: #ff7f00;
+}
+section.next-matches a.sport.basket:hover i,
+section.next-matches a.sport.basket:hover span {
+  color: white;
+}
+section.next-matches a.sport.tenis:hover {
+  background: #eeff00;
+}
+section.next-matches a.sport.tenis:hover i,
+section.next-matches a.sport.tenis:hover span {
+  color: white;
 }
 section.next-matches .competition {
   /* Match content / Competition / Next matches */
@@ -482,6 +505,10 @@ section.next-matches .competition ul li:last-child {
 section.next-matches .competition .match a {
   display: block;
   padding: 10px 0;
+  /* Football & Basket / Match content / Competition / Next matches */
+  /* Eof football & basket / Match content / Competition / Next matches */
+  /* Tenis / Match content / Competition / Next matches */
+  /* Eof tenis / Match content / Competition / Next matches */
 }
 section.next-matches .competition .match a .match-teams {
   margin-left: 0;
@@ -671,6 +698,8 @@ section.next-matches .competition .match a .match-teams .match-info .penalty-sco
 section.next-matches .competition .match a .match-tenis {
   margin-left: 0;
   margin-right: 0;
+  /* Results / Tenis / Match content / Competition / Next matches */
+  /* Eof results / Tenis / Match content / Competition / Next matches */
 }
 section.next-matches .competition .match a .match-tenis .time {
   color: #777777;
@@ -683,28 +712,47 @@ section.next-matches .competition .match a .match-tenis .flag {
 section.next-matches .competition .match a .match-tenis .flag img {
   width: 100%;
 }
-section.next-matches .competition .match a .match-tenis .player {
-  font-size: 9pt;
-  padding: 4px 0 0 5px;
-  color: #555555;
-}
 section.next-matches .competition .match a .match-tenis .player-info {
   display: inline-block;
   line-height: 14px;
   width: 100%;
 }
+section.next-matches .competition .match a .match-tenis .player-info .player {
+  font-size: 9pt;
+  padding: 4px 0 0 5px;
+  color: #555555;
+}
 section.next-matches .competition .match a .match-tenis .player-info.double:first-child {
   margin-bottom: 15px;
 }
+section.next-matches .competition .match a .match-tenis .match-to-five {
+  padding-right: 0;
+}
 section.next-matches .competition .match a .match-tenis .results-player {
   display: inline-block;
-  width: 100%;
+  position: relative;
 }
-section.next-matches .competition .match a .match-tenis .results-player.double {
-  margin-top: 15px;
-  margin-bottom: 15px;
+section.next-matches .competition .match a .match-tenis .results-player .playing-ball {
+  background: #f3f300;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 10px;
+  left: -10px;
+  position: absolute;
+  top: 8px;
+  width: 10px;
 }
-section.next-matches .competition .match a .match-tenis .column {
+section.next-matches .competition .match a .match-tenis .results-player .match-points {
+  color: #555555;
+  display: inline-block;
+  font-size: 9pt;
+  font-weight: 700;
+  padding-top: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+section.next-matches .competition .match a .match-tenis .results-player .column {
   border: 1px solid #ececec;
   color: #555555;
   font-size: 10pt;
@@ -714,17 +762,21 @@ section.next-matches .competition .match a .match-tenis .column {
   text-align: center;
   width: 30px;
 }
-section.next-matches .competition .match a .match-tenis .column span {
+section.next-matches .competition .match a .match-tenis .results-player .column span {
   font-size: 8pt;
   position: absolute;
   top: 0;
 }
-section.next-matches .competition .match a .match-tenis .column.tie-break {
+section.next-matches .competition .match a .match-tenis .results-player .column.tie-break {
   text-align: left;
 }
-section.next-matches .competition .match a .match-tenis .column.not-play {
+section.next-matches .competition .match a .match-tenis .results-player .column.not-play {
   background: #f7f7f7;
   height: 25px;
+}
+section.next-matches .competition .match a .match-tenis .results-player.double {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 section.next-matches .competition .match.live {
   margin-top: 30px;
