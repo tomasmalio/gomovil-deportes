@@ -3,7 +3,6 @@
 	 * NewsList
 	 */
 	class NewsList extends Widgets {
-		//public $title;
 		public $news = array(
 			array('title' => 'Título de la noticia 1', 'description' => 'Description 1', 'date' => '2019-04-09', 'url' => '#'),
 			array('title' => 'Título de la noticia 2', 'description' => 'Description 2', 'date' => '2019-06-09', 'url' => '#'),

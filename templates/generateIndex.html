@@ -1,13 +1,19 @@
 {% extends "index.html" %}
 
-{% block metaTags %}
-{{widgetMetaTags | raw}}
-{% endblock %}
+{% if widgetMetaTags.display %}
+	{% block metaTags %}
+		{{widgetMetaTags.content | raw}}
+	{% endblock %}
+{% endif %}
 
-{% block featuredNews %}
-{{widgetNewsFeatured | raw}}
-{% endblock %}
+{% if widgetNewsFeatured.display %}
+	{% block featuredNews %}
+		{{widgetNewsFeatured.content | raw}}
+	{% endblock %}
+{% endif %}
 
-{% block listNews %}
-{{widgetNewsList | raw}}
-{% endblock %}
+{% if widgetNewsList.display %}
+	{% block listNews %}
+		{{widgetNewsList.content | raw}}
+	{% endblock %}
+{% endif %}
