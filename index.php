@@ -9,6 +9,12 @@
 	$GLOBALS['extensions_url'] = '/extensions';
 
 	/****************************************
+	 * META TAGS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/metaTags/MetaTags.php';
+	$widgetMetaTags = (new MetaTags())->renderView();
+
+	/****************************************
 	 * FEATURED NEWS
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsFeatured/NewsFeatured.php';
@@ -26,6 +32,7 @@
 	$template = $twig->load('generateIndex.html');
 
 	echo $twig->render('generateIndex.html', array(
+			'widgetMetaTags'				=> $widgetMetaTags,
 			'widgetNewsFeatured' 			=> $widgetNewsFeatured,
 			'widgetNewsList'				=> $widgetNewsList,
 		)

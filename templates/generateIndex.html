@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
+{% block metaTags %}
+{{widgetMetaTags | raw}}
+{% endblock %}
+
 {% block featuredNews %}
 {{widgetNewsFeatured | raw}}
 {% endblock %}
