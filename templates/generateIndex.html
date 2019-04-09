@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
 {% block featuredNews %}
-{{widgetFeaturedNews | raw}}
+{{widgetNewsFeatured | raw}}
+{% endblock %}
+
+{% block listNews %}
+{{widgetNewsList | raw}}
 {% endblock %}
