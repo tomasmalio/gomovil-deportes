@@ -3,7 +3,7 @@
 	<ul class="list-news">
 		<?php foreach ($newsList as $news) {?>
 		<li>
-			<a href="#" title="Nombre noticia">
+			<a href="<?= $news['url']?>" title="<?= $news['title']?>">
 				<div class="row">
 					<div class="col-12">
 						<div class="image float-left">
