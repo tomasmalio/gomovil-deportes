@@ -20,30 +20,31 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsFeatured/NewsFeatured.php';
 	$widgetNewsFeatured = (new NewsFeatured())->renderView();
+	$displayNewsFeatured = true;
 
 	/****************************************
 	 * LIST NEWS
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsList/NewsList.php';
 	$widgetNewsList 	= (new NewsList())->renderView();
+	$displayNewsList = true;
 
 	/**
 	 * Render view
 	 */
 	$template = $twig->load('generateIndex.html');
 
-	echo $twig->render('generateIndex.html', array(
-			'widgetMetaTags'			=> array(
-												'content' 				=> $widgetMetaTags,
-												'display'				=> $displayMetaTags,
-			),
-			'widgetNewsFeatured' 		=> array(
-												'content'			 	=> $widgetNewsFeatured,
-												'display'				=> $displayNewsFeatured,
-			),
-			'widgetNewsList'			=> array(
-												'content'		 		=> $widgetNewsList,
-												'display'				=> $displayNewsList,
-			),
-		)
-	);
+	echo $template->render([
+		'widgetMetaTags'			=> array(
+											'content' 				=> $widgetMetaTags,
+											'display'				=> $displayMetaTags,
+		),
+		'widgetNewsFeatured' 		=> array(
+											'content'			 	=> $widgetNewsFeatured,
+											'display'				=> $displayNewsFeatured,
+		),
+		'widgetNewsList'			=> array(
+											'content'		 		=> $widgetNewsList,
+											'display'				=> $displayNewsList,
+		),
+	]);
