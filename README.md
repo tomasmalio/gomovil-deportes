@@ -99,6 +99,16 @@ In the moment you want to add an extension to the platform you must follow the n
 ```bash
 $ ls extensions/
 ```
+Remember that inside your Widget folder you must have the following files and folders:
+
+```bash
+├── _widgetName
+├── _drafts
+|   ├── _views
+|   ├── ── viewWidgetName.php
+|   └── WidgetName.php
+```
+
 3) Add the following code inside the Controller (*index.php*) 
 
 ```php
