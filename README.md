@@ -132,12 +132,12 @@ Then to render the view of the HTML document, yo must add in the renderView() th
         public $image;
        
        public function renderView () {
-			return Widgets::renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', array(
+           return Widgets::renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', array(
                     'title' => $this->title,
                     'description' => $this->description,
                     'image' => $this->image,
-				)
-			);
-		}
+                )
+            );
+        }
     }
 ```
