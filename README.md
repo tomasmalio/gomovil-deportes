@@ -109,7 +109,7 @@ Remember that inside your extensions folder you must have the following files an
     └── WidgetName.php
 ```
 
-3) Add the following code inside the Controller (*index.php*) 
+3) Add the following code inside your Controller (*index.php*) 
 
 ```php
 	/****************************************
@@ -125,7 +125,7 @@ Remember to change the following words:
 * ***widgetWidgetName***: is a variable name that always begins with widget and the ***WidgetName*** which will store the code
 * ***displayWidgetName*** *(true | false)*: is a variable name that always begins with display and the ***WidgetName*** which contains if you want to display or not
 
-4) Next inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
+4) Inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
 Example:
 ```php
     class WidgetName extends Widgets {
@@ -134,7 +134,8 @@ Example:
         public $image;
     }
 ```
-Then to render the view of the HTML document, yo must add in the renderView() the variables that you name before:
+Then in the render view of the HTML document, you must add the variables that you name before (***renderView()***).
+Example:
 ```php
     class WidgetName extends Widgets {
         public $title;
@@ -142,11 +143,11 @@ Then to render the view of the HTML document, yo must add in the renderView() th
         public $image;
        
        public function renderView () {
-           return Widgets::renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', array(
-                    'title' => $this->title,
-                    'description' => $this->description,
-                    'image' => $this->image,
-                )
+            return Widgets::renderViewHtml(get_class($this), [
+                    'title'         => $this->title,
+                    'description'   => $this->description,
+                    'image'         => $this->image,
+                ]
             );
         }
     }

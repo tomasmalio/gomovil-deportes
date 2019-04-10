@@ -4,15 +4,15 @@
 	 */
 	class MetaTags extends Widgets {
 		//public $title;
-		public $general = array(
+		public $general = [
 			'title' 			=> '',
 			'description' 		=> '',
 			'keywords' 			=> '',
 			'image'				=> '',
 			'url'				=> '',
-		);
+		];
 		
-		public $facebook = array(
+		public $facebook = [
 			'title' 			=> '',
 			'description' 		=> '',
 			'image'				=> '',
@@ -21,9 +21,9 @@
 			'type'				=> '',
 			'site'				=> '',
 			'siteLink'			=> 'https://www.facebook.com/',
-		);
+		];
 
-		public $twitter = array(
+		public $twitter = [
 			'title' 			=> '',
 			'description' 		=> '',
 			'image'				=> '',
@@ -32,14 +32,14 @@
 			'siteLink'			=> 'https://www.twitter.com/',
 			'creator'			=> '',
 			'card'				=> '',
-		);
+		];
 
 		public function renderView () {
-			return Widgets::renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', array(
+			return Widgets::renderViewHtml(get_class($this), [
 					'general' 	=> $this->general,
 					'twitter' 	=> $this->twitter,
 					'facebook' 	=> $this->facebook,
-				)
+				]
 			);
 		}
 	}
