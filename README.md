@@ -99,13 +99,13 @@ In the moment you want to add an extension to the platform you must follow the n
 ```bash
 $ ls extensions/
 ```
-Remember that inside your Widget folder you must have the following files and folders:
+Remember that inside your extensions folder you must have the following files and folders:
 
 ```bash
 └── extensions
     ├── widgetName
-    |   └── views
-    |   └── ── viewWidgetName.php
+    |   └─ views
+    |   └── viewWidgetName.php
     └── WidgetName.php
 ```
 
