@@ -102,11 +102,11 @@ $ ls extensions/
 Remember that inside your Widget folder you must have the following files and folders:
 
 ```bash
-├── _widgetName
-├── _drafts
-|   ├── _views
-|   ├── ── viewWidgetName.php
-|   └── WidgetName.php
+└── extensions
+    ├── widgetName
+    |   └── views
+    |   └── ── viewWidgetName.php
+    └── WidgetName.php
 ```
 
 3) Add the following code inside the Controller (*index.php*) 
