@@ -92,7 +92,7 @@ If you need more information we recommend to read it [here](https://stackoverflo
 ## Development
 
 ### Widgets
-In the momento you want to add an extension to the platform you must follow the next instructions.
+In the moment you want to add an extension to the platform you must follow the next instructions.
 
 1) First you must include your folder inside the directory in which all the extensions are: ***./extensions/***
 2) Validate if your folder is in the correct place:
