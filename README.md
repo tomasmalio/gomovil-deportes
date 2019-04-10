@@ -112,10 +112,10 @@ $ ls extensions/
 Remember to change the following words:
 * ***nameOfWidget***: is the name of the folder that you include in */extensions/*
 * ***WidgetName***: name of the first file inside the folder and of course the class name
-* ***widgetWidgetName***: is a variable name that always begins with widget and the *WidgetName**** which will store the code
-* ***displayWidgetName***: is a variable name that always begins with display and the *WidgetName* which contains if you want to display or not
+* ***widgetWidgetName***: is a variable name that always begins with widget and the ***WidgetName*** which will store the code
+* ***displayWidgetName***: is a variable name that always begins with display and the ***WidgetName*** which contains if you want to display or not
 
-4) Next inside your principal file (*extensions/nameOfWidget/WidgetName.php*) you must include the variables that want to use to include inside the HTML file. 
+4) Next inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
 Example:
 ```php
     class WidgetName extends Widgets {
