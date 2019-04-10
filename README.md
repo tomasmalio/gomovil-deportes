@@ -103,7 +103,7 @@ $ ls extensions/
 
 ```php
 	/****************************************
-	 * LIST NEWS
+	 * WIDGET NAME
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
 	$widgetWidgetName 	= (new WidgetName())->renderView();
