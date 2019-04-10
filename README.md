@@ -89,7 +89,7 @@ $ sudo chown -R [owner]:wheel /usr/local/lib/node_modules
 If you need more information we recommend to read it [here](https://stackoverflow.com/questions/48910876/error-eacces-permission-denied-access-usr-local-lib-node-modules-react).
 
 
-## Development
+## [Development](#development)
 
 ### Widgets
 In the moment you want to add an extension to the platform you must follow the next instructions.
