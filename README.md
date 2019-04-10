@@ -83,7 +83,61 @@ $ id -un
 
 Then when you know the active user do the execute the following command:
 ```bash
-sudo chown -R [owner]:wheel /usr/local/lib/node_modules
+$ sudo chown -R [owner]:wheel /usr/local/lib/node_modules
 ```
 
 If you need more information we recommend to read it [here](https://stackoverflow.com/questions/48910876/error-eacces-permission-denied-access-usr-local-lib-node-modules-react).
+
+
+## Development
+
+### Widgets
+In the momento you want to add an extension to the platform you must follow the next instructions.
+
+1) First you must include your folder inside the directory in which all the extensions are: ***./extensions/***
+2) Validate if your folder is in the correct place:
+```bash
+$ ls extensions/
+```
+3) Add the following code inside the Controller (*index.php*) 
+
+```php
+	/****************************************
+	 * LIST NEWS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
+	$widgetWidgetName 	= (new WidgetName())->renderView();
+	$displayWidgetName = true;
+```
+Remember to change the following words:
+* nameOfWidget: is the name of the folder that you include in */extensions/*
+* WidgetName: name of the first file inside the folder and of course the class name
+* widgetWidgetName: is a variable name that always begins with widget and the *WidgetName* which will store the code
+* displayWidgetName: is a variable name that always begins with display and the *WidgetName* which contains if you want to display or not
+
+4) Next inside your principal file (*extensions/nameOfWidget/WidgetName.php*) you must include the variables that want to use to include inside the HTML file. 
+Example:
+```php
+    class WidgetName extends Widgets {
+        public $title;
+        public $description;
+        public $image;
+    }
+```
+Then to render the view of the HTML document, yo must add in the renderView() the variables that you name before:
+```php
+    class WidgetName extends Widgets {
+        public $title;
+        public $description;
+        public $image;
+       
+       public function renderView () {
+			return Widgets::renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', array(
+                    'title' => $this->title,
+                    'description' => $this->description,
+                    'image' => $this->image,
+				)
+			);
+		}
+    }
+```
