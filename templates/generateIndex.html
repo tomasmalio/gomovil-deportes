@@ -17,3 +17,10 @@
 		{{widgetNewsList.content | raw}}
 	{% endif %}
 {% endblock %}
+
+
+{% block nextMatches %}
+	{% if widgetNextMatches.display %}
+		{{widgetNextMatches.content | raw}}
+	{% endif %}
+{% endblock %}

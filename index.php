@@ -29,22 +29,33 @@
 	$widgetNewsList 	= (new NewsList())->renderView();
 	$displayNewsList = true;
 
+	/****************************************
+	 * NEXT MATCHES
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nextMatches/NextMatches.php';
+	$widgetNextMatches 	= (new NextMatches())->renderView();
+	$displayNextMatches = true;
+
 	/**
 	 * Render view
 	 */
 	$template = $twig->load('generateIndex.html');
 
 	echo $template->render([
-		'widgetMetaTags'			=> array(
+		'widgetMetaTags'			=> [
 											'content' 				=> $widgetMetaTags,
 											'display'				=> $displayMetaTags,
-		),
-		'widgetNewsFeatured' 		=> array(
+		],
+		'widgetNewsFeatured' 		=> [
 											'content'			 	=> $widgetNewsFeatured,
 											'display'				=> $displayNewsFeatured,
-		),
-		'widgetNewsList'			=> array(
+		],
+		'widgetNewsList'			=> [
 											'content'		 		=> $widgetNewsList,
 											'display'				=> $displayNewsList,
-		),
+		],
+		'widgetNextMatches'			=> [
+											'content'		 		=> $widgetNextMatches,
+											'display'				=> $displayNextMatches,
+		],
 	]);
