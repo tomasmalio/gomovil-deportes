@@ -18,9 +18,14 @@
 	{% endif %}
 {% endblock %}
 
+{% block matchesNext %}
+	{% if widgetMatchesNext.display %}
+		{{widgetMatchesNext.content | raw}}
+	{% endif %}
+{% endblock %}
 
-{% block nextMatches %}
-	{% if widgetNextMatches.display %}
-		{{widgetNextMatches.content | raw}}
+{% block listVideos %}
+	{% if widgetVideosList.display %}
+		{{widgetVideosList.content | raw}}
 	{% endif %}
 {% endblock %}

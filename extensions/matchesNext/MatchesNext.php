@@ -1,8 +1,8 @@
 <?php
 	/**
-	 * NextMatches
+	 * Matches Next
 	 */
-	class NextMatches extends Widgets {
+	class MatchesNext extends Widgets {
 		public $titleNextMatces = 'Próximos partidos';
 		public $date = '2019-03-18';
 		public $linkCalendar = ['url' => '#', 'name' => 'Ver calendario'];

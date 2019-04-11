@@ -1,6 +1,9 @@
 # Folder
 .vscode/
 
+# Composer
+vendor/
+
 # MacOS files
 .DS_Store
 

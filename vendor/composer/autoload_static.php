@@ -9,6 +9,7 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -20,6 +21,7 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Process\\' => 26,
         ),
     );
 
@@ -36,6 +38,10 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -51,6 +57,20 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
             'Monolog' => 
             array (
                 0 => __DIR__ . '/..' . '/monolog/monolog/src',
+            ),
+        ),
+        'C' => 
+        array (
+            'ComponentInstaller' => 
+            array (
+                0 => __DIR__ . '/..' . '/robloach/component-installer/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
             ),
         ),
     );

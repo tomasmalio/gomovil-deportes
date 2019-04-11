@@ -9,16 +9,18 @@
 		<meta name="google-site-verification" content="" />
 		<title>Deportes</title>
 {% block metaTags %} {% endblock %}
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	
-		<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900" rel="stylesheet">
+		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link href="/assets/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="css/styles.css">
 
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<script src="/assets/jquery/jquery.min.js"></script>
+		<!--<script src="/assets/jquery/jquery.slim.min.js" crossorigin="anonymous"></script>-->
+		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		
+		<script src="/assets/jplayer/dist/jplayer/jquery.jplayer.js"></script>
+		<script src="/assets/jplayer/dist/add-on/jplayer.playlist.min.js"></script>
 	</head>
 
 	<body>
@@ -311,11 +313,11 @@
 						<div class="col-lg-8 col-md-8">
 							{% block featuredNews %} {% endblock %}
 							{% block listNews %} {% endblock %}
-							<!-- Videos -->
+							{% block listVideos %} {% endblock %}
 							<!-- Eof videos -->
 						</div>
 						<div class="col-lg-4 col-md-4">
-							{% block nextMatches %} {% endblock %}
+							{% block matchesNext %} {% endblock %}
 						</div>
 						<div class="col-8">Social</div>
 						<div class="col-4">Giphy</div>
@@ -335,5 +337,8 @@
 			</footer>
 			<!-- Eof Footer -->
 		</div>
+		
+		
+		
 	</body>
 </html>

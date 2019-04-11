@@ -1,6 +1,18 @@
 {
 	"require": {
 		"monolog/monolog": "1.0.*",
-		"twig/twig": "^2.7"
+		"twig/twig": "^2.7",
+		"components/jquery": "3.3.*",
+		"twbs/bootstrap": "^4.3",
+		"happyworm/jplayer": "^2.9"
+	},
+	"config": {
+		"component-dir": "assets/"
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"rm -rf assets/bootstrap",
+			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap"
+		]
 	}
 }

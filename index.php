@@ -32,9 +32,16 @@
 	/****************************************
 	 * NEXT MATCHES
 	 ****************************************/
-	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nextMatches/NextMatches.php';
-	$widgetNextMatches 	= (new NextMatches())->renderView();
-	$displayNextMatches = true;
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/matchesNext/MatchesNext.php';
+	$widgetMatchesNext 	= (new MatchesNext())->renderView();
+	$displayMatchesNext = true;
+
+	/****************************************
+	 * LIST VIDEOS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/videosList/VideosList.php';
+	$widgetVideosList 	= (new VideosList())->renderView();
+	$displayVideosList = true;
 
 	/**
 	 * Render view
@@ -54,8 +61,12 @@
 											'content'		 		=> $widgetNewsList,
 											'display'				=> $displayNewsList,
 		],
-		'widgetNextMatches'			=> [
-											'content'		 		=> $widgetNextMatches,
-											'display'				=> $displayNextMatches,
+		'widgetMatchesNext'			=> [
+											'content'		 		=> $widgetMatchesNext,
+											'display'				=> $displayMatchesNext,
+		],
+		'widgetVideosList'			=> [
+											'content'		 		=> $widgetVideosList,
+											'display'				=> $displayVideosList,
 		],
 	]);
