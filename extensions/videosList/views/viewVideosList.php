@@ -1,6 +1,9 @@
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){
+		//console.log($('#jquery_jplayer_1').data().jPlayer.status);
+		//console.log('anda' + $('#jquery_jplayer_1').data().jPlayer.status.paused);
+		//var duration = $('#jquery_jplayer_1').data().jPlayer.currentTime;
 
 		new jPlayerPlaylist({
 			jPlayer: "#jquery_jplayer_1",
@@ -50,9 +53,18 @@
 			autoBlur: false,
 			smoothPlayBar: true,
 			keyEnabled: true,
-			//muted: true,
-			}
+			// autohide: {
+				// restored: true,
+			// },
+			muted: true,
+			},
+			
 		);
+
+		//var isPaused = $('#jquery_jplayer_1').data().jPlayer.status.paused;
+    	//console.log("Is Paused: " + isPaused);
+		
+		//console.log('anda' + $('#jquery_jplayer_1').data().jPlayer.status.paused);
 	});
 	//]]>
 </script>
@@ -80,14 +92,17 @@
 							<div class="jp-play-bar"></div>
 						</div>
 					</div>
-					<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-					<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+					<!--<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+					<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>-->
 					<div class="jp-controls-holder">
 						<div class="jp-controls">
 							<button class="jp-previous" role="button" tabindex="0">previous</button>
 							<button class="jp-play" role="button" tabindex="0">play</button>
 							<button class="jp-next" role="button" tabindex="0">next</button>
 							<button class="jp-stop" role="button" tabindex="0">stop</button>
+							<div class="current-time">
+								<span class="jp-current-time" role="timer" aria-label="time">&nbsp;</span> <span class="divider">/</span> <span class="jp-duration" role="timer" aria-label="duration">&nbsp;</span>
+							</div>
 						</div>
 						<div class="jp-volume-controls">
 							<button class="jp-mute" role="button" tabindex="0">mute</button>
@@ -97,8 +112,8 @@
 							</div>
 						</div>
 						<div class="jp-toggles">
-							<button class="jp-repeat" role="button" tabindex="0">repeat</button>
-							<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+							<!--<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+							<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>-->
 							<button class="jp-full-screen" role="button" tabindex="0">full screen</button>
 						</div>
 					</div>

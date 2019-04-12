@@ -44,9 +44,9 @@
 	font-size: 16px;
 	font-family: Verdana, Arial, sans-serif;
 	line-height: 1.6;
-	color: #666;
+	color: white;
 	/* border: 1px solid #009be3; */
-	background-color: #eee; 
+	/* background-color: black;  */
 }
 
 .jp-audio {
@@ -74,10 +74,26 @@
 }
 
 /* Controllers */
+.jp-gui {
+	background: #00000030;
+	bottom: 0px;
+	display: none;
+	left: 0;
+	padding-top: 5px;
+	position: absolute;
+	right: 0;
+	-webkit-border-radius: 0 0 10px 0;
+	-moz-border-radius: 0 0 10px 0;
+	border-radius: 0 0 10px 0;
+}
+.player-content:hover .jp-gui {
+	display: block;
+}
 .jp-interface {
 	position: relative;
-	background-color: #eee;
+	/* background-color: #eee; */
 	width: 100%;
+	padding: 0 5px;
 }
 
 .jp-audio .jp-interface {
@@ -98,12 +114,10 @@
 /* @group CONTROLS */
 .jp-controls-holder {
 	clear: both;
-	width: 440px;
-	margin: 0 auto;
-	position: relative;
+	margin: 0 auto 10px auto;
 	overflow: hidden;
-	top: -8px;
-	/* This negative value depends on the size of the text in jp-currentTime and jp-duration */
+	position: relative;
+	width: 100%;
 }
 
 .jp-interface .jp-controls {
@@ -129,9 +143,11 @@
 	margin-left: 200px;
 }
 
+/* Controls (play, rewind, forward, stop) */
 .jp-video .jp-type-playlist .jp-controls {
-	width: 134px;
-	margin-left: 172px;
+	width: 206px;
+	margin-top: 10px;
+	/* margin-left: 172px; */
 }
 
 .jp-video .jp-controls {
@@ -148,55 +164,53 @@
 }
 
 .jp-play {
-	width: 40px;
-	height: 40px;
+	width: 15px;
+	height: 18px;
+	margin-right: 15px;
 }
 
-.jp-play {
-	background: url("../images/jplayer.blue.monday.jpg") 0 0 no-repeat;
-}
-
+.jp-play,
 .jp-play:focus {
-	background: url("../images/jplayer.blue.monday.jpg") -41px 0 no-repeat;
+	background: url("../images/jplayer.bitel.deportes.png") 0 0 no-repeat;
 }
-
 .jp-state-playing .jp-play {
-	background: url("../images/jplayer.blue.monday.jpg") 0 -42px no-repeat;
+	background: url("../images/jplayer.bitel.deportes.png") 0 -110px no-repeat;
 }
 
 .jp-state-playing .jp-play:focus {
-	background: url("../images/jplayer.blue.monday.jpg") -41px -42px no-repeat;
+	background: url("../images/jplayer.bitel.deportes.png") 0 -110px no-repeat;
 }
 
-.jp-stop, .jp-previous, .jp-next {
+.jp-stop, .jp-next {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+	margin-top: 1px;
+} 
+.jp-previous {
 	width: 28px;
 	height: 28px;
 	margin-top: 6px;
 }
 
-.jp-stop {
-	background: url("../images/jplayer.blue.monday.jpg") 0 -83px no-repeat;
-	margin-left: 10px;
-}
-
+.jp-stop,
 .jp-stop:focus {
-	background: url("../images/jplayer.blue.monday.jpg") -29px -83px no-repeat;
+	background: url("../images/jplayer.bitel.deportes.png") 0 -74px no-repeat;
+	margin-left: 10px;
 }
 
 .jp-previous {
 	background: url("../images/jplayer.blue.monday.jpg") 0 -112px no-repeat;
+	display: none !important;
 }
 
 .jp-previous:focus {
 	background: url("../images/jplayer.blue.monday.jpg") -29px -112px no-repeat;
 }
 
-.jp-next {
-	background: url("../images/jplayer.blue.monday.jpg") 0 -141px no-repeat;
-}
-
+.jp-next,
 .jp-next:focus {
-	background: url("../images/jplayer.blue.monday.jpg") -29px -141px no-repeat;
+	background: url("../images/jplayer.bitel.deportes.png") 0 -37px no-repeat;
 }
 
 /* @end */
@@ -226,20 +240,24 @@
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 10px;
+	height: 2px;
 }
 
 .jp-seek-bar {
-	background: url("../images/jplayer.blue.monday.jpg") 0 -202px repeat-x;
-	width: 0px;
-	height: 100%;
+	/* background: url("../images/jplayer.blue.monday.jpg") 0 -202px repeat-x; */
+	background: black;
 	cursor: pointer;
+	height: 100%;
+	width: 0px;
 }
 
 .jp-play-bar {
-background: url("../images/jplayer.blue.monday.jpg") 0 -218px repeat-x;
-width: 0px;
-height: 100%; }
+	/* background: url("../images/jplayer.blue.monday.jpg") 0 -218px repeat-x; */
+	background: #008995;
+	height: 100%;
+	width: 0px;
+	
+}
 
 /* The seeking class is added/removed inside jPlayer */
 .jp-seeking-bg {
@@ -248,48 +266,47 @@ background: url("../images/jplayer.blue.monday.seeking.gif"); }
 /* @end */
 /* @group volume controls */
 .jp-state-no-volume .jp-volume-controls {
-display: none; }
+	display: none;
+}
 
 .jp-volume-controls {
-position: absolute;
-top: 32px;
-left: 308px;
-width: 200px; }
+	float: left;
+	position: relative;
+	width: 200px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
 
 .jp-audio-stream .jp-volume-controls {
-left: 70px; }
-
-.jp-video .jp-volume-controls {
-top: 12px;
-left: 50px; }
+	left: 70px;
+}
 
 .jp-volume-controls button {
-display: block;
-position: absolute;
-overflow: hidden;
-text-indent: -9999px;
-border: none;
-cursor: pointer; }
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	text-indent: -9999px;
+	border: none;
+	cursor: pointer;
+}
 
 .jp-mute,
 .jp-volume-max {
-width: 18px;
-height: 15px; }
+width: 20px;
+height: 19px; }
 
 .jp-volume-max {
 left: 74px; }
 
-.jp-mute {
-background: url("../images/jplayer.blue.monday.jpg") 0 -170px no-repeat; }
-
+.jp-mute,
 .jp-mute:focus {
-background: url("../images/jplayer.blue.monday.jpg") -19px -170px no-repeat; }
+	background: url("../images/jplayer.bitel.deportes.png") 0 -147px no-repeat;
+}
 
-.jp-state-muted .jp-mute {
-background: url("../images/jplayer.blue.monday.jpg") -60px -170px no-repeat; }
-
+.jp-state-muted .jp-mute,
 .jp-state-muted .jp-mute:focus {
-background: url("../images/jplayer.blue.monday.jpg") -79px -170px no-repeat; }
+	background: url("../images/jplayer.bitel.deportes.png") 0 -184px no-repeat;
+}
 
 .jp-volume-max {
 background: url("../image/jplayer.blue.monday.jpg") 0 -186px no-repeat; }
@@ -323,31 +340,50 @@ left: 110px;
 width: 186px; }
 
 .jp-audio .jp-type-playlist .jp-time-holder {
-left: 166px;
-width: 130px; }
+	left: 166px;
+	width: 130px;
+}
 
+/* 
 .jp-current-time,
 .jp-duration {
-width: 60px;
-font-size: .64em;
-font-style: oblique; }
+	width: 60px;
+	font-size: .64em;
+	font-style: oblique; 
+}
 
 .jp-current-time {
-float: left;
-display: inline;
-cursor: default; }
+	float: left;
+	display: inline;
+	cursor: default; 
+}
 
 .jp-duration {
-float: right;
-display: inline;
-text-align: right;
-cursor: pointer; }
+	float: right;
+	display: inline;
+	text-align: right;
+	cursor: pointer; 
+} */
+.jp-controls .current-time {
+	float: left;
+	width: 100px;
+	padding-left: 10px;
+}
 
-.jp-video .jp-current-time {
-margin-left: 20px; }
-
+.jp-controls .current-time span.divider {
+	color: #ffffff4d;
+	float: left;
+	font-size: 8pt;
+	padding-right: 4px;
+}
+.jp-video .jp-current-time,
 .jp-video .jp-duration {
-margin-right: 20px; }
+	/* margin-left: 20px; */
+	color: white;
+	float: left;
+	font-size: 8pt;
+	width: 38px;
+}
 
 /* @end */
 /* @group playlist */
@@ -511,18 +547,18 @@ background: url("../images/jplayer.blue.monday.video.play.png") 0 -100px no-repe
 }
 
 .jp-jplayer {
-	background-color: #000000;
-	-webkit-border-radius: 0 10px 0 0;
-	-moz-border-radius: 0 10px 0 0;
-	border-radius: 0 10px 0 0;
+	/* background-color: #000000; */
+	-webkit-border-radius: 0 10px 10px 0;
+	-moz-border-radius: 0 10px 10px 0;
+	border-radius: 0 10px 10px 0;
 }
 
 .jp-jplayer video {
 	width: 100% !important;
 	height: 350px !important;
-	-webkit-border-radius: 0 10px 0 0;
-	-moz-border-radius: 0 10px 0 0;
-	border-radius: 0 10px 0 0;
+	-webkit-border-radius: 0 10px 10px 0;
+	-moz-border-radius: 0 10px 10px 0;
+	border-radius: 0 10px 10px 0;
 }
 
 /* @group TOGGLES */
@@ -543,29 +579,30 @@ left: 325px;
 top: 50px; }
 
 .jp-video .jp-toggles {
-position: absolute;
-right: 16px;
-margin: 0;
-margin-top: 10px;
-width: 100px; }
+	float: right;
+	/* right: 16px; */
+	margin: 0;
+	margin-top: 10px;
+	width: 100px; 
+}
 
 .jp-toggles button {
-display: block;
-float: left;
-width: 25px;
-height: 18px;
-text-indent: -9999px;
-line-height: 100%;
-/* need this for IE6 */
-border: none;
-cursor: pointer; }
+	display: block;
+	float: right;
+	width: 18px;
+	height: 18px;
+	text-indent: -9999px;
+	line-height: 100%;
+	/* need this for IE6 */
+	border: none;
+	cursor: pointer;
+}
 
-.jp-full-screen {
-background: url("../images/jplayer.blue.monday.jpg") 0 -310px no-repeat;
-margin-left: 20px; }
-
+.jp-full-screen,
 .jp-full-screen:focus {
-background: url("../images/jplayer.blue.monday.jpg") -30px -310px no-repeat; }
+	background: url("../images/jplayer.bitel.deportes.png") 0 -221px no-repeat;
+	margin-left: 20px;
+}
 
 .jp-state-full-screen .jp-full-screen {
 background: url("../images/jplayer.blue.monday.jpg") -60px -310px no-repeat; }
