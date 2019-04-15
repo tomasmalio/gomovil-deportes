@@ -21,8 +21,7 @@
 		<!--<script src="/assets/jquery/jquery.slim.min.js" crossorigin="anonymous"></script>-->
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		
-		<script src="/assets/jplayer/dist/jplayer/jquery.jplayer.js"></script>
-		<script src="/assets/jplayer/dist/add-on/jplayer.playlist.min.js"></script>
+		
 	</head>
 
 	<body>
@@ -311,18 +310,19 @@
 			<!-- Main -->
 			<article>
 				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-8 col-md-8">
-							{% block featuredNews %} {% endblock %}
-							{% block listNews %} {% endblock %}
-							{% block listVideos %} {% endblock %}
-							<!-- Eof videos -->
-						</div>
-						<div class="col-lg-4 col-md-4">
+					<div class="row grid">
+						<div class="grid-item col-lg-4 col-md-4 col-xs-12 order-xs-2">
 							{% block matchesNext %} {% endblock %}
 						</div>
-						<div class="col-8">Social</div>
-						<div class="col-4">Giphy</div>
+						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-1">
+							{% block featuredNews %} {% endblock %}
+						</div>
+						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-3">
+							{% block listNews %} {% endblock %}
+						</div>
+						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-4">
+							{% block listVideos %} {% endblock %}
+						</div>
 					</div>
 				</div>
 			</article>
@@ -340,7 +340,19 @@
 			<!-- Eof Footer -->
 		</div>
 		
-		
+		<script src="/assets/jplayer/dist/jplayer/jquery.jplayer.js"></script>
+		<script src="/assets/jplayer/dist/add-on/jplayer.playlist.min.js"></script>
+		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		<script type="text/javascript">
+			$('.grid').masonry({
+				// options...
+				itemSelector: '.grid-item',
+				gutter: 0,
+				originLeft: false
+				//horizontalOrder: true,
+				//columnWidth: 200
+			});
+		</script>
 		
 	</body>
 </html>

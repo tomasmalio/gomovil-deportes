@@ -116,6 +116,7 @@
 	clear: both;
 	margin: 0 auto 10px auto;
 	overflow: hidden;
+	padding: 0 10px;
 	position: relative;
 	width: 100%;
 }
@@ -315,19 +316,22 @@ background: url("../image/jplayer.blue.monday.jpg") 0 -186px no-repeat; }
 background: url("../images/jplayer.blue.monday.jpg") -19px -186px no-repeat; }
 
 .jp-volume-bar {
-position: absolute;
-overflow: hidden;
-background: url("../images/jplayer.blue.monday.jpg") 0 -250px repeat-x;
-top: 5px;
-left: 22px;
-width: 46px;
-height: 5px;
-cursor: pointer; }
+	background: rgba(0, 0, 0, 0.38);
+	cursor: pointer;
+	height: 18px;
+	margin-left: 20px;
+	overflow: hidden;
+	position: absolute;
+	width: 60px;
+	-webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
 
 .jp-volume-bar-value {
-background: url("../images/jplayer.blue.monday.jpg") 0 -256px repeat-x;
-width: 0px;
-height: 5px; }
+	-webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%);
+	background: #008995;
+	height: 18px;
+	width: 60px;
+}
 
 /* @end */
 /* @group current time and duration */
@@ -543,7 +547,7 @@ background: url("../images/jplayer.blue.monday.video.play.png") 0 -100px no-repe
 .jp-jplayer audio,
 .jp-jplayer {
 	width: 100% !important;
-	height: 350px !important; 
+	height: 347px !important; 
 }
 
 .jp-jplayer {
@@ -554,11 +558,12 @@ background: url("../images/jplayer.blue.monday.video.play.png") 0 -100px no-repe
 }
 
 .jp-jplayer video {
-	width: 100% !important;
-	height: 350px !important;
+	background: black;
 	-webkit-border-radius: 0 10px 10px 0;
 	-moz-border-radius: 0 10px 10px 0;
 	border-radius: 0 10px 10px 0;
+	height: 347px !important;
+	width: 100% !important;
 }
 
 /* @group TOGGLES */

@@ -4,7 +4,8 @@
 		"twig/twig": "^2.7",
 		"components/jquery": "3.3.*",
 		"twbs/bootstrap": "^4.3",
-		"happyworm/jplayer": "^2.9"
+		"happyworm/jplayer": "^2.9",
+		"desandro/masonry": "^4.2"
 	},
 	"config": {
 		"component-dir": "assets/"
@@ -12,7 +13,9 @@
 	"scripts": {
 		"post-update-cmd": [
 			"rm -rf assets/bootstrap",
-			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap"
+			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
+			"rm -rf assets/masonry",
+			"cp -R vendor/desandro/masonry/dist assets/masonry"
 		]
 	}
 }

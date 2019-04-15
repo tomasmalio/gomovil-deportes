@@ -308,6 +308,7 @@
 					'titleNextMatces'	=> $this->titleNextMatces,
 					'date'				=> $this->date,
 					'sports'			=> $this->sports,
+					'linkCalendar'		=> $this->linkCalendar,
 				]
 			);
 		}
