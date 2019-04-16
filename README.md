@@ -43,7 +43,7 @@ This will create a sample tasks.json file in the workspace .vscode folder.
 }
 ```
 ### Run the Build Tasks
-As this is the only command in the file, you can execute it by pressing ⇧⌘B (Run Build Task). The sample Less file should not have any compile problems, so by running the task all that happens is a corresponding styles.css file is created.
+As this is the only command in the file, you can execute it by pressing ***⇧⌘B (Run Build Task)***. The sample Less file should not have any compile problems, so by running the task all that happens is a corresponding styles.css file is created.
 
 
 ## Problems to Compile Less

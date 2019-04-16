@@ -310,18 +310,20 @@
 			<!-- Main -->
 			<article>
 				<div class="container-fluid">
-					<div class="row grid">
-						<div class="grid-item col-lg-4 col-md-4 col-xs-12 order-xs-2">
-							{% block matchesNext %} {% endblock %}
-						</div>
-						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-1">
-							{% block featuredNews %} {% endblock %}
-						</div>
-						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-3">
-							{% block listNews %} {% endblock %}
-						</div>
-						<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-4">
-							{% block listVideos %} {% endblock %}
+					<div class="row">
+						<div class="grid">
+							<div class="grid-item col-lg-4 col-md-4 col-xs-12 order-xs-2">
+								{% block matchesNext %} {% endblock %}
+							</div>
+							<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-1">
+								{% block featuredNews %} {% endblock %}
+							</div>
+							<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-3">
+								{% block listNews %} {% endblock %}
+							</div>
+							<div class="grid-item col-lg-8 col-md-8 col-xs-12 order-xs-4">
+								{% block listVideos %} {% endblock %}
+							</div>
 						</div>
 					</div>
 				</div>

@@ -92,6 +92,10 @@ body {
   position: relative;
   /* Required for static Slidebars to function properly. */
 }
+/* highlight col-* */
+.row [class*='col-'] {
+  background-clip: content-box;
+}
 /* Variables */
 /* Header */
 /* Brand / Header */
@@ -342,6 +346,9 @@ footer p {
 }
 article {
   padding-top: 82px;
+}
+article .grid {
+  width: 100%;
 }
 section.featured-content {
   background-repeat: no-repeat;

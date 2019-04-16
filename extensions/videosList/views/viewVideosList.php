@@ -53,6 +53,7 @@
 			autoBlur: false,
 			smoothPlayBar: true,
 			keyEnabled: true,
+			loop: true,
 			autohide: {
 				//restored: true,
 			},
