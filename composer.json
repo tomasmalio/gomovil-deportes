@@ -5,17 +5,28 @@
 		"components/jquery": "3.3.*",
 		"twbs/bootstrap": "^4.3",
 		"happyworm/jplayer": "^2.9",
-		"desandro/masonry": "^4.2"
+		"desandro/masonry": "^4.2",
+		"leafo/lessphp": "^0.5.0"
 	},
 	"config": {
 		"component-dir": "assets/"
+	},
+	"autoload": {
+		"classmap": [
+			"vendor/leafo/lessphp/lessc.inc.php",
+			"extensions/Widgets.php"
+		],
+		"psr-4": {
+			"Sports\\":"src/"
+		}
 	},
 	"scripts": {
 		"post-update-cmd": [
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
-			"cp -R vendor/desandro/masonry/dist assets/masonry"
+			"cp -R vendor/desandro/masonry/dist assets/masonry",
+			"cp -R vendor/leafo/lessphp/lessc.inc.php src/lessc.php"
 		]
 	}
 }

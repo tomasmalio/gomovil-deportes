@@ -143,7 +143,7 @@ Example:
         public $image;
        
        public function renderView () {
-            return Widgets::renderViewHtml(get_class($this), [
+            return Widgets::renderViewHtml([
                     'title'         => $this->title,
                     'description'   => $this->description,
                     'image'         => $this->image,
@@ -151,4 +151,22 @@ Example:
             );
         }
     }
+```
+#### LESS compiler with PHP
+The extensions which have a style document in ***LESS*** format inside the assets folder are compile by ***lessphp*** [more information](http://leafo.net/lessphp/).
+
+It's necessary to include the lessc.inc.php file to compile so you must include in your autoload. One way to make it happen is to add the next line in your composer.json:
+
+```json
+    "autoload": {
+		"classmap": [
+			"vendor/leafo/lessphp/lessc.inc.php"
+		]
+	},
+
+```
+When you save it remember to execute the refresh of the autoload:
+
+```bash
+php composer dumpautoload -o
 ```

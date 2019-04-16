@@ -304,7 +304,7 @@
 		];
 
 		public function renderView () {
-			return Widgets::renderViewHtml(get_class($this), [
+			return Widgets::renderViewHtml([
 					'titleNextMatces'	=> $this->titleNextMatces,
 					'date'				=> $this->date,
 					'sports'			=> $this->sports,

@@ -22,6 +22,7 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Process\\' => 26,
+            'Sports\\' => 7,
         ),
     );
 
@@ -41,6 +42,10 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         'Symfony\\Component\\Process\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Sports\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -75,12 +80,22 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         ),
     );
 
+    public static $classMap = array (
+        'Widgets' => __DIR__ . '/../..' . '/extensions/Widgets.php',
+        'lessc' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_classic' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_compressed' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_formatter_lessjs' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+        'lessc_parser' => __DIR__ . '/..' . '/leafo/lessphp/lessc.inc.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3::$classMap;
 
         }, null, ClassLoader::class);
     }

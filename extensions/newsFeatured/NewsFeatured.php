@@ -14,7 +14,7 @@
 		];
 
 		public function renderView () {
-			return Widgets::renderViewHtml(get_class($this), [
+			return Widgets::renderViewHtml([
 					'news' => $this->news
 				]
 			);

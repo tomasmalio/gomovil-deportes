@@ -35,7 +35,7 @@
 		];
 
 		public function renderView () {
-			return Widgets::renderViewHtml(get_class($this), [
+			return Widgets::renderViewHtml([
 					'general' 	=> $this->general,
 					'twitter' 	=> $this->twitter,
 					'facebook' 	=> $this->facebook,

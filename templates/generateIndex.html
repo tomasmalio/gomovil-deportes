@@ -1,5 +1,11 @@
 {% extends "index.html" %}
 
+{% block assets %}
+	{% for extensionsAssets in asset %}
+		{{asset | raw}}
+	{% endfor %}
+{% endblock %}
+
 {% block metaTags %}
 	{% if widgetMetaTags.display %}
 		{{widgetMetaTags.content | raw}}
@@ -27,5 +33,11 @@
 {% block listVideos %}
 	{% if widgetVideosList.display %}
 		{{widgetVideosList.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block socialPosts %}
+	{% if widgetSocialPosts.display %}
+		{{widgetSocialPosts.content | raw}}
 	{% endif %}
 {% endblock %}

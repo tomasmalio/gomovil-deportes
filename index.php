@@ -2,12 +2,13 @@
 	require_once __DIR__.'/bootstrap.php';
 
 	/* Widget */
-	require_once __DIR__.'/extensions/Widgets.php';
 	$widget = new Widgets();
 	
 	/* Declare of extensions directory */
 	$GLOBALS['extensions_url'] = '/extensions';
 
+	use Sports\Assets;
+	$assets = array();
 	/****************************************
 	 * META TAGS
 	 ****************************************/
@@ -43,12 +44,22 @@
 	$widgetVideosList 	= (new VideosList())->renderView();
 	$displayVideosList = true;
 
+	/****************************************
+	 * SOCIAL POSTS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialPosts/SocialPosts.php';
+	$widgetSocialPosts 	= (new SocialPosts())->renderView();
+	array_push($assets, (new SocialPosts())->assets());
+	$displaySocialPosts = true;
+
+	
 	/**
 	 * Render view
 	 */
 	$template = $twig->load('generateIndex.html');
 
 	echo $template->render([
+		'extensionsAssets'			=> (new Assets())->generateAssets($assets),
 		'widgetMetaTags'			=> [
 											'content' 				=> $widgetMetaTags,
 											'display'				=> $displayMetaTags,
@@ -68,5 +79,9 @@
 		'widgetVideosList'			=> [
 											'content'		 		=> $widgetVideosList,
 											'display'				=> $displayVideosList,
+		],
+		'widgetSocialPosts'			=> [
+											'content'		 		=> $widgetSocialPosts,
+											'display'				=> $displaySocialPosts,
 		],
 	]);

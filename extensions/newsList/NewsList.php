@@ -10,7 +10,7 @@
 		];
 
 		public function renderView () {
-			return Widgets::renderViewHtml(get_class($this), [
+			return Widgets::renderViewHtml([
 					'newsList' => $this->news
 				]
 			);
