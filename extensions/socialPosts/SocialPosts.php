@@ -3,13 +3,16 @@
 	 * Social Posts
 	 */
 	class SocialPosts extends Widgets {
-		
-		public $lessFileName = 'social-card';
-		
-		public $options = array();
+		// Assets files
+		public $files = [
+						 'style'	=> ['social-card.less'],
+						 'js'		=> [],
+		];
+		// Options
+		public $options = [];
 
-		public function assets () {
-			return Widgets::compileAssets($this->lessFileName);
+		public function assets (){
+			return parent::getAssets($this->files['style'], $this->files['js']);
 		}
 
 		public function renderView () {

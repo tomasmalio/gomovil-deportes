@@ -24,6 +24,11 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
             'Symfony\\Component\\Process\\' => 26,
             'Sports\\' => 7,
         ),
+        'M' => 
+        array (
+            'MatthiasMullie\\PathConverter\\' => 29,
+            'MatthiasMullie\\Minify\\' => 22,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -46,6 +51,15 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         'Sports\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'MatthiasMullie\\PathConverter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+        ),
+        'MatthiasMullie\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/minify',
+            1 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
     );
 

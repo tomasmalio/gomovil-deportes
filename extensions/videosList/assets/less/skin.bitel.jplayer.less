@@ -45,8 +45,6 @@
 	font-family: Verdana, Arial, sans-serif;
 	line-height: 1.6;
 	color: white;
-	/* border: 1px solid #009be3; */
-	/* background-color: black;  */
 }
 
 .jp-audio {
@@ -245,7 +243,6 @@
 }
 
 .jp-seek-bar {
-	/* background: url("../images/jplayer.blue.monday.jpg") 0 -202px repeat-x; */
 	background: black;
 	cursor: pointer;
 	height: 100%;
@@ -253,7 +250,6 @@
 }
 
 .jp-play-bar {
-	/* background: url("../images/jplayer.blue.monday.jpg") 0 -218px repeat-x; */
 	background: #008995;
 	height: 100%;
 	width: 0px;
@@ -262,7 +258,8 @@
 
 /* The seeking class is added/removed inside jPlayer */
 .jp-seeking-bg {
-background: url("../images/jplayer.blue.monday.seeking.gif"); }
+	background: url("../images/loading.gif");
+}
 
 /* @end */
 /* @group volume controls */
@@ -348,26 +345,6 @@ width: 186px; }
 	width: 130px;
 }
 
-/* 
-.jp-current-time,
-.jp-duration {
-	width: 60px;
-	font-size: .64em;
-	font-style: oblique; 
-}
-
-.jp-current-time {
-	float: left;
-	display: inline;
-	cursor: default; 
-}
-
-.jp-duration {
-	float: right;
-	display: inline;
-	text-align: right;
-	cursor: pointer; 
-} */
 .jp-controls .current-time {
 	float: left;
 	width: 100px;
@@ -527,22 +504,6 @@ height: 360px; }
 .jp-video-full .jp-video-play {
 height: 100%; }
 
-.jp-video-play-icon {
-position: relative;
-display: block;
-width: 112px;
-height: 100px;
-margin-left: -56px;
-margin-top: -50px;
-left: 50%;
-top: 50%;
-background: url("../images/jplayer.blue.monday.video.play.png") 0 0 no-repeat;
-text-indent: -9999px;
-border: none;
-cursor: pointer; }
-
-.jp-video-play-icon:focus {
-background: url("../images/jplayer.blue.monday.video.play.png") 0 -100px no-repeat; }
 
 .jp-jplayer audio,
 .jp-jplayer {

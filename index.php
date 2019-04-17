@@ -8,7 +8,9 @@
 	$GLOBALS['extensions_url'] = '/extensions';
 
 	use Sports\Assets;
-	$assets = array();
+
+	$assets = ['css' => [], 'js' => []];
+
 	/****************************************
 	 * META TAGS
 	 ****************************************/
@@ -42,6 +44,8 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/videosList/VideosList.php';
 	$widgetVideosList 	= (new VideosList())->renderView();
+	array_push($assets['css'], (new VideosList())->assets()['css']);
+	array_push($assets['js'], (new VideosList())->assets()['js']);
 	$displayVideosList = true;
 
 	/****************************************
@@ -49,17 +53,20 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialPosts/SocialPosts.php';
 	$widgetSocialPosts 	= (new SocialPosts())->renderView();
-	array_push($assets, (new SocialPosts())->assets());
+	array_push($assets['css'], (new SocialPosts())->assets()['css']);
 	$displaySocialPosts = true;
 
-	
+	// print_r((new SocialPosts())->assets()['css']);
+	// print_r($assets['css']);
+	// print_r($assets);
 	/**
 	 * Render view
 	 */
 	$template = $twig->load('generateIndex.html');
 
 	echo $template->render([
-		'extensionsAssets'			=> (new Assets())->generateAssets($assets),
+		'assetsStyle'				=> (new Assets())->generateAssets($assets['css']),
+		'assetsJs'					=> (new Assets())->generateAssets($assets['js']),
 		'widgetMetaTags'			=> [
 											'content' 				=> $widgetMetaTags,
 											'display'				=> $displayMetaTags,

@@ -1,10 +1,17 @@
 {% extends "index.html" %}
 
-{% block assets %}
-	{% for extensionsAssets in asset %}
+{% block assetsCss %}
+	{% for asset in assetsStyle %}
 		{{asset | raw}}
 	{% endfor %}
 {% endblock %}
+
+{% block assetsJs %}
+	{% for asset in assetsJs %}
+		{{asset | raw}}
+	{% endfor %}
+{% endblock %}
+
 
 {% block metaTags %}
 	{% if widgetMetaTags.display %}
