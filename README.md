@@ -105,8 +105,8 @@ Remember that inside your extensions folder you must have the following files an
 └── extensions/
 	├── widgetName/
 	|   └─ assets/
-	|	|   └─ css/
-	|   |	└─ js/
+	|   |   └─ css/
+	|   |   └─ js/
 	|   └─ views
 	|   └── viewWidgetName.php
 	└── WidgetName.php
