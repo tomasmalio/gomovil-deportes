@@ -109,7 +109,7 @@ Remember that inside your extensions folder you must have the following files an
 	|   |   └─ js/
 	|   └─ views/
 	|   |   └── viewWidgetName.php
-	└── WidgetName.php
+	|   └── WidgetName.php
 ```
 
 3) Inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
