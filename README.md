@@ -102,8 +102,11 @@ $ ls extensions/
 Remember that inside your extensions folder you must have the following files and folders:
 
 ```bash
-└── extensions
-	├── widgetName
+└── extensions/
+	├── widgetName/
+	|   └─ assets/
+	|	|   └─ css/
+	|   |	└─ js/
 	|   └─ views
 	|   └── viewWidgetName.php
 	└── WidgetName.php
@@ -166,7 +169,7 @@ Example:
 		public $image;
 		// Options
 		public $options = [];
-		
+
 		public function assets (){
 			return parent::getAssets($this->files['style'], $this->files['js']);
 		}
