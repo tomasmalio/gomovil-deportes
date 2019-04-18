@@ -3,6 +3,7 @@
 
 # Composer
 vendor/
+assets/
 
 # MacOS files
 .DS_Store
