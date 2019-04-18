@@ -164,7 +164,9 @@ Example:
 		public $title;
 		public $description;
 		public $image;
-
+		// Options
+		public $options = [];
+		
 		public function assets (){
 			return parent::getAssets($this->files['style'], $this->files['js']);
 		}
