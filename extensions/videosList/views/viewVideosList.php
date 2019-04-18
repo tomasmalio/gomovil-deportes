@@ -1,9 +1,6 @@
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){
-		//console.log($('#jquery_jplayer_1').data().jPlayer.status);
-		//console.log('anda' + $('#jquery_jplayer_1').data().jPlayer.status.paused);
-		//var duration = $('#jquery_jplayer_1').data().jPlayer.currentTime;
 
 		new jPlayerPlaylist({
 			jPlayer: "#jquery_jplayer_1",
@@ -45,7 +42,7 @@
 			], 
 			{
 			playlistOptions: {
-				autoPlay: true,
+				autoPlay: <?=$videoList->autoPlay?>,
 			},
 			swfPath: "./assets/jplayer/dist/jplayer",
 			supplied: "webmv, ogv, m4v",
@@ -55,17 +52,12 @@
 			keyEnabled: true,
 			loop: true,
 			autohide: {
-				//restored: true,
+				restored: <?=$videoList->displayControls?>,
 			},
-			muted: true,
+			muted: <?=$videoList->muted?>,
 			},
 			
 		);
-
-		//var isPaused = $('#jquery_jplayer_1').data().jPlayer.status.paused;
-    	//console.log("Is Paused: " + isPaused);
-		
-		//console.log('anda' + $('#jquery_jplayer_1').data().jPlayer.status.paused);
 	});
 	//]]>
 </script>

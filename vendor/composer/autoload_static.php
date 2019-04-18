@@ -58,7 +58,7 @@ class ComposerStaticInit2d7b8913aa9dc4f4ba47cd044b043bb3
         ),
         'MatthiasMullie\\Minify\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/minify',
+            0 => __DIR__ . '/../..' . '/src/minify/src',
             1 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
     );

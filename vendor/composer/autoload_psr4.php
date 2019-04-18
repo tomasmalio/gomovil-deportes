@@ -12,5 +12,5 @@ return array(
     'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Sports\\' => array($baseDir . '/src'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
-    'MatthiasMullie\\Minify\\' => array($baseDir . '/src/minify', $vendorDir . '/matthiasmullie/minify/src'),
+    'MatthiasMullie\\Minify\\' => array($baseDir . '/src/minify/src', $vendorDir . '/matthiasmullie/minify/src'),
 );

@@ -8,6 +8,13 @@
 			'style'		=> ['skin.bitel.jplayer.less'],
 			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js'],
 		];
+		// Autoplay
+		public $autoPlay = true;
+		// Display controls
+		public $displayControls = true;
+		// Muted
+		public $muted = true;
+
 		// Options
 		public $options = [];
 
@@ -17,6 +24,7 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
+					'videoList'			=> $this,
 				]
 			);
 		}

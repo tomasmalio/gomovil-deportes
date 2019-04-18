@@ -31,15 +31,15 @@ This will create a sample tasks.json file in the workspace .vscode folder.
 
 ```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Less Compile",
-            "type": "shell",
-            "command": "lessc css/styles.less less/styles.css",
-            "group": "build"
-        }
-    ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Less Compile",
+			"type": "shell",
+			"command": "lessc css/styles.less less/styles.css",
+			"group": "build"
+		}
+	]
 }
 ```
 ### Run the Build Tasks
@@ -103,13 +103,82 @@ Remember that inside your extensions folder you must have the following files an
 
 ```bash
 └── extensions
-    ├── widgetName
-    |   └─ views
-    |   └── viewWidgetName.php
-    └── WidgetName.php
+	├── widgetName
+	|   └─ views
+	|   └── viewWidgetName.php
+	└── WidgetName.php
 ```
 
-3) Add the following code inside your Controller (*index.php*) 
+3) Inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
+Example:
+```php
+	class WidgetName extends Widgets {
+		public $title;
+		public $description;
+		public $image;
+		// Options
+		public $options = [];
+	}
+```
+You can see that's it's a variable call $options which is an array that let you modify things of your styles and determinate if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
+Example:
+Example:
+```php
+	class WidgetName extends Widgets {
+		public $title;
+		public $description;
+		public $image;
+		// Options
+		public $options = [
+			'minify' => false,
+		];
+	}
+```
+
+4) If the widget have styles file or scripts in JavaScript, you can include them like this:
+```php
+	class WidgetName extends Widgets {
+		// Assets files
+		public $files = [
+			'style'		=> ['styles.filename.less'],
+			'js'		=> ['script.in.javascript.js', 'script.in.javascript.second.js'],
+		];
+		public $title;
+		public $description;
+		public $image;
+		public
+	}
+```
+The variable ***$files*** let is an array that you are going to include the styles in style and the scripts at js position. It's important that if you have more than one file you can include them because it's an array for each element (style and js).
+
+5) Then in the render view of the HTML document, you must add the variables that you name before (***renderView()***).
+Example:
+```php
+	class WidgetName extends Widgets {
+		// Assets files
+		public $files = [
+			'style'		=> ['styles.filename.less'],
+			'js'		=> ['script.in.javascript.js', 'script.in.javascript.second.js'],
+		];
+		public $title;
+		public $description;
+		public $image;
+
+		public function assets (){
+			return parent::getAssets($this->files['style'], $this->files['js']);
+		}
+		public function renderView () {
+			return Widgets::renderViewHtml([
+					'title'         => $this->title,
+					'description'   => $this->description,
+					'image'         => $this->image,
+				]
+			);
+		}
+	}
+```
+
+6) Add the following code inside your Controller (*index.php*) 
 
 ```php
 	/****************************************
@@ -117,6 +186,8 @@ Remember that inside your extensions folder you must have the following files an
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
 	$widgetWidgetName 	= (new WidgetName())->renderView();
+	array_push($assets['css'], (new VideosList())->assets()['css']);
+	array_push($assets['js'], (new VideosList())->assets()['js']);
 	$displayWidgetName = true;
 ```
 Remember to change the following words:
@@ -124,41 +195,16 @@ Remember to change the following words:
 * ***WidgetName***: name of the first file inside the folder and of course the class name
 * ***widgetWidgetName***: is a variable name that always begins with widget and the ***WidgetName*** which will store the code
 * ***displayWidgetName*** *(true | false)*: is a variable name that always begins with display and the ***WidgetName*** which contains if you want to display or not
+* ***array_push($assets['css'], (new VideosList())->assets()['css']);***: you must add this line if you have in the extension styles files. If you don't have styles you can delete.
+* ***array_push($assets['js'], (new VideosList())->assets()['js']);***: you must add this line if you have in the extension scripts files. If you don't have styles you can delete.
 
-4) Inside your principal file (*extensions/nameOfWidget/***WidgetName***.php*) you must include the variables that want to use to include inside the HTML file. 
-Example:
-```php
-    class WidgetName extends Widgets {
-        public $title;
-        public $description;
-        public $image;
-    }
-```
-Then in the render view of the HTML document, you must add the variables that you name before (***renderView()***).
-Example:
-```php
-    class WidgetName extends Widgets {
-        public $title;
-        public $description;
-        public $image;
-       
-       public function renderView () {
-            return Widgets::renderViewHtml([
-                    'title'         => $this->title,
-                    'description'   => $this->description,
-                    'image'         => $this->image,
-                ]
-            );
-        }
-    }
-```
 #### LESS compiler with PHP
 The extensions which have a style document in ***LESS*** format inside the assets folder are compile by ***lessphp*** [more information](http://leafo.net/lessphp/).
 
 It's necessary to include the lessc.inc.php file to compile so you must include in your autoload. One way to make it happen is to add the next line in your composer.json:
 
 ```json
-    "autoload": {
+	"autoload": {
 		"classmap": [
 			"vendor/leafo/lessphp/lessc.inc.php"
 		]

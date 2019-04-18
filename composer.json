@@ -19,7 +19,7 @@
 		],
 		"psr-4": {
 			"Sports\\":"src/",
-			"MatthiasMullie\\Minify\\": "src/minify"
+			"MatthiasMullie\\Minify\\": "src/minify/src/"
 		}
 	},
 	"scripts": {
@@ -28,6 +28,7 @@
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
+			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
 			"php composer dump-autoload"
 		]

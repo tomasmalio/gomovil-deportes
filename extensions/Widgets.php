@@ -77,15 +77,29 @@
 						self::createDirectory($dest);
 		
 						$arrayReturn = [];
+						/**
+						 * For each LESS file we check & compile 
+						 * to get the CSSS file. Then we copy to 
+						 * asset directory and minify to compress 
+						 * the size
+						 */
 						foreach ($files as $file) {
 							if (self::validateFile($file) && file_exists($src . '/'. $file)) {
 								// Compile the less but first verify if the css exist
 								$less->checkedCompile($src . '/'. $file, $dest .'/'. basename($file, '.less') . '.css');
 
+								// Minify the file if is not set or if it's true
 								if (!isset($this->options['minify']) || $this->options['minify']) {
+									$original = $dest .'/'. basename($file, '.less') . '.css';
 									$filename = $dest .'/'. basename($file, '.less') . '.min.css';
-									// Minify
-									$minify = (new Minify\CSS($dest .'/'. basename($file, '.less') . '.css'))->minify($filename);
+
+									(new Minify\CSS($original))->minify($filename);
+									// Delete the original file
+									try {
+										unlink($original);
+									} catch (exception $e) {
+										echo "Error message: " . $e->getMessage();
+									}
 								} else {
 									$filename = $dest .'/'. basename($file, '.less') . '.css';
 								}
@@ -103,17 +117,35 @@
 		
 						$arrayReturn = [];
 						
+						/**
+						 * For each JS file we copy to asset directory
+						 * and minify to compress the size
+						 */
 						foreach ($files as $file) {
 							$src .= '/'.$file;
 							$dest .= '/'.$file;
 							shell_exec("cp -r $src $dest");
 
-							array_push($arrayReturn, $dest);
-
 							$src = str_replace('/'.$file, '', $src);
 							$dest = str_replace('/'.$file, '', $dest);
+
+							// Minify the file if is not set or if it's true
+							if (!isset($this->options['minify']) || $this->options['minify']) {
+								$original = $dest .'/'. basename($file, '.js') . '.js';
+								$filename = $dest .'/'. basename($file, '.js') . '.min.js';
+								
+								(new Minify\JS($original))->minify($filename);;
+								// Delete the original file
+								try {
+									unlink($original);
+								} catch (exception $e) {
+									echo "Error message: " . $e->getMessage();
+								}
+							} else {
+								$filename = $dest .'/'. basename($file, '.js') . '.js';
+							}
+							array_push($arrayReturn, $filename);
 						}
-						
 						return $arrayReturn;
 					}
 				}
