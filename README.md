@@ -146,7 +146,8 @@ Example:
 		public $title;
 		public $description;
 		public $image;
-		public
+		// Options
+		public $options = [];
 	}
 ```
 The variable ***$files*** let is an array that you are going to include the styles in style and the scripts at js position. It's important that if you have more than one file you can include them because it's an array for each element (style and js).
@@ -195,8 +196,8 @@ Remember to change the following words:
 * ***WidgetName***: name of the first file inside the folder and of course the class name
 * ***widgetWidgetName***: is a variable name that always begins with widget and the ***WidgetName*** which will store the code
 * ***displayWidgetName*** *(true | false)*: is a variable name that always begins with display and the ***WidgetName*** which contains if you want to display or not
-* ***array_push($assets['css'], (new VideosList())->assets()['css']);***: you must add this line if you have in the extension styles files. If you don't have styles you can delete.
-* ***array_push($assets['js'], (new VideosList())->assets()['js']);***: you must add this line if you have in the extension scripts files. If you don't have styles you can delete.
+* ***array_push($assets['css'], (new VideosList())->assets()['css'])***: you must add this line if you have in the extension styles files. If you don't have styles you can delete.
+* ***array_push($assets['js'], (new VideosList())->assets()['js'])***: you must add this line if you have in the extension scripts files. If you don't have styles you can delete.
 
 #### LESS compiler with PHP
 The extensions which have a style document in ***LESS*** format inside the assets folder are compile by ***lessphp*** [more information](http://leafo.net/lessphp/).
