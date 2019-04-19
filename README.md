@@ -137,9 +137,9 @@ Example:
 		public $options = [
 			'minify' => false,
 			'styles' => [
-				'color_1' 		=> "white",
-				'background_1' 	=> "#000000",
-				'h1-font-size' 	=> "'Arial'",
+				'color_1' => "white",
+				'background_1' => "#000000",
+				'h1-font-size' => "'Arial'",
 			]
 		];
 	}
