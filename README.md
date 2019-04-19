@@ -210,8 +210,8 @@ Example:
 			return parent::getAssets($this->files['style'], $this->files['js']);
 		}
 		public function renderView () {
-			return Widgets::renderViewHtml([
-					'viewName'      => 'YourViewName',
+			return Widgets::renderViewHtml('YourViewName', 
+				[
 					'title'         => $this->title,
 					'description'   => $this->description,
 					'image'         => $this->image,
