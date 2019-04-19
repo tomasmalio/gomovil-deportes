@@ -190,6 +190,35 @@ Example:
 		}
 	}
 ```
+***Important:*** the default view file name is: ***viewClassName.php***, if you want to change you must send it to the **renderViewHtml()**. Remember that your view must be name like this: ***viewYourViewName.php***
+Example:
+```php
+	class WidgetName extends Widgets {
+		// Assets files
+		public $files = [
+			'style'		=> ['styles.filename.less'],
+			'js'		=> ['script.in.javascript.js', 'script.in.javascript.second.js'],
+		];
+		public $title;
+		public $description;
+		public $image;
+		// Options
+		public $options = [];
+
+		public function assets (){
+			return parent::getAssets($this->files['style'], $this->files['js']);
+		}
+		public function renderView () {
+			return Widgets::renderViewHtml([
+					'viewName'      => 'YourViewName',
+					'title'         => $this->title,
+					'description'   => $this->description,
+					'image'         => $this->image,
+				]
+			);
+		}
+	}
+```
 
 6) Add the following code inside your Controller (*index.php*) 
 

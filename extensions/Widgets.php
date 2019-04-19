@@ -16,8 +16,9 @@
 		 * @param 		array 			$array
 		 * @return		object 			Returns the object from the renderPhpFile
 		 */
-		public function renderViewHtml ($array) {
-			return $this->renderPhpFile(lcfirst(get_class($this)) .'/views/view' . get_class($this) . '.php', $array);
+		public function renderViewHtml ($viewName = false, $array) {
+			(!$viewName) ? $viewName = get_class($this) : '';
+			return $this->renderPhpFile(lcfirst(get_class($this)) .'/views/view' . $viewName . '.php', $array);
 		}
 
 		/**
