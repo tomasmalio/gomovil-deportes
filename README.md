@@ -123,8 +123,10 @@ Example:
 		public $options = [];
 	}
 ```
-You can see that's it's a variable call $options which is an array that let you modify things of your styles and determinate if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
-Example:
+You can see that's it's a variable call ***$options*** which is an array that let you modify things.
+* ***minify (true | false)***: if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
+* ***styles (array)***: include the variables that you want to change inside the document LESS before compile.
+
 Example:
 ```php
 	class WidgetName extends Widgets {
@@ -134,6 +136,11 @@ Example:
 		// Options
 		public $options = [
 			'minify' => false,
+			'styles' => [
+				'color_1' 		=> "white",
+				'background_1' 	=> "#000000",
+				'h1-font-size' 	=> "'Arial'",
+			]
 		];
 	}
 ```
