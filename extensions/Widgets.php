@@ -153,7 +153,7 @@
 								$original = $dest .'/'. basename($file, '.js') . '.js';
 								$filename = $dest .'/'. basename($file, '.js') . '.min.js';
 								
-								(new Minify\JS($original))->minify($filename);;
+								(new Minify\JS($original))->minify($filename);
 								// Delete the original file
 								try {
 									unlink($original);
@@ -162,6 +162,22 @@
 								}
 							} else {
 								$filename = $dest .'/'. basename($file, '.js') . '.js';
+							}
+							array_push($arrayReturn, $filename);
+						}
+						/**
+						 * Create JavaScript file with the code that
+						 * you want.
+						 */
+						if (isset($this->options['script']) && !empty($this->options['script'])) {
+							$original = self::createScriptJs($this->options['script']);
+							// Minify the file if is not set or if it's true
+							if (!isset($this->options['minify']) || $this->options['minify']) {
+								$filename = str_replace('.js', 'min.js', $filename);
+								basename($file, '.js')
+								(new Minify\JS($original))->minify($filename);
+							} else {
+								$filename = $original;
 							}
 							array_push($arrayReturn, $filename);
 						}
@@ -256,7 +272,7 @@
 		private function modifyVars($vars, $filename) {
 			// Get the file content
 			$file = file_get_contents($filename);
-			
+
 			// Go through the entire array variable styles
 			foreach($vars as $name => $value){
 				// Get the line which we're going to change
@@ -277,6 +293,7 @@
 		 * @param		string		$string		String which are going to get the content
 		 * @param		string		$startStr	String of how it starts
 		 * @param		string		$endStr		String of how it ends
+		 * @return		string 		Return the content text
 		 */
 		private function getText ($string, $startStr, $endStr) {
 			$startpos = strpos($string,$startStr);
@@ -284,6 +301,22 @@
 			$endpos = $endpos - $startpos;
 			$string = substr($string,$startpos,$endpos);
 			return $string;
+		}
+
+		/**
+		 * createScriptJs
+		 * 
+		 * @param		string		$script		String with the code for create a JavaScript file
+		 * @return		string		String of how it starts
+		 * @return		string		Return the directory concat with the filename
+		 */
+		public function createScriptJs ($script) {
+			//$script 	= "$(document).ready(function(){alert('hai');});";
+			$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
+			$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
+			file_put_contents($dest . '/' . $filename, $script);
+
+			return ($dest . '/' . $filename);
 		}
 	}
 ?>
