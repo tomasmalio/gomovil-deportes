@@ -190,7 +190,8 @@ Example:
 		}
 	}
 ```
-***Important:*** the default view file name is: ***viewClassName.php***, if you want to change you must send it to the **renderViewHtml()**. Remember that your view must be name like this: ***viewYourViewName.php***
+***Important:*** the default view file name is: ***viewClassName.php***, if you want to change you must send it to the **renderViewHtml()**. Remember that your view must be name like this: ***viewYourViewName.php***.
+
 Example:
 ```php
 	class WidgetName extends Widgets {
