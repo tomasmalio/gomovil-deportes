@@ -85,24 +85,43 @@
 						 */
 						foreach ($files as $file) {
 							if (self::validateFile($file) && file_exists($src . '/'. $file)) {
-								// Compile the less but first verify if the css exist
-								$less->checkedCompile($src . '/'. $file, $dest .'/'. basename($file, '.less') . '.css');
+								
+								$original = $dest .'/'. basename($file, '.less') . '.css';
+								$filename = $dest .'/'. basename($file, '.less');
 
 								// Minify the file if is not set or if it's true
 								if (!isset($this->options['minify']) || $this->options['minify']) {
-									$original = $dest .'/'. basename($file, '.less') . '.css';
-									$filename = $dest .'/'. basename($file, '.less') . '.min.css';
-
-									(new Minify\CSS($original))->minify($filename);
-									// Delete the original file
-									try {
-										unlink($original);
-									} catch (exception $e) {
-										echo "Error message: " . $e->getMessage();
-									}
+									$filename .= '.min.css';
+									$less->setFormatter("compressed");
 								} else {
-									$filename = $dest .'/'. basename($file, '.less') . '.css';
+									$filename .= '.css';
 								}
+
+								/**
+								 * If there's styles define we modify the original file 
+								 * with the new content. If the variable is not change
+								 * the original value continues
+								 */
+								if (!empty($this->options['styles'])) {
+									$originalFile = $src . '/'. $file;
+									$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
+									
+									// Create a copy of the original file to keep it save
+									shell_exec("cp -r $originalFile $backupFile");
+
+									// Modify the variables
+									self::modifyVars($this->options['styles'], $backupFile);
+									
+									// Compile the file
+									$less->checkedCompile($backupFile, $filename);
+
+									// Remove the backup file
+									unlink($backupFile);
+								} else {
+									// Compile the less but first verify if the css exist
+									$less->checkedCompile($src . '/'. $file, $filename);
+								}
+							
 								array_push($arrayReturn, $filename);
 							}
 						}	
@@ -186,7 +205,6 @@
 			}
 		}
 
-
 		/**
 		 * Copy a file, or recursively copy a folder and its contents
 		 * 
@@ -227,6 +245,45 @@
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Modify Variables from a LESS file
+		 * 
+		 * @param		array		$vars		Array with the new variables
+		 * @param		string		$filename	Backup file to change the variables
+		 */
+		private function modifyVars($vars, $filename) {
+			// Get the file content
+			$file = file_get_contents($filename);
+			
+			// Go through the entire array variable styles
+			foreach($vars as $name => $value){
+				// Get the line which we're going to change
+				$replace 	= self::getText($file, '@'.$name, ';').';';
+
+				// Create the new line
+				$change 	= (($name[0] === '@') ? '' : '@') . $name .': '. $value . ((substr($value,-1) === ';') ? '' : ';');
+				
+				// Replacement of the variables in the file
+				$file = str_replace($replace, $change, $file);
+				file_put_contents($filename, $file);
+			}
+		}
+
+		/**
+		 * Get Text
+		 * 
+		 * @param		string		$string		String which are going to get the content
+		 * @param		string		$startStr	String of how it starts
+		 * @param		string		$endStr		String of how it ends
+		 */
+		private function getText ($string, $startStr, $endStr) {
+			$startpos = strpos($string,$startStr);
+			$endpos = strpos($string,$endStr,$startpos);
+			$endpos = $endpos - $startpos;
+			$string = substr($string,$startpos,$endpos);
+			return $string;
 		}
 	}
 ?>

@@ -8,15 +8,22 @@
 			'style'		=> ['skin.bitel.jplayer.less'],
 			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js'],
 		];
-		// Autoplay
-		public $autoPlay = true;
-		// Display controls
-		public $displayControls = true;
-		// Muted
-		public $muted = true;
-
+		// Controls
+		public $controls = [
+			// Autoplay
+			'autoPlay' 			=> true,
+			// Display controls
+			'displayControls' 	=> true,
+			// Muted
+			'muted' 			=> true,
+		];
 		// Options
-		public $options = [];
+		public $options = [
+			'minify' => false,
+			'styles' => [
+				'color_1' => 'white',
+			]
+		];
 
 		public function assets (){
 			return parent::getAssets($this->files['style'], $this->files['js']);

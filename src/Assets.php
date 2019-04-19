@@ -6,7 +6,8 @@
 		/**
 		 * Generate Assets
 		 * 
-		 * @filename String
+		 * @param 		string 			String with the link file
+		 * @return		array			Array with the assets links CSS & JS
 		 */
 		public function generateAssets ($asssetCss) {
 			$array = array();

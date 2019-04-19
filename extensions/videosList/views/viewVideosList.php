@@ -42,7 +42,7 @@
 			], 
 			{
 			playlistOptions: {
-				autoPlay: <?=$videoList->autoPlay?>,
+				autoPlay: <?=$videoList->controls['autoPlay']?>,
 			},
 			swfPath: "./assets/jplayer/dist/jplayer",
 			supplied: "webmv, ogv, m4v",
@@ -52,9 +52,9 @@
 			keyEnabled: true,
 			loop: true,
 			autohide: {
-				restored: <?=$videoList->displayControls?>,
+				restored: <?=$videoList->controls['displayControls']?>,
 			},
-			muted: <?=$videoList->muted?>,
+			muted: <?=$videoList->controls['muted']?>,
 			},
 			
 		);
