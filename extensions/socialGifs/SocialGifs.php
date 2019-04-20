@@ -1,11 +1,11 @@
 <?php
 	/**
-	 * Social Posts
+	 * Social Gifs
 	 */
-	class SocialPosts extends Widgets {
+	class SocialGifs extends Widgets {
 		// Assets files
 		public $files = [
-			'style'	=> ['social-card.less'],
+			'style'	=> ['social-gif.less'],
 			'js'		=> [],
 		];
 		// Options

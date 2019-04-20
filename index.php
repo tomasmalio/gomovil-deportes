@@ -56,6 +56,14 @@
 	array_push($assets['css'], (new SocialPosts())->assets()['css']);
 	$displaySocialPosts = true;
 
+	/****************************************
+	 * SOCIAL GIFS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialGifs/socialGifs.php';
+	$widgetSocialGifs 	= (new SocialGifs())->renderView();
+	array_push($assets['css'], (new SocialGifs())->assets()['css']);
+	$displaySocialGifs = true;
+
 	// print_r((new SocialPosts())->assets()['css']);
 	// print_r($assets['css']);
 	// print_r($assets);
@@ -91,4 +99,8 @@
 											'content'		 		=> $widgetSocialPosts,
 											'display'				=> $displaySocialPosts,
 		],
+		'widgetSocialGifs'			=> [
+											'content'		 		=> $widgetSocialGifs,
+											'display'				=> $displaySocialGifs,
+],
 	]);

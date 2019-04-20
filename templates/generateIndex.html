@@ -48,3 +48,9 @@
 		{{widgetSocialPosts.content | raw}}
 	{% endif %}
 {% endblock %}
+
+{% block socialGifs %}
+	{% if widgetSocialGifs.display %}
+		{{widgetSocialGifs.content | raw}}
+	{% endif %}
+{% endblock %}
