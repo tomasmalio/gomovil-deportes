@@ -7,7 +7,7 @@
 	/* Declare of extensions directory */
 	$GLOBALS['extensions_url'] = '/extensions';
 
-	use Sports\Assets;
+	use GoMovil\Assets;
 
 	$assets = ['css' => [], 'js' => []];
 
@@ -30,6 +30,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsList/NewsList.php';
 	$widgetNewsList 	= (new NewsList())->renderView();
+	$widgetNewsList 	= (new NewsList())->renderView();
+	array_push($assets['css'], (new NewsList())->assets()['css']);
+	array_push($assets['js'], (new NewsList())->assets()['js']);
 	$displayNewsList = true;
 
 	/****************************************

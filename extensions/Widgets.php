@@ -72,7 +72,7 @@
 
 				if ($type == 'CSS') {
 					if (!empty($files)) {
-						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/less';
+						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/css';
 		
 						self::createDirectory($dest);
@@ -85,44 +85,54 @@
 						 * the size
 						 */
 						foreach ($files as $file) {
-							if (self::validateFile($file) && file_exists($src . '/'. $file)) {
-								
-								$original = $dest .'/'. basename($file, '.less') . '.css';
-								$filename = $dest .'/'. basename($file, '.less');
+							if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
+								$src .= '/' . self::getExtension($file);
+								$original = $src . '/'. $file;
 
-								// Minify the file if is not set or if it's true
-								if (!isset($this->options['minify']) || $this->options['minify']) {
-									$filename .= '.min.css';
-									$less->setFormatter("compressed");
-								} else {
-									$filename .= '.css';
+								$filename = $dest .'/'. basename($file, '.'.self::getExtension($file));
+
+								if (strpos($file, 'less')) {
+									// Minify the file if is not set or if it's true
+									if (!isset($this->options['minify']) || $this->options['minify']) {
+										$filename .= '.min.css';
+										$less->setFormatter("compressed");
+									} else {
+										$filename .= '.css';
+									}
+									/**
+									 * If there's styles define we modify the original file 
+									 * with the new content. If the variable is not change
+									 * the original value continues
+									 */
+									if (!empty($this->options['styles'])) {
+										$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
+										
+										// Create a copy of the original file to keep it save
+										shell_exec("cp -r $original $backupFile");
+
+										// Modify the variables
+										self::modifyVars($this->options['styles'], $backupFile);
+										
+										// Compile the file
+										$less->checkedCompile($backupFile, $filename);
+
+										// Remove the backup file
+										unlink($backupFile);
+									} else {
+										// Compile the less but first verify if the css exist
+										$less->checkedCompile($src . '/'. $file, $filename);
+									}
+
+								} elseif (strpos($file, 'css')) {
+									// Minify the file if is not set or if it's true
+									if (!isset($this->options['minify']) || $this->options['minify']) {
+										$filename .= '.min.css';
+										(new Minify\CSS($original))->minify($filename);
+									} else {
+										$filename .= '.css';
+										(new Minify\CSS($original))->minify($filename);
+									}
 								}
-
-								/**
-								 * If there's styles define we modify the original file 
-								 * with the new content. If the variable is not change
-								 * the original value continues
-								 */
-								if (!empty($this->options['styles'])) {
-									$originalFile = $src . '/'. $file;
-									$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
-									
-									// Create a copy of the original file to keep it save
-									shell_exec("cp -r $originalFile $backupFile");
-
-									// Modify the variables
-									self::modifyVars($this->options['styles'], $backupFile);
-									
-									// Compile the file
-									$less->checkedCompile($backupFile, $filename);
-
-									// Remove the backup file
-									unlink($backupFile);
-								} else {
-									// Compile the less but first verify if the css exist
-									$less->checkedCompile($src . '/'. $file, $filename);
-								}
-							
 								array_push($arrayReturn, $filename);
 							}
 						}	
@@ -201,10 +211,22 @@
 		 */
 		private function validateFile ($file) {
 			// Validate if the filename has less, css or js extension
-			if (strpos($file, 'less') || strpos($file, 'css') || strpos($file, 'js')) {
+			if ((self::getExtension($file) === 'less') || (self::getExtension($file) === 'css') || (self::getExtension($file) === 'js')) {
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Get Extension
+		 * Get the extension name of the filename
+		 * 
+		 * @param		string 			$file		Filename
+		 * @return		string			Returns the extension name or false
+		 */
+		private function getExtension ($file) {
+			$extension = end(explode(".", $file));
+			return $extension ? $extension : false;
 		}
 
 		/**

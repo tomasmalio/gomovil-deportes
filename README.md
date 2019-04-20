@@ -145,12 +145,12 @@ Example:
 	}
 ```
 
-4) If the widget have styles file or scripts in JavaScript, you can include them like this:
+4) If the widget have ***Styles files (LESS or CSS)*** or ***Scripts in JavaScript***, you can include them like this:
 ```php
 	class WidgetName extends Widgets {
 		// Assets files
 		public $files = [
-			'style'		=> ['styles.filename.less'],
+			'style'		=> ['styles.filename.less', 'style.filename.css'],
 			'js'		=> ['script.in.javascript.js', 'script.in.javascript.second.js'],
 		];
 		public $title;
@@ -160,7 +160,7 @@ Example:
 		public $options = [];
 	}
 ```
-The variable ***$files*** let is an array that you are going to include the styles in style and the scripts at js position. It's important that if you have more than one file you can include them because it's an array for each element (style and js).
+The variable ***$files*** let is an array that you are going to include the styles in style and the scripts at js position. It's important that if you have more than one file you can include them because it's an array for each element (style and js). The styles that you have in LESS format you must have it in the **assets/less/** folder and if you create CSS styles format you must have it in **assets/css/** folder.
 
 5) Then in the render view of the HTML document, you must add the variables that you name before (***renderView()***).
 Example:

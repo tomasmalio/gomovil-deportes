@@ -1,5 +1,5 @@
 <?php
-	namespace Sports;
+	namespace GoMovil;
 
 	class Assets {
 

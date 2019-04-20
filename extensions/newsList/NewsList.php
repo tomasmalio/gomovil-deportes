@@ -9,6 +9,21 @@
 			['title' => 'Título de la noticia 3', 'description' => 'Description 3', 'date' => '2019-05-19', 'url' => '#'],
 		];
 
+		// Assets files
+		public $files = [
+			'style'	=> ['swiper.css'],
+			'js'	=> ['swipper.js'],
+		];
+
+		// Options
+		public $options = [
+			'minify' => false,
+		];
+
+		public function assets (){
+			return parent::getAssets($this->files['style'], $this->files['js']);
+		}
+
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'newsList' => $this->news
