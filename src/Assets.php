@@ -24,7 +24,7 @@
 							if (!(substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//')) {
 								$file = '/' . $file;
 							}
-							$var = '<script src="/' . $file . '"></script>';
+							$var = '<script src="' . $file . '"></script>';
 						}
 						array_push($array, $var);
 					}
