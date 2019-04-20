@@ -75,6 +75,7 @@
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/css';
 		
+						// Create the directory if not exists
 						self::createDirectory($dest);
 		
 						$arrayReturn = [];
@@ -85,12 +86,14 @@
 						 * the size
 						 */
 						foreach ($files as $file) {
+							// Validate if an authorize file and exits
 							if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
 								$src .= '/' . self::getExtension($file);
 								$original = $src . '/'. $file;
 
 								$filename = $dest .'/'. basename($file, '.'.self::getExtension($file));
 
+								// File in a LESS format
 								if (strpos($file, 'less')) {
 									// Minify the file if is not set or if it's true
 									if (!isset($this->options['minify']) || $this->options['minify']) {
@@ -123,14 +126,16 @@
 										$less->checkedCompile($src . '/'. $file, $filename);
 									}
 
-								} elseif (strpos($file, 'css')) {
+								} 
+								// File in a CSS format
+								elseif (strpos($file, 'css')) {
 									// Minify the file if is not set or if it's true
 									if (!isset($this->options['minify']) || $this->options['minify']) {
 										$filename .= '.min.css';
 										(new Minify\CSS($original))->minify($filename);
 									} else {
 										$filename .= '.css';
-										(new Minify\CSS($original))->minify($filename);
+										shell_exec("cp -r $original $filename");
 									}
 								}
 								array_push($arrayReturn, $filename);
@@ -142,7 +147,8 @@
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
-		
+						
+						// Create the directory if not exists
 						self::createDirectory($dest);
 		
 						$arrayReturn = [];
@@ -152,30 +158,31 @@
 						 * and minify to compress the size
 						 */
 						foreach ($files as $file) {
-							$src .= '/'.$file;
-							$dest .= '/'.$file;
-							shell_exec("cp -r $src $dest");
+							// Validate if an authorize file and exits
+							if (self::validateFile($file) && file_exists($src . '/' . $file)) {
+								$src .= '/'.$file;
+								$dest .= '/'.$file;
 
-							$src = str_replace('/'.$file, '', $src);
-							$dest = str_replace('/'.$file, '', $dest);
+								// Copy the file to the assets directory
+								shell_exec("cp -r $src $dest");
 
-							// Minify the file if is not set or if it's true
-							if (!isset($this->options['minify']) || $this->options['minify']) {
-								$original = $dest .'/'. basename($file, '.js') . '.js';
-								$filename = $dest .'/'. basename($file, '.js') . '.min.js';
-								
-								(new Minify\JS($original))->minify($filename);
-								// Delete the original file
-								try {
-									unlink($original);
-								} catch (exception $e) {
-									echo "Error message: " . $e->getMessage();
+								// We change the name for the next file
+								$src = str_replace('/'.$file, '', $src);
+								$dest = str_replace('/'.$file, '', $dest);
+
+								// Minify the file if is not set or if it's true
+								if (!isset($this->options['minify']) || $this->options['minify']) {
+									$original = $src .'/'. basename($file, '.js') . '.js';
+									$filename = $dest .'/'. basename($file, '.js') . '.min.js';
+									
+									(new Minify\JS($original))->minify($filename);
+								} else {
+									$filename = $dest .'/'. basename($file, '.js') . '.js';
 								}
-							} else {
-								$filename = $dest .'/'. basename($file, '.js') . '.js';
+								array_push($arrayReturn, $filename);
 							}
-							array_push($arrayReturn, $filename);
 						}
+						
 						/**
 						 * Create JavaScript file with the code that
 						 * you want.

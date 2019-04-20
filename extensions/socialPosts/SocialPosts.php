@@ -10,7 +10,6 @@
 		];
 		// Options
 		public $options = [
-			'minify' => false,
 		];
 
 		public function assets (){

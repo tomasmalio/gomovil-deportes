@@ -18,7 +18,7 @@
 						if (strpos($file, 'css')) {
 							$var = '<link rel="stylesheet" href="/' . $file . '">';
 						} elseif (strpos($file, 'js')) {
-							$var = '<script src="' . $file . '"></script>';
+							$var = '<script src="/' . $file . '"></script>';
 						}
 						array_push($array, $var);
 					}

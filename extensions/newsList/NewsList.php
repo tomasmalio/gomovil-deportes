@@ -12,12 +12,11 @@
 		// Assets files
 		public $files = [
 			'style'	=> ['swiper.css'],
-			'js'	=> ['swipper.js'],
+			'js'	=> ['swiper.js'],
 		];
 
 		// Options
 		public $options = [
-			'minify' => false,
 		];
 
 		public function assets (){
