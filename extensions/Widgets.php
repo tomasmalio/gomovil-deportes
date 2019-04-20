@@ -86,60 +86,67 @@
 						 * the size
 						 */
 						foreach ($files as $file) {
-							// Validate if an authorize file and exits
-							if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
-								$src .= '/' . self::getExtension($file);
-								$original = $src . '/'. $file;
+							// If it's an external file we include directly
+							if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
+								array_push($arrayReturn, $file);
 
-								$filename = $dest .'/'. basename($file, '.'.self::getExtension($file));
+							} else {
+								// Validate if an authorize file and exits
+								if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
+									$src .= '/' . self::getExtension($file);
+									$original = $src . '/'. $file;
 
-								// File in a LESS format
-								if (strpos($file, 'less')) {
-									// Minify the file if is not set or if it's true
-									if (!isset($this->options['minify']) || $this->options['minify']) {
-										$filename .= '.min.css';
-										$less->setFormatter("compressed");
-									} else {
-										$filename .= '.css';
+									$filename = $dest .'/'. basename($file, '.'.self::getExtension($file));
+
+									// File in a LESS format
+									if (strpos($file, 'less')) {
+										// Minify the file if is not set or if it's true
+										if (!isset($this->options['minify']) || $this->options['minify']) {
+											$filename .= '.min.css';
+											$less->setFormatter("compressed");
+										} else {
+											$filename .= '.css';
+										}
+										/**
+										 * If there's styles define we modify the original file 
+										 * with the new content. If the variable is not change
+										 * the original value continues
+										 */
+										if (!empty($this->options['styles'])) {
+											$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
+											
+											// Create a copy of the original file to keep it save
+											shell_exec("cp -r $original $backupFile");
+
+											// Modify the variables
+											self::modifyVars($this->options['styles'], $backupFile);
+											
+											// Compile the file
+											$less->checkedCompile($backupFile, $filename);
+
+											// Remove the backup file
+											unlink($backupFile);
+										} else {
+											// Compile the less but first verify if the css exist
+											$less->checkedCompile($src . '/'. $file, $filename);
+										}
+
+									} 
+									// File in a CSS format
+									elseif (strpos($file, 'css')) {
+										// Minify the file if is not set or if it's true
+										if (!isset($this->options['minify']) || $this->options['minify']) {
+											$filename .= '.min.css';
+											(new Minify\CSS($original))->minify($filename);
+										} else {
+											$filename .= '.css';
+											shell_exec("cp -r $original $filename");
+										}
 									}
-									/**
-									 * If there's styles define we modify the original file 
-									 * with the new content. If the variable is not change
-									 * the original value continues
-									 */
-									if (!empty($this->options['styles'])) {
-										$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
-										
-										// Create a copy of the original file to keep it save
-										shell_exec("cp -r $original $backupFile");
-
-										// Modify the variables
-										self::modifyVars($this->options['styles'], $backupFile);
-										
-										// Compile the file
-										$less->checkedCompile($backupFile, $filename);
-
-										// Remove the backup file
-										unlink($backupFile);
-									} else {
-										// Compile the less but first verify if the css exist
-										$less->checkedCompile($src . '/'. $file, $filename);
-									}
-
-								} 
-								// File in a CSS format
-								elseif (strpos($file, 'css')) {
-									// Minify the file if is not set or if it's true
-									if (!isset($this->options['minify']) || $this->options['minify']) {
-										$filename .= '.min.css';
-										(new Minify\CSS($original))->minify($filename);
-									} else {
-										$filename .= '.css';
-										shell_exec("cp -r $original $filename");
-									}
+									array_push($arrayReturn, $filename);
 								}
-								array_push($arrayReturn, $filename);
 							}
+							
 						}	
 						return $arrayReturn;
 					}
@@ -158,28 +165,34 @@
 						 * and minify to compress the size
 						 */
 						foreach ($files as $file) {
-							// Validate if an authorize file and exits
-							if (self::validateFile($file) && file_exists($src . '/' . $file)) {
-								$src .= '/'.$file;
-								$dest .= '/'.$file;
+							// If it's an external file we include directly
+							if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
+								array_push($arrayReturn, $file);
+								
+							} else {
+								// Validate if an authorize file and exits
+								if (self::validateFile($file) && file_exists($src . '/' . $file)) {
+									$src .= '/'.$file;
+									$dest .= '/'.$file;
 
-								// Copy the file to the assets directory
-								shell_exec("cp -r $src $dest");
+									// Copy the file to the assets directory
+									shell_exec("cp -r $src $dest");
 
-								// We change the name for the next file
-								$src = str_replace('/'.$file, '', $src);
-								$dest = str_replace('/'.$file, '', $dest);
+									// We change the name for the next file
+									$src = str_replace('/'.$file, '', $src);
+									$dest = str_replace('/'.$file, '', $dest);
 
-								// Minify the file if is not set or if it's true
-								if (!isset($this->options['minify']) || $this->options['minify']) {
-									$original = $src .'/'. basename($file, '.js') . '.js';
-									$filename = $dest .'/'. basename($file, '.js') . '.min.js';
-									
-									(new Minify\JS($original))->minify($filename);
-								} else {
-									$filename = $dest .'/'. basename($file, '.js') . '.js';
+									// Minify the file if is not set or if it's true
+									if (!isset($this->options['minify']) || $this->options['minify']) {
+										$original = $src .'/'. basename($file, '.js') . '.js';
+										$filename = $dest .'/'. basename($file, '.js') . '.min.js';
+										
+										(new Minify\JS($original))->minify($filename);
+									} else {
+										$filename = $dest .'/'. basename($file, '.js') . '.js';
+									}
+									array_push($arrayReturn, $filename);
 								}
-								array_push($arrayReturn, $filename);
 							}
 						}
 						

@@ -16,8 +16,14 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
-							$var = '<link rel="stylesheet" href="/' . $file . '">';
+							if (!(substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//')) {
+								$file = '/' . $file;
+							}
+							$var = '<link rel="stylesheet" href="' . $file . '">';
 						} elseif (strpos($file, 'js')) {
+							if (!(substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//')) {
+								$file = '/' . $file;
+							}
 							$var = '<script src="/' . $file . '"></script>';
 						}
 						array_push($array, $var);
