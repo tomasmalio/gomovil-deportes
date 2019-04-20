@@ -160,8 +160,23 @@ Example:
 		public $options = [];
 	}
 ```
-The variable ***$files*** let is an array that you are going to include the styles in style and the scripts at js position. It's important that if you have more than one file you can include them because it's an array for each element (style and js). The styles that you have in LESS format you must have it in the **assets/less/** folder and if you create CSS styles format you must have it in **assets/css/** folder.
+* Variable ***$files*** it's an array that you are going to include styles and scripts at each position respectively. It's important that if you have more than one file you can include them because it's an array for each element (style and js). 
+* Styles that you have in ***LESS*** format you must have it in the **assets/less/** folder and if you create ***CSS*** styles format you must have it in **assets/css/** folder.
+* ***External files*** can be include in each position like this:
 
+```php
+	class WidgetName extends Widgets {
+		// Assets files
+		public $files = [
+			'js'		=> ['https://code.jquery.com/jquery-3.4.0.min.js'],
+		];
+		public $title;
+		public $description;
+		public $image;
+		// Options
+		public $options = [];
+	}
+```
 5) Then in the render view of the HTML document, you must add the variables that you name before (***renderView()***).
 Example:
 ```php
