@@ -16,12 +16,12 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
-							if (!(substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//')) {
+							if (!self::externalFile) {
 								$file = '/' . $file;
 							}
 							$var = '<link rel="stylesheet" href="' . $file . '">';
 						} elseif (strpos($file, 'js')) {
-							if (!(substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//')) {
+							if (!self::externalFile) {
 								$file = '/' . $file;
 							}
 							$var = '<script src="' . $file . '"></script>';
@@ -30,8 +30,21 @@
 					}
 				}
 			}
-			return $array;
-			
+			return $array;	
+		}
+
+		/**
+		 * External file
+		 * 
+		 * @param 		string 			String with the file name or url file
+		 * @return		boolean			Return true if it's a external file or false it's a filename
+		 */
+		private function externalFile ($file) {
+			if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 
