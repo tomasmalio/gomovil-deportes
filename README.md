@@ -123,9 +123,10 @@ Example:
 		public $options = [];
 	}
 ```
-You can see that's it's a variable call ***$options*** which is an array that let you modify things.
+You can see that's it's a variable call ***$options*** which is an array that let you modify or include particulary things.
 * ***minify (true | false)***: if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
 * ***styles (array)***: include the variables that you want to change inside the document LESS before compile.
+* ***script***: include a JavaScript code that you don't want to create a file so the widget will make it for you. This element it's an array in which you can define the name of the script *(optional)* and the content that's require for creating the JS script.
 
 Example:
 ```php
@@ -140,6 +141,13 @@ Example:
 				'color_1' => "white",
 				'background_1' => "#000000",
 				'h1-font-size' => "'Arial'",
+			],
+			'script' => [
+				'name'	=> 'masonry.social-posts',
+				'content' => "$('.grid-social').masonry({
+								itemSelector: '.grid-item-social',
+								gutter: 0
+							});"
 			]
 		];
 	}

@@ -193,11 +193,11 @@
 					/**
 					 * Create JavaScript file with the code that we received
 					 */
-					elseif (isset($options['script']) && !empty($options['script'])) {
-						$original = self::createScriptJs($options['script'], false);
+					elseif (isset($options['script']) && !empty($options['script']['content'])) {
+						$original = self::createScriptJs($options['script']['content'], $options['script']['name']);
 						// Minify the file if is not set or if it's true
 						if (!isset($options['minify']) || $options['minify']) {
-							$filename = str_replace('.js', 'min.js', $original);
+							$filename = str_replace('.js', '.min.js', $original);
 							(new Minify\JS($original))->minify($filename);
 						} else {
 							$filename = $original;
@@ -341,14 +341,17 @@
 		 * createScriptJs
 		 * 
 		 * @param		string		$script		String with the code for create a JavaScript file
-		 * @param		boolean		$random		Boolean with identify if you want a name with random number
+		 * @param		string		$name		String with the name output file name
 		 * @return		string		Return the directory concat with the filename
 		 */
-		public function createScriptJs ($script, $random = true) {
-			//$script 	= "$(document).ready(function(){alert('hai');});";
-			($random) ? $rand = mt_rand() : $rand = '';
-			$filename 	= 'script.' . strtolower(get_class($this)) . '.' . $rand . '.js';
-			$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
+		public function createScriptJs ($script, $name = '') {
+			
+			if (isset($name) && $name) {
+				$filename 	= str_replace('.js', '', $name) . '.js';
+			} else {
+				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
+			}
+			$dest 	= 'assets/' . strtolower(get_class($this)) . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
 
 			return ($dest . '/' . $filename);

@@ -10,10 +10,13 @@
 		];
 		// Options
 		public $options = [
-			'script' => "$('.grid-social').masonry({
-				itemSelector: '.grid-item-social',
-				gutter: 0
-			});"
+			'script' => [
+				'name'		=> 'masonry.social-posts',
+				'content' 	=> "$('.grid-social').masonry({
+									itemSelector: '.grid-item-social',
+									gutter: 0
+								});"
+			]
 		];
 
 		public function renderView () {
