@@ -38,24 +38,20 @@
 		}
 
 		/**
-		 * Get Assets
-		 * Generate the assets files
+		 * Assets
 		 * 
-		 * @param 		array 			$assetsStyles
-		 * @param 		array 			$assetsJs
-		 * @return 		array			Returns an array with the assets files for Styles and JavaScript
+		 * @return		array			Returns an array with the assets files for Styles and JavaScript
 		 */
-		public function getAssets ($assetsStyles, $assetsJs) {
+		public function assets () {
 			try {
 				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/' . strtolower(get_class($this)) . '/images', 0755);
 				return [
-					'css' => self::compileAssets('CSS', $assetsStyles), 
-					'js' => self::compileAssets('JS', $assetsJs)
+					'css' => self::compileAssets('CSS', $this->files['style'], $this->options), 
+					'js' => self::compileAssets('JS', $this->files['js'], $this->options)
 				];
 			} catch (exception $e) {
 				echo "Error message: " . $e->getMessage();
 			}
-			
 		}
 
 		/**
@@ -66,10 +62,9 @@
 		 * @param 		array			$options
 		 * @return 		array			Returns an array with the assets files
 		 */
-		public function compileAssets ($type, $files, $options = null) {
+		private function compileAssets ($type, $files, $options = null) {
 			$less = new lessc;
 			try {
-
 				if ($type == 'CSS') {
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
@@ -101,7 +96,7 @@
 									// File in a LESS format
 									if (strpos($file, 'less')) {
 										// Minify the file if is not set or if it's true
-										if (!isset($this->options['minify']) || $this->options['minify']) {
+										if (!isset($options['minify']) || $options['minify']) {
 											$filename .= '.min.css';
 											$less->setFormatter("compressed");
 										} else {
@@ -112,14 +107,14 @@
 										 * with the new content. If the variable is not change
 										 * the original value continues
 										 */
-										if (!empty($this->options['styles'])) {
+										if (!empty($options['styles'])) {
 											$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
 											
 											// Create a copy of the original file to keep it save
 											shell_exec("cp -r $original $backupFile");
 
 											// Modify the variables
-											self::modifyVars($this->options['styles'], $backupFile);
+											self::modifyVars($options['styles'], $backupFile);
 											
 											// Compile the file
 											$less->checkedCompile($backupFile, $filename);
@@ -135,7 +130,7 @@
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
 										// Minify the file if is not set or if it's true
-										if (!isset($this->options['minify']) || $this->options['minify']) {
+										if (!isset($options['minify']) || $options['minify']) {
 											$filename .= '.min.css';
 											(new Minify\CSS($original))->minify($filename);
 										} else {
@@ -151,15 +146,14 @@
 						return $arrayReturn;
 					}
 				} elseif ($type == 'JS') {
+					$arrayReturn = [];
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
 						
 						// Create the directory if not exists
 						self::createDirectory($dest);
-		
-						$arrayReturn = [];
-						
+
 						/**
 						 * For each JS file we copy to asset directory
 						 * and minify to compress the size
@@ -183,7 +177,7 @@
 									$dest = str_replace('/'.$file, '', $dest);
 
 									// Minify the file if is not set or if it's true
-									if (!isset($this->options['minify']) || $this->options['minify']) {
+									if (!isset($options['minify']) || $options['minify']) {
 										$original = $src .'/'. basename($file, '.js') . '.js';
 										$filename = $dest .'/'. basename($file, '.js') . '.min.js';
 										
@@ -195,25 +189,22 @@
 								}
 							}
 						}
-						
-						/**
-						 * Create JavaScript file with the code that
-						 * you want.
-						 */
-						if (isset($this->options['script']) && !empty($this->options['script'])) {
-							$original = self::createScriptJs($this->options['script']);
-							// Minify the file if is not set or if it's true
-							if (!isset($this->options['minify']) || $this->options['minify']) {
-								$filename = str_replace('.js', 'min.js', $filename);
-								basename($file, '.js')
-								(new Minify\JS($original))->minify($filename);
-							} else {
-								$filename = $original;
-							}
-							array_push($arrayReturn, $filename);
+					} 
+					/**
+					 * Create JavaScript file with the code that we received
+					 */
+					elseif (isset($options['script']) && !empty($options['script'])) {
+						$original = self::createScriptJs($options['script'], false);
+						// Minify the file if is not set or if it's true
+						if (!isset($options['minify']) || $options['minify']) {
+							$filename = str_replace('.js', 'min.js', $original);
+							(new Minify\JS($original))->minify($filename);
+						} else {
+							$filename = $original;
 						}
-						return $arrayReturn;
+						array_push($arrayReturn, $filename);
 					}
+					return $arrayReturn;
 				}
 				
 			} catch (exception $e) {
@@ -350,16 +341,18 @@
 		 * createScriptJs
 		 * 
 		 * @param		string		$script		String with the code for create a JavaScript file
-		 * @return		string		String of how it starts
+		 * @param		boolean		$random		Boolean with identify if you want a name with random number
 		 * @return		string		Return the directory concat with the filename
 		 */
-		public function createScriptJs ($script) {
+		public function createScriptJs ($script, $random = true) {
 			//$script 	= "$(document).ready(function(){alert('hai');});";
-			$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
+			($random) ? $rand = mt_rand() : $rand = '';
+			$filename 	= 'script.' . strtolower(get_class($this)) . '.' . $rand . '.js';
 			$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
 
 			return ($dest . '/' . $filename);
 		}
+
 	}
 ?>

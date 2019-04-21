@@ -10,11 +10,11 @@
 		];
 		// Options
 		public $options = [
+			'script' => "$('.grid-social').masonry({
+				itemSelector: '.grid-item-social',
+				gutter: 0
+			});"
 		];
-
-		public function assets (){
-			return parent::getAssets($this->files['style'], $this->files['js']);
-		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([

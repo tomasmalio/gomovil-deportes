@@ -303,6 +303,14 @@
 			],
 		];
 
+		// Assets files
+		public $files = [
+			'style'		=> [],
+			'js'		=> [],
+		];
+		// Options
+		public $options = [];
+
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'titleNextMatces'	=> $this->titleNextMatces,

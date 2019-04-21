@@ -13,6 +13,14 @@
 			'category'		=> 'Fútbol',
 		];
 
+		// Assets files
+		public $files = [
+			'style'		=> [],
+			'js'		=> [],
+		];
+		// Options
+		public $options = [];
+
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'news' => $this->news

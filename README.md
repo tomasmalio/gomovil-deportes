@@ -192,9 +192,6 @@ Example:
 		// Options
 		public $options = [];
 
-		public function assets (){
-			return parent::getAssets($this->files['style'], $this->files['js']);
-		}
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'title'         => $this->title,
@@ -221,9 +218,6 @@ Example:
 		// Options
 		public $options = [];
 
-		public function assets (){
-			return parent::getAssets($this->files['style'], $this->files['js']);
-		}
 		public function renderView () {
 			return Widgets::renderViewHtml('YourViewName', 
 				[
