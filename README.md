@@ -127,6 +127,7 @@ You can see that's it's a variable call ***$options*** which is an array that le
 * ***minify (true | false)***: if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
 * ***styles (array)***: include the variables that you want to change inside the document LESS before compile.
 * ***script***: include a JavaScript code that you don't want to create a file so the widget will make it for you. This element it's an array in which you can define the name of the script *(optional)* and the content that's require for creating the JS script.
+* ***importGlobalLess (true | false)***: include global LESS to your LESS file extension (default: true).
 
 Example:
 ```php
@@ -148,7 +149,8 @@ Example:
 								itemSelector: '.grid-item-social',
 								gutter: 0
 							});"
-			]
+			],
+			'importGlobalLess' => false,
 		];
 	}
 ```
@@ -246,8 +248,9 @@ Example:
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
 	$widgetWidgetName 	= (new WidgetName())->renderView();
-	array_push($assets['css'], (new VideosList())->assets()['css']);
-	array_push($assets['js'], (new VideosList())->assets()['js']);
+	$assetWidgetName = (new WidgetName())->assets();
+	array_push($assets['css'], $assetWidgetName['css']);
+	array_push($assets['js'], $assetWidgetName['js']);
 	$displayWidgetName = true;
 ```
 Remember to change the following words:

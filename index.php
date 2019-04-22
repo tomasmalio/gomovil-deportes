@@ -23,8 +23,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsFeatured/NewsFeatured.php';
 	$widgetNewsFeatured = (new NewsFeatured())->renderView();
-	array_push($assets['css'], (new NewsFeatured())->assets()['css']);
-	array_push($assets['js'], (new NewsFeatured())->assets()['js']);
+	$assetNewsFeatured = (new NewsFeatured())->assets();
+	array_push($assets['css'], $assetNewsFeatured['css']);
+	array_push($assets['js'], $assetNewsFeatured['js']);
 	$displayNewsFeatured = true;
 
 	/****************************************
@@ -32,8 +33,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/newsList/NewsList.php';
 	$widgetNewsList 	= (new NewsList())->renderView();
-	array_push($assets['css'], (new NewsList())->assets()['css']);
-	array_push($assets['js'], (new NewsList())->assets()['js']);
+	$assetNewsList = (new NewsList())->assets();
+	array_push($assets['css'], $assetNewsList['css']);
+	array_push($assets['js'], $assetNewsList['js']);
 	$displayNewsList = true;
 
 	/****************************************
@@ -41,8 +43,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/matchesNext/MatchesNext.php';
 	$widgetMatchesNext 	= (new MatchesNext())->renderView();
-	array_push($assets['css'], (new MatchesNext())->assets()['css']);
-	array_push($assets['js'], (new MatchesNext())->assets()['js']);
+	$assetMatchesNext = (new MatchesNext())->assets();
+	array_push($assets['css'], $assetMatchesNext['css']);
+	array_push($assets['js'], $assetMatchesNext['js']);
 	$displayMatchesNext = true;
 
 	/****************************************
@@ -50,8 +53,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/videosList/VideosList.php';
 	$widgetVideosList 	= (new VideosList())->renderView();
-	array_push($assets['css'], (new VideosList())->assets()['css']);
-	array_push($assets['js'], (new VideosList())->assets()['js']);
+	$assetVideoList = (new VideosList())->assets();
+	array_push($assets['css'], $assetVideoList['css']);
+	array_push($assets['js'], $assetVideoList['js']);
 	$displayVideosList = true;
 
 	/****************************************
@@ -59,8 +63,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialPosts/SocialPosts.php';
 	$widgetSocialPosts 	= (new SocialPosts())->renderView();
-	array_push($assets['css'], (new SocialPosts())->assets()['css']);
-	array_push($assets['js'], (new SocialPosts())->assets()['js']);
+	$assetSocialPosts = (new SocialPosts())->assets();
+	array_push($assets['css'], $assetSocialPosts['css']);
+	array_push($assets['js'], $assetSocialPosts['js']);
 	$displaySocialPosts = true;
 
 	/****************************************
@@ -68,8 +73,9 @@
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialGifs/socialGifs.php';
 	$widgetSocialGifs 	= (new SocialGifs())->renderView();
-	array_push($assets['css'], (new SocialGifs())->assets()['css']);
-	array_push($assets['js'], (new SocialGifs())->assets()['js']);
+	$assetSocialGifs = (new SocialGifs())->assets();
+	array_push($assets['css'], $assetSocialGifs['css']);
+	array_push($assets['js'], $assetSocialGifs['js']);
 	$displaySocialGifs = true;
 
 	/**

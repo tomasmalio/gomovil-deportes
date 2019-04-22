@@ -21,6 +21,7 @@
 		];
 		// Options
 		public $options = [
+			
 		];
 
 		public function renderView () {

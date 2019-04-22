@@ -95,6 +95,10 @@
 
 									// File in a LESS format
 									if (strpos($file, 'less')) {
+										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
+											self::addImportsLess($src .'/'. $file);
+										}
+
 										// Minify the file if is not set or if it's true
 										if (!isset($options['minify']) || $options['minify']) {
 											$filename .= '.min.css';
@@ -125,8 +129,7 @@
 											// Compile the less but first verify if the css exist
 											$less->checkedCompile($src . '/'. $file, $filename);
 										}
-
-									} 
+									}
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
 										// Minify the file if is not set or if it's true
@@ -295,6 +298,23 @@
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Add Imports LESS
+		 * Include global imports in your LESS files 
+		 * 
+		 * @param		string		$filename	Source path
+		 */
+		private function addImportsLess ($filename) {
+			if (strpos(file_get_contents($filename), "Global Imports") === false) {
+				$file = "/* Global Imports */\n";
+				$file .= "@import '../../../../less/config.less';\n";
+				$file .= "@import '../../../../less/common.less';\n\n";
+				$file .= file_get_contents($filename);
+				file_put_contents($filename, $file);
+				unset($file);
+			}
 		}
 
 		/**

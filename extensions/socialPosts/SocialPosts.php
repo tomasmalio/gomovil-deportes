@@ -10,9 +10,6 @@
 		];
 		// Options
 		public $options = [
-			'styles' => [
-				'@card-text-social-links-color' => '@color-second',
-			],
 			'script' => [
 				'name'		=> 'masonry.social-posts',
 				'content' 	=> "$('.grid-social').masonry({
