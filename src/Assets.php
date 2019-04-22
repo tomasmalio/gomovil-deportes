@@ -16,17 +16,20 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
-							if (!self::externalFile) {
+							if (!self::externalFile($file)) {
 								$file = '/' . $file;
 							}
 							$var = '<link rel="stylesheet" href="' . $file . '">';
 						} elseif (strpos($file, 'js')) {
-							if (!self::externalFile) {
+							if (!self::externalFile($file)) {
 								$file = '/' . $file;
 							}
 							$var = '<script src="' . $file . '"></script>';
 						}
-						array_push($array, $var);
+						// Validate if already exists
+						if (!in_array($var, $array)) {
+							array_push($array, $var);
+						}
 					}
 				}
 			}

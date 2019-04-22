@@ -72,9 +72,6 @@
 	array_push($assets['js'], (new SocialGifs())->assets()['js']);
 	$displaySocialGifs = true;
 
-	// print_r((new SocialPosts())->assets()['css']);
-	// print_r($assets['css']);
-	// print_r($assets);
 	/**
 	 * Render view
 	 */

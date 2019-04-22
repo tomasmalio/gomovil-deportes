@@ -41,20 +41,28 @@
 				}
 			], 
 			{
-			playlistOptions: {
-				autoPlay: <?=$videoList->controls['autoPlay']?>,
-			},
-			swfPath: "./assets/jplayer/dist/jplayer",
-			supplied: "webmv, ogv, m4v",
-			useStateClassSkin: true,
-			autoBlur: false,
-			smoothPlayBar: true,
-			keyEnabled: true,
-			loop: true,
-			autohide: {
-				restored: <?=$videoList->controls['displayControls']?>,
-			},
-			muted: <?=$videoList->controls['muted']?>,
+				<?php if ($videoList->controls['autoPlay']) {?>
+				playlistOptions: {
+					autoPlay: <?=$videoList->controls['autoPlay']?>,
+				},
+				<?php }?>
+				swfPath: "./assets/jplayer/dist/jplayer",
+				supplied: "webmv, ogv, m4v",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				<?php if ($videoList->controls['loop']) {?>
+				loop: <?=$videoList->controls['loop']?>,
+				<?php }?>
+				<?php if (!$videoList->controls['displayControls']) {?>
+				autohide: {
+					restored: true,
+				},
+				<?php }?>
+				<?php if ($videoList->controls['muted']) {?>
+				muted: <?=$videoList->controls['muted']?>,
+				<?php }?>
 			},
 			
 		);
