@@ -306,12 +306,14 @@
 		private function modifyVars($vars, $filename) {
 			// Get the file content
 			$file = file_get_contents($filename);
-
 			// Go through the entire array variable styles
 			foreach($vars as $name => $value){
+				// Validate if the atribute contain a @
+				$name = str_replace('@', '', $name);
+
 				// Get the line which we're going to change
 				$replace 	= self::getText($file, '@'.$name, ';').';';
-
+				
 				// Create the new line
 				$change 	= (($name[0] === '@') ? '' : '@') . $name .': '. $value . ((substr($value,-1) === ';') ? '' : ';');
 				

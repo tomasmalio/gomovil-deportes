@@ -21,11 +21,6 @@
 		];
 		// Options
 		public $options = [
-			'minify' => false,
-			'styles' => [
-				'color_1' => 'white',
-			],
-			'script' => "",
 		];
 
 		public function renderView () {
