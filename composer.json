@@ -26,6 +26,7 @@
 	"scripts": {
 		"post-update-cmd": [
 			"chmod -R 755 assets",
+			"chown -R root:root assets/",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
