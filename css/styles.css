@@ -103,7 +103,7 @@ header {
   background: #ffffff;
   border-top: 0;
   border-right: 0;
-  border-bottom: 0;
+  border-bottom: 2px solid #4e86c5;
   border-left: 0;
   padding-top: 0;
   padding-right: 0;
@@ -116,6 +116,10 @@ header nav.navbar-menu {
 }
 header nav.navbar-menu a.navbar-brand {
   padding: 5px 0 0 0;
+  height: 59px;
+}
+header nav.navbar-menu a.navbar-brand img {
+  height: 100%;
 }
 header nav.navbar-menu .navbar-buttons {
   height: 65px;
