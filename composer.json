@@ -26,14 +26,14 @@
 	"scripts": {
 		"post-update-cmd": [
 			"chmod -R 755 assets",
-			"sh gomovil-install.sh",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
-			"php composer dump-autoload"
+			"php composer dump-autoload",
+			"sh gomovil-install.sh"
 		]
 	}
 }
