@@ -248,7 +248,7 @@ Example:
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
 	$widgetWidgetName 	= (new WidgetName())->renderView();
-	$assetWidgetName = (new WidgetName())->assets();
+	$assetWidgetName 	= (new WidgetName())->assets();
 	array_push($assets['css'], $assetWidgetName['css']);
 	array_push($assets['js'], $assetWidgetName['js']);
 	$displayWidgetName = true;

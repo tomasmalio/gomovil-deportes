@@ -41,11 +41,13 @@
 				}
 			], 
 			{
-				<?php if ($videoList->controls['autoPlay']) {?>
+				
 				playlistOptions: {
+					<?php if ($videoList->controls['autoPlay']) {?>
 					autoPlay: <?=$videoList->controls['autoPlay']?>,
+					<?php }?>
 				},
-				<?php }?>
+				
 				swfPath: "./assets/jplayer/dist/jplayer",
 				supplied: "webmv, ogv, m4v",
 				useStateClassSkin: true,

@@ -45,6 +45,7 @@
 		public function assets () {
 			try {
 				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/' . strtolower(get_class($this)) . '/images', 0755);
+				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/' . strtolower(get_class($this)) . '/fonts', 0755);
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $this->options), 
 					'js' => self::compileAssets('JS', $this->files['js'], $this->options)

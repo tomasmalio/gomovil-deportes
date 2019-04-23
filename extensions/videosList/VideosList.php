@@ -13,11 +13,11 @@
 			// Autoplay
 			'autoPlay' 			=> true,
 			// Display controls
-			'displayControls' 	=> false,
+			'displayControls' 	=> true,
 			// Muted
-			'muted' 			=> true,
+			'muted' 			=> false,
 			// Loop
-			'loop'				=> true,
+			'loop'				=> false,
 		];
 		// Options
 		public $options = [
