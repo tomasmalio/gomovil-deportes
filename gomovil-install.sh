@@ -1,6 +1,5 @@
 #!/bin/bash
-TEST=$(cat /etc/passwd | grep Apache | awk -F':' '{print $1}')
-if ($TEST)
-	then
-		echo $TEST
+username=$(cat /etc/passwd | grep Apache | awk -F':' '{print $1}')
+if [ -n "$username" ]; then
+	echo $username
 fi
