@@ -203,7 +203,7 @@
 						
 						// Create the directory if not exist
 						self::createDirectory($dest);
-						
+
 						$original = self::createScriptJs($options['script']['content'], $options['script']['name']);
 						// Minify the file if is not set or if it's true
 						if (!isset($options['minify']) || $options['minify']) {
@@ -246,7 +246,8 @@
 		 * @return		string			Returns the extension name or false
 		 */
 		private function getExtension ($file) {
-			$extension = end(explode(".", $file));
+			$name = explode(".", $file);
+			$extension = end($name);
 			return $extension ? $extension : false;
 		}
 
