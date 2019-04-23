@@ -70,15 +70,15 @@ ul {
 			COLORS
 ****************************************/
 /****************************************
-            CONFIG
+			CONFIG
 ****************************************/
 /* Rute path of the image's aplication */
 /* Rute path of import fonts */
 /****************************************
-            ICONS
+			ICONS
 ****************************************/
 /****************************************
-            FONTS
+			FONTS
 ****************************************/
 /**/
 html,
@@ -104,7 +104,7 @@ body {
 /* Eof Menu / Header */
 /* Footer */
 header {
-  background: #ffe800;
+  background: #ffffff;
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
@@ -135,7 +135,7 @@ header nav.navbar-menu .navbar-buttons ul.navbar-nav li a {
   font-family: 'Nunito', sans-serif;
   font-size: 12pt;
   font-weight: 700;
-  color: #008995;
+  color: #4e86c5;
   padding: 20px 15px 20px 15px;
 }
 header nav.navbar-menu .navbar-buttons ul.navbar-nav li:hover .dropdown-menu {
@@ -181,7 +181,7 @@ header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-
   border-radius: 4px;
 }
 header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu ul.dropdown-menu-submenu li.item a:hover {
-  background: #008995;
+  background: #4e86c5;
   color: white;
 }
 header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content {
@@ -286,7 +286,7 @@ header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-me
   transform: scale(1.2);
 }
 header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a:hover h3 {
-  color: #008995;
+  color: #4e86c5;
 }
 header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-menu-content .news a .image-container {
   position: relative;
@@ -334,7 +334,7 @@ header nav.navbar-menu .navbar-buttons ul.navbar-nav .dropdown-menu .dropdown-me
   height: 220px;
 }
 footer {
-  background: #ffe800;
+  background: #ffffff;
   padding-top: 8px;
   padding-right: 0;
   padding-bottom: 8px;
@@ -379,7 +379,7 @@ section.featured-content .featured-news a h3 {
   padding: 15px 0 0 0;
 }
 section.featured-content .featured-news a h3 span {
-  background: #008995;
+  background: #4e86c5;
   color: white;
   font-size: 12pt;
   padding: 5px 8px 5px 20px;
@@ -789,11 +789,11 @@ section.next-matches .competition .match.live {
   margin-top: 30px;
 }
 section.next-matches a.btn-more-content {
-  background: #008995;
+  background: #4e86c5;
   -webkit-border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
-  color: #ffe800;
+  color: #ffffff;
   display: block;
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
@@ -803,8 +803,8 @@ section.next-matches a.btn-more-content {
   width: 100%;
 }
 section.next-matches a.btn-more-content:hover {
-  background: #ffe800;
-  color: #008995;
+  background: #ffffff;
+  color: #4e86c5;
 }
 section.last-news .list-news li {
   background: white;
