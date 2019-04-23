@@ -92,10 +92,6 @@ body {
   position: relative;
   /* Required for static Slidebars to function properly. */
 }
-/* highlight col-* */
-.row [class*='col-'] {
-  background-clip: content-box;
-}
 /* Variables */
 /* Header */
 /* Brand / Header */
