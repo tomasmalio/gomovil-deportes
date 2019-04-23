@@ -71,7 +71,7 @@
 	/****************************************
 	 * SOCIAL GIFS
 	 ****************************************/
-	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialGifs/socialGifs.php';
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialGifs/SocialGifs.php';
 	$widgetSocialGifs 	= (new SocialGifs())->renderView();
 	$assetSocialGifs = (new SocialGifs())->assets();
 	array_push($assets['css'], $assetSocialGifs['css']);
