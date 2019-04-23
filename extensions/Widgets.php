@@ -151,13 +151,13 @@
 					}
 				} elseif ($type == 'JS') {
 					$arrayReturn = [];
+
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
 						
 						// Create the directory if not exists
 						self::createDirectory($dest);
-
 						/**
 						 * For each JS file we copy to asset directory
 						 * and minify to compress the size
@@ -198,6 +198,12 @@
 					 * Create JavaScript file with the code that we received
 					 */
 					elseif (isset($options['script']) && !empty($options['script']['content'])) {
+						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
+						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
+						
+						// Create the directory if not exist
+						self::createDirectory($dest);
+						
 						$original = self::createScriptJs($options['script']['content'], $options['script']['name']);
 						// Minify the file if is not set or if it's true
 						if (!isset($options['minify']) || $options['minify']) {
