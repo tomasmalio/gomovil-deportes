@@ -105,38 +105,12 @@
 						</div>
 						<p class="text"> Hoy hace 100 años de un <span>@RealSociedad</span> - <span>#Barça</span> que guarda una historia curiosa... 😜</p>
 					</div>
+					<div class="card-footer">
+						<div class="social-datetime float-left">9:15 AM - 20 Mar 2019</div>
+						<div class="social-source float-right"><i class="social-icon twitter"></i></div>
+					</div>
 				</a>
-				<div class="card-footer">
-					<div class="social-datetime float-left">9:15 AM - 20 Mar 2019</div>
-					<div class="social-source float-right"><i class="social-icon twitter"></i></div>
-				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div style="background: #aaa; height:350px;margin-bottom:20px;"></div>
-	</div>
-	
 </div>
-<script type="text/javascript">
-	$('.grid-social').masonry({
-		itemSelector: '.grid-item-social',
-		gutter: 0
-	});
-</script>

@@ -26,7 +26,7 @@
 	"scripts": {
 		"post-update-cmd": [
 			"chmod -R 755 assets",
-			"sh gomovil-install.sh.sh",
+			"sh gomovil-install.sh",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
