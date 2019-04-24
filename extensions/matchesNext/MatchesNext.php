@@ -4,7 +4,7 @@
 	 */
 	class MatchesNext extends Widgets {
 		public $titleNextMatces = 'Próximos partidos';
-		public $date = '2019-03-18';
+		public $date = '2019-04-25';
 		public $linkCalendar = ['url' => '#', 'name' => 'Ver calendario'];
 		public $sports = [
 			'football' => [
@@ -13,55 +13,55 @@
 				'icon_name' => 'fas fa-futbol football',
 				'tournaments' => [
 					[
-						'name' => 'Champions League',
-						'step' => 'Octavos de Final',
+						'name' => 'Liga BBVA',
+						'step' => 'Jornada 34',
 						'url' => '#',
 						'matches' => [
 							[
-								'datetime' => '2019-03-18 15:00:00',
-								'team_local' => 'FC Barcelona',
-								'team_visit' => 'Atlético de Madrid',
+								'datetime' => '2019-04-25 15:30:00',
+								'team_local' => 'Sevilla',
+								'team_visit' => 'Rayo Vallecano',
 								'team_image_local' => 'images/football/spain/fc-barcelona.png',
 								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
-								'status' => 'live',
-								'match_time' => [
-									'minutes' => 80,
-									'seconds' => 80,
-								],	
-								'score' => [
-									'gol_local' => 3,
-									'gol_visit' => 3,
-								],
-								'penalties' => [
-									'gol_local' => 4,
-									'gol_visit' => 2,
-									'quantity' => 5,
-								],
+								// 'status' => 'live',
+								// 'match_time' => [
+								// 	'minutes' => 80,
+								// 	'seconds' => 80,
+								// ],	
+								// 'score' => [
+								// 	'gol_local' => 3,
+								// 	'gol_visit' => 3,
+								// ],
+								// 'penalties' => [
+								// 	'gol_local' => 4,
+								// 	'gol_visit' => 2,
+								// 	'quantity' => 5,
+								// ],
 								'url' => '#',
 							],
 							[
-								'datetime' => '2019-03-18 15:00:00',
-								'team_local' => 'Real Madrid',
-								'team_visit' => 'Juventus',
+								'datetime' => '2019-04-25 15:30:00',
+								'team_local' => 'Real Sociedad',
+								'team_visit' => 'Villareal',
 								'team_image_local' => 'images/football/spain/fc-barcelona.png',
 								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
-								'status' => 'live',
-								'match_time' => [
-									'minutes' => 40,
-									'seconds' => 55,
-								],
-								'score' => [
-									'gol_local' => 0,
-									'gol_visit' => 0,
-								],
-								'penalties' => [
-								],
+								// 'status' => 'live',
+								// 'match_time' => [
+								// 	'minutes' => 40,
+								// 	'seconds' => 55,
+								// ],
+								// 'score' => [
+								// 	'gol_local' => 0,
+								// 	'gol_visit' => 0,
+								// ],
+								// 'penalties' => [
+								// ],
 								'url' => '#',
 							],
 							[
-								'datetime' => '2019-03-18 19:00:00',
-								'team_local' => 'Barcelona',
-								'team_visit' => 'Juventus',
+								'datetime' => '2019-04-25 16:30:00',
+								'team_local' => 'Getafe',
+								'team_visit' => 'Real Madrid',
 								'team_image_local' => 'images/football/spain/fc-barcelona.png',
 								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
 								'status' => 'end',
