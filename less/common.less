@@ -118,33 +118,43 @@
 		opacity:1;
 	}
 }
+.align-items (@align-item) {
+	-webkit-box-pack: @align-item;
+	-ms-flex-pack: @align-item;
+	-webkit-justify-content: @align-item;
+	justify-content: @align-item;
+	-webkit-box-align: @align-item;
+	-ms-flex-align: @align-item;
+	-webkit-align-items: @align-item;
+	align-items: @align-item;
+}
 .placeHolder (@font-family, @font-size, @font-weight, @color, @text-align) {
 	&::-webkit-input-placeholder {
-        color:@color;
-        font-size:@font-size;
-        .fonts(@font-family, @font-weight);
-        text-align:@text-align;
-      
-    }
-    &:-moz-input-placeholder {
-        color:@color;
-        font-size:@font-size;
-        .fonts(@font-family, @font-weight);
-        text-align:@text-align;
-      
-    }
-    &:-ms-input-placeholder {
-        color:@color;
-        font-size:@font-size;
-        .fonts(@font-family, @font-weight);
-        text-align:@text-align;
-        
-    }
-    &::-moz-placeholder {
-        color:@color;
-        font-size:@font-size;
-        .fonts(@font-family, @font-weight);
-        text-align:@text-align;
-        
-    }
+		color:@color;
+		font-size:@font-size;
+		.fonts(@font-family, @font-weight);
+		text-align:@text-align;
+	  
+	}
+	&:-moz-input-placeholder {
+		color:@color;
+		font-size:@font-size;
+		.fonts(@font-family, @font-weight);
+		text-align:@text-align;
+	  
+	}
+	&:-ms-input-placeholder {
+		color:@color;
+		font-size:@font-size;
+		.fonts(@font-family, @font-weight);
+		text-align:@text-align;
+		
+	}
+	&::-moz-placeholder {
+		color:@color;
+		font-size:@font-size;
+		.fonts(@font-family, @font-weight);
+		text-align:@text-align;
+		
+	}
 }

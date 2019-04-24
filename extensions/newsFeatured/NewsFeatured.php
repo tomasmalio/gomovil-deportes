@@ -5,10 +5,10 @@
 	class NewsFeatured extends Widgets {
 		//public $title;
 		public $news = [
-			'title' 		=> 'Los giros en el destino de Viáfara', 
-			'description' 	=> 'Description 1',
-			'image'			=> 'https://s3.us-east-2.amazonaws.com/bitel/deportes/nota/jhon-viafara-deportivo-cali-festejo-gol-afp_1000x500.jpg',
-			'date' 			=> '2019-04-09',
+			'title' 		=> 'Alianza no tiene paz', 
+			'description' 	=> 'Alianza Lima no tiene paz desde la derrota en la final del último Campeonato Descentralizado',
+			'image'			=> 'https://s3.us-east-2.amazonaws.com/bitel/deportes/nota/miguel-russo-alianza-lima-entrenador-millonarios-getty_1000x500.jpg',
+			'date' 			=> '2019-04-24',
 			'label'			=> 'Noticia del día',
 			'category'		=> 'Fútbol',
 		];

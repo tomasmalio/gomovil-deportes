@@ -9,6 +9,10 @@
 
 	use GoMovil\Assets;
 
+	/* Mobile Detection */
+	$detect = new Mobile_Detect();
+	$GLOBALS['isMobile'] = $detect->isMobile();
+	
 	$assets = ['css' => [], 'js' => []];
 
 	/****************************************

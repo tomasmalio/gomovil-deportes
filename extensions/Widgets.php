@@ -11,6 +11,33 @@
 	class Widgets {
 		
 		/**
+		 * Slider
+		 * Create a slider for desktop or mobile in which we detect the
+		 * device in which the user is.
+		 * 
+		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
+		 */
+		public function slider () {
+			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']) && $this->options['slider']['desktop']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']) && $this->options['slider']['mobile'])) {
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Items
+		 * 
+		 * @return		int 			Returns the number of items to show
+		 */
+		public function items () {
+			if ($GLOBALS['isMobile'] && isset($this->options['items']['mobile'])) {
+				return $this->options['items']['mobile'];
+			} elseif (!$GLOBALS['isMobile'] && isset($this->options['items']['desktop'])) {
+				return $this->options['items']['desktop'];
+			}
+		}
+		
+		/**
 		 * Render View HTML
 		 * 
 		 * @param 		array 			$array
@@ -85,19 +112,18 @@
 							// If it's an external file we include directly
 							if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
 								array_push($arrayReturn, $file);
-
 							} else {
 								// Validate if an authorize file and exits
 								if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
-									$src .= '/' . self::getExtension($file);
-									$original = $src . '/'. $file;
-
-									$filename = $dest .'/'. basename($file, '.'.self::getExtension($file));
+									//$src .= '/' . self::getExtension($file);
+									$original = $src . '/'. self::getExtension($file) . '/' . $file;
+									$filename = $dest .'/'. basename($file, '.'. self::getExtension($file));
 
 									// File in a LESS format
 									if (strpos($file, 'less')) {
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
-											self::addImportsLess($src .'/'. $file);
+											$importFile = $src .  '/' . self::getExtension($file) . '/'. $file;
+											self::addImportsLess($importFile);
 										}
 
 										// Minify the file if is not set or if it's true
@@ -113,7 +139,7 @@
 										 * the original value continues
 										 */
 										if (!empty($options['styles'])) {
-											$backupFile = $src . '/'. basename($file, '.less').'.bk.less';
+											$backupFile = $src . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
 											
 											// Create a copy of the original file to keep it save
 											shell_exec("cp -r $original $backupFile");
@@ -128,7 +154,7 @@
 											unlink($backupFile);
 										} else {
 											// Compile the less but first verify if the css exist
-											$less->checkedCompile($src . '/'. $file, $filename);
+											$less->checkedCompile($src . '/'. self::getExtension($file) . '/' . $file, $filename);
 										}
 									}
 									// File in a CSS format
@@ -197,7 +223,7 @@
 					/**
 					 * Create JavaScript file with the code that we received
 					 */
-					elseif (isset($options['script']) && !empty($options['script']['content'])) {
+					if (isset($options['script']) && !empty($options['script']['content'])) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
 						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
 						
@@ -246,8 +272,7 @@
 		 * @return		string			Returns the extension name or false
 		 */
 		private function getExtension ($file) {
-			$name = explode(".", $file);
-			$extension = end($name);
+			$extension = end(explode(".", $file));
 			return $extension ? $extension : false;
 		}
 
