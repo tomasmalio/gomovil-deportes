@@ -8,6 +8,7 @@
 @news-margin-bottom: 15px;
 
 @news-slider-width: 40%;
+@news-slider-width-responsive: 80%;
 @news-slider-height: 380px;
 
 @news-image-border-radius: 10px;
@@ -114,6 +115,9 @@ section.news-list {
 		li.swiper-slide {
 			width: @news-slider-width;
 			height: @news-slider-height;
+			@media (max-width: 768px) {
+				width: @news-slider-width-responsive;
+			}
 			a {
 				.content-image {
 					float: none;
