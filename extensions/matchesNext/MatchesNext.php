@@ -21,8 +21,8 @@
 								'datetime' => '2019-04-25 15:30:00',
 								'team_local' => 'Sevilla',
 								'team_visit' => 'Rayo Vallecano',
-								'team_image_local' => 'images/football/spain/fc-barcelona.png',
-								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
+								'team_image_local' => 'images/football/spain/sevilla.png',
+								'team_image_visit' => 'images/football/spain/rayo-vallecano.png',
 								// 'status' => 'live',
 								// 'match_time' => [
 								// 	'minutes' => 80,
@@ -43,8 +43,8 @@
 								'datetime' => '2019-04-25 15:30:00',
 								'team_local' => 'Real Sociedad',
 								'team_visit' => 'Villareal',
-								'team_image_local' => 'images/football/spain/fc-barcelona.png',
-								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
+								'team_image_local' => 'images/football/spain/real-sociedad.png',
+								'team_image_visit' => 'images/football/spain/villa-real.png',
 								// 'status' => 'live',
 								// 'match_time' => [
 								// 	'minutes' => 40,
@@ -62,34 +62,17 @@
 								'datetime' => '2019-04-25 16:30:00',
 								'team_local' => 'Getafe',
 								'team_visit' => 'Real Madrid',
-								'team_image_local' => 'images/football/spain/fc-barcelona.png',
-								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
-								'status' => 'end',
-								'match_time' => [
-								],
-								'score' => [
-									'gol_local' => 0,
-									'gol_visit' => 0,
-								],
-								'penalties' => [
-								],
-								'url' => '#',
-							],
-							[
-								'datetime' => '2019-03-18 15:00:00',
-								'team_local' => 'Real Sociedad',
-								'team_visit' => 'Betis',
-								'team_image_local' => 'images/football/spain/fc-barcelona.png',
-								'team_image_visit' => 'images/football/spain/atletico-de-madrid.png',
-								'status' => '',
-								'match_time' => [
-								],
-								'score' => [
-									'gol_local' => 0,
-									'gol_visit' => 0,
-								],
-								'penalties' => [
-								],
+								'team_image_local' => 'images/football/spain/getafe.png',
+								'team_image_visit' => 'images/football/spain/real-madrid.png',
+								// 'status' => 'end',
+								// 'match_time' => [
+								// ],
+								// 'score' => [
+								// 	'gol_local' => 0,
+								// 	'gol_visit' => 0,
+								// ],
+								// 'penalties' => [
+								// ],
 								'url' => '#',
 							],
 						]
@@ -102,46 +85,46 @@
 				'icon_name' => 'fas fa-basketball-ball basket',
 				'tournaments' => [
 					[
-						'name' => 'Conferencia Este',
+						'name' => 'Conferencia Oeste',
 						'step' => '',
 						'url' => '#',
 						'matches' => [
 							[
-								'datetime' => '2019-03-18 15:00:00',
-								'team_local' => 'Golden State',
-								'team_visit' => 'Miami Heat',
-								'team_image_local' => 'images/basketball/nba/golden-state.png',
-								'team_image_visit' => 'images/basketball/nba/miami-heat.png',
-								'status' => 'live',
-								'match_time' => [
-									'quarter' => 2,
-									'minutes' => 9,
-									'seconds' => 45,
-								],	
-								'score' => [
-									'gol_local' => 130,
-									'gol_visit' => 129,
-								],
-								'url' => '#',
+								'datetime' => '2019-04-25 21:00:00',
+								'team_local' => 'Denver',
+								'team_visit' => 'San Antonio',
+								'team_image_local' => 'images/basketball/nba/denver-nuggets.png',
+								'team_image_visit' => 'images/basketball/nba/san-antonio-spurs.png',
+								// 'status' => 'live',
+								// 'match_time' => [
+								// 	'quarter' => 2,
+								// 	'minutes' => 9,
+								// 	'seconds' => 45,
+								// ],	
+								// 'score' => [
+								// 	'gol_local' => 130,
+								// 	'gol_visit' => 129,
+								// ],
+								// 'url' => '#',
 							],
-							[
-								'datetime' => '2019-03-18 15:00:00',
-								'team_local' => 'Chicago Bulls',
-								'team_visit' => 'Miami Heat',
-								'team_image_local' => 'images/basketball/nba/chicaco-bulls.png',
-								'team_image_visit' => 'images/basketball/nba/los-angeles-lakers.png',
-								'status' => '',
-								'match_time' => [
-									'quarter' => 0,
-									'minutes' => 0,
-									'seconds' => 0,
-								],	
-								'score' => [
-									'gol_local' => 0,
-									'gol_visit' => 0,
-								],
-								'url' => '#',
-							],
+							// [
+							// 	'datetime' => '2019-03-18 15:00:00',
+							// 	'team_local' => 'Chicago Bulls',
+							// 	'team_visit' => 'Miami Heat',
+							// 	'team_image_local' => 'images/basketball/nba/chicaco-bulls.png',
+							// 	'team_image_visit' => 'images/basketball/nba/los-angeles-lakers.png',
+							// 	'status' => '',
+							// 	'match_time' => [
+							// 		'quarter' => 0,
+							// 		'minutes' => 0,
+							// 		'seconds' => 0,
+							// 	],	
+							// 	'score' => [
+							// 		'gol_local' => 0,
+							// 		'gol_visit' => 0,
+							// 	],
+							// 	'url' => '#',
+							// ],
 						],
 					],
 				],
@@ -152,82 +135,82 @@
 				'icon_name' => 'fas fa-baseball-ball tenis',
 				'tournaments' => [
 					[
-						'name' => 'Masters de Miami',
-						'step' => 'Individual Masculino / Ronda 63',
+						'name' => 'Barcelona Open Banc Sabadell',
+						'step' => 'Individual Masculino / Ronda 3',
 						'type' => 'single',
 						'url' => '#',
 						'matches' => [
 							[
-								'datetime' => '2019-03-18 21:00:00',
-								'player_first' => 'Juan Martín del Potro',
-								'player_second' => 'F. Auger Aliassime',
-								'player_image_first' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
-								'player_image_second' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
-								'status' => 'live',
+								'datetime' => '2019-04-25 17:00:00',
+								'player_first' => 'Daniil Medvedev',
+								'player_second' => 'Mackenzie McDonald',
+								'player_image_first' => 'http://a.espncdn.com/i/flags/20x13/rus.gif',
+								'player_image_second' => 'http://a.espncdn.com/i/flags/20x13/usa.gif',
+								//'status' => 'live',
 								'score' => [
 									'sets' => 3,
 									'player_first' => [
 										1 => [
-											'point' => 7, 
-											'tie_break' => 7,
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 										2 => [
-											'point' => 2, 
+											// 'point' => 2, 
 										],
 										3 => [
-											'point' => 7, 
-											'tie_break' => 7,
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 									],
 									'player_second' => [
 										1 => [
-											'point' => 6, 
-											'tie_break' => 5,
+											// 'point' => 6, 
+											// 'tie_break' => 5,
 										],
 										2 => [
-											'point' => 6, 
+											// 'point' => 6, 
 										],
 										3 => [
-											'point' => 6, 
-											'tie_break' => 4,
+											// 'point' => 6, 
+											// 'tie_break' => 4,
 										],
 									],
 								],
 								'url' => '#',
 							],
 							[
-								'datetime' => '2019-03-18 15:00:00',
-								'player_first' => 'Jugador 1',
-								'player_second' => 'Jugador 2',
-								'player_image_first' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
-								'player_image_second' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
+								'datetime' => '2019-04-25 17:00:00',
+								'player_first' => 'Felix Auger-Aliassime',
+								'player_second' => 'Kei Nishikori',
+								'player_image_first' => 'http://a.espncdn.com/i/flags/20x13/can.gif',
+								'player_image_second' => 'http://a.espncdn.com/i/flags/20x13/jpn.gif',
 								'status' => '',
 								'score' => [
 									'sets' => 3,
 									'player_first' => [
 										1 => [
-											'point' => 7, 
-											'tie_break' => 7,
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 										2 => [
-											'point' => 2, 
+											// 'point' => 2, 
 										],
 										3 => [
-											'point' => 7, 
-											'tie_break' => 7,
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 									],
 									'player_second' => [
 										1 => [
-											'point' => 6, 
-											'tie_break' => 5,
+											// 'point' => 6, 
+											// 'tie_break' => 5,
 										],
 										2 => [
-											'point' => 6, 
+											// 'point' => 6, 
 										],
 										3 => [
-											'point' => 6, 
-											'tie_break' => 4,
+											// 'point' => 6, 
+											// 'tie_break' => 4,
 										],
 									],
 								],
@@ -236,62 +219,82 @@
 						],
 					],
 					[
-						'name' => 'Masters de Miami',
-						'step' => 'Masculino Doble / Ronda 63',
-						'type' => 'double',
+						'name' => 'Hungarian Open',
+						'step' => 'Individual Masculino / Ronda 2',
+						'type' => 'single',
 						'url' => '#',
 						'matches' => [
 							[
-								'datetime' => '2019-03-18 21:00:00',
-								'team_double_first' => [
-									'player_one' => 'J. Del Potro',
-									'player_second' => 'F. Delbonis',
-									'player_image_one' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
-									'player_image_second' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
-								],
-								'team_double_second' => [
-									'player_one' => 'F. Aliassime',
-									'player_second' => 'N. Djokovic',
-									'player_image_one' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
-									'player_image_second' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
-								],
-								'status' => 'live',
+								'datetime' => '2019-04-25 17:00:00',
+								'player_first' => 'Radu Albot',
+								'player_second' => 'Filip Krajinovic',
+								'player_image_first' => 'http://a.espncdn.com/i/flags/20x13/mda.gif',
+								'player_image_second' => 'http://a.espncdn.com/i/flags/20x13/srb.gif',
+								//'status' => 'live',
 								'score' => [
-									'sets' => 5,
-									'team_double_first' => [
+									'sets' => 3,
+									'player_first' => [
 										1 => [
-											'point' => 7, 
-											'tie_break' => 7,
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 										2 => [
-											'point' => 6, 
+											// 'point' => 2, 
 										],
 										3 => [
-											'point' => 4, 
-										],
-										4 => [
-											'point' => 4, 
-										],
-										5 => [
-											'point' => 6, 
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
 									],
-									'team_double_second' => [
+									'player_second' => [
 										1 => [
-											'point' => 6, 
-											'tie_break' => 5,
+											// 'point' => 6, 
+											// 'tie_break' => 5,
 										],
 										2 => [
-											'point' => 4, 
+											// 'point' => 6, 
 										],
 										3 => [
-											'point' => 6, 
+											// 'point' => 6, 
+											// 'tie_break' => 4,
 										],
-										4 => [
-											'point' => 6, 
+									],
+								],
+								'url' => '#',
+							],
+							[
+								'datetime' => '2019-04-25 19:00:00',
+								'player_first' => 'Robin Haase',
+								'player_second' => 'Borna Coric',
+								'player_image_first' => 'http://a.espncdn.com/i/flags/20x13/ned.gif',
+								'player_image_second' => 'http://a.espncdn.com/i/flags/20x13/cro.gif',
+								'status' => '',
+								'score' => [
+									'sets' => 3,
+									'player_first' => [
+										1 => [
+											// 'point' => 7, 
+											// 'tie_break' => 7,
 										],
-										5 => [
-											'point' => 4, 
+										2 => [
+											// 'point' => 2, 
+										],
+										3 => [
+											// 'point' => 7, 
+											// 'tie_break' => 7,
+										],
+									],
+									'player_second' => [
+										1 => [
+											// 'point' => 6, 
+											// 'tie_break' => 5,
+										],
+										2 => [
+											// 'point' => 6, 
+										],
+										3 => [
+											// 'point' => 6, 
+											// 'tie_break' => 4,
 										],
 									],
 								],
@@ -299,13 +302,77 @@
 							],
 						],
 					],
+					// [
+					// 	'name' => 'Hungarian Open',
+					// 	'step' => 'Masculino Doble / Ronda 63',
+					// 	'type' => 'double',
+					// 	'url' => '#',
+					// 	'matches' => [
+					// 		[
+					// 			'datetime' => '2019-03-18 21:00:00',
+					// 			'team_double_first' => [
+					// 				'player_one' => 'J. Del Potro',
+					// 				'player_second' => 'F. Delbonis',
+					// 				'player_image_one' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
+					// 				'player_image_second' => 'http:////ssl.gstatic.com/onebox/media/sports/logos/1xBWyjjkA6vEWopPK3lIPA_48x48.png',
+					// 			],
+					// 			'team_double_second' => [
+					// 				'player_one' => 'F. Aliassime',
+					// 				'player_second' => 'N. Djokovic',
+					// 				'player_image_one' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
+					// 				'player_image_second' => 'http://ssl.gstatic.com/onebox/media/sports/logos/H23oIEP6qK-zNc3O8abnIA_48x48.png',
+					// 			],
+					// 			'status' => 'live',
+					// 			'score' => [
+					// 				'sets' => 5,
+					// 				'team_double_first' => [
+					// 					1 => [
+					// 						'point' => 7, 
+					// 						'tie_break' => 7,
+					// 					],
+					// 					2 => [
+					// 						'point' => 6, 
+					// 					],
+					// 					3 => [
+					// 						'point' => 4, 
+					// 					],
+					// 					4 => [
+					// 						'point' => 4, 
+					// 					],
+					// 					5 => [
+					// 						'point' => 6, 
+					// 					],
+					// 				],
+					// 				'team_double_second' => [
+					// 					1 => [
+					// 						'point' => 6, 
+					// 						'tie_break' => 5,
+					// 					],
+					// 					2 => [
+					// 						'point' => 4, 
+					// 					],
+					// 					3 => [
+					// 						'point' => 6, 
+					// 					],
+					// 					4 => [
+					// 						'point' => 6, 
+					// 					],
+					// 					5 => [
+					// 						'point' => 4, 
+					// 					],
+					// 				],
+					// 			],
+					// 			'url' => '#',
+					// 		],
+					// 	],
+					// ],
 				],
 			],
 		];
 
 		// Assets files
 		public $files = [
-			'style'		=> [],
+			'style'		=> ['next-matches.less'],
 			'js'		=> [],
 		];
 		// Options

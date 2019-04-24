@@ -194,15 +194,18 @@
 								</div>
 								<div class="col-6">
 									<div class="results-player">
+										<?php if ($match['status'] === 'live') {?>
 										<div class="playing-ball"></div>
 										<div class="match-points float-left">40</div>
+										<?php }?>
 										<?php foreach ($match['score']['player_first'] as $score) {?>
 											<div class="column <?php if (isset($score['tie_break'])) {?>tie-break<?php }?> float-left"><?= $score['point'];?> <?php if (isset($score['tie_break'])){?> <span>(<?= $score['tie_break'];?>)</span><?php }?></div>
 										<?php }?>
 									</div>
 									<div class="results-player">
-										
+										<?php if ($match['status'] === 'live') {?>
 										<div class="match-points float-left">15</div>
+										<?php }?>
 										<?php foreach ($match['score']['player_second'] as $score) {?>
 											<div class="column <?php if (isset($score['tie_break'])) {?>tie-break<?php }?> float-left"><?= $score['point'];?> <?php if (isset($score['tie_break'])){?> <span>(<?= $score['tie_break'];?>)</span><?php }?></div>
 										<?php }?>
