@@ -3,6 +3,9 @@
 	 * Social Posts
 	 */
 	class SocialPosts extends Widgets {
+		// Social posts
+		public $social;
+
 		// Assets files
 		public $files = [
 			'style'	=> ['social-card.less'],
@@ -35,9 +38,15 @@
 			]
 		];
 
+		public function __construct() {
+			if ($content = Widgets::model()) {
+				$this->social = $content;
+			}
+		}
+
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					
+					'socialsposts'		=> $this->social,
 				]
 			);
 		}

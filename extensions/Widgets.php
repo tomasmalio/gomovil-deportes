@@ -36,6 +36,32 @@
 				return $this->options['items']['desktop'];
 			}
 		}
+
+		/**
+		 * Model
+		 * 
+		 * @return		array 			Returns array info of the model
+		 */
+		public function model() {
+			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
+			if (is_dir($modelUrl)) {
+				require_once $modelUrl .'/Model' . get_class($this) . '.php';
+				$name = 'Model'.get_class($this);
+				$model = new $name();
+				return $model->model();	
+			}
+			return null;
+		}
+
+
+		public function replaceKey ($arr, $oldkey, $newkey) {
+			if (array_key_exists( $oldkey, $arr)) {
+				$keys = array_keys($arr);
+				$keys[array_search($oldkey, $keys)] = $newkey;
+				return array_combine($keys, $arr); 
+			}
+			return $arr;
+		}
 		
 		/**
 		 * Render View HTML
@@ -393,7 +419,7 @@
 		}
 
 		/**
-		 * createScriptJs
+		 * Create Script Js
 		 * 
 		 * @param		string		$script		String with the code for create a JavaScript file
 		 * @param		string		$name		String with the name output file name
@@ -410,6 +436,62 @@
 			file_put_contents($dest . '/' . $filename, $script);
 
 			return ($dest . '/' . $filename);
+		}
+
+		/**
+		 * Make Links
+		 * Create links throw a text that we receive
+		 * 
+		 * @param		string		$script		String with the social text
+		 * @return		string		Return the social text with http in the links
+		 */
+		public function makeLinks($string) {
+
+			//The Regular Expression filter
+			$reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
+
+			// Check if there is a url in the text
+			if(preg_match_all($reg_exUrl, $string, $url)) {				
+				// Loop through all matches
+				foreach($url[0] as $newLinks){
+					$string = str_replace($newLinks, '{URL}', $string);
+					if (substr($newLinks, 0, 4) === "http"){
+						$replace = '<a href="'.$newLinks.'" target="_blank">'.$newLinks.'</a>';
+						return str_replace('{URL}', $replace, $string);
+					}
+				}
+			}
+		}
+
+		/**
+		 * Convert Social Links
+		 * Create links throw a text that we receive that contains
+		 * @username or #hashtags
+		 * 
+		 * @param		string		$script		String with the social text
+		 * @return		string		Return the social text with http in the links of users and hasthags
+		 */
+		public function convertSocialLinks ($str, $network) {
+			$regex = "/[@#](\w+)/";
+		
+			switch ($network) {
+				case 'twitter':
+					$hrefs = [
+						'#' => 'https://www.twitter.com/hashtag/',
+						'@' => 'https://www.twitter.com/'
+					];
+					break;
+				case 'instagram':
+					$hrefs = [
+						'#' => 'https://www.instagram.com/explore/tags/',
+						'@' => 'https://www.instagram.com/'
+					];
+					break;
+			}
+			$result = preg_replace_callback($regex, function($matches) use ($hrefs) {
+				return sprintf('<a href="%s%s" target="_blank">%s</a>', $hrefs[$matches[0][0]], $matches[1], $matches[0]);
+			}, $str);
+			return($result);
 		}
 
 	}

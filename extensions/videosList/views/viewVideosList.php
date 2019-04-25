@@ -1,16 +1,31 @@
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){
-
 		new jPlayerPlaylist({
 			jPlayer: "#jquery_jplayer_1",
 			cssSelectorAncestor: "#jp_container_1"
 			}, 
-			<?php print_r(json_encode($this->videos));?>,
+			[
+				<?php 
+					$quantity = 0;
+					foreach ($videos as $video) {?>
+				{
+					title: "<?=$video->nombre;?>",
+					m4v: "<?=$video->video;?>",
+					poster: "<?=$video->preview;?>"
+				},
+				<?php 
+						$quantity++;
+						if (isset($items) && $quantity === $items) {
+							break;
+						}	
+					}
+				?>
+			],
 			{
 				playlistOptions: {
-					<?php if ($videoList->controls['autoPlay']) {?>
-					autoPlay: <?=$videoList->controls['autoPlay']?>,
+					<?php if ($options['controls']['autoPlay']) {?>
+					autoPlay: <?=$options['controls']['autoPlay']?>,
 					<?php }?>
 				},
 				swfPath: "./assets/jplayer/dist/jplayer",
@@ -19,19 +34,24 @@
 				autoBlur: false,
 				smoothPlayBar: true,
 				keyEnabled: true,
-				<?php if ($videoList->controls['loop']) {?>
-				loop: <?=$videoList->controls['loop']?>,
-				<?php }?>
-				<?php if (!$videoList->controls['displayControls']) {?>
+				<?php 
+					if ($options['controls']['loop']) {
+				?>
+				loop: <?=$options['controls']['loop']?>,
+				<?php 
+					}
+					if (!$options['controls']['displayControls']) {
+				?>
 				autohide: {
 					restored: true,
 				},
-				<?php }?>
-				<?php if ($videoList->controls['muted']) {?>
-				muted: <?=$videoList->controls['muted']?>,
+				<?php 
+					}
+					if ($options['controls']['muted']) {
+				?>
+				muted: <?=$options['controls']['muted']?>,
 				<?php }?>
 			},
-			
 		);
 	});
 	//]]>

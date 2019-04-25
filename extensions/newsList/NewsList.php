@@ -46,7 +46,6 @@
 				'desktop' 	=> true,
 				'mobile' 	=> true,
 			],
-			
 			'minify' => false,
 			'script' => [
 				'name'		=> 'swiper.news-list',
