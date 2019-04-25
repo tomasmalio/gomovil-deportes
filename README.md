@@ -2,7 +2,7 @@
 
 GoMovil Deportes 
 
-## Install
+## [Install](#install)
 When we want to install the platform from the begining we must follow the instructions to get in ready very quicky.
 1) Open your terminal of your server and go to the directory in which your Apache works
 2) You must clone this respository:
