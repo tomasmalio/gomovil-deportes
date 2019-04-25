@@ -2,19 +2,31 @@
 
 GoMovil Deportes 
 
-## Install Composer
-Follow the instructions from [here](https://getcomposer.org/download/) and the continue the instructions of the [Basic Usage](https://getcomposer.org/doc/01-basic-usage.md). The most important thing is that the composer.json must be created.
-
-## Install Twig
-The first thing that you must do is install the [Twig](https://twig.readthedocs.io/en/latest/installation.html) with your composer.
-
+## Install the software
+When we want to install the platform from the begining we must follow the instructions to get in ready very quicky.
+1) Open your terminal of your server and go to the directory in which your Apache works
+2) You must clone this respository:
 ```bash
-php composer require twig/twig
+git clone https://github.com/tomasmalio/gomovil-deportes.git
 ```
-Then you must update the extension add in your composer.lock to the composer.json
+3) Your server must have PHP so let's install. Here it's an example with the version that works:
+```bash
+yum install php71-cli.x86_64
+```
+4) Once you ended the idea is to install ***composer***:
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+If you need more information about it, follow the instructions from [here](https://getcomposer.org/download/) and continue the instructions of the [Basic Usage](https://getcomposer.org/doc/01-basic-usage.md). The most important thing is that the *composer.json* must be created.
+
+5) When you finished the install of ***composer***, we must run the command that install all the require packages and scripts that are include in the repository:
 ```bash
 php composer install
 ```
+***Important:*** the composer.json contains a command in which change owner permissions to the user "apache". If you've other user for your web server be carefull because the *assets folder* must have owner permissions.
 
 ## Less Installation in Visual Studio Code
 
