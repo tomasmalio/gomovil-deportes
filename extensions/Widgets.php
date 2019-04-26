@@ -446,12 +446,8 @@
 		 * @return		string		Return the social text with http in the links
 		 */
 		public function makeLinks($string) {
-
-			//The Regular Expression filter
-			$reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
-
-			// Check if there is a url in the text
-			if(preg_match_all($reg_exUrl, $string, $url)) {				
+			
+			if ($url = self::getLinks($string)) {
 				// Loop through all matches
 				foreach($url[0] as $newLinks){
 					$string = str_replace($newLinks, '{URL}', $string);
@@ -463,6 +459,23 @@
 			}
 		}
 
+		/**
+		 * Get links
+		 * Get links from a string
+		 * 
+		 * @param		string		$script		String with the social text
+		 * @return		array		Return an array of links
+		 */
+		public function getLinks ($string) {
+			// The Regular Expression filter
+			$reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
+			// Check if there is a url in the text
+			if (preg_match_all($reg_exUrl, $string, $url)) {
+				return $url;
+			}
+			return null;
+		}
+		
 		/**
 		 * Convert Social Links
 		 * Create links throw a text that we receive that contains

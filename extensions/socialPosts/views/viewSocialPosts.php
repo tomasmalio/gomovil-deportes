@@ -40,7 +40,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="social-datetime float-left"><?=$social->fecha?></div>
-						<div class="social-source float-right"><i class="social-icon <?= strtolower($social->origen)?>"></i></div>
+						<div class="social-source float-right"><a href="<?php echo current(SocialPosts::getLinks($social->text))[0]?>"><i class="social-icon <?= strtolower($social->origen)?>"></i></a></div>
 					</div>
 				<!-- </a>	 -->
 			</div>
