@@ -40,7 +40,7 @@
 				loop: <?=$options['controls']['loop']?>,
 				<?php 
 					}
-					if (!$options['controls']['displayControls']) {
+					if (!$options['controls']['displayControls'] || ($options['controls']['autoPlay'] === false)) {
 				?>
 				autohide: {
 					restored: true,
@@ -71,10 +71,14 @@
 		<!-- Eof Playlist -->
 		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 player-content">
 			<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-			<div class="jp-gui">
-				<div class="jp-video-play">
-					<button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+			
+			<div class="jp-video-play">
+				<div class="play-icon">
+					<button class="jp-video-play-icon" role="button" tabindex="0"></button>
 				</div>
+			</div>
+			
+			<div class="jp-gui">
 				<div class="jp-interface">
 					<div class="jp-progress">
 						<div class="jp-seek-bar">

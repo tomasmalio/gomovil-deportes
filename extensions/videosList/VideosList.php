@@ -19,11 +19,11 @@
 			],
 			'controls' => [
 				// Autoplay
-				'autoPlay' 			=> true,
+				'autoPlay' 			=> false,
 				// Display controls
-				'displayControls' 	=> true,
+				'displayControls' 	=> false,
 				// Muted
-				'muted' 			=> true,
+				'muted' 			=> false,
 				// Loop
 				'loop'				=> false,
 			]
