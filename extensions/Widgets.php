@@ -139,6 +139,7 @@
 							if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
 								array_push($arrayReturn, $file);
 							} else {
+								
 								// Validate if an authorize file and exits
 								if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
 									//$src .= '/' . self::getExtension($file);
@@ -159,6 +160,7 @@
 										} else {
 											$filename .= '.css';
 										}
+										//echo "informacion". date ("F d Y H:i:s.", filemtime($filename));
 										/**
 										 * If there's styles define we modify the original file 
 										 * with the new content. If the variable is not change
@@ -475,7 +477,7 @@
 			}
 			return null;
 		}
-		
+
 		/**
 		 * Convert Social Links
 		 * Create links throw a text that we receive that contains

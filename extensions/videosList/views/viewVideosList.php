@@ -51,6 +51,7 @@
 				?>
 				muted: <?=$options['controls']['muted']?>,
 				<?php }?>
+				fullScreen: true
 			},
 		);
 	});
@@ -104,9 +105,6 @@
 							<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>-->
 							<button class="jp-full-screen" role="button" tabindex="0">full screen</button>
 						</div>
-					</div>
-					<div class="jp-details">
-						<div class="jp-title" aria-label="title">&nbsp;</div>
 					</div>
 				</div>
 			</div>
