@@ -37,6 +37,7 @@
 				'name'		=> 'swiper.videos-list',
 				'content' 	=> "new Swiper('.swiper-container-video', {
 					slidesPerView: 'auto',
+					loop: true,
 					spaceBetween: 15,
 					mousewheel: true,
 					pagination: {
