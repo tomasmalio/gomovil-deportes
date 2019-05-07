@@ -4,7 +4,7 @@
 	 */
 	class MatchesNext extends Widgets {
 		public $titleNextMatces = 'Próximos partidos';
-		public $date = '2019-04-25';
+		public $date;
 		public $linkCalendar = ['url' => '#', 'name' => 'Ver calendario'];
 		public $sports = [
 			'football' => [
@@ -337,6 +337,7 @@
 			if ($contentNba = Widgets::model('MatchesNextNba', ['from' => ['date' => date('Y-m-d'), 'time' => '00:00:00']])) {
 				$this->sports['basket']['matches'] = $contentNba;
 			}
+			$this->date = date('Y-m-d');
 		}
 
 		public function renderView () {
