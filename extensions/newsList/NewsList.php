@@ -30,7 +30,7 @@
 					spaceBetween: 30,
 					mousewheel: true,
 					pagination: {
-					  clickable: false,
+						clickable: false,
 					},
 				});"
 			]

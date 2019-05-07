@@ -5,10 +5,12 @@
 	class VideosList extends Widgets {
 		public $videos;
 
+		public $view = 'VideosList';
+
 		// Assets files
 		public $files = [
-			'style'		=> ['skin.bitel.jplayer.less'],
-			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js'],
+			'style'		=> ['skin.bitel.jplayer.less', 'swiper.css'],
+			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js', 'swiper.js'],
 		];
 
 		// Options
@@ -17,15 +19,30 @@
 				'desktop' => 4,
 				'mobile' => 4,
 			],
+			'slider' => [
+				'desktop' => true,
+				'mobile' => true,
+			],
 			'controls' => [
 				// Autoplay
 				'autoPlay' 			=> false,
 				// Display controls
-				'displayControls' 	=> false,
+				'displayControls' 	=> true,
 				// Muted
-				'muted' 			=> false,
+				'muted' 			=> true,
 				// Loop
 				'loop'				=> false,
+			],
+			'script' => [
+				'name'		=> 'swiper.videos-list',
+				'content' 	=> "new Swiper('.swiper-container-video', {
+					slidesPerView: 'auto',
+					spaceBetween: 15,
+					mousewheel: true,
+					pagination: {
+						clickable: false,
+					},
+				});"
 			]
 		];
 
@@ -33,14 +50,19 @@
 			if ($content = Widgets::model()) {
 				$this->videos = $content;
 			}
+			if ($GLOBALS['isMobile']) {
+				$this->view = $this->view . 'Mobile';
+			}
 		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'videos'			=> $this->videos,
 					'options'			=> $this->options,
+					'slider'			=> parent::slider(),
 					'items'				=> parent::items(),
-				]
+				],
+				$this->view
 			);
 		}
 	}

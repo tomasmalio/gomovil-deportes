@@ -31,6 +31,9 @@
 
 @video-play-stop-background: rgba(0, 0, 0, 0.5);
 
+.videos-container {
+	position: relative;
+}
 .jp-container {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -157,26 +160,18 @@
 	.jp-interface {
 		.border-radius(0 0 10px 0);
 	}
-	.jp-type-single {
-		.jp-controls {
-			width: 78px;
-			margin-left: 200px;
-		}
-	}
-	.jp-type-playlist {
-		.jp-controls {
-			width: 206px;
-			margin-top: 10px;
-		}
-	}
+	// .jp-type-single {
+	// 	position: relative;
+	// 	width: 100%;
+	// 	padding: 0 5px;
+	// 	.jp-controls {
+	// 		margin: 0;
+	// 		padding: 0;
+	// 		overflow: hidden;
+	// 	}
+	// }
 	.jp-controls {
 		float: left;
-	}
-	.jp-progress {
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 2px;
 	}
 	.jp-current-time {
 		color: @player-current-time-color;
@@ -193,7 +188,6 @@
 	.jp-toggles {
 		float: right;
 		margin: 0;
-		margin-top: 10px;
 		width: 100px;
 	}
 }
@@ -221,7 +215,7 @@
 .jp-gui {
 	background: #00000030;
 	bottom: 0px;
-	display: none;
+	display: block;
 	left: 0;
 	padding-top: 5px;
 	position: absolute;
@@ -247,9 +241,9 @@
 }
 .jp-controls-holder {
 	clear: both;
-	margin: 0 auto 10px auto;
+	margin: 0 auto;
 	overflow: hidden;
-	padding: 0 10px;
+	padding: 10px;
 	position: relative;
 	width: 100%;
 }
@@ -324,6 +318,8 @@
 	}
 }
 .jp-progress {
+	width: 100%;
+	height: 2px;
 	overflow: hidden;
 	background-color: @background-color;
 }
@@ -351,7 +347,7 @@
 	position: relative;
 	width: 200px;
 	margin-left: 10px;
-	margin-top: 10px;
+	margin-top: 2px;
 	button {
 		display: block;
 		position: absolute;
@@ -475,6 +471,7 @@
 	}
 }
 .jp-type-single {
+	position: relative;
 	.jp-details {
 		border-top: none;
 	}
@@ -644,12 +641,34 @@
 	padding: 5px;
 	font-size: .8em;
 	display: none;
-	a {
-	}
 	span {
 		font-size: 1em;
 		display: block;
 		text-align: center;
 		font-weight: bold;
+	}
+}
+
+section.videos-container {
+	position: relative;
+	.video-list {
+		width: 100%;
+		height: 100%;
+		li.swiper-slide {
+			width: 80%;
+			height: 380px;
+			// margin-left: -15px;
+			.jp-jplayer {
+				[id^="jp_poster_"] {
+					width: 100% !important;
+					height: 100% !important;
+					position: absolute;
+					.border-radius(10px);
+				}
+				video {
+					.border-radius(10px);
+				}
+			}
+		}
 	}
 }
