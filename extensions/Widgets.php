@@ -42,13 +42,18 @@
 		 * 
 		 * @return		array 			Returns array info of the model
 		 */
-		public function model() {
+		public function model($model = false, $params = []) {
 			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
 			if (is_dir($modelUrl)) {
-				require_once $modelUrl .'/Model' . get_class($this) . '.php';
-				$name = 'Model'.get_class($this);
+				if (isset($model) && $model) {
+					require_once $modelUrl .'/Model' . $model . '.php';
+					$name = 'Model'.$model;
+				} else {
+					require_once $modelUrl .'/Model' . get_class($this) . '.php';
+					$name = 'Model'.get_class($this);
+				}
 				$model = new $name();
-				return $model->model();	
+				return $model->model($params);	
 			}
 			return null;
 		}

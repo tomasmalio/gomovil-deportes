@@ -83,51 +83,6 @@
 				'name' => 'Basket',
 				'url' => 'basket',
 				'icon_name' => 'fas fa-basketball-ball basket',
-				'tournaments' => [
-					[
-						'name' => 'Conferencia Oeste',
-						'step' => '',
-						'url' => '#',
-						'matches' => [
-							[
-								'datetime' => '2019-04-25 21:00:00',
-								'team_local' => 'Denver',
-								'team_visit' => 'San Antonio',
-								'team_image_local' => 'images/basketball/nba/denver-nuggets.png',
-								'team_image_visit' => 'images/basketball/nba/san-antonio-spurs.png',
-								// 'status' => 'live',
-								// 'match_time' => [
-								// 	'quarter' => 2,
-								// 	'minutes' => 9,
-								// 	'seconds' => 45,
-								// ],	
-								// 'score' => [
-								// 	'gol_local' => 130,
-								// 	'gol_visit' => 129,
-								// ],
-								// 'url' => '#',
-							],
-							// [
-							// 	'datetime' => '2019-03-18 15:00:00',
-							// 	'team_local' => 'Chicago Bulls',
-							// 	'team_visit' => 'Miami Heat',
-							// 	'team_image_local' => 'images/basketball/nba/chicaco-bulls.png',
-							// 	'team_image_visit' => 'images/basketball/nba/los-angeles-lakers.png',
-							// 	'status' => '',
-							// 	'match_time' => [
-							// 		'quarter' => 0,
-							// 		'minutes' => 0,
-							// 		'seconds' => 0,
-							// 	],	
-							// 	'score' => [
-							// 		'gol_local' => 0,
-							// 		'gol_visit' => 0,
-							// 	],
-							// 	'url' => '#',
-							// ],
-						],
-					],
-				],
 			],
 			'tenis' => [
 				'name' => 'Tenis',
@@ -377,6 +332,12 @@
 		];
 		// Options
 		public $options = [];
+
+		public function __construct() {
+			if ($contentNba = Widgets::model('MatchesNextNba', ['from' => ['date' => date('Y-m-d'), 'time' => '00:00:00']])) {
+				$this->sports['basket']['matches'] = $contentNba;
+			}
+		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([

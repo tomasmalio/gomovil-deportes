@@ -96,56 +96,61 @@
 	<!-- Basketball sport / Next matches -->
 	<?php if (count($sports['basket'] > 0)) {?>
 	<a href="<?=$sports['basket']['url']?>" class="sport basket"><i class="<?= $sports['basket']['icon_name']?>"></i> <span><?= $sports['basket']['name'];?></span></a>
-	<?php foreach ($sports['basket']['tournaments'] as $tournament) {?>
+	<?php //foreach ($sports['basket']['tournaments'] as $tournament) {?>
 	<div class="competition">
+		<?php /*
 		<a href="<?= $tournament['url']?>" class="competition-name"><span><span><?= $tournament['name']?></span></a>
 		<div class="competition-divider"></div>
 		<?php if (isset($tournament['step']) && !empty($tournament['step'])) {?>
 		<div class="competition-situation"><?= $tournament['step']?></div>
 		<?php }?>
+		*/?>
 		<!-- List of matches / Basketball sport / Next matches-->
 		<ul>
-			<?php foreach ($tournament['matches'] as $match) {?>
+			<?php
+			foreach ($sports['basket']['matches'] as $matches) {
+				foreach ($matches as $match) {
+			?>
 			<!-- Match -->
-			<li class="row match <?= $match['status']?>">
+			<li class="row match <?= $match->status?>">
 				<div class="col-12">
-					<a href="<?= $match['url']?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
+					<a href="#" name="<?php echo $match->home . ' vs ' . $match->away?>">
 						<div class="row match-teams">
 							<div class="col-5 match-team">
 								<div class="team">
-									<div class="shield left"><img src="<?=$match['team_image_local']?>" name="local" title="" alt=""></div>
+									<div class="shield left"><img src="<?=$match->homeImage?>" name="local" title="" alt=""></div>
 									<div class="team-name left" style="width: 101px;">
 										<div class="team-name-container">
-											<div class="cell"><?=$match['team_local']?></div>
+											<div class="cell"><?=$match->home?></div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-2 match-info">
-								<?php if ($match['status'] == 'live' || $match['status'] == 'end') {?>
-								<?php if ($match['status'] === 'live'){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-								<div class="time-playing"><?php if ($match['status'] == 'live') {?><span><?php if ($match['match_time']['quarter'] <= 4) { echo $match['match_time']['quarter']; }?></span> | <time><?= $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']?></time><?php } else {?>Final<?php }?></div>
+								<?php if ($match->status == 'Not Starterd' || $match->status == 'Finished') {?>
+								<?php if (is_numeric($match->status)){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
+								<div class="time-playing"><?php if (is_numeric($match->status)){?><span><?php if (is_numeric($match->status) && $match->status <= 4) { echo $match->status; }?></span> | <time><?php /* $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']*/?></time><?php } else {?>Final<?php }?></div>
 									<div class="match-divider">
 										<div class="match-divider-content">
 											<div class="result basket">
-												<span class="number"><?=$match['score']['gol_local'];?></span> - <span class="number"><?=$match['score']['gol_visit'];?></span>
+												<span class="number"><?=$match->home_total;?></span> - <span class="number"><?=$match->away_total;?></span>
 											</div>
 										</div>
 									</div>
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?=date('H:i', strtotime($match['datetime']))?></div>
+											<div class="time-to-play"><?=date('H:i', strtotime($match->datetime))?></div>
 										</div>
 									</div>
 								<?php }?>
 							</div>
 							<div class="col-5 match-team">
 								<div class="team">
-									<div class="shield right"><img src="<?=$match['team_image_visit']?>" name="local" title="" alt=""></div>
+									<div class="shield right"><img src="<?=$match->awayImage?>" name="local" title="" alt=""></div>
 									<div class="team-name right" style="width: 101px;">
 										<div class="team-name-container">
-											<div class="cell"><?=$match['team_visit']?></div>
+											<div class="cell"><?=$match->away?></div>
 										</div>
 									</div>
 								</div>
@@ -155,12 +160,14 @@
 				</div>
 			</li>
 			<!-- Eof Match -->
-			<?php } /* Eof foreach matches */?>
+			<?php 
+					}
+				} /* Eof foreach matches */?>
 			
 		</ul>
 		<!-- Eof list of matches / Basketball sport / Next matches-->
 	</div>
-	<?php } /* Eof foreach tournaments */?>
+	<?php //} /* Eof foreach tournaments */?>
 	<?php } /* Eof if basket sport */?>
 	<!-- Eof basketball sport / Next matches -->
 	<!-- Tenis sport / Next matches -->
