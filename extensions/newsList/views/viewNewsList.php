@@ -1,6 +1,6 @@
 <!-- News -->
 <section class="news-list">
-	<?php if ($slider) {?><div class="swiper-container"><?php }?>
+	<div class="news-list-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
@@ -34,7 +34,7 @@
 				}
 			?>
 		</ul>
-	<?php if ($slider) {?></div><?php }?>
-	<!-- <div class="swiper-pagination"></div> -->
+		<div class="swiper-pagination"></div>
+	</div>
 </section>
 <!-- Eof News -->

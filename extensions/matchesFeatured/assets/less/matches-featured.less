@@ -1,0 +1,348 @@
+/* Global Imports */
+@import '../../../../less/config.less';
+@import '../../../../less/common.less';
+
+section.match-featured-content {
+	background: white;
+	.border-radius(10px);
+	margin-bottom: 15px;
+	padding: 10px;
+	position: relative;
+	h3 {
+		position: absolute;
+		top: 10px;
+		left: 0;
+		span {
+			background: @color-second;
+			color: white;
+			font-size: 12pt;
+			padding: 5px 8px 5px 20px;
+			text-transform: uppercase;
+		}
+	}
+	.sport {
+		position: absolute;
+		right: 0;
+		border-top: 1px solid #f3f3f3;
+		border-left: 1px solid #f3f3f3;
+		border-bottom: 1px solid #f3f3f3;
+		.border-radius(5px 0 0 5px);
+		//.box-shadow(0px 0px 10px 0px #eaeaea);
+		display: block;
+		padding: 0 8px;
+		width: 90px;
+		top: 15px;
+		i {
+			font-size: 11pt;
+			color: black;
+		}
+		span {
+			color: #555;
+			font-size: 8pt;
+			left: 30px;
+			position: absolute;
+			text-transform: uppercase;
+			top: 5px;
+		}
+		&:hover {
+			background: black;
+			i {
+				color: white;
+			}
+			span {
+				color: white;
+			}
+		}
+	}
+	.matches-featured {
+		margin-top: 50px;
+		margin-bottom: 15px;
+		.swiper-wrapper {
+			padding-bottom: 20px;
+		}
+		.swiper-button-prev, .swiper-button-next {
+			background-size: 11px 36px;
+		}
+		
+	}
+}
+@match-height: 60px;
+/* Match Featured */
+.match-featured {
+	a {
+		display: block;
+		padding: 10px 0;
+		/* Teams / Match Featured */
+		.match-teams {
+			margin-left: 0;
+			margin-right: 0;
+			.match-team {
+				position: relative;
+				text-align: center;
+				padding-right: 0;
+				padding-left: 0;
+				.team {
+					margin: 0;
+					width: 100%;
+					height: @match-height;
+					position: relative;
+					.team-name {
+						color: #333;
+						font-size: 12pt;
+						height: @match-height;
+						position: absolute;
+						.team-name-container {
+							display: table;
+							width: 100%;
+							height: 100%;
+							.cell {
+								display: table-cell;
+								vertical-align: middle;
+							}
+						}
+					}
+					.team-name.right {
+						margin-left: @match-height + 10;
+						left: 0;
+						.team-name-container .cell {
+							text-align: left;
+						}
+					}
+					.team-name.left {
+						margin-right: @match-height + 10;
+						right: 0;
+						.team-name-container .cell {
+							text-align: right;
+						}
+					}
+					.shield {
+						position: absolute;
+						padding: 0 0 5px 0;
+						width: @match-height;
+						text-align: center;
+						img {
+							max-height: @match-height;
+						}
+					}
+					.shield.left {
+						right: 5px;
+					}
+					.shield.right {
+						left: 5px;
+					}
+				}
+				.penalties {
+					margin-top: 10px;
+					.shoot {
+						background: #dedede;
+						.border-radius(50%);
+						height: 8px;
+						margin: 0 5px 0 0;
+						width: 8px;
+					}
+					.shoot.goal {
+						background: #00d200;
+					}
+					.shoot.no-goal {
+						background: red;
+					}
+				}
+				.penalties.left {
+					float: right;
+					margin-right: 5px;
+					.shoot {
+						float: right;
+					}
+				}
+				.penalties.right {
+					float: left;
+					margin-left: 5px;
+					.shoot {
+						float: left;
+					}
+				}
+			}
+			.match-info {
+				padding-left: 0;
+				padding-right: 0;
+				position: relative;
+				.playing-status {
+					color: #555555;
+					font-size: 6pt;
+					left: 0;
+					right: 0;
+					text-align: center;
+					text-transform: uppercase;
+					top: -30px;
+					position: absolute;
+					.situation {
+						background: #41da41;
+						.border-radius(50%);
+						left: 5px;
+						height: 5px;
+						position: absolute;
+						width: 5px;
+						top: 3px;
+					}
+				}
+				.time-playing {
+					color: #555555;
+					left: 0;
+					font-size: 7pt;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					top: -14px;
+				}
+				.match-divider {
+					display: table;
+					width: 100%;
+					.match-divider-content {
+						display: table-cell;
+						vertical-align: middle;
+						text-align: center;
+						width: 100%;
+						height: @match-height;
+						.time-to-play {
+							background: #F4F4F4;
+							.border-radius(6px);
+							color: #585858;
+							font-family: @p-font-family;
+							font-size: 11pt;
+							font-weight: @p-font-weight;
+							height: @match-height / 2;
+							padding: 4px;
+							position: relative;
+							text-align: center;
+						}
+						.result {
+							background: #F4F4F4;
+							.border-radius(6px);
+							color: #b9b9b9;
+							font-family: @p-font-family;
+							font-size: 7pt;
+							font-weight: @p-font-weight;
+							line-height: 20px;
+							padding: 4px;
+							position: relative;
+							text-align: center;
+						}
+						.result.football {
+							span.number {
+								color: #5d5d5d;
+								font-size: 12pt;
+								font-weight: 700;
+							}
+						}
+						.result.basket {
+							span.number {
+								color: #5d5d5d;
+								font-size: 9pt;
+								font-weight: 700;
+							}
+						}
+					}
+				}
+				.penalty-score {
+					bottom: -5px;
+					color: #555555;
+					font-size: 10pt;
+					left: 0;
+					right: 0;
+					position: absolute;
+					text-align: center;
+				}
+			}
+		}
+		/* Eof Teams / Match Featured */
+		/* Tenis / Match content / Competition / Next matches */
+		.match-tenis {
+			margin-left: 0;
+			margin-right: 0;
+			.time {
+				color: #777777;
+				font-size: 8pt;
+				text-align: left;
+			}
+			.flag {
+				width: 25px;
+				height: 25px;
+				img {
+					width: 100%;
+				}
+			}
+			.player-info {
+				display: inline-block;
+				line-height: 14px;
+				width: 100%;
+				.player {
+					font-size: 9pt;
+					padding: 4px 0 0 5px;
+					color: #555555;
+				}
+			}
+			.player-info.double:first-child {
+				margin-bottom: 15px;
+			}
+			/* Results / Tenis / Match content / Competition / Next matches */
+			.match-to-five {
+				padding-right: 0; 
+			}
+			.results-player {
+				display: inline-block;
+				position: relative;
+				.playing-ball {
+					background: #f3f300;
+					.border-radius(50%);
+					height: 10px;
+					left: -10px;
+					position: absolute;
+					top: 8px;
+					width: 10px;
+				}
+				.match-points {
+					color: #555555;
+					display: inline-block;
+					font-size: 9pt;
+					font-weight: 700;
+					padding-top: 3px;
+					padding-right: 10px;
+					padding-left: 10px;
+				}
+				.column {
+					border: 1px solid #ececec;
+					color: #555555;
+					font-size: 10pt;
+					height: 25px;
+					margin-right: 4px;
+					padding: 2px 4px;
+					position: relative;
+					text-align: center;
+					width: 30px;
+					span {
+						font-size: 8pt;
+						position: absolute;
+						top: 0;
+					}
+				}
+				.column.tie-break {
+					text-align: left;
+				}
+				.column.not-play {
+					background: #f7f7f7;
+					height: 25px;
+				}
+			}
+			.results-player.double {
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+			/* Eof results / Tenis / Match content / Competition / Next matches */
+		}
+		/* Eof tenis / Match content / Competition / Next matches */
+	}
+}
+.match.live {
+	margin-top: 30px;
+}
+/* Eof match content / Competition / Next matches */

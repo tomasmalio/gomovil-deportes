@@ -24,14 +24,11 @@
 			'minify' => false,
 			'script' => [
 				'name'		=> 'swiper.news-list',
-				'content' 	=> "var swiper = new Swiper('.swiper-container', {
+				'content' 	=> "var swiperNewsList = new Swiper('.news-list-content', {
 					slidesPerView: 'auto',
 					loop: true,
 					spaceBetween: 30,
 					mousewheel: true,
-					pagination: {
-						clickable: false,
-					},
 				});"
 			]
 		];

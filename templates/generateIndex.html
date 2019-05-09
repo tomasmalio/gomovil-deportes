@@ -37,6 +37,12 @@
 	{% endif %}
 {% endblock %}
 
+{% block matchesFeatured %}
+	{% if widgetMatchesFeatured.display %}
+		{{widgetMatchesFeatured.content | raw}}
+	{% endif %}
+{% endblock %}
+
 {% block listVideos %}
 	{% if widgetVideosList.display %}
 		{{widgetVideosList.content | raw}}

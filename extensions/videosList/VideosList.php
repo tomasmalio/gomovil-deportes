@@ -35,13 +35,11 @@
 			],
 			'script' => [
 				'name'		=> 'swiper.videos-list',
-				'content' 	=> "new Swiper('.swiper-container-video', {
-					slidesPerView: 'auto',
+				'content' 	=> "var swiperVideo = new Swiper('.swiper-container-video', {
+					//slidesPerView: 'auto',
+					loop: false,
 					spaceBetween: 15,
 					mousewheel: true,
-					pagination: {
-						clickable: false,
-					},
 				});"
 			]
 		];

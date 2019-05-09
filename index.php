@@ -30,7 +30,17 @@
 	$assetNewsFeatured = (new NewsFeatured())->assets();
 	array_push($assets['css'], $assetNewsFeatured['css']);
 	array_push($assets['js'], $assetNewsFeatured['js']);
-	$displayNewsFeatured = true;
+	$displayNewsFeatured = false;
+
+	/****************************************
+	 * MATCHES FEATURED 
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/matchesFeatured/MatchesFeatured.php';
+	$widgetMatchesFeatured = (new MatchesFeatured())->renderView();
+	$assetMatchesFeatured = (new MatchesFeatured())->assets();
+	array_push($assets['css'], $assetMatchesFeatured['css']);
+	array_push($assets['js'], $assetMatchesFeatured['js']);
+	$displayMatchesFeatured = true;
 
 	/****************************************
 	 * LIST NEWS
@@ -97,6 +107,10 @@
 		'widgetNewsFeatured' 		=> [
 											'content'			 	=> $widgetNewsFeatured,
 											'display'				=> $displayNewsFeatured,
+		],
+		'widgetMatchesFeatured' 	=> [
+											'content'			 	=> $widgetMatchesFeatured,
+											'display'				=> $displayMatchesFeatured,
 		],
 		'widgetNewsList'			=> [
 											'content'		 		=> $widgetNewsList,

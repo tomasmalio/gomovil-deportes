@@ -42,12 +42,12 @@
 		 * 
 		 * @return		array 			Returns array info of the model
 		 */
-		public function model($model = false, $params = []) {
+		public function model($modelName = false, $params = []) {
 			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
 			if (is_dir($modelUrl)) {
-				if (isset($model) && $model) {
-					require_once $modelUrl .'/Model' . $model . '.php';
-					$name = 'Model'.$model;
+				if (isset($modelName) && $modelName) {
+					require_once $modelUrl .'/Model' . $modelName . '.php';
+					$name = 'Model'.$modelName;
 				} else {
 					require_once $modelUrl .'/Model' . get_class($this) . '.php';
 					$name = 'Model'.get_class($this);
@@ -504,5 +504,35 @@
 			return($result);
 		}
 
+		/**
+		 * Multi Rename Key
+		 * Modify the key names of arrays with new ones
+		 * 
+		 * @param		array		$array		Array with the content
+		 * @param		array		$old_key	Array with the old key to change
+		 * @param		array		$new_key	Array with the new keys
+		 * @return		array		Return array with the key replace
+		 */
+		public function multiRenameKey (&$array, $old_keys, $new_keys) {
+			if(!is_array($array)){
+				($array=="") ? $array=array() : false;
+				return $array;
+			}
+			foreach($array as &$arr){
+				if (is_array($old_keys))
+				{
+					foreach($new_keys as $k => $new_key)
+					{
+						(isset($old_keys[$k])) ? true : $old_keys[$k]=NULL;
+						$arr[$new_key] = (isset($arr[$old_keys[$k]]) ? $arr[$old_keys[$k]] : null);
+						unset($arr[$old_keys[$k]]);
+					}
+				}else{
+					$arr[$new_keys] = (isset($arr[$old_keys]) ? $arr[$old_keys] : null);
+					unset($arr[$old_keys]);
+				}
+			}
+			return $array;
+		}
 	}
 ?>

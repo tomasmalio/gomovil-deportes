@@ -38,7 +38,9 @@ $(document).ready(function(){
 <?php 
 	$i = 0;
 	$close = true;
+
 	foreach ($videos as $video) {
+		//echo $i . ' / '. $items;
 		if ($slider && $i == 0) {
 ?>
 	<div class="swiper-container swiper-container-video">
@@ -111,7 +113,7 @@ $(document).ready(function(){
 	if (isset($items) && $i < $items && $close) {
 ?>
 	</ul>
-</div>
+<!-- </div> -->
 <?php
 	}
 ?>
