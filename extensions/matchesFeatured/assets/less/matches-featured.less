@@ -2,6 +2,28 @@
 @import '../../../../less/config.less';
 @import '../../../../less/common.less';
 
+
+/* Votes */
+@match-featured-votes-background: #fafafa;
+@match-featured-votes-border-radius: 5px;
+@match-featured-votes-margin: 0 30px;
+@match-featured-votes-padding: 5px 5px 8px 5px;
+@match-featured-votes-text-align: center;
+@match-featured-votes-title-color: #333;
+@match-featured-votes-title-font-size: 11pt;
+@match-featured-votes-title-padding-bottom: 10px;
+
+@match-featured-votes-vote-background: transparent;
+@match-featured-votes-vote-background-hover: @color-second;
+@match-featured-votes-vote-border: 1px solid @color-second;
+@match-featured-votes-vote-border-radius: 4px;
+@match-featured-votes-vote-color: @color-second;
+@match-featured-votes-vote-color-hover: @color-first;
+@match-featured-votes-vote-font-size: 11pt;
+@match-featured-votes-vote-text-transform: uppercase;
+@match-featured-votes-vote-padding: 5px 20px;
+/* Eof votes */
+
 section.match-featured-content {
 	background: white;
 	.border-radius(10px);
@@ -64,29 +86,30 @@ section.match-featured-content {
 			background-size: 11px 36px;
 		}
 		.votes {
-			background: #fafafa;
-			.border-radius(5px);
-			margin: 0 30px;
-			padding: 5px 5px 8px 5px;
-			text-align: center;
+			background: @match-featured-votes-background;
+			.border-radius(@match-featured-votes-border-radius);
+			margin: @match-featured-votes-margin;
+			padding: @match-featured-votes-padding;
+			text-align: @match-featured-votes-text-align;
 			p {
-				color: #333;
-				font-size: 11pt;
-				padding-bottom: 10px;
+				color: @match-featured-votes-title-color;
+				font-size: @match-featured-votes-title-font-size;
+				padding-bottom: @match-featured-votes-title-padding-bottom;
 			}
 			button {
-				border: 1px solid @color-second;
-				.border-radius(2px);
-				color: @color-second;
+				background: @match-featured-votes-vote-background;
+				border: @match-featured-votes-vote-border;
+				.border-radius(@match-featured-votes-vote-border-radius);
+				color: @match-featured-votes-vote-color;
 				display: block;
-				font-size: 11pt;
+				font-size: @match-featured-votes-vote-font-size;
 				margin: 0 auto;
-				padding: 5px 8px;
+				padding: @match-featured-votes-vote-padding;
 				text-align: center;
-				width: 100px;
+				text-transform: @match-featured-votes-vote-text-transform;
 				&:hover {
-					background: @color-second;
-					color: @color-first;
+					background: @match-featured-votes-vote-background-hover;
+					color: @match-featured-votes-vote-color-hover;
 				}
 			}
 		}
