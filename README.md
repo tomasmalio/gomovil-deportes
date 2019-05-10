@@ -79,15 +79,15 @@ Example:
 		// Options
 		public $options = [
 			'slider' => [
-				'desktop' 	=> [
-					'display' 		=> true, 
-					'pagination'	=> false,
-					'navigation'	=> false,
+				'desktop' => [
+					'display' => true, 
+					'pagination' => false,
+					'navigation' => false,
 				],
-				'mobile' 	=> [
-					'display' 		=> true, 
-					'pagination'	=> true,
-					'navigation'	=> true,
+				'mobile' => [
+					'display' => true, 
+					'pagination' => true,
+					'navigation' => true,
 				]
 			],
 			'minify' => false,
