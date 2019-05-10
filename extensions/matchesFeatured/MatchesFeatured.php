@@ -3,10 +3,12 @@
 	 * Matches Featured
 	 */
 	class MatchesFeatured extends Widgets {
-		//
+		// Matches featured
 		public $matches;
 		// Label of the match featured
 		public $label = 'Partido destacado';
+		// Title vote
+		public $titleVote = '¿Qué equipo va a ganar?';
 
 		// Assets files
 		public $files = [
@@ -78,6 +80,7 @@
 			return Widgets::renderViewHtml([
 					'matches' 	=> $this->matches,
 					'label'		=> $this->label,
+					'titleVote'	=> $this->titleVote,
 					'slider'	=> parent::slider(),
 					'items'		=> parent::items(),
 				]

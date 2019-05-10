@@ -76,6 +76,14 @@
 								</div>
 								<?php }?>
 							</div>
+							<?php if ($match['status'] != 'live' || $match['status'] != 'end') {?>
+							<div class="col-12">
+								<div class="votes">
+									<p><?=$titleVote?></p>
+									<button class="vote" type="button">Votar</button>
+								</div>
+							</div>
+							<?php }?>
 						</div>
 					</a>
 				</div>

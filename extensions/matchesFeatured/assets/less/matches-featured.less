@@ -63,7 +63,33 @@ section.match-featured-content {
 		.swiper-button-prev, .swiper-button-next {
 			background-size: 11px 36px;
 		}
-		
+		.votes {
+			background: #fafafa;
+			.border-radius(5px);
+			margin: 0 30px;
+			padding: 5px 5px 8px 5px;
+			text-align: center;
+			p {
+				color: #333;
+				font-size: 11pt;
+				padding-bottom: 10px;
+			}
+			button {
+				border: 1px solid @color-second;
+				.border-radius(2px);
+				color: @color-second;
+				display: block;
+				font-size: 11pt;
+				margin: 0 auto;
+				padding: 5px 8px;
+				text-align: center;
+				width: 100px;
+				&:hover {
+					background: @color-second;
+					color: @color-first;
+				}
+			}
+		}
 	}
 }
 @match-height: 60px;
