@@ -46,6 +46,8 @@ Remember that inside your extensions folder you must have the following files an
 	   └─ assets/
 	   |   └─ css/
 	   |   └─ js/
+	   └─ model/
+	   |   └── ModelWidgetName.php
 	   └─ views/
 	   |   └── viewWidgetName.php
 	   └── WidgetName.php
@@ -193,7 +195,57 @@ Example:
 	}
 ```
 
-6) Add the following code inside your Controller (*index.php*) 
+6) When we want to connect our extension with a API Service or Database, we must create our **model** file. The default name must start with **Model** and then the name of the **WidgetName**. ***Example: ModelWidgetName.php***.
+
+Inside of the file you can have something like this:
+
+```php
+	class ModelWidgetName {
+		
+		public $url = '//domain.com/api-service.json';
+
+		public function model ($params = []) {
+			$json = file_get_contents($this->url);
+			return json_decode($json, true);
+		}
+	}
+```
+
+When you finished creating your **model** file you must call it inside of your **WidgetName** document:
+
+Example:
+```php
+	class WidgetName extends Widgets {
+		// Content
+		public $content;
+
+		// Assets files
+		public $files = [
+			'style'		=> ['styles.filename.less'],
+			'js'		=> ['script.in.javascript.js', 'script.in.javascript.second.js'],
+		];
+
+		// Options
+		public $options = [];
+
+		public function __construct() {
+			if ($content = Widgets::model()) {
+				$this->content = $content;
+			}
+		}
+
+		public function renderView () {
+			return Widgets::renderViewHtml('YourViewName', 
+				[
+					'content'       => $this->content,
+				]
+			);
+		}
+	}
+```
+***Important: you can see that we receive from our Model file the info that's get from a API Service. If there's info we set to a variable call $this->content and then pass to the view file.***
+
+7) Add the following code inside your Controller (*index.php*) 
 
 ```php
 	/****************************************
