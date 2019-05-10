@@ -14,8 +14,12 @@
 		// Options
 		public $options = [
 			'slider' => [
-				'desktop' 	=> true,
-				'mobile' 	=> true,
+				'desktop' 	=> [
+					'display' 		=> true,
+				],
+				'mobile' 	=> [
+					'display' 		=> true,
+				],
 			],
 			'items' => [
 				'desktop' 	=> 5,

@@ -18,7 +18,35 @@
 		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
 		 */
 		public function slider () {
-			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']) && $this->options['slider']['desktop']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']) && $this->options['slider']['mobile'])) {
+			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['display']) && $this->options['slider']['desktop']['display']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['display']) && $this->options['slider']['mobile']['display'])) {
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Pagination
+		 * Identify if the slider must have pagination in the slider for desktop 
+		 * or mobile in which we detect the device in which the user is.
+		 * 
+		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
+		 */
+		public function sliderPagination () {
+			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['pagination']) && $this->options['slider']['desktop']['pagination']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['pagination']) && $this->options['slider']['mobile']['pagination'])) {
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Navigation (arrows)
+		 * Identify if the slider must arrows navigations in the slider for desktop 
+		 * or mobile in which we detect the device in which the user is.
+		 * 
+		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
+		 */
+		public function sliderNavigation () {
+			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['navigation']) && $this->options['slider']['desktop']['navigation']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['navigation']) && $this->options['slider']['mobile']['navigation'])) {
 				return true;
 			}
 			return false;

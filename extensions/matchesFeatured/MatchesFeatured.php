@@ -19,8 +19,16 @@
 		// Options
 		public $options = [
 			'slider' => [
-				'desktop' 	=> true,
-				'mobile' 	=> true,
+				'desktop' 	=> [
+					'display' 		=> true, 
+					'pagination'	=> true,
+					'navigation'	=> false,
+				],
+				'mobile' 	=> [
+					'display' 		=> true, 
+					'pagination'	=> true,
+					'navigation'	=> true,
+				]
 			],
 			'items' => [
 				'desktop' 	=> 2,
@@ -78,11 +86,14 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'matches' 	=> $this->matches,
-					'label'		=> $this->label,
-					'titleVote'	=> $this->titleVote,
-					'slider'	=> parent::slider(),
-					'items'		=> parent::items(),
+					'matches' 		=> $this->matches,
+					'label'			=> $this->label,
+					'titleVote'		=> $this->titleVote,
+					'items'			=> parent::items(),
+					'slider'		=> parent::slider(),
+					'pagination'	=> parent::sliderPagination(),
+					'navigation'	=> parent::sliderNavigation(),
+					
 				]
 			);
 		}

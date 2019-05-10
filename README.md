@@ -63,6 +63,8 @@ Example:
 	}
 ```
 You can see that's it's a variable call ***$options*** which is an array that let you modify or include particulary things.
+
+* **slider**: The extension may accept the possibility of including a slider. If desired, they can accept the possibility of having navigation through arrows and paging. To can define for desktop and mobile.
 * ***minify (true | false)***: if you want to minify or not your files. The default condition is to minify CSS and JS files so if you want to cancel this you must add a false.
 * ***styles (array)***: include the variables that you want to change inside the document LESS before compile.
 * ***script***: include a JavaScript code that you don't want to create a file so the widget will make it for you. This element it's an array in which you can define the name of the script *(optional)* and the content that's require for creating the JS script.
@@ -76,6 +78,18 @@ Example:
 		public $image;
 		// Options
 		public $options = [
+			'slider' => [
+				'desktop' 	=> [
+					'display' 		=> true, 
+					'pagination'	=> false,
+					'navigation'	=> false,
+				],
+				'mobile' 	=> [
+					'display' 		=> true, 
+					'pagination'	=> true,
+					'navigation'	=> true,
+				]
+			],
 			'minify' => false,
 			'styles' => [
 				'color_1' => "white",

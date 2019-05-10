@@ -3,6 +3,8 @@
 @import '../../../../less/common.less';
 
 
+@match-featured-padding-bottom: 20px;
+
 /* Votes */
 @match-featured-votes-background: #fafafa;
 @match-featured-votes-border-radius: 5px;
@@ -19,7 +21,7 @@
 @match-featured-votes-vote-border-radius: 4px;
 @match-featured-votes-vote-color: @color-second;
 @match-featured-votes-vote-color-hover: @color-first;
-@match-featured-votes-vote-font-size: 11pt;
+@match-featured-votes-vote-font-size: 10pt;
 @match-featured-votes-vote-text-transform: uppercase;
 @match-featured-votes-vote-padding: 5px 20px;
 /* Eof votes */
@@ -80,7 +82,7 @@ section.match-featured-content {
 		margin-top: 50px;
 		margin-bottom: 15px;
 		.swiper-wrapper {
-			padding-bottom: 20px;
+			padding-bottom: @match-featured-padding-bottom;
 		}
 		.swiper-button-prev, .swiper-button-next {
 			background-size: 11px 36px;
@@ -113,6 +115,12 @@ section.match-featured-content {
 				}
 			}
 		}
+	}
+	.swiper-pagination {
+		bottom: 0;
+	}
+	.swiper-pagination-bullet-active {
+		background: @color-second;
 	}
 }
 @match-height: 60px;
