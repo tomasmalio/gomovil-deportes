@@ -3,7 +3,7 @@
 	 * NewsList
 	 */
 	class NewsList extends Widgets {
-		public $news;
+		public $content;
 
 		// Assets files
 		public $files = [
@@ -37,15 +37,13 @@
 			]
 		];
 
-		public function __construct() {
-			if ($content = Widgets::model()) {
-				$this->news = $content;
-			}
+		public function __construct($params = []) {
+			parent::__construct($params);
 		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'newsList' 	=> $this->news,
+					'content' 	=> $this->content,
 					'slider'	=> parent::slider(),
 					'items'		=> parent::items(),
 				]

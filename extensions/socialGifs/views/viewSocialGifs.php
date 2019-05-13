@@ -1,7 +1,7 @@
 <div class="social-gifs">
 	<?php
 		// print_r($gifs); 
-		foreach ($gifs as $gif) {
+		foreach ($content as $gif) {
 			foreach ($gif as $media) {
 	?>
 	<div class="col-12">

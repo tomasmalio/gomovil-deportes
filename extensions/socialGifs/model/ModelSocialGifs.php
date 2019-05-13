@@ -9,14 +9,14 @@
 		// Key
 		public $key = '3TjC2jUDvbzMlYWqeS6LI2RcdIFQo7XE';
 		// Keyword search
-		public $search = 'futbol';
+		public $search;
 		// Limit of gifs
 		public $limit = 10;
 		// Language
 		public $lang = 'es';
 		
-		public function model () {
-			$content = $this->url. 'api_key=' .$this->key. '&q=' . $this->search . '&limit='. $this->limit .'&offset=0&rating=G&lang='.$this->lang;
+		public function model ($params = []) {
+			$content = $this->url. 'api_key=' .$this->key. '&q=' . $params['search'] . '&limit='. $this->limit .'&offset=0&rating=G&lang='.$this->lang;
 			$json = file_get_contents($content);
 			return json_decode($json);
 		}

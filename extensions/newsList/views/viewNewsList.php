@@ -4,7 +4,7 @@
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($newsList as $news) {
+				foreach ($content as $news) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="#" title="<?= $news->titulo?>">

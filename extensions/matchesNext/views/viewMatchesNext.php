@@ -1,11 +1,11 @@
 <!-- Next matches-->
 <section class="next-matches">
-	<h2><?= $titleNextMatces;?></h2>
+	<h2><?= $titleNextMatches;?></h2>
 	<div class="date-matches"><?= date('d \d\e F', strtotime($date))?></div>
 	<!-- Football Sport / Next matches -->
-	<?php if (count($sports['football'] > 0)) {?>
-	<a href="<?=$sports['football']['url']?>" class="sport football"><i class="<?= $sports['football']['icon_name']?>"></i> <span><?= $sports['football']['name'];?></span></a>
-	<?php foreach ($sports['football']['tournaments'] as $tournament) {?>
+	<?php if (count($content['football'] > 0)) {?>
+	<a href="<?=$content['football']['url']?>" class="sport football"><i class="<?= $content['football']['icon_name']?>"></i> <span><?= $content['football']['name'];?></span></a>
+	<?php foreach ($content['football']['tournaments'] as $tournament) {?>
 	<div class="competition">
 		<a href="<?= $tournament['url']?>" class="competition-name"><span><?= $tournament['name']?></span></a>
 		<div class="competition-divider"></div>
@@ -94,9 +94,9 @@
 	<!-- Eof football sport / Next matches -->
 
 	<!-- Basketball sport / Next matches -->
-	<?php if (count($sports['basket'] > 0)) {?>
-	<a href="<?=$sports['basket']['url']?>" class="sport basket"><i class="<?= $sports['basket']['icon_name']?>"></i> <span><?= $sports['basket']['name'];?></span></a>
-	<?php //foreach ($sports['basket']['tournaments'] as $tournament) {?>
+	<?php if (count($content['basket'] > 0)) {?>
+	<a href="<?=$content['basket']['url']?>" class="sport basket"><i class="<?= $content['basket']['icon_name']?>"></i> <span><?= $content['basket']['name'];?></span></a>
+	<?php foreach ($content['basket']['tournaments'] as $tournament) {?>
 	<div class="competition">
 		<?php /*
 		<a href="<?= $tournament['url']?>" class="competition-name"><span><span><?= $tournament['name']?></span></a>
@@ -107,50 +107,47 @@
 		*/?>
 		<!-- List of matches / Basketball sport / Next matches-->
 		<ul>
-			<?php
-			foreach ($sports['basket']['matches'] as $matches) {
-				foreach ($matches as $match) {
-			?>
+			<?php foreach ($tournament['matches'] as $match) {?>
 			<!-- Match -->
-			<li class="row match <?= $match->status?>">
+			<li class="row match <?= $match['status']?>">
 				<div class="col-12">
-					<a href="#" name="<?php echo $match->home . ' vs ' . $match->away?>">
+					<a href="#" name="<?php echo $match['home'] . ' vs ' . $match['away']?>">
 						<div class="row match-teams">
 							<div class="col-5 match-team">
 								<div class="team">
-									<div class="shield left"><img src="<?=$match->homeImage?>" name="local" title="" alt=""></div>
+									<div class="shield left"><img src="<?=$match['homeImage']?>" name="local" title="" alt=""></div>
 									<div class="team-name left" style="width: 101px;">
 										<div class="team-name-container">
-											<div class="cell"><?=$match->home?></div>
+											<div class="cell"><?=$match['home']?></div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-2 match-info">
-								<?php if ($match->status == 'Not Starterd' || $match->status == 'Finished') {?>
-								<?php if (is_numeric($match->status)){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-								<div class="time-playing"><?php if (is_numeric($match->status)){?><span><?php if (is_numeric($match->status) && $match->status <= 4) { echo $match->status; }?></span> | <time><?php /* $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']*/?></time><?php } else {?>Final<?php }?></div>
+								<?php if ($match['status'] == 'Not Starterd' || $match['status'] == 'Finished') {?>
+								<?php if (is_numeric($match['status'])){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
+								<div class="time-playing"><?php if (is_numeric($match['status'])){?><span><?php if (is_numeric($match['status']) && $match['status'] <= 4) { echo $match['status']; }?></span> | <time><?php /* $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']*/?></time><?php } else {?>Final<?php }?></div>
 									<div class="match-divider">
 										<div class="match-divider-content">
 											<div class="result basket">
-												<span class="number"><?=$match->home_total;?></span> - <span class="number"><?=$match->away_total;?></span>
+												<span class="number"><?=$match['home_total'];?></span> - <span class="number"><?=$match['away_total'];?></span>
 											</div>
 										</div>
 									</div>
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?=date('H:i', strtotime($match->datetime))?></div>
+											<div class="time-to-play"><?=date('H:i', strtotime($match['datetime']))?></div>
 										</div>
 									</div>
 								<?php }?>
 							</div>
 							<div class="col-5 match-team">
 								<div class="team">
-									<div class="shield right"><img src="<?=$match->awayImage?>" name="local" title="" alt=""></div>
+									<div class="shield right"><img src="<?=$match['awayImage']?>" name="local" title="" alt=""></div>
 									<div class="team-name right" style="width: 101px;">
 										<div class="team-name-container">
-											<div class="cell"><?=$match->away?></div>
+											<div class="cell"><?=$match['away']?></div>
 										</div>
 									</div>
 								</div>
@@ -160,20 +157,18 @@
 				</div>
 			</li>
 			<!-- Eof Match -->
-			<?php 
-					}
-				} /* Eof foreach matches */?>
+			<?php } /* Eof foreach matches */?>
 			
 		</ul>
 		<!-- Eof list of matches / Basketball sport / Next matches-->
 	</div>
-	<?php //} /* Eof foreach tournaments */?>
+	<?php } /* Eof foreach tournaments */?>
 	<?php } /* Eof if basket sport */?>
 	<!-- Eof basketball sport / Next matches -->
 	<!-- Tenis sport / Next matches -->
-	<?php if (count($sports['tenis'] > 0)) {?>
-	<a href="<?=$sports['tenis']['url']?>" class="sport tenis"><i class="<?= $sports['tenis']['icon_name']?>"></i> <span><?= $sports['tenis']['name'];?></span></a>
-	<?php foreach ($sports['tenis']['tournaments'] as $tournament) {?>
+	<?php if (count($content['tenis'] > 0)) {?>
+	<a href="<?=$content['tenis']['url']?>" class="sport tenis"><i class="<?= $content['tenis']['icon_name']?>"></i> <span><?= $content['tenis']['name'];?></span></a>
+	<?php foreach ($content['tenis']['tournaments'] as $tournament) {?>
 	<div class="competition">
 		<a href="<?= $tournament['url']?>" class="competition-name"><span><span><?= $tournament['name']?></span></a>
 		<div class="competition-divider"></div>

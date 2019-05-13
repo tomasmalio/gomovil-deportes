@@ -4,7 +4,7 @@
 	 */
 	class SocialPosts extends Widgets {
 		// Social posts
-		public $social;
+		public $content;
 
 		// Assets files
 		public $files = [
@@ -38,15 +38,13 @@
 			]
 		];
 
-		public function __construct() {
-			if ($content = Widgets::model()) {
-				$this->social = $content;
-			}
+		public function __construct($params = []) {
+			parent::__construct($params);
 		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'socialsposts'		=> $this->social,
+					'content'		=> $this->content,
 				]
 			);
 		}

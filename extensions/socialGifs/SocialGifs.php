@@ -3,8 +3,8 @@
 	 * Social Gifs
 	 */
 	class SocialGifs extends Widgets {
-		
-		public $gifs;
+		// Gifs
+		public $content;
 
 		// Assets files
 		public $files = [
@@ -16,14 +16,12 @@
 			'minify' => false,
 		];
 
-		public function __construct() {
-			if ($content = Widgets::model()) {
-				$this->gifs = $content;
-			}
+		public function __construct($params = []) {
+			parent::__construct($params);
 		}
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'gifs' => $this->gifs,
+					'content' 		=> $this->content,
 				]
 			);
 		}

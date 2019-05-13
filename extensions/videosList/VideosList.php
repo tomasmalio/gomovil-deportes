@@ -3,7 +3,8 @@
 	 * VideosList
 	 */
 	class VideosList extends Widgets {
-		public $videos;
+		// Video content
+		public $content;
 
 		public $view = 'VideosList';
 
@@ -44,10 +45,8 @@
 			]
 		];
 
-		public function __construct() {
-			if ($content = Widgets::model()) {
-				$this->videos = $content;
-			}
+		public function __construct($params = []) {
+			parent::__construct($params);
 			if ($GLOBALS['isMobile']) {
 				$this->view = $this->view . 'Mobile';
 			}
@@ -55,7 +54,7 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'videos'			=> $this->videos,
+					'content'			=> $this->content,
 					'options'			=> $this->options,
 					'slider'			=> parent::slider(),
 					'items'				=> parent::items(),

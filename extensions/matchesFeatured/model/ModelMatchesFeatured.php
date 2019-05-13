@@ -9,7 +9,6 @@
 		public $urlNba = 'http://biteldev.gomovil.co/api/partidos-destacados.json';
 
 		public function model ($params = []) {
-			
 			switch ($params['type']) {
 				case 'football':
 					$json = file_get_contents($this->urlFootball);

@@ -23,8 +23,10 @@
 			} else {
 				$this->url .= $params['from']['date'] .'%2023:59:59';
 			}
-			$json = file_get_contents($this->url);
-			return json_decode($json);
+			$json = json_decode(file_get_contents($this->url), true);
+			array_push($params['basket']['tournaments'], $json);
+
+			return $params;
 		}
 	}
 ?>

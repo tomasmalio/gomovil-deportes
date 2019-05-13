@@ -1,5 +1,5 @@
 <div class="row grid-social">
-	<?php foreach ($socialsposts as $social) {?>
+	<?php foreach ($content as $social) {?>
 	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
 	<div class="social-post <?php if (!isset($social->video) && !isset($social->video)){?>only-text<?php }?>">
 			<div class="card">

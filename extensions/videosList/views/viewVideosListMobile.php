@@ -3,7 +3,7 @@
 $(document).ready(function(){
 	<?php 
 		$quantity = 0;
-		foreach ($videos as $video) {
+		foreach ($content as $video) {
 	?>
 	$("#jquery_jplayer_<?=$quantity?>").jPlayer({
 		ready: function () {

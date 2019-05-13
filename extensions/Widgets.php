@@ -9,6 +9,45 @@
 	use MatthiasMullie\Minify;
 
 	class Widgets {
+
+		/**
+		 * Constructor
+		 * 
+		 */
+		public function __construct($params = []) {
+
+			if (isset($params) && count($params) > 0) {
+				foreach ($params['data'] as $key => $value) {
+					if (property_exists(get_class($this), $key)) {
+						if ($key != 'content' && $key != 'options') {
+							$this->$key = $value;
+						}
+						if ($key == 'options') {
+							$this->options = array_replace_recursive($this->options, $value);
+						}
+					}
+				}
+			}
+			/**
+			 * Getting the content info
+			 * 
+			 * Returns array info of the model 
+			 **/ 
+			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
+			if (is_dir($modelUrl)) {
+				if (isset($params['modelView']) && $params['modelView']) {
+					require_once $modelUrl .'/Model' . $params['modelView'] . '.php';
+					$name = 'Model'.$params['modelView'];
+				} else {
+					require_once $modelUrl .'/Model' . get_class($this) . '.php';
+					$name = 'Model'.get_class($this);
+				}
+				$model = new $name();
+				$this->content = $model->model($params['data']['content']);
+			} else {
+				$this->content = null;
+			}
+		}
 		
 		/**
 		 * Slider
@@ -63,27 +102,6 @@
 			} elseif (!$GLOBALS['isMobile'] && isset($this->options['items']['desktop'])) {
 				return $this->options['items']['desktop'];
 			}
-		}
-
-		/**
-		 * Model
-		 * 
-		 * @return		array 			Returns array info of the model
-		 */
-		public function model($modelName = false, $params = []) {
-			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
-			if (is_dir($modelUrl)) {
-				if (isset($modelName) && $modelName) {
-					require_once $modelUrl .'/Model' . $modelName . '.php';
-					$name = 'Model'.$modelName;
-				} else {
-					require_once $modelUrl .'/Model' . get_class($this) . '.php';
-					$name = 'Model'.get_class($this);
-				}
-				$model = new $name();
-				return $model->model($params);	
-			}
-			return null;
 		}
 
 		/**
