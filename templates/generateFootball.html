@@ -1,1 +1,25 @@
 {% extends "football.html" %}
+
+{% block assetsCss %}
+	{% for asset in assetsStyle %}
+		{{asset | raw}}
+	{% endfor %}
+{% endblock %}
+
+{% block assetsJs %}
+	{% for asset in assetsJs %}
+		{{asset | raw}}
+	{% endfor %}
+{% endblock %}
+
+{% block matchesNext %}
+	{% if widgetMatchesNext.display %}
+		{{widgetMatchesNext.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block newsGoogle %}
+	{% if widgetNewsGoogle.display %}
+		{{widgetNewsGoogle.content | raw}}
+	{% endif %}
+{% endblock %}

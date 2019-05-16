@@ -107,8 +107,9 @@
 	$matchesNextJson = [
 		'modelView' => 'MatchesNextNba',
 		'data' => [
-			'titleNextMatches' => 'Próximos partidos',
-			'linkCalendar' => ['url' => '#', 'name' => 'Ver calendario'],
+			'title' => 'Próximos partidos',
+			'linkCalendar' => '#',
+			'titleCalendar' => 'Ver calendario',
 			'content' => [
 				'from' => [
 					'date' => date('Y-m-d'), 
@@ -118,6 +119,7 @@
 					'name' => 'Fútbol',
 					'url' => 'futbol',
 					'icon_name' => 'fas fa-futbol football',
+					'display' => true,
 					'tournaments' => [
 						[
 							'name' => 'Liga BBVA',
@@ -190,6 +192,7 @@
 					'name' => 'Basket',
 					'url' => 'basket',
 					'icon_name' => 'fas fa-basketball-ball basket',
+					'display' => true,
 					'tournaments' => [
 						// [
 						// 	'name' => 'Conferencia',
@@ -202,6 +205,7 @@
 					'name' => 'Tenis',
 					'url' => 'tenis',
 					'icon_name' => 'fas fa-baseball-ball tenis',
+					'display' => true,
 					'tournaments' => [
 						[
 							'name' => 'Barcelona Open Banc Sabadell',

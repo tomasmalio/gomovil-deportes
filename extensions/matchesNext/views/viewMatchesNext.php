@@ -1,6 +1,6 @@
 <!-- Next matches-->
 <section class="next-matches">
-	<h2><?= $titleNextMatches;?></h2>
+	<h2><?= $title;?></h2>
 	<div class="date-matches"><?= date('d \d\e F', strtotime($date))?></div>
 	<!-- Football Sport / Next matches -->
 	<?php if (count($content['football'] > 0)) {?>
@@ -14,7 +14,10 @@
 		<?php }?>
 		<!-- List of matches / Football sport / Next matches-->
 		<ul>
-			<?php foreach ($tournament['matches'] as $match) {?>
+			<?php 
+				$i = 0;
+				foreach ($tournament['matches'] as $match) {
+			?>
 			<!-- Match -->
 			<li class="row match <?= $match['status']?>">
 				<div class="col-12">
@@ -85,7 +88,13 @@
 				</div>
 			</li>
 			<!-- Eof Match -->
-			<?php } /* Eof foreach matches */?>
+			<?php 
+					$i++;
+					if ($i == $content['football']['items']) {
+						break;
+					}
+				} /* Eof foreach matches */
+			?>
 		</ul>
 		<!-- Eof list of matches / Football sport / Next matches-->
 	</div>
@@ -94,7 +103,7 @@
 	<!-- Eof football sport / Next matches -->
 
 	<!-- Basketball sport / Next matches -->
-	<?php if (count($content['basket'] > 0)) {?>
+	<?php if (isset($content['basket']) && $content['basket']['display'] && count($content['basket']) > 0) {?>
 	<a href="<?=$content['basket']['url']?>" class="sport basket"><i class="<?= $content['basket']['icon_name']?>"></i> <span><?= $content['basket']['name'];?></span></a>
 	<?php foreach ($content['basket']['tournaments'] as $tournament) {?>
 	<div class="competition">
@@ -166,7 +175,7 @@
 	<?php } /* Eof if basket sport */?>
 	<!-- Eof basketball sport / Next matches -->
 	<!-- Tenis sport / Next matches -->
-	<?php if (count($content['tenis'] > 0)) {?>
+	<?php if (isset($content['tenis']) && $content['tenis']['display'] && count($content['tenis']) > 0) {?>
 	<a href="<?=$content['tenis']['url']?>" class="sport tenis"><i class="<?= $content['tenis']['icon_name']?>"></i> <span><?= $content['tenis']['name'];?></span></a>
 	<?php foreach ($content['tenis']['tournaments'] as $tournament) {?>
 	<div class="competition">
@@ -274,6 +283,6 @@
 	<?php } /* Eof if tenis sport */?>
 	<!-- Eof tenis sport / Next matches -->
 
-	<a href="<?=$linkCalendar['url']?>" class="btn-more-content"><?=$linkCalendar['name']?></a>
+	<a href="<?=$linkCalendar?>" class="btn-more-content"><?=$titleCalendar?></a>
 </section>
 <!-- Eof Next matches-->

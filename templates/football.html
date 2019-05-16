@@ -32,9 +32,25 @@
 		<article>
 			<div class="container-fluid">
 				<div class="row">
-					
+					<div class="grid">
+						<div class="grid-item col-lg-4 col-md-4 col-sm-12 col-xs-12 order-1">
+							{% block matchesNext %} {% endblock %}
+						</div>
+						<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-2">
+							{% block newsGoogle %} {% endblock %}
+						</div>
+					</div>
 				</div>
 			</div>
 		</article>
+		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		<script type="text/javascript">
+			$('.grid').masonry({
+				itemSelector: '.grid-item',
+				gutter: 0,
+				//originLeft: false
+			});
+		</script>
+		{% block assetsJs %} {% endblock %}
 	</body>
 </html>

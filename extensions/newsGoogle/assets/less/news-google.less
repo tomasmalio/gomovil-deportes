@@ -6,14 +6,16 @@
 @news-border-radius: 10px;
 @news-background: #ffffff;
 @news-margin-bottom: 15px;
+@news-padding: 10px;
 
-@news-slider-width: 40%;
+@news-slider-width: 30%;
 @news-slider-width-responsive: 80%;
 @news-slider-height: 380px;
 
 @news-image-border-radius: 10px;
-@news-image-width: 260px;
-@news-image-float: left;
+@news-image-width: 180px;
+@news-image-float: right;
+@news-image-margin: 0;
 
 @news-time-color: #3B3B3B;
 @news-time-font-size: 10pt;
@@ -28,8 +30,13 @@
 @news-text-font-size: 11pt;
 @news-text-font-weight: @p-font-weight;
 
+@news-source-color: #3B3B3B;
+@news-source-font-family: @p-font-family;
+@news-source-font-size: 10pt;
+@news-source-font-weight: @p-font-weight;
+
 /* News list */
-section.news-list {
+section.news-google {
 	position: relative;
 	.list-news {
 		li {
@@ -41,8 +48,9 @@ section.news-list {
 			}
 			a {
 				display: block;
+				padding: @news-padding;
 				.content-image {
-					.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
+					.border-radius(@news-image-border-radius);
 					float: @news-image-float;
 					width: @news-image-width;
 					line-height: 0;
@@ -58,18 +66,20 @@ section.news-list {
 						margin: 0;
 						overflow: hidden;
 						.image {
-							.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
+							.paddingCalc (@news-image-float) when (@news-image-float = right) { right: @news-image-margin};
+							.paddingCalc (@news-image-float) when (@news-image-float = left) { left: @news-image-margin};
+							.paddingCalc(@news-image-float);
+
+							.border-radius(@news-image-border-radius);
 							height: auto;
 							line-height: 0;
 							position: absolute;
-							top: 0;
-							bottom: 0;
-							left: 0;
-							right: 0;
+							top: @news-image-margin;
+							bottom: @news-image-margin;
 							display: flex;
 							.align-items(center);
 							img {
-								.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
+								.border-radius(@news-image-border-radius);
 								max-height: 100%;
 								width: auto;
 							}
@@ -89,12 +99,9 @@ section.news-list {
 					}
 				}
 				.news-content {
-					padding-left: @news-image-width + 20;
-					time {
-						color: @news-time-color;
-						font-size: @news-time-font-size;
-						padding-bottom: 10px;
-					}
+					.paddingCalc (@news-image-float) when (@news-image-float = right) { padding-right: @news-image-width + 10};
+					.paddingCalc (@news-image-float) when (@news-image-float = left) { padding-left: @news-image-width + 10};
+					.paddingCalc(@news-image-float);
 					h2 {
 						color: @news-title-color;
 						font-family: @news-title-font-family;
@@ -109,6 +116,29 @@ section.news-list {
 						font-size: @news-text-font-size;
 						font-weight: @news-text-font-weight;
 					}
+					.source {
+						display: inline-block;
+						color: @news-source-color;
+						font-family: @news-source-font-family;
+						font-size: @news-source-font-size;
+						font-weight: @news-source-font-weight;
+					}
+					time {
+						display: inline-block;
+						position: relative;
+						padding-left: 15px;
+						color: @news-time-color;
+						font-size: @news-time-font-size;
+						padding-bottom: 10px;
+						opacity: .7;
+						&:before {
+							content: '\0000a0\002022\0000a0';
+							font-size: 6pt;
+							left: 0;
+							position: absolute;
+							top: 3px;
+						}
+					}
 				}
 			}
 		}
@@ -116,10 +146,12 @@ section.news-list {
 		li.swiper-slide {
 			width: @news-slider-width;
 			height: @news-slider-height;
+			padding: 0;
 			@media (max-width: 768px) {
 				width: @news-slider-width-responsive;
 			}
 			a {
+				padding: 0;
 				.content-image {
 					float: none;
 					width: 100%;
@@ -130,11 +162,19 @@ section.news-list {
 						width: 100%;
 						img {
 							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+							width: 100%;
 						}
 					}
 				}
 				.news-content {
 					padding: 10px;
+					time {
+						display: block;
+						padding-left: 0;
+						&:before {
+							display: none;
+						}
+					}
 				}
 			}
 		}
