@@ -3,7 +3,7 @@
 	<h2><?= $title;?></h2>
 	<div class="date-matches"><?= date('d \d\e F', strtotime($date))?></div>
 	<!-- Football Sport / Next matches -->
-	<?php if (count($content['football'] > 0)) {?>
+	<?php if (isset($content['football']) && $content['football']['display']) {?>
 	<a href="<?=$content['football']['url']?>" class="sport football"><i class="<?= $content['football']['icon_name']?>"></i> <span><?= $content['football']['name'];?></span></a>
 	<?php foreach ($content['football']['tournaments'] as $tournament) {?>
 	<div class="competition">
