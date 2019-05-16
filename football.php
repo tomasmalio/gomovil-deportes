@@ -89,7 +89,8 @@
 		'data' => [
 			'content' => [
 				'numberOfNews' => '5',
-				'countryCode' => 'PE',
+				// 'countryCode' => 'PE',
+				'country' => 'Peru',
 				'search' => 'Fútbol Deportes',
 				'newsWithImages' => true,
 			],
