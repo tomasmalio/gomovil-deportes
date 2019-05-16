@@ -89,7 +89,7 @@
 		'data' => [
 			'content' => [
 				'numberOfNews' => '5',
-				'countryCode' => 'AR',
+				'countryCode' => 'PE',
 				'search' => 'Fútbol Deportes',
 				'newsWithImages' => true,
 			],
