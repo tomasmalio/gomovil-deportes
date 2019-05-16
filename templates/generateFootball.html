@@ -23,3 +23,9 @@
 		{{widgetNewsGoogle.content | raw}}
 	{% endif %}
 {% endblock %}
+
+{% block socialPosts %}
+	{% if widgetSocialPosts.display %}
+		{{widgetSocialPosts.content | raw}}
+	{% endif %}
+{% endblock %}

@@ -122,6 +122,24 @@
 	array_push($assets['js'], $assetNewsGoogle['js']);
 	$displayNewsGoogle = true;
 
+	/****************************************
+	 * SOCIAL POSTS
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/socialPosts/SocialPosts.php';
+	$socialPostsJson = [
+		'data' => [
+			'content' => [
+				'type' => 'virales',
+			]
+		]
+	];
+	$socialPosts = new SocialPosts($socialPostsJson);
+	$widgetSocialPosts 	= $socialPosts->renderView();
+	$assetSocialPosts = $socialPosts->assets();
+	array_push($assets['css'], $assetSocialPosts['css']);
+	array_push($assets['js'], $assetSocialPosts['js']);
+	$displaySocialPosts = true;
+
 	/**
 	 * Render view
 	 */
@@ -137,5 +155,9 @@
 		'widgetNewsGoogle'			=> [
 											'content'		 		=> $widgetNewsGoogle,
 											'display'				=> $displayNewsGoogle,
+		],
+		'widgetSocialPosts'			=> [
+											'content'		 		=> $widgetSocialPosts,
+											'display'				=> $displaySocialPosts,
 		],
 	]);
