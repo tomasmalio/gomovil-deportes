@@ -1,0 +1,93 @@
+/* Global Imports */
+@import '../../../../less/config.less';
+@import '../../../../less/common.less';
+
+@position-list-title-color: #555;
+@position-list-title-font-family: @h2-font-family;
+@position-list-title-font-size: 16pt;
+@position-list-title-font-weight: @h2-font-weight;
+@position-list-title-padding: 0 0 15px 0;
+
+@position-list-content-titles-color: #555;
+@position-list-content-titles-font-family: @h3-font-family;
+@position-list-content-titles-font-size: 12pt;
+@position-list-content-titles-font-weight: @h3-font-weight;
+@position-list-content-titles-padding: 10px 0;
+
+@position-list-content-results-color: #555;
+@position-list-content-results-font-family: @p-font-family;
+@position-list-content-results-font-size: @p-font-size;
+@position-list-content-results-font-weight: @p-font-weight;
+@position-list-content-results-padding: 0 0 5px 0;
+
+section.position-list {
+	margin: 0 0 15px 0;
+	h2 {
+		color: @position-list-title-color;
+		font-family: @position-list-title-font-family;
+		font-size: @position-list-title-font-size;
+		font-weight: @position-list-title-font-weight;
+		padding: @position-list-title-padding;
+	}
+	.content-list-teams {
+		background: white;
+		.border-radius(10px);
+		padding: 10px;
+		.titles-list {
+			color: @position-list-content-titles-color;
+			font-family: @position-list-content-titles-font-family;
+			font-size: @position-list-content-titles-font-size;
+			font-weight: @position-list-content-titles-font-weight;
+			padding: @position-list-content-titles-padding;
+			.title-team {
+				float: left;
+			}
+			.title-played,
+			.title-won,
+			.title-tied,
+			.title-lost,
+			.title-points {
+				float: right;
+				text-align: center;
+				width: 25px;
+			}
+		}
+		.results-list {
+			.result {
+				.position,
+				.team-shield,
+				.team-name,
+				[class^="results-"] {
+					color: @position-list-content-results-color;
+					font-family: @position-list-content-results-font-family;
+					font-size: @position-list-content-results-font-size;
+					font-weight: @position-list-content-results-font-weight;
+					padding: @position-list-content-results-padding;
+				}
+				.position,
+				.team-shield,
+				.team-name {
+					float: left;
+				}
+				[class^="results-"] {
+					float: right;
+					width: 25px;
+					text-align: center;
+				}
+				.team-shield {
+					width: 20px;
+					margin: 0 5px;
+					img {
+						width: 100%;
+					}
+				}
+				.position {
+					width: 20px;
+					text-align: center;
+				}
+			}
+			
+		}
+		
+	}
+}

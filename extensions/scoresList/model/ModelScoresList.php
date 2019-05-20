@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * Model Matches Next Nba
+	 * Model Scores List
 	 */
 	class ModelScoresList {
 		

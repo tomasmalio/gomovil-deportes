@@ -1,4 +1,3 @@
-<?php //print_r($content)?>
 <section class="scores-list">
 	<h2><?=$title?></h2>
 	<div class="content-list-players">

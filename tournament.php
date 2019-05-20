@@ -90,16 +90,33 @@
 	$scoresListJson = [
 		'data' => [
 			'content' => [
-				'type' => 'virales',
 			]
 		]
 	];
-	$scoresList = new ScoresList($socialPostsJson);
+	$scoresList = new ScoresList($scoresListJson);
 	$widgetScoresList 	= $scoresList->renderView();
 	$assetScoresList = $scoresList->assets();
 	array_push($assets['css'], $assetScoresList['css']);
 	array_push($assets['js'], $assetScoresList['js']);
 	$displayScoresList = true;
+
+	/****************************************
+	 * POSITION LIST
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/positionList/PositionList.php';
+	$positionListJson = [
+		'data' => [
+			'content' => [
+				
+			]
+		]
+	];
+	$positionList = new PositionList($positionListJson);
+	$widgetPositionList 	= $positionList->renderView();
+	$assetPositionList = $positionList->assets();
+	array_push($assets['css'], $assetPositionList['css']);
+	array_push($assets['js'], $assetPositionList['js']);
+	$displayPositionList = true;
 
 	/****************************************
 	 * NEWS GOOGLE
@@ -164,7 +181,7 @@
 	/**
 	 * Render view
 	 */
-	$template = $twig->load('generateFootball.html');
+	$template = $twig->load('generateTournament.html');
 
 	echo $template->render([
 		'assetsStyle'				=> (new Assets())->generateAssets($assets['css']),
@@ -176,6 +193,10 @@
 		'widgetScoresList'			=> [
 											'content'		 		=> $widgetScoresList,
 											'display'				=> $displayScoresList,
+		],
+		'widgetPositionList'			=> [
+											'content'		 		=> $widgetPositionList,
+											'display'				=> $displayPositionList,
 		],
 		'widgetNewsGoogle'			=> [
 											'content'		 		=> $widgetNewsGoogle,

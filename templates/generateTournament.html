@@ -11,3 +11,33 @@
 		{{asset | raw}}
 	{% endfor %}
 {% endblock %}
+
+{% block matchesNext %}
+	{% if widgetMatchesNext.display %}
+		{{widgetMatchesNext.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block scoresList %}
+	{% if widgetScoresList.display %}
+		{{widgetScoresList.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block positionList %}
+	{% if widgetPositionList.display %}
+		{{widgetPositionList.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block newsGoogle %}
+	{% if widgetNewsGoogle.display %}
+		{{widgetNewsGoogle.content | raw}}
+	{% endif %}
+{% endblock %}
+
+{% block socialPosts %}
+	{% if widgetSocialPosts.display %}
+		{{widgetSocialPosts.content | raw}}
+	{% endif %}
+{% endblock %}
