@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<nav class="navbar navbar-menu navbar-expand-lg navbar-light">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="images/header/logo-gosports.png" name="logo" title="Bitel Deportes" alt="Bitel Deportes"></a>
+				<a class="navbar-brand" href="index.php"><img src="images/header/logo-gosports.png" name="logo" title="" alt=""></a>
 			</div>
 			<div class="collapse navbar-collapse navbar-buttons">
 				<script type="application/javascript">
@@ -30,7 +30,7 @@
 						<a data-toggle="dropdown" href="#">Fútbol</a>
 						<div class="dropdown-menu">
 							<ul class="dropdown-menu-submenu float-left">
-								<li class="item"><a href="">Portada</a></li>
+								<li class="item"><a href="football.php">Portada</a></li>
 								<li class="item"><a href="">Calendario</a></li>
 								<li class="item"><a href="">Viral</a></li>
 							</ul>
@@ -55,7 +55,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="#" title="Liga BBVA">
+												<a href="tournament.php?=type=liga&tournament=ligabbva" title="Liga BBVA">
 													<div class="card">
 														<div class="card-img">
 															<img src="http://image.futmovil.com/league/liga_espannola_degoles.png">
