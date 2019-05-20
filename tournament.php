@@ -143,7 +143,7 @@
 				],
 				'slider' => [
 					'desktop' 	=> [
-						'display' 		=> false,
+						'display' 		=> true,
 					],
 					'mobile' 	=> [
 						'display' 		=> true,
