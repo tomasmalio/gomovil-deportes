@@ -1,0 +1,91 @@
+/* Global Imports */
+@import '../../../../less/config.less';
+@import '../../../../less/common.less';
+
+@scores-list-title-color: #555;
+@scores-list-title-font-family: @h2-font-family;
+@scores-list-title-font-size: 16pt;
+@scores-list-title-font-weight: @h2-font-weight;
+@scores-list-title-padding: 0 0 15px 0;
+
+@scores-list-content-titles-color: #555;
+@scores-list-content-titles-font-family: @h3-font-family;
+@scores-list-content-titles-font-size: 12pt;
+@scores-list-content-titles-font-weight: @h3-font-weight;
+@scores-list-content-titles-padding: 10px 0;
+
+@scores-list-content-results-color: #555;
+@scores-list-content-results-font-family: @p-font-family;
+@scores-list-content-results-font-size: @p-font-size;
+@scores-list-content-results-font-weight: @p-font-weight;
+@scores-list-content-results-padding: 0 0 5px 0;
+
+section.scores-list {
+	margin: 0 0 15px 0;
+	h2 {
+		color: @scores-list-title-color;
+		font-family: @scores-list-title-font-family;
+		font-size: @scores-list-title-font-size;
+		font-weight: @scores-list-title-font-weight;
+		padding: @scores-list-title-padding;
+	}
+	.content-list-players {
+		background: white;
+		.border-radius(10px);
+		padding: 10px;
+		.titles-list {
+			color: @scores-list-content-titles-color;
+			font-family: @scores-list-content-titles-font-family;
+			font-size: @scores-list-content-titles-font-size;
+			font-weight: @scores-list-content-titles-font-weight;
+			padding: @scores-list-content-titles-padding;
+			.title-player-name {
+				float: left;
+			}
+			.title-goals {
+				float: right;
+			}
+		}
+		.results-list {
+			.result {
+				//clear: both;
+				.position,
+				.team-shield,
+				.player,
+				.goals {
+					color: @scores-list-content-results-color;
+					font-family: @scores-list-content-results-font-family;
+					font-size: @scores-list-content-results-font-size;
+					font-weight: @scores-list-content-results-font-weight;
+					padding: @scores-list-content-results-padding;
+				}
+				.position,
+				.team-shield,
+				.player,
+				.goals {
+					float: left;
+				}
+				.goals {
+					float: right;
+				}
+				.position {
+					width: 20px;
+					text-align: center;
+				}
+				.team-shield {
+					width: 20px;
+					margin: 0 5px;
+					img {
+						width: 100%;
+					}
+				}
+				.goals {
+					width: 25px;
+					text-align: center;
+				}
+			}
+			
+		}
+		
+	}
+}

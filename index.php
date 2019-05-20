@@ -510,7 +510,7 @@
 	$socialGifsJson = [
 		'data' => [
 			'content' => [
-				'search' => 'futbol',
+				'search' => 'music',
 			]
 		]
 	];

@@ -18,6 +18,12 @@
 	{% endif %}
 {% endblock %}
 
+{% block scoresList %}
+	{% if widgetScoresList.display %}
+		{{widgetScoresList.content | raw}}
+	{% endif %}
+{% endblock %}
+
 {% block newsGoogle %}
 	{% if widgetNewsGoogle.display %}
 		{{widgetNewsGoogle.content | raw}}

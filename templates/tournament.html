@@ -12,9 +12,6 @@
 		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		
-		<!--<link href="/assets/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="extensions/videosList/assets/css/skin.bitel.jplayer.css">-->
 
 		{% block assetsCss %} {% endblock %}
 
@@ -34,13 +31,14 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 order-1">
 						{% block matchesNext %} {% endblock %}
-						{% block scoresList %} {% endblock %}
 					</div>
 					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 order-1">
 						<div class="row">
 							<div class="col-12">
+								{% block newsGoogle %} {% endblock %}
 							</div>
 							<div class="col-12">
+								{% block socialPosts %} {% endblock %}
 							</div>
 						</div>
 					</div>
