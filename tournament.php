@@ -90,6 +90,8 @@
 	$scoresListJson = [
 		'data' => [
 			'content' => [
+				'type' => $tournamentType,
+				'tourname' => $tournamentName,
 			]
 		]
 	];
@@ -107,7 +109,8 @@
 	$positionListJson = [
 		'data' => [
 			'content' => [
-				
+				'type' => $tournamentType,
+				'tourname' => $tournamentName,
 			]
 		]
 	];
@@ -128,7 +131,7 @@
 				'numberOfNews' => '5',
 				// 'countryCode' => 'PE',
 				'country' => 'Peru',
-				'search' => 'Fútbol Deportes',
+				'search' => 'Fútbol '. $tournamentName,
 				'newsWithImages' => true,
 			],
 			'options' => [
