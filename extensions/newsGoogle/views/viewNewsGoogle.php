@@ -55,7 +55,9 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
 				}
 			?>
 		</ul>
+		<?php if ($pagination) {?>
 		<div class="swiper-pagination"></div>
+		<?php }?>
 	</div>
 </section>
 <!-- Eof News Google -->

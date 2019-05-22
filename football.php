@@ -16,6 +16,96 @@
 	$assets = ['css' => [], 'js' => []];
 
 	/****************************************
+	 * LEAGUES LIST
+	 ****************************************/
+	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/leaguesList/LeaguesList.php';
+	$leaguesListJson = [
+		'data' => [
+			'title' => ['ligas' => 'Ligas', 'copas' => 'Copas', 'selecciones' => 'Seleccionado'],
+			'options' => [
+				'slider' => [
+					'desktop' => [
+						'display' => false,
+					],
+					'mobile' => [
+						'display' => true,
+					],
+				],
+			],
+			'content' => [
+				'tournaments' => [
+					'ligas' => [
+						'liga-bbva' => [
+							'name' => 'Liga BBVA', 
+							'image' => 'http://image.futmovil.com/league/liga_espannola_degoles.png',
+						],
+						'campeonato-desentralizado' => [
+							'name' => 'Campeonato Desentralizado', 
+							'image' => 'http://image.futmovil.com/league/ligaperu_degoles.png',
+						],
+						'serie-a-italia' => [
+							'name' => 'Serie A Italia', 
+							'image' => 'http://image.futmovil.com/league/ligaitalia_degoles.png',
+						],
+						'premier-league' => [
+							'name' => 'Premier League',
+							'image' => 'http://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/23.png&w=40&h=40&transparent=true',
+						],
+						'bundesliga' => [
+							'name' => 'Bundesliga',
+							'image' => 'http://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/10.png&w=40&h=40&transparent=true',
+						],
+						'france-ligue-1' => [
+							'name' => 'France Ligue 1',
+							'image' => 'https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/9.png&h=80&w=80&scale=crop',
+						],
+						'liga-mexicana' => [
+							'name' => 'Liga Mexicana',
+							'image' => 'https://www.fmsite.net/applications/downloads/interface/legacy/screenshot.php?path=/monthly_2017_09/i.png.13b8a5d98c509e61e9ea6272188a79e3.png',
+						],
+						'super-liga-argentina-2018' => [
+							'name' => 'Super Liga Argentina 2018',
+							'image' => 'http://image.futmovil.com/league/superligaargentina_2018.png',
+						],
+						
+						
+					],
+					'copas' => [
+						'copa-libertadores' => [
+							'name' => 'Copa Libertadores',
+							'image' => 'http://image.futmovil.com/league/copalibertadores.png',
+						],
+						'champions-league' => [
+							'name' => 'Champions League',
+							'image' => 'http://image.futmovil.com/league/escudo-champions.png',
+						],
+						'copa-sudamericana' => [
+							'name' => 'Copa Sudamericana',
+							'image' => 'http://image.futmovil.com/league/copasudamericana_degoles.png',
+						],
+					],
+					'selecciones' => [
+						'conmebol' => [
+							'name' => 'Conmebol',
+							'image' => 'https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/65.png&h=80&w=80&scale=crop',
+						],
+						'uefa' => [
+							'name' => 'UEFA',
+							'image' => 'http://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2310.png&w=40&h=40&transparent=true',
+						],
+					],
+				]
+			],
+		],
+	];
+	$leaguesList = new LeaguesList($leaguesListJson);
+	$widgetLeaguesList 	= $leaguesList->renderView();
+	$assetLeaguesList = $leaguesList->assets();
+	array_push($assets['css'], $assetLeaguesList['css']);
+	array_push($assets['js'], $assetLeaguesList['js']);
+	$displayLeaguesList = true;
+
+	/****************************************
 	 * NEXT MATCHES
 	 ****************************************/
 	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/matchesNext/MatchesNext.php';
@@ -79,7 +169,6 @@
 	array_push($assets['css'], $assetMatchesNext['css']);
 	array_push($assets['js'], $assetMatchesNext['js']);
 	$displayMatchesNext = true;
-	
 
 	/****************************************
 	 * NEWS GOOGLE
@@ -149,6 +238,10 @@
 	echo $template->render([
 		'assetsStyle'				=> (new Assets())->generateAssets($assets['css']),
 		'assetsJs'					=> (new Assets())->generateAssets($assets['js']),
+		'widgetLeaguesList'			=> [
+											'content'		 		=> $widgetLeaguesList,
+											'display'				=> $displayLeaguesList,
+		],
 		'widgetMatchesNext'			=> [
 											'content'		 		=> $widgetMatchesNext,
 											'display'				=> $displayMatchesNext,

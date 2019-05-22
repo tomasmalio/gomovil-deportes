@@ -2,23 +2,25 @@
 @import '../../../../less/config.less';
 @import '../../../../less/common.less';
 
-@position-list-title-color: #555;
+@position-list-title-color: @color-quarter;
 @position-list-title-font-family: @h2-font-family;
 @position-list-title-font-size: 16pt;
 @position-list-title-font-weight: @h2-font-weight;
 @position-list-title-padding: 0 0 15px 0;
 
-@position-list-content-titles-color: #555;
+@position-list-content-titles-color: @color-quarter;
 @position-list-content-titles-font-family: @h3-font-family;
 @position-list-content-titles-font-size: 12pt;
 @position-list-content-titles-font-weight: @h3-font-weight;
 @position-list-content-titles-padding: 10px 0;
 
-@position-list-content-results-color: #555;
+@position-list-content-results-color: @color-quarter;
 @position-list-content-results-font-family: @p-font-family;
 @position-list-content-results-font-size: @p-font-size;
 @position-list-content-results-font-weight: @p-font-weight;
 @position-list-content-results-padding: 0 0 5px 0;
+
+@position-list-content-results-team-shield-img-width: 20px;
 
 section.position-list {
 	margin: 0 0 15px 0;
@@ -75,7 +77,7 @@ section.position-list {
 					text-align: center;
 				}
 				.team-shield {
-					width: 20px;
+					width: @position-list-content-results-team-shield-img-width;
 					margin: 0 5px;
 					img {
 						width: 100%;

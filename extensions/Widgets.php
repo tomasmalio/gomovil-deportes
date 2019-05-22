@@ -15,7 +15,6 @@
 		 * 
 		 */
 		public function __construct($params = []) {
-
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {

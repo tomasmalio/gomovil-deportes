@@ -50,10 +50,12 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'content' 	=> $this->content,
-					'options'	=> $this->options['content'],
-					'slider'	=> parent::slider(),
-					'items'		=> parent::items(),
+					'content' 		=> $this->content,
+					'options'		=> $this->options['content'],
+					'slider'		=> parent::slider(),
+					'items'			=> parent::items(),
+					'pagination'	=> parent::sliderPagination(),
+					'navigation'	=> parent::sliderNavigation(),
 				]
 			);
 		}

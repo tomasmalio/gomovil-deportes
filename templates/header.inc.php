@@ -55,7 +55,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="tournament.php?=type=liga&tournament=ligabbva" title="Liga BBVA">
+												<a href="tournament.php?type=ligas&tournament=liga-bbva" title="Liga BBVA">
 													<div class="card">
 														<div class="card-img">
 															<img src="http://image.futmovil.com/league/liga_espannola_degoles.png">

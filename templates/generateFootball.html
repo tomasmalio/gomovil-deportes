@@ -12,6 +12,12 @@
 	{% endfor %}
 {% endblock %}
 
+{% block leaguesList %}
+	{% if widgetLeaguesList.display %}
+		{{widgetLeaguesList.content | raw}}
+	{% endif %}
+{% endblock %}
+
 {% block matchesNext %}
 	{% if widgetMatchesNext.display %}
 		{{widgetMatchesNext.content | raw}}
