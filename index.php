@@ -8,6 +8,7 @@
 	$GLOBALS['extensions_url'] = '/extensions';
 
 	use GoMovil\Assets;
+	use GoMovil\Db;
 
 	/* Mobile Detection */
 	$detect = new Mobile_Detect();

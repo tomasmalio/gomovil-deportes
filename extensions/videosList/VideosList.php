@@ -21,8 +21,12 @@
 				'mobile' => 4,
 			],
 			'slider' => [
-				'desktop' => true,
-				'mobile' => true,
+				'desktop' 	=> [
+					'display' 		=> true,
+				],
+				'mobile' 	=> [
+					'display' 		=> true,
+				],
 			],
 			'controls' => [
 				// Autoplay
