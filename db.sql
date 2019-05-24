@@ -491,3 +491,91 @@ CREATE TABLE IF NOT EXISTS `customization`
 	PRIMARY KEY (id),
 	FOREIGN KEY customization_fk_client(`client_id`) REFERENCES client(`id`)
 );
+
+-- 
+-- Table `section`
+-- 
+CREATE TABLE IF NOT EXISTS `section`
+(
+	`id` int not null auto_increment,
+	`name` int null,
+	`datetime` datetime not null,
+	`status` int(1) not null default 0,
+	PRIMARY KEY (id)
+);
+
+-- 
+-- Table `layout`
+-- 
+CREATE TABLE IF NOT EXISTS `layout`
+(
+	`id` int not null auto_increment,
+	`name` varchar(100) not null,
+	`image` varchar(255) null,
+	`status` int(1) not null default 0,
+	PRIMARY KEY (id)
+);
+
+-- 
+-- Table `content`
+-- 
+CREATE TABLE IF NOT EXISTS `content`
+(
+	`id` int not null auto_increment,
+	`name` varchar(100) not null,
+	`data` text null,
+	`status` int(1) not null default 0,
+	PRIMARY KEY (id)
+);
+
+-- 
+-- Table `section_client`
+-- 
+CREATE TABLE IF NOT EXISTS `section_client`
+(
+	`id` int not null auto_increment,
+	`client_id` int not null,
+	`section_id` int not null,
+	`layout_id` int not null,
+	`content_id` int not null,
+	`parent_id` int null,
+	`view_name` varchar(100) not null,
+	`title` varchar(255) not null,
+	`description` varchar(255) not null,
+	`image` varchar(255) not null,
+	`security` int(1) not null default 0,
+	`datetime` datetime not null,
+	`status` int(1) not null default 0,
+	PRIMARY KEY (id),
+	FOREIGN KEY section_client_fk_client(`client_id`) REFERENCES client(`id`),
+	FOREIGN KEY section_client_fk_layout(`layout_id`) REFERENCES layout(`id`),
+	FOREIGN KEY section_client_fk_content(`content_id`) REFERENCES content(`id`),
+	FOREIGN KEY section_client_fk_section_client(`parent_id`) REFERENCES section_client(`id`)
+);
+
+-- 
+-- Table `extension`
+-- 
+CREATE TABLE IF NOT EXISTS `extension`
+(
+	`id` int not null auto_increment,
+	`name` varchar(100) not null,
+	`datetime` datetime not null,
+	`directory` varchar(200) not null,
+	`status` int(1) not null default 0,
+	PRIMARY KEY (id)
+);
+
+-- 
+-- Table `section_extension`
+-- 
+CREATE TABLE IF NOT EXISTS `section_extension`
+(
+	`section_client_id` int not null,
+	`extension_id` int not null,
+	`position` int not null,
+	`params` text null,
+	`status` int(1) not null default 0,
+	FOREIGN KEY section_extension_fk_section_client(`section_client_id`) REFERENCES section_client(`id`),
+	FOREIGN KEY section_extension_fk_extension(`extension_id`) REFERENCES extension(`id`)
+);
