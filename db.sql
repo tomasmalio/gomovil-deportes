@@ -1,8 +1,6 @@
 -- DATABASE GOSPORTS
 USE gosports_dev;
 
-DROP TABLE country;
-DROP TABLE language;
 -- 
 -- Table `country`
 -- 
