@@ -51,7 +51,7 @@
 
 		public function __construct($params = []) {
 			parent::__construct($params);
-			if ($GLOBALS['isMobile']) {
+			if (IS_MOBILE) {
 				$this->view = $this->view . 'Mobile';
 			}
 		}

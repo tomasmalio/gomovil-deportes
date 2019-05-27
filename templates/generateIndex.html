@@ -12,50 +12,10 @@
 	{% endfor %}
 {% endblock %}
 
-{% block metaTags %}
-	{% if widgetMetaTags.display %}
-		{{widgetMetaTags.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block featuredNews %}
-	{% if widgetNewsFeatured.display %}
-		{{widgetNewsFeatured.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block listNews %}
-	{% if widgetNewsList.display %}
-		{{widgetNewsList.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block matchesNext %}
-	{% if widgetMatchesNext.display %}
-		{{widgetMatchesNext.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block matchesFeatured %}
-	{% if widgetMatchesFeatured.display %}
-		{{widgetMatchesFeatured.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block listVideos %}
-	{% if widgetVideosList.display %}
-		{{widgetVideosList.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block socialPosts %}
-	{% if widgetSocialPosts.display %}
-		{{widgetSocialPosts.content | raw}}
-	{% endif %}
-{% endblock %}
-
-{% block socialGifs %}
-	{% if widgetSocialGifs.display %}
-		{{widgetSocialGifs.content | raw}}
-	{% endif %}
+{% block widgets %}
+	{% for widget,key in widgets|keys %}
+		{% block key %}
+			{{widget.content | raw}}
+		{% endblock %}
+	{% endfor %}
 {% endblock %}

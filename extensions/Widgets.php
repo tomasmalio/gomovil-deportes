@@ -56,7 +56,7 @@
 		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
 		 */
 		public function slider () {
-			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['display']) && $this->options['slider']['desktop']['display']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['display']) && $this->options['slider']['mobile']['display'])) {
+			if ((!IS_MOBILE && isset($this->options['slider']['desktop']['display']) && $this->options['slider']['desktop']['display']) || (IS_MOBILE && isset($this->options['slider']['mobile']['display']) && $this->options['slider']['mobile']['display'])) {
 				return true;
 			}
 			return false;
@@ -70,7 +70,7 @@
 		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
 		 */
 		public function sliderPagination () {
-			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['pagination']) && $this->options['slider']['desktop']['pagination']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['pagination']) && $this->options['slider']['mobile']['pagination'])) {
+			if ((!IS_MOBILE && isset($this->options['slider']['desktop']['pagination']) && $this->options['slider']['desktop']['pagination']) || (IS_MOBILE && isset($this->options['slider']['mobile']['pagination']) && $this->options['slider']['mobile']['pagination'])) {
 				return true;
 			}
 			return false;
@@ -84,7 +84,7 @@
 		 * @return		object 			Returns true or false if validate the conditions for desktop or mobile
 		 */
 		public function sliderNavigation () {
-			if ((!$GLOBALS['isMobile'] && isset($this->options['slider']['desktop']['navigation']) && $this->options['slider']['desktop']['navigation']) || ($GLOBALS['isMobile'] && isset($this->options['slider']['mobile']['navigation']) && $this->options['slider']['mobile']['navigation'])) {
+			if ((!IS_MOBILE && isset($this->options['slider']['desktop']['navigation']) && $this->options['slider']['desktop']['navigation']) || (IS_MOBILE && isset($this->options['slider']['mobile']['navigation']) && $this->options['slider']['mobile']['navigation'])) {
 				return true;
 			}
 			return false;
@@ -96,9 +96,9 @@
 		 * @return		int 			Returns the number of items to show
 		 */
 		public function items () {
-			if ($GLOBALS['isMobile'] && isset($this->options['items']['mobile'])) {
+			if (IS_MOBILE && isset($this->options['items']['mobile'])) {
 				return $this->options['items']['mobile'];
-			} elseif (!$GLOBALS['isMobile'] && isset($this->options['items']['desktop'])) {
+			} elseif (!IS_MOBILE && isset($this->options['items']['desktop'])) {
 				return $this->options['items']['desktop'];
 			}
 		}

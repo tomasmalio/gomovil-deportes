@@ -395,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `client`
 	`keywords` VARCHAR(255) not null,
 	`country_id` int null,
 	`language_id` int null,
-	`ssl` int not null,
+	`ssl` int not null default 0,
 	`logo` VARCHAR(255) null,
 	`google_analytics` VARCHAR(100) null,
 	`facebook_app_id` VARCHAR(100) null,
@@ -496,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `customization`
 CREATE TABLE IF NOT EXISTS `section`
 (
 	`id` int not null auto_increment,
-	`name` int null,
+	`name` varchar(200) not null,
 	`datetime` datetime not null,
 	`status` int(1) not null default 0,
 	PRIMARY KEY (id)
@@ -534,8 +534,8 @@ CREATE TABLE IF NOT EXISTS `section_client`
 	`id` int not null auto_increment,
 	`client_id` int not null,
 	`section_id` int not null,
-	`layout_id` int not null,
-	`content_id` int not null,
+	`layout_id` int null,
+	`content_id` int null,
 	`parent_id` int null,
 	`view_name` varchar(100) not null,
 	`title` varchar(255) not null,
@@ -559,7 +559,6 @@ CREATE TABLE IF NOT EXISTS `extension`
 	`id` int not null auto_increment,
 	`name` varchar(100) not null,
 	`datetime` datetime not null,
-	`directory` varchar(200) not null,
 	`status` int(1) not null default 0,
 	PRIMARY KEY (id)
 );

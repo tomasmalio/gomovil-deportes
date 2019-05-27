@@ -11,3 +11,4 @@ $twig = new Twig_Environment($loader);
 
 // Extensions directory
 $twig->addGlobal('extensions', __DIR__.'/extensions');
+$twig->addExtension(new \Twig\Extension\DebugExtension());

@@ -15,7 +15,7 @@
 
 		// Assets files
 		public $files = [
-			'style'		=> [],
+			'style'		=> ['news-featured.less'],
 			'js'		=> [],
 		];
 		// Options
