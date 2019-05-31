@@ -258,7 +258,6 @@ INSERT INTO `country` (`code`,`name`) VALUES ('ZR', 'Zaire');
 INSERT INTO `country` (`code`,`name`) VALUES ('ZM', 'Zambia');
 INSERT INTO `country` (`code`,`name`) VALUES ('ZW', 'Zimbabwe');
 
-
 -- 
 -- Table `language`
 -- 
@@ -521,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `content`
 (
 	`id` int not null auto_increment,
 	`name` varchar(100) not null,
-	`data` text null,
+	`data` longtext null,
 	`status` int(1) not null default 0,
 	PRIMARY KEY (id)
 );
@@ -568,11 +567,19 @@ CREATE TABLE IF NOT EXISTS `extension`
 -- 
 CREATE TABLE IF NOT EXISTS `section_extension`
 (
+	`id` int not null auto_increment,
 	`section_client_id` int not null,
 	`extension_id` int not null,
 	`position` int not null,
-	`params` text null,
+	`options` text null,
+	`content` text null,
+	`external_content` int(1) null default null,
+	`styles` text null,
+	`scripts` text null,
+	`view_name` varchar(255) null,
+	`model_name` varchar(255) null,
 	`status` int(1) not null default 0,
+	PRIMARY KEY (`id`, `extension_id`, `section_client_id`),
 	FOREIGN KEY section_extension_fk_section_client(`section_client_id`) REFERENCES section_client(`id`),
 	FOREIGN KEY section_extension_fk_extension(`extension_id`) REFERENCES extension(`id`)
 );

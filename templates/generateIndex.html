@@ -1,21 +1,89 @@
-{% extends "index.html" %}
+{% extends 'template' ~ template ~ '.tpl.html' %}
 
-{% block assetsCss %}
-	{% for asset in assetsStyle %}
-		{{asset | raw}}
-	{% endfor %}
+{% block htmlStart %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/WebPage" xml:lang="es" lang="es">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="index, follow" />
+		<meta name="msvalidate.01" content="53EEDD3432E53DB093318AF4A7E1C7A0" />
+		<meta name="google-site-verification" content="" />
+		<title>{{ title | raw }}</title>
+		{% for asset in assetsStyle %}
+			{{asset | raw}}
+		{% endfor %}
+		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="/assets/jquery/jquery.min.js"></script>
+		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		<body>
+			<div id="tpl">
+				{% include 'header.inc.php' %}
+				<article>
+						<div class="container-fluid">
 {% endblock %}
 
-{% block assetsJs %}
-	{% for asset in assetsJs %}
-		{{asset | raw}}
-	{% endfor %}
+{% block widget1 %}
+	{{ widgets.widget1.content | raw }}
+{% endblock %}
+{% block widget2 %}
+	{{ widgets.widget2.content | raw }}
+{% endblock %}
+{% block widget3 %}
+	{{ widgets.widget3.content | raw }}
+{% endblock %}
+{% block widget4 %}
+	{{ widgets.widget4.content | raw }}
+{% endblock %}
+{% block widget5 %}
+	{{ widgets.widget5.content | raw }}
+{% endblock %}
+{% block widget6 %}
+	{{ widgets.widget6.content | raw }}
+{% endblock %}
+{% block widget7 %}
+	{{ widgets.widget7.content | raw }}
+{% endblock %}
+{% block widget8 %}
+	{{ widgets.widget8.content | raw }}
+{% endblock %}
+{% block widget9 %}
+	{{ widgets.widget9.content | raw }}
+{% endblock %}
+{% block widget10 %}
+	{{ widgets.widget10.content | raw }}
 {% endblock %}
 
-{% block widgets %}
-	{% for widget,key in widgets|keys %}
-		{% block key %}
-			{{widget.content | raw}}
-		{% endblock %}
-	{% endfor %}
+{% block htmlEnd %}
+			</div>
+		</article>
+		<!-- Footer -->
+		<footer>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<p>C.Bitel. Todos los derechos reservados © 2018</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- Eof Footer -->
+		</div>	
+		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		<script type="text/javascript">
+			$('.grid').masonry({
+				itemSelector: '.grid-item',
+				gutter: 0,
+				originLeft: false
+			});
+		</script>
+		{% for asset in assetsJs %}
+			{{asset | raw}}
+		{% endfor %}
+	</body>
+</html>
 {% endblock %}

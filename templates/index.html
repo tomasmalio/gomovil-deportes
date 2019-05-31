@@ -30,38 +30,39 @@
 		<div id="tpl">
 			{% include 'header.inc.php' %}
 			<!-- Main -->
+			<!-- {% block body %} -->
 			<article>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="grid">
-							{{ dump() }}
 							<div class="grid-item col-lg-4 col-md-4 col-sm-12 col-xs-12 order-xs-2">
-								{% block matchesNext %} {% endblock %}
+								{% block widget2 %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-xs-1">
-								{% block featuredNews %} {% endblock %}
+								{% block widget1 %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-xs-1">
 								{% block matchesFeatured %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-xs-3">
-								{% block listNews %} {% endblock %}
+								{% block widget3 %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-xs-4">
-								{% block listVideos %} {% endblock %}
+								{% block widget4 %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-8 col-md-8 col-sm-12 col-xs-12 order-5">
-								{% block socialPosts %} {% endblock %}
+								{% block widget5 %} {% endblock %}
 							</div>
 							<div class="grid-item col-lg-4 col-md-4 col-sm-12 col-xs-12 order-6">
 								<div class="row">
-									{% block socialGifs %} {% endblock %}
+									{% block widget6 %} {% endblock %}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</article>
+			<!-- {% endblock %} -->
 			<!-- Eof Main -->
 			<!-- Footer -->
 			<footer>
@@ -74,8 +75,7 @@
 				</div>
 			</footer>
 			<!-- Eof Footer -->
-		</div>
-		
+		</div>	
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
 		<script type="text/javascript">
 			$('.grid').masonry({

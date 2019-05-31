@@ -22,7 +22,9 @@
 							$this->$key = $value;
 						}
 						if ($key == 'options') {
-							$this->options = array_replace_recursive($this->options, $value);
+							if (isset($value)) {
+								$this->options = array_replace_recursive($this->options, $value);
+							}
 						}
 					}
 				}

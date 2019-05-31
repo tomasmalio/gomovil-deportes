@@ -3,11 +3,10 @@
 	 * Matches Next
 	 */
 	class MatchesNext extends Widgets {
-		public $title = 'Próximos partidos';
-		public $date;
-		public $titleCalendar = 'Ver calendario';
-		public $linkCalendar = '#';
-		public $content;
+		public $content = [
+			'title' => 'Próximos partidos',
+			'titleCalendar' => 'Ver calendario',
+		];
 
 		// Assets files
 		public $files = [
@@ -24,11 +23,8 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'title'				=> $this->title,
 					'date'				=> $this->date,
 					'content'			=> $this->content,
-					'titleCalendar'		=> $this->titleCalendar,
-					'linkCalendar'		=> $this->linkCalendar,
 				]
 			);
 		}

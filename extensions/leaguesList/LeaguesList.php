@@ -3,8 +3,7 @@
 	 * Leagues List
 	 */
 	class LeaguesList extends Widgets {
-		public $title = 'Ligas';
-		//
+		// Content
 		public $content;
 
 		// Assets files
@@ -48,7 +47,6 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'title'				=> $this->title,
 					'content'			=> $this->content,
 					'slider'			=> parent::slider(),
 					'pagination'		=> parent::sliderPagination(),
