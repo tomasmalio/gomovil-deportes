@@ -78,7 +78,7 @@
 		// Naming filters for internal use
 		$keywords[] = '{@filter'.$i.'}';
 		$keywordsChange[] = $filters[$i];
-		
+
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
 		if ($i == 0 || $i == 1) {
@@ -97,13 +97,10 @@
 	$sectionExtensions = $db->fetchAll();
 
 	/**
-	 * Creating the extension
+	 * Widgets Constructor
 	 */
 	$widgets = [];
 	$i = 1;
-	
-	/* Widget */
-	$widgetClass = new Widgets();
 
 	foreach ($sectionExtensions as $extension) {
 		$extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
@@ -167,7 +164,6 @@
 		} catch (Exception $e) {
 			echo 'Error '. $e->getMessage();
 		}
-		
 	}
 
 	/**
