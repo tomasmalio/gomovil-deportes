@@ -88,8 +88,8 @@
 		}
 		$subsectionTitle .= 'Sub';
 	}
-	// print_r($keywords);
-	// print_r($keywordsChange);
+	print_r($keywords);
+	print_r($keywordsChange);
 
 	// Extensions for the section
 	$db->prepare("select * from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
