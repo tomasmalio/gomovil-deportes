@@ -35,7 +35,7 @@
 	/**
 	 * Client definitions
 	 */
-	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name from client c, country cy where url = '" . $domain . "' and c.country_id = cy.id and c.status = 1");
+	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name from client c, country cy where url like '%" . $domain . "%' and c.country_id = cy.id and c.status = 1");
 	$db->execute();
 	$client = $db->fetch();
 	define('COUNTRY_CODE', $client['country_code'], true);
@@ -88,8 +88,8 @@
 		}
 		$subsectionTitle .= 'Sub';
 	}
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 
 	// Extensions for the section
 	$db->prepare("select * from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
