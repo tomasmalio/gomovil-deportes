@@ -22,7 +22,7 @@
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		<body>
 			<div id="tpl">
-				{% include 'header.inc.php' %}
+				{% include 'header.inc.php' with {'menu': menu, 'country': country} %}
 				<article>
 						<div class="container-fluid">
 {% endblock %}

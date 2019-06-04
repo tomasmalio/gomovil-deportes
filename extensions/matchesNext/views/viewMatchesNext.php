@@ -1,7 +1,12 @@
+<?php 
+//setlocale(LC_TIME, 'es_ES');
+//date_default_timezone_set('America/Lima');
+// echo date("Y-m-d H:i:s");
+?>
 <!-- Next matches-->
 <section class="next-matches">
 	<h2><?= $content['title'];?></h2>
-	<div class="date-matches"><?= date('d \d\e F', strtotime($date))?></div>
+	<div class="date-matches"><?= strftime('%d de %B', strtotime($date));?></div>
 	<!-- Football Sport / Next matches -->
 	<?php if (isset($content['content']['football']) && $content['content']['football']['display']) {?>
 	<a href="<?=$content['content']['football']['url']?>" class="sport football"><i class="<?= $content['content']['football']['icon_name']?>"></i> <span><?= $content['content']['football']['name'];?></span></a>

@@ -1,6 +1,3 @@
-<?php 
-setlocale(LC_TIME, 'es_ES', 'esp_esp'); 
-?>
 <!-- News Google -->
 <section class="news-google">
 	<div class="news-google-content <?php if ($slider) {?>swiper-container<?php }?>">

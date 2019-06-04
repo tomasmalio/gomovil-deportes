@@ -35,16 +35,24 @@
 	/**
 	 * Client definitions
 	 */
-	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name from client c, country cy where url like '%" . $domain . "%' and c.country_id = cy.id and c.status = 1");
+	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 	$db->execute();
 	$client = $db->fetch();
+	
+	/* Country */
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
+
+	/* Definition of the time zone */
+	date_default_timezone_set($client['zone_name']);
+	setlocale(LC_TIME, explode('_', $client['language'])[0] .'_'. strtoupper(explode('_', $client['language'])[0]));
 	
 	$keywords[] = '{@countryName}';
 	$keywordsChange[] = COUNTRY_NAME;
 
-	// Sections
+	/**********************************
+	 * 			SECTIONS
+	 **********************************/
 	$db->prepare("select sc.*, c.data as content_external from section s, section_client sc, content c where s.name = '".$s."' and s.id = sc.section_id and sc.content_id = c.id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
@@ -88,17 +96,62 @@
 		}
 		$subsectionTitle .= 'Sub';
 	}
-	// print_r($keywords);
-	// print_r($keywordsChange);
 
-	// Extensions for the section
+	/**********************************
+	 * 			MENU
+	 **********************************/
+	$db->prepare("select sc.id, sc.title as title, s.name as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display = 1 and s.status = 1 and sc.status = 1");
+	$db->execute();
+	$menu_principal = $db->fetchAll();
+
+	$menu = [];
+	foreach ($menu_principal as $item) {
+
+		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display from section_client sc, section s, content c where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id = '".$item['id']."' and s.status = 1 and sc.status = 1");
+		$db->execute();
+		$items = $db->fetchAll();
+		
+		if (count($items) > 0) {
+			$submenu = [];
+			foreach ($items as $subitem) {
+				$array = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $subitem['content'])), true);
+				$titles = $array['title'];
+
+				// Creating content inside the menu
+				foreach ($array as $key => $items) {
+					if ($key == $subitem['url']) {
+						foreach ($items as $k => $value) {
+							$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = $value;
+							unset($array[$subitem['url']][$k]);
+						}
+						break;
+					}
+				}
+				
+				$submenu[] = [
+					'url' 	=> $subitem['url'],
+					'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
+					'display' => (isset($subitem['display']) && $subitem['display']) ? true : false,
+					'items' => $array[$subitem['url']],
+				];
+			}
+		}
+		$menu[] = [
+			'url' 	=> $item['url'],
+			'title' => str_replace($keywords, $keywordsChange, utf8_encode($item['title'])),
+			'submenu' => $submenu
+		];
+		unset($submenu);
+	}
+	
+	/**********************************
+	 * 			EXTENSIONS
+	 **********************************/
 	$db->prepare("select * from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
-	/**
-	 * Widgets Constructor
-	 */
+	// Widgets Constructor
 	$widgets = [];
 	$i = 1;
 
@@ -159,13 +212,14 @@
 				$widgets['widget'.$i]['position'] 	= $extension['position'];
 				$i++;
 			} else {
+				// Problem with extension
 				echo "<script>console.log('Error in extension ".$objetName."')</script>";
 			}
 		} catch (Exception $e) {
 			echo 'Error '. $e->getMessage();
 		}
 	}
-
+	
 	/**
 	 * Render view
 	 */
@@ -177,4 +231,6 @@
 		'assetsJs'					=> (new Assets())->generateAssets($assets['js']),
 		'widgets'					=> $widgets,
 		'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
+		'menu'						=> $menu,
+		'country'					=> COUNTRY_CODE,
 	]);
