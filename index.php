@@ -100,13 +100,17 @@
 	/**********************************
 	 * 			MENU
 	 **********************************/
-	$db->prepare("select sc.id, sc.title as title, s.name as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display = 1 and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.id, sc.title as title, s.name as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
 	$db->execute();
 	$menu_principal = $db->fetchAll();
 
 	$menu = [];
 	foreach ($menu_principal as $item) {
 
+		/**
+		 * 
+		 * @param		object 			menu_display if it's not null we you use for order menu buttons
+		 */
 		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display from section_client sc, section s, content c where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id = '".$item['id']."' and s.status = 1 and sc.status = 1");
 		$db->execute();
 		$items = $db->fetchAll();
@@ -219,7 +223,7 @@
 			echo 'Error '. $e->getMessage();
 		}
 	}
-	
+
 	/**
 	 * Render view
 	 */
