@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<nav class="navbar navbar-menu navbar-expand-lg navbar-light">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php"><img src="images/header/logo-gosports.png" name="logo" title="" alt=""></a>
+				<a class="navbar-brand" href="index.php"><img src="images/header/{{ logo }}" name="logo" title="" alt=""></a>
 			</div>
 			<div class="collapse navbar-collapse navbar-buttons">
 				<script type="application/javascript">

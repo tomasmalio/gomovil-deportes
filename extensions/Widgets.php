@@ -202,7 +202,7 @@
 										} else {
 											$filename .= '.css';
 										}
-										//echo "informacion". date ("F d Y H:i:s.", filemtime($filename));
+										
 										/**
 										 * If there's styles define we modify the original file 
 										 * with the new content. If the variable is not change

@@ -17,12 +17,12 @@
 		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="{{globalStyle}}">
 		<script src="/assets/jquery/jquery.min.js"></script>
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		<body>
 			<div id="tpl">
-				{% include 'header.inc.php' with {'menu': menu, 'country': country} %}
+				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 				<article>
 						<div class="container-fluid">
 {% endblock %}

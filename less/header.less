@@ -1,36 +1,36 @@
 header {
-	background: @header-background;
-	border-top: @header-border-top;
-	border-right: @header-border-right;
-	border-bottom: @header-border-bottom;
-	border-left: @header-border-left;
-	padding-top: @header-padding-top;
-	padding-right: @header-padding-right;
-	padding-bottom: @header-padding-bottom;
-	padding-left: @header-padding-left;
-	width: @header-width;
+	background: @color-first;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 2px solid @color-second;
+	border-left: 0;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	width: 100%;
 	nav.navbar-menu {
 		padding: 0;
 		a.navbar-brand {
-			padding: @header-navbar-brand-paddding-top @header-navbar-brand-paddding-right @header-navbar-brand-paddding-bottom @header-navbar-brand-paddding-left;
-			height: @header-navbar-brand-height;
+			padding: 5px 0 0 0;
+			height: 50px;
 			img {
 				height: 100%;
 			}
 		}
 		.navbar-buttons {
-			height: @header-navbar-menu-height;
+			height: 65px;
 			ul.navbar-nav {
 				margin-left: 30px;
 				li {
 					vertical-align: top;
 					a {
-						display: @header-navbar-menu-item-link-display;
-						font-family: @header-navbar-menu-item-link-font-family;
-						font-size: @header-navbar-menu-item-link-font-size;
-						font-weight: @header-navbar-menu-item-link-font-weight;
-						color: @header-navbar-menu-item-link-color;
-						padding: @header-navbar-menu-item-link-padding-top @header-navbar-menu-item-link-padding-right @header-navbar-menu-item-link-padding-bottom @header-navbar-menu-item-link-padding-left;
+						display: block;
+						font-family: @button-font-family;
+						font-size: @button-font-size;
+						font-weight: @button-font-weight;
+						color: @color-second;
+						padding: 20px 15px 20px 15px;
 					}
 					&:hover {
 						.dropdown-menu {
@@ -120,7 +120,7 @@ header {
 												margin: 0;
 												padding: 0;
 												vertical-align: middle;
-												width: auto;												
+												width: auto;
 												img {
 													height: 34px;
 													margin: 0 auto;

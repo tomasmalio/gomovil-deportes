@@ -149,6 +149,16 @@
 	}
 	
 	/**********************************
+	 * 			CUSTOMIZATION
+	 **********************************/
+	$db->prepare("select * from customization c where c.client_id = '" . $client['id'] . "' and c.status = 1");
+	$db->execute();
+	$customization = $db->fetch();
+
+	$assetsConstructor = new Assets($client['name'], $client['id'], $customization);
+	$globalStyle = 'css/styles.'.str_replace(' ', '', strtolower($client['name'])).'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
+	
+	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
 	$db->prepare("select * from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
@@ -231,10 +241,12 @@
 	
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
-		'assetsStyle'				=> (new Assets())->generateAssets($assets['css']),
-		'assetsJs'					=> (new Assets())->generateAssets($assets['js']),
+		'globalStyle'				=> $globalStyle,
+		'assetsStyle'				=> $assetsConstructor->generateAssets($assets['css']),
+		'assetsJs'					=> $assetsConstructor->generateAssets($assets['js']),
 		'widgets'					=> $widgets,
 		'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
+		'logo'						=> $client['logo'],
 		'menu'						=> $menu,
 		'country'					=> COUNTRY_CODE,
 	]);

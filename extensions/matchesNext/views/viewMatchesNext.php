@@ -1,8 +1,3 @@
-<?php 
-//setlocale(LC_TIME, 'es_ES');
-//date_default_timezone_set('America/Lima');
-// echo date("Y-m-d H:i:s");
-?>
 <!-- Next matches-->
 <section class="next-matches">
 	<h2><?= $content['title'];?></h2>

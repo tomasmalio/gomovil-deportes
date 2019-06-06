@@ -1,7 +1,90 @@
 <?php
 	namespace GoMovil;
-
+	use GoMovil\Db;
 	class Assets {
+
+		public function __construct($client_name, $client_id, $params = []) {
+			if ($params['modify_status'] == '1') {
+				try {
+					/**
+					 * Generate the config and the aditional content
+					 * of the client
+					 */
+					$name 				= str_replace(' ', '', strtolower($client_name));
+					$filename 			= 'less/config.' . $name . '.less';
+					$filenameContent 	= 'less/content.' . $name . '.less';
+					$globalLess 		= 'less/styles.' . $name . '.less';
+					$globalCss			= 'css/styles.' . $name . '.min.css';
+					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
+					$data 				= '';
+
+					foreach ($params as $key => $value) {
+						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
+							if ($key != 'variables') {
+								if (isset($value) && !empty($value)) {
+									$data .= "@".str_replace('_', '-', $key).": ". $value .";\n";
+								}
+							} else {
+								$variables = json_decode($value, true);
+								foreach ($variables as $k => $v) {
+									$data .= "@" . $k . ": ". $v .";\n";
+								}
+							}
+						} elseif ($key == 'less_content') {
+							
+							$handleContent = fopen($filenameContent, 'w') or die('Cannot open file:  '. $filenameContent);
+							fwrite($handleContent, $value);
+							fclose($handleContent);
+						}
+					}
+					fwrite($handle, $data);
+					fclose($handle);
+
+					// Validate
+					if (!file_exists($globalLess)) {
+						shell_exec("cp -r less/styles.less $globalLess");
+					}
+					
+					// Cleaning the global less
+					$content = file_get_contents($globalLess);
+					$content = str_replace("/* Configuration */\n", '', $content);
+					$content = str_replace("@import 'config.".$name.".less';\n", '', $content);
+					$content = str_replace("/* Less content */\n", '', $content);
+					$content = str_replace("@import 'content.".$name.".less';\n", '', $content);
+					
+					file_put_contents($globalLess, $content);
+					unset($content);
+					
+					// Adding the configuration
+					$file = '';
+					$file .= "/* Configuration */\n";
+					$file .= "@import 'config.".$name.".less';\n";
+					$file .= file_get_contents($globalLess);
+					
+					// Adding the content
+					$file .= "/* Less content */\n";
+					$file .= "@import 'content.".$name.".less';\n";
+					file_put_contents($globalLess, $file);
+					unset($file);
+					
+					$less = new \lessc;
+					//$less->setFormatter("compressed");
+					$less->checkedCompile($globalLess, $globalCss);
+
+					// Update the DB
+					$db = new Db();
+					$db->setUsername('gomovil_db');
+					$db->setPassword('g0m0v1lc0');
+					$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
+					$db->connect();
+					$db->prepare("UPDATE customization SET modify_date = '".date('Y-m-d H:i:s')."', modify_status = '0' WHERE client_id = '". $client_id. "' AND status = '1';");
+					$db->execute();
+
+				} catch (Exception $e) {
+					echo 'Error '. $e->getMessage();
+				}
+			}
+		}
 
 		/**
 		 * Generate Assets
@@ -49,6 +132,7 @@
 				return false;
 			}
 		}
+
 	}
 
 ?>
