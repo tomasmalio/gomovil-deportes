@@ -39,6 +39,7 @@
 	$db->execute();
 	$client = $db->fetch();
 	
+	define('CLIENT_NAME', str_replace(' ', '', strtolower($client['name'])), true);
 	/* Country */
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
@@ -53,7 +54,7 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external from section s, section_client sc, content c where s.name = '".$s."' and s.id = sc.section_id and sc.content_id = c.id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external from section s, section_client sc left join content c on c.id = sc.content_id where s.name = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
 
@@ -156,12 +157,12 @@
 	$customization = $db->fetch();
 
 	$assetsConstructor = new Assets($client['name'], $client['id'], $customization);
-	$globalStyle = 'css/styles.'.str_replace(' ', '', strtolower($client['name'])).'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
+	$globalStyle = 'css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
 	
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	$db->prepare("select * from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
+	$db->prepare("select *, se.id as idExtension from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
@@ -192,9 +193,11 @@
 					$options = json_decode($extension['options'], true);
 				}
 				if (isset($extension['styles']) && $extension['styles'] != NULL) {
-					$options = array_merge($options, json_decode($extension['styles'], true));
+					$arrayStyles['styles'] = json_decode($extension['styles'], true);
+					$options = array_merge($options, $arrayStyles);
+					unset($arrayStyles);
 				}
-
+				
 				/**
 				 * Content
 				 * We validate if the extensions has external content and from the client
@@ -209,8 +212,8 @@
 				} else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
-
 				$json = [
+					'id'		=> $extension['idExtension'],
 					'modelView' => $extension['model_name'],
 					'data' => [
 						'content' => ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
@@ -219,7 +222,7 @@
 				];
 				$$variable 						= new $objetName($json);
 				$$widget 						= $$variable->renderView(); 
-				$assetExtension 				= $$variable->assets();
+				$assetExtension 				= $$variable->assets($extension['modify_status'], strtotime($extension['modify_date']));
 				array_push($assets['css'], $assetExtension['css']);
 				array_push($assets['js'], $assetExtension['js']);
 				$widgets['widget'.$i]['content'] 	= $$widget;

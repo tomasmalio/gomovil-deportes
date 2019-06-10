@@ -3,27 +3,70 @@
 	 * Widget class
 	 *
 	 * @author			Tomas Malio <tomasmalio@gmail.com>
-	 * @version 		1.0
+	 * @version 		1.1
 	 * 
 	 */
 	use MatthiasMullie\Minify;
 
 	class Widgets {
 
+		public $extensionId;
 		/**
 		 * Constructor
 		 * 
 		 */
 		public function __construct($params = []) {
+			$this->extensionId = $params['id'];
+			unset($params['id']);
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
+						/**
+						 * If the extensions receive words that are going to
+						 * be use for titles, buttons, etc we obtain and then
+						 * separated from the main content
+						 */
+						if ($key == 'content' && isset($value['words'])) {
+							$words = $value['words'];
+						}
 						if ($key != 'content' && $key != 'options') {
 							$this->$key = $value;
 						}
 						if ($key == 'options') {
 							if (isset($value)) {
 								$this->options = array_replace_recursive($this->options, $value);
+								/**
+								 * Creating scripts for slider
+								 */
+								if (($this->options['slider']['desktop']['display'] && !IS_MOBILE) || ($this->options['slider']['mobile']['display'] && IS_MOBILE)) {
+									
+									// Setting variables for the swiper
+									$mousewheel = 'true';
+									$spaceBetween = '30';
+									$loop = 'true';
+
+									if (isset($this->options['slider']['options']['loop'])) {
+										$loop = $this->options['slider']['options']['loop'];
+									}
+									if (isset($this->options['slider']['options']['spaceBetween'])) {
+										$spaceBetween = $this->options['slider']['options']['spaceBetween'];
+									}
+									if (isset($this->options['slider']['options']['mousewheel'])) {
+										$mousewheel = $this->options['slider']['options']['mousewheel'];
+									}
+									
+									// Slider script generator
+									$script = [
+										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
+										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
+										slidesPerView: 'auto',
+										loop: ".$loop.",
+										spaceBetween: ".$spaceBetween.",
+										mousewheel: ".$mousewheel.",
+										});"
+									];
+									$this->options['script'] = $script;
+								}
 							}
 						}
 					}
@@ -44,9 +87,19 @@
 					$name = 'Model'.get_class($this);
 				}
 				$model = new $name();
-				$this->content = $model->model($params['data']['content']);
+				$content = $model->model($params['data']['content']);
 			} else {
-				$this->content = null;
+				$content = null;
+			}
+			/**
+			 * Creating the content var for using in the front html. 
+			 * If the extension has words (title, buttons, etc) we merge with
+			 * the content array.
+			 */
+			if (is_array($words)) {
+				$this->content = array_merge($words, array_diff($content, $words));
+			} else {
+				$this->content = $content;
 			}
 		}
 		
@@ -129,7 +182,11 @@
 			}
 			ob_start();
 			include $filename;
-			return ob_get_clean();
+			if (!empty($this->options['styles'])) {
+				return str_replace('"'.strtolower(get_class($this)).'"', strtolower(get_class($this)) . $this->extensionId, ob_get_clean());
+			} else {
+				return ob_get_clean();
+			}
 		}
 
 		/**
@@ -137,13 +194,13 @@
 		 * 
 		 * @return		array			Returns an array with the assets files for Styles and JavaScript
 		 */
-		public function assets () {
+		public function assets ($status, $date) {
 			try {
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/' . strtolower(get_class($this)) . '/images', 0755);
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/' . strtolower(get_class($this)) . '/fonts', 0755);
+				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/images', 0755);
+				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/fonts', 0755);
 				return [
-					'css' => self::compileAssets('CSS', $this->files['style'], $this->options), 
-					'js' => self::compileAssets('JS', $this->files['js'], $this->options)
+					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
+					'js' => self::compileAssets('JS', $this->files['js'], $date, $this->options)
 				];
 			} catch (exception $e) {
 				echo "Error message: " . $e->getMessage();
@@ -158,13 +215,13 @@
 		 * @param 		array			$options
 		 * @return 		array			Returns an array with the assets files
 		 */
-		private function compileAssets ($type, $files, $options = null) {
+		private function compileAssets ($type, $files, $date, $options = null) {
 			$less = new lessc;
 			try {
 				if ($type == 'CSS') {
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
-						$dest 		= 'assets/' . strtolower(get_class($this)) . '/css';
+						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/css';
 		
 						// Create the directory if not exists
 						self::createDirectory($dest);
@@ -187,12 +244,34 @@
 									//$src .= '/' . self::getExtension($file);
 									$original = $src . '/'. self::getExtension($file) . '/' . $file;
 									$filename = $dest .'/'. basename($file, '.'. self::getExtension($file));
-
+									
 									// File in a LESS format
 									if (strpos($file, 'less')) {
+										// Backup the original file to create the new one
+										$backupFile = $src . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
+										// Create a copy of the original file to keep it save
+										shell_exec("cp -r $original $backupFile");
+										
+										// // Concat to the filename the id extension to identify
+										// $filename .= $this->extensionId;
+
+										// // Replacement of the class name 
+										// $newFile = file_get_contents($backupFile);
+										// $newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
+										// file_put_contents($backupFile, $newFile);
+
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
-											$importFile = $src .  '/' . self::getExtension($file) . '/'. $file;
-											self::addImportsLess($importFile);
+											//$importFile = $src .  '/' . self::getExtension($file) . '/'. $file;
+											// $importFile = $backupFile;
+											self::addImportsLess($backupFile);
+										}
+
+										/**
+										 * If there's styles define we concat to the 
+										 * filename the id extension to identify
+										 */
+										if (!empty($options['styles'])) {
+											$filename .= $this->extensionId;
 										}
 
 										// Minify the file if is not set or if it's true
@@ -202,7 +281,7 @@
 										} else {
 											$filename .= '.css';
 										}
-										
+
 										/**
 										 * If there's styles define we modify the original file 
 										 * with the new content. If the variable is not change
@@ -214,6 +293,11 @@
 											// Create a copy of the original file to keep it save
 											shell_exec("cp -r $original $backupFile");
 
+											// Replacement of the class name
+											$newFile = file_get_contents($backupFile);
+											$newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
+											file_put_contents($backupFile, $newFile);
+
 											// Modify the variables
 											self::modifyVars($options['styles'], $backupFile);
 											
@@ -224,8 +308,9 @@
 											unlink($backupFile);
 										} else {
 											// Compile the less but first verify if the css exist
-											$less->checkedCompile($src . '/'. self::getExtension($file) . '/' . $file, $filename);
+											$less->checkedCompile($backupFile, $filename);
 										}
+										shell_exec("rm -rf $backupFile");
 									}
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
@@ -238,10 +323,10 @@
 											shell_exec("cp -r $original $filename");
 										}
 									}
+									$filename .= '?v='.date('YmdHis', $date);
 									array_push($arrayReturn, $filename);
 								}
 							}
-							
 						}	
 						return $arrayReturn;
 					}
@@ -250,7 +335,7 @@
 
 					if (!empty($files)) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
-						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
+						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
 						
 						// Create the directory if not exists
 						self::createDirectory($dest);
@@ -285,6 +370,7 @@
 									} else {
 										$filename = $dest .'/'. basename($file, '.js') . '.js';
 									}
+									$filename .= '?v='.date('YmdHis', $date);
 									array_push($arrayReturn, $filename);
 								}
 							}
@@ -295,7 +381,7 @@
 					 */
 					if (isset($options['script']) && !empty($options['script']['content'])) {
 						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
-						$dest 		= 'assets/' . strtolower(get_class($this)) . '/js';
+						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
 						
 						// Create the directory if not exist
 						self::createDirectory($dest);
@@ -308,6 +394,7 @@
 						} else {
 							$filename = $original;
 						}
+						$filename .= '?v='.date('YmdHis', $date);
 						array_push($arrayReturn, $filename);
 					}
 					return $arrayReturn;
@@ -412,7 +499,7 @@
 		private function addImportsLess ($filename) {
 			if (strpos(file_get_contents($filename), "Global Imports") === false) {
 				$file = "/* Global Imports */\n";
-				$file .= "@import '../../../../less/config.less';\n";
+				$file .= "@import '../../../../less/config.".CLIENT_NAME.".less';\n";
 				$file .= "@import '../../../../less/common.less';\n\n";
 				$file .= file_get_contents($filename);
 				file_put_contents($filename, $file);
@@ -476,7 +563,7 @@
 			} else {
 				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
 			}
-			$dest 	= 'assets/' . strtolower(get_class($this)) . '/js';
+			$dest 	= 'assets/' . CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
 
 			return ($dest . '/' . $filename);

@@ -31,16 +31,6 @@
 			'items' => [
 				'desktop' 	=> 5,
 				'mobile' 	=> 5,
-			],
-			'minify' => false,
-			'script' => [
-				'name'		=> 'swiper.news-google',
-				'content' 	=> "var swiperNewsGoogle = new Swiper('.news-google-content', {
-					slidesPerView: 'auto',
-					loop: true,
-					spaceBetween: 30,
-					mousewheel: true,
-				});"
 			]
 		];
 

@@ -30,7 +30,6 @@
 				$json = json_decode(file_get_contents($this->url), true);
 				array_push($params['basket']['tournaments'], $json);
 			}
-			
 			return $params;
 		}
 	}
