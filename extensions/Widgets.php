@@ -203,10 +203,11 @@
 		 * 
 		 * @return		array			Returns an array with the assets files for Styles and JavaScript
 		 */
-		public function assets ($status, $date) {
+		public function assets ($date) {
 			try {
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/'. $this->clientName . '/' . strtolower(get_class($this)) . '/images', 0755);
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/'. $this->clientName . '/' . strtolower(get_class($this)) . '/fonts', 0755);
+				self::xcopy($this->source.'/images', $this->destination.'/images', 0755);
+				self::xcopy($this->source.'/fonts', $this->destination.'/fonts', 0755);
+
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
 					'js' => self::compileAssets('JS', $this->files['js'], $date, $this->options)

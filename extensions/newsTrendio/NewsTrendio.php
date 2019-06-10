@@ -7,7 +7,7 @@
 
 		// Assets files
 		public $files = [
-			'style'	=> ['news-google.less','swiper.css', 'news-trendio.less'],
+			'style'	=> ['swiper.css', 'news-trendio.less'],
 			'js'	=> ['swiper.js'],
 		];
 

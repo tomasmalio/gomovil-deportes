@@ -223,7 +223,7 @@
 				];
 				$$variable 						= new $objetName($json);
 				$$widget 						= $$variable->renderView(); 
-				$assetExtension 				= $$variable->assets($extension['modify_status'], strtotime($extension['modify_date']));
+				$assetExtension 				= $$variable->assets(strtotime($extension['modify_date']));
 				array_push($assets['css'], $assetExtension['css']);
 				array_push($assets['js'], $assetExtension['js']);
 				$widgets['widget'.$i]['content'] 	= $$widget;
