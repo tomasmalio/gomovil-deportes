@@ -40,7 +40,7 @@ This is of the most important thing of creating a extension in a section. The pl
 	"words": {
 		"title": "Tendencias"
 	},
-	"country_code": {@countryCode},
+	"country_code": "{@countryCode}",
 	"trending": true,
 	"limit": "10"
 }
