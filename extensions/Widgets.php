@@ -3,21 +3,30 @@
 	 * Widget class
 	 *
 	 * @author			Tomas Malio <tomasmalio@gmail.com>
-	 * @version 		1.1
+	 * @version 		1.2
 	 * 
 	 */
 	use MatthiasMullie\Minify;
 
 	class Widgets {
+		// Client name
+		private $clientName;
+		// Extension Id
+		private $extensionId;
+		// Source folder
+		private $source;
+		// Destination folder
+		private $destination;
 
-		public $extensionId;
-		/**
-		 * Constructor
-		 * 
-		 */
 		public function __construct($params = []) {
-			$this->extensionId = $params['id'];
+			$this->clientName 	= $params['clientName'];
+			$this->extensionId 	= $params['id'];
+			$this->source 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
+			$this->destination 	= 'assets/'. $this->clientName . '/' . strtolower(get_class($this));
+
+			unset($params['clientName']);
 			unset($params['id']);
+
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
@@ -196,8 +205,8 @@
 		 */
 		public function assets ($status, $date) {
 			try {
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/images', 0755);
-				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/fonts', 0755);
+				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/images', 'assets/'. $this->clientName . '/' . strtolower(get_class($this)) . '/images', 0755);
+				self::xcopy('extensions/'.lcfirst(get_class($this)) . '/assets/fonts', 'assets/'. $this->clientName . '/' . strtolower(get_class($this)) . '/fonts', 0755);
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
 					'js' => self::compileAssets('JS', $this->files['js'], $date, $this->options)
@@ -220,8 +229,8 @@
 			try {
 				if ($type == 'CSS') {
 					if (!empty($files)) {
-						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
-						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/css';
+						//$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
+						$dest 		= $this->destination . '/css';
 		
 						// Create the directory if not exists
 						self::createDirectory($dest);
@@ -240,29 +249,20 @@
 							} else {
 								
 								// Validate if an authorize file and exits
-								if (self::validateFile($file) && file_exists($src . '/'. self::getExtension($file) . '/' .$file)) {
+								if (self::validateFile($file) && file_exists($this->source . '/'. self::getExtension($file) . '/' .$file)) {
 									//$src .= '/' . self::getExtension($file);
-									$original = $src . '/'. self::getExtension($file) . '/' . $file;
+									$original = $this->source . '/'. self::getExtension($file) . '/' . $file;
 									$filename = $dest .'/'. basename($file, '.'. self::getExtension($file));
 									
 									// File in a LESS format
 									if (strpos($file, 'less')) {
 										// Backup the original file to create the new one
-										$backupFile = $src . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
+										$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
 										// Create a copy of the original file to keep it save
 										shell_exec("cp -r $original $backupFile");
 										
-										// // Concat to the filename the id extension to identify
-										// $filename .= $this->extensionId;
-
-										// // Replacement of the class name 
-										// $newFile = file_get_contents($backupFile);
-										// $newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
-										// file_put_contents($backupFile, $newFile);
-
+										// Import global less files
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
-											//$importFile = $src .  '/' . self::getExtension($file) . '/'. $file;
-											// $importFile = $backupFile;
 											self::addImportsLess($backupFile);
 										}
 
@@ -288,7 +288,7 @@
 										 * the original value continues
 										 */
 										if (!empty($options['styles'])) {
-											$backupFile = $src . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
+											$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
 											
 											// Create a copy of the original file to keep it save
 											shell_exec("cp -r $original $backupFile");
@@ -334,8 +334,8 @@
 					$arrayReturn = [];
 
 					if (!empty($files)) {
-						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
-						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
+						$src 		= $this->source . '/js';
+						$dest 		= $this->destination. '/js';
 						
 						// Create the directory if not exists
 						self::createDirectory($dest);
@@ -380,8 +380,8 @@
 					 * Create JavaScript file with the code that we received
 					 */
 					if (isset($options['script']) && !empty($options['script']['content'])) {
-						$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets/js';
-						$dest 		= 'assets/'. CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
+						$src 		= $this->source . '/js';
+						$dest 		= $this->destination . '/js';
 						
 						// Create the directory if not exist
 						self::createDirectory($dest);
@@ -556,16 +556,15 @@
 		 * @param		string		$name		String with the name output file name
 		 * @return		string		Return the directory concat with the filename
 		 */
-		public function createScriptJs ($script, $name = '') {
+		private function createScriptJs ($script, $name = '') {
 			
 			if (isset($name) && $name) {
 				$filename 	= str_replace('.js', '', $name) . '.js';
 			} else {
 				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
 			}
-			$dest 	= 'assets/' . CLIENT_NAME . '/' . strtolower(get_class($this)) . '/js';
+			$dest 	= $this->destination . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
-
 			return ($dest . '/' . $filename);
 		}
 

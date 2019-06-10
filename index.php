@@ -197,7 +197,7 @@
 					$options = array_merge($options, $arrayStyles);
 					unset($arrayStyles);
 				}
-				
+
 				/**
 				 * Content
 				 * We validate if the extensions has external content and from the client
@@ -213,11 +213,12 @@
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
 				$json = [
-					'id'		=> $extension['idExtension'],
-					'modelView' => $extension['model_name'],
+					'id'			=> $extension['idExtension'],
+					'clientName'	=> CLIENT_NAME,
+					'modelView' 	=> $extension['model_name'],
 					'data' => [
-						'content' => ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
-						'options' => $options,
+						'content' 	=> ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
+						'options'	=> $options,
 					],
 				];
 				$$variable 						= new $objetName($json);
