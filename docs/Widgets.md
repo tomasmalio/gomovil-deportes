@@ -212,24 +212,3 @@ Example:
 	}
 ```
 ***Important: you can see that we receive from our Model file the info that's get from a API Service. If there's info we set to a variable call $this->content and then pass to the view file.***
-
-7) Add the following code inside your Controller (*index.php*) 
-
-```php
-	/****************************************
-	 * WIDGET NAME
-	 ****************************************/
-	require_once __DIR__.'/'.$GLOBALS['extensions_url'].'/nameOfWidget/WidgetName.php';
-	$widgetWidgetName 	= (new WidgetName())->renderView();
-	$assetWidgetName 	= (new WidgetName())->assets();
-	array_push($assets['css'], $assetWidgetName['css']);
-	array_push($assets['js'], $assetWidgetName['js']);
-	$displayWidgetName = true;
-```
-Remember to change the following words:
-* ***nameOfWidget***: is the name of the folder that you include in */extensions/*
-* ***WidgetName***: name of the first file inside the folder and of course the class name
-* ***widgetWidgetName***: is a variable name that always begins with widget and the ***WidgetName*** which will store the code
-* ***displayWidgetName*** *(true | false)*: is a variable name that always begins with display and the ***WidgetName*** which contains if you want to display or not
-* ***array_push($assets['css'], (new VideosList())->assets()['css'])***: you must add this line if you have in the extension styles files. If you don't have styles you can delete.
-* ***array_push($assets['js'], (new VideosList())->assets()['js'])***: you must add this line if you have in the extension scripts files. If you don't have styles you can delete.
