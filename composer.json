@@ -30,13 +30,13 @@
 		"post-update-cmd": [
 			"chmod -R 755 assets",
 			"chmod -R 755 css",
+			"chmod -R 755 less",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
-			"cp -R vendor/mobiledetect/mobiledetectlib src/mobiledetect",
 			"php composer dump-autoload",
 			"sh gomovil-install.sh"
 		]
