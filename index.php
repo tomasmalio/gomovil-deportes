@@ -1,6 +1,9 @@
 <?php
 	require_once __DIR__.'/bootstrap.php';
 	/*ini_set('display_errors', 1);*/
+	
+	/* Directory */
+	define('ROOTPATH', __DIR__);
 
 	/* Declare of extensions directory */
 	define('EXTENSIONS_URL', '/extensions', true);

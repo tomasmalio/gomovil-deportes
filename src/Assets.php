@@ -11,10 +11,10 @@
 					 * of the client
 					 */
 					$name 				= str_replace(' ', '', strtolower($client_name));
-					$filename 			= '/var/www/html/gomovil-deportes/less/config.' . $name . '.less';
-					$filenameContent 	= '/var/www/html/gomovil-deportes/less/content.' . $name . '.less';
-					$globalLess 		= '/var/www/html/gomovil-deportes/less/styles.' . $name . '.less';
-					$globalCss			= '/var/www/html/gomovil-deportes/css/styles.' . $name . '.min.css';
+					$filename 			= ROOTPATH. 'less/config.' . $name . '.less';
+					$filenameContent 	= ROOTPATH. 'less/content.' . $name . '.less';
+					$globalLess 		= ROOTPATH. 'less/styles.' . $name . '.less';
+					$globalCss			= ROOTPATH. 'css/styles.' . $name . '.min.css';
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
 
@@ -31,12 +31,13 @@
 								}
 							}
 						} elseif ($key == 'less_content') {
-							
+							file_put_contents($filenameContent, '');
 							$handleContent = fopen($filenameContent, 'w') or die('Cannot open file:  '. $filenameContent);
 							fwrite($handleContent, $value);
 							fclose($handleContent);
 						}
 					}
+					file_put_contents($handle, '');
 					fwrite($handle, $data);
 					fclose($handle);
 
