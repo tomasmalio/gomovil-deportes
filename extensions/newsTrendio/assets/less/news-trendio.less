@@ -3,6 +3,12 @@
 @import '../../../../less/common.less';
 
 /* Variables */
+@news-font-family: @h2-font-family;
+@news-font-size: @h2-font-size;
+@news-font-weight: @h2-font-weight;
+@news-color: @color-third;
+@news-margin-bottom: 10px;
+
 @news-border-radius: 10px;
 @news-background: #ffffff;
 @news-margin-bottom: 15px;
@@ -30,7 +36,15 @@
 /* News trendio */
 section.newstrendio {
 	position: relative;
+	h2 {
+		font-family: @news-font-family;
+		font-weight: @news-font-weight;
+		font-size: @news-font-size;
+		color: @news-color;
+		margin-bottom: @news-margin-bottom;
+	}
 	.newstrendio-content {
+		margin-bottom: 15px;
 		li {
 			display: inline-flex;
 			margin-bottom: @news-margin-bottom;

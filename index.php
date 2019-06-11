@@ -19,7 +19,8 @@
 	$db->setPassword('g0m0v1lc0');
 	$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
 	$db->connect();
-
+	var_dump($_REQUEST);
+	exit;
 	/* Getting sections */
 	$s 	= $_GET['s'];
 
