@@ -1,5 +1,5 @@
 <!-- Next matches-->
-<section class="next-matches">
+<section class="nextmatches">
 	<h2><?= $content['title'];?></h2>
 	<div class="date-matches"><?= strftime('%d de %B', strtotime($date));?></div>
 	<!-- Football Sport / Next matches -->

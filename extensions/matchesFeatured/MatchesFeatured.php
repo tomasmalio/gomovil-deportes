@@ -33,23 +33,6 @@
 			'items' => [
 				'desktop' 	=> 2,
 				'mobile' 	=> 2,
-			],
-			'script' => [
-				'name'		=> 'swiper.matches-featured',
-				'content' 	=> "var swiperMatchesFeatured = new Swiper('.matches-featured', {
-					slidesPerView: 'auto',
-					loop: true,
-					spaceBetween: 30,
-					mousewheel: true,
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					},
-					pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
-					},
-				});"
 			]
 		];
 

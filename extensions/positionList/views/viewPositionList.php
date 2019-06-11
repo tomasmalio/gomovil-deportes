@@ -1,4 +1,4 @@
-<section class="position-list">
+<section class="positionlist">
 	<h2><?=$title?></h2>
 	<div class="content-list-teams">
 		<div class="titles-list">

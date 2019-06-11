@@ -68,10 +68,18 @@
 									$script = [
 										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
 										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
-										slidesPerView: 'auto',
-										loop: ".$loop.",
-										spaceBetween: ".$spacebetween.",
-										mousewheel: ".$mousewheel.",
+											slidesPerView: 'auto',
+											loop: ".$loop.",
+											spaceBetween: ".$spacebetween.",
+											mousewheel: ".$mousewheel.",
+											navigation: {
+												nextEl: '.swiper-button-next',
+												prevEl: '.swiper-button-prev',
+											},
+											pagination: {
+												el: '.swiper-pagination',
+												clickable: true,
+											},
 										});"
 									];
 									$this->options['script'] = $script;

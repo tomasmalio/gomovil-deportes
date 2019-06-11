@@ -1,6 +1,6 @@
 <!-- News Google -->
-<section class="news-google">
-	<div class="news-google-content <?php if ($slider) {?>swiper-container<?php }?>">
+<section class="newsgoogle">
+	<div class="newsgoogle-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;

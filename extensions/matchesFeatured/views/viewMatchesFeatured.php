@@ -1,12 +1,12 @@
 <!-- Match Featured -->
-<section class="match-featured-content">
+<section class="matchfeatured">
 	<h3>
 		<span><?=$label?></span>
 	</h3>
 	<a href="#" class="sport football">
 		<i class="fas fa-futbol football"></i> <span>Fútbol</span>
 	</a>
-	<div class="matches-featured <?php if ($slider) {?>swiper-container<?php }?>">
+	<div class="matchesfeatured-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="<?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;

@@ -1,4 +1,4 @@
-<section class="leagues-list">
+<section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<a href="tournament.php?filter1=<?=$content['search']['type'];?>&filter2=<?=$content['search']['tournament'];?>" class="content-league">
 		<div class="league-image"><img src="<?=$content['tournament'][$content['search']['type']][$content['search']['tournament']]['image']?>" name="" alt="" title=""></div>
@@ -7,7 +7,7 @@
 	<?php 
 		} else {
 	?>
-	<div class="leagues-list-content <?php if ($slider) {?>swiper-container<?php }?>">
+	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php }?>">
 			<?php
 				// Leagues

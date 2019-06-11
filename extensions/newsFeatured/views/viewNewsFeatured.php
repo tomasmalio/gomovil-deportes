@@ -1,6 +1,6 @@
 <!-- Featured Content -->
-<section class="featured-content">
-	<div class="featured-news">
+<section class="newsfeatured">
+	<div class="newsfeatured-content">
 		<a href="#" title="<?=$news['title']?>">
 			<div class="content" style="background-image: url('<?=$news['image']?>');">
 				<h3>

@@ -20,24 +20,6 @@
 				'mobile' 	=> [
 					'display' 		=> true,
 				],
-			],
-			'minify' => false,
-			'script' => [
-				'name'		=> 'swiper.leagues-list',
-				'content' 	=> "var swiperLeagueList = new Swiper('.leagues-list-content', {
-					slidesPerView: 'auto',
-					loop: true,
-					spaceBetween: 0,
-					mousewheel: true,
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					},
-					pagination: {
-						el: '.swiper-pagination',
-						clickable: true,
-					},
-				});"
 			]
 		];
 
