@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteOptionsInherit
+RewriteRule /(.*)$						index.php?s=$1 [L]
+RewriteRule /(.*)/(.*)$					index.php?s=$2 [L]
+RewriteRule /(.*)/(.*)/(.*)$			index.php?s=$2&id=$3 [L]
+RewriteRule /(.*)/(.*)/(.*)/(.*)		index.php?s=$1&filter1=$3&filter2=$4 [L]
