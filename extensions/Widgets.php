@@ -268,6 +268,7 @@
 										// Backup the original file to create the new one
 										$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
 										// Create a copy of the original file to keep it save
+										echo "Estoy aca";
 										shell_exec("cp -r $original $backupFile");
 										
 										// Import global less files
