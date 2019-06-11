@@ -11,11 +11,11 @@
 					 * of the client
 					 */
 					$name 				= str_replace(' ', '', strtolower($client_name));
-					$filename 			= '../less/config.' . $name . '.less';
-					$filenameContent 	= '../less/content.' . $name . '.less';
-					$globalLess 		= '../less/styles.' . $name . '.less';
-					$globalCss			= '../css/styles.' . $name . '.min.css';
-					//$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
+					$filename 			= '/less/config.' . $name . '.less';
+					$filenameContent 	= '/less/content.' . $name . '.less';
+					$globalLess 		= '/less/styles.' . $name . '.less';
+					$globalCss			= '/css/styles.' . $name . '.min.css';
+					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
 
 					foreach ($params as $key => $value) {
@@ -32,15 +32,13 @@
 							}
 						} elseif ($key == 'less_content') {
 							
-							file_put_contents($filenameContent, $value);
-							//$handleContent = fopen($filenameContent, 'w') or die('Cannot open file:  '. $filenameContent);
-							//fwrite($handleContent, $value);
-							//fclose($handleContent);
+							$handleContent = fopen($filenameContent, 'w') or die('Cannot open file:  '. $filenameContent);
+							fwrite($handleContent, $value);
+							fclose($handleContent);
 						}
 					}
-					file_put_contents($filename, $data);
-					// fwrite($handle, $data);
-					// fclose($handle);
+					fwrite($handle, $data);
+					fclose($handle);
 
 					// Validate
 					if (!file_exists($globalLess)) {
