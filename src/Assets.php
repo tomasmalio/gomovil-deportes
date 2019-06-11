@@ -11,10 +11,10 @@
 					 * of the client
 					 */
 					$name 				= str_replace(' ', '', strtolower($client_name));
-					$filename 			= 'less/config.' . $name . '.less';
-					$filenameContent 	= 'less/content.' . $name . '.less';
-					$globalLess 		= 'less/styles.' . $name . '.less';
-					$globalCss			= 'css/styles.' . $name . '.min.css';
+					$filename 			= '/less/config.' . $name . '.less';
+					$filenameContent 	= '/less/content.' . $name . '.less';
+					$globalLess 		= '/less/styles.' . $name . '.less';
+					$globalCss			= '/css/styles.' . $name . '.min.css';
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
 
