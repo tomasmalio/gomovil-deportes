@@ -51,17 +51,17 @@
 									
 									// Setting variables for the swiper
 									$mousewheel = 'true';
-									$spaceBetween = '30';
+									$spacebetween = '30';
 									$loop = 'true';
 
-									if (isset($this->options['slider']['options']['loop'])) {
-										$loop = $this->options['slider']['options']['loop'];
+									if ($this->options['slider']['options']['loop'] === 'false') {
+										$loop = 'false';
 									}
-									if (isset($this->options['slider']['options']['spaceBetween'])) {
-										$spaceBetween = $this->options['slider']['options']['spaceBetween'];
+									if ($this->options['slider']['options']['spacebetween'] != '30') {
+										$spaceBetween = $this->options['slider']['options']['spacebetween'];
 									}
-									if (isset($this->options['slider']['options']['mousewheel'])) {
-										$mousewheel = $this->options['slider']['options']['mousewheel'];
+									if ($this->options['slider']['options']['mousewheel'] == 'false') {
+										$mousewheel = 'false';
 									}
 									
 									// Slider script generator
@@ -70,7 +70,7 @@
 										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
 										slidesPerView: 'auto',
 										loop: ".$loop.",
-										spaceBetween: ".$spaceBetween.",
+										spaceBetween: ".$spacebetween.",
 										mousewheel: ".$mousewheel.",
 										});"
 									];

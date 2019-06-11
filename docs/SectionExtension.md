@@ -12,14 +12,28 @@ In the moment you create an extension you can define a lot of things inside the 
 	},
 	"slider": {
 		"desktop": {
-			"display": true
+			"display": true,
+			"pagination": false,
+			"navigation": false
 		},
 		"mobile": {
-			"display": true
+			"display": true,
+			"pagination": false,
+			"navigation": false
+		},
+		"options": {
+			"loop": "true",
+			"spacebetween": "30",
+			"mousewheel": "true"
 		}
 	}
 }
 ```
+If we wont to customize the slider we can set **pagination** or **navigation** for each kind of screen: desktop or mobile.
+Then there're aditionals that can be include in the **options** atribute as:
+- **loop** (true | false): we create the carrousel of items.
+- **spacebetween** (int): the sepration between each item.
+- **mousewheel** (true | false): allow the lateral scroll with mouse. 
 
 ## Styles
 When you want to modify the styles of your extension you can include a **JSON** code in the **styles** column. Your JSON must be write like this:
