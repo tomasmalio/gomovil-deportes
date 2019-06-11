@@ -268,8 +268,8 @@
 										// Backup the original file to create the new one
 										$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
 										// Create a copy of the original file to keep it save
-										chmod($this->source, 0755);
-										var_dump(shell_exec("cp -r $original $backupFile"));
+										shell_exec("chmod -r $this->source 0755");
+										shell_exec("cp -r $original $backupFile");
 										
 										// Import global less files
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
