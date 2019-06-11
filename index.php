@@ -161,7 +161,7 @@
 	$customization = $db->fetch();
 
 	$assetsConstructor = new Assets($client['name'], $client['id'], $customization);
-	$globalStyle = 'css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
+	$globalStyle = $domain . 'css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
 	
 	/**********************************
 	 * 			EXTENSIONS
