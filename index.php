@@ -34,7 +34,7 @@
 	
 	/* Identify the client */
 	$domain 	= $_SERVER['HTTP_HOST'];
-	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = 'home' : '';
+	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
 	/**
 	 * Client definitions
@@ -43,8 +43,14 @@
 	$db->execute();
 	$client = $db->fetch();
 	
+	/**
+	 * Define Global
+	 * 
+	 * CLIENT_NAME
+	 * COUNTRY_CODE
+	 * COUNTRY_NAME
+	 */
 	define('CLIENT_NAME', str_replace(' ', '', strtolower($client['name'])), true);
-	/* Country */
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
 
@@ -58,7 +64,7 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external from section s, section_client sc left join content c on c.id = sc.content_id where s.name = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
 
@@ -105,7 +111,7 @@
 	/**********************************
 	 * 			MENU
 	 **********************************/
-	$db->prepare("select sc.id, sc.title as title, s.name as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
+	$db->prepare("select sc.id, sc.title as title, s.uri as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
 	$db->execute();
 	$menu_principal = $db->fetchAll();
 
