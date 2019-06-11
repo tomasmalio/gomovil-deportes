@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteOptionsInherit
+RewriteOptions Inherit
 RewriteRule /(.*)$						index.php?s=$1 [L]
 RewriteRule /(.*)/(.*)$					index.php?s=$2 [L]
 RewriteRule /(.*)/(.*)/(.*)$			index.php?s=$2&id=$3 [L]
