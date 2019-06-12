@@ -28,7 +28,7 @@
 				<ul class="nav navbar-nav h-100">
 					{% for item in menu %}
 					{% if item.submenu is empty %}
-					<li><a href="?s={{ item.url }}">{{ item.title }}</a></li>
+					<li><a href="{{ item.url }}">{{ item.title }}</a></li>
 					{% else %}
 					<li class="dropdown">
 						<a data-toggle="dropdown" href="#">{{ item.title }}</a>
@@ -40,10 +40,10 @@
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
 								{% set contentSubmenu = submenu.items %}
-								<li class="item"><a href="?s={{ item.url }}">Portada</a></li>
+								<li class="item"><a href="{{ item.url }}">Portada</a></li>
 								{% endif %}
 								{% if submenu.display %}
-								<li class="item"><a href="?s={{ item.url }}&ss={{ submenu.url }}">{{ submenu.title }}</a></li>
+								<li class="item"><a href="{{ item.url }}/{{ submenu.url }}">{{ submenu.title }}</a></li>
 								{% endif %}
 								{% endfor %}
 							</ul>
