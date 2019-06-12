@@ -8,8 +8,8 @@
 
 		// Assets files
 		public $files = [
-			'style'		=> ['leagues-list.less', 'swiper.css'],
-			'js'		=> ['swiper.js'],
+			'style'		=> ['leagues-list.less'],
+			'js'		=> [],
 		];
 		// Options
 		public $options = [
