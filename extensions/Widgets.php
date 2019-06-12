@@ -17,12 +17,15 @@
 		private $source;
 		// Destination folder
 		private $destination;
+		// Destination temp
+		private $temporal;
 
 		public function __construct($params = []) {
 			$this->clientName 	= $params['clientName'];
 			$this->extensionId 	= $params['id'];
 			$this->source 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
 			$this->destination 	= 'assets/'. $this->clientName . '/' . strtolower(get_class($this));
+			$this->temporal 	= 'tmp/'. strtolower(get_class($this));
 
 			unset($params['clientName']);
 			unset($params['id']);
@@ -264,11 +267,12 @@
 									// File in a LESS format
 									if (strpos($file, 'less')) {
 										// Backup the original file to create the new one
-										$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
+										$backupFile = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
 										// Create a copy of the original file to keep it save
-										shell_exec("chmod -R 0755 $this->source");
-										shell_exec("cp -r $original $backupFile");
-										
+										self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
+										self::xcopy($original, $backupFile, 0755);
+										// shell_exec("chmod -R 0755 $this->temporal");
+										// shell_exec("cp -r $original $backupFile");
 										// Import global less files
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
 											self::addImportsLess($backupFile);
@@ -296,10 +300,12 @@
 										 * the original value continues
 										 */
 										if (!empty($options['styles'])) {
-											$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
+											$backupFile = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
 											
 											// Create a copy of the original file to keep it save
-											shell_exec("cp -r $original $backupFile");
+											self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
+											self::xcopy($original, $backupFile, 0755);
+											//shell_exec("cp -r $original $backupFile");
 
 											// Replacement of the class name
 											$newFile = file_get_contents($backupFile);
@@ -318,7 +324,7 @@
 											// Compile the less but first verify if the css exist
 											$less->checkedCompile($backupFile, $filename);
 										}
-										shell_exec("rm -rf $backupFile");
+										shell_exec("rm -rf $this->temporal");
 									}
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
@@ -507,7 +513,7 @@
 		private function addImportsLess ($filename) {
 			if (strpos(file_get_contents($filename), "Global Imports") === false) {
 				$file = "/* Global Imports */\n";
-				$file .= "@import '../../../../less/config.".CLIENT_NAME.".less';\n";
+				$file .= "@import '../../../../less/config.".$this->clientName.".less';\n";
 				$file .= "@import '../../../../less/common.less';\n\n";
 				$file .= file_get_contents($filename);
 				file_put_contents($filename, $file);
