@@ -324,7 +324,7 @@
 											// Compile the less but first verify if the css exist
 											$less->checkedCompile($backupFile, $filename);
 										}
-										shell_exec("rm -rf $this->temporal");
+										//shell_exec("rm -rf $this->temporal");
 									}
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
