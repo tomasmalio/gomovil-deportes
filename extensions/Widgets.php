@@ -277,7 +277,7 @@
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
 											self::addImportsLess($backupFile);
 										}
-
+										
 										/**
 										 * If there's styles define we concat to the 
 										 * filename the id extension to identify
@@ -368,7 +368,7 @@
 									$src .= '/'.$file;
 									$dest .= '/'.$file;
 
-									// Copy the file to the assets directory
+									// Copy the file to the assets directory 
 									shell_exec("cp -r $src $dest");
 
 									// We change the name for the next file
