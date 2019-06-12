@@ -27,20 +27,20 @@
 		}
 	},
 	"scripts": {
-		"post-update-cmd": [
+		"post-install-cmd": [
 			"chmod -R 0755 assets",
 			"chmod -R 0755 css",
 			"chmod -R 0755 less",
-			"mkdir tmp",
-			"chmod -R 0755 tmp",
+			"sh gomovil-install.sh"
+		],
+		"post-update-cmd": [
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
 			"rm -rf assets/masonry",
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
-			"php composer dump-autoload",
-			"sh gomovil-install.sh"
+			"php composer dump-autoload"
 		]
 	}
 }

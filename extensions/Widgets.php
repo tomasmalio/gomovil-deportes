@@ -217,7 +217,7 @@
 		public function assets ($date) {
 			try {
 				self::xcopy($this->source.'/images', $this->destination.'/images', 0755);
-				self::xcopy($this->source.'/fonts', $this->destination.'/fonts', 0755);
+				self::xcopy($this->source.'/fonts', $this->temporal.'/fonts', 0755);
 
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
@@ -277,7 +277,7 @@
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
 											self::addImportsLess($backupFile);
 										}
-
+										
 										/**
 										 * If there's styles define we concat to the 
 										 * filename the id extension to identify
@@ -300,11 +300,11 @@
 										 * the original value continues
 										 */
 										if (!empty($options['styles'])) {
-											$backupFile = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
+											//$backupFile = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
 											
 											// Create a copy of the original file to keep it save
-											self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
-											self::xcopy($original, $backupFile, 0755);
+											//self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
+											//self::xcopy($original, $backupFile, 0755);
 											//shell_exec("cp -r $original $backupFile");
 
 											// Replacement of the class name
@@ -512,8 +512,8 @@
 		private function addImportsLess ($filename) {
 			if (strpos(file_get_contents($filename), "Global Imports") === false) {
 				$file = "/* Global Imports */\n";
-				$file .= "@import '../../less/config.".$this->clientName.".less';\n";
-				$file .= "@import '../../less/common.less';\n\n";
+				$file .= "@import '../../../less/common.less';\n\n";
+				$file .= "@import '../../../less/config.".$this->clientName.".less';\n";
 				$file .= file_get_contents($filename);
 				file_put_contents($filename, $file);
 				unset($file);
