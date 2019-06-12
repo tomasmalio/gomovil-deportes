@@ -512,8 +512,8 @@
 		private function addImportsLess ($filename) {
 			if (strpos(file_get_contents($filename), "Global Imports") === false) {
 				$file = "/* Global Imports */\n";
-				$file .= "@import '../less/config.".$this->clientName.".less';\n";
-				$file .= "@import '../less/common.less';\n\n";
+				$file .= "@import '../../../less/config.".$this->clientName.".less';\n";
+				$file .= "@import '../../../less/common.less';\n\n";
 				$file .= file_get_contents($filename);
 				file_put_contents($filename, $file);
 				unset($file);
