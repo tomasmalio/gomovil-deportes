@@ -1,3 +1,4 @@
+<?php //print_r($content)?>
 <section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<div class="content-league">
@@ -19,7 +20,7 @@
 				foreach ($content['tournaments']['leagues'] as $key => $leagues) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="torneos/ligas/<?=$key?>" class="content-league">
+				<a href="<?= strtolower($content['section'][COUNTRY_CODE])?>/<?= strtolower($content['title']['tournaments'][COUNTRY_CODE])?>/<?= $content['title']['leagues'][COUNTRY_CODE]?>/<?=$key?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 				</a>
@@ -35,7 +36,7 @@
 				foreach ($content['tournaments']['cups'] as $key => $cups) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="torneos/copas/<?=$key?>" class="content-league">
+				<a href="/torneos/copas/<?=$key?>" class="content-league">
 					<div class="league-image"><img src="<?=$cups['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($cups['name'][COUNTRY_CODE])) ? $cups['name'][COUNTRY_CODE] : $cups['name']['default'];?></div>
 				</a>
@@ -51,7 +52,7 @@
 						foreach ($content['tournaments']['selections'] as $key => $selections) {
 					?>
 					<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-						<a href="torneos/selecciones/<?=$key?>" class="content-league">
+						<a href="/torneos/selecciones/<?=$key?>" class="content-league">
 							<div class="league-image"><img src="<?=$selections['image']?>" name="" alt="" title=""></div>
 							<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
 						</a>

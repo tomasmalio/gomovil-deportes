@@ -64,7 +64,7 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external, s.name as section_name from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
 
@@ -89,11 +89,14 @@
 				$flag = false;
 			}
 		} while ($flag);
+	} else {
+		$keywords[] = '{@filter0}';
+		$keywordsChange[] = $section['uri'];
 	}
 	// Looking forward for more info in external content by language
 	$findingNamingContent = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external'])),true);
 
-	for ($i = 0; $i < count($filters); $i++) {	
+	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
 		// Naming filters for internal use
 		$keywords[] = '{@filter'.$i.'}';
 		if ($i == 0 || $i == 1) {
@@ -174,7 +177,7 @@
 		];
 		unset($submenu);
 	}
-	
+
 	/**********************************
 	 * 			CUSTOMIZATION
 	 **********************************/
