@@ -31,6 +31,7 @@
 			"chmod -R 0755 assets",
 			"chmod -R 0755 css",
 			"chmod -R 0755 less",
+			"mkdir tmp",
 			"chmod -R 0755 tmp",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
