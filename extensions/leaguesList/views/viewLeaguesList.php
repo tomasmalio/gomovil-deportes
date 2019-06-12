@@ -20,7 +20,7 @@
 				foreach ($content['tournaments']['leagues'] as $key => $leagues) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="<?= strtolower($content['section'][COUNTRY_CODE])?>/<?= strtolower($content['title']['tournaments'][COUNTRY_CODE])?>/<?= $content['title']['leagues'][COUNTRY_CODE]?>/<?=$key?>" class="content-league">
+				<a href="<?= strtolower($content['section'][COUNTRY_CODE])?>/<?= strtolower($content['title']['tournaments'][COUNTRY_CODE])?>/<?= strtolower($content['title']['leagues'][COUNTRY_CODE])?>/<?=$key?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 				</a>
