@@ -3,7 +3,10 @@
 
 # Composer
 vendor/
-/assets/
+assets/
+css/
+docs/
+tmp/
 
 # MacOS files
 .DS_Store
