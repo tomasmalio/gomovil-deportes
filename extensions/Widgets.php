@@ -412,10 +412,9 @@
 						array_push($arrayReturn, $filename);
 					}
 					return $arrayReturn;
-				}
-				
+				}	
 			} catch (exception $e) {
-				echo "Error message: " . $e->getMessage();
+				echo "Error compile Assets message: " . $e->getMessage();
 			}
 		}
 		
