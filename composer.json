@@ -30,6 +30,8 @@
 			"chmod -R 0755 assets",
 			"chmod -R 0755 css",
 			"chmod -R 0755 less",
+			"mkdir tmp",
+			"chmod -R 0755 tmp",
 			"sh gomovil-install.sh"
 		],
 		"post-update-cmd": [
