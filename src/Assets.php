@@ -11,10 +11,10 @@
 					 * of the client
 					 */
 					$name 				= str_replace(' ', '', strtolower($client_name));
-					$filename 			= ROOTPATH. 'less/config.' . $name . '.less';
-					$filenameContent 	= ROOTPATH. 'less/content.' . $name . '.less';
-					$globalLess 		= ROOTPATH. 'less/styles.' . $name . '.less';
-					$globalCss			= ROOTPATH. 'css/styles.' . $name . '.min.css';
+					$filename 			= ROOTPATH. '/less/config.' . $name . '.less';
+					$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
+					$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
+					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
 
