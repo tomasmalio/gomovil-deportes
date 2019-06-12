@@ -82,7 +82,7 @@
 					$db->execute();
 
 				} catch (Exception $e) {
-					echo 'Error '. $e->getMessage();
+					echo 'Error construction of Assets '. $e->getMessage();
 				}
 			}
 		}
