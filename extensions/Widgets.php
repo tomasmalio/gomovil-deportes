@@ -238,7 +238,6 @@
 			try {
 				if ($type == 'CSS') {
 					if (!empty($files)) {
-						//$src 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
 						$dest 		= $this->destination . '/css';
 		
 						// Create the directory if not exists
@@ -256,7 +255,6 @@
 							if (substr($file, 0, 4) === 'http' || substr($file, 0, 2) === '//') {
 								array_push($arrayReturn, $file);
 							} else {
-								
 								// Validate if an authorize file and exits
 								if (self::validateFile($file) && file_exists($this->source . '/'. self::getExtension($file) . '/' .$file)) {
 									//$src .= '/' . self::getExtension($file);
@@ -268,7 +266,7 @@
 										// Backup the original file to create the new one
 										$backupFile = $this->source . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';	
 										// Create a copy of the original file to keep it save
-										shell_exec("chmod -r $this->source 0755");
+										shell_exec("chmod -R 0755 $this->source");
 										shell_exec("cp -r $original $backupFile");
 										
 										// Import global less files
