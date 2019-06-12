@@ -17,8 +17,7 @@
 	"autoload": {
 		"classmap": [
 			"vendor/leafo/lessphp/lessc.inc.php",
-			"extensions/Widgets.php",
-			"src/mobiledetect/Mobile_Detect.php"
+			"extensions/Widgets.php"
 		],
 		"psr-4": {
 			"GoMovil\\":"src/",
