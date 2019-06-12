@@ -277,7 +277,7 @@
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
 											self::addImportsLess($backupFile);
 										}
-										
+										exit;
 										/**
 										 * If there's styles define we concat to the 
 										 * filename the id extension to identify
