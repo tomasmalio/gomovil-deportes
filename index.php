@@ -42,7 +42,11 @@
 	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 	$db->execute();
 	$client = $db->fetch();
-	echo "hola";
+
+	if (empty($client)) {
+		echo "hola";
+	}
+	
 	/**
 	 * Define Global
 	 * 
