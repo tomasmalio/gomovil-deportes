@@ -3,8 +3,8 @@
 
 # Composer
 vendor/
-assets/
-css/
+/assets/
+/css/
 docs/
 tmp/
 
