@@ -44,7 +44,8 @@
 	$client = $db->fetch();
 
 	if (empty($client)) {
-		echo "hola";
+		header('Location: error.html');
+		exit;
 	}
 	
 	/**
