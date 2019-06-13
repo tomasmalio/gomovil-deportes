@@ -43,6 +43,7 @@
 	$db->execute();
 	$client = $db->fetch();
 
+	print_r($client);
 	if (is_empty($client)) {
 		echo "Error of client";
 	}
