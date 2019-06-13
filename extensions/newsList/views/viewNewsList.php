@@ -34,7 +34,13 @@
 				}
 			?>
 		</ul>
+		<?php if ($pagination) {?>
 		<div class="swiper-pagination"></div>
+		<?php }?>
+		<?php if ($navigation) {?>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<?php }?>
 	</div>
 </section>
 <!-- Eof News -->

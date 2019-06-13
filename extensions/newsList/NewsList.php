@@ -25,16 +25,6 @@
 				'desktop' 	=> 5,
 				'mobile' 	=> 5,
 			],
-			'minify' => false,
-			'script' => [
-				'name'		=> 'swiper.news-list',
-				'content' 	=> "var swiperNewsList = new Swiper('.news-list-content', {
-					slidesPerView: 'auto',
-					loop: true,
-					spaceBetween: 30,
-					mousewheel: true,
-				});"
-			]
 		];
 
 		public function __construct($params = []) {
@@ -43,9 +33,11 @@
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'content' 	=> $this->content,
-					'slider'	=> parent::slider(),
-					'items'		=> parent::items(),
+					'content' 		=> $this->content,
+					'slider'		=> parent::slider(),
+					'items'			=> parent::items(),
+					'pagination'	=> parent::sliderPagination(),
+					'navigation'	=> parent::sliderNavigation(),
 				]
 			);
 		}
