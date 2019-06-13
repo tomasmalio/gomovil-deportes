@@ -16,6 +16,7 @@
 
 	use GoMovil\Assets;
 	use GoMovil\Db;
+	//use Menu\Menu;
 
 	/* Db Connection */
 	$db = new Db();
@@ -43,6 +44,7 @@
 	$db->execute();
 	$client = $db->fetch();
 
+	// If the client doesn't exit we redirect to generic HTML Error page
 	if (empty($client)) {
 		header('Location: error.html');
 		exit;
@@ -65,6 +67,8 @@
 	
 	$keywords[] = '{@countryName}';
 	$keywordsChange[] = COUNTRY_NAME;
+	$keywords[] = '{@countryCode}';
+	$keywordsChange[] = COUNTRY_CODE;
 
 	/**********************************
 	 * 			SECTIONS
@@ -274,6 +278,12 @@
 		}
 	}
 
+	// $sidebar = new Menu();
+	// $sidebar->addItem('Home',  '/');
+	// $sidebar->addItem('About', 'about');
+	// print_r($sidebar);
+	// exit;
+	
 	/**
 	 * Render view
 	 */

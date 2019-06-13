@@ -55,7 +55,7 @@
 				$data = json_decode($json);
 
 				foreach ($data->data->menu->categories as $cat) {
-					if ($category == strtolower($cat->name)) {
+					if (strtolower(Widgets::normalizeString($category)) == strtolower(Widgets::normalizeString($cat->name))) {
 						$this->category = $cat->id;
 						break;
 					}
@@ -65,7 +65,9 @@
 
 		public function setType ($type, $trending) {
 			if (empty($type)) {
-				if ($trending) {
+				if ($trending && isset($this->category)) {
+					$this->type = 'feedcards';
+				}else if ($trending && !isset($this->category)) {
 					$this->type = 'featurednews';
 				} else {
 					$this->type = 'feedcards';
@@ -87,7 +89,7 @@
 
 		private function processNews() {
 			$json = $this->url . $this->type .'?key=' . $this->key . '&country_id=' . $this->country_code . '&return_news='.$this->return_news.'&return_trends='.$this->return_trends.'&limit='.$this->limit;
-			if (($this->type == 'featurednews' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
+			if (($this->type == 'feedcards' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
 				$json .= '&category_id='. $this->category;
 			}
 			return file_get_contents($json);
