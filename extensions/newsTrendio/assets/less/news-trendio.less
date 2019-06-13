@@ -1,3 +1,104 @@
+/*****************************************
+*			Social Icons
+* 
+* Author: Sofia Perez Moya
+* Date: 2019-04-23
+* Version: 1.2
+*****************************************/
+@font-face {
+	font-family:"Social Icons";
+	src:url("../fonts/social-icons.eot?v=201904231055");
+	src:url("../fonts/social-icons.eot?#iefix") format("embedded-opentype"), 
+	url("../fonts/social-icons.woff?v=201904231055") format("woff"), 
+	url("../fonts/social-icons.ttf?v=201904231055") format("truetype"), 
+	url("../fonts/social-icons.svg#Social-Icons?v=201904231055") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}
+[class*="social-icon"] {
+	font-family: "Social Icons";
+	content: attr(data-icon);
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+.social-icon.reply:before {
+	content: "\e001";
+}
+.social-icon.retweet:before {
+	content: "\e002";
+}
+.social-icon.favourite:before {
+	content: "\e003";
+}
+.social-icon.share:before {
+	content: "\e004";
+}
+.social-icon.repost:before {
+	content: "\e005";
+}
+.social-icon.like:before {
+	content: "\e006";
+}
+.social-icon.facebook:before {
+	content: "\e007";
+}
+.social-icon.twitter:before {
+	content: "\e008";
+}
+.social-icon.youtube:before {
+	content: "\e009";
+}
+.social-icon.instagram:before {
+	content: "\e010";
+}
+.social-icon.whatsapp:before {
+	content: "\e011";
+}
+.social-icon.rss:before {
+	content: "\e012";
+}
+.social-icon.facebook-circle:before {
+	content: "\e013";
+}
+.social-icon.twitter-circle:before {
+	content: "\e014";
+}
+.social-icon.whatsapp-circle:before {
+	content: "\e015";
+}
+.social-icon.facebook-outline:before {
+	content: "\e016";
+}
+.social-icon.twitter-outline:before {
+	content: "\e017";
+}
+.social-icon.whatsapp-outline:before {
+	content: "\e018";
+}
+.social-icon.youtube-outline:before {
+	content: "\e019";
+}
+.social-icon.social-news:before {
+	content: "\e020";
+}
+.social-icon.retweet-outline:before {
+	content: "\e021";
+}
+.social-icon.comment-outline:before {
+	content: "\e022";
+}
+.social-icon.like-outline:before {
+	content: "\e023";
+}
+.social-icon.share-outline:before {
+	content: "\e024";
+}
+
+
 /* Variables */
 @news-font-family: @h2-font-family;
 @news-font-size: @h2-font-size;
@@ -28,6 +129,52 @@
 @news-text-font-family: @p-font-family;
 @news-text-font-size: 11pt;
 @news-text-font-weight: @p-font-weight;
+
+/* Variables for Social */
+/* Variables */
+@card-background: #ffffff;
+@card-border: 0;
+@card-border-radius: 4px;
+
+@card-box-shadow-hover: 0px 0px 10px -3px #d4d4d4cc;
+@card-transform-hover: scale(1.2);
+@card-padding-top: 0;
+@card-padding-right: 10px;
+@card-padding-bottom: 35px;
+@card-padding-left: 10px;
+
+@card-text-padding-top: 10px;
+@card-text-padding-right: 10px;
+@card-text-padding-bottom: 35px;
+@card-text-padding-left: 10px;
+
+@card-author-name-color: #565656;
+@card-author-name-font-size: 10pt;
+
+@card-author-username-color: #565656;
+@card-author-username-font-size: 8pt;
+
+@card-author-image-width: 50px;
+@card-author-image-height: 50px;
+@card-author-image-top: -12px;
+@card-author-image-box-shadow: 0 -2px 6px 0px rgba(0, 0, 0, 0.5);
+@card-author-image-border-radius: 4px;
+
+@card-title-social-color: #000000;
+@card-title-social-font-size: 10pt;
+@card-text-social-color: #000000;
+@card-text-social-font-size: 10pt;
+@card-text-social-line-height: 20px;
+
+@card-text-social-links-color: @color-second;
+@card-text-social-links-font-weight: normal;
+
+@card-datetime-color: #565656;
+@card-datetime-font-size: 9pt;
+
+@card-video-circle-background: rgba(0,0,0,0.3);
+@card-video-circle-background-hover: rgba(0,0,0,0.8);
+@card-video-circle-play-color: white;
 
 /* News trendio */
 section.newstrendio {
@@ -153,6 +300,299 @@ section.newstrendio {
 				}
 			}
 		}
+
+		/* Social Post  */
+		.social-post {
+			width: 100%;
+			background: @card-background;
+			.border-radius(@card-border-radius);
+			margin-bottom: 30px;
+			&:hover {
+				.box-shadow(@card-box-shadow-hover);
+				.border-radius(@card-border-radius);
+				border: 0;
+				.card-image {
+					.image-container {
+						span {
+							.transform(@card-transform-hover);
+						}
+					}
+				}
+			}
+			.card {
+
+				.card-content {
+					width: 100%;
+					min-width: 100%;
+					max-width: 100%;
+					padding-top: @card-padding-top;
+					padding-right: @card-padding-right;
+					padding-bottom: @card-padding-bottom;
+					padding-left: @card-padding-left;
+					position: relative;
+					.author {
+						position: relative;
+						margin-bottom: 8px;
+						height: 36px;
+						.author-image {
+							position: absolute;
+							top: @card-author-image-top;
+							width: @card-author-image-width;
+							height: @card-author-image-height;
+							display: block;
+							.box-shadow(@card-author-image-box-shadow);
+							.border-radius(@card-author-image-border-radius);
+							overflow: hidden;
+							img {
+								width: @card-author-image-width;
+								height: @card-author-image-height;
+								.border-radius(@card-author-image-border-radius);
+							}
+						}
+						.author-image.without-img {
+							top: 0;
+						}
+						.author-name.without-img {
+							margin-bottom: 18px;
+						}
+						.author-name {
+							margin-left: @card-author-image-width + 10;
+							.author-complete-name {
+								font-size: @card-author-name-font-size;
+								font-weight: bold;
+								line-height: 20px;
+								color: @card-author-name-color;
+							}
+							.author-username {
+								font-size: @card-author-username-font-size;
+								line-height: 20px;
+								color: @card-author-username-color;
+							}
+						}
+					}
+					.title {
+						word-wrap: break-word;
+						font-size: @card-title-social-color;
+						font-weight: bold;
+						line-height: 20px;
+						color: @card-title-social-color;
+						padding-bottom: 8px;
+					}
+					.text {
+						word-wrap: break-word;
+						overflow: hidden;
+						color: @card-text-social-color;
+						font-size: @card-text-social-font-size;
+						line-height: @card-text-social-line-height;
+						span {
+							font-weight: @card-text-social-links-font-weight;
+							color: @card-text-social-links-color;
+						}
+					}
+					.social-source {
+						display: none;
+						position: absolute;
+						top: 4px;
+						right: 0px;
+						left: auto;
+					}
+				}
+				.card-footer {
+					background: none;
+					border: 0;
+					bottom: 5px;
+					clear: both;
+					left: 10px;
+					padding: 0;
+					position: absolute;
+					right: 10px;
+					.social-datetime {
+						color: @card-datetime-color;
+						font-size: @card-datetime-font-size;
+					}
+					.social-source {
+						i {
+							font-size: 20pt;
+							font-weight: normal;
+							line-height: 15px;
+						}
+						i.facebook {
+							color: @color-facebook;
+						}
+						i.twitter {
+							color: @color-twitter;
+						}
+						i.youtube {
+							color: @color-youtube;
+						}
+						i.instagram {
+							color: @color-instagram;
+						}
+						
+					}
+				}
+				.card-image {
+					width: 100%;
+					min-width: 100%;
+					max-width: 100%;
+					.border-radius(@card-author-image-border-radius @card-author-image-border-radius 0 0 );
+					position: relative;
+					margin: 0;
+					min-height: auto;
+					overflow: hidden;
+					.image-container {
+						img {
+							width: 100%;
+							position: relative;
+						}
+					}
+				}
+				.card-video {
+					.video-image {
+						position: relative;
+						img {
+							width: 100%;
+							height: auto;
+						}
+						.play-content {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							.box {
+								cursor: pointer;
+								display: table;
+								height: 100%;
+								width: 100%;
+								&:hover {
+									.button-play .circle {
+										background: @card-video-circle-background-hover;
+									}
+								}
+								.button-play {
+									display: table-cell;
+									height: 50px;
+									text-align: center;
+									vertical-align: middle;
+									width: 50px;
+									.circle {
+										background: @card-video-circle-background;
+										.border-radius(50%);
+										height: 50px;
+										margin: 0 auto 0 auto;
+										padding: 15px 10px 15px 15px;
+										text-align: center;
+										width: 50px;
+										.play {
+											width: 0;
+											height: 0;
+											border-top: 10px solid transparent;
+											border-bottom: 10px solid transparent;
+											border-left: 18px solid @card-video-circle-play-color;
+											margin: 0 auto 0 auto;
+										}
+									}
+								}
+							}
+							
+							
+						}
+					}
+					video, iframe {
+						border: 0;
+						cursor: pointer;
+						height: auto;
+						outline:none;
+						width: 100%;
+						&:hover, &:active {
+							outline:none;
+						}
+					}
+				}
+			}
+		}
+		.social-post.only-text {
+			.card {
+				.card-image {
+					display: none;
+				}
+				.card-content {
+					padding-top: @card-text-padding-top;
+					padding-right: @card-text-padding-right;
+					padding-bottom: @card-text-padding-bottom;
+					padding-left: @card-text-padding-left;
+					.author {
+						height: @card-author-image-height;
+						.author-image {
+							top: 0;
+						}
+					}
+				}
+			}
+		}
+		@media (max-width: 768px) {
+			.social-post-vertical {
+				&:hover {
+					.card-image {
+						.image-container {
+							span {
+								.transform(none);
+							}
+						}
+					}
+				}
+				height: auto;
+				a.card {
+					height: auto;
+					.card-content {
+						padding-right: 15px;
+						padding-bottom: 40px;
+						padding-left: 15px;
+						.text {
+							font-size: 11pt;
+							line-height: 24px;
+						}
+						.social-source {
+							display: block;
+						}
+					}
+					.social-source {
+						display: none;
+					}
+				}
+			}
+		}
+		@media (min-width: 321px) and (max-width: 768px) {
+			.social-posts {
+				a.card {
+					.card-content {
+						.author {
+							margin-bottom: 20px;
+							.author-image {
+								top: -25px;
+								width: 50px;
+								height: 50px;
+								img {
+									width: 50px;
+									height: 50px;
+								}
+							}
+							.author-name {
+								margin-left: 60px;
+								.author-complete-name {
+									font-size: 12pt;
+								}
+							}
+						}
+						.title {
+							font-size: 12pt;
+						}
+					}
+				}
+			}
+		}
+		/* Eof social */
 	}
 	.swiper-container {
 		.list-news {

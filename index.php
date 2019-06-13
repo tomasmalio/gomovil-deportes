@@ -232,6 +232,13 @@
 				if (isset($extension['options']) && $extension['options'] != NULL) {
 					$options = json_decode($extension['options'], true);
 				}
+
+				if (isset($extension['scripts']) && $extension['scripts'] != NULL) {
+					$arrayScripts['scripts'][0] = json_decode($extension['scripts'], true);
+					$options = array_merge($options, $arrayScripts);
+					unset($arrayScripts);
+				}
+
 				if (isset($extension['styles']) && $extension['styles'] != NULL) {
 					$arrayStyles['styles'] = json_decode($extension['styles'], true);
 					$options = array_merge($options, $arrayStyles);

@@ -24,17 +24,18 @@
 
 		public $limit = '10';
 		
-		// http://news.plugty.com/api/menu?key=123&country_id=15&show_news=1&show_trends=
-		// http://news.plugty.com/api/featurednews?key=123&category_id=4&limit=10
-		// http://news.plugty.com/api/feedcards?key=123&category_id=4&return_news=1&return_trends=&trending=&limit=10&Page=
-		
 		public function model ($params = []) {
 			self::setCountryCode($params['country_code']);
 			self::setTrending($params['trending']);
 			self::setCategory($params['category']);
 			self::setType($params['type'], $params['trending']);
+			self::setTrends($params['trends']);
+			self::setNews($params['news']);
 			self::setLimit($params['limit']);
-			return json_decode(self::getNews(), true);
+			$array = json_decode(self::getNews(), true);
+			$type = ['news' => $this->return_news, 'trends' => $this->return_trends];
+			$array = array_merge($array, $type);
+			return $array;
 		}
 
 		public function setCountryCode ($country_code) {
@@ -63,7 +64,7 @@
 			}
 		}
 
-		public function setType ($type, $trending) {
+		private function setType ($type, $trending) {
 			if (empty($type)) {
 				if ($trending && isset($this->category)) {
 					$this->type = 'feedcards';
@@ -77,7 +78,19 @@
 			}
 		}
 
-		public function setLimit ($limit) {
+		private function setTrends ($trends) {
+			if (isset($trends)) {
+				$this->return_trends = '1';
+			}
+		}
+
+		private function setNews ($news) {
+			if (isset($news) && $news == false) {
+				$this->return_news = '0';
+			}
+		}
+
+		private function setLimit ($limit) {
 			if (!empty($limit)) {
 				$this->limit = $limit;
 			}
@@ -92,6 +105,7 @@
 			if (($this->type == 'feedcards' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
 				$json .= '&category_id='. $this->category;
 			}
+			echo $json;
 			return file_get_contents($json);
 		}
 	}

@@ -68,7 +68,7 @@
 									}
 									
 									// Slider script generator
-									$script = [
+									$script['scripts'][1] = [
 										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
 										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
 											slidesPerView: 'auto',
@@ -85,7 +85,7 @@
 											},
 										});"
 									];
-									$this->options['script'] = $script;
+									array_push($this->options, $script);
 								}
 							}
 						}
@@ -217,7 +217,7 @@
 		public function assets ($date) {
 			try {
 				self::xcopy($this->source.'/images', $this->destination.'/images', 0755);
-				self::xcopy($this->source.'/fonts', $this->temporal.'/fonts', 0755);
+				self::xcopy($this->source.'/fonts', $this->destination.'/fonts', 0755);
 
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
@@ -346,7 +346,7 @@
 					}
 				} elseif ($type == 'JS') {
 					$arrayReturn = [];
-
+					
 					if (!empty($files)) {
 						$src 		= $this->source . '/js';
 						$dest 		= $this->destination. '/js';
@@ -393,23 +393,26 @@
 					/**
 					 * Create JavaScript file with the code that we received
 					 */
-					if (isset($options['script']) && !empty($options['script']['content'])) {
+					if (count($options['scripts']) > 0) {
 						$src 		= $this->source . '/js';
 						$dest 		= $this->destination . '/js';
 						
 						// Create the directory if not exist
 						self::createDirectory($dest);
 
-						$original = self::createScriptJs($options['script']['content'], $options['script']['name']);
-						// Minify the file if is not set or if it's true
-						if (!isset($options['minify']) || $options['minify']) {
-							$filename = str_replace('.js', '.min.js', $original);
-							(new Minify\JS($original))->minify($filename);
-						} else {
-							$filename = $original;
+						foreach ($options['scripts'] as $script) {
+							$original = self::createScriptJs($script['content'], $script['name']);
+							// Minify the file if is not set or if it's true
+							if (!isset($options['minify']) || $options['minify']) {
+								$filename = str_replace('.js', '.min.js', $original);
+								(new Minify\JS($original))->minify($filename);
+							} else {
+								$filename = $original;
+							}
+							$filename .= '?v='.date('YmdHis', $date);
+							array_push($arrayReturn, $filename);
 						}
-						$filename .= '?v='.date('YmdHis', $date);
-						array_push($arrayReturn, $filename);
+						
 					}
 					return $arrayReturn;
 				}	
