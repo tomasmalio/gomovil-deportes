@@ -105,7 +105,6 @@
 			if (($this->type == 'feedcards' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
 				$json .= '&category_id='. $this->category;
 			}
-			echo $json;
 			return file_get_contents($json);
 		}
 	}
