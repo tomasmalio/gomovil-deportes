@@ -20,7 +20,7 @@
 				foreach ($content['tournaments']['leagues'] as $key => $leagues) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="<?= strtolower($content['section'][COUNTRY_CODE])?>/<?= strtolower($content['title']['tournaments'][COUNTRY_CODE])?>/<?= strtolower($content['title']['leagues'][COUNTRY_CODE])?>/<?=$key?>" class="content-league">
+				<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['leagues'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 				</a>
@@ -36,7 +36,7 @@
 				foreach ($content['tournaments']['cups'] as $key => $cups) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="/torneos/copas/<?=$key?>" class="content-league">
+				<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['cups'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
 					<div class="league-image"><img src="<?=$cups['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($cups['name'][COUNTRY_CODE])) ? $cups['name'][COUNTRY_CODE] : $cups['name']['default'];?></div>
 				</a>
@@ -52,7 +52,7 @@
 						foreach ($content['tournaments']['selections'] as $key => $selections) {
 					?>
 					<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-						<a href="/torneos/selecciones/<?=$key?>" class="content-league">
+					<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['selections'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
 							<div class="league-image"><img src="<?=$selections['image']?>" name="" alt="" title=""></div>
 							<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
 						</a>

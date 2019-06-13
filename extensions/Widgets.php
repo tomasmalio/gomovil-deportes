@@ -680,5 +680,48 @@
 			}
 			return $array;
 		}
+
+		/**
+		 * Normalize String
+		 * 
+		 * @* @param String str String to be transform
+		 */
+		public function normalizeString($str) {
+
+			$unwanted_array = array(
+				'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A',
+				'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a',
+				'Ê' => 'E', 'Ë' => 'E', 'È' => 'E', 'É' => 'E', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 
+				'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 
+				'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o',
+				'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ù' => 'U', 'ù' => 'u', 'ú' => 'u', 'û' => 'u',
+				'Ñ' => 'N', 
+				'Š' => 'S', 'š' => 's', 
+				'Ž' => 'Z', 'ž' => 'z', 
+				'Ç' => 'C', 'ç' => 'c', 
+				'Ý' => 'Y', 'ý' => 'y', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y',
+				'Þ' => 'B', 
+				'ß' => 'Ss', 				
+				' ' => '-', '.' => '-', '"' => '-', '`' => '-', '´' => '-', ',' => '-', '„' => '-', '`' => '-', 
+				'´' => '-', '“' => '-', '”' => '-', '´' => '-', '/' => '-', '|' => '-', '«' => 'ab', '»' => '-bb', 
+				'#' => '', '°' => '', '>' => '-', '<' => '-', '=' => '-', '{' => '-', '}' => '-', '[' => '-', ']' => '-', 
+				'(' => '-', ')' => '-', '=' => '-', '+' => '-', '%' => '-', '*' => '-', '@' => '-',
+			);
+	
+			$str = strtr($str, $unwanted_array);
+
+			$str = str_replace(array("ä", "Ä"), "a", $str); // Additional Swedish filter
+			$str = str_replace(array("å", "Å"), "a", $str); // Additional Swedish filter
+			$str = str_replace(array("ö", "Ö"), "o", $str); // Additional Swedish filter
+	
+			$str = preg_replace("/[^a-z0-9\s\-]/i", "", $str); // Remove special characters
+			$str = preg_replace("/\s\s+/", " ", $str); // Replace multiple spaces with one space
+			$str = trim($str); // Remove trailing spaces
+			$str = preg_replace("/\s/", "-", $str); // Replace all spaces with hyphens
+			$str = preg_replace("/\-\-+/", "-", $str); // Replace multiple hyphens with one hyphen
+			$str = preg_replace("/^\-|\-$/", "", $str); // Remove leading and trailing hyphens
+	
+			return utf8_encode(strtolower($str));
+		}
 	}
 ?>
