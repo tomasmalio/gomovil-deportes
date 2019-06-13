@@ -85,7 +85,7 @@
 											},
 										});"
 									];
-									array_push($this->options, $script);
+									$this->options = array_merge($this->options, $script);
 								}
 							}
 						}
