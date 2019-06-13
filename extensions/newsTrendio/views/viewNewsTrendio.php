@@ -40,6 +40,8 @@
 				}
 			?>
 		</ul>
+		<?php if ($pagination) {?>
 		<div class="swiper-pagination"></div>
+		<?php }?>
 	</div>
 </section>

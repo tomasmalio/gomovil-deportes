@@ -42,6 +42,10 @@
 	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 	$db->execute();
 	$client = $db->fetch();
+
+	if (is_empty($client)) {
+		echo "Error of client";
+	}
 	
 	/**
 	 * Define Global
@@ -127,6 +131,8 @@
 		$subsectionTitle .= 'Sub';
 	}
 	
+	// print_r($keywords);
+	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
@@ -138,8 +144,8 @@
 	foreach ($menu_principal as $item) {
 
 		/**
-		 * 
-		 * @param		object 			menu_display if it's not null we you use for order menu buttons
+		 * 		object 			menu_display if it's not null we you use for order menu buttons
+		 * @* @param Object var Description
 		 */
 		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display from section_client sc, section s, content c where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id = '".$item['id']."' and s.status = 1 and sc.status = 1");
 		$db->execute();

@@ -37,7 +37,7 @@
 							fclose($handleContent);
 						}
 					}
-					file_put_contents($handle, '');
+					file_put_contents($filename, '');
 					fwrite($handle, $data);
 					fclose($handle);
 
