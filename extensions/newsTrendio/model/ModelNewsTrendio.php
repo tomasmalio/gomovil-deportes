@@ -11,6 +11,8 @@
 		public $country_id;
 		
 		public $country_code;
+
+		private $article = null;
 		
 		public $trending = false;
 
@@ -23,9 +25,12 @@
 		public $return_trends = '0';
 
 		public $limit = '10';
+
+		//http://news.plugty.com/api/singlenews?key=123&news_id=1522650
 		
 		public function model ($params = []) {
 			self::setCountryCode($params['country_code']);
+			self::setArticle($params['article']);
 			self::setTrending($params['trending']);
 			self::setCategory($params['category']);
 			self::setType($params['type'], $params['trending']);
@@ -41,6 +46,12 @@
 		public function setCountryCode ($country_code) {
 			if (!empty($country_code)) {
 				$this->country_code = $country_code;
+			}
+		}
+
+		public function setArticle ($article) {
+			if (!empty($article)) {
+				$this->article = $article;
 			}
 		}
 
@@ -65,7 +76,9 @@
 		}
 
 		private function setType ($type, $trending) {
-			if (empty($type)) {
+			if (isset($this->article)) {
+				$this->type = 'singlenews';
+			} else if (empty($type)) {
 				if ($trending && isset($this->category)) {
 					$this->type = 'feedcards';
 				}else if ($trending && !isset($this->category)) {
@@ -101,9 +114,15 @@
 		}
 
 		private function processNews() {
-			$json = $this->url . $this->type .'?key=' . $this->key . '&country_id=' . $this->country_code . '&return_news='.$this->return_news.'&return_trends='.$this->return_trends.'&limit='.$this->limit;
-			if (($this->type == 'feedcards' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
-				$json .= '&category_id='. $this->category;
+			$json = $this->url . $this->type .'?key=' . $this->key;
+			if (isset($this->article)) {
+				$json .= '&news_id=' . $this->article;
+				return file_get_contents($json);
+			} else {
+				$json .= '&country_id=' . $this->country_code . '&return_news='.$this->return_news.'&return_trends='.$this->return_trends.'&limit='.$this->limit;
+				if (($this->type == 'feedcards' && $this->trending && isset($this->category)) || ($this->type == 'feedcards' && !$this->trending)) {
+					$json .= '&category_id='. $this->category;
+				}
 			}
 			return file_get_contents($json);
 		}

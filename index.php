@@ -98,17 +98,15 @@
 				$flag = false;
 			}
 		} while ($flag);
-	} else {
-		$keywords[] = '{@filter0}';
-		$keywordsChange[] = $section['uri'];
 	}
+
 	// Looking forward for more info in external content by language
 	$findingNamingContent = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external'])),true);
-
+	
 	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
 		// Naming filters for internal use
 		$keywords[] = '{@filter'.$i.'}';
-		if ($i == 0 || $i == 1) {
+		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			
 			foreach ($findingNamingContent['title'] as $key => $finding) {
 				if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
@@ -116,6 +114,7 @@
 					break;
 				}
 			}
+			
 		} else {
 			$keywordsChange[] = $filters[$i];
 		}
@@ -259,10 +258,12 @@
 				} else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
+
 				$json = [
 					'id'			=> $extension['idExtension'],
 					'clientName'	=> CLIENT_NAME,
 					'modelView' 	=> $extension['model_name'],
+					'viewName' 		=> (isset($extension['view_name'])) ? $extension['view_name'] : '',
 					'data' => [
 						'content' 	=> ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
 						'options'	=> $options,

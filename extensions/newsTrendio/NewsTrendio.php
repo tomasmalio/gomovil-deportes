@@ -32,13 +32,14 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content' 	=> $this->content,
 					'slider'	=> parent::slider(),
 					'items'		=> parent::items(),
 					'pagination'	=> parent::sliderPagination(),
 					'navigation'	=> parent::sliderNavigation(),
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

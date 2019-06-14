@@ -9,6 +9,8 @@
 	use MatthiasMullie\Minify;
 
 	class Widgets {
+
+		public $viewName;
 		// Client name
 		private $clientName;
 		// Extension Id
@@ -91,6 +93,9 @@
 						}
 					}
 				}
+			}
+			if (isset($params['viewName']) && $params['viewName']) {
+				$this->viewName = $params['viewName'];
 			}
 			/**
 			 * Getting the content info
@@ -184,8 +189,8 @@
 		 * @param 		array 			$array
 		 * @return		object 			Returns the object from the renderPhpFile
 		 */
-		public function renderViewHtml($array, $viewName = false) {
-			(!$viewName) ? $viewName = get_class($this) : '';
+		public function renderViewHtml($array, $viewName) {
+			(!$viewName) ? $viewName = get_class($this) : $viewName;
 			return $this->renderPhpFile(lcfirst(get_class($this)) .'/views/view' . $viewName . '.php', $array);
 		}
 
