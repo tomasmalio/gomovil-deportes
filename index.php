@@ -135,8 +135,8 @@
 		$subsectionTitle .= 'Sub';
 	}
 	
-	// print_r($keywords);
-	// print_r($keywordsChange);
+	print_r($keywords);
+	print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
