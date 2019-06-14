@@ -145,8 +145,8 @@
 		// if (isset($keywordsChange[$i])) { echo "aca"; }else { echo "no";}
 	}
 	
-	// print_r($keywords);
-	// print_r($keywordsChange);
+	print_r($keywords);
+	print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
