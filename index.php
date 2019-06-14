@@ -114,7 +114,6 @@
 					break;
 				}
 			}
-			
 		} else {
 			$keywordsChange[] = $filters[$i];
 		}
@@ -122,7 +121,7 @@
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
 
-		if ($i == 0 || $i == 1) {
+		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
@@ -134,9 +133,20 @@
 		}
 		$subsectionTitle .= 'Sub';
 	}
+
+	if (count($keywords) > count($keywordsChange)) {
+		for ($i = 0; $i <= count($keywords); $i++) {
+			if (($keywords[$i] && $keywordsChange[$i] == '') || ($keywords[$i] && !isset($keywordsChange[$i]))) {
+				unset($keywords[$i]);
+				unset($keywordsChange[$i]);
+			}
+			echo $i;
+		}
+		// if (isset($keywordsChange[$i])) { echo "aca"; }else { echo "no";}
+	}
 	
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
