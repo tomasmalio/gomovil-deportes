@@ -124,6 +124,7 @@
 				}
 				break;
 			case 1:
+				$flag = false;
 				foreach ($findingNamingContent as $k => $find) {
 					foreach ($find as $key => $finding) {
 						if (isset($finding[COUNTRY_CODE])) {
@@ -131,21 +132,34 @@
 								$keywordsChange[] = $key;
 								$keywords[] = '{@'.$subsectionTitle.'Section}';
 								$keywordsChange[] = $finding[COUNTRY_CODE];
+								$flag = true;
 							}
+							if ($flag) {break; };
 						}
+						if ($flag) {break; };
 					}
+					if ($flag) {break; };
+				}
+				if (!$flag) {
+					$keywordsChange[] = $filters[$i];
 				}
 				break;
 			default:
+				$flag = false;
 				foreach ($findingNamingContent as $k => $find) {
 					foreach ($find as $key => $finding) {
 						if (isset($finding[$filters[$i]])) {
 							$keywordsChange[] = $filters[$i];
 							$keywords[] = '{@'.$subsectionTitle.'Section}';
 							$keywordsChange[] = (isset($finding[$filters[$i]]['name'][COUNTRY_CODE])) ? $finding[$filters[$i]]['name'][COUNTRY_CODE] : $finding[$filters[$i]]['name']['default'];
-							break;
+							$flag = true;
 						}
+						if ($flag) {break; };
 					}	
+					if ($flag) {break; };
+				}
+				if (!$flag) {
+					$keywordsChange[] = $filters[$i];
 				}
 				break;
 		}
@@ -334,7 +348,8 @@
 				} else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
-
+				print_r($extensionContent);
+				exit;
 				$json = [
 					'id'			=> $extension['idExtension'],
 					'clientName'	=> CLIENT_NAME,

@@ -29,6 +29,7 @@
 		//http://news.plugty.com/api/singlenews?key=123&news_id=1522650
 		
 		public function model ($params = []) {
+			print_r($params);
 			self::setCountryCode($params['country_code']);
 			self::setArticle($params['article']);
 			self::setTrending($params['trending']);
@@ -124,7 +125,6 @@
 					$json .= '&category_id='. $this->category;
 				}
 			}
-			echo $json;
 			return file_get_contents($json);
 		}
 	}
