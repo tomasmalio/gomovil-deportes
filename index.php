@@ -109,7 +109,7 @@
 		$keywords[] = '{@filter'.$i.'}';
 		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
-			
+			echo $filters[$i];
 			foreach ($findingNamingContent['title'] as $key => $finding) {
 				if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
 					$keywordsChange[] = $key;
