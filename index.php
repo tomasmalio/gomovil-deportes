@@ -128,6 +128,7 @@
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
 		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
+			echo "ACA";
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
