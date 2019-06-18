@@ -117,6 +117,7 @@
 					break;
 				}
 			}
+			
 			if ($flag == false) {
 				$keywordsChange[] = $filters[$i];
 			}
@@ -126,12 +127,12 @@
 
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
-		$flag = false;
-		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
+		if (($i == 0 || $i == 1) && ($key) && ($findingNamingContent)) {
 			echo "ACA\n";
+			echo $key;
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
-			echo "ENTRO\n";
+			$flag = false;
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
 					echo $key;
@@ -140,12 +141,10 @@
 				}
 			}
 			if ($flag) {
-				echo "HOLA\n";
 				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
-			} else {
-				echo "nonono\n";
 			}
 		}
+		$flag = false;
 		$subsectionTitle .= 'Sub';
 	}
 
