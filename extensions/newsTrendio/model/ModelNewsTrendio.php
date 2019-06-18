@@ -37,6 +37,7 @@
 			self::setTrends($params['trends']);
 			self::setNews($params['news']);
 			self::setLimit($params['limit']);
+			echo "aca";
 			$array = json_decode(self::getNews(), true);
 			$type = ['news' => $this->return_news, 'trends' => $this->return_trends];
 			$array = array_merge($array, $type);
