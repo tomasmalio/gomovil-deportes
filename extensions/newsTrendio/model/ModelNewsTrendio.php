@@ -124,7 +124,7 @@
 					$json .= '&category_id='. $this->category;
 				}
 			}
-			print_r($json);
+			echo $json;
 			return file_get_contents($json);
 		}
 	}
