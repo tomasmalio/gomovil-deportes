@@ -348,8 +348,6 @@
 				} else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
-				print_r($extensionContent);
-				exit;
 				$json = [
 					'id'			=> $extension['idExtension'],
 					'clientName'	=> CLIENT_NAME,
