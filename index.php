@@ -142,6 +142,8 @@
 			if ($flag) {
 				echo "HOLA\n";
 				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
+			} else {
+				echo "nonono\n";
 			}
 		}
 		$subsectionTitle .= 'Sub';
