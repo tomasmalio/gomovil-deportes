@@ -131,6 +131,7 @@
 			echo "ACA";
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
+			echo "ENTRO";
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
 					echo $key;
