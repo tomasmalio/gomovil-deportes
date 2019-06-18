@@ -28,8 +28,6 @@
 	/* Getting sections */
 	$s 	= $_GET['s'];
 
-	print_r($_REQUEST);
-
 	/* Filters */
 	foreach($_GET as $key => $value) {
 		$filters[] = $value;
@@ -145,8 +143,8 @@
 		}
 		unset($keywords[$i]);
 	}
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
