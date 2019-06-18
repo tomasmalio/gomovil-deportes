@@ -1,4 +1,4 @@
-<?php print_r($content)?>
+<?php //print_r($content)?>
 <?php $article = $content['data'][0]?>
 <section class="newstrendio">
 	<h2><?=$article['title']?></h2>
