@@ -109,7 +109,6 @@
 		$keywords[] = '{@filter'.$i.'}';
 		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
-			echo "filter". $i ." " .$filters[$i];
 			foreach ($findingNamingContent['title'] as $key => $finding) {
 				if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
 					$keywordsChange[] = $key;
@@ -117,7 +116,6 @@
 					break;
 				}
 			}
-			
 			if ($flag == false) {
 				$keywordsChange[] = $filters[$i];
 			}
@@ -128,14 +126,11 @@
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
 		if (($i == 0 || $i == 1) && ($flag) && ($findingNamingContent)) {
-			echo "ACA\n";
-			echo $key;
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
 			$flag = false;
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
-					echo "acacaaca".$key;
 					$flag = true;
 					break;
 				}
@@ -157,8 +152,8 @@
 		}
 		unset($keywords[$i]);
 	}
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
