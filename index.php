@@ -118,10 +118,10 @@
 					break;
 				}
 			}
+			if ($flag == false) {
+				$keywordsChange[] = $filters[$i];
+			}
 		} else {
-			$keywordsChange[] = $filters[$i];
-		}
-		if ($flag == false) {
 			$keywordsChange[] = $filters[$i];
 		}
 
