@@ -105,7 +105,6 @@
 	$findingNamingContent = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external'])),true);
 	
 	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
-		echo $filters[$i];
 		// Naming filters for internal use
 		$keywords[] = '{@filter'.$i.'}';
 		$flag = false;
@@ -133,6 +132,7 @@
 		} else {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
+					echo $key;
 					$flag = true;
 					break;
 				}
