@@ -25,8 +25,6 @@
 		public $return_trends = '0';
 
 		public $limit = '10';
-
-		//http://news.plugty.com/api/singlenews?key=123&news_id=1522650
 		
 		public function model ($params = []) {
 			self::setCountryCode($params['country_code']);
