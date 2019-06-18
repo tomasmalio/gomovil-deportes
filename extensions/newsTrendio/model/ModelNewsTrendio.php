@@ -125,6 +125,7 @@
 				}
 			}
 			echo $json;
+			exit;
 			return file_get_contents($json);
 		}
 	}
