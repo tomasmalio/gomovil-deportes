@@ -107,15 +107,20 @@
 	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
 		// Naming filters for internal use
 		$keywords[] = '{@filter'.$i.'}';
+		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			
 			foreach ($findingNamingContent['title'] as $key => $finding) {
 				if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
 					$keywordsChange[] = $key;
+					$flag = true;
 					break;
 				}
 			}
 		} else {
+			$keywordsChange[] = $filters[$i];
+		}
+		if ($flag == false) {
 			$keywordsChange[] = $filters[$i];
 		}
 
