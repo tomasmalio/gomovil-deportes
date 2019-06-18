@@ -128,10 +128,10 @@
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
 		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
-			echo "ACA";
+			echo "ACA\n";
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
-			echo "ENTRO";
+			echo "ENTRO\n";
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
 					echo $key;
@@ -140,7 +140,7 @@
 				}
 			}
 			if ($flag) {
-				echo "HOLA";
+				echo "HOLA\n";
 				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
 			}
 		}
