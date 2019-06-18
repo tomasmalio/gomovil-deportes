@@ -123,7 +123,7 @@
 
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
-		} else {
+		} else if (count($findingNamingContent[$section['section_name']]) > 0) {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
 					break;
@@ -140,11 +140,9 @@
 				unset($keywords[$i]);
 				unset($keywordsChange[$i]);
 			}
-			echo $i;
 		}
-		// if (isset($keywordsChange[$i])) { echo "aca"; }else { echo "no";}
+		unset($keywords[$i]);
 	}
-	
 	print_r($keywords);
 	print_r($keywordsChange);
 	/**********************************
