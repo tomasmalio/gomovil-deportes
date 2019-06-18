@@ -135,7 +135,7 @@
 			$flag = false;
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
-					echo $key;
+					echo "acacaaca".$key;
 					$flag = true;
 					break;
 				}
