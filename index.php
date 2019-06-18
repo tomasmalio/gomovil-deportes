@@ -127,16 +127,19 @@
 
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
-
+		$flag = false;
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
 		} else {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
+					$flag = true;
 					break;
 				}
 			}
-			$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
+			if ($flag) {
+				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
+			}
 		}
 		$subsectionTitle .= 'Sub';
 	}
