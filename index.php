@@ -138,6 +138,7 @@
 				}
 			}
 			if ($flag) {
+				echo "HOLA";
 				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
 			}
 		}
