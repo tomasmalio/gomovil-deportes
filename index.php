@@ -127,7 +127,7 @@
 
 		// Setting naming to use in the front page
 		$keywords[] = '{@'.$subsectionTitle.'Section}';
-		if (($i == 0 || $i == 1) && ($key) && ($findingNamingContent)) {
+		if (($i == 0 || $i == 1) && ($flag) && ($findingNamingContent)) {
 			echo "ACA\n";
 			echo $key;
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
