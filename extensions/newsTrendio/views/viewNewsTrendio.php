@@ -11,7 +11,7 @@
 				<?php if (!$slider) {?>
 				<div class="content">
 				<?php }?>
-					<a href="<?=$news['external_link']?>" title="<?= $new['title']?>">
+					<a href="/noticia/<?=$news['id'] . "/" . $news['inner_link']?>" title="<?= $new['title']?>">
 						<div class="row">
 							<div class="col-12">
 								<div class="content-image">
