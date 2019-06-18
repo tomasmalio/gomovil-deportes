@@ -123,7 +123,7 @@
 
 		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
 			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
-		} else if (count($findingNamingContent[$section['section_name']]) > 0) {
+		} else {
 			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
 				if (count($finding[$filters[$i]])) {
 					break;
