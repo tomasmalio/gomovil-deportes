@@ -104,55 +104,115 @@
 	$findingNamingContent = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external'])),true);
 	
 	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
-		// Naming filters for internal use
+		//echo $section['section_name'];
 		$keywords[] = '{@filter'.$i.'}';
-		$flag = false;
-		if (($i == 0 || $i == 1) && ($findingNamingContent)) {
-			foreach ($findingNamingContent['title'] as $key => $finding) {
-				if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
-					$keywordsChange[] = $key;
-					$flag = true;
-					break;
+		switch ($i) {
+			case 0:
+				// $keywordsChange[] = $filters[$i];
+				// $keywords[] = '{@'.$subsectionTitle.'Section}';
+				foreach ($findingNamingContent as $k => $find) {
+					if ($k == 'title') {
+						foreach ($find as $key => $finding) {
+							if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
+								$keywordsChange[] = $key;
+								$keywords[] = '{@'.$subsectionTitle.'Section}';
+								$keywordsChange[] = $finding[COUNTRY_CODE];
+								break;
+							}
+						}
+					}	
 				}
-			}
-			if ($flag == false) {
-				$keywordsChange[] = $filters[$i];
-			}
-		} else {
-			$keywordsChange[] = $filters[$i];
+				break;
+			case 1:
+				foreach ($findingNamingContent as $k => $find) {
+					foreach ($find as $key => $finding) {
+						if (isset($finding[COUNTRY_CODE])) {
+							if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
+								$keywordsChange[] = $key;
+								$keywords[] = '{@'.$subsectionTitle.'Section}';
+								$keywordsChange[] = $finding[COUNTRY_CODE];
+							}
+						}
+					}
+				}
+				break;
+			default:
+				foreach ($findingNamingContent as $k => $find) {
+					foreach ($find as $key => $finding) {
+						if (isset($finding[$filters[$i]])) {
+							$keywordsChange[] = $filters[$i];
+							$keywords[] = '{@'.$subsectionTitle.'Section}';
+							$keywordsChange[] = (isset($finding[$filters[$i]]['name'][COUNTRY_CODE])) ? $finding[$filters[$i]]['name'][COUNTRY_CODE] : $finding[$filters[$i]]['name']['default'];
+							break;
+						}
+					}	
+				}
+				break;
 		}
 
-		// Setting naming to use in the front page
-		$keywords[] = '{@'.$subsectionTitle.'Section}';
-		if (($i == 0 || $i == 1) && ($flag) && ($findingNamingContent)) {
-			$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
-		} else {
-			$flag = false;
-			foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
-				if (count($finding[$filters[$i]])) {
-					$flag = true;
-					break;
-				}
-			}
-			if ($flag) {
-				$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
-			}
-		}
-		$flag = false;
+		// // Naming filters for internal use
+		// $keywords[] = '{@filter'.$i.'}';
+		// $flag = false;
+		// if (($i == 0 || $i == 1) && ($findingNamingContent)) {
+		// 	foreach ($findingNamingContent['title'] as $key => $finding) {
+		// 		if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
+		// 			$keywordsChange[] = $key;
+		// 			$flag = true;
+		// 			break;
+		// 		}
+		// 	}
+		// 	if ($flag == false) {
+		// 		$keywordsChange[] = $filters[$i];
+		// 	}
+		// } else {
+		// 	$keywordsChange[] = $filters[$i];
+		// }
+
+		// // Setting naming to use in the front page
+		// $keywords[] = '{@'.$subsectionTitle.'Section}';
+		// if (($i == 0 || $i == 1) && ($flag) && ($findingNamingContent)) {
+		// 	$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
+		// } else {
+		// 	$flag = false;
+		// 	//foreach ($findingNamingContent as $k => $find) {
+		// 		// print_r($find);
+		// 		// echo $section['section_name'];
+		// 		foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
+		// 			print_r($finding);
+		// 			echo $filters[$i];
+		// 			if (count($finding[$filters[$i]])) {
+		// 				$flag = true;
+		// 				break;
+		// 			}
+		// 		}
+		// 	//}
+			
+		// 	if ($flag) {
+		// 		$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
+		// 	}
+		// }
+		// $flag = false;
 		$subsectionTitle .= 'Sub';
 	}
+	// $flag = false;
+	// foreach ($keywordsChange as $key) {
+	// 	if ($key == '') {
+	// 		$flag = true;
+	// 		break;
+	// 	}
+	// }
 
-	if (count($keywords) > count($keywordsChange)) {
-		for ($i = 0; $i <= count($keywords); $i++) {
-			if (($keywords[$i] && $keywordsChange[$i] == '') || ($keywords[$i] && !isset($keywordsChange[$i]))) {
-				unset($keywords[$i]);
-				unset($keywordsChange[$i]);
-			}
-		}
-		unset($keywords[$i]);
-	}
-	print_r($keywords);
-	print_r($keywordsChange);
+	// if ((count($keywords) > count($keywordsChange)) || ($flag)) {
+	// 	for ($i = 0; $i <= count($keywords); $i++) {
+	// 		if (($keywords[$i] && $keywordsChange[$i] == '') || ($keywords[$i] && !isset($keywordsChange[$i]))) {
+	// 			unset($keywords[$i]);
+	// 			unset($keywordsChange[$i]);
+	// 		}
+	// 	}
+	// 	unset($keywords[$i]);
+	// }
+	// print_r($keywords);
+	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
