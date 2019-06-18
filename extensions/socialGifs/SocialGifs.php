@@ -22,7 +22,8 @@
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'content' 		=> $this->content,
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

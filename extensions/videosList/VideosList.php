@@ -52,7 +52,7 @@
 		public function __construct($params = []) {
 			parent::__construct($params);
 			if (IS_MOBILE) {
-				$this->view = $this->view . 'Mobile';
+				$this->viewName = $this->viewName . 'Mobile';
 			}
 		}
 
@@ -63,7 +63,7 @@
 					'slider'			=> parent::slider(),
 					'items'				=> parent::items(),
 				],
-				$this->view
+				$this->viewName
 			);
 		}
 	}

@@ -25,7 +25,8 @@
 			return Widgets::renderViewHtml([
 					'date'				=> $this->date,
 					'content'			=> $this->content,
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

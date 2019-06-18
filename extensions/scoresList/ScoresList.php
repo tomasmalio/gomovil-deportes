@@ -39,7 +39,8 @@
 			return Widgets::renderViewHtml([
 					'title'				=> $this->title,
 					'content'			=> $this->content,
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

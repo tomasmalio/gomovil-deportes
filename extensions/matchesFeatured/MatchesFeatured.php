@@ -74,8 +74,8 @@
 					'slider'		=> parent::slider(),
 					'pagination'	=> parent::sliderPagination(),
 					'navigation'	=> parent::sliderNavigation(),
-					
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

@@ -46,7 +46,8 @@
 					'items'			=> parent::items(),
 					'pagination'	=> parent::sliderPagination(),
 					'navigation'	=> parent::sliderNavigation(),
-				]
+				],
+				$this->viewName
 			);
 		}
 	}

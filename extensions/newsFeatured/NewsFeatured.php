@@ -24,7 +24,8 @@
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'news' => $this->news
-				]
+				],
+				$this->viewName
 			);
 		}
 	}
