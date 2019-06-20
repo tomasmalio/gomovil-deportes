@@ -7,24 +7,26 @@
 				$quantity = 0;
 				foreach ($content['data'] as $news) {
 			?>
-			<li class="<?php if ($slider) {?>swiper-slide<?php } else {?>col-lg-3 col-md-3 col-sm-6 col-xs-12<?php }?>">
+			<li class="<?php if ($slider) {?>swiper-slide<?php } else {?>col-lg-3 col-md-3 col-sm-6 col-xs-12<?php }?>" itemscope itemtype="http://schema.org/NewsArticle">
 				<?php if (!$slider) {?>
 				<div class="content">
 				<?php }?>
-					<a href="/noticia/<?=$news['id'] . "/" . $news['inner_link']?>" title="<?= $new['title']?>">
+					<a href="/noticia/<?=$news['id'] . "/" . $news['inner_link']?>" title="<?= $new['title']?>" itemprop="url">
 						<div class="row">
 							<div class="col-12">
 								<div class="content-image">
 									<div class="img-wrap ratio-16-9">
-										<div class="image ">
+										<div class="image" itemprop="image">
 											<img src="<?= $news['image']?>" name="<?= $new['title']?>" alt="<?= $new['title']?>" title="<?= $new['title']?>" />
 										</div>
 									</div>
 								</div>
 								<div class="news-content">
+									<div class="author" itemprop="author"><?= $news['credit']?></div>
 									<time datetime="<?= $news['created_at']?>"><?= strftime('%d %B - %H:%M', strtotime($news['created_at']))?></time>
-									<h3><?=$news['title']?></h3>
-									<h4><?php if (strlen($news['sub_title']) > 180) { echo substr($news['sub_title'],0,strpos($news['sub_title'],' ',180)).'...'; } else { echo $news['sub_title'];}?></h4>
+									<meta itemprop="datePublished" value="<?= date('Y-m-dTH:i:sZ', $news['created_at'])?>">
+									<h3 itemprop="about"><?=$news['title']?></h3>
+									<h4 itemprop="alternativeHeadline"><?php if (strlen($news['sub_title']) > 180) { echo substr($news['sub_title'],0,strpos($news['sub_title'],' ',180)).'...'; } else { echo $news['sub_title'];}?></h4>
 								</div>
 							</div>
 						</div>
