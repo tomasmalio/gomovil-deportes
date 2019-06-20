@@ -24,7 +24,7 @@
 								<div class="news-content">
 									<div class="author" itemprop="author"><?= $news['credit']?></div>
 									<time datetime="<?= $news['created_at']?>"><?= strftime('%d %B - %H:%M', strtotime($news['created_at']))?></time>
-									<meta itemprop="datePublished" value="<?= date('Y-m-dTH:i:sZ', $news['created_at'])?>">
+									<meta itemprop="datePublished" value="<?= date('Y-m-dTH:i:sZ', strtotime($news['created_at']))?>">
 									<h3 itemprop="about"><?=$news['title']?></h3>
 									<h4 itemprop="alternativeHeadline"><?php if (strlen($news['sub_title']) > 180) { echo substr($news['sub_title'],0,strpos($news['sub_title'],' ',180)).'...'; } else { echo $news['sub_title'];}?></h4>
 								</div>
