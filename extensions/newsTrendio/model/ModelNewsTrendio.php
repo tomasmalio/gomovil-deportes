@@ -114,7 +114,7 @@
 		private function processNews() {
 			$json = $this->url . $this->type .'?key=' . $this->key;
 			if (isset($this->article)) {
-				$json .= '&news_id=' . $this->article;
+				$json .= '&news_id=' . $this->article . '&resetCache=1';
 				return file_get_contents($json);
 			} else {
 				$json .= '&country_id=' . $this->country_code . '&return_news='.$this->return_news.'&return_trends='.$this->return_trends.'&limit='.$this->limit;
@@ -122,6 +122,7 @@
 					$json .= '&category_id='. $this->category;
 				}
 			}
+			$json .= '&resetCache=1';
 			return file_get_contents($json);
 		}
 	}
