@@ -13,7 +13,7 @@
 		"slidebars/slidebars": "dev-master"
 	},
 	"config": {
-		"component-dir": "assets/"
+		"component-dir": "assets"
 	},
 	"autoload": {
 		"classmap": [
