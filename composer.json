@@ -37,7 +37,7 @@
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
-			"cp -R vendor/slidebars/dist assets/slidebars",
+			"cp -R vendor/slidebars/slidebars assets/slidebars",
 			"mkdir tmp",
 			"chmod -R 0755 tmp",
 			"sh gomovil-install.sh",

@@ -375,8 +375,8 @@
 		}
 	}
 
-	array_push($assets['css'], ['assets/slidebars/slidebars.css']);
-	array_push($assets['js'], ['assets/slidebars/slidebars.js']);
+	array_push($assets['css'], ['assets/slidebars/slidebars.min.css']);
+	array_push($assets['js'], ['assets/slidebars/slidebars.min.js']);
 	/**
 	 * Render view
 	 */

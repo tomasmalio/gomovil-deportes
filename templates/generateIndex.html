@@ -17,10 +17,8 @@
 		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		<link rel="stylesheet" href="/assets/slidebars/slidebars.css">
 		<link rel="stylesheet" href="{{globalStyle}}">
 		<script src="/assets/jquery/jquery.min.js"></script>
-		
 		<body>
 			<div id="sb-site">
 				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
@@ -74,7 +72,7 @@
 			</footer>
 			<!-- Eof Footer -->
 		</div>
-		<div class="sb-slidebar sb-right hidden-lg hidden-md">
+		<div class="sb-slidebar sb-right d-xl-none d-xl-none d-md-none">
 				{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>

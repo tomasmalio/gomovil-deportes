@@ -5,7 +5,7 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/"><img src="/images/header/{{ logo }}" name="logo" title="" alt=""></a>
 			</div>
-			<div class="button-menu pull-right sb-right hidden-lg hidden-md">
+			<div class="button-menu pull-right sb-right d-xl-none d-xl-none d-md-none">
 				<button class="sb-toggle-right" aria-label="menu">
 					<span class="icon-bars">&#9776;</span> </span>
 				</button>
