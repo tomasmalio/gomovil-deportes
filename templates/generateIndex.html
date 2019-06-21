@@ -74,12 +74,10 @@
 			</footer>
 			<!-- Eof Footer -->
 		</div>
-		<div class="sb-slidebar sb-right">
+		<div class="sb-slidebar sb-right hidden-lg hidden-md">
 				{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
-		
-		
 		<script type="text/javascript">
 			
 			$(document).ready(function () {
@@ -100,7 +98,6 @@
 		</script>
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		<script type="text/javascript" src="https://www.entradas.uy/js/slidebars/slidebars.min.js?v=201701101439"></script>
 		{% for asset in assetsJs %}
 			{{asset | raw}}
 		{% endfor %}
