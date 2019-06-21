@@ -5,6 +5,11 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/"><img src="/images/header/{{ logo }}" name="logo" title="" alt=""></a>
 			</div>
+			<div class="button-menu pull-right">
+				<button class="sb-toggle-right" aria-label="menu">
+					<span class="icon-bars">&#9776;</span> </span>
+				</button>
+			</div>
 			<div class="collapse navbar-collapse navbar-buttons">
 				<script type="application/javascript">
 					$('.dropdown').hover(
@@ -94,6 +99,7 @@
 				</ul>
 			</div>
 		</nav>
+		
 	</div>
 </header>
 <!-- Eof Header -->

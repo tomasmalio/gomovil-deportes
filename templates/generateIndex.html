@@ -17,14 +17,15 @@
 		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="/assets/slidebars/slidebars.css">
 		<link rel="stylesheet" href="{{globalStyle}}">
 		<script src="/assets/jquery/jquery.min.js"></script>
-		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		
 		<body>
-			<div id="tpl">
+			<div id="sb-site">
 				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 				<article>
-						<div class="container-fluid">
+					<div class="container-fluid">
 {% endblock %}
 
 {% block widget1 %}
@@ -59,10 +60,10 @@
 {% endblock %}
 
 {% block htmlEnd %}
-			</div>
-		</article>
-		<!-- Footer -->
-		<footer>
+				</div>
+			</article>
+			<!-- Footer -->
+			<footer>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-12">
@@ -72,15 +73,34 @@
 				</div>
 			</footer>
 			<!-- Eof Footer -->
-		</div>	
+		</div>
+		<div class="sb-slidebar sb-right">
+				{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
+		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		
+		
 		<script type="text/javascript">
+			
+			$(document).ready(function () {
+				$.slidebars();
+			});
+			$(document).on('hide','.modal', function () {
+				$("#sb-site").css('z-index','1');   
+			});
+			$(document).on('show','.modal', function () {
+				$("#sb-site").removeAttr( 'style' );
+				$("#sb-site").css('z-index','initial');
+			});
 			$('.grid').masonry({
 				itemSelector: '.grid-item',
 				gutter: 0,
 				originLeft: false
 			});
 		</script>
+		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="https://www.entradas.uy/js/slidebars/slidebars.min.js?v=201701101439"></script>
 		{% for asset in assetsJs %}
 			{{asset | raw}}
 		{% endfor %}

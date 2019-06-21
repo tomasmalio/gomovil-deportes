@@ -10,7 +10,7 @@
 		"matthiasmullie/minify": "^1.3",
 		"nolimits4web/swiper": "^4.5",
 		"mobiledetect/mobiledetectlib": "^2.8",
-		"konekt/menu": "^1.3"
+		"slidebars/slidebars": "dev-master"
 	},
 	"config": {
 		"component-dir": "assets/"
@@ -23,8 +23,7 @@
 		"psr-4": {
 			"GoMovil\\":"src/",
 			"MatthiasMullie\\Minify\\": "src/minify/src/",
-			"MobileDetect\\":"src/mobiledetect/",
-			"Menu\\":"src/menu/"
+			"MobileDetect\\":"src/mobiledetect/"
 		}
 	},
 	"scripts": {
@@ -38,7 +37,7 @@
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
-			"cp -R vendor/konekt/menu/src src/menu",
+			"cp -R vendor/slidebars/slidebars/dist assets/slidebars",
 			"mkdir tmp",
 			"chmod -R 0755 tmp",
 			"sh gomovil-install.sh",

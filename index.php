@@ -375,12 +375,8 @@
 		}
 	}
 
-	// $sidebar = new Menu();
-	// $sidebar->addItem('Home',  '/');
-	// $sidebar->addItem('About', 'about');
-	// print_r($sidebar);
-	// exit;
-	
+	//array_push($assets['css'], ['assets/slidebars/slidebars.css']);
+	//array_push($assets['js'], ['assets/slidebars/slidebars.js']);
 	/**
 	 * Render view
 	 */

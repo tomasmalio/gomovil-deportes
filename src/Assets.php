@@ -41,7 +41,8 @@
 					fwrite($handle, $data);
 					fclose($handle);
 
-					// Validate
+					// Create the styles for the client
+					shell_exec("rm -rf $globalLess");
 					if (!file_exists($globalLess)) {
 						shell_exec("cp -r less/styles.less $globalLess");
 					}
