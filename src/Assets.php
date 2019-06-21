@@ -4,20 +4,20 @@
 	class Assets {
 
 		public function __construct($client_name, $client_id, $params = []) {
-			if ($params['modify_status'] == '1') {
-				try {
-					/**
-					 * Generate the config and the aditional content
-					 * of the client
-					 */
-					$name 				= str_replace(' ', '', strtolower($client_name));
-					$filename 			= ROOTPATH. '/less/config.' . $name . '.less';
-					$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
-					$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
-					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
-					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
-					$data 				= '';
+			/**
+			 * Generate the config and the aditional content
+			 * of the client
+			 */
+			$name 				= str_replace(' ', '', strtolower($client_name));
+			$filename 			= ROOTPATH. '/less/config.' . $name . '.less';
+			$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
+			$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
+			$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
+			$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
+			$data 				= '';
 
+			if ($params['modify_status'] == '1' || !file_exists($globalLess)) {
+				try {
 					foreach ($params as $key => $value) {
 						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
 							if ($key != 'variables') {
@@ -43,9 +43,7 @@
 
 					// Create the styles for the client
 					shell_exec("rm -rf $globalLess");
-					if (!file_exists($globalLess)) {
-						shell_exec("cp -r less/styles.less $globalLess");
-					}
+					shell_exec("cp -r less/styles.less $globalLess");
 					
 					// Cleaning the global less
 					$content = file_get_contents($globalLess);
