@@ -17,6 +17,7 @@
 			$data 				= '';
 
 			if ($params['modify_status'] == '1' || !file_exists($globalCss)) {
+				echo "ENTRE ACA";
 				try {
 					foreach ($params as $key => $value) {
 						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
