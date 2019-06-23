@@ -17,6 +17,7 @@
 				echo "ACAAAAA";
 			} else {
 				echo file_exists($globalLess);
+				print_r(file_get_contents($globalLess));
 			}
 			if ($params['modify_status'] == '1' || file_exists($globalLess) != true || file_get_contents($globalLess) == '') {
 				try {
