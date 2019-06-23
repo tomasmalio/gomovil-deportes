@@ -13,7 +13,7 @@
 			$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
 			$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
 			$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
-			if ($params['modify_status'] == '1' || !file_exists($globalLess)) {
+			if ($params['modify_status'] == '1' || (file_exists($globalLess) && file_get_contents($globalLess) == '')) {
 				try {
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
