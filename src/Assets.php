@@ -43,7 +43,7 @@
 					fclose($handle);
 
 					// Create the styles for the client
-					shell_exec("rm -rf $globalLess");
+					//shell_exec("rm -rf $globalLess");
 					shell_exec("cp -r less/styles.less $globalLess");
 					
 					// Cleaning the global less
