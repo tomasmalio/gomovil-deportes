@@ -524,7 +524,6 @@
 				$file .= "@import '../../../less/config.".$this->clientName.".less';\n";
 				$file .= file_get_contents($filename);
 				file_put_contents($filename, $file);
-				unset($file);
 			}
 		}
 

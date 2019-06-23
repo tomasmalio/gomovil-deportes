@@ -13,12 +13,11 @@
 			$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
 			$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
 			$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
-			$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
-			$data 				= '';
-
-			if ($params['modify_status'] == '1' || !file_exists($globalCss)) {
-				echo "ENTRE ACA";
+			if ($params['modify_status'] == '1' || !file_exists($globalLess)) {
 				try {
+					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
+					$data 				= '';
+
 					foreach ($params as $key => $value) {
 						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
 							if ($key != 'variables') {
@@ -43,8 +42,10 @@
 					fclose($handle);
 
 					// Create the styles for the client
-					//shell_exec("rm -rf $globalLess");
-					shell_exec("cp -r less/styles.less $globalLess");
+					shell_exec("rm -rf $globalLess");
+					if (!file_exists($globalLess)) {
+						shell_exec("cp -r less/styles.less $globalLess");
+					}
 					
 					// Cleaning the global less
 					$content = file_get_contents($globalLess);
