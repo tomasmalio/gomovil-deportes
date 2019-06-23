@@ -98,7 +98,6 @@
 	content: "\e024";
 }
 
-
 /* Variables */
 @news-font-family: @h2-font-family;
 @news-font-size: @h2-font-size;
@@ -111,10 +110,13 @@
 
 @news-slider-width: 30%;
 @news-slider-width-responsive: 80%;
-@news-slider-height: 380px;
+@news-slider-height: 400px;
 
 @news-image-border-radius: 10px;
 @news-image-width: 100%;
+
+@news-author-color: #3B3B3B;
+@news-author-font-size: 10pt;
 
 @news-time-color: #3B3B3B;
 @news-time-font-size: 10pt;
@@ -249,6 +251,10 @@ section.newstrendio {
 				}
 				.news-content {
 					padding: 10px;
+					.author {
+						color: @news-author-color;
+						font-size: @news-author-font-size;
+					}
 					time {
 						color: @news-time-color;
 						font-size: @news-time-font-size;

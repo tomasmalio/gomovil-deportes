@@ -11,7 +11,8 @@
 				<?php if (!$slider) {?>
 				<div class="content">
 				<?php }?>
-					<a href="/noticia/<?=$news['id'] . "/" . $news['inner_link']?>" title="<?= $new['title']?>" itemprop="url">
+					<?php /*<a href="/noticia/<?=$news['id'] . "/" . $news['inner_link']?>" title="<?= $new['title']?>" itemprop="url">*/?>
+					<a href="<?=$news['external_link']?>" title="<?= $new['title']?>" itemprop="url" target="_blank">
 						<div class="row">
 							<div class="col-12">
 								<div class="content-image">
@@ -22,8 +23,9 @@
 									</div>
 								</div>
 								<div class="news-content">
-									<div class="author" itemprop="author"><?= $news['credit']?></div>
-									<time datetime="<?= $news['created_at']?>"><?= strftime('%d %B - %H:%M', strtotime($news['created_at']))?></time>
+									<div class="float-left author" itemprop="author"><?= $news['credit']?></div>
+									<time class="float-right" datetime="<?= $news['created_at']?>"><?= strftime('%d %B - %H:%M', strtotime($news['created_at']))?></time>
+									<div class="clearfix"></div>
 									<meta itemprop="datePublished" value="<?= date('Y-m-d\TH:i:s\Z', strtotime($news['created_at']))?>">
 									<h3 itemprop="about"><?=$news['title']?></h3>
 									<h4 itemprop="alternativeHeadline"><?php if (strlen($news['sub_title']) > 180) { echo substr($news['sub_title'],0,strpos($news['sub_title'],' ',180)).'...'; } else { echo $news['sub_title'];}?></h4>
