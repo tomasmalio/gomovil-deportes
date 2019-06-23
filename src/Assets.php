@@ -4,23 +4,18 @@
 	class Assets {
 
 		public function __construct($client_name, $client_id, $params = []) {
-			/**
-			 * Generate the config and the aditional content
-			 * of the client
-			 */
 			$name 				= str_replace(' ', '', strtolower($client_name));
 			$filename 			= ROOTPATH. '/less/config.' . $name . '.less';
-			$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
-			$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
-			$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
-			if (!file_exists($globalLess)) {
-				echo "ACAAAAA";
-			} else {
-				echo file_exists($globalLess);
-				print_r(file_get_contents($globalLess));
-			}
-			if ($params['modify_status'] == '1' || file_exists($globalLess) != true || file_get_contents($globalLess) == '') {
+			
+			if ($params['modify_status'] == '1' || !file_exists($filename) || file_get_contents($filename) == '') {
 				try {
+					/**
+					 * Generate the config and the aditional content
+					 * of the client
+					 */
+					$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
+					$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
+					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
 
