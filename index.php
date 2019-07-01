@@ -317,7 +317,7 @@
 				require_once $file;
 
 				// Construction of the extension and building for our platform
-				$options = null;
+				$options = [];
 				if (isset($extension['options']) && $extension['options'] != NULL) {
 					$options = json_decode($extension['options'], true);
 				}
