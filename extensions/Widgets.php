@@ -142,8 +142,9 @@
 				$this->content = array_merge($this->content, $includeContent['words']);
 			}
 			if (is_array($includeContent['title'])) {
-				$this->content = array_merge($this->content, $includeContent['title']);
+				$this->content['title'] = $includeContent['title'];
 			}
+			//print_r($this->content);
 		}
 		
 		/**

@@ -24,6 +24,17 @@
 @news-text-font-size: 11pt;
 @news-text-font-weight: @p-font-weight;
 
+/* View */
+@news-view-title-font-family: @h2-font-family;
+@news-view-title-font-weight: @h2-font-weight;
+@news-view-title-font-size: @h2-font-size;
+@news-view-title-color: @color-quarter;
+
+@news-view-text-font-family: @p-font-family;
+@news-view-text-font-weight: @p-font-weight;
+@news-view-text-font-size: 12pt;
+@news-view-text-color: @color-quarter;
+
 /* News list */
 section.newssportsgomovil {
 	position: relative;
@@ -185,3 +196,27 @@ section.newssportsgomovil.featured {
 	}
 }
 /* Eof featured news */
+
+/* View news */
+section.newssportsgomovil.view {
+	.newssportsgomovil-content {
+		h1 {
+			font-family: @news-view-title-font-family;
+			font-weight: @news-view-title-font-weight;
+			font-size: @news-view-title-font-size;
+			color: @news-view-title-color;
+		}
+		.image {
+			img {
+				width: 100%;
+			}
+		}
+		p {
+			font-family: @news-view-text-font-family;
+			font-weight: @news-view-text-font-weight;
+			font-size: @news-view-text-font-size;
+			color: @news-view-text-color;
+		}
+	}
+}
+/* Eof view news */

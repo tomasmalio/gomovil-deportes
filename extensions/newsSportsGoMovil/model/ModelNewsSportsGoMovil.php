@@ -48,17 +48,18 @@
 		}
 
 		private function getNews() {
+			$json = $this->url[$this->type];
 			switch ($this->type) {
 				case 'list':
 				case 'featured':
 				default:					
-					$json = $this->url[$this->type];
+					
 					if (!empty($country_code)) {
 						$json .= '&country_id=' . $this->country_id;
 					}
 					break;
 				case 'view':
-					$json = $this->urll[$this->type] . $this->article . '.json';
+					$json .= $this->article . '.json';
 					break;
 			}
 			return file_get_contents($json);
