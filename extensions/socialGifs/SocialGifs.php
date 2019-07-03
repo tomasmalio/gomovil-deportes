@@ -8,7 +8,7 @@
 
 		// Assets files
 		public $files = [
-			'style'	=> ['social-gif.less'],
+			'style'		=> ['social-gif.less'],
 			'js'		=> [],
 		];
 		// Options

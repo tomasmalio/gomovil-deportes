@@ -40,8 +40,18 @@
 						 * be use for titles, buttons, etc we obtain and then
 						 * separated from the main content
 						 */
-						if ($key == 'content' && isset($value['words'])) {
-							$words = $value['words'];
+						if ($key == 'content') {
+							if (isset($value['words'])) {
+								if (!isset($value['words']['title'])) {
+									$value['words']['title'] = $value['section'][COUNTRY_CODE];
+								}
+							} else {
+								$value['words']['title'] = $value['section'][COUNTRY_CODE];
+							}
+							$includeContent['words'] = $value['words'];
+							if (isset($value['title'])) {
+								$includeContent['title'] = $value['title'];
+							}
 						}
 						if ($key != 'content' && $key != 'options') {
 							$this->$key = $value;
@@ -113,6 +123,12 @@
 				}
 				$model = new $name();
 				$content = $model->model($params['data']['content']);
+				
+				// Changing naming content before created
+				// if (isset($this->renameVerify)) {
+				// 	$content = self::multiRenameKey($content, $this->renameVerify['wrong'], $this->renameVerify['verify']);
+				// }
+				
 			} else {
 				$content = null;
 			}
@@ -121,10 +137,12 @@
 			 * If the extension has words (title, buttons, etc) we merge with
 			 * the content array.
 			 */
-			if (is_array($words)) {
-				$this->content = array_merge($words, array_diff($content, $words));
-			} else {
-				$this->content = $content;
+			$this->content = $content;
+			if (is_array($includeContent['words'])) {
+				$this->content = array_merge($this->content, $includeContent['words']);
+			}
+			if (is_array($includeContent['title'])) {
+				$this->content = array_merge($this->content, $includeContent['title']);
 			}
 		}
 		
@@ -668,22 +686,18 @@
 		 */
 		public function multiRenameKey (&$array, $old_keys, $new_keys) {
 			if(!is_array($array)){
-				($array=="") ? $array=array() : false;
+				($array == "") ? $array = array() : false;
 				return $array;
 			}
-			foreach($array as &$arr){
-				if (is_array($old_keys))
-				{
-					foreach($new_keys as $k => $new_key)
-					{
-						(isset($old_keys[$k])) ? true : $old_keys[$k]=NULL;
-						$arr[$new_key] = (isset($arr[$old_keys[$k]]) ? $arr[$old_keys[$k]] : null);
-						unset($arr[$old_keys[$k]]);
-					}
-				}else{
-					$arr[$new_keys] = (isset($arr[$old_keys]) ? $arr[$old_keys] : null);
-					unset($arr[$old_keys]);
+			if (is_array($old_keys)) {
+				foreach($new_keys as $k => $new_key) {
+					(isset($old_keys[$k])) ? true : $old_keys[$k] = NULL;
+					$arr[$new_key] = (isset($arr[$old_keys[$k]]) ? $arr[$old_keys[$k]] : null);
+					unset($arr[$old_keys[$k]]);
 				}
+			} else {
+				$arr[$new_keys] = (isset($arr[$old_keys]) ? $arr[$old_keys] : null);
+				unset($arr[$old_keys]);
 			}
 			return $array;
 		}

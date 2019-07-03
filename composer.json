@@ -38,6 +38,7 @@
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
 			"cp -R vendor/slidebars/slidebars/dist assets/slidebars",
+			"cp -R vendor/nolimits4web/swiper/dist assets/swiper",
 			"mkdir tmp",
 			"chmod -R 0755 tmp",
 			"sh gomovil-install.sh",

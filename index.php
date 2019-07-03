@@ -103,13 +103,10 @@
 	// Looking forward for more info in external content by language
 	$findingNamingContent = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external'])),true);
 	
-	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {	
-		//echo $section['section_name'];
+	for ($i = 0; $i < count($filters) && count($filters) > 1; $i++) {
 		$keywords[] = '{@filter'.$i.'}';
 		switch ($i) {
 			case 0:
-				// $keywordsChange[] = $filters[$i];
-				// $keywords[] = '{@'.$subsectionTitle.'Section}';
 				foreach ($findingNamingContent as $k => $find) {
 					if ($k == 'title') {
 						foreach ($find as $key => $finding) {
@@ -163,70 +160,9 @@
 				}
 				break;
 		}
-
-		// // Naming filters for internal use
-		// $keywords[] = '{@filter'.$i.'}';
-		// $flag = false;
-		// if (($i == 0 || $i == 1) && ($findingNamingContent)) {
-		// 	foreach ($findingNamingContent['title'] as $key => $finding) {
-		// 		if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
-		// 			$keywordsChange[] = $key;
-		// 			$flag = true;
-		// 			break;
-		// 		}
-		// 	}
-		// 	if ($flag == false) {
-		// 		$keywordsChange[] = $filters[$i];
-		// 	}
-		// } else {
-		// 	$keywordsChange[] = $filters[$i];
-		// }
-
-		// // Setting naming to use in the front page
-		// $keywords[] = '{@'.$subsectionTitle.'Section}';
-		// if (($i == 0 || $i == 1) && ($flag) && ($findingNamingContent)) {
-		// 	$keywordsChange[] = $findingNamingContent['title'][$key][COUNTRY_CODE];
-		// } else {
-		// 	$flag = false;
-		// 	//foreach ($findingNamingContent as $k => $find) {
-		// 		// print_r($find);
-		// 		// echo $section['section_name'];
-		// 		foreach ($findingNamingContent[$section['section_name']] as $key => $finding) {
-		// 			print_r($finding);
-		// 			echo $filters[$i];
-		// 			if (count($finding[$filters[$i]])) {
-		// 				$flag = true;
-		// 				break;
-		// 			}
-		// 		}
-		// 	//}
-			
-		// 	if ($flag) {
-		// 		$keywordsChange[] = (isset($findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE])) ? $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name'][COUNTRY_CODE] : $findingNamingContent[$section['section_name']][$key][$filters[$i]]['name']['default'];
-		// 	}
-		// }
-		// $flag = false;
 		$subsectionTitle .= 'Sub';
 	}
-	// $flag = false;
-	// foreach ($keywordsChange as $key) {
-	// 	if ($key == '') {
-	// 		$flag = true;
-	// 		break;
-	// 	}
-	// }
 
-	// if ((count($keywords) > count($keywordsChange)) || ($flag)) {
-	// 	for ($i = 0; $i <= count($keywords); $i++) {
-	// 		if (($keywords[$i] && $keywordsChange[$i] == '') || ($keywords[$i] && !isset($keywordsChange[$i]))) {
-	// 			unset($keywords[$i]);
-	// 			unset($keywordsChange[$i]);
-	// 		}
-	// 	}
-	// 	unset($keywords[$i]);
-	// }
-	// print_r($keywords);
-	// print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
@@ -291,6 +227,12 @@
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
+	/**
+	 * Adding library
+	 */
+	array_push($assets['css'], ['assets/slidebars/slidebars.min.css?v=20190701','assets/swiper/css/swiper.min.css?v=20190701']);
+	array_push($assets['js'], ['assets/slidebars/slidebars.min.js?v=20190701','assets/swiper/js/swiper.min.js?v=20190701']);
+
 	$db->prepare("select *, se.id as idExtension from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
@@ -300,6 +242,13 @@
 	$i = 1;
 
 	foreach ($sectionExtensions as $extension) {
+
+		if (isset($extension['external_content']) && $extension['external_content'] != '') {
+			$db->prepare("select * from content c where c.id = '" . $extension['external_content'] . "' and c.status = 1");
+			$db->execute();
+			$externalContent = $db->fetch();
+		}
+
 		$extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
 		$objetName 		= str_replace(' ', '', $extension['name']);
 		$variable 		= lcfirst($objetName);
@@ -341,11 +290,15 @@
 				$extensionContent = null;
 				if (isset($section['content_id']) && (isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
-					$external = utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external']));
+					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
-				} elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
-					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $section['content_external']));
-				} else {
+				} 
+				
+				elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
+					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
+				} 
+				
+				else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
 				$json = [
@@ -374,9 +327,6 @@
 			echo 'Error '. $e->getMessage();
 		}
 	}
-
-	array_push($assets['css'], ['assets/slidebars/slidebars.min.css']);
-	array_push($assets['js'], ['assets/slidebars/slidebars.min.js']);
 	/**
 	 * Render view
 	 */

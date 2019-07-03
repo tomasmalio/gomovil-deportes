@@ -1,6 +1,5 @@
 <div class="social-gifs">
 	<?php
-		// print_r($gifs); 
 		foreach ($content as $gif) {
 			foreach ($gif as $media) {
 	?>

@@ -1,4 +1,3 @@
-<?php //print_r($content)?>
 <section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<div class="content-league">
