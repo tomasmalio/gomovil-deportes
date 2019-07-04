@@ -213,8 +213,8 @@
 		];
 		unset($submenu);
 	}
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 
 	/**********************************
 	 * 			CUSTOMIZATION
@@ -229,7 +229,7 @@
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	$db->prepare("select *, se.id as idExtension from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
+	$db->prepare("select *, se.id as idExtension, se.content as extensionContent from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
@@ -297,6 +297,7 @@
 				else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
+
 				$json = [
 					'id'			=> $extension['idExtension'],
 					'clientName'	=> CLIENT_NAME,
