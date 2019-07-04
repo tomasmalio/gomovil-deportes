@@ -1,10 +1,11 @@
 <!-- News Google -->
+<?php //print_r($content);?>
 <section class="newsgoogle">
 	<div class="newsgoogle-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content as $news) {
+				foreach ($content['content'] as $news) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?=$news['link']?>" title="<?=$news['title']?>" target="_blank">

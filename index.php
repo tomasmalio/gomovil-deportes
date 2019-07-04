@@ -213,8 +213,8 @@
 		];
 		unset($submenu);
 	}
-	// print_r($keywords);
-	// print_r($keywordsChange);
+	print_r($keywords);
+	print_r($keywordsChange);
 
 	/**********************************
 	 * 			CUSTOMIZATION
@@ -307,13 +307,20 @@
 						'options'	=> $options,
 					],
 				];
-				$$variable 						= new $objetName($json);
-				$$widget 						= $$variable->renderView(); 
-				$assetExtension 				= $$variable->assets(strtotime($extension['modify_date']));
-				array_push($assets['css'], $assetExtension['css']);
-				array_push($assets['js'], $assetExtension['js']);
-				$widgets['widget'.$i]['content'] 	= $$widget;
-				$widgets['widget'.$i]['position'] 	= $extension['position'];
+
+				try {
+					$$variable 						= new $objetName($json);
+				} catch (Exception $e) {
+					$$variable = null;
+				}
+				if ($$variable != null) {
+					$$widget 						= $$variable->renderView(); 
+					$assetExtension 				= $$variable->assets(strtotime($extension['modify_date']));
+					array_push($assets['css'], $assetExtension['css']);
+					array_push($assets['js'], $assetExtension['js']);
+					$widgets['widget'.$i]['content'] 	= $$widget;
+					$widgets['widget'.$i]['position'] 	= $extension['position'];
+				}
 				$i++;
 			} else {
 				// Problem with extension

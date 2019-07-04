@@ -1,8 +1,8 @@
 <?php
 	/**
-	 * Model VideosList
+	 * Model VideosFootballGoMovil
 	 */
-	class ModelVideosList {
+	class ModelVideosFootballGoMovil {
 		
 		public $url = 'http://biteldev.gomovil.co/api/videos-leyendas.json';
 

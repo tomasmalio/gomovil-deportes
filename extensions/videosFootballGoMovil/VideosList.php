@@ -2,16 +2,16 @@
 	/**
 	 * VideosList
 	 */
-	class VideosList extends Widgets {
+	class VideosFootballGoMovil extends Widgets {
 		// Video content
 		public $content;
 
-		public $view = 'VideosList';
+		public $view = 'videosFootballGoMovil';
 
 		// Assets files
 		public $files = [
-			'style'		=> ['skin.bitel.jplayer.less', 'swiper.css'],
-			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js', 'swiper.js'],
+			'style'		=> ['skin.bitel.jplayer.less'],
+			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js'],
 		];
 
 		// Options
@@ -38,15 +38,6 @@
 				// Loop
 				'loop'				=> false,
 			],
-			'script' => [
-				'name'		=> 'swiper.videos-list',
-				'content' 	=> "var swiperVideo = new Swiper('.swiper-container-video', {
-					//slidesPerView: 'auto',
-					loop: false,
-					spaceBetween: 15,
-					mousewheel: true,
-				});"
-			]
 		];
 
 		public function __construct($params = []) {

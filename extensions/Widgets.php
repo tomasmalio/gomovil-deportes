@@ -32,6 +32,7 @@
 			unset($params['clientName']);
 			unset($params['id']);
 
+			print_r($params);
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
@@ -125,16 +126,30 @@
 			 **/ 
 			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
 			if (is_dir($modelUrl)) {
-				if (isset($params['modelView']) && $params['modelView']) {
-					require_once $modelUrl .'/Model' . $params['modelView'] . '.php';
-					$name = 'Model'.$params['modelView'];
-				} else {
-					require_once $modelUrl .'/Model' . get_class($this) . '.php';
-					$name = 'Model'.get_class($this);
+				try {
+					if (isset($params['modelView']) && $params['modelView']) {
+						if (file_exists($modelUrl .'/Model' . $params['modelView'] . '.php')) {
+							require_once $modelUrl .'/Model' . $params['modelView'] . '.php';
+							$name = 'Model'.$params['modelView'];
+						} else {
+							throw new Exception('No model find for '.$modelUrl .'/Model' . $params['modelView'] . '.php');
+						}
+					} else {
+						if (file_exists($modelUrl .'/Model' . get_class($this) . '.php')) {
+							require_once $modelUrl .'/Model' . get_class($this) . '.php';
+							$name = 'Model'.get_class($this);
+						} else {
+							throw new Exception('No model find for '.$modelUrl .'/Model' . get_class($this) . '.php');
+						}
+					}
+					if (isset($name)) {
+						$model = new $name();
+						$content['content'] = $model->model($params['data']['content']);	
+					}
+				} catch (Exception $e) {
+					$e->getMessage();
 				}
-				$model = new $name();
-				$content['content'] = $model->model($params['data']['content']);
-				
+				//}
 				// Changing naming content before created
 				// if (isset($this->renameVerify)) {
 				// 	$content = self::multiRenameKey($content, $this->renameVerify['wrong'], $this->renameVerify['verify']);
@@ -149,6 +164,9 @@
 			 * the content array.
 			 */
 			$this->content = $content;
+			if (!is_array($this->content)) {
+				$this->content = [];
+			}
 			if (is_array($includeContent['words'])) {
 				$this->content = array_merge($this->content, $includeContent['words']);
 			}

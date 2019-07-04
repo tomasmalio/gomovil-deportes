@@ -8,7 +8,7 @@
 			[
 				<?php 
 					$quantity = 0;
-					foreach ($content as $video) {?>
+					foreach ($content['content'] as $video) {?>
 				{
 					title: "<?=$video->nombre;?>",
 					m4v: "<?=$video->video;?>",

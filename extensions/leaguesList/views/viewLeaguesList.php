@@ -1,3 +1,4 @@
+<?php //print_r($content); exit;?>
 <section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<div class="content-league">
@@ -16,7 +17,7 @@
 			<h2><?=$content['title']['leagues'][COUNTRY_CODE]?></h2>
 			<?php 
 				}
-				foreach ($content['tournaments']['leagues'] as $key => $leagues) {
+				foreach ($content['content']['tournaments']['leagues'] as $key => $leagues) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['leagues'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
@@ -32,7 +33,7 @@
 			<h2><?=$content['title']['cups'][COUNTRY_CODE]?></h2>
 			<?php 
 				}
-				foreach ($content['tournaments']['cups'] as $key => $cups) {
+				foreach ($content['content']['tournaments']['cups'] as $key => $cups) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['cups'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
@@ -48,7 +49,7 @@
 					<h2><?=$content['title']['selections'][COUNTRY_CODE]?></h2>
 					<?php 
 						}
-						foreach ($content['tournaments']['selections'] as $key => $selections) {
+						foreach ($content['content']['tournaments']['selections'] as $key => $selections) {
 					?>
 					<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 					<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['title']['selections'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
