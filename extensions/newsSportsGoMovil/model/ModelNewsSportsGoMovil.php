@@ -25,8 +25,9 @@
 			self::setCountryCode($params['country_code']);
 			self::setType($params['type']);
 			self::setArticle($params['article']);
-			$array['content'] = json_decode(self::getNews(), true);
-			return $array;
+			//$array['content'] = json_decode(self::getNews(), true);
+			//return $array;
+			return json_decode(self::getNews(), true);
 		}
 
 		public function setCountryCode ($country_code) {

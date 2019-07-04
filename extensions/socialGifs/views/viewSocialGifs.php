@@ -1,6 +1,6 @@
 <div class="social-gifs">
 	<?php
-		foreach ($content as $gif) {
+		foreach ($content['content'] as $gif) {
 			foreach ($gif as $media) {
 	?>
 	<div class="col-12">

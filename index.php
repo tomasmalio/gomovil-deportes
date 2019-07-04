@@ -229,12 +229,6 @@
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	/**
-	 * Adding library
-	 */
-	array_push($assets['css'], ['assets/slidebars/slidebars.min.css?v=20190701','assets/swiper/css/swiper.min.css?v=20190701']);
-	array_push($assets['js'], ['assets/slidebars/slidebars.min.js?v=20190701','assets/swiper/js/swiper.min.js?v=20190701']);
-
 	$db->prepare("select *, se.id as idExtension from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();

@@ -17,8 +17,8 @@
 		
 		public function model ($params = []) {
 			$content = $this->url. 'api_key=' .$this->key. '&q=' . rawurlencode($params['search']) . '&limit='. $this->limit .'&offset=0&rating=G&lang='.$this->lang;
-			$json = file_get_contents($content);
-			return json_decode($json);
+			return json_decode(file_get_contents($content));
+			//return $array;
 		}
 	}
 ?>

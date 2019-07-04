@@ -27,7 +27,7 @@ If you need more information about it, follow the instructions from [here](https
 php composer install
 ```
 ***Important:*** 
-- The composer.json contains a command in which change owner permissions to the user "apache". If you've other user for your web server be carefull because the *assets folder* must have owner permissions.
+- The composer.json contains a command in which change owner permissions to the user "apache". If 	you've other user for your web server be carefull because the *assets folder* must have owner permissions.
 - Validate that your're in your repository folder before install the composer.
 
 ## [Development](#development)

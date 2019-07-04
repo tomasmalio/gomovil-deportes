@@ -56,9 +56,19 @@
 						if ($key != 'content' && $key != 'options') {
 							$this->$key = $value;
 						}
+						/**
+						 * Extension options
+						 */
 						if ($key == 'options') {
 							if (isset($value)) {
 								$this->options = array_replace_recursive($this->options, $value);
+								/**
+								 * Creating scripts include in default at
+								 * extension.
+								 */
+								if (isset($this->options['scripts']) && $this->options['scripts']) {
+									$script['scripts'][0] = $this->options['scripts'];
+								}
 								/**
 								 * Creating scripts for slider
 								 */
@@ -97,8 +107,9 @@
 											},
 										});"
 									];
-									$this->options = array_merge($this->options, $script);
 								}
+								// If there're scripts we include in our options variable
+								(is_array($script)) ? $this->options = array_merge($this->options, $script): '';
 							}
 						}
 					}
@@ -122,7 +133,7 @@
 					$name = 'Model'.get_class($this);
 				}
 				$model = new $name();
-				$content = $model->model($params['data']['content']);
+				$content['content'] = $model->model($params['data']['content']);
 				
 				// Changing naming content before created
 				// if (isset($this->renameVerify)) {
@@ -144,7 +155,6 @@
 			if (is_array($includeContent['title'])) {
 				$this->content['title'] = $includeContent['title'];
 			}
-			//print_r($this->content);
 		}
 		
 		/**
@@ -423,7 +433,7 @@
 						
 						// Create the directory if not exist
 						self::createDirectory($dest);
-
+						
 						foreach ($options['scripts'] as $script) {
 							$original = self::createScriptJs($script['content'], $script['name']);
 							// Minify the file if is not set or if it's true
