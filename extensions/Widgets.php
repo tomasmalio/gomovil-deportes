@@ -720,12 +720,12 @@
 			if (is_array($old_keys)) {
 				foreach($new_keys as $k => $new_key) {
 					(isset($old_keys[$k])) ? true : $old_keys[$k] = NULL;
-					$arr[$new_key] = (isset($arr[$old_keys[$k]]) ? $arr[$old_keys[$k]] : null);
-					unset($arr[$old_keys[$k]]);
+					$array[$new_key] = (isset($array[$old_keys[$k]]) ? $array[$old_keys[$k]] : null);
+					unset($array[$old_keys[$k]]);
 				}
 			} else {
-				$arr[$new_keys] = (isset($arr[$old_keys]) ? $arr[$old_keys] : null);
-				unset($arr[$old_keys]);
+				$array[$new_keys] = (isset($array[$old_keys]) ? $array[$old_keys] : null);
+				unset($array[$old_keys]);
 			}
 			return $array;
 		}
