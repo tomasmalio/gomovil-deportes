@@ -25,9 +25,7 @@
 			self::setCountryCode($params['country_code']);
 			self::setType($params['type']);
 			self::setArticle($params['article']);
-			//$array['content'] = json_decode(self::getNews(), true);
-			//return $array;
-			return json_decode(self::getNews(), true);
+			return Widgets::multiRenameKey(json_decode(self::getNews(), true), $this->renameVerify['wrong'], $this->renameVerify['verify']);
 		}
 
 		public function setCountryCode ($country_code) {
@@ -54,7 +52,6 @@
 				case 'list':
 				case 'featured':
 				default:					
-					
 					if (!empty($country_code)) {
 						$json .= '&country_id=' . $this->country_id;
 					}

@@ -1,0 +1,91 @@
+@scorers-list-football-title-color: @color-quarter;
+@scorers-list-football-title-font-family: @h2-font-family;
+@scorers-list-football-title-font-size: 16pt;
+@scorers-list-football-title-font-weight: @h2-font-weight;
+@scorers-list-football-title-padding: 0;
+
+@scorers-list-football-content-titles-color: @color-quarter;
+@scorers-list-football-content-titles-font-family: @h3-font-family;
+@scorers-list-football-content-titles-font-size: 12pt;
+@scorers-list-football-content-titles-font-weight: @h3-font-weight;
+@scorers-list-football-content-titles-padding: 10px 0;
+
+@scorers-list-football-content-results-color: @color-quarter;
+@scorers-list-football-content-results-font-family: @p-font-family;
+@scorers-list-football-content-results-font-size: @p-font-size;
+@scorers-list-football-content-results-font-weight: @p-font-weight;
+@scorers-list-football-content-results-padding: 0 0 5px 0;
+
+@scorers-list-football-content-results-team-shield-img-width: 20px;
+
+section.scorerslistfootball {
+	margin: 0 0 15px 0;
+	h2 {
+		color: @scorers-list-football-title-color;
+		font-family: @scorers-list-football-title-font-family;
+		font-size: @scorers-list-football-title-font-size;
+		font-weight: @scorers-list-football-title-font-weight;
+		padding: @scorers-list-football-title-padding;
+	}
+	.content-list-teams {
+		background: white;
+		.border-radius(10px);
+		padding: 10px;
+		.titles-list {
+			color: @scorers-list-football-content-titles-color;
+			font-family: @scorers-list-football-content-titles-font-family;
+			font-size: @scorers-list-football-content-titles-font-size;
+			font-weight: @scorers-list-football-content-titles-font-weight;
+			padding: @scorers-list-football-content-titles-padding;
+			.title-team {
+				float: left;
+			}
+			.title-played,
+			.title-won,
+			.title-tied,
+			.title-lost,
+			.title-points {
+				float: right;
+				text-align: center;
+				width: 25px;
+			}
+		}
+		.results-list {
+			.result {
+				.position,
+				.team-shield,
+				.team-name,
+				[class^="results-"] {
+					color: @scorers-list-football-content-results-color;
+					font-family: @scorers-list-football-content-results-font-family;
+					font-size: @scorers-list-football-content-results-font-size;
+					font-weight: @scorers-list-football-content-results-font-weight;
+					padding: @scorers-list-football-content-results-padding;
+				}
+				.position,
+				.team-shield,
+				.team-name {
+					float: left;
+				}
+				[class^="results-"] {
+					float: right;
+					width: 25px;
+					text-align: center;
+				}
+				.team-shield {
+					width: @scorers-list-football-content-results-team-shield-img-width;
+					margin: 0 5px;
+					img {
+						width: 100%;
+					}
+				}
+				.position {
+					width: 20px;
+					text-align: center;
+				}
+			}
+			
+		}
+		
+	}
+}

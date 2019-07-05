@@ -2,14 +2,12 @@
 	/**
 	 * Position List
 	 */
-	class PositionList extends Widgets {
-		public $title = 'Posiciones';
-		//
+	class ScorersListFootball extends Widgets {
 		public $content;
 
 		// Assets files
 		public $files = [
-			'style'		=> ['position-list.less'],
+			'style'		=> ['scorers-list-football.less'],
 			'js'		=> [],
 		];
 		// Options

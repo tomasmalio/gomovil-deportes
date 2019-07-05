@@ -9,22 +9,22 @@
 						foreach ($value as $news) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="/<?= strtolower($content['title']['news'][COUNTRY_CODE]) . '/'. strtolower($content['title']['article'][COUNTRY_CODE]) .'/'.$news['nota_id'] .'/'. Widgets::normalizeString($news['titulo']);?>" title="<?=$news['titulo']?>">
+				<a href="/<?= strtolower($content['title']['news'][COUNTRY_CODE]) . '/'. strtolower($content['title']['article'][COUNTRY_CODE]) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
 					<div class="row">
 						<div class="col-12">
 							<div class="content-image">
 								<div class="img-wrap ratio-16-9">
 									<div class="image ">
-										<img src="<?= $news['imagen']?>" name="<?= $news['titulo']?>" alt="<?= $news['titulo']?>" title="<?= $news['titulo']?>" />
+										<img src="<?= $news['image']?>" name="<?= $news['title']?>" alt="<?= $news['title']?>" title="<?= $news['title']?>" />
 									</div>
 								</div>
 							</div>
 							<div class="news-content">
-								<?php if (isset($news['fechaPublicacion'])) {?>
-								<time datetime="<?= $news['fechaPublicacion']?>"><?= $news['fechaPublicacion']?></time>
+								<?php if (isset($news['created_at'])) {?>
+								<time datetime="<?= $news['created_at']?>"><?= $news['created_at']?></time>
 								<?php }?>
-								<h2><?= $news['titulo']?></h2>
-								<h3><?php if (strlen($news['nota']) > 180) { echo substr($news['nota'],0,strpos($news['nota'],' ',180)).'...'; } else { echo $news['nota'];}?></h3>
+								<h2><?= $news['title']?></h2>
+								<h3><?php if (strlen($news['summary']) > 180) { echo substr($news['summary'],0,strpos($news['summary'],' ',180)).'...'; } else { echo $news['summary'];}?></h3>
 							</div>
 						</div>
 					</div>

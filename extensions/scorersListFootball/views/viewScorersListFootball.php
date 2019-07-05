@@ -1,4 +1,9 @@
-<section class="positionlist">
+<?php //print_r($content)?>
+<?php
+	$scorers = $content['content'];
+	if (isset($scorers) && count($scorers) > 0) {
+?>
+<section class="scorerslistfootball">
 	<h2><?=$content['title']?></h2>
 	<div class="content-list-teams">
 		<div class="titles-list">
@@ -12,8 +17,7 @@
 		</div>
 		<div class="results-list">
 			<?php 
-				$positions = $content['content']['positions'];
-				foreach ($positions as $score) {
+				foreach ($scorers as $player) {
 			?>
 			<div class="result">
 				<div class="position"><?=$score['position']?></div>
@@ -26,9 +30,8 @@
 				<div class="results-played"><?=$score['played']?></div>
 				<div class="clearfix"></div>
 			</div>
-			<?php 
-				}
-			?>
+			<?php }?>
 		</div>
 	</div>
 </section>
+<?php }?>

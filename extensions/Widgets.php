@@ -32,6 +32,7 @@
 			unset($params['clientName']);
 			unset($params['id']);
 
+			//print_r($params);
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
@@ -169,7 +170,7 @@
 			if (is_array($includeContent['words'])) {
 				$this->content = array_merge($this->content, $includeContent['words']);
 			}
-			if (is_array($includeContent['title'])) {
+			if (is_array($includeContent['title']) && (!isset($includeContent['words']['title']))) {
 				$this->content['title'] = $includeContent['title'];
 			}
 		}
@@ -712,23 +713,65 @@
 		 * @param		array		$new_key	Array with the new keys
 		 * @return		array		Return array with the key replace
 		 */
-		public function multiRenameKey (&$array, $old_keys, $new_keys) {
-			if(!is_array($array)){
-				($array == "") ? $array = array() : false;
-				return $array;
-			}
-			if (is_array($old_keys)) {
-				foreach($new_keys as $k => $new_key) {
-					(isset($old_keys[$k])) ? true : $old_keys[$k] = NULL;
-					$array[$new_key] = (isset($array[$old_keys[$k]]) ? $array[$old_keys[$k]] : null);
-					unset($array[$old_keys[$k]]);
+		public function multiRenameKey (&$array, $wrong, $verify) {
+			if (is_array($wrong) && is_array($verify)) {
+				foreach($array as $key => &$value) {
+					// echo $key;
+					// echo '<br>';
+					$keyNew = array_search($key, $wrong);
+					// echo $keyNew . ') '.$wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
+					// if ($key == '0') {
+					// 	echo "no entra";
+					// }
+					// echo '<br>';
+
+					if (is_numeric($keyNew)) {
+						//if ($keyNew !== false && $wrong[$keyNew] === $key) {
+						// echo $key . ') '.$wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$keyNew;
+						// echo '<br>';
+						if ($value <> '') {
+							$array[$verify[$keyNew]] = $value;
+						} else {
+							$array[$verify[$keyNew]] = '';
+						}
+						unset($array[$key]);
+					}
+					if(is_array($value)) { 
+						self::multiRenameKey($value, $wrong, $verify); 
+					} 
 				}
-			} else {
-				$array[$new_keys] = (isset($array[$old_keys]) ? $array[$old_keys] : null);
-				unset($array[$old_keys]);
 			}
 			return $array;
 		}
+
+		// public function multiRenameKey (&$array, $wrong, $verify) {
+		// 	if (is_array($wrong) && is_array($verify)) {
+		// 		foreach($array as $key => &$value) {
+		// 			if (in_array($key, $wrong)) {
+		// 				$keyNew = array_search($key, $wrong);
+		// 				// echo $wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
+		// 				// echo '<br>';
+		// 				if (is_numeric($keyNew) && $wrong[$keyNew] === $key) {
+		// 					echo $wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
+		// 					if ($value <> '') {
+		// 						$array[$verify[$keyNew]] = $value;
+		// 					} else {
+		// 						$array[$verify[$keyNew]] = '';
+		// 					}
+		// 					unset($array[$key]);
+		// 				} else {
+		// 					$array[$key] = $value;
+		// 				}
+		// 			}
+		// 			if(is_array($value)) { 
+		// 				self::multiRenameKey($value, $wrong, $verify); 
+		// 			} 
+		// 		}
+		// 	}
+		// 	return $array;
+		// }
+
+
 
 		/**
 		 * Normalize String
