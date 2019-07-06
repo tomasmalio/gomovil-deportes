@@ -4,12 +4,11 @@
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content as $key => $value) {
-					if ($key == 'content') {
-						foreach ($value as $news) {
+				$newsContent = $content['content'];
+				foreach ($newsContent as $news) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="/<?= strtolower($content['title']['news'][COUNTRY_CODE]) . '/'. strtolower($content['title']['article'][COUNTRY_CODE]) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
+				<a href="/<?= strtolower($content['titles']['news'][COUNTRY_CODE]) . '/'. strtolower($content['titles']['article'][COUNTRY_CODE]) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
 					<div class="row">
 						<div class="col-12">
 							<div class="content-image">
@@ -31,11 +30,9 @@
 				</a>
 			</li>
 			<?php 
-							$quantity++;
-							if (isset($items) && $quantity === $items) {
-								break;
-							}
-						}
+					$quantity++;
+					if (isset($items) && $quantity === $items) {
+						break;
 					}
 				}
 			?>

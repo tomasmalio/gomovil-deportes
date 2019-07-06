@@ -108,7 +108,7 @@
 		switch ($i) {
 			case 0:
 				foreach ($findingNamingContent as $k => $find) {
-					if ($k == 'title') {
+					if ($k == 'titles') {
 						foreach ($find as $key => $finding) {
 							if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
 								$keywordsChange[] = $key;

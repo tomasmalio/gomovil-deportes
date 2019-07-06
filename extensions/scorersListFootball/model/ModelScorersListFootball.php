@@ -11,7 +11,6 @@
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
-				'',
 				'ligas',
 				'copas',
 				'selecciones',
@@ -24,17 +23,10 @@
 				'equipo',
 				'escudo',
 				'puesto',
-				'jugados',
-				'ganados',
-				'empatados',
-				'perdidos',
-				'goles_favor',
-				'goles_contra',
-				'diferencia',
-				'puntos'
+				'nombre_completo',
+				'goles'
 			],
 			'verify'	=> [
-				'asfasfsaf',
 				'leagues',
 				'cups',
 				'selections',
@@ -47,14 +39,8 @@
 				'team',
 				'team_shield',
 				'position',
-				'played',
-				'won',
-				'tied',
-				'lost',
-				'goals_in_favor',
-				'goals against',
-				'difference',
-				'points'
+				'complete_name',
+				'goals'
 			],
 		];
 		public function model ($params = []) {

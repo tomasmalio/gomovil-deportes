@@ -42,16 +42,23 @@
 						 * separated from the main content
 						 */
 						if ($key == 'content') {
+							// if (isset($value['words'])) {
+							// 	if (!isset($value['words']['title'])) {
+							// 		$value['words']['title'] = $value['section'][COUNTRY_CODE];
+							// 	}
+							// } else {
+							// 	$value['words']['title'] = $value['section'][COUNTRY_CODE];
+							// }
+							// $includeContent['words'] = $value['words'];
+							// if (isset($value['title'])) {
+							// 	$includeContent['title'] = $value['title'];
+							// }
+							$this->content = $value;
 							if (isset($value['words'])) {
-								if (!isset($value['words']['title'])) {
-									$value['words']['title'] = $value['section'][COUNTRY_CODE];
+								unset($this->content['words']);
+								foreach ($value['words'] as $k => $v) {
+									$this->content[$k] = $v;
 								}
-							} else {
-								$value['words']['title'] = $value['section'][COUNTRY_CODE];
-							}
-							$includeContent['words'] = $value['words'];
-							if (isset($value['title'])) {
-								$includeContent['title'] = $value['title'];
 							}
 						}
 						if ($key != 'content' && $key != 'options') {
@@ -144,7 +151,7 @@
 					}
 					if (isset($name)) {
 						$model = new $name();
-						$content['content'] = $model->model($params['data']['content']);	
+						$content = $model->model($params['data']['content']);	
 					}
 				} catch (Exception $e) {
 					$e->getMessage();
@@ -163,16 +170,18 @@
 			 * If the extension has words (title, buttons, etc) we merge with
 			 * the content array.
 			 */
-			$this->content = $content;
-			if (!is_array($this->content)) {
-				$this->content = [];
-			}
-			if (is_array($includeContent['words'])) {
-				$this->content = array_merge($this->content, $includeContent['words']);
-			}
-			if (is_array($includeContent['title']) && (!isset($includeContent['words']['title']))) {
-				$this->content['title'] = $includeContent['title'];
-			}
+			//print_r($content);
+			$this->content['content'] = $content;
+			// if (!is_array($this->content)) {
+			// 	$this->content = [];
+			// }
+			// if (is_array($includeContent['words'])) {
+			// 	$this->content = array_merge($this->content, $includeContent['words']);
+			// }
+			// if (is_array($includeContent['title']) && (!isset($includeContent['words']['title']))) {
+			// 	$this->content['title'] = $includeContent['title'];
+			// }
+			// print_r($this->content);
 		}
 		
 		/**
@@ -716,19 +725,8 @@
 		public function multiRenameKey (&$array, $wrong, $verify) {
 			if (is_array($wrong) && is_array($verify)) {
 				foreach($array as $key => &$value) {
-					// echo $key;
-					// echo '<br>';
 					$keyNew = array_search($key, $wrong);
-					// echo $keyNew . ') '.$wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
-					// if ($key == '0') {
-					// 	echo "no entra";
-					// }
-					// echo '<br>';
-
-					if (is_numeric($keyNew)) {
-						//if ($keyNew !== false && $wrong[$keyNew] === $key) {
-						// echo $key . ') '.$wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$keyNew;
-						// echo '<br>';
+					if ($key !== 0 && is_numeric($keyNew)) {
 						if ($value <> '') {
 							$array[$verify[$keyNew]] = $value;
 						} else {
@@ -743,35 +741,6 @@
 			}
 			return $array;
 		}
-
-		// public function multiRenameKey (&$array, $wrong, $verify) {
-		// 	if (is_array($wrong) && is_array($verify)) {
-		// 		foreach($array as $key => &$value) {
-		// 			if (in_array($key, $wrong)) {
-		// 				$keyNew = array_search($key, $wrong);
-		// 				// echo $wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
-		// 				// echo '<br>';
-		// 				if (is_numeric($keyNew) && $wrong[$keyNew] === $key) {
-		// 					echo $wrong[$keyNew] . ' | '. $verify[$keyNew] . ' | '.$key;
-		// 					if ($value <> '') {
-		// 						$array[$verify[$keyNew]] = $value;
-		// 					} else {
-		// 						$array[$verify[$keyNew]] = '';
-		// 					}
-		// 					unset($array[$key]);
-		// 				} else {
-		// 					$array[$key] = $value;
-		// 				}
-		// 			}
-		// 			if(is_array($value)) { 
-		// 				self::multiRenameKey($value, $wrong, $verify); 
-		// 			} 
-		// 		}
-		// 	}
-		// 	return $array;
-		// }
-
-
 
 		/**
 		 * Normalize String

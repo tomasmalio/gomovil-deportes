@@ -1,7 +1,7 @@
 <!-- Featured Content -->
 <section class="newssportsgomovil featured">
 	<div class="newssportsgomovil-content">
-		<a href="/<?= strtolower($content['title']['news'][COUNTRY_CODE]) . '/'. strtolower($content['title']['article'][COUNTRY_CODE]) .'/'.$content['content']['id'] .'/'. Widgets::normalizeString($content['content']['title']);?>" title="<?=$content['content']['title']?>">
+		<a href="/<?= strtolower($content['titles']['news'][COUNTRY_CODE]) . '/'. strtolower($content['titles']['article'][COUNTRY_CODE]) .'/'.$content['content']['id'] .'/'. Widgets::normalizeString($content['content']['title']);?>" title="<?=$content['content']['title']?>">
 			<div class="content" style="background-image: url('<?=$content['content']['image']?>');">
 				<h3>
 					<span><?=$content['label']?></span>
