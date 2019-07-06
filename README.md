@@ -7,7 +7,7 @@ When we want to install the platform from the begining we must follow the instru
 1) Open your terminal of your server and go to the directory in which your Apache works
 2) You must clone this respository:
 ```bash
-git clone https://github.com/tomasmalio/gomovil-deportes.git *folder_name*
+git clone https://github.com/tomasmalio/gomovil-deportes.git folder_name
 ```
 3) Your server must have PHP so let's install. Here it's an example with the version that works:
 ```bash
