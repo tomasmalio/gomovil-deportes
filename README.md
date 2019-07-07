@@ -15,7 +15,7 @@ yum install php71-cli.x86_64
 ```
 4) Once you have completed the few steps before you must ***install***:
 ```bash
-php install.php
+sh install.sh
 ```
 
 ## [Development](#development)
