@@ -15,17 +15,31 @@
 		private $type = 'list';
 		// Article
 		private $article;
-		// Modify naming of JSON
-		public $renameVerify = [
-			'wrong' 	=> ['nota_id', 'titulo', 'nota', 'fechaPublicacion', 'imagen', 'nota_html'],
-			'verify'	=> ['id', 'title', 'summary', 'created_at', 'image',' text'],
+		// Mapping name JSON
+		private $mappingName = [
+			'wrong' 	=> [
+				'nota_id', 
+				'titulo', 
+				'nota', 
+				'fechaPublicacion', 
+				'imagen', 
+				'nota_html'
+			],
+			'verify'	=> [
+				'id', 
+				'title', 
+				'summary', 
+				'created_at', 
+				'image',
+				'text'
+			],
 		];
 
 		public function model ($params = []) {
 			self::setCountryCode($params['country_code']);
 			self::setType($params['type']);
 			self::setArticle($params['article']);
-			return Widgets::multiRenameKey(json_decode(self::getNews(), true), $this->renameVerify['wrong'], $this->renameVerify['verify']);
+			return Widgets::multiRenameKey(json_decode(self::getNews(), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
 		public function setCountryCode ($country_code) {

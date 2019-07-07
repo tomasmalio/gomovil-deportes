@@ -1,9 +1,9 @@
-<!-- Featured Content -->
+<!-- News article -->
 <section class="newssportsgomovil view">
 	<div class="newssportsgomovil-content">
 		<h1><?=$content['content']['title']?></h1>
 		<div class="image"><img src="<?=$content['content']['image']?>" name="imagenews" alt="" title=""></div>
-		<p><?=$content['content']['text']?></p>
+		<?=$content['content']['text']?>
 	</div>
 </section>
-<!-- Eof Featured Content -->
+<!-- Eof News article -->
