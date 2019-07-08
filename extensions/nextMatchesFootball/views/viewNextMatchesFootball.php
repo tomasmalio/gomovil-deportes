@@ -1,6 +1,6 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
-	if (isset($nextMatches) && is_array($nextMatches)) {
+	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
 <!-- Next matches football -->
 <section class="nextmatchesfootball">
