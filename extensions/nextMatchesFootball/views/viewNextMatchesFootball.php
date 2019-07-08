@@ -1,5 +1,6 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
+	if (isset($nextMatches) && is_array($nextMatches)) {
 ?>
 <!-- Next matches football -->
 <section class="nextmatchesfootball">
@@ -129,3 +130,4 @@
 	</div>
 </section>
 <!-- Eof Next matches-->
+<?php }?>
