@@ -93,7 +93,7 @@
 									if ($this->options['slider']['options']['spacebetween'] != '30') {
 										$spaceBetween = $this->options['slider']['options']['spacebetween'];
 									}
-									if ($this->options['slider']['options']['mousewheel'] == 'false') {
+									if ($this->options['slider']['options']['mousewheel'] === false) {
 										$mousewheel = 'false';
 									}
 									

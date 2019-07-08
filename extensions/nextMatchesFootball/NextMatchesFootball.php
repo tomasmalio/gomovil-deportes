@@ -24,6 +24,9 @@
 					'pagination'	=> false,
 					'navigation'	=> true,
 				],
+				'options' => [
+					'mousewheel' 	=> false
+				]
 			]
 		];
 
