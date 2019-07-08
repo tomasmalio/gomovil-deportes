@@ -43,7 +43,7 @@
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">
 						<div class="col-12">
-							<a href="<?= $match['url']?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
+							<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles'][$content['type']][COUNTRY_CODE]))?>/<?= $content['tournament']?>/<?= $match['id']?>/<?php echo Widgets::normalizeString($match['team_local']).'-vs-'.Widgets::normalizeString($match['team_visit'])?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
 								<div class="competition-date"><?= strftime('%d de %B', strtotime($match['date_begin']));?></div>
 								<div class="row match-teams">
 									<div class="col-5 match-team">
