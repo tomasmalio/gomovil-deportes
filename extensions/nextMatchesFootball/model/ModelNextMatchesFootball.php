@@ -2,7 +2,7 @@
 	/**
 	 * Model Position List
 	 */
-	class ModelPositionList {
+	class ModelNextMatchesFootball {
 		// Url JSON
 		private $url = 'http://apiuf.gomovil.co/ligas/';
 		// Url tournaments content JSON
@@ -19,17 +19,20 @@
 				'imagen',
 				'fecha_actual',
 				'posiciones',
-				'equipo',
-				'escudo',
-				'puesto',
-				'jugados',
-				'ganados',
-				'empatados',
-				'perdidos',
-				'goles_favor',
-				'goles_contra',
-				'diferencia',
-				'puntos'
+				
+				'local',
+				'local_img',
+				
+				'penal_local',
+				'visitante',
+				'visitante_img',
+				'gol_visitante',
+				'penal_visitante',
+				'estado',
+				'hora_inicio',
+				'dia',
+				'hora',
+				'minuto'
 			],
 			'verify'	=> [
 				'leagues',
@@ -40,17 +43,20 @@
 				'image',
 				'actual_date',
 				'positions',
-				'team',
-				'team_shield',
-				'position',
-				'played',
-				'won',
-				'tied',
-				'lost',
-				'goals_in_favor',
-				'goals against',
-				'difference',
-				'points'
+
+				'team_local',
+				'team_image_local',
+				
+				'penalty_local',
+				'team_visit',
+				'team_image_visit',
+				'gol_visit',
+				'penalty_visit',
+				'status',
+				'date_begin',
+				'date',
+				'time',
+				'minutes'
 			],
 		];
 		public function model ($params = []) {
@@ -58,11 +64,11 @@
 				$typeTournament = $params['type'];
 				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
 				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				return Widgets::multiRenameKey(self::getPositions($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+				return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}
 
-		private function getPositions ($key) {
+		private function getFixture ($key) {
 			return json_decode(file_get_contents($this->url . $key . '.json'), true);
 		}
 
