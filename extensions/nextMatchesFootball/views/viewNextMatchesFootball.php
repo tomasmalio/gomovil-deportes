@@ -21,7 +21,7 @@
 				<!-- Slider -->
 				<div class="swiper-slide">
 				<?php }?>
-				<div class="date-matches"><?php echo $content['titles']['phases'][$key][COUNTRY_CODE];?></div>
+				<div class="date-matches"><?php if (is_numeric($key)) { echo 'Fecha '.$key; } else { echo $content['titles']['phases'][$key][COUNTRY_CODE];}?></div>
 				<div class="competition-divider"></div>
 				<!-- List of matches / Football sport / Next matches-->
 				<ul>
