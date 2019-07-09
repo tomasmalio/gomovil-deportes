@@ -439,11 +439,11 @@
 									// Minify the file if is not set or if it's true
 									if (!isset($options['minify']) || $options['minify']) {
 										$original = $src .'/'. basename($file, '.js') . '.js';
-										$filename = $dest .'/'. basename($file, '.js') . '.min.js';
+										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.min.js';
 										
 										(new Minify\JS($original))->minify($filename);
 									} else {
-										$filename = $dest .'/'. basename($file, '.js') . '.js';
+										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.js';
 									}
 									$filename .= '?v='.date('YmdHis', $date);
 									array_push($arrayReturn, $filename);
@@ -465,7 +465,7 @@
 							$original = self::createScriptJs($script['content'], $script['name']);
 							// Minify the file if is not set or if it's true
 							if (!isset($options['minify']) || $options['minify']) {
-								$filename = str_replace('.js', '.min.js', $original);
+								$filename = str_replace('.js', $this->extensionId . '.min.js', $original);
 								(new Minify\JS($original))->minify($filename);
 							} else {
 								$filename = $original;
