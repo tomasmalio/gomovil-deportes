@@ -37,7 +37,7 @@
 								<div class="author-username">@<?=$social['screen_name']?></div>
 							</div>
 						</div>
-						<p class="text"><?=Widgets::convertSocialLinks(Widgets::makeLinks($social['text']), strtolower($social['origen']))?></p>
+						<p class="text"><?=$social['text']?></p>
 					</div>
 					<div class="card-footer">
 						<div class="social-datetime float-left"><?=$social['fecha']?></div>
