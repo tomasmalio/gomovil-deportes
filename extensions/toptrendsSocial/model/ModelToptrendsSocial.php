@@ -11,7 +11,12 @@
 		public function model ($params = []) {
 			self::setInterval($params['interval']);
 			if ($params['search']) {
-				return json_decode(self::getSocial($params['search']), true);;
+				$json = self::getSocial($params['search']);
+				if ($json) {
+					return json_decode($json, true);
+				} else {
+					return null;
+				}	
 			}
 		}
 
@@ -22,7 +27,12 @@
 		}
 
 		private function getSocial($search) {
-			return file_get_contents($this->url . $search .'&interval=' . $this->interval);
+			$json = @file_get_contents($this->url . $search .'&interval=' . $this->interval);
+			if (strpos($http_response_header[0], "200")) { 
+				return $json;
+			} else { 
+				return null;
+			}
 		}
 	}
 ?>

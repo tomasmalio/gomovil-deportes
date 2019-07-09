@@ -1,4 +1,7 @@
-<?php $toptrends = $content['content']['data']?>
+<?php 
+	$toptrends = $content['content']['data'];
+	if ($toptrends) {
+?>
 <div class="row grid-social">
 	<?php foreach ($toptrends as $social) {?>
 
@@ -49,3 +52,4 @@
 		</div>
 	<?php }?>
 </div>
+<?php }?>
