@@ -17,6 +17,7 @@
 				'selecciones',
 				'nombre',
 				'equipos',
+				'equipo',
 				'imagen',
 				'fecha_actual',
 				'posiciones',
@@ -34,7 +35,12 @@
 				'hora_inicio',
 				'dia',
 				'hora',
-				'minuto'
+				'minuto',
+				'evento',
+				'evento_id',
+				'tipo_evento',
+				'equipo_condicion',
+				'jugador'
 			],
 			'verify'	=> [
 				'tournament',
@@ -43,6 +49,7 @@
 				'selections',
 				'name',
 				'teams',
+				'team',
 				'image',
 				'actual_date',
 				'positions',
@@ -60,7 +67,12 @@
 				'date_begin',
 				'date',
 				'time',
-				'minutes'
+				'minutes',
+				'interaction',
+				'interaction_id',
+				'interaction_type',
+				'team_condition',
+				'player'
 			],
 		];
 		

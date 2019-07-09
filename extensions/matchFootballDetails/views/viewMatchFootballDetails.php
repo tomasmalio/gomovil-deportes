@@ -1,5 +1,7 @@
+<pre><?php print_r($content['content']);?></pre>
 <?php 
 	$match = $content['content'];
+	$interactions = $content['content']['interaction'];
 	/* Switch of each status */
 	switch ($match['status']) {
 		case 'Por comenzar':
@@ -15,6 +17,40 @@
 ?>
 <section class="matchfootballdetails">
 	<div class="matchfootballdetails-content">
+		<!-- Match info -->
+		<div class="row">
+			<div class="col-12">
+				<div class="match-info">
+					<?php if (isset($match['time']) && $math['time'] !== '') {?>
+					<span><?= $match['time']?></span>
+					<?php
+							$before = true; 
+						}
+						if (isset($match['date']) && $math['date'] !== '') {
+							if ($before) {
+					?>
+						|
+					<?php
+							}
+					?>
+					<span><?= $match['date']?></span> 
+					<?php
+							$last = true; 
+						}
+						if (isset($match['stadium']) && $match['stadium'] != '') {
+							if ($last || ($before && !$last)) {
+					?>
+								|
+					<?php
+							}
+					?>
+					<span><?= $match['stadium']?></span>
+					<?php }?>
+				</div>
+			</div>
+		</div>
+		<!-- Eof match info -->
+		<!-- Match teams -->
 		<div class="row match-teams">
 			<div class="col-5 match-team">
 				<div class="team">
@@ -76,14 +112,59 @@
 				</div>
 				<?php }?>
 			</div>
-			<?php if ($match['status'] != 'live' || $match['status'] != 'end') {?>
+			<?php /*if ($match['status'] != 'live' || $match['status'] != 'end') {?>
 			<div class="col-12">
 				<div class="votes">
 					<p><?=$titleVote?></p>
 					<button class="vote" type="button">Votar</button>
 				</div>
 			</div>
-			<?php }?>
+			<?php }*/?>
 		</div>
+		<!-- Eof match teams -->
+		<!-- Match interactions -->
+		<div class="row">
+			<div class="col-12">
+				<div class="match-interactions">
+					<?php 
+						foreach ($interactions as $interaction) {
+							switch (Widgets::normalizeString($interaction['interaction'])) {
+								case 'gol':
+								case 'goal':
+										$icon = 'goal fa-football-ball';
+									break;
+								case 'modificacion':
+								case 'modification':
+								case 'change':
+										$icon = 'change';
+									break;
+								case 'amarilla':
+								case 'tarjeta-amarilla':
+								case 'yellow-card':
+										$icon = 'yellow-card';
+									break;
+								case 'roja':
+								case 'tarjeta-roja':
+								case 'red-card':
+										$icon = 'red-card';
+									break;
+							}
+					?>
+					<div class="row interaction">
+						<?php if ($interaction['team_condition'] == 'local') {?>
+						<div class="col-6 interaction-description left"><?=$interaction['player'] . ' ('.$interaction['minutes'].')';?></div>
+						<div class="interaction-type"><i class="icon <?= $icon;?>"></i></div>
+						<div class="col-6"></div>
+						<?php } else {?>
+						<div class="col-6"></div>
+						<div class="interaction-type"><i class="icon <?= $icon;?>"></i></div>
+						<div class="col-6 interaction-description right"><?= '('.$interaction['minutes'].') '. $interaction['player'];?></div>
+						<?php }?>
+					</div>
+					<?php }?>
+				</div>
+			</div>
+		</div>
+		<!-- Eof match interactions -->
 	</div>
 </section>

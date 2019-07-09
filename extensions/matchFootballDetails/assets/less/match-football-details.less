@@ -1,0 +1,268 @@
+@match-height: 80px;
+
+@interaction-border-top: 1px solid #f3f3f3;
+@interaction-margin: 10px 0 0 0;
+@interaction-padding: 10px 0;
+
+@interaction-description-font-family: @p-font-family;
+@interaction-description-font-size: @p-font-size;
+@interaction-description-font-weight: @p-font-weight;
+@interaction-description-color: #555555;
+@interaction-description-padding: 0 15px;
+
+@interaction-icon-font-size: 16pt;
+@interaction-icon-color-goal: black;
+@interaction-icon-color-change: black;
+@interaction-icon-color-red-card: red;
+@interaction-icon-color-yellow-card: yellow;
+
+/* Match Featured */
+.matchfootballdetails {
+	
+	.matchfootballdetails-content {
+		background: #fff !important;
+		.border-radius(10px);
+		.box-shadow(0px 0px 10px -3px #d4d4d4cc);
+
+		.match-info {
+			text-align: center;
+			font-family: @p-font-family;
+			font-size: @p-font-size;
+			font-weight: @p-font-weight;
+			padding: 10px 0;
+		}
+		/* Match teams */
+		.match-teams {
+			margin-left: 0;
+			margin-right: 0;
+			.match-team {
+				position: relative;
+				text-align: center;
+				padding-right: 0;
+				padding-left: 0;
+				.team {
+					margin: 0;
+					width: 100%;
+					height: @match-height;
+					position: relative;
+					.team-name {
+						color: #333;
+						font-size: 12pt;
+						height: @match-height;
+						position: absolute;
+						.team-name-container {
+							display: table;
+							width: 100%;
+							height: 100%;
+							.cell {
+								display: table-cell;
+								vertical-align: middle;
+							}
+						}
+					}
+					.team-name.right {
+						margin-left: @match-height + 10;
+						left: 0;
+						.team-name-container .cell {
+							text-align: left;
+						}
+					}
+					.team-name.left {
+						margin-right: @match-height + 10;
+						right: 0;
+						.team-name-container .cell {
+							text-align: right;
+						}
+					}
+					.shield {
+						position: absolute;
+						padding: 0 0 5px 0;
+						width: @match-height;
+						text-align: center;
+						img {
+							max-height: @match-height;
+						}
+					}
+					.shield.left {
+						right: 5px;
+					}
+					.shield.right {
+						left: 5px;
+					}
+				}
+				.penalties {
+					margin-top: 10px;
+					.shoot {
+						background: #dedede;
+						.border-radius(50%);
+						height: 8px;
+						margin: 0 5px 0 0;
+						width: 8px;
+					}
+					.shoot.goal {
+						background: #00d200;
+					}
+					.shoot.no-goal {
+						background: red;
+					}
+				}
+				.penalties.left {
+					float: right;
+					margin-right: 5px;
+					.shoot {
+						float: right;
+					}
+				}
+				.penalties.right {
+					float: left;
+					margin-left: 5px;
+					.shoot {
+						float: left;
+					}
+				}
+			}
+			.match-info {
+				padding-left: 0;
+				padding-right: 0;
+				position: relative;
+				.playing-status {
+					color: #555555;
+					font-size: 6pt;
+					left: 0;
+					right: 0;
+					text-align: center;
+					text-transform: uppercase;
+					top: -30px;
+					position: absolute;
+					.situation {
+						background: #41da41;
+						.border-radius(50%);
+						left: 5px;
+						height: 5px;
+						position: absolute;
+						width: 5px;
+						top: 3px;
+					}
+				}
+				.time-playing {
+					color: #555555;
+					left: 0;
+					font-size: 10pt;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					top: 0;
+				}
+				.match-divider {
+					display: table;
+					width: 100%;
+					.match-divider-content {
+						display: table-cell;
+						vertical-align: middle;
+						text-align: center;
+						width: 100%;
+						height: @match-height;
+						.time-to-play {
+							background: #F4F4F4;
+							.border-radius(6px);
+							color: #585858;
+							font-family: @p-font-family;
+							font-size: 11pt;
+							font-weight: @p-font-weight;
+							height: @match-height / 2;
+							padding: 4px;
+							position: relative;
+							text-align: center;
+						}
+						.result {
+							background: #F4F4F4;
+							.border-radius(6px);
+							color: #b9b9b9;
+							font-family: @p-font-family;
+							font-size: 24pt;
+							font-weight: @p-font-weight;
+							line-height: 25px;
+							padding: 4px;
+							position: relative;
+							text-align: center;
+						}
+						.result.football {
+							span.number {
+								color: #5d5d5d;
+								font-size: 22pt;
+								font-weight: 700;
+							}
+						}
+						.result.basket {
+							span.number {
+								color: #5d5d5d;
+								font-size: 9pt;
+								font-weight: 700;
+							}
+						}
+					}
+				}
+				.penalty-score {
+					bottom: -5px;
+					color: #555555;
+					font-size: 10pt;
+					left: 0;
+					right: 0;
+					position: absolute;
+					text-align: center;
+				}
+			}
+		}
+		/* Eof match teams */
+		/* Match interactions */
+		.match-interactions {
+			border-top: @interaction-border-top;
+			margin: @interaction-margin;
+			padding: @interaction-padding;
+
+			.interaction {
+				position: relative;
+				margin-bottom: 8px;
+				.interaction-description {
+					font-family: @interaction-description-font-family;
+					font-size: @interaction-description-font-size;
+					font-weight: @interaction-description-font-weight;
+					color: @interaction-description-color;
+					padding: @interaction-description-padding;
+				}
+				.interaction-description.left {
+					text-align: right;
+				}
+				.interaction-description.right {
+					text-align: left;
+				}
+				.interaction-type {
+					left: 0;
+					line-height: 20px;
+					margin: 0 auto;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					width: 20px;
+					i {
+						font-size: @interaction-icon-font-size;
+					}
+					i.goal {
+						color: @interaction-icon-color-goal;
+					}
+					i.red-card {
+						color: @interaction-icon-color-red-card;
+					}
+					i.yellow-card {
+						color: @interaction-icon-color-yellow-card;
+					}
+					i.change {
+						color: @interaction-icon-color-change;
+					}
+				}
+			}
+			
+		}
+		/* Eof match interactions */
+	}
+}
