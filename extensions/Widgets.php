@@ -75,7 +75,7 @@
 								 * extension.
 								 */
 								if (isset($this->options['scripts']) && $this->options['scripts']) {
-									$script['scripts'][0] = $this->options['scripts'];
+									$script['scripts'] = $this->options['scripts'];
 								}
 								/**
 								 * Creating scripts for slider
@@ -99,7 +99,7 @@
 									
 									// Slider script generator
 									$script['scripts'][1] = [
-										'name'		=> 'swiper.' . strtolower(get_class($this)),
+										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
 										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
 											slidesPerView: 'auto',
 											loop: ".$loop.",
@@ -633,11 +633,10 @@
 		 * @return		string		Return the directory concat with the filename
 		 */
 		private function createScriptJs ($script, $name = '') {
-			
 			if (isset($name) && $name) {
-				$filename 	= str_replace('.js', '', $name) . '.js';
+				$filename 	= str_replace('.js', '', $name) . $this->extensionId . '.js';
 			} else {
-				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . $this->extensionId . '.js';
+				$filename 	= 'script.' . strtolower(get_class($this)) . $this->extensionId . '.js';
 			}
 			$dest 	= $this->destination . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
