@@ -16,8 +16,13 @@
 		public $lang = 'es';
 		
 		public function model ($params = []) {
-			$content = $this->url. 'api_key=' .$this->key. '&q=' . rawurlencode($params['search']) . '&limit='. $this->limit .'&offset=0&rating=G&lang='.$this->lang;
-			return (json_decode(file_get_contents($content), true))['data'];
+			$json = @file_get_contents($this->url. 'api_key=' .$this->key. '&q=' . rawurlencode($params['search']) . '&limit='. $this->limit .'&offset=0&rating=G&lang='.$this->lang);
+			if (strpos($http_response_header[0], "200")) { 
+				return (json_decode($json, true))['data'];
+			} else { 
+				return null;
+			}
+			
 		}
 	}
 ?>
