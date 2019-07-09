@@ -77,9 +77,10 @@
 		];
 		
 		public function model ($params = []) {
-			if ($params['type'] && $params['tournament'] && $params['match']) {
-				$typeTournament = $params['type'];
-				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
+			//if ($params['type'] && $params['tournament'] && $params['match']) {
+			//	$typeTournament = $params['type'];
+			//	$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
+			if ($params['match']) {
 				return Widgets::multiRenameKey(self::getMatchDetails($params['match']), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}
