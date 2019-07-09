@@ -1,4 +1,3 @@
-<pre><?php print_r($content['content']);?></pre>
 <?php 
 	$match = $content['content'];
 	/* Switch of each status */
@@ -13,7 +12,6 @@
 			$match['status'] = 'end';
 			break;	
 	}
-
 ?>
 <section class="matchfootballdetails">
 	<div class="matchfootballdetails-content">
