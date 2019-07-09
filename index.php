@@ -114,6 +114,7 @@
 								$keywordsChange[] = $key;
 								$keywords[] = '{@'.$subsectionTitle.'Section}';
 								$keywordsChange[] = $finding[COUNTRY_CODE];
+								$flag = true;
 								break;
 							}
 						}
@@ -152,15 +153,25 @@
 							$flag = true;
 						}
 						if ($flag) {break; };
-					}	
+					}
 					if ($flag) {break; };
 				}
 				if (!$flag) {
 					$keywordsChange[] = $filters[$i];
 				}
+				if (substr_count($filters[$i], '-') >= 2) {
+					$keywords[] = '{@'.$subsectionTitle.'Section}';
+					if (strpos($filters[$i], 'vs') !== false) {
+						$keywordsChange[] = str_replace('Vs', 'vs', ucwords(str_replace('-', ' ', $filters[$i])));
+					} else {
+						$keywordsChange[] = ucfirst(str_replace('-', ' ', $filters[$i]));
+					}
+				}
 				break;
 		}
-		$subsectionTitle .= 'Sub';
+		if ($flag) {
+			$subsectionTitle .= 'Sub';
+		}
 	}
 
 	/**********************************
