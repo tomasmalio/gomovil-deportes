@@ -99,7 +99,7 @@
 									
 									// Slider script generator
 									$script['scripts'][1] = [
-										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
+										'name'		=> 'swiper.' . strtolower(get_class($this)),
 										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
 											slidesPerView: 'auto',
 											loop: ".$loop.",
@@ -465,7 +465,7 @@
 							$original = self::createScriptJs($script['content'], $script['name']);
 							// Minify the file if is not set or if it's true
 							if (!isset($options['minify']) || $options['minify']) {
-								$filename = str_replace('.js', $this->extensionId . '.min.js', $original);
+								$filename = str_replace('.js', '.min.js', $original);
 								(new Minify\JS($original))->minify($filename);
 							} else {
 								$filename = $original;
@@ -637,7 +637,7 @@
 			if (isset($name) && $name) {
 				$filename 	= str_replace('.js', '', $name) . '.js';
 			} else {
-				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . mt_rand() . '.js';
+				$filename 	= 'script.' . strtolower(get_class($this)) . '.' . $this->extensionId . '.js';
 			}
 			$dest 	= $this->destination . '/js';
 			file_put_contents($dest . '/' . $filename, $script);
