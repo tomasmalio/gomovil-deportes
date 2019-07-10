@@ -223,13 +223,14 @@
 						break;
 					}
 				}
-				
-				$submenu[] = [
-					'url' 	=> $subitem['url'],
-					'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
-					'display' => (isset($subitem['display']) && $subitem['display']) ? true : false,
-					'items' => $array[$subitem['url']],
-				];
+				if (is_array($array[$subitem['url']])) {
+					$submenu[] = [
+						'url' 	=> $subitem['url'],
+						'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
+						'display' => (isset($subitem['display']) && $subitem['display']) ? true : false,
+						'items' => $array[$subitem['url']],
+					];
+				}
 			}
 		}
 		$menu[] = [
@@ -239,6 +240,9 @@
 		];
 		unset($submenu);
 	}
+	// echo "<pre>";
+	// print_r($menu);
+	// echo "</pre>";
 
 	/**********************************
 	 * 			CUSTOMIZATION
