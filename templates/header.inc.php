@@ -46,7 +46,6 @@
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
 								{% set urlSubMenu = submenu.url %}
-								{{ urlSubMenu }}
 								{% set contentSubmenu = submenu.items %}
 								<li class="item"><a href="/{{ item.url }}">Portada</a></li>
 								{% endif %}
