@@ -200,11 +200,11 @@
 									<div class="col-5">
 										<div class="player-info">
 											<div class="flag float-left"><img src="<?=$match['player_first']['flag']?>" name="" alt="<?=$match['player_first']['name']?>" title="<?=$match['player_first']['name']?>"></div>
-											<div class="player float-left"><?=$match['player_first']['name']?></div>
+											<div class="player float-left"><?=$match['player_first']['name']?><?php if (is_numeric($match['player_first']['ranking'])) {?> <span class="ranking">(<?=$match['player_first']['ranking']?>)</span><?php }?></div>
 										</div>
 										<div class="player-info">
 											<div class="flag float-left"><img src="<?=$match['player_second']['flag']?>" name="" alt="<?=$match['player_second']['name']?>" title="<?=$match['player_second']['name']?>"></div>
-											<div class="player float-left"><?=$match['player_second']['name']?></div>
+											<div class="player float-left"><?=$match['player_second']['name']?><?php if (is_numeric($match['player_second']['ranking'])) {?> <span class="ranking">(<?=$match['player_second']['ranking']?>)</span><?php }?></div>
 										</div>
 									</div>
 									<div class="col-7">
