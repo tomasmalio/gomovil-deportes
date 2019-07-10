@@ -57,7 +57,7 @@
 				<!-- Match -->
 				<li class="row match <?= $match['status']?>">
 					<div class="col-12">
-						<a href="<?=$nextMatches['football']['url'];?>/patido/<?php echo $match['id']?>/<?php echo Widgets::normalizeString($match['team_local']).'-vs-'.Widgets::normalizeString($match['team_visit'])?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
+						<a href="<?=$nextMatches['football']['url'];?>/partido/<?php echo $match['id']?>/<?php echo Widgets::normalizeString($match['team_local']).'-vs-'.Widgets::normalizeString($match['team_visit'])?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
 							<div class="row match-teams">
 								<div class="col-5 match-team">
 									<div class="team">
