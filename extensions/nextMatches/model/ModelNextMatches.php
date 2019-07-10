@@ -55,7 +55,17 @@
 				'dia',
 				'hora',
 				'minuto',
-				
+				'ciudad',
+				'pais',
+				'jugador_1',
+				'jugador_2',
+				'nombre',
+				'puntos_game',
+				'sets_ganados',
+				'nacionalidad',
+				'bandera',
+				'ranking',
+				'saque',
 				// 'ligas',
 				// 'copas',
 				// 'selecciones',
@@ -101,7 +111,17 @@
 				'date',
 				'time',
 				'minutes',
-				
+				'city',
+				'country',
+				'player_first',
+				'player_second',
+				'name',
+				'point_game',
+				'sets_won',
+				'nationality',
+				'flag',
+				'ranking',
+				'serving',
 				// 'leagues',
 				// 'cups',
 				// 'selections',
@@ -169,13 +189,13 @@
 				}
 			}
 			if ($this->sports['nba']) {
-				$jsonFootball = @file_get_contents($this->urlNba);
+				$jsonNba = @file_get_contents($this->urlNba);
 				if (strpos($http_response_header[0], "200")) { 
 					$this->json['nba']['matches'] =  json_decode($jsonNba, true);
 				}
 			}
 			if ($this->sports['tennis']) {
-				$jsonFootball = @file_get_contents($this->urlTennis);
+				$jsonTennis = @file_get_contents($this->urlTennis);
 				if (strpos($http_response_header[0], "200")) {
 					$this->json['tennis']['matches'] =  json_decode($jsonTennis, true);
 				}
