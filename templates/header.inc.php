@@ -33,7 +33,7 @@
 				<ul class="nav navbar-nav h-100">
 					{% for item in menu %}
 					{% if item.submenu is empty %}
-					<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% else %}
 					<li class="dropdown">
 						<a data-toggle="dropdown" href="#">{{ item.title }}</a>
@@ -45,10 +45,10 @@
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
 								{% set contentSubmenu = submenu.items %}
-								<li class="item"><a href="{{ item.url }}">Portada</a></li>
+								<li class="item"><a href="/{{ item.url }}">Portada</a></li>
 								{% endif %}
 								{% if submenu.display %}
-								<li class="item"><a href="{{ item.url }}/{{ submenu.url }}">{{ submenu.title }}</a></li>
+								<li class="item"><a href="/{{ item.url }}/{{ submenu.url }}">{{ submenu.title }}</a></li>
 								{% endif %}
 								{% endfor %}
 							</ul>
@@ -67,7 +67,7 @@
 										<ul class="list-leagues">
 											{% for k, each in content %}
 											<li>
-												<a href="{{ item.url }}/{{ key | lower }}/{{ k }}" title="{% if each.name[country] is empty %}{{ each.name.default }}{% else %}{{ each.name[country] }}{% endif %}">
+												<a href="/{{ item.url }}/{{ key | lower }}/{{ k }}" title="{% if each.name[country] is empty %}{{ each.name.default }}{% else %}{{ each.name[country] }}{% endif %}">
 													<div class="card">
 														<div class="card-img">
 															<img src="{{ each.image }}">
