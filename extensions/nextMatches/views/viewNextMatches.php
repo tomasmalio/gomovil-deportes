@@ -25,7 +25,7 @@
 					if (count($tournament) == 0) {
 						$tournament['name'] = $match['tournament'];
 			?>
-			<a href="/<?=$nextMatches['football']['url'];?>/<?= Widgets::normalizeString($match['type']);?>/<?= Widgets::normalizeString($tournament['name']);?>" class="competition-name"><span><?= $tournament['name']?></span></a>
+			<a href="/<?=$nextMatches['football']['url'];?>/torneos/<?= Widgets::normalizeString($match['type']);?>/<?= Widgets::normalizeString($tournament['name']);?>" class="competition-name"><span><?= $tournament['name']?></span></a>
 			<div class="competition-divider"></div>
 			<?php if (isset($tournament['step']) && !empty($tournament['step'])) {?>
 			<div class="competition-situation"><?= $tournament['step']?></div>
