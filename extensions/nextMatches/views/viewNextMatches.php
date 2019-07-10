@@ -199,11 +199,11 @@
 									<?php if (!isset($tournament['type']) || $tournament['type'] == 'single'){?>
 									<div class="col-5">
 										<div class="player-info">
-											<div class="flag float-left"><img src="<?=$match['player_image_first']?>" name="" alt="" title=""></div>
+											<div class="flag float-left"><img src="<?=$match['player_first']['flag']?>" name="" alt="<?=$match['player_first']['name']?>" title="<?=$match['player_first']['name']?>"></div>
 											<div class="player float-left"><?=$match['player_first']['name']?></div>
 										</div>
 										<div class="player-info">
-											<div class="flag float-left"><img src="<?=$match['player_image_second']?>" name="" alt="" title=""></div>
+											<div class="flag float-left"><img src="<?=$match['player_second']['flag']?>" name="" alt="<?=$match['player_second']['name']?>" title="<?=$match['player_second']['name']?>"></div>
 											<div class="player float-left"><?=$match['player_second']['name']?></div>
 										</div>
 									</div>
