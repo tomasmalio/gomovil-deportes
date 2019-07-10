@@ -195,7 +195,7 @@
 						<div class="col-12">
 							<a href="#">
 								<div class="row match-tenis">
-									<div class="col-12"><time class="time"><?= date('H:i', strtotime($match['datetime']))?> hs</time></div>
+									<div class="col-12"><time class="time"><?= $match['time']?> hs</time></div>
 									<?php if (!isset($tournament['type']) || $tournament['type'] == 'single'){?>
 									<div class="col-5">
 										<div class="player-info">
