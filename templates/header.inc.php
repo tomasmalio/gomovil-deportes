@@ -41,9 +41,12 @@
 						<!-- Submenu -->
 						<div class="dropdown-menu">
 							{% set contentSubmenu = '' %}
+							{% set urlSubMenu = '' %}
 							<ul class="dropdown-menu-submenu float-left">
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
+								{% set urlSubMenu = submenu.url %}
+								{{ urlSubMenu }}
 								{% set contentSubmenu = submenu.items %}
 								<li class="item"><a href="/{{ item.url }}">Portada</a></li>
 								{% endif %}
@@ -57,6 +60,7 @@
 							<div class="dropdown-menu-content football float-left">
 								<!-- Ligas -->
 								{% for key, content in contentSubmenu %}
+								{{ content }}
 								<div class="row">
 									<div class="col-12">
 										<h2>{{ key }}</h2>
@@ -67,7 +71,7 @@
 										<ul class="list-leagues">
 											{% for k, each in content %}
 											<li>
-												<a href="/{{ item.url }}/{{ key | lower }}/{{ k }}" title="{% if each.name[country] is empty %}{{ each.name.default }}{% else %}{{ each.name[country] }}{% endif %}">
+												<a href="/{{ item.url }}/{{ urlSubMenu }}/{{ key | lower }}/{{ k }}" title="{% if each.name[country] is empty %}{{ each.name.default }}{% else %}{{ each.name[country] }}{% endif %}">
 													<div class="card">
 														<div class="card-img">
 															<img src="{{ each.image }}">

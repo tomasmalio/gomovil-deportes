@@ -225,7 +225,7 @@
 				}
 				if (is_array($array[$subitem['url']])) {
 					$submenu[] = [
-						'url' 	=> $subitem['url'],
+						'url' 	=> strtolower($titles[$subitem['url']][COUNTRY_CODE]),
 						'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
 						'display' => (isset($subitem['display']) && $subitem['display']) ? true : false,
 						'items' => $array[$subitem['url']],
@@ -240,9 +240,9 @@
 		];
 		unset($submenu);
 	}
-	// echo "<pre>";
-	// print_r($menu);
-	// echo "</pre>";
+	echo "<pre>";
+	print_r($menu);
+	echo "</pre>";
 
 	/**********************************
 	 * 			CUSTOMIZATION
