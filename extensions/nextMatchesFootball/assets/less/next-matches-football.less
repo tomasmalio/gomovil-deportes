@@ -116,7 +116,12 @@ section.nextmatchesfootball {
 		.match {
 			a {
 				display: block;
-				padding: 10px 0;
+				padding: 8px 0 10px 0;
+				margin: 0 10px;
+				&:hover {
+					.box-shadow(0px 1px 10px 3px rgba(0,0,0,0.1));
+					.border-radius(5px);
+				}
 				/* Football & Basket / Match content / Competition / Next matches */
 				.competition-date {
 					color: #555555;

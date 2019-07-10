@@ -1,4 +1,47 @@
-section.matchesnext {
+/*****************************************
+ *			Sports Icons
+ * 
+ * Author: Sofia Perez Moya
+ * Date: 2019-07-10
+ * Version: 1.0
+ *****************************************/
+ @font-face {
+	font-family:"Sports Icons";
+	src:url("../fonts/sports-icons.eot?v=201907101027");
+	src:url("../fonts/sports-icons.eot?#iefix") format("embedded-opentype"), 
+	url("../fonts/sports-icons.woff?v=201907101027") format("woff"), 
+	url("../fonts/sports-icons.ttf?v=201907101027") format("truetype"), 
+	url("../fonts/sports-icons.svg#sports-icons?v=201907101027") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}
+[class*="sports-icon"] {
+	font-family: "Sports Icons";
+	content: attr(data-icon);
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+.sports-icon.football:before {
+	content: "\e001";
+}
+.sports-icon.basket:before {
+	content: "\e002";
+}
+.sports-icon.tennis:before {
+	content: "\e003";
+}
+.sports-icon.voley:before {
+	content: "\e004";
+}
+.sports-icon.news:before {
+	content: "\e005";
+}
+
+section.nextmatches {
 	background: #ffffff;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -41,7 +84,8 @@ section.matchesnext {
 		margin: 0 auto 15px auto;
 		width: 90px;
 		i {
-			font-size: 11pt;
+			font-size: 22pt;
+			line-height: 0;
 		}
 		i.football {
 			color: black;

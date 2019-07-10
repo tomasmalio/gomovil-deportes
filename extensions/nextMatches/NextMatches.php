@@ -1,8 +1,8 @@
 <?php
 	/**
-	 * Matches Next
+	 * Next Matches
 	 */
-	class MatchesNext extends Widgets {
+	class NextMatches extends Widgets {
 		public $content = [
 			'title' => 'Próximos partidos',
 			'titleCalendar' => 'Ver calendario',

@@ -1,3 +1,68 @@
+/*****************************************
+ *		Sports Football Icons
+ * 
+ * Author: Sofia Perez Moya
+ * Date: 2019-07-10
+ * Version: 1.0
+ *****************************************/
+ @font-face {
+	font-family:"Sports Football Icons";
+	src:url("../fonts/sports-football-icons.eot?v=201907101125");
+	src:url("../fonts/sports-football-icons.eot?#iefix") format("embedded-opentype"), 
+	url("../fonts/sports-football-icons.woff?v=201907101125") format("woff"), 
+	url("../fonts/sports-football-icons.ttf?v=201907101125") format("truetype"), 
+	url("../fonts/sports-football-icons.svg#sports-footballicons?v=201907101125") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}
+[class*="sports-football-icon"] {
+	font-family: "Sports Football Icons";
+	content: attr(data-icon);
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+.sports-football-icon.position:before {
+	content: "\e001";
+}
+.sports-football-icon.lineup:before {
+	content: "\e002";
+}
+.sports-football-icon.stadistic:before {
+	content: "\e003";
+}
+.sports-football-icon.whistle:before {
+	content: "\e004";
+}
+.sports-football-icon.clock:before {
+	content: "\e005";
+}
+.sports-football-icon.league:before {
+	content: "\e006";
+}
+.sports-football-icon.team:before {
+	content: "\e007";
+}
+.sports-football-icon.timeline:before {
+	content: "\e008";
+}
+.sports-football-icon.cardreferee:before {
+	content: "\e009";
+}
+.sports-football-icon.goal:before {
+	content: "\e010";
+}
+.sports-football-icon.doctor:before {
+	content: "\e011";
+}
+.sports-football-icon.change:before {
+	content: "\e012";
+}
+
+
 @match-height: 80px;
 
 @interaction-border-top: 1px solid #f3f3f3;
@@ -10,9 +75,10 @@
 @interaction-description-color: #555555;
 @interaction-description-padding: 0 15px;
 
-@interaction-icon-font-size: 16pt;
+@interaction-icon-font-size: 20pt;
 @interaction-icon-color-goal: black;
-@interaction-icon-color-change: black;
+@interaction-icon-color-change-out: red;
+@interaction-icon-color-change-in: green;
 @interaction-icon-color-red-card: red;
 @interaction-icon-color-yellow-card: yellow;
 
@@ -222,19 +288,21 @@
 
 			.interaction {
 				position: relative;
-				margin-bottom: 8px;
+				margin-bottom: 15px;
 				.interaction-description {
 					font-family: @interaction-description-font-family;
 					font-size: @interaction-description-font-size;
 					font-weight: @interaction-description-font-weight;
 					color: @interaction-description-color;
-					padding: @interaction-description-padding;
+					//padding: @interaction-description-padding;
 				}
 				.interaction-description.left {
 					text-align: right;
+					padding-right: 20px;
 				}
 				.interaction-description.right {
 					text-align: left;
+					padding-left: 20px;
 				}
 				.interaction-type {
 					left: 0;
@@ -245,7 +313,9 @@
 					text-align: center;
 					width: 20px;
 					i {
+						display: block;
 						font-size: @interaction-icon-font-size;
+						width: 20px;
 					}
 					i.goal {
 						color: @interaction-icon-color-goal;
@@ -256,8 +326,14 @@
 					i.yellow-card {
 						color: @interaction-icon-color-yellow-card;
 					}
-					i.change {
-						color: @interaction-icon-color-change;
+					i.change-in {
+						color: @interaction-icon-color-change-in;
+						line-height: 10px;
+						.transform(rotate(180deg));
+					}
+					i.change-out {
+						color: @interaction-icon-color-change-out;
+						line-height: 10px;
 					}
 				}
 			}

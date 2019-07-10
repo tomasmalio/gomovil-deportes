@@ -127,36 +127,38 @@
 				<div class="match-interactions">
 					<?php 
 						foreach ($interactions as $interaction) {
+							$double = false;
 							switch (Widgets::normalizeString($interaction['interaction'])) {
 								case 'gol':
 								case 'goal':
-										$icon = 'goal fa-football-ball';
+										$icon = 'sports-football-icon goal';
 									break;
 								case 'modificacion':
 								case 'modification':
 								case 'change':
-										$icon = 'change';
+										$double = true;
+										$icon = 'sports-football-icon change change';
 									break;
 								case 'amarilla':
 								case 'tarjeta-amarilla':
 								case 'yellow-card':
-										$icon = 'yellow-card';
+										$icon = 'sports-football-icon cardreferee yellow-card';
 									break;
 								case 'roja':
 								case 'tarjeta-roja':
 								case 'red-card':
-										$icon = 'red-card';
+										$icon = 'sports-football-icon cardreferee red-card';
 									break;
 							}
 					?>
 					<div class="row interaction">
 						<?php if ($interaction['team_condition'] == 'local') {?>
 						<div class="col-6 interaction-description left"><?=$interaction['player'] . ' ('.$interaction['minutes'].')';?></div>
-						<div class="interaction-type"><i class="icon <?= $icon;?>"></i></div>
+						<div class="interaction-type"><?php if ($double) {?><i class="<?= $icon;?>-out"></i><i class="<?= $icon;?>-in"></i><?php } else {?><i class="<?= $icon;?>"></i><?php }?></div>
 						<div class="col-6"></div>
 						<?php } else {?>
 						<div class="col-6"></div>
-						<div class="interaction-type"><i class="icon <?= $icon;?>"></i></div>
+						<div class="interaction-type"><?php if ($double) {?><i class="<?= $icon;?>-out"></i><i class="<?= $icon;?>-in"></i><?php } else {?><i class="<?= $icon;?>"></i><?php }?></div>
 						<div class="col-6 interaction-description right"><?= '('.$interaction['minutes'].') '. $interaction['player'];?></div>
 						<?php }?>
 					</div>
