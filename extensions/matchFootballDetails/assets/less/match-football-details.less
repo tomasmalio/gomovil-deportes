@@ -64,6 +64,7 @@
 
 
 @match-height: 80px;
+@match-height-responsive: 40px;
 
 @interaction-border-top: 1px solid #f3f3f3;
 @interaction-margin: 10px 0 0 0;
@@ -147,6 +148,9 @@
 						text-align: center;
 						img {
 							max-height: @match-height;
+							@media (max-width: 768px) {
+								max-height: @match-height-responsive;
+							}
 						}
 					}
 					.shield.left {
@@ -257,6 +261,9 @@
 								color: #5d5d5d;
 								font-size: 22pt;
 								font-weight: 700;
+								@media (max-width: 768px) {
+									font-size: 16pt;
+								}
 							}
 						}
 						.result.basket {
