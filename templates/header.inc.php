@@ -60,7 +60,6 @@
 							<div class="dropdown-menu-content football float-left">
 								<!-- Ligas -->
 								{% for key, content in contentSubmenu %}
-								{{ content }}
 								<div class="row">
 									<div class="col-12">
 										<h2>{{ key }}</h2>
