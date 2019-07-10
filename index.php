@@ -240,9 +240,6 @@
 		];
 		unset($submenu);
 	}
-	echo "<pre>";
-	print_r($menu);
-	echo "</pre>";
 
 	/**********************************
 	 * 			CUSTOMIZATION
