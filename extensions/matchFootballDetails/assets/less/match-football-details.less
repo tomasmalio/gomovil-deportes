@@ -64,7 +64,7 @@
 
 
 @match-height: 80px;
-@match-height-responsive: 40px;
+@match-height-responsive: 50px;
 
 @interaction-border-top: 1px solid #f3f3f3;
 @interaction-margin: 10px 0 0 0;
@@ -232,6 +232,9 @@
 						text-align: center;
 						width: 100%;
 						height: @match-height;
+						@media (max-width: 768px) {
+							height: @match-height-responsive;
+						}
 						.time-to-play {
 							background: #F4F4F4;
 							.border-radius(6px);
