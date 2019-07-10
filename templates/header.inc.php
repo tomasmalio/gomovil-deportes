@@ -67,7 +67,7 @@
 										<ul class="list-leagues">
 											{% for k, each in content %}
 											<li>
-												<a href="#" title="Torneo Descentralizado Perú">
+												<a href="{{ item.url }}/{{ key | lower }}/{{ k }}" title="{% if each.name[country] is empty %}{{ each.name.default }}{% else %}{{ each.name[country] }}{% endif %}">
 													<div class="card">
 														<div class="card-img">
 															<img src="{{ each.image }}">

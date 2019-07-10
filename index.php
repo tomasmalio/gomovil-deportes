@@ -185,19 +185,34 @@
 	foreach ($menu_principal as $item) {
 
 		/**
-		 * 		object 			menu_display if it's not null we you use for order menu buttons
+		 * Object 			menu_display if it's not null we you use for order menu buttons
 		 * @* @param Object var Description
 		 */
-		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display from section_client sc, section s, content c where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id = '".$item['id']."' and s.status = 1 and sc.status = 1");
+		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display 
+		from section_client sc, section s, content c 
+		where sc.section_id = s.id 
+		and sc.client_id = '" . $client['id'] . "' 
+		and sc.parent_id = '".$item['id']."' 
+		and sc.content_id = c.id
+		/*and sc.menu_display = 1*/
+		and s.status = 1 
+		and sc.status = 1");
 		$db->execute();
 		$items = $db->fetchAll();
 		
+		/**
+		 * 
+		 */
 		if (count($items) > 0) {
 			$submenu = [];
+			/**
+			 * Getting the info from the content  to create subitem
+			 * associate the url of the child of the parent
+			 * and search inside the content
+			 */
 			foreach ($items as $subitem) {
 				$array = json_decode(utf8_encode(str_replace($keywords, $keywordsChange, $subitem['content'])), true);
-				$titles = $array['title'];
-
+				$titles = $array['titles'];
 				// Creating content inside the menu
 				foreach ($array as $key => $items) {
 					if ($key == $subitem['url']) {
@@ -224,8 +239,6 @@
 		];
 		unset($submenu);
 	}
-	// print_r($keywords);
-	// print_r($keywordsChange);
 
 	/**********************************
 	 * 			CUSTOMIZATION
