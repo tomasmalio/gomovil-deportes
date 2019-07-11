@@ -1,8 +1,8 @@
 RewriteEngine On
 RewriteOptions Inherit
-RewriteRule ^([A-Za-z0-9-]+)$													index.php?s=$1 [L]
-RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)$						index.php?s=$1&filter1=$2&filter2=$3 [L]
-RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9]+)$										index.php?s=$2 [L]
-RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)$						index.php?s=$2&id=$3 [L]
-RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$		index.php?s=$2&filter1=$3&filter2=$4 [L]
-RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$		index.php?s=$2&filter1=$3&filter2=$4&filter3=$5&filter4=$6 [L]
+RewriteRule ^([A-Za-z0-9-]+)$	index.php?s=$1 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)$    index.php?s=$1&filter1=$2&filter2=$3 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)$    index.php?s=$2 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)$    index.php?s=$2&id=$3 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$    index.php?s=$2&filter1=$3&filter2=$4 [L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$		index.php?s=$2&filter1=$3&filter2=$4&filter3=$5&filter4=$6 [L]
