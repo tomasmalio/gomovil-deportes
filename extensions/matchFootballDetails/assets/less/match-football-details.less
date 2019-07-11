@@ -132,6 +132,9 @@
 					.team-name.right {
 						margin-left: @match-height + 10;
 						left: 0;
+						@media (max-width: 768px) {
+							margin-left: @match-height-responsive + 10;
+						}
 						.team-name-container .cell {
 							text-align: left;
 						}
@@ -139,6 +142,9 @@
 					.team-name.left {
 						margin-right: @match-height + 10;
 						right: 0;
+						@media (max-width: 768px) {
+							margin-right: @match-height-responsive + 10;
+						}
 						.team-name-container .cell {
 							text-align: right;
 						}
@@ -148,6 +154,9 @@
 						padding: 0 0 5px 0;
 						width: @match-height;
 						text-align: center;
+						@media (max-width: 768px) {
+							width: @match-height-responsive;
+						}
 						img {
 							max-height: @match-height;
 							@media (max-width: 768px) {
@@ -232,6 +241,9 @@
 				.match-divider {
 					display: table;
 					width: 100%;
+					@media (max-width: 768px) {
+						display: inherit;
+					}
 					.match-divider-content {
 						display: table-cell;
 						vertical-align: middle;
@@ -239,6 +251,7 @@
 						width: 100%;
 						height: @match-height;
 						@media (max-width: 768px) {
+							display: inherit;
 							height: @match-height-responsive;
 						}
 						.time-to-play {
