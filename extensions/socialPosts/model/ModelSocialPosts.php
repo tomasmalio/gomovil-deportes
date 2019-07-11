@@ -11,6 +11,12 @@
 				case 'las-nenas':
 					$json = file_get_contents($this->url . $params['type'] . '.json');
 					break;
+				case 'e-sports':
+					$json = file_get_contents($this->url .'esports-peru.json');
+					break;
+				case 'voley':
+					$json = file_get_contents($this->url . $params['type'] . '-peru.json');
+					break;
 				default:
 					$json = file_get_contents($this->url . 'virales.json');
 					break;
