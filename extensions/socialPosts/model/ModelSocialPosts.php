@@ -10,9 +10,10 @@
 			switch ($params['type']) {
 				case 'las-nenas':
 				case 'tenis':
-				case 'basquet':
-				case 'basket':
 					$json = file_get_contents($this->url . $params['type'] . '.json');
+					break;
+				case 'basket':
+					$json = file_get_contents($this->url .'basquet.json');
 					break;
 				case 'e-sports':
 					$json = file_get_contents($this->url .'esports-peru.json');
