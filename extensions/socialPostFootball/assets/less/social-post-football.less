@@ -1,0 +1,283 @@
+/* Social Icons */
+@font-face {
+	font-family:"Social Icons";
+	src:url("../fonts/social-icons.eot?v=201904231055");
+	src:url("../fonts/social-icons.eot?#iefix") format("embedded-opentype"), 
+	url("../fonts/social-icons.woff?v=201904231055") format("woff"), 
+	url("../fonts/social-icons.ttf?v=201904231055") format("truetype"), 
+	url("../fonts/social-icons.svg#Social-Icons?v=201904231055") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}
+[class*="social-icon"] {
+	font-family: "Social Icons";
+	content: attr(data-icon);
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+.social-icon.reply:before {
+	content: "\e001";
+}
+.social-icon.retweet:before {
+	content: "\e002";
+}
+.social-icon.favourite:before {
+	content: "\e003";
+}
+.social-icon.share:before {
+	content: "\e004";
+}
+.social-icon.repost:before {
+	content: "\e005";
+}
+.social-icon.like:before {
+	content: "\e006";
+}
+.social-icon.facebook:before {
+	content: "\e007";
+}
+.social-icon.twitter:before {
+	content: "\e008";
+}
+.social-icon.youtube:before {
+	content: "\e009";
+}
+.social-icon.instagram:before {
+	content: "\e010";
+}
+.social-icon.whatsapp:before {
+	content: "\e011";
+}
+.social-icon.rss:before {
+	content: "\e012";
+}
+.social-icon.facebook-circle:before {
+	content: "\e013";
+}
+.social-icon.twitter-circle:before {
+	content: "\e014";
+}
+.social-icon.whatsapp-circle:before {
+	content: "\e015";
+}
+.social-icon.facebook-outline:before {
+	content: "\e016";
+}
+.social-icon.twitter-outline:before {
+	content: "\e017";
+}
+.social-icon.whatsapp-outline:before {
+	content: "\e018";
+}
+.social-icon.youtube-outline:before {
+	content: "\e019";
+}
+.social-icon.social-news:before {
+	content: "\e020";
+}
+.social-icon.retweet-outline:before {
+	content: "\e021";
+}
+.social-icon.comment-outline:before {
+	content: "\e022";
+}
+.social-icon.like-outline:before {
+	content: "\e023";
+}
+.social-icon.share-outline:before {
+	content: "\e024";
+}
+
+/* Social iteration */
+@social-iteration-background: @color-second;
+@social-iteration-border-radius: 50%;
+@social-iteration-color: white;
+@social-iteration-display: table;
+@social-iteration-height: 40px;
+@social-iteration-left: 0;
+@social-iteration-right: 0;
+@social-iteration-margin: 0 auto 20px auto;
+@social-iteration-position: inherit;
+@social-iteration-text-align: center;
+@social-iteration-width: 40px;
+
+@social-iteration-number-display: table-cell;
+@social-iteration-number-font-family: @p-font-family;
+@social-iteration-number-font-size: 12pt;
+@social-iteration-number-font-weight: @p-font-weight;
+@social-iteration-number-height: 40px;
+@social-iteration-number-vertical-align: middle;
+@social-iteration-number-width: 40px;
+
+@social-iteration-line-display: block;
+@social-iteration-line-position: absolute;
+@social-iteration-line-top: 15px;
+@social-iteration-line-bottom: 0;
+@social-iteration-line-left: 0;
+@social-iteration-line-width: 1px;
+@social-iteration-line-right: 0;
+@social-iteration-line-height: 100%;
+@social-iteration-line-margin: 0 auto;
+@social-iteration-line-z-index: 0;
+@social-iteration-line-border-left: 2px solid #e0e0e0;
+@social-iteration-line-transform: translate(-50%);
+
+/* Container */
+@social-post-background: #fff;
+@social-post-border-radius: 10px;
+@social-post-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+@social-post-padding: 15px 0 0 0;
+@social-post-margin: 0 auto 30px auto;
+
+@social-post-content-padding: 10px;
+
+@social-post-content-social-network-position: absolute;
+@social-post-content-social-network-top: 0;
+@social-post-content-social-network-right: 10px;
+@social-post-content-social-network-font-size: 20pt;
+
+/* User image */
+@social-post-content-user-image-width: 40px;
+@social-post-content-user-image-height: 40px;
+@social-post-content-user-image-border-radius: 5px;
+@social-post-content-user-image-margin: 0 10px 0 0;
+
+/* User name */
+@social-post-content-user-info-name-font-family: @h3-font-family;
+@social-post-content-user-info-name-font-size: @p-font-size;
+@social-post-content-user-info-name-font-weight: @h3-font-weight;
+@social-post-content-user-info-name-color: @color-quarter;
+@social-post-content-user-info-name-padding: 0 0 3px 0;
+
+/* Screen name */
+@social-post-content-user-info-screen-name-font-family: @p-font-family;
+@social-post-content-user-info-screen-name-font-size: 10pt;
+@social-post-content-user-info-screen-name-font-weight: @p-font-weight;
+@social-post-content-user-info-screen-name-color: @color-quarter;
+
+/* Text content */
+@social-post-content-text-font-family: @p-font-family;
+@social-post-content-text-font-size: @p-font-size;
+@social-post-content-text-font-weight: @p-font-weight;
+@social-post-content-text-color: @color-quarter;
+@social-post-content-text-line-height: 24px;
+@social-post-content-text-padding: 10px 0 0 0;
+
+section.socialpostfootball {
+	position: relative;
+	padding: 15px 0;
+	&:before {
+		content: "";
+		display: @social-iteration-line-display;
+		position: @social-iteration-line-position;
+		top: @social-iteration-line-top;
+		bottom: @social-iteration-line-bottom;
+		left: @social-iteration-line-left;
+		width: @social-iteration-line-width;
+		right: @social-iteration-line-right;
+		height: @social-iteration-line-height;
+		margin: @social-iteration-line-margin;
+		z-index: @social-iteration-line-z-index;
+		border-left: @social-iteration-line-border-left;
+		.transform(@social-iteration-line-transform);
+	}
+	.interaction-situation {
+		background: @social-iteration-background;
+		.border-radius(@social-iteration-border-radius);
+		color: @social-iteration-color;
+		display: @social-iteration-display;
+		height: @social-iteration-height;
+		left: @social-iteration-left;
+		margin: @social-iteration-margin;
+		position: @social-iteration-position;
+		right: @social-iteration-right;
+		text-align: @social-iteration-text-align;
+		width: @social-iteration-width;
+		.number {
+			display: @social-iteration-number-display;
+			font-family: @social-iteration-number-font-family;;
+			font-size: @social-iteration-number-font-size;
+			font-weight: @social-iteration-number-font-weight;;
+			height: @social-iteration-number-height;
+			vertical-align: @social-iteration-number-vertical-align;
+			width: @social-iteration-number-width;
+		}
+	}
+
+	.social-post {
+		background: @social-post-background;
+		.border-radius(@social-post-border-radius);
+		.box-shadow(@social-post-box-shadow);
+		padding: @social-post-padding;
+		margin: @social-post-margin;
+		.social-media {
+			video {
+				background: black;
+			}
+			img {
+				width: 100%;
+			}
+		}
+		.social-content {
+			padding: @social-post-content-padding;
+			position: relative;
+			.icon {
+				position: @social-post-content-social-network-position;
+				top: @social-post-content-social-network-top;
+				right: @social-post-content-social-network-right;
+				i {
+					font-size: @social-post-content-social-network-font-size;
+				}
+			}
+			.user-content {
+				.user-image {
+					.border-radius(@social-post-content-user-image-border-radius);
+					height: @social-post-content-user-image-height;
+					margin: @social-post-content-user-image-margin;
+					width: @social-post-content-user-image-width;
+					img {
+						.border-radius(@social-post-content-user-image-border-radius);
+						height: @social-post-content-user-image-height;
+						width: @social-post-content-user-image-width;
+					}
+				}
+				.user-info {
+					.user-name {
+						color: @social-post-content-user-info-name-color;
+						font-family: @social-post-content-user-info-name-font-family;
+						font-size: @social-post-content-user-info-name-font-size;
+						font-weight: @social-post-content-user-info-name-font-weight;
+						padding: @social-post-content-user-info-name-padding;
+						a {
+							color: @social-post-content-user-info-name-color;
+						}
+					}
+					.user-screen-name {
+						color: @social-post-content-user-info-screen-name-color;
+						font-family: @social-post-content-user-info-screen-name-font-family;
+						font-size: @social-post-content-user-info-screen-name-font-size;
+						font-weight: @social-post-content-user-info-screen-name-font-weight;
+						a {
+							color: @social-post-content-user-info-screen-name-color;
+						}
+					}
+				}
+			}
+			.text-content {
+				font-family: @social-post-content-text-font-family;
+				font-size: @social-post-content-text-font-size;
+				font-weight: @social-post-content-text-font-weight;
+				color: @social-post-content-text-color;
+				line-height: @social-post-content-text-line-height;
+				padding: @social-post-content-text-padding;
+			}
+		}
+		.social-actions {
+
+		}
+	}
+}

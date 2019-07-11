@@ -705,6 +705,12 @@
 						'@' => 'https://www.instagram.com/'
 					];
 					break;
+				case 'facebook':
+					$hrefs = [
+						'#' => 'https://www.facebook.com/hashtag/',
+						'@' => 'https://www.facebook.com/'
+					];
+					break;
 			}
 			$result = preg_replace_callback($regex, function($matches) use ($hrefs) {
 				return sprintf('<a href="%s%s" target="_blank">%s</a>', $hrefs[$matches[0][0]], $matches[1], $matches[0]);
