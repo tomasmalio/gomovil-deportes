@@ -1,3 +1,4 @@
+<?php if (!IS_MOBILE) {?>
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){
@@ -121,3 +122,37 @@
 		</div>
 	</div>
 </section>
+<?php } else {?>
+<section class="videosfootballgomovil">
+	<div class="videosfootballgomovil-content <?php if ($slider) {?>swiper-container<?php }?>">
+		<ul class="list-videos <?php if ($slider) {?>swiper-wrapper<?php }?>">
+			<?php 
+				$quantity = 0;
+				$videoContent = $content['content'];
+				foreach ($videoContent as $video) {
+			?>
+			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
+				<div class="video-content">
+					<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
+						<source src="<?=$video->video?>" type="video/mp4">
+					</video>
+				</div>
+			</li>
+			<?php 
+					$quantity++;
+					if (isset($items) && $quantity === $items) {
+						break;
+					}
+				}
+			?>
+		</ul>
+		<?php if ($pagination) {?>
+		<div class="swiper-pagination"></div>
+		<?php }?>
+		<?php if ($navigation) {?>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<?php }?>
+	</div>
+</section>
+<?php }?>

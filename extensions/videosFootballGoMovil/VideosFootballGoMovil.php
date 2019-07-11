@@ -10,19 +10,19 @@
 
 		// Assets files
 		public $files = [
-			'style'		=> ['skin.bitel.jplayer.less'],
+			'style'		=> ['skin.bitel.jplayer.less', 'videos-football-gomovil.less'],
 			'js'		=> ['jquery.jplayer.js', 'jplayer.playlist.js'],
 		];
 
 		// Options
 		public $options = [
 			'items' => [
-				'desktop' => 4,
-				'mobile' => 4,
+				'desktop'	=> 4,
+				'mobile'	=> 4,
 			],
 			'slider' => [
 				'desktop' 	=> [
-					'display' 		=> true,
+					'display' 		=> false,
 				],
 				'mobile' 	=> [
 					'display' 		=> true,
@@ -42,9 +42,6 @@
 
 		public function __construct($params = []) {
 			parent::__construct($params);
-			if (IS_MOBILE) {
-				$this->viewName = $this->viewName . 'Mobile';
-			}
 		}
 
 		public function renderView () {
