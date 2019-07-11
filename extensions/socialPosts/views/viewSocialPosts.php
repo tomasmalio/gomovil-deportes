@@ -1,6 +1,14 @@
+<?php 
+	if (!isset($content['columns']['desktop'])) {
+		$content['columns']['desktop'] = 3;
+	}
+	if (!isset($content['columns']['mobile'])) {
+		$content['columns']['mobile'] = 1;
+	}
+?>
 <div class="row grid-social">
 	<?php foreach ($content['content'] as $social) {?>
-	<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
+	<div class="grid-item-social col-lg-<?= (12 / $content['columns']['desktop'])?> col-md-<?= ( 12 / $content['columns']['desktop'])?> col-sm-<?= (12 / $content['columns']['mobile'])?> col-xs-<?= (12 / $content['columns']['mobile'])?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
 		<div class="social-post <?php if (!isset($social->video) && !isset($social->video)){?>only-text<?php }?>">
 			<div class="card">
 				<?php if (isset($social->video) && $social->video){?>
