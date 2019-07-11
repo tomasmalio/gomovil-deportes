@@ -6,7 +6,7 @@
 	<div class="row socialpostfootball-content">
 		<div class="col-12">
 			<div class="interaction-situation">
-				<div class="number"><?= $c['name']?><? (is_numeric($c['name'])) ? "'" : "";?></div>
+				<div class="number"><?= $c['name']?></div>
 			</div>
 		</div>
 		<?php

@@ -116,6 +116,9 @@
 						font-size: 12pt;
 						height: @match-height;
 						position: absolute;
+						@media (max-width: 768px) {
+							height: @match-height-responsive;
+						}
 						.team-name-container {
 							display: table;
 							width: 100%;
@@ -221,6 +224,10 @@
 					right: 0;
 					text-align: center;
 					top: 0;
+					@media (max-width: 768px) {
+						top:-8px;
+						font-size: 7pt;
+					}
 				}
 				.match-divider {
 					display: table;
@@ -264,7 +271,7 @@
 								font-size: 22pt;
 								font-weight: 700;
 								@media (max-width: 768px) {
-									font-size: 16pt;
+									font-size: 14pt;
 								}
 							}
 						}
