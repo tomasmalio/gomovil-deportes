@@ -13,7 +13,7 @@
 				$items = $c['items'];
 				foreach ($items as $social) {
 		?>
-		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 social-container">
 			<div class="social-post">
 				<?php if (isset($social['media_video']) || isset($social['media'])) {?>	
 				<div class="social-media">
