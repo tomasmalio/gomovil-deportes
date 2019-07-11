@@ -7,9 +7,21 @@
 	}
 ?>
 <div class="row grid-social">
-	<?php foreach ($content['content'] as $social) {?>
+	<?php 
+		// print_r($content);
+		//exit;
+
+		if (isset($content['social_image']) && $content['social_image']) {
+			$showImages = true;
+		} else {
+			$showImages = false;
+		}
+
+		foreach ($content['content'] as $social) {
+			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image || $social->video))) {
+	?>
 	<div class="grid-item-social col-lg-<?= (12 / $content['columns']['desktop'])?> col-md-<?= ( 12 / $content['columns']['desktop'])?> col-sm-<?= (12 / $content['columns']['mobile'])?> col-xs-<?= (12 / $content['columns']['mobile'])?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
-		<div class="social-post <?php if (!isset($social->video) && !isset($social->video)){?>only-text<?php }?>">
+		<div class="social-post <?php if (!isset($social->video) && !isset($social->image)){?>only-text<?php }?>">
 			<div class="card">
 				<?php if (isset($social->video) && $social->video){?>
 				<div class="card-video">
@@ -52,5 +64,8 @@
 			</div>
 		</div>
 	</div>
-	<?php }?>
+	<?php 
+			}
+		}
+	?>
 </div>
