@@ -146,8 +146,7 @@
 	<div class="date-matches"><?= strftime('%d de %B', strtotime($keyDate));?></div>
 	<!-- Football Sport / Next matches -->
 	<?php if (isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) {?>
-	<?php /*<a href="<?=$nextMatches['tennis']['url']?>" class="sport tennis"><i class="<?= $nextMatches['tennis']['icon_name']?>"></i> <span><?= $nextMatches['tennis']['name'];?></span></a>*/?>
-	<a href="#" class="sport tennis"><i class="<?= $nextMatches['tennis']['icon_name']?>"></i> <span><?= $nextMatches['tennis']['name'];?></span></a>
+	<a href="<?=$nextMatches['tennis']['url']?>" class="sport tennis"><i class="<?= $nextMatches['tennis']['icon_name']?>"></i> <span><?= $nextMatches['tennis']['name'];?></span></a>
 	<!-- Tournament / Football Sport / Next matches -->
 		<div class="competition">
 			<?php 
@@ -163,7 +162,8 @@
 			<?php
 						 }
 			?>
-			<a href="/<?=$nextMatches['tennis']['url'];?>/<?= Widgets::normalizeString($tournament['name']);?>" class="competition-name"><span><?= $tournament['name']?></span></a>
+			<a href="#" class="competition-name"><span><?= $tournament['name']?></span></a>
+			<?php /*<a href="/<?=$nextMatches['tennis']['url'];?>/<?= Widgets::normalizeString($tournament['name']);?>" class="competition-name"><span><?= $tournament['name']?></span></a>*/?>
 			<div class="competition-divider"></div>
 			<?php if (isset($tournament['step']) && !empty($tournament['step'])) {?>
 			<div class="competition-situation"><?= $tournament['step']?></div>
