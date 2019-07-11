@@ -243,6 +243,7 @@
 	
 	// print_r($keywords);
 	// print_r($keywordsChange);
+	// var_dump($menu);
 
 	/**********************************
 	 * 			CUSTOMIZATION
