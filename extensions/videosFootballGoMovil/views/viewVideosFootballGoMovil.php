@@ -136,6 +136,7 @@
 					<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
 						<source src="<?=$video->video?>" type="video/mp4">
 					</video>
+					<div class="video-description"><?=$video->nombre?></div>
 				</div>
 			</li>
 			<?php 
