@@ -9,6 +9,8 @@
 		public function model ($params = []) {
 			switch ($params['type']) {
 				case 'las-nenas':
+				case 'tenis':
+				case 'basket':
 					$json = file_get_contents($this->url . $params['type'] . '.json');
 					break;
 				case 'e-sports':
