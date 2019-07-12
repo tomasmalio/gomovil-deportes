@@ -45,7 +45,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="social-datetime float-left"><?=$social['fecha']?></div>
-						<div class="social-source float-right"><a href="<?php echo current(Widgets::getLinks($social['text']))[0]?>"><i class="social-icon <?= strtolower($social['origen'])?>"></i></a></div>
+						<div class="social-source float-right"><a href="<?php echo current(Widgets::getLinks($social['text']))[0]?>" target="_blank"><i class="social-icon <?= strtolower($social['origen'])?>"></i></a></div>
 					</div>
 				</div>
 			</div>
