@@ -33,6 +33,8 @@
 			"chmod -R 0755 less",
 			"rm -rf assets/bootstrap",
 			"cp -R vendor/twbs/bootstrap/dist assets/bootstrap",
+			"rm -rf assets/jquery",
+			"cp -R vendor/components/jquery assets/jquery",
 			"rm -rf assets/masonry",
 			"cp -R vendor/desandro/masonry/dist assets/masonry",
 			"cp -R vendor/matthiasmullie/minify/data src/minify",
