@@ -33,7 +33,11 @@
 				<ul class="nav navbar-nav h-100">
 					{% for item in menu %}
 					{% if item.submenu is empty %}
-					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
+					{% set ageControl = '' %}
+					{% if item.age_control is not empty %}
+					{% set ageControl = 'class="modal"' %}
+					{% endif %}
+					<li {{ ageControl }}><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% else %}
 					<li class="dropdown">
 						<a data-toggle="dropdown" href="#">{{ item.title }}</a>

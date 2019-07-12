@@ -1,14 +1,16 @@
 <div class="social-gifs">
 	<?php
 		$gifs = $content['content'];
-		foreach ($gifs as $gif) {
+		if ($gifs) {
+			foreach ($gifs as $gif) {
 	?>
 	<div class="col-12">
 		<div class="post-gif">
-			<img src="<?=$gif['images']['fixed_height_downsampled']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['fixed_height_downsampled']['width'];?>" height="<?=$gif['images']['fixed_height_downsampled']['height'];?>">
+			<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">
 		</div>
 	</div>
 	<?php 
+			}
 		}
 	?>
 </div>

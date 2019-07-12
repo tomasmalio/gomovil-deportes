@@ -183,7 +183,7 @@
 	/**********************************
 	 * 			MENU
 	 **********************************/
-	$db->prepare("select sc.id, sc.title as title, s.uri as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
+	$db->prepare("select sc.id, sc.title as title, sc.age_control, s.uri as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
 	$db->execute();
 	$menu_principal = $db->fetchAll();
 
@@ -242,7 +242,8 @@
 		$menu[] = [
 			'url' 	=> $item['url'],
 			'title' => str_replace($keywords, $keywordsChange, utf8_encode($item['title'])),
-			'submenu' => $submenu
+			'submenu' => $submenu,
+			'age_control' => $item['age_control']
 		];
 		unset($submenu);
 	}
@@ -250,6 +251,7 @@
 	// print_r($keywords);
 	// print_r($keywordsChange);
 	// var_dump($menu);
+	// exit;
 
 	/**********************************
 	 * 			CUSTOMIZATION
