@@ -21,6 +21,10 @@
 				case 'voley':
 					$json = file_get_contents($this->url . $params['type'] . '-peru.json');
 					break;
+				case 'masdeportes':
+				case '+deportes':
+					$json = file_get_contents($this->url . 'polideportivo-peru.json');
+					break;
 				default:
 					$json = file_get_contents($this->url . 'virales.json');
 					break;
