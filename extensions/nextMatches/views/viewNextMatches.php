@@ -211,29 +211,22 @@
 											<?php if ($match['serving'] === $match['player_first']['name']){?><div class="playing-ball"></div><?php }?>
 											<!-- <div class="match-points float-left">40</div> -->
 											<?php }?>
-											<div class="column float-left <?php if ($match['player_first']['set_1'] == ''){?>not-play<?php }?>"><?= $match['player_first']['set_1'];?></div>
-											<div class="column float-left <?php if ($match['player_first']['set_2'] == ''){?>not-play<?php }?>"><?= $match['player_first']['set_2'];?></div>
-											<div class="column float-left <?php if ($match['player_first']['set_3'] == ''){?>not-play<?php }?>"><?= $match['player_first']['set_3'];?></div>
-											<div class="column float-left <?php if ($match['player_first']['set_4'] == ''){?>not-play<?php }?>"><?= $match['player_first']['set_4'];?></div>
-											<div class="column float-left <?php if ($match['player_first']['set_5'] == ''){?>not-play<?php }?>"><?= $match['player_first']['set_5'];?></div>
-											
-											<?php /*foreach ($match['score']['player_first'] as $score) {?>
-												<div class="column <?php if (isset($score['tie_break'])) {?>tie-break<?php }?> float-left"><?= $score['point'];?> <?php if (isset($score['tie_break'])){?> <span>(<?= $score['tie_break'];?>)</span><?php }?></div>
-											<?php }*/?>
+											<div class="column float-left<?php if (strpos($match['player_first']['set_1'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_first']['set_1'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_first']['set_1'], '.') == true) {?><?= (explode('.', $match['player_first']['set_1']))[0];?><span>(<?php echo (explode('.', $match['player_first']['set_1']))[1];?>)</span><?php } else { echo $match['player_first']['set_1'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_first']['set_2'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_first']['set_2'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_first']['set_2'], '.') == true) {?><?= (explode('.', $match['player_first']['set_2']))[0];?><span>(<?php echo (explode('.', $match['player_first']['set_2']))[1];?>)</span><?php } else { echo $match['player_first']['set_2'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_first']['set_3'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_first']['set_3'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_first']['set_3'], '.') == true) {?><?= (explode('.', $match['player_first']['set_3']))[0];?><span>(<?php echo (explode('.', $match['player_first']['set_3']))[1];?>)</span><?php } else { echo $match['player_first']['set_3'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_first']['set_4'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_first']['set_4'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_first']['set_4'], '.') == true) {?><?= (explode('.', $match['player_first']['set_4']))[0];?><span>(<?php echo (explode('.', $match['player_first']['set_4']))[1];?>)</span><?php } else { echo $match['player_first']['set_4'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_first']['set_5'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_first']['set_5'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_first']['set_5'], '.') == true) {?><?= (explode('.', $match['player_first']['set_5']))[0];?><span>(<?php echo (explode('.', $match['player_first']['set_5']))[1];?>)</span><?php } else { echo $match['player_first']['set_5'];}?></div>
 										</div>
 										<div class="results-player">
 											<?php if ($match['status'] === 'live') {?>
 											<?php if ($match['serving'] === $match['player_second']['name']){?><div class="playing-ball"></div><?php }?>
 											<!-- <div class="match-points float-left">15</div> -->
 											<?php }?>
-											<div class="column float-left <?php if ($match['player_second']['set_1'] == ''){?>not-play<?php }?>"><?= $match['player_second']['set_1'];?></div>
-											<div class="column float-left <?php if ($match['player_second']['set_2'] == ''){?>not-play<?php }?>"><?= $match['player_second']['set_2'];?></div>
-											<div class="column float-left <?php if ($match['player_second']['set_3'] == ''){?>not-play<?php }?>"><?= $match['player_second']['set_3'];?></div>
-											<div class="column float-left <?php if ($match['player_second']['set_4'] == ''){?>not-play<?php }?>"><?= $match['player_second']['set_4'];?></div>
-											<div class="column float-left <?php if ($match['player_second']['set_5'] == ''){?>not-play<?php }?>"><?= $match['player_second']['set_5'];?></div>
-											<?php /*foreach ($match['score']['player_second'] as $score) {?>
-												<div class="column <?php if (isset($score['tie_break'])) {?>tie-break<?php }?> float-left"><?= $score['point'];?> <?php if (isset($score['tie_break'])){?> <span>(<?= $score['tie_break'];?>)</span><?php }?></div>
-											<?php }*/?>
+											<div class="column float-left<?php if (strpos($match['player_second']['set_1'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_second']['set_1'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_second']['set_1'], '.') == true) {?><?= (explode('.', $match['player_second']['set_1']))[0];?><span>(<?php echo (explode('.', $match['player_second']['set_1']))[1];?>)</span><?php } else { echo $match['player_second']['set_1'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_second']['set_2'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_second']['set_2'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_second']['set_2'], '.') == true) {?><?= (explode('.', $match['player_second']['set_2']))[0];?><span>(<?php echo (explode('.', $match['player_second']['set_2']))[1];?>)</span><?php } else { echo $match['player_second']['set_2'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_second']['set_3'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_second']['set_3'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_second']['set_3'], '.') == true) {?><?= (explode('.', $match['player_second']['set_3']))[0];?><span>(<?php echo (explode('.', $match['player_second']['set_3']))[1];?>)</span><?php } else { echo $match['player_second']['set_3'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_second']['set_4'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_second']['set_4'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_second']['set_4'], '.') == true) {?><?= (explode('.', $match['player_second']['set_4']))[0];?><span>(<?php echo (explode('.', $match['player_second']['set_4']))[1];?>)</span><?php } else { echo $match['player_second']['set_4'];}?></div>
+											<div class="column float-left<?php if (strpos($match['player_second']['set_5'], '.') == true) {?> tie-break<?php }?><?php if ($match['player_second']['set_5'] == ''){?> not-play<?php }?>"><?php if (strpos($match['player_second']['set_5'], '.') == true) {?><?= (explode('.', $match['player_second']['set_5']))[0];?><span>(<?php echo (explode('.', $match['player_second']['set_5']))[1];?>)</span><?php } else { echo $match['player_second']['set_5'];}?></div>
 										</div>
 									</div>
 									<?php } elseif ($tournament['type'] == 'double') {?>
