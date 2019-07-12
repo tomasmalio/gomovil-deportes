@@ -1,8 +1,8 @@
-<?php $socialContent = $content['content']['data'];?>
+<?php $socialContent = $content['content']['data'];
+	if (isset($socialContent) && count($socialContent) > 0) {
+?>
 <section class="socialpostfootball">
-	<?php 
-		foreach ($socialContent as $c) {
-	?>
+	<?php foreach ($socialContent as $c) {?>
 	<div class="row socialpostfootball-content">
 		<div class="col-12">
 			<div class="interaction-situation">
@@ -15,9 +15,9 @@
 		?>
 		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 social-container">
 			<div class="social-post">
-				<?php if (isset($social['media_video']) || isset($social['media'])) {?>	
+				<?php if ((isset($social['media_video']) && $social['media_video'])|| (isset($social['media']) && $social['media'])) {?>	
 				<div class="social-media">
-					<?php if (isset($social['media_video'])) {?>
+					<?php if (isset($social['media_video']) && $social['media_video']) {?>
 					<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$social['media']?>">
 						<source src="<?=$social['media_video']?>" type="video/mp4">
 					</video>
@@ -48,3 +48,4 @@
 		}
 	?>
 </section>
+<?php }?>
