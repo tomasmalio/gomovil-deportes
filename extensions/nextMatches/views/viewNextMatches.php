@@ -1,7 +1,4 @@
 <!-- Next matches-->
-<pre>
-<?php //print_r($content);?>
-</pre>
 <?php 
 	$nextMatches = $content['content'];
 	$date = date('Y-m-d');
@@ -30,7 +27,6 @@
 			<?php if (isset($tournament['step']) && !empty($tournament['step'])) {?>
 			<div class="competition-situation"><?= $tournament['step']?></div>
 			<?php }?>
-
 			<!-- List of matches / Tournament / Football Sport / Next matches -->
 			<?php if (!$firstTournamnet) {?></ul><?php }?>
 			<ul>
@@ -42,7 +38,7 @@
 					/* Switch of each status */
 					switch ($match['status']) {
 						case 'Por comenzar':
-							$match['status'] = 'to start';
+							$match['status'] = 'to-start';
 							break;
 						case 'En vivo':
 							$match['status'] = 'live';
@@ -60,7 +56,7 @@
 								<div class="col-5 match-team">
 									<div class="team">
 										<div class="shield left"><img src="<?=$match['team_image_local']?>" name="local" title="" alt=""></div>
-										<div class="team-name left" style="width: 101px;">
+										<div class="team-name left">
 											<div class="team-name-container">
 												<div class="cell"><?=$match['team_local']?></div>
 											</div>
@@ -83,7 +79,7 @@
 										<div class="match-divider">
 											<div class="match-divider-content">
 												<div class="result football">
-													<span class="number"><?=$match['score']['gol_local'];?></span> - <span class="number"><?=$match['score']['gol_visit'];?></span>
+													<span class="number"><?=$match['gol_local'];?></span> - <span class="number"><?=$match['gol_visit'];?></span>
 												</div>
 											</div>
 										</div>
@@ -101,7 +97,7 @@
 								<div class="col-5 match-team">
 									<div class="team">
 										<div class="shield right"><img src="<?=$match['team_image_visit']?>" name="visit" title="" alt=""></div>
-										<div class="team-name right" style="width: 101px;">
+										<div class="team-name right">
 											<div class="team-name-container">
 												<div class="cell"><?=$match['team_visit']?></div>
 											</div>
@@ -128,13 +124,13 @@
 							break;
 						}
 				?>
-			</ul>
 			<!-- Eof list of matches / Tournament / Football Sport / Next matches -->
 			<?php 
 					$firstTournamnet = true;
 				}
 				//
 			?>
+			</ul>
 		</div>
 	<?php 
 			}
@@ -180,9 +176,10 @@
 					/* Switch of each status */
 					switch ($match['status']) {
 						case 'Por comenzar':
-							$match['status'] = 'to start';
+							$match['status'] = 'to-start';
 							break;
 						case 'En juego':
+						default:
 							$match['status'] = 'live';
 							break;
 						case 'Finalizado':
@@ -198,7 +195,7 @@
 								<div class="row match-tenis">
 									<div class="col-12"><time class="time"><?= $match['time']?> hs</time></div>
 									<?php if (!isset($tournament['type']) || $tournament['type'] == 'single'){?>
-									<div class="col-5">
+									<div class="col-5 player-content">
 										<div class="player-info">
 											<div class="flag float-left"><img src="<?=$match['player_first']['flag']?>" name="" alt="<?=$match['player_first']['name']?>" title="<?=$match['player_first']['name']?>"></div>
 											<div class="player float-left"><?=$match['player_first']['name']?><?php if (is_numeric($match['player_first']['ranking'])) {?> <span class="ranking">(<?=$match['player_first']['ranking']?>)</span><?php }?></div>

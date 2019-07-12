@@ -5,15 +5,10 @@
 	class ModelNextMatches {
 		
 		private $urlFootball 	= 'http://apiuf.gomovil.co/partido/partidos.json';
-		private $urlNba		 	= 'http://apiuf.gomovil.co/partido/partidos-basquet.json';
+		private $urlBasket		 	= 'http://apiuf.gomovil.co/partido/partidos-basquet.json';
 		private $urlTennis 		= 'http://apiuf.gomovil.co/partido/partidos-tenis.json';
 
-		private $sports = [
-			'football' 	=> true,
-			'nba' 		=> true,
-			'tennis' 	=> true,
-		];
-
+		// Format content to display
 		private $json = [
 			'football' => [
 				'display' 	=> true,
@@ -22,7 +17,7 @@
 				'icon_name' => 'sports-icon football',
 				'matches' 	=> null
 			],
-			'nba' => [
+			'basket' => [
 				'display' 	=> true,
 				'name' 		=> 'Basket',
 				'url' 		=> 'basket',
@@ -36,6 +31,13 @@
 				'icon_name' => 'sports-icon tennis',
 				'matches' 	=> null
 			]
+		];
+
+		// Date info display
+		private $dateDisplay = [
+			'yesterday' => false,
+			'today'		=> true,
+			'tomorrow'	=> true,
 		];
 
 		// Mapping name JSON
@@ -98,8 +100,9 @@
 		
 		public function model ($params = []) {
 			self::setDate($params['date']);
-			self::setSports($params['sports']);
-			
+			self::setContentConstructor($params['sports']);
+			self::setSports($params['sports_display']);
+			self::setDateDisplay($params['date_display']);
 			return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
@@ -113,36 +116,70 @@
 
 		private function setSports ($sports) {
 			if ($sports['footall'] === false) {
-				$this->sports['football'] = false;
+				$this->json['football']['display'] = false;
 			}
-			if ($sports['nba'] === false) {
-				$this->sports['nba'] = false;
+			if ($sports['basket'] === false) {
+				$this->json['basket']['display'] = false;
 			}
 			if ($sports['tennis'] === false) {
-				$this->sports['tennis'] = false;
+				$this->json['tennis']['display'] = false;
+			}
+		}
+
+		private function setDateDisplay ($dateDisplay) {
+			if (isset($dateDisplay['yesterday']) && $dateDisplay['yesterday']) {
+				$this->dateDisplay['yesterday'] = true;
+			}
+			if (isset($dateDisplay['today']) && !$dateDisplay['today']) {
+				$this->dateDisplay['today'] = false;
+			}
+			if (isset($dateDisplay['tomorrow']) && !$dateDisplay['tomorrow']) {
+				$this->dateDisplay['tomorrow'] = false;
+			}
+		}
+
+		private function setContentConstructor ($sports) {
+			if (count($sports) > 0) {
+				foreach ($sports as $k => $s) {
+					$this->json[$k] = $s;
+				}
 			}
 		}
 
 		private function getContent() {
-			if ($this->sports['football']) {
-				$jsonFootball = @file_get_contents($this->urlFootball);
-				if (strpos($http_response_header[0], "200")) {
-					$this->json['football']['matches'] =  (json_decode($jsonFootball, true));
-				}
-			}
-			if ($this->sports['nba']) {
-				$jsonNba = @file_get_contents($this->urlNba);
-				if (strpos($http_response_header[0], "200")) { 
-					$this->json['nba']['matches'] =  json_decode($jsonNba, true);
-				}
-			}
-			if ($this->sports['tennis']) {
-				$jsonTennis = @file_get_contents($this->urlTennis);
-				if (strpos($http_response_header[0], "200")) {
-					$this->json['tennis']['matches'] =  json_decode($jsonTennis, true);
+			/**
+			 * Creating the content for each sport
+			 * require.
+			 **/ 
+			foreach ($this->json as $sport => $value) {
+				if ($this->json[$sport]['display']) {
+					$url = 'url' . ucfirst($sport);
+					// Getting the info from the JSON
+					$json = @file_get_contents($this->$url);
+					if (strpos($http_response_header[0], "200")) {
+						$matchesDates = (json_decode($json, true));
+						/**
+						 * Validate if the content is require for 
+						 * yesterday, today and tomorrow
+						 **/ 
+						if ($this->dateDisplay['yesterday'] && $this->dateDisplay['today'] && $this->dateDisplay['tomorrow']) {
+							$this->json[$sport]['matches'] = $matchesDates;
+						} else {
+							/**
+							 * Validate which dates we must show
+							 * yesterday, today and tomorrow
+							 **/ 
+							foreach ($matchesDates as $k => $dates) {
+								if ((($k < $this->date) && $this->dateDisplay['yesterday']) || (($k == $this->date) && $this->dateDisplay['today']) || (($k > $this->date) && $this->dateDisplay['tomorrow'])) {
+									$this->json[$sport]['matches'][$k] = $dates;
+								}
+							}
+						}
+					}
 				}
 			}
 			return $this->json;
 		}
+
 	}
 ?>
