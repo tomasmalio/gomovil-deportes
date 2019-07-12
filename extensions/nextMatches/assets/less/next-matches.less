@@ -318,12 +318,15 @@ section.nextmatches {
 									border-radius: 6px;
 									color: #b9b9b9;
 									font-family: @p-font-family;
-									font-size: 7pt;
+									font-size: 12pt;
 									font-weight: @p-font-weight;
 									line-height: 20px;
 									padding: 4px;
 									position: relative;
 									text-align: center;
+									@media (max-width: 768px) {
+										font-size: 7pt;
+									} 
 								}
 								.result.football {
 									span.number {

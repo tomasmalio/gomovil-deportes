@@ -24,6 +24,37 @@
 @news-text-font-size: 11pt;
 @news-text-font-weight: @p-font-weight;
 
+/* News featured */
+@news-featured-border-radius: 10px;
+@news-featured-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
+@news-featured-background: #ffffff;
+@news-featured-margin-bottom: 30px;
+
+@news-featured-content-background-repeat: no-repeat;
+@news-featured-content-background-position: center center;
+@news-featured-content-background-size: cover;
+@news-featured-content-border-radius: 10px;
+@news-featured-content-box-shadow: inset 0px -84px 10px #00000040;
+@news-featured-content-position: relative;
+@news-featured-content-height: 350px;
+@news-featured-content-width: 100%;
+
+@news-featured-content-label-padding: 15px 0 0 0;
+@news-featured-content-label-background: @color-second;
+@news-featured-content-label-color: white;
+@news-featured-content-label-font-size: 12pt;
+@news-featured-content-label-padding: 5px 8px 5px 20px;
+@news-featured-content-label-text-transform: uppercase;
+
+@news-featured-content-title-bottom: 30px;
+@news-featured-content-title-color: white;
+@news-featured-content-title-font-family: @h2-font-family;
+@news-featured-content-title-font-size: @h2-font-size;
+@news-featured-content-title-font-weight: @h2-font-weight;
+@news-featured-content-title-left: 30px;
+@news-featured-content-title-position: absolute;
+@news-featured-content-title-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+
 /* View */
 @news-view-title-font-family: @h2-font-family;
 @news-view-title-font-weight: @h2-font-weight;
@@ -157,41 +188,42 @@ section.newssportsgomovil {
 	/* Eof list news */
 }
 /* Featured news */
-section.newssportsgomovil.featured {
-	background-repeat: no-repeat;
-	.border-radius(10px);
-	.box-shadow(0px 0px 10px -3px #d4d4d4cc);
-	background: #ffffff;
-	margin-bottom: 30px;
+section.newssportsgomovil.featured {	
+	.border-radius(@news-featured-border-radius);
+	.box-shadow(@news-featured-box-shadow);
+	background: @news-featured-background;;
+	margin-bottom: @news-featured-margin-bottom;;
 	.newssportsgomovil-content {
 		a {
 			.content {
-				.background-size(cover);
-				.border-radius(10px);
-				.box-shadow(inset 0px -84px 10px #00000040);
-				position: relative;
-				height: 350px;
-				width: 100%;
+				background-repeat: @news-featured-content-background-repeat;
+				background-position: @news-featured-content-background-position;
+				.background-size(@news-featured-content-background-size);
+				.border-radius(@news-featured-content-border-radius);
+				.box-shadow(@news-featured-content-box-shadow);
+				position: @news-featured-content-position;
+				height: @news-featured-content-height;
+				width: @news-featured-content-width;
 			}
 			h3 {
-				padding: 15px 0 0 0;
+				padding: @news-featured-content-label-padding;
 				span {
-					background: @color-second;
-					color: white;
-					font-size: 12pt;
-					padding: 5px 8px 5px 20px;
-					text-transform: uppercase;
+					background: @news-featured-content-label-background;
+					color: @news-featured-content-label-color;
+					font-size: @news-featured-content-label-font-size;
+					padding: @news-featured-content-label-padding;
+					text-transform: @news-featured-content-label-text-transform;
 				}
 			}
 			h2 {
-				bottom: 30px;
-				color: white;
-				font-family: @h2-font-family;
-				font-size: @h2-font-size;
-				font-weight: @h2-font-weight;
-				left: 30px;
-				position: absolute;
-				text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+				bottom: @news-featured-content-title-bottom;
+				color: @news-featured-content-title-color;
+				font-family: @news-featured-content-title-font-family;
+				font-size: @news-featured-content-title-font-size;
+				font-weight: @news-featured-content-title-font-weight;
+				left: @news-featured-content-title-left;
+				position: @news-featured-content-title-position;
+				text-shadow: @news-featured-content-title-text-shadow;
 			}	
 		}
 	}
