@@ -7,6 +7,8 @@
 @news-slider-width-responsive: 80%;
 @news-slider-height: 380px;
 
+@news-horizontal-height: 380px;
+
 @news-image-border-radius: 10px;
 @news-image-width: 260px;
 @news-image-float: left;
@@ -160,6 +162,27 @@ section.newssportsgomovil {
 			@media (max-width: 768px) {
 				width: @news-slider-width-responsive;
 			}
+			a {
+				.content-image {
+					float: none;
+					width: 100%;
+					.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+					.image {
+						.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						float: none !important;
+						width: 100%;
+						img {
+							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						}
+					}
+				}
+				.news-content {
+					padding: 10px;
+				}
+			}
+		}
+		li.horizontal {
+			height: @news-horizontal-height;
 			a {
 				.content-image {
 					float: none;

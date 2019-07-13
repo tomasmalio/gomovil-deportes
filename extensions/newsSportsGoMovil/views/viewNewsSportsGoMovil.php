@@ -1,13 +1,31 @@
 <!-- News -->
 <section class="newssportsgomovil">
 	<div class="newssportsgomovil-content <?php if ($slider) {?>swiper-container<?php }?>">
-		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
+		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php } else { if (isset($content['position']) && $content['position'] === 'horizontal') {?>row<?php } else {?> clearfix<?php } }?>">
 			<?php 
 				$quantity = 0;
 				$newsContent = $content['content'];
+				
 				foreach ($newsContent as $news) {
+					/**
+					 * Creating the type of display content we
+					 * want to do.
+					 * Options:
+					 * 	- slider: true | false
+					 * 	- position: horizontal | vertical
+					 **/ 
+					$className = '';
+					if ($slider) {
+						$className = 'swiper-slide';
+					} else {
+						if (isset($content['position']) && $content['position'] === 'horizontal') {
+							$val = 12 / $items;
+							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
+							$className = 'horizontal col-'.$q;
+						}
+					}
 			?>
-			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
+			<li class="<?=$className;?>">
 				<a href="/<?= strtolower($content['titles']['news'][COUNTRY_CODE]) . '/'. strtolower($content['titles']['article'][COUNTRY_CODE]) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
 					<div class="row">
 						<div class="col-12">
