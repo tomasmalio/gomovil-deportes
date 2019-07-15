@@ -2,12 +2,32 @@
 <?php //print_r($content);?>
 <section class="newsgoogle">
 	<div class="newsgoogle-content <?php if ($slider) {?>swiper-container<?php }?>">
-		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php }?>">
+
+		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php } else { if (isset($content['position']) && $content['position'] === 'horizontal') {?>row<?php } else {?> clearfix<?php } }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content['content'] as $news) {
+				$newsContent = $content['content'];
+				
+				foreach ($newsContent as $news) {
+					/**
+					 * Creating the type of display content we
+					 * want to do.
+					 * Options:
+					 * 	- slider: true | false
+					 * 	- position: horizontal | vertical
+					 **/ 
+					$className = '';
+					if ($slider) {
+						$className = 'swiper-slide';
+					} else {
+						if (isset($content['position']) && $content['position'] === 'horizontal') {
+							$val = 12 / $items;
+							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
+							$className = 'horizontal col-'.$q;
+						}
+					}
 			?>
-			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
+			<li class="<?=$className;?>">
 				<a href="<?=$news['link']?>" title="<?=$news['title']?>" target="_blank">
 					<div class="row">
 						<div class="col-12">
@@ -55,6 +75,10 @@
 		</ul>
 		<?php if ($pagination) {?>
 		<div class="swiper-pagination"></div>
+		<?php }?>
+		<?php if ($navigation) {?>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
 		<?php }?>
 	</div>
 </section>
