@@ -20,6 +20,10 @@
 				'mobile' 	=> [
 					'display' 		=> false,
 				],
+			],
+			'items' => [
+				'desktop' => 4,
+				'mobile' => 1
 			]
 		];
 
@@ -30,6 +34,7 @@
 		public function renderView () {
 			return Widgets::renderViewHtml([
 					'content'			=> $this->content,
+					'items'				=> parent::items(),
 					'slider'			=> parent::slider(),
 					'pagination'		=> parent::sliderPagination(),
 					'navigation'		=> parent::sliderNavigation(),

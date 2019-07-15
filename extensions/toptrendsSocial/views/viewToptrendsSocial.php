@@ -3,10 +3,15 @@
 	if ($toptrends) {
 ?>
 <div class="row grid-social">
-	<?php foreach ($toptrends as $social) {?>
-
-		<div class="grid-item-social col-lg-4 col-md-4 col-sm-12 col-xs-12" <?php if (isset($social['video']) && $social['video']){?>data-video="true" data-source="<?=$social['video']?>"<?php }?>>
-			<div class="social-post <?php if (!isset($social['video']) && !isset($social['video'])){?>only-text<?php }?>">
+	<?php 
+		foreach ($toptrends as $social) {
+			$val = 12 / $items;
+			$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
+			// print_r($social);
+			// exit;
+		?>
+		<div class="grid-item-social col-<?=$col?>" <?php if (isset($social['video']) && $social['video']){?>data-video="true" data-source="<?=$social['video']?>"<?php }?>>
+			<div class="social-post <?php if ($social['video'] == '' && $social['image'] == ''){?>only-text<?php }?>">
 				<div class="card">
 					<?php if (isset($social['video']) && $social['video']){?>
 					<div class="card-video">
@@ -37,7 +42,7 @@
 							<div class="author-image"><img src="<?=$social['profile_image']?>" name="" alt="" title=""></div>
 							<div class="author-name float-left">
 								<div class="author-complete-name"><?=$social['username']?></div>
-								<div class="author-username">@<?=$social['screen_name']?></div>
+								<?php if (strtolower($social['origen']) != 'youtube') {?><div class="author-username">@<?=$social['screen_name']?></div><?php }?>
 							</div>
 						</div>
 						<?php /*<p class="text"><?=Widgets::convertSocialLinks(Widgets::makeLinks($social['text']), strtolower($social['origen']))?></p>*/?>
