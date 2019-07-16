@@ -21,6 +21,7 @@
 		<link rel="stylesheet" href="/assets/swiper/css/swiper.min.css?v=20190701">
 		<link rel="stylesheet" href="{{globalStyle}}">
 		<script src="/assets/jquery/jquery.min.js"></script>
+		<script src="/assets/masonry/imageresize/masonry.imageresize.js"></script>
 		<body>
 			<div id="sb-site">
 				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
@@ -78,6 +79,7 @@
 				{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		
 		<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript">
 			
@@ -108,13 +110,6 @@
 			// 	//var result = image.isLoaded ? 'loaded' : 'broken';
 			// 	//console.log( 'image is ' + result + ' for ' + image.img.src );
 			// 	});
-			// $(document).imagesLoaded(function(){
-			// 	$('.grid').masonry({
-			// 		itemSelector: '.grid-item',
-			// 		gutter: 0,
-			// 		originLeft: false
-			// 	});
-			// });
 			$('.grid').masonry({
 				itemSelector: '.grid-item',
 				gutter: 0,

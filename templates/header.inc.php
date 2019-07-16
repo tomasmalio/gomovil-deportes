@@ -35,7 +35,7 @@
 					{% if item.submenu is empty %}
 					{% set ageControl = '' %}
 					{% if item.age_control is not empty %}
-					{% set ageControl = 'class="modal"' %}
+					{% set ageControl = 'id=modal-age-control' %}
 					{% endif %}
 					<li {{ ageControl }}><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% else %}
@@ -109,3 +109,15 @@
 	</div>
 </header>
 <!-- Eof Header -->
+
+<div id="modal-age-control" class="modal hide fade" tabindex="-1" data-width="760">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3>Responsive</h3>
+  </div>
+  <div class="modal-body">aca</div>
+  <div class="modal-footer">
+	<button type="button" data-dismiss="modal" class="btn">Close</button>
+	<button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</div>

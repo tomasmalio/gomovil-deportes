@@ -4,7 +4,6 @@
 	} else {
 		$showImages = false;
 	}
-	$quantity = 0;
 
 	// Define columns sizes
 	$val = 12 / $items;
@@ -12,66 +11,25 @@
 ?>
 <div class="row grid-social">
 	<script type="text/javascript">
-		// Variable quantity
-		var quantityOfItems = 1;
-		/**
-		 * Image Resize
-		 */
-		function imageResize (width, height, target) {
-			var percentage = '';
-			if (width > height) {
-				percentage = (target / width);
-			} else {
-				percentage = (target / height);
-			}
-
-			var widthSize = Math.round(width * percentage);
-			var heightSize = Math.round(height * percentage);
-
-			if (width < target) {
-				var diff = target - widthSize;
-				widthSize = widthSize + diff;
-				heightSize = heightSize + diff;
-			} else if (widthSize < target) {
-				var diff = target - widthSize;
-				widthSize = widthSize + diff;
-				heightSize = heightSize + diff;
-			}
-
-			var array = new Object();
-			array['width'] = widthSize;
-			array['height'] = heightSize;
-			return array;
-		}
+		var q = 1;
 	</script>
 	<?php
 		/**
 		 * Social Posts
 		 */
+		$quantity = 0;
 		$contentSocial = $content['content'];
 		foreach ($contentSocial as $key => $social) {
-			
-			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image || $social->video))) {
-				$quantity++;
-				$style = '';
+			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image != '' || $social->video != ''))) {
 				if ($social->image) {
-					$className = substr(str_shuffle($permitted_chars), 0, 5);
+					$quantity++;
+					//$randomLetter = substr(str_shuffle(str_repeat("abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 					$imageSize = getimagesize($social->image);
+				}
 	?>
-	<script type="text/javascript">
-		// Script for media content
-		var sizeMedia = imageResize(<?=$imageSize[0]?>, <?=$imageSize[1]?>, $(".social-post").innerWidth());
-		var socialCard = $(".social-card-"+quantityOfItems);
-		var socialVideoImage = $(".social-video-image-"+quantityOfItems);
-		var socialImage = $(".social-image-"+quantityOfItems);
-		$(socialCard).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
-		$(socialVideoImage).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
-		$(socialImage).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
-		quantityOfItems++;
-	</script>
-	<?php 		}?>
-	<div class="grid-item-social col-<?=$col?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
-		<div class="social-post<?php if (!isset($social->video) && !isset($social->image)){?> only-text<?php }?>">
+		<div class="grid-item-social col-<?=$col?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
+			<div class="social-post<?php if (!isset($social->video) && !isset($social->image)){?> only-text<?php }?>">
+			<!-- Card -->
 			<div class="card">
 				<?php if (isset($social->video) && $social->video){?>
 				<div class="card-video social-card-<?=$quantity?>">
@@ -112,9 +70,25 @@
 					<div class="social-source float-right"><a href="<?php echo current(SocialPosts::getLinks($social->text))[0]?>"><i class="social-icon <?= strtolower($social->origen)?>"></i></a></div>
 				</div>
 			</div>
+			<!-- Eof card -->
+			<?php 
+				if ($social->image) {
+			?>
+			<script type="text/javascript">
+				var mediaSize = imageResize(<?=$imageSize[0]?>, <?=$imageSize[1]?>, $(".social-post").innerWidth());
+				var socialCard = $(".social-card-"+q);
+				var socialVideoImage = $(".social-video-image-"+q);
+				var socialImage = $(".social-image-"+q);
+				$(socialCard).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
+				$(socialVideoImage).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
+				$(socialImage).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
+				console.log(q + ' w:' + mediaSize['width'] + ' h:' + mediaSize['height']);
+				q++;
+			</script>
+			<?php }?>
 		</div>
 	</div>
-	<?php 
+	<?php
 			}
 			if (isset($content['limit']) && $quantity == $content['limit']) {
 				break;
