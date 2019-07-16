@@ -13,6 +13,10 @@
 		];
 		// Options
 		public $options = [
+			'items' => [
+				'desktop' => 3,
+				'mobile' => 1
+			],
 			'minify' => false,
 			'scripts' => [
 				0 => [

@@ -1,30 +1,80 @@
-<?php 
-	if (!isset($content['columns']['desktop'])) {
-		$content['columns']['desktop'] = 3;
+<?php
+	if (isset($content['social_image']) && $content['social_image']) {
+		$showImages = true;
+	} else {
+		$showImages = false;
 	}
-	if (!isset($content['columns']['mobile'])) {
-		$content['columns']['mobile'] = 1;
-	}
+	$quantity = 0;
+
+	// Define columns sizes
+	$val = 12 / $items;
+	$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
 ?>
 <div class="row grid-social">
-	<?php 
-		// print_r($content);
-		//exit;
+	<script type="text/javascript">
+		// Variable quantity
+		var quantityOfItems = 1;
+		/**
+		 * Image Resize
+		 */
+		function imageResize (width, height, target) {
+			var percentage = '';
+			if (width > height) {
+				percentage = (target / width);
+			} else {
+				percentage = (target / height);
+			}
 
-		if (isset($content['social_image']) && $content['social_image']) {
-			$showImages = true;
-		} else {
-			$showImages = false;
+			var widthSize = Math.round(width * percentage);
+			var heightSize = Math.round(height * percentage);
+
+			if (width < target) {
+				var diff = target - widthSize;
+				widthSize = widthSize + diff;
+				heightSize = heightSize + diff;
+			} else if (widthSize < target) {
+				var diff = target - widthSize;
+				widthSize = widthSize + diff;
+				heightSize = heightSize + diff;
+			}
+
+			var array = new Object();
+			array['width'] = widthSize;
+			array['height'] = heightSize;
+			return array;
 		}
-
-		foreach ($content['content'] as $social) {
+	</script>
+	<?php
+		/**
+		 * Social Posts
+		 */
+		$contentSocial = $content['content'];
+		foreach ($contentSocial as $key => $social) {
+			
 			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image || $social->video))) {
+				$quantity++;
+				$style = '';
+				if ($social->image) {
+					$className = substr(str_shuffle($permitted_chars), 0, 5);
+					$imageSize = getimagesize($social->image);
 	?>
-	<div class="grid-item-social col-lg-<?= (12 / $content['columns']['desktop'])?> col-md-<?= ( 12 / $content['columns']['desktop'])?> col-sm-<?= (12 / $content['columns']['mobile'])?> col-xs-<?= (12 / $content['columns']['mobile'])?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
-		<div class="social-post <?php if (!isset($social->video) && !isset($social->image)){?>only-text<?php }?>">
+	<script type="text/javascript">
+		// Script for media content
+		var sizeMedia = imageResize(<?=$imageSize[0]?>, <?=$imageSize[1]?>, $(".social-post").innerWidth());
+		var socialCard = $(".social-card-"+quantityOfItems);
+		var socialVideoImage = $(".social-video-image-"+quantityOfItems);
+		var socialImage = $(".social-image-"+quantityOfItems);
+		$(socialCard).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
+		$(socialVideoImage).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
+		$(socialImage).css({'width': sizeMedia['width']+'px', 'height': sizeMedia['height']+'px'});
+		quantityOfItems++;
+	</script>
+	<?php 		}?>
+	<div class="grid-item-social col-<?=$col?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
+		<div class="social-post<?php if (!isset($social->video) && !isset($social->image)){?> only-text<?php }?>">
 			<div class="card">
 				<?php if (isset($social->video) && $social->video){?>
-				<div class="card-video">
+				<div class="card-video social-card-<?=$quantity?>">
 					<div class="video-image">
 						<div class="play-content">
 							<div class="box">
@@ -36,14 +86,14 @@
 							</div>
 						</div>
 						<?php if (isset($social->image) && $social->image){?>
-						<img src="<?=$social->image?>" name="image" alt="" title="" />
+						<img src="<?=$social->image?>" name="image" alt="" title="" class="social-video-image-<?=$quantity?>" />
 						<?php }?>
 					</div>
 				</div>
 				<?php } elseif (isset($social->image) && $social->image){?>
 				<div class="card-image">
 					<div class="image-container">
-						<img src="<?=$social->image?>" name="image" alt="" title="" />
+						<img src="<?=$social->image?>" name="image" alt="" title="" class="social-image-<?=$quantity?>" />
 					</div>
 				</div>
 				<?php }?>
@@ -65,6 +115,9 @@
 		</div>
 	</div>
 	<?php 
+			}
+			if (isset($content['limit']) && $quantity == $content['limit']) {
+				break;
 			}
 		}
 	?>

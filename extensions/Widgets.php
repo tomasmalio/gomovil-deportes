@@ -789,5 +789,6 @@
 	
 			return utf8_encode(strtolower($str));
 		}
+
 	}
 ?>

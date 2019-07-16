@@ -78,6 +78,7 @@
 				{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>
+		<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript">
 			
 			$(document).ready(function () {
@@ -90,6 +91,30 @@
 				$("#sb-site").removeAttr( 'style' );
 				$("#sb-site").css('z-index','initial');
 			});
+			// $(document).imagesLoaded()
+			// 	// images have loaded
+			// 	.done( function( instance ) {
+			// 		console.log('all images successfully loaded');
+			// 		$('.grid').masonry({
+			// 			itemSelector: '.grid-item',
+			// 			gutter: 0,
+			// 			originLeft: false
+			// 		});
+			// 	})
+			// 	.fail( function() {
+			// 	//console.log('all images loaded, at least one is broken');
+			// 	})
+			// 	.progress( function( instance, image ) {
+			// 	//var result = image.isLoaded ? 'loaded' : 'broken';
+			// 	//console.log( 'image is ' + result + ' for ' + image.img.src );
+			// 	});
+			// $(document).imagesLoaded(function(){
+			// 	$('.grid').masonry({
+			// 		itemSelector: '.grid-item',
+			// 		gutter: 0,
+			// 		originLeft: false
+			// 	});
+			// });
 			$('.grid').masonry({
 				itemSelector: '.grid-item',
 				gutter: 0,
