@@ -98,6 +98,13 @@
 	content: "\e024";
 }
 
+/* News Title */
+@toptrendssocial-title-font-family: @h3-font-family;
+@toptrendssocial-title-font-weight: @h3-font-weight;
+@toptrendssocial-title-font-size: @h3-font-size;
+@toptrendssocial-title-color: #3B3B3B;
+@toptrendssocial-title-padding: 0 0 15px 0;
+
 /* Variables */
 @card-background: #ffffff;
 @card-border: 0;
@@ -144,6 +151,17 @@
 @card-video-circle-play-color: white;
 
 /* Social Post  */
+section.toptrendssocial {
+	h3 {
+		h3 {
+			font-family: @toptrendssocial-title-font-family;
+			font-size: @toptrendssocial-title-font-size;
+			font-weight: @toptrendssocial-title-font-weight;		
+			color: @toptrendssocial-title-color;
+			padding: @toptrendssocial-title-padding;
+		}
+	}
+}
 .social-post {
 	width: 100%;
 	background: @card-background;
