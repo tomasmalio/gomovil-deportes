@@ -25,6 +25,8 @@
 									$val = 12 / $content['columns']['mobile'];
 								} elseif (isset($content['columns']['desktop']) && !IS_MOBILE)  {
 									$val = 12 / $content['columns']['desktop'];
+									echo $val;
+									exit;
 								}
 							} else {
 								$val = 12 / $items;
