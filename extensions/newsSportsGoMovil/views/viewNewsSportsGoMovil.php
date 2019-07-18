@@ -30,8 +30,6 @@
 								$val = 12 / $items;
 							}
 							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
-							echo $val . '/'. $q;
-							exit;
 							$className = 'horizontal col-'.$q;
 						}
 					}
