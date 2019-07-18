@@ -70,17 +70,17 @@
 				<?php }?>
 				<div class="card-content">
 					<div class="author">
-						<div class="author-image"><img src="<?=$social->profile_image?>" name="" alt="" title=""></div>
+						<div class="author-image"><a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank"><img src="<?=$social->profile_image?>" name="" alt="" title=""></a></div>
 						<div class="author-name float-left">
-							<div class="author-complete-name"><?=$social->username?></div>
-							<div class="author-username">@<?=$social->screen_name?></div>
+							<div class="author-complete-name"><a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank"><?=$social->username?></a></div>
+							<div class="author-username"><a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank">@<?=$social->screen_name?></a></div>
 						</div>
 					</div>
 					<p class="text"><?=SocialPosts::convertSocialLinks(SocialPosts::makeLinks($social->text), strtolower($social->origen))?></p>
 				</div>
 				<div class="card-footer">
 					<div class="social-datetime float-left"><?=$social->fecha?></div>
-					<div class="social-source float-right"><a href="<?php echo current(SocialPosts::getLinks($social->text))[0]?>"><i class="social-icon <?= strtolower($social->origen)?>"></i></a></div>
+					<div class="social-source float-right"><a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank"><i class="social-icon <?= strtolower($social->origen)?>"></i></a></div>
 				</div>
 			</div>
 			<!-- Eof card -->
