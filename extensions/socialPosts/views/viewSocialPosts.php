@@ -64,7 +64,7 @@
 				<?php } elseif (isset($social->image) && $social->image){?>
 				<div class="card-image">
 					<div class="image-container">
-						<img src="<?=$social->image?>" name="image" alt="" title="" class="social-image-<?=$quantity?>" />
+					<a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank"><img src="<?=$social->image?>" name="image" alt="" title="" class="social-image-<?=$quantity?>" /></a>
 					</div>
 				</div>
 				<?php }?>
