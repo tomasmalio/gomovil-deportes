@@ -7,6 +7,9 @@
 <section class="toptrendssocial">
 	<?php if (isset($content['title'])) {?><h3><?= $content['title']?></h3><?php }?>
 	<div class="row grid-social">
+		<script type="text/javascript">
+			var q = 1;
+		</script>
 		<?php 
 			$quantity = 0;
 			foreach ($toptrends as $social) {
