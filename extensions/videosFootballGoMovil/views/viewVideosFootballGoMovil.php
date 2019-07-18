@@ -1,5 +1,7 @@
 <?php
-if (!IS_MOBILE) {?>
+	if (count($content['content']) > 0){
+		if (!IS_MOBILE) {
+?>
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){
@@ -159,4 +161,7 @@ if (!IS_MOBILE) {?>
 		<?php }?>
 	</div>
 </section>
-<?php }?>
+<?php 
+		}
+	}
+?>
