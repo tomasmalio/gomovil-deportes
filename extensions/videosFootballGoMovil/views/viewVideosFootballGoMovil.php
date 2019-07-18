@@ -59,6 +59,7 @@
 	//]]>
 </script>
 <section id="jp_container_1" class="jp-container jp-video jp-video-full" role="application" aria-label="media player">
+	<?php if ($content['title']){?><h3><?=$content['title']?></h3><?php }?>
 	<div class="row jp-type-playlist">
 		<!-- Playlist -->
 		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 playlist-content">
