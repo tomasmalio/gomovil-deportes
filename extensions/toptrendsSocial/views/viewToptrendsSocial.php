@@ -67,7 +67,7 @@
 							</div>
 						</div>
 						<?php /*<p class="text"><?=Widgets::convertSocialLinks(Widgets::makeLinks($social['text']), strtolower($social['origen']))?></p>*/?>
-						<p class="text"><?=$social['text']?></p>
+						<p class="text"><?=ToptrendsSocial::convertSocialLinks(ToptrendsSocial::makeLinks($social['text']), strtolower($social['origen']))?></p>
 					</div>
 					<div class="card-footer">
 						<div class="social-datetime float-left"><?=$social['fecha']?></div>

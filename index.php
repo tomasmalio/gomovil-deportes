@@ -83,11 +83,6 @@
 	$db->execute();
 	$section = $db->fetch();
 
-	// if (isset($section['age_control']) && $section['age_control'] && !$_SESSION['age_control'])  {
-	// 	header('Location: index.php');
-	// 	exit;
-	// }
-
 	/**
 	 * Naming sections & subsections
 	 */
