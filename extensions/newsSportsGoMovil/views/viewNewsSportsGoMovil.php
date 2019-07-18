@@ -29,9 +29,9 @@
 							} else {
 								$val = 12 / $items;
 							}
-							echo $val;
-							exit;
 							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
+							echo $val . '/'. $q;
+							exit;
 							$className = 'horizontal col-'.$q;
 						}
 					}
