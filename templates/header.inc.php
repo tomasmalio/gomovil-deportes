@@ -34,10 +34,16 @@
 					{% for item in menu %}
 					{% if item.submenu is empty %}
 					{% set ageControl = '' %}
+					{% set url = '' %}
+				
 					{% if item.age_control is not empty %}
 					{% set ageControl = 'id=modal-age-control' %}
+					{% set url = '#' ~ item.url %}
+					{% else %}
+					{% set url = '/' ~ item.url %}
 					{% endif %}
-					<li {{ ageControl }}><a href="/{{ item.url }}">{{ item.title }}</a></li>
+
+					<li {{ ageControl }}><a href="{{ url }}">{{ item.title }}</a></li>
 					{% else %}
 					<li class="dropdown">
 						<a data-toggle="dropdown" href="#">{{ item.title }}</a>
