@@ -1,4 +1,5 @@
-<?php if (!IS_MOBILE) {?>
+<?php
+if (!IS_MOBILE) {?>
 <script type="text/javascript" async>
 	//<![CDATA[
 	$(document).ready(function(){

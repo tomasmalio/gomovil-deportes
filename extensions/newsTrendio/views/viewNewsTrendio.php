@@ -5,7 +5,7 @@
 		<ul class="<?php if (!$slider) {?>row <?php }?>list-trendio <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content['data'] as $news) {
+				foreach ($content['content'] as $news) {
 			?>
 			<li class="<?php if ($slider) {?>swiper-slide<?php } else {?>col-lg-3 col-md-3 col-sm-6 col-xs-12<?php }?>" itemscope itemtype="http://schema.org/NewsArticle">
 				<?php if (!$slider) {?>
@@ -53,7 +53,7 @@
 		?>
 		<div class="row grid-social">
 			<?php
-				foreach ($content['data'] as $news) {
+				foreach ($content['content'] as $news) {
 			?>
 				<div class="grid-item-social col-lg-3 col-md-3 col-sm-12 col-xs-12" <?php if (isset($news['video']) && $news['video']){?>data-video="true" data-source="<?=$news['video']?>"<?php }?>>
 					<div class="social-post <?php if (!isset($news['video']) && !isset($news['video'])){?>only-text<?php }?>">

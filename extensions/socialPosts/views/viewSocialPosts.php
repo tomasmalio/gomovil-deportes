@@ -1,13 +1,16 @@
 <?php
-	if (isset($content['social_image']) && $content['social_image']) {
-		$showImages = true;
-	} else {
-		$showImages = false;
-	}
+	if (count($content['content']) > 0) {
+		// print_r($content);
+		// exit;
+		if (isset($content['social_image']) && $content['social_image']) {
+			$showImages = true;
+		} else {
+			$showImages = false;
+		}
 
-	// Define columns sizes
-	$val = 12 / $items;
-	$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
+		// Define columns sizes
+		$val = 12 / $items;
+		$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
 ?>
 <div class="row grid-social">
 	<script type="text/javascript">
@@ -23,7 +26,18 @@
 			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image != '' || $social->video != ''))) {
 				if ($social->image) {
 					$quantity++;
-					$imageSize = getimagesize($social->image);
+
+					$output = @file_get_contents($social->image, false);
+					if (strpos($http_response_header[0], "200")) {
+						$imageSize = getimagesize($social->image);
+						if ($imageSize) {
+							//$social->image = '';
+						} else {
+							$imageSize = ['width' => '250', 'height' => '250'];
+						}
+					} else {
+						$social->image = '';
+					}
 				}
 	?>
 		<div class="grid-item-social col-<?=$col?>" <?php if (isset($social->video) && $social->video){?>data-video="true" data-source="<?=$social->video?>"<?php }?>>
@@ -95,3 +109,4 @@
 		}
 	?>
 </div>
+<?php }?>

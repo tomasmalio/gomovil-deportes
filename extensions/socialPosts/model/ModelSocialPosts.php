@@ -4,7 +4,7 @@
 	 */
 	class ModelSocialPosts {
 		
-		public $url = 'http://socialapi.gomovil.co/api/';
+		private $url = 'http://socialapi.gomovil.co/api/';
 
 		public function model ($params = []) {
 			switch ($params['type']) {
@@ -26,7 +26,7 @@
 					$json = file_get_contents($this->url . 'polideportivo-peru.json');
 					break;
 				default:
-					$json = file_get_contents($this->url . 'virales.json');
+					$json = file_get_contents($this->url . 'deportes-peru.json');
 					break;
 			}
 			return json_decode($json);
