@@ -19,7 +19,6 @@
 <section class="videosfootballgomovil">
 	<div class="row videosfootballgomovil-content">
 		<?php
-			$quantity = 0;
 			$videoContent = $content['content'];
 			foreach ($videoContent as $video) {
 		?>
@@ -31,13 +30,7 @@
 				<div class="video-description"><?=$video->nombre?></div>
 			</div>
 		</div>
-		<?php 
-				$quantity++;
-				if (isset($items) && $quantity === $items) {
-					break;
-				}
-			}
-		?>
+		<?php }?>
 	</div>
 </div>
 <?php
