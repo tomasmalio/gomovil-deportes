@@ -36,7 +36,7 @@
 					{% set ageControl = '' %}
 					{% if item.age_control is not empty %}
 					{% set ageControl = 'id=modal-age-control' %}
-					<li {{ ageControl }}><a href="{{ url }}" data-toggle="modal">{{ item.title }}</a></li>
+					<li {{ ageControl }}><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 					{% else %}
 					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% endif %}
