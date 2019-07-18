@@ -17,21 +17,24 @@
 			}
 ?>
 <section class="videosfootballgomovil">
-	<div class="row videosfootballgomovil-content">
+
+	<div class="videosfootballgomovil-content">
 		<?php if ($content['title']){?><h3><?=$content['title']?></h3><?php }?>
-		<?php
-			$videoContent = $content['content'];
-			foreach ($videoContent as $video) {
-		?>
-		<div class="box-video col-<?=$col?>">
-			<div class="video-content">
-				<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
-					<source src="<?=$video->video?>" type="video/mp4">
-				</video>
-				<div class="video-description"><?=$video->nombre?></div>
+		<div class="row">
+			<?php
+				$videoContent = $content['content'];
+				foreach ($videoContent as $video) {
+			?>
+			<div class="box-video col-<?=$col?>">
+				<div class="video-content">
+					<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
+						<source src="<?=$video->video?>" type="video/mp4">
+					</video>
+					<div class="video-description"><?=$video->nombre?></div>
+				</div>
 			</div>
+			<?php }?>
 		</div>
-		<?php }?>
 	</div>
 </div>
 <?php
