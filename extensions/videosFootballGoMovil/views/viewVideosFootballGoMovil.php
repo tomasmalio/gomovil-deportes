@@ -58,7 +58,7 @@
 	});
 	//]]>
 </script>
-<section id="jp_container_1" class="videosfootballgomovil jp-container jp-video jp-video-full" role="application" aria-label="media player">
+<section id="jp_container_1" class="jp-container jp-video jp-video-full" role="application" aria-label="media player">
 	<?php if ($content['title']){?><h3><?=$content['title']?></h3><?php }?>
 	<div class="row jp-type-playlist">
 		<!-- Playlist -->
