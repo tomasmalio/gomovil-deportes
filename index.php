@@ -38,6 +38,8 @@
 
 	if (isset($_POST['ageControl'])) {
 		$_SESSION['age_control'] = true;
+		header('Location: /'.$s);
+		exit;
 	}
 
 	/**
