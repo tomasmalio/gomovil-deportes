@@ -25,12 +25,12 @@
 									$val = 12 / $content['columns']['mobile'];
 								} elseif (isset($content['columns']['desktop']) && !IS_MOBILE)  {
 									$val = 12 / $content['columns']['desktop'];
-									echo $val;
-									exit;
 								}
 							} else {
 								$val = 12 / $items;
 							}
+							echo $val;
+							exit;
 							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
 							$className = 'horizontal col-'.$q;
 						}
