@@ -34,15 +34,12 @@
 					{% for item in menu %}
 					{% if item.submenu is empty %}
 					{% set ageControl = '' %}
-					{% set url = '' %}
-				
 					{% if item.age_control is not empty %}
 					{% set ageControl = 'id=modal-age-control' %}
-					{% set url = '#' ~ item.url %}
+					<li {{ ageControl }} data-toggle="modal"><a href="{{ url }}">{{ item.title }}</a></li>
 					{% else %}
-					{% set url = '/' ~ item.url %}
+					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% endif %}
-
 					<li {{ ageControl }}><a href="{{ url }}">{{ item.title }}</a></li>
 					{% else %}
 					<li class="dropdown">
@@ -117,13 +114,13 @@
 <!-- Eof Header -->
 
 <div id="las-nenas" class="modal hide fade" tabindex="-1" data-width="760">
-  <div class="modal-header">
+	<div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h3>Responsive</h3>
-  </div>
-  <div class="modal-body">aca</div>
-  <div class="modal-footer">
-	<button type="button" data-dismiss="modal" class="btn">Close</button>
-	<button type="button" class="btn btn-primary">Save changes</button>
-  </div>
+		<h3>Responsive</h3>
+	</div>
+	<div class="modal-body">aca</div>
+	<div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn">Close</button>
+			<button type="button" class="btn btn-primary">Save changes</button>
+	</div>
 </div>
