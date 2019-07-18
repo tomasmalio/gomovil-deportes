@@ -1,12 +1,10 @@
 <?php 
 	$toptrends = $content['content']['data'];
 	if ($toptrends) {
-		print_r($content);
-		exit;
 		if (isset($content['columns']['desktop']) || isset($content['columns']['mobile'])) {
 			if (isset($content['columns']['mobile']) && IS_MOBILE) {
 				$col = 12 / $content['columns']['mobile'];
-			} elseif (isset($content['content']['desktop']) && !IS_MOBILE) {
+			} elseif (isset($content['columns']['desktop']) && !IS_MOBILE) {
 				$col = 12 / $content['columns']['desktop'];
 			}
 		} else {
