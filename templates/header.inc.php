@@ -34,17 +34,9 @@
 					{% set array = [] %}
 					{% for item in menu %}
 					{% if item.submenu is empty %}
+
+					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					
-					{% if item.age_control is not empty %}
-					{% if age_control == true %} 
-					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
-					{% else %}
-					{% set array = array|merge([{url: item.url}]) %}
-					<li {{ ageControl }}><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
-					{% endif %}
-					{% else %}
-					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
-					{% endif %}
 					{% else %}
 					<li class="dropdown">
 						<a data-toggle="dropdown" href="#">{{ item.title }}</a>
@@ -115,7 +107,7 @@
 		
 	</div>
 </header>
-{% if array is not empty %}
+<!-- {% if array is not empty %}
 {% for item in array %}
 <div id="{{ item.url }}" class="modal hide fade modal-age-control" tabindex="-1">
 	<div class="modal-content">
@@ -147,6 +139,5 @@
 </script>
 {% endfor %}
 {% else %}
-aca
 {% endif %}
-<!-- Eof Header -->
+Eof Header -->
