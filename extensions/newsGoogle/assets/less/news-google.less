@@ -4,38 +4,50 @@
 @news-margin-bottom: 15px;
 @news-padding: 10px;
 
+/* News Title */
+@news-title-font-family: @h2-font-family;
+@news-title-font-weight: @h2-font-weight;
+@news-title-font-size: @h2-font-size;
+@news-title-color: #3B3B3B;
+
 @news-slider-width: 30%;
 @news-slider-width-responsive: 80%;
 @news-slider-height: 380px;
 
 @news-horizontal-height: 350px;
 
-@news-image-border-radius: 10px;
-@news-image-width: 180px;
-@news-image-float: right;
-@news-image-margin: 0;
+@news-content-image-border-radius: 10px;
+@news-content-image-width: 180px;
+@news-content-image-float: right;
+@news-content-image-margin: 0;
 
-@news-time-color: #3B3B3B;
-@news-time-font-size: 10pt;
+@news-content-time-color: #3B3B3B;
+@news-content-time-font-size: 10pt;
 
-@news-title-color: #3B3B3B;
-@news-title-font-family: @h3-font-family;
-@news-title-font-size: @h3-font-size;
-@news-title-font-weight: @h3-font-weight;
+@news-content-title-color: #3B3B3B;
+@news-content-title-font-family: @h3-font-family;
+@news-content-title-font-size: @h3-font-size;
+@news-content-title-font-weight: @h3-font-weight;
 
-@news-text-color: #3B3B3B;
-@news-text-font-family: @p-font-family;
-@news-text-font-size: 11pt;
-@news-text-font-weight: @p-font-weight;
+@news-content-text-color: #3B3B3B;
+@news-content-text-font-family: @p-font-family;
+@news-content-text-font-size: 11pt;
+@news-content-text-font-weight: @p-font-weight;
 
-@news-source-color: #3B3B3B;
-@news-source-font-family: @p-font-family;
-@news-source-font-size: 10pt;
-@news-source-font-weight: @p-font-weight;
+@news-content-source-color: #3B3B3B;
+@news-content-source-font-family: @p-font-family;
+@news-content-source-font-size: 10pt;
+@news-content-source-font-weight: @p-font-weight;
 
 /* News list */
 section.newsgoogle {
 	position: relative;
+	h2 {
+		font-family: @news-title-font-family;
+		font-size: @news-title-font-size;
+		font-weight: @news-title-font-weight;		
+		color: @news-title-color;
+	}
 	.list-news {
 		li {
 			background: @news-background;
@@ -48,9 +60,9 @@ section.newsgoogle {
 				display: block;
 				padding: @news-padding;
 				.content-image {
-					.border-radius(@news-image-border-radius);
-					float: @news-image-float;
-					width: @news-image-width;
+					.border-radius(@news-content-image-border-radius);
+					float: @news-content-image-float;
+					width: @news-content-image-width;
 					line-height: 0;
 					padding: 0;
 					margin: 0;
@@ -64,20 +76,20 @@ section.newsgoogle {
 						margin: 0;
 						overflow: hidden;
 						.image {
-							.paddingCalc (@news-image-float) when (@news-image-float = right) { right: @news-image-margin};
-							.paddingCalc (@news-image-float) when (@news-image-float = left) { left: @news-image-margin};
-							.paddingCalc(@news-image-float);
+							.paddingCalc (@news-content-image-float) when (@news-content-image-float = right) { right: @news-content-image-margin};
+							.paddingCalc (@news-content-image-float) when (@news-content-image-float = left) { left: @news-content-image-margin};
+							.paddingCalc(@news-content-image-float);
 
-							.border-radius(@news-image-border-radius);
+							.border-radius(@news-content-image-border-radius);
 							height: auto;
 							line-height: 0;
 							position: absolute;
-							top: @news-image-margin;
-							bottom: @news-image-margin;
+							top: @news-content-image-margin;
+							bottom: @news-content-image-margin;
 							display: flex;
 							.align-items(center);
 							img {
-								.border-radius(@news-image-border-radius);
+								.border-radius(@news-content-image-border-radius);
 								max-height: 100%;
 								width: auto;
 							}
@@ -97,36 +109,36 @@ section.newsgoogle {
 					}
 				}
 				.news-content {
-					.paddingCalc (@news-image-float) when (@news-image-float = right) { padding-right: @news-image-width + 10};
-					.paddingCalc (@news-image-float) when (@news-image-float = left) { padding-left: @news-image-width + 10};
-					.paddingCalc(@news-image-float);
+					.paddingCalc (@news-content-image-float) when (@news-content-image-float = right) { padding-right: @news-content-image-width + 10};
+					.paddingCalc (@news-content-image-float) when (@news-content-image-float = left) { padding-left: @news-content-image-width + 10};
+					.paddingCalc(@news-content-image-float);
 					h2 {
-						color: @news-title-color;
-						font-family: @news-title-font-family;
-						font-size: @news-title-font-size;
-						font-weight: @news-title-font-weight;
+						color: @news-content-title-color;
+						font-family: @news-content-title-font-family;
+						font-size: @news-content-title-font-size;
+						font-weight: @news-content-title-font-weight;
 						padding-top: 8px;
 						padding-bottom: 8px;
 					}
 					h3 {
-						color: @news-text-color;
-						font-family: @news-text-font-family;
-						font-size: @news-text-font-size;
-						font-weight: @news-text-font-weight;
+						color: @news-content-text-color;
+						font-family: @news-content-text-font-family;
+						font-size: @news-content-text-font-size;
+						font-weight: @news-content-text-font-weight;
 					}
 					.source {
 						display: inline-block;
-						color: @news-source-color;
-						font-family: @news-source-font-family;
-						font-size: @news-source-font-size;
-						font-weight: @news-source-font-weight;
+						color: @news-content-source-color;
+						font-family: @news-content-source-font-family;
+						font-size: @news-content-source-font-size;
+						font-weight: @news-content-source-font-weight;
 					}
 					time {
 						display: inline-block;
 						position: relative;
 						padding-left: 15px;
-						color: @news-time-color;
-						font-size: @news-time-font-size;
+						color: @news-content-time-color;
+						font-size: @news-content-time-font-size;
 						padding-bottom: 10px;
 						opacity: .7;
 						&:before {
@@ -153,13 +165,13 @@ section.newsgoogle {
 				.content-image {
 					float: none;
 					width: 100%;
-					.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+					.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 					.image {
-						.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						float: none !important;
 						width: 100%;
 						img {
-							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+							.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 							width: 100%;
 						}
 					}
@@ -185,13 +197,13 @@ section.newsgoogle {
 				.content-image {
 					float: none;
 					width: 100%;
-					.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+					.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 					.image {
-						.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						float: none !important;
 						width: 100%;
 						img {
-							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+							.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 							width: 100%;
 						}
 					}
