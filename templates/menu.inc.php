@@ -7,7 +7,7 @@
 	{% if age_control == true %} 
 	<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 	{% else %}
-	{% set array = array|merge([{item}]) %}
+	{% set array = array|merge([{url: item.url}]) %}
 	<li><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 	{% endif %}
 	{% else %}
