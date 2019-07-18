@@ -39,7 +39,7 @@
 	session_start();
 	if (isset($_POST['ageControl'])) {
 		$_SESSION['age_control'] = true;
-		header('Location: /' . $_POST['url']);
+		header('Location: ' . $_POST['url']);
 		exit;
 	}
 
