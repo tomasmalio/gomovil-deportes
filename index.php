@@ -265,7 +265,19 @@
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	$db->prepare("select *, se.id as idExtension, se.content as extensionContent from section_extension se, extension e where se.section_client_id = '" . $section['id'] . "' and se.extension_id = e.id and se.status = 1 ORDER BY se.position ASC");
+	if (IS_MOBILE) {
+		$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+		from section_extension se, extension e 
+		where se.section_client_id = '" . $section['id'] . "' 
+		and se.extension_id = e.id 
+		and se.status = 1 ORDER BY se.position_mobile ASC");
+	} else {
+		$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+		from section_extension se, extension e 
+		where se.section_client_id = '" . $section['id'] . "' 
+		and se.extension_id = e.id 
+		and se.status = 1 ORDER BY se.position ASC");
+	}
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
@@ -356,7 +368,12 @@
 					array_push($assets['css'], $assetExtension['css']);
 					array_push($assets['js'], $assetExtension['js']);
 					$widgets['widget'.$i]['content'] 	= $$widget;
-					$widgets['widget'.$i]['position'] 	= $extension['position'];
+					if (IS_MOBILE) {
+						$widgets['widget'.$i]['position'] 	= $extension['position_mobile'];
+					} else {
+						$widgets['widget'.$i]['position'] 	= $extension['position'];
+					}
+					
 				}
 				$i++;
 			} else {
