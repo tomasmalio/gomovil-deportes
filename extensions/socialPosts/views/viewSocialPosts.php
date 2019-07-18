@@ -95,7 +95,7 @@
 				$(socialCard).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
 				$(socialVideoImage).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
 				$(socialImage).css({'width': mediaSize['width']+'px', 'height': mediaSize['height']+'px'});
-				console.log(q + ' w:' + mediaSize['width'] + ' h:' + mediaSize['height']);
+				//console.log(q + ' w:' + mediaSize['width'] + ' h:' + mediaSize['height']);
 				q++;
 			</script>
 			<?php }?>
