@@ -31,6 +31,7 @@
 				</script>
 				<!-- ml-auto-->
 				<ul class="nav navbar-nav h-100">
+					{% set urlSubMenu = '' %}
 					{% for item in menu %}
 					{% if item.submenu is empty %}
 					
@@ -52,7 +53,6 @@
 						<!-- Submenu -->
 						<div class="dropdown-menu">
 							{% set contentSubmenu = '' %}
-							{% set urlSubMenu = '' %}
 							<ul class="dropdown-menu-submenu float-left">
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
