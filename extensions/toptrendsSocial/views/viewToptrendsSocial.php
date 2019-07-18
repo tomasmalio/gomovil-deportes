@@ -1,7 +1,6 @@
 <?php 
 	$toptrends = $content['content']['data'];
 	if ($toptrends) {
-		if (IS_MOBILE) {}
 		if (isset($content['columns']['desktop']) || isset($content['columns']['mobile'])) {
 			if (isset($content['columns']['mobile']) && IS_MOBILE) {
 				$col = 12 / $content['columns']['mobile'];
@@ -12,7 +11,7 @@
 			if (IS_MOBILE) {
 				$col = 12 / 1;
 			} else {
-				$val = 12 / 4;
+				$col = 12 / 4;
 			}
 		}
 		//$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
