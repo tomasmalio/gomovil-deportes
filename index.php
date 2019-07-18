@@ -36,8 +36,8 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
+	session_start();
 	if (isset($_POST['ageControl'])) {
-		session_start();
 		$_SESSION['age_control'] = true;
 		header('Location: /' . $_POST['url']);
 		exit;
