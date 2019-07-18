@@ -18,11 +18,12 @@
 ?>
 <section class="videosfootballgomovil">
 	<div class="row videosfootballgomovil-content">
+		<?php if ($content['title']){?><h3><?=$content['title']?></h3><?php }?>
 		<?php
 			$videoContent = $content['content'];
 			foreach ($videoContent as $video) {
 		?>
-		<div class="col-<?=$col?>">
+		<div class="box-video col-<?=$col?>">
 			<div class="video-content">
 				<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
 					<source src="<?=$video->video?>" type="video/mp4">
