@@ -1,8 +1,21 @@
 <?php 
 	$toptrends = $content['content']['data'];
 	if ($toptrends) {
-		$val = 12 / $items;
-		$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
+		if (IS_MOBILE) {}
+		if (isset($content['columns']['desktop']) || isset($content['columns']['mobile'])) {
+			if (isset($content['columns']['mobile']) && IS_MOBILE) {
+				$col = 12 / $content['columns']['mobile'];
+			} elseif (isset($content['content']['desktop']) && !IS_MOBILE) {
+				$col = 12 / $content['columns']['desktop'];
+			}
+		} else {
+			if (IS_MOBILE) {
+				$col = 12 / 1;
+			} else {
+				$val = 12 / 4;
+			}
+		}
+		//$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
 ?>
 <section class="toptrendssocial">
 	<?php if (isset($content['title'])) {?><h3><?= $content['title']?></h3><?php }?>
