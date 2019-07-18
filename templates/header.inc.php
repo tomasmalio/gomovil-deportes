@@ -31,11 +31,10 @@
 				</script>
 				<!-- ml-auto-->
 				<ul class="nav navbar-nav h-100">
-					{% set urlSubMenu = '' %}
+					{% set array = [] %}
 					{% for item in menu %}
 					{% if item.submenu is empty %}
 					
-					{% set array = [] %}
 					{% if item.age_control is not empty %}
 					{% if age_control == true %} 
 					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
@@ -53,6 +52,7 @@
 						<!-- Submenu -->
 						<div class="dropdown-menu">
 							{% set contentSubmenu = '' %}
+							{% set urlSubMenu = '' %}
 							<ul class="dropdown-menu-submenu float-left">
 								{% for submenu in item.submenu %}
 								{% if submenu.display is empty and submenu.items is not empty %}
