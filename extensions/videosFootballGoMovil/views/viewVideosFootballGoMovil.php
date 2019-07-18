@@ -3,9 +3,17 @@
 		if ($content['type'] == 'grid') {
 			// Define columns sizes
 			if (IS_MOBILE) {
-				$col = 12 / $content['columns']['mobile'];
+				if (isset($content['columns']['mobile'])) {
+					$col = 12 / $content['columns']['mobile'];
+				} else {
+					$col = 12 / 1;
+				}
 			} else {
-				$col = 12 / $content['columns']['desktop'];
+				if (isset($content['columns']['desktop'])) {
+					$col = 12 / $content['columns']['desktop'];
+				} else {
+					$col = 12 / 4;
+				}
 			}
 ?>
 <section class="videosfootballgomovil">
