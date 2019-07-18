@@ -7,7 +7,7 @@
 	{% if age_control == true %} 
 	<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 	{% else %}
-	{% set ageItem = [{item}] %}
+	{% set ageItem = {'item'} %}
 	<li><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 	{% endif %}
 	{% else %}
