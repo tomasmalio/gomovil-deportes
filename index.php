@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__.'/bootstrap.php';
-	/*ini_set('display_errors', 1);*/
+	ini_set('display_errors', 1);
 	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
@@ -16,15 +16,14 @@
 
 	use GoMovil\Assets;
 	use GoMovil\Db;
-	//use Menu\Menu;
-
+	
 	/* Db Connection */
 	$db = new Db();
 	$db->setUsername('gomovil_db');
 	$db->setPassword('g0m0v1lc0');
 	$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
 	$db->connect();
-
+	
 	/* Getting sections */
 	$s 	= $_GET['s'];
 
@@ -368,6 +367,7 @@
 			echo 'Error '. $e->getMessage();
 		}
 	}
+
 	/**
 	 * Render view
 	 */
