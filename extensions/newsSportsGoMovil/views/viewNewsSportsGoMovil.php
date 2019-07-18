@@ -20,7 +20,15 @@
 						$className = 'swiper-slide';
 					} else {
 						if (isset($content['position']) && $content['position'] === 'horizontal') {
-							$val = 12 / $items;
+							if (isset($content['columns']['mobile']) || isset($content['columns']['desktop'])) {
+								if (isset($content['columns']['mobile']) && IS_MOBILE) {
+									$val = 12 / $content['columns']['mobile'];
+								} elseif (isset($content['columns']['desktop']) && !IS_MOBILE)  {
+									$val = 12 / $content['columns']['desktop'];
+								}
+							} else {
+								$val = 12 / $items;
+							}
 							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
 							$className = 'horizontal col-'.$q;
 						}
