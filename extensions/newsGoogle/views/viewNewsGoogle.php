@@ -1,8 +1,7 @@
 <!-- News Google -->
-<?php //print_r($content);?>
 <section class="newsgoogle">
 	<div class="newsgoogle-content <?php if ($slider) {?>swiper-container<?php }?>">
-
+		<?php if (isset($content['title'])) {?><h2><?= $content['title']?></h2><?php }?>
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php } else { if (isset($content['position']) && $content['position'] === 'horizontal') {?>row<?php } else {?> clearfix<?php } }?>">
 			<?php 
 				$quantity = 0;
