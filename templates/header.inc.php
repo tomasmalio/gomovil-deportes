@@ -138,6 +138,11 @@
 		</div>
 	</div>
 </div>
+<script>
+	$("#modal-{{ item.url }}").click(function() {
+		$('#{{ item.url }}').modal('show');
+	});
+</script>
 {% endfor %}
 {% else %}
 aca
