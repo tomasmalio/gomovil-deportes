@@ -33,7 +33,7 @@ section.age-control .content {
 }
 </style>
 <script>
-	var height = $(window).height();
+	var heightArticle = $('article').height();
 	var heightHeader = $('header').height();
-	$('section.age-control').css({'height': height - heightHeader});
+	$('section.age-control').css({'height': heightArticle - heightHeader});
 </script>
