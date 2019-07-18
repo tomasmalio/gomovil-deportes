@@ -18,7 +18,6 @@
 			</div>
 		</section>
 {% block htmlEnd %} {% endblock %}
-
 <style>
 section.age-control {
 	display: table;	
@@ -32,3 +31,7 @@ section.age-control .content {
 	
 }
 </style>
+<script>
+	var height = $(window).height();
+	$('section.age-control').css({'height': height - 80});
+</script>
