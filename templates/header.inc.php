@@ -46,7 +46,10 @@
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
 							<div class="modal-body">
-							<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
+								<div class="age-control">
+									<img src="/images/header/modal/imge-age-control.svg" name="agecontrol" title="" alt="">
+								</div>
+								<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Volver</button>
