@@ -7,7 +7,7 @@
 	{% if age_control == true %} 
 	<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 	{% else %}
-	{% set ageItem = item %}
+	{% set ageItem = {item} %}
 	<li><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 	{% endif %}
 	{% else %}
@@ -16,7 +16,8 @@
 	{% endfor %}
 </ul>
 {% if ageItem is not empty %}
-<div id="{{ ageItem.url }}" class="modal hide fade modal-age-control" tabindex="-1">
+{% for item in ageItem %}
+<div id="{{ item.url }}" class="modal hide fade modal-age-control" tabindex="-1">
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -29,7 +30,7 @@
 		</div>
 		<div class="modal-footer">
 			<form action="/" method="post">
-				<input type="hidden" name="url" value="{{ ageItem.url }}">
+				<input type="hidden" name="url" value="{{ item.url }}">
 				<input type="hidden" name="ageControl" value="1">
 				<button type="button" class="btn-close-age-control" data-dismiss="modal" aria-hidden="true">Volver</button>
 				<button type="submit" name="submit" class="btn-age-control">Soy mayor de 18 años</button>
@@ -37,4 +38,5 @@
 		</div>
 	</div>
 </div>
+{% endfor %}
 {% endif %}
