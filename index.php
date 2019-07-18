@@ -27,7 +27,6 @@
 	/* Getting sections */
 	$s 	= $_GET['s'];
 
-	echo $s;
 	/* Filters */
 	foreach($_GET as $key => $value) {
 		$filters[] = $value;
@@ -39,7 +38,7 @@
 
 	if (isset($_POST['ageControl'])) {
 		$_SESSION['age_control'] = true;
-		header('Location: /'.$s);
+		header('Location: /' . $_POST['url']);
 		exit;
 	}
 
