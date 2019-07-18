@@ -124,6 +124,7 @@
 </section>
 <?php } else {?>
 <section class="videosfootballgomovil">
+	<?php if ($content['title']){?><h3><?=$content['title']?></h3><?php }?>
 	<div class="videosfootballgomovil-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-videos <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
