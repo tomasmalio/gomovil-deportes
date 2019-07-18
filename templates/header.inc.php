@@ -36,6 +36,9 @@
 					{% set ageControl = '' %}
 					{% if item.age_control is not empty %}
 					{% set ageControl = 'id=modal-age-control' %}
+					{% if age_control == true %} 
+					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
+					{% else %}
 					<li {{ ageControl }}><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 					<div id="{{ item.url }}" class="modal hide fade modal-age-control" tabindex="-1">
 						<div class="modal-content">
@@ -55,6 +58,7 @@
 							</div>
 						</div>
 					</div>
+					{% endif %}
 					{% else %}
 					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% endif %}
