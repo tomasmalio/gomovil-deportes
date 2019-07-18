@@ -37,6 +37,23 @@
 					{% if item.age_control is not empty %}
 					{% set ageControl = 'id=modal-age-control' %}
 					<li {{ ageControl }}><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
+					<div id="{{ item.url }}" class="modal hide fade modal-age-control" tabindex="-1">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+							<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Volver</button>
+								<form action="" method="post">
+									<input type="hidden" name="url" value="{{ item.url }}"> 
+									<button type="button" name="ageControl" class="btn btn-primary" value="1">Soy mayor de 18 años</button>
+								</form>
+							</div>
+						</div>
+					</div>
 					{% else %}
 					<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 					{% endif %}
@@ -111,17 +128,3 @@
 	</div>
 </header>
 <!-- Eof Header -->
-<div id="las-nenas" class="modal hide fade modal-age-control" tabindex="-1">
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		</div>
-		<div class="modal-body">
-		<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn">Volver</button>
-			<button type="button" class="btn btn-primary">Soy mayor de 18 años</button>
-		</div>
-	</div>
-</div>

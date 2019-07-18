@@ -36,6 +36,10 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
+	if (isset($_POST['ageControl'])) {
+		$_SESSION['age_control'] = true;
+	}
+
 	/**
 	 * Client definitions
 	 */
@@ -72,9 +76,14 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
+
+	if (isset($section['age_control']) && $section['age_control'] && !$_SESSION['age_control'])  {
+		header('Location: index.php');
+		exit;
+	}
 
 	/**
 	 * Naming sections & subsections
