@@ -11,28 +11,35 @@
 @news-slider-content-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
 @news-slider-content-display: block;
 
+/* News Title */
+@news-title-font-family: @h3-font-family;
+@news-title-font-weight: @h3-font-weight;
+@news-title-font-size: @h3-font-size;
+@news-title-color: #3B3B3B;
+@news-title-padding: 0 0 15px 0;
+
 /* Horizontal */
 @news-horizontal-height: 380px;
 @news-horizontal-content-border-radius: @news-slider-content-border-radius;
 @news-horizontal-content-box-shadow: @news-slider-content-box-shadow;
 @news-horizontal-content-display: @news-slider-content-display;
 
-@news-image-border-radius: 10px;
-@news-image-width: 260px;
-@news-image-float: left;
+@news-content-image-border-radius: 10px;
+@news-content-image-width: 260px;
+@news-content-image-float: left;
 
-@news-time-color: #3B3B3B;
-@news-time-font-size: 10pt;
+@news-content-time-color: #3B3B3B;
+@news-content-time-font-size: 10pt;
 
-@news-title-color: #3B3B3B;
-@news-title-font-family: @h3-font-family;
-@news-title-font-size: @h3-font-size;
-@news-title-font-weight: @h3-font-weight;
+@news-content-title-color: #3B3B3B;
+@news-content-title-font-family: @h3-font-family;
+@news-content-title-font-size: @h3-font-size;
+@news-content-title-font-weight: @h3-font-weight;
 
-@news-text-color: #3B3B3B;
-@news-text-font-family: @p-font-family;
-@news-text-font-size: 11pt;
-@news-text-font-weight: @p-font-weight;
+@news-content-text-color: #3B3B3B;
+@news-content-text-font-family: @p-font-family;
+@news-content-text-font-size: 11pt;
+@news-content-text-font-weight: @p-font-weight;
 
 /* News featured */
 @news-featured-border-radius: 10px;
@@ -81,6 +88,13 @@
 /* News list */
 section.newssportsgomovil {
 	position: relative;
+	h3 {
+		font-family: @news-title-font-family;
+		font-size: @news-title-font-size;
+		font-weight: @news-title-font-weight;	
+		color: @news-title-color;
+		padding: @news-title-padding;
+	}
 	/* List of news */
 	.list-news {
 		li {
@@ -92,9 +106,9 @@ section.newssportsgomovil {
 			}
 			a {
 				.content-image {
-					.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
-					float: @news-image-float;
-					width: @news-image-width;
+					.border-radius(@news-content-image-border-radius 0 0 @news-content-image-border-radius);
+					float: @news-content-image-float;
+					width: @news-content-image-width;
 					line-height: 0;
 					padding: 0;
 					margin: 0;
@@ -108,7 +122,7 @@ section.newssportsgomovil {
 						margin: 0;
 						overflow: hidden;
 						.image {
-							.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
+							.border-radius(@news-content-image-border-radius 0 0 @news-content-image-border-radius);
 							height: auto;
 							line-height: 0;
 							position: absolute;
@@ -119,7 +133,7 @@ section.newssportsgomovil {
 							display: flex;
 							.align-items(center);
 							img {
-								.border-radius(@news-image-border-radius 0 0 @news-image-border-radius);
+								.border-radius(@news-content-image-border-radius 0 0 @news-content-image-border-radius);
 								max-height: 100%;
 								width: auto;
 							}
@@ -139,25 +153,25 @@ section.newssportsgomovil {
 					}
 				}
 				.news-content {
-					padding-left: @news-image-width + 20;
+					padding-left: @news-content-image-width + 20;
 					time {
-						color: @news-time-color;
-						font-size: @news-time-font-size;
+						color: @news-content-time-color;
+						font-size: @news-content-time-font-size;
 						padding-bottom: 10px;
 					}
 					h2 {
-						color: @news-title-color;
-						font-family: @news-title-font-family;
-						font-size: @news-title-font-size;
-						font-weight: @news-title-font-weight;
+						color: @news-content-title-color;
+						font-family: @news-content-title-font-family;
+						font-size: @news-content-title-font-size;
+						font-weight: @news-content-title-font-weight;
 						padding-top: 8px;
 						padding-bottom: 8px;
 					}
 					h3 {
-						color: @news-text-color;
-						font-family: @news-text-font-family;
-						font-size: @news-text-font-size;
-						font-weight: @news-text-font-weight;
+						color: @news-content-text-color;
+						font-family: @news-content-text-font-family;
+						font-size: @news-content-text-font-size;
+						font-weight: @news-content-text-font-weight;
 					}
 				}
 			}
@@ -177,13 +191,13 @@ section.newssportsgomovil {
 				.content-image {
 					float: none;
 					width: 100%;
-					.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+					.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 					.image {
-						.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						float: none !important;
 						width: 100%;
 						img {
-							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+							.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						}
 					}
 				}
@@ -202,13 +216,13 @@ section.newssportsgomovil {
 				.content-image {
 					float: none;
 					width: 100%;
-					.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+					.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 					.image {
-						.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+						.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						float: none !important;
 						width: 100%;
 						img {
-							.border-radius(@news-image-border-radius @news-image-border-radius 0 0);
+							.border-radius(@news-content-image-border-radius @news-content-image-border-radius 0 0);
 						}
 					}
 				}

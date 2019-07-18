@@ -1,5 +1,6 @@
 <!-- News -->
 <section class="newssportsgomovil">
+	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
 	<div class="newssportsgomovil-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-news <?php if ($slider) {?>swiper-wrapper<?php } else { if (isset($content['position']) && $content['position'] === 'horizontal') {?>row<?php } else {?> clearfix<?php } }?>">
 			<?php 
