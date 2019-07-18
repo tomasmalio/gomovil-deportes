@@ -2,12 +2,12 @@
 	<li class="logo"><a href="/"><img src="/images/header/{{ logo }}" name="logo" title="" alt=""></a></li>
 	{% for item in menu %}
 
-	{% set ageItem = '' %}
+	{% set array = [] %}
 	{% if item.age_control is not empty %}
 	{% if age_control == true %} 
 	<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 	{% else %}
-	{% set ageItem = {'item'} %}
+	{% set array = array|merge([{item}]) %}
 	<li><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
 	{% endif %}
 	{% else %}
@@ -15,8 +15,8 @@
 	{% endif %}
 	{% endfor %}
 </ul>
-{% if ageItem is not empty %}
-{% for item in ageItem %}
+{% if array is not empty %}
+{% for item in array %}
 <div id="{{ item.url }}" class="modal hide fade modal-age-control" tabindex="-1">
 	<div class="modal-content">
 		<div class="modal-header">
