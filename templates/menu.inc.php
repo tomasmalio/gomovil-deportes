@@ -9,7 +9,7 @@
 		<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
 		{% else %}
 		{% set array = array|merge([{url: item.url}]) %}
-		<li><a href="#{{ item.url }}" data-toggle="modal">{{ item.title }}</a></li>
+		<li data-target="#{{ item.url }}" data-toggle="modal">{{ item.title }}</li>
 		{% endif %}
 		{% else %}
 		<li><a href="/{{ item.url }}">{{ item.title }}</a></li>
