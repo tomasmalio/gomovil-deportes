@@ -139,9 +139,10 @@
 	</div>
 </div>
 <script type="text/javascript">
-	
-	$("#modal-{{ item.url }}").click(function(){
-		$("#{{ item.url }}").show();
+
+	$("#modal-{{ item.url }}").click(function() {
+		$('body').addClass('modal-open');
+		$('#{{ item.url }}').modal('show');
 	});
 </script>
 {% endfor %}
