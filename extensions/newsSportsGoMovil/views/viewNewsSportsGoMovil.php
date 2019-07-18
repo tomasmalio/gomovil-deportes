@@ -8,7 +8,7 @@
 				$newsContent = $content['content'];
 				
 				foreach ($newsContent as $news) {
-					if (!isset($content['article_id']) || (isset($content['article_id']) && $content['article_id'] == $news['id'])) {
+					if (!isset($content['article']) || (isset($content['article']) && $content['article'] == $news['id'])) {
 						/**
 						 * Creating the type of display content we
 						 * want to do.
