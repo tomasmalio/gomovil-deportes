@@ -1,6 +1,40 @@
 <?php
 	if (count($content['content']) > 0){
-		if (!IS_MOBILE) {
+		if ($content['type' == 'list']) {
+			// Define columns sizes
+			if (IS_MOBILE) {
+				$col = 12 / $content['columns']['mobile'];
+			} else {
+				$col = 12 / $content['columns']['desktop'];
+			}
+?>
+<section class="videosfootballgomovil">
+	<div class="row videosfootballgomovil-content">
+		<?php
+			$quantity = 0;
+			$videoContent = $content['content'];
+			foreach ($videoContent as $video) {
+		?>
+		<div class="col-<?=$col?>">
+			<div class="video-content">
+				<video style="max-height:234px; width:100%" x-webkit-airplay="allow" ng-switch-when="2" class="videoPlayer" preload="metadata" controls="" poster="<?=$video->preview?>">
+					<source src="<?=$video->video?>" type="video/mp4">
+				</video>
+				<div class="video-description"><?=$video->nombre?></div>
+			</div>
+		</div>
+		<?php 
+				$quantity++;
+				if (isset($items) && $quantity === $items) {
+					break;
+				}
+			}
+		?>
+	</div>
+</div>
+<?php
+		} else {
+			if (!IS_MOBILE) {
 ?>
 <script type="text/javascript" async>
 	//<![CDATA[
@@ -161,7 +195,8 @@
 		<?php }?>
 	</div>
 </section>
-<?php 
-		}
+<?php
+			} // Eof type
+		} // Eof validation mobile or desktop
 	}
 ?>
