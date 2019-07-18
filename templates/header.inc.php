@@ -118,7 +118,7 @@
 	</div>
 	<div class="modal-body">aca</div>
 	<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
+		<button type="button" data-dismiss="modal" class="btn">Close</button>
+		<button type="button" class="btn btn-primary">Save changes</button>
 	</div>
 </div>
