@@ -402,13 +402,24 @@
 	 */
 	$template = $twig->load('generateIndex.html');
 	
+	if ($section['age_control'] && !$_SESSION['age_control']) { 
+		$template = '-age-control';
+	} else {
+		if (isset($section['layout_id'])) {
+			$template = $section['layout_id'];
+		} else {
+			$template = 1;
+		}
+	}
+	echo $template;
+
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 		'globalStyle'				=> $globalStyle,
 		'assetsStyle'				=> $assetsConstructor->generateAssets($assets['css']),
 		'assetsJs'					=> $assetsConstructor->generateAssets($assets['js']),
 		'widgets'					=> $widgets,
-		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
+		'template'					=> $template,
 		//'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
 		'logo'						=> $client['logo'],
 		'menu'						=> $menu,
