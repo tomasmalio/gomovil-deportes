@@ -17,9 +17,7 @@
 		</section>
 {% block htmlEnd %} {% endblock %}
 <script>
-	var heightArticle = $('article').height();
+	var heightArticle = $(window).height();
 	var heightHeader = $('header').height();
-	console.log(heightArticle);
-	console.log(heightHeader);
-	$('section.age-control').css({'height': heightArticle - heightHeader});
+	$('section.age-control').css({'height': heightArticle - heightHeader - 20});
 </script>
