@@ -17,7 +17,7 @@
 
 @news-slider-width: 30%;
 @news-slider-width-responsive: 80%;
-@news-slider-height: 380px;
+@news-slider-height: 350px;
 
 @news-slider-content-border-radius: 10px;
 @news-slider-content-box-shadow: 0px 0px 10px -3px #d4d4d4cc;
@@ -177,6 +177,7 @@ section.newsgoogle {
 				display: @news-slider-content-display;
 				.border-radius(@news-slider-content-border-radius);
 				.box-shadow(@news-slider-content-box-shadow);
+				height: @news-slider-height;
 				padding: @news-slider-content-padding;
 				.content-image {
 					float: none;
@@ -208,8 +209,9 @@ section.newsgoogle {
 		li.horizontal {
 			height: @news-slider-height;
 			a {
-				width: 100%;
+				height: @news-horizontal-height;
 				padding: 0;
+				width: 100%;
 				.content-image {
 					float: none;
 					width: 100%;
