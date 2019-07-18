@@ -402,8 +402,6 @@
 	 */
 	$template = $twig->load('generateIndex.html');
 	
-	($section['age_control'] && !$_SESSION['age_control']) ? echo '-age-control' : ((isset($section['layout_id'])) ? echo $section['layout_id'] : echo 1);
-	exit;
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 		'globalStyle'				=> $globalStyle,
