@@ -23,7 +23,6 @@
 			if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image != '' || $social->video != ''))) {
 				if ($social->image) {
 					$quantity++;
-					//$randomLetter = substr(str_shuffle(str_repeat("abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 					$imageSize = getimagesize($social->image);
 				}
 	?>

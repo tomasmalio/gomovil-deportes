@@ -1,5 +1,5 @@
 <section class="newstrendio">
-	<h2><?= $content['title']?></h2>
+	<?php if ($content['title']) {?><h2><?= $content['title']?></h2><?php }?>
 	<div class="newstrendio-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<?php if ($content['news']) {?>
 		<ul class="<?php if (!$slider) {?>row <?php }?>list-trendio <?php if ($slider) {?>swiper-wrapper<?php }?>">
