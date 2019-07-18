@@ -1,7 +1,7 @@
 {% block htmlStart %} {% endblock %}
-		<section>
-			<div class="row">
-				<div class="col-12">
+		<section class="age-control">
+			<div class="content">
+				<div class="table">
 					<div class="image-age-control">
 						<img src="/images/header/modal/imge-age-control.svg" name="agecontrol" title="" alt="">
 					</div>
@@ -18,3 +18,17 @@
 			</div>
 		</section>
 {% block htmlEnd %} {% endblock %}
+
+<style>
+section.age-control {
+	display: table;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	text-align: center;
+}
+section.age-control .content {
+	display: table-cell;
+	text-align: center;
+}
+</style>
