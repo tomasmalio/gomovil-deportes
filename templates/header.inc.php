@@ -49,7 +49,7 @@
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Volver</button>
 								<form action="/" method="post">
 									<input type="hidden" name="url" value="{{ item.url }}">
-									<button type="button" name="ageControl" class="btn btn-primary" value="1">Soy mayor de 18 años</button>
+									<button type="submit" name="ageControl" class="btn btn-primary" value="1">Soy mayor de 18 años</button>
 								</form>
 							</div>
 						</div>
