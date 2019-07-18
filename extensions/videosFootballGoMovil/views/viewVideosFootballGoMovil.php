@@ -1,6 +1,6 @@
 <?php
 	if (count($content['content']) > 0){
-		if ($content['type' == 'grid']) {
+		if ($content['type'] == 'grid']) {
 			// Define columns sizes
 			if (IS_MOBILE) {
 				$col = 12 / $content['columns']['mobile'];
