@@ -13,7 +13,7 @@
 		<?php 
 			$quantity = 0;
 			foreach ($toptrends as $social) {
-				if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social->image != '' || $social->video != ''))) {
+				if ((!isset($content['social_image'])) || (isset($content['social_image']) && $content['social_image'] && ($social['image'] != '' || $social['video'] != ''))) {
 					if ($social['image']) {
 						$quantity++;
 						$imageSize = getimagesize($social['image']);
@@ -64,7 +64,7 @@
 				</div>
 				<!-- Eof card -->
 				<?php 
-					if ($social->image) {
+					if ($social['image']) {
 				?>
 				<script type="text/javascript">
 					var mediaSize = imageResize(<?=$imageSize[0]?>, <?=$imageSize[1]?>, $(".social-post").innerWidth());
