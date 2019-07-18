@@ -1,0 +1,18 @@
+<section>
+	<div class="row">
+		<div class="col-12">
+			<div class="image-age-control">
+				<img src="/images/header/modal/imge-age-control.svg" name="agecontrol" title="" alt="">
+			</div>
+			<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
+		</div>
+		<div class="col-12">
+			<form action="/" method="post">
+				<input type="hidden" name="url" value="{{ item.url }}">
+				<input type="hidden" name="ageControl" value="1">
+				<button type="button" class="btn-close-age-control" data-dismiss="modal" aria-hidden="true">Volver</button>
+				<button type="submit" name="submit" class="btn-age-control">Soy mayor de 18 años</button>
+			</form>
+		</div>
+	</div>
+</section>

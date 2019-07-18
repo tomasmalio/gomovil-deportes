@@ -83,10 +83,10 @@
 	$db->execute();
 	$section = $db->fetch();
 
-	if (isset($section['age_control']) && $section['age_control'] && !$_SESSION['age_control'])  {
-		header('Location: index.php');
-		exit;
-	}
+	// if (isset($section['age_control']) && $section['age_control'] && !$_SESSION['age_control'])  {
+	// 	header('Location: index.php');
+	// 	exit;
+	// }
 
 	/**
 	 * Naming sections & subsections
@@ -408,7 +408,8 @@
 		'assetsStyle'				=> $assetsConstructor->generateAssets($assets['css']),
 		'assetsJs'					=> $assetsConstructor->generateAssets($assets['js']),
 		'widgets'					=> $widgets,
-		'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
+		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
+		//'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
 		'logo'						=> $client['logo'],
 		'menu'						=> $menu,
 		'country'					=> COUNTRY_CODE,
