@@ -413,5 +413,5 @@
 		'logo'						=> $client['logo'],
 		'menu'						=> $menu,
 		'country'					=> COUNTRY_CODE,
-		'age_control'				=> (isset($_SESSION['age_control'])) ? $_SESSION['age_control'] : false,
+		'url'						=> $_SERVER['REQUEST_URI'],
 	]);

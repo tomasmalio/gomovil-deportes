@@ -25,7 +25,7 @@
 		<script src="/assets/masonry/imageresize/masonry.imageresize.js"></script>
 		<body>
 			<div id="sb-site">
-				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country, 'age_control': age_control} %}
+				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 				<article>
 					<div class="container-fluid">
 {% endblock %}
@@ -76,7 +76,7 @@
 			</footer> -->
 			<!-- Eof Footer -->
 		</div>
-		{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country, 'age_control': age_control} %}
+		{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>		
 		<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript">
@@ -91,6 +91,7 @@
 				$("#sb-site").removeAttr( 'style' );
 				$("#sb-site").css('z-index','initial');
 			});
+			
 			// $(document).imagesLoaded()
 			// 	// images have loaded
 			// 	.done( function( instance ) {
