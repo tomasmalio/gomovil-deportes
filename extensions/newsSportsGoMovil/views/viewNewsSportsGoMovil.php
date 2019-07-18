@@ -8,31 +8,32 @@
 				$newsContent = $content['content'];
 				
 				foreach ($newsContent as $news) {
-					/**
-					 * Creating the type of display content we
-					 * want to do.
-					 * Options:
-					 * 	- slider: true | false
-					 * 	- position: horizontal | vertical
-					 **/ 
-					$className = '';
-					if ($slider) {
-						$className = 'swiper-slide';
-					} else {
-						if (isset($content['position']) && $content['position'] === 'horizontal') {
-							if (isset($content['columns']['mobile']) || isset($content['columns']['desktop'])) {
-								if (isset($content['columns']['mobile']) && IS_MOBILE) {
-									$val = 12 / $content['columns']['mobile'];
-								} elseif (isset($content['columns']['desktop']) && !IS_MOBILE)  {
-									$val = 12 / $content['columns']['desktop'];
+					if (!isset($content['article_id']) || (isset($content['article_id']) && $content['article_id'] == $news['id'])) {
+						/**
+						 * Creating the type of display content we
+						 * want to do.
+						 * Options:
+						 * 	- slider: true | false
+						 * 	- position: horizontal | vertical
+						 **/ 
+						$className = '';
+						if ($slider) {
+							$className = 'swiper-slide';
+						} else {
+							if (isset($content['position']) && $content['position'] === 'horizontal') {
+								if (isset($content['columns']['mobile']) || isset($content['columns']['desktop'])) {
+									if (isset($content['columns']['mobile']) && IS_MOBILE) {
+										$val = 12 / $content['columns']['mobile'];
+									} elseif (isset($content['columns']['desktop']) && !IS_MOBILE)  {
+										$val = 12 / $content['columns']['desktop'];
+									}
+								} else {
+									$val = 12 / $items;
 								}
-							} else {
-								$val = 12 / $items;
+								$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
+								$className = 'horizontal col-'.$q;
 							}
-							$q = ((strpos($val, '.')) ? (ceil($val)) : $val);
-							$className = 'horizontal col-'.$q;
 						}
-					}
 			?>
 			<li class="<?=$className;?>">
 				<a href="/<?= strtolower($content['titles']['news'][COUNTRY_CODE]) . '/'. strtolower($content['titles']['article'][COUNTRY_CODE]) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
@@ -57,9 +58,10 @@
 				</a>
 			</li>
 			<?php 
-					$quantity++;
-					if (isset($items) && $quantity === $items) {
-						break;
+						$quantity++;
+						if (isset($items) && $quantity === $items) {
+							break;
+						}
 					}
 				}
 			?>
