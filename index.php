@@ -27,6 +27,7 @@
 	/* Getting sections */
 	$s 	= $_GET['s'];
 
+	echo $s;
 	/* Filters */
 	foreach($_GET as $key => $value) {
 		$filters[] = $value;
