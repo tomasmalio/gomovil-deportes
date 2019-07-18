@@ -690,7 +690,7 @@
 		 * @return		string		Return the social text with http in the links of users and hasthags
 		 */
 		public function convertSocialLinks ($str, $network) {
-			$regex = "/[@#](\w+)/";
+			$regex = "/[@#](.+)/";
 		
 			switch ($network) {
 				case 'twitter':
