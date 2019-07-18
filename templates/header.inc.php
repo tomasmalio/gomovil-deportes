@@ -114,13 +114,14 @@
 <div id="las-nenas" class="modal hide fade modal-age-control" tabindex="-1">
 	<div class="modal-content">
 		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Responsive</h3>
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		</div>
-		<div class="modal-body">aca</div>
+		<div class="modal-body">
+		<p>Para acceder a esta sección, tiene que ser mayor de 18 años.</p>
+		</div>
 		<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
+			<button type="button" data-dismiss="modal" class="btn">Volver</button>
+			<button type="button" class="btn btn-primary">Soy mayor de 18 años</button>
 		</div>
 	</div>
 </div>
