@@ -76,7 +76,9 @@
 			</footer> -->
 			<!-- Eof Footer -->
 		</div>
-		{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
+		<div class="sb-slidebar sb-right">
+			{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
+		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>		
 		<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript">
