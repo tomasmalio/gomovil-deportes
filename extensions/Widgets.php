@@ -146,8 +146,6 @@
 						if (isset($this->options['scripts'][1])){
 							$var = $this->options['scripts'][1]['content'];
 							if (isset($content['slider_position'])) {
-								echo $content['slider_position'];
-								exit;
 								$var = str_replace("initialSlide: '{@initialSlide},'", "initialSlide: ".($content['slider_position']-1).",", $var);
 							} else {
 								$var = str_replace("initialSlide: '{@initialSlide},'", "", $var);
