@@ -1,4 +1,3 @@
-<pre><?php print_r($content)?></pre>
 <?php
 	$nextMatches = $content['content']['fixture'];
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
