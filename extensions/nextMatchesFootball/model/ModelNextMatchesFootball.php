@@ -84,6 +84,9 @@
 			} elseif (isset($array['actual_date']) && is_numeric($array['actual_date'])) {
 				echo "aca";
 				self::setSliderPosition($array['actual_date']);
+			} else {
+				echo $array['actual_date'];
+				echo 'numero '.is_numeric($array['actual_date']);
 			}
 			echo $this->setSliderPosition;
 			exit;
