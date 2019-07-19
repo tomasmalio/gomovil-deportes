@@ -5,7 +5,7 @@
 <!-- Next matches football -->
 <section class="nextmatchesfootball">
 	<h2><?= $content['title'];?></h2>
-	<div class="nextmatchesfootball-content <?php if ($slider) {?>swiper-container swiper-init<?php }?>" <?php if ($slider && is_numeric($content['content']['actual_date'])){?>data-swiper="{'initialslide': '<?=$content['content']['actual_date']?>'}"<?php }?>>
+	<div class="nextmatchesfootball-content <?php if ($slider) {?>swiper-container swiper-init<?php }?>" <?php if ($slider && is_numeric($content['content']['actual_date'])){?>data-initialslide="<?=($content['content']['actual_date'] - 1)?>"<?php }?>>
 		<?php if ($navigation) {?>
 		<div class="swiper-button-next"></div>
 		<div class="swiper-button-prev"></div>
