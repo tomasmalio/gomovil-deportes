@@ -73,6 +73,7 @@
 			if (isset($array['actual_date']) && !$array['actual_date']) {
 				$q = 0;
 				foreach ($array as $key => $a) {
+					echo $key;
 					if ($key == $array['actual_date']) {
 						self::setSliderPosition($q);
 						break;
