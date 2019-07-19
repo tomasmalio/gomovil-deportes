@@ -81,6 +81,8 @@
 			} elseif (isset($array['actual_date']) && is_numeric($array['actual_date'])) {
 				self::setSliderPosition($array['actual_date']);
 			}
+			echo $this->setSliderPosition;
+			exit;
 			return array_merge($array, ['slider_position' => $this->sliderPosition]);
 		}
 
