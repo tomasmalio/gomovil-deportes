@@ -93,36 +93,6 @@
 				$("#sb-site").removeAttr( 'style' );
 				$("#sb-site").css('z-index','initial');
 			});
-			
-			// $(document).imagesLoaded()
-			// 	// images have loaded
-			// 	.done( function( instance ) {
-			// 		console.log('all images successfully loaded');
-			// 		$('.grid').masonry({
-			// 			itemSelector: '.grid-item',
-			// 			gutter: 0,
-			// 			originLeft: false
-			// 		});
-			// 	})
-			// 	.fail( function() {
-			// 	//console.log('all images loaded, at least one is broken');
-			// 	})
-			// 	.progress( function( instance, image ) {
-			// 	//var result = image.isLoaded ? 'loaded' : 'broken';
-			// 	//console.log( 'image is ' + result + ' for ' + image.img.src );
-			// 	});
-			// $('.grid').masonry({
-			// 	itemSelector: '.grid-item',
-			// 	columnWidth: '.grid-sizer',
-			// 	percentPosition: true,
-			// 	gutter: 0
-			// 	// originLeft: false
-			// });
-			$('.grid').masonry({
-				itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
-				columnWidth: '.grid-sizer',
-				percentPosition: true
-			});
 		</script>
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -133,6 +103,13 @@
 		{% for asset in assetsJs %}
 			{{asset | raw}}
 		{% endfor %}
+		<script type="text/javascript">
+			$('.grid').masonry({
+				itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+				columnWidth: '.grid-sizer',
+				percentPosition: true
+			});
+		</script>
 	</body>
 </html>
 {% endblock %}
