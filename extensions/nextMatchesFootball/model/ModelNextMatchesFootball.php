@@ -69,15 +69,17 @@
 
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
-			print_r($array);
+			
 			if (isset($array['actual_date']) && !is_numeric($array['actual_date'])) {
+				echo "aca2";
 				$q = 0;
-				foreach ($array as $key => $a) {
+				foreach ($array['fixture'] as $key => $a) {
 					echo $key;
 					if ($key == $array['actual_date']) {
 						self::setSliderPosition($q);
 						break;
 					}
+					$q++;
 				}
 			} elseif (isset($array['actual_date']) && is_numeric($array['actual_date'])) {
 				echo "aca";
