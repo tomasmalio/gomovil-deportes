@@ -81,7 +81,9 @@
 			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
 				self::setSliderPosition($array['fecha_actual']);
 			}
-			return array_merge($array, ['slider_position' => $this->sliderPosition]);
+			$array = array_merge($array, ['slider_position' => $this->sliderPosition]);
+			print_r($array);
+			exit;
 		}
 
 		private function getTournaments ($type, $name) {
