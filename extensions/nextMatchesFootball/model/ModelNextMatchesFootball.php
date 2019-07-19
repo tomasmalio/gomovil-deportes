@@ -8,6 +8,9 @@
 		// Url tournaments content JSON
 		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
+		// Slider position
+		private $sliderPosition = 0;
+
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -65,7 +68,20 @@
 		}
 
 		private function getFixture ($key) {
-			return json_decode(file_get_contents($this->url . $key . '.json'), true);
+			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
+
+			if (isset($array['actual_date']) && !$array['actual_date']) {
+				$q = 0;
+				foreach ($array as $key => $a) {
+					if ($key == $array['actual_date']) {
+						self::setSliderPosition($q);
+						break;
+					}
+				}
+			} elseif (isset($array['actual_date']) && is_numeric($array['actual_date'])) {
+				self::setSliderPosition($array['actual_date']);
+			}
+			return array_merge($array, ['slider_position' => $this->sliderPosition]);
 		}
 
 		private function getTournaments ($type, $name) {
@@ -78,6 +94,12 @@
 						}
 					}
 				}
+			}
+		}
+
+		private function setSliderPosition ($pos) {
+			if (isset($pos) && is_numeric($pos)) {
+				$this->sliderPosition = $pos;
 			}
 		}
 	}
