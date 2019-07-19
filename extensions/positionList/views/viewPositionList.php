@@ -1,7 +1,7 @@
 <?php
 	$positions = $content['content']['positions'];
 	// Validate that there're position content
-	if (isset($positions)) {
+	if (isset($positions) && count($positions) > 0) {
 ?>
 <section class="positionlist">
 	<h2><?=$content['title']?></h2>
