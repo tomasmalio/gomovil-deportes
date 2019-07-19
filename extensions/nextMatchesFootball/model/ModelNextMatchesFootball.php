@@ -63,9 +63,7 @@
 				$typeTournament = $params['type'];
 				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
 				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				$return = Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
-				print_r($return);
-				exit;
+				return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}
 
