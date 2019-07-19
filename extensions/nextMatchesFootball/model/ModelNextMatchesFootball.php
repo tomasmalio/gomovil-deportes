@@ -63,7 +63,9 @@
 				$typeTournament = $params['type'];
 				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
 				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+				$return = Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+				print_r($return);
+				exit;
 			}
 		}
 
@@ -81,9 +83,7 @@
 			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
 				self::setSliderPosition($array['fecha_actual']);
 			}
-			$array = array_merge($array, ['slider_position' => $this->sliderPosition]);
-			print_r($array);
-			exit;
+			return array_merge($array, ['slider_position' => $this->sliderPosition]);
 		}
 
 		private function getTournaments ($type, $name) {
