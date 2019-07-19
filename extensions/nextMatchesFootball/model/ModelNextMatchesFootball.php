@@ -70,7 +70,7 @@
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
 
-			if (isset($array['actual_date']) && !$array['actual_date']) {
+			if (isset($array['actual_date']) && !is_numeric($array['actual_date'])) {
 				$q = 0;
 				foreach ($array as $key => $a) {
 					echo $key;
