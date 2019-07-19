@@ -77,29 +77,19 @@
 		];
 		
 		public function model ($params = []) {
-			//if ($params['type'] && $params['tournament'] && $params['match']) {
-			//	$typeTournament = $params['type'];
-			//	$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
 			if ($params['match']) {
 				return Widgets::multiRenameKey(self::getMatchDetails($params['match']), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}
 
 		private function getMatchDetails ($key) {
-			return json_decode(file_get_contents($this->url . $key . '.json'), true);
+			$json = @file_get_contents($this->url . $key . '.json');
+			if (strpos($http_response_header[0], "200")) { 
+				return json_decode($json);
+			} else { 
+				return null;
+			}
 		}
 
-		// private function getTournaments ($type, $name) {
-		// 	$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-		// 	foreach ($tournament as $key => $t) {
-		// 		if ($key == $type) {
-		// 			foreach ($t as $value) {
-		// 				if (Widgets::normalizeString($value['name']) == $name) {
-		// 					return $value['key'];
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 	}
 ?>
