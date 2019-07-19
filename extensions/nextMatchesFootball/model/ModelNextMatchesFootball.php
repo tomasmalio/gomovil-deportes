@@ -69,7 +69,7 @@
 
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
-			
+			print_r($array);
 			if (isset($array['actual_date']) && !is_numeric($array['actual_date'])) {
 				echo "aca2";
 				$q = 0;
