@@ -84,7 +84,7 @@
 
 		private function getMatchDetails ($key) {
 			$json = @file_get_contents($this->url . $key . '.json');
-			if (strpos($http_response_header[0], "200")) { 
+			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json);
 			} else { 
 				return null;

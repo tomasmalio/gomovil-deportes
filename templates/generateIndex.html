@@ -111,10 +111,17 @@
 			// 	//var result = image.isLoaded ? 'loaded' : 'broken';
 			// 	//console.log( 'image is ' + result + ' for ' + image.img.src );
 			// 	});
+			// $('.grid').masonry({
+			// 	itemSelector: '.grid-item',
+			// 	columnWidth: '.grid-sizer',
+			// 	percentPosition: true,
+			// 	gutter: 0
+			// 	// originLeft: false
+			// });
 			$('.grid').masonry({
-				itemSelector: '.grid-item',
-				gutter: 0,
-				originLeft: false
+				itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+				columnWidth: '.grid-sizer',
+				percentPosition: true
 			});
 		</script>
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
