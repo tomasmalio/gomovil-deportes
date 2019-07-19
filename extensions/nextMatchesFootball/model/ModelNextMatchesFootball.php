@@ -69,27 +69,18 @@
 
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
-			print_r($array);
-			if (isset($array['actual_date']) && !is_numeric($array['actual_date'])) {
-				echo "aca2";
+			if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
 				$q = 0;
 				foreach ($array['fixture'] as $key => $a) {
-					echo $key;
-					if ($key == $array['actual_date']) {
+					if ($key == $array['fecha_actual']) {
 						self::setSliderPosition($q);
 						break;
 					}
 					$q++;
 				}
-			} elseif (isset($array['actual_date']) && is_numeric($array['actual_date'])) {
-				echo "aca";
-				self::setSliderPosition($array['actual_date']);
-			} else {
-				echo $array['actual_date'];
-				echo 'numero '.is_numeric($array['actual_date']);
+			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
+				self::setSliderPosition($array['fecha_actual']);
 			}
-			echo $this->setSliderPosition;
-			exit;
 			return array_merge($array, ['slider_position' => $this->sliderPosition]);
 		}
 
