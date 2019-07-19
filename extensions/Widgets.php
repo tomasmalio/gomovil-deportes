@@ -94,7 +94,6 @@
 											loop: ".$loop.",
 											spaceBetween: ".$spacebetween.",
 											mousewheel: ".$mousewheel.",
-											initialSlide: 4,
 											navigation: {
 												nextEl: '.swiper-button-next',
 												prevEl: '.swiper-button-prev',
