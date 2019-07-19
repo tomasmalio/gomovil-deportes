@@ -143,14 +143,14 @@
 						$model = new $name();
 						$content = $model->model($params['data']['content']);
 
-						if (isset($content['slider_position'])) {
-							if (isset($this->options['scripts'][1])){
-								$var = $this->options['scripts'][1]['content'];
+						if (isset($this->options['scripts'][1])){
+							$var = $this->options['scripts'][1]['content'];
+							if (isset($content['slider_position'])) {
 								$var = str_replace("initialSlide: '{@initialSlide}'", "initialSlide: ".($content['slider_position']-1), $var);
-								$this->options['scripts'][1]['content'] = $var;
+							} else {
+								$var = str_replace("initialSlide: '{@initialSlide}'", "", $var);
 							}
-						} else {
-							$this->options['scripts'][1]['content'] = str_replace("initialSlide: '{@initialSlide}'", "", $this->options['scripts'][1]['content']);
+							$this->options['scripts'][1]['content'] = $var;
 						}
 					}
 				} catch (Exception $e) {
