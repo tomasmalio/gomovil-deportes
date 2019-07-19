@@ -42,17 +42,6 @@
 						 * separated from the main content
 						 */
 						if ($key == 'content') {
-							// if (isset($value['words'])) {
-							// 	if (!isset($value['words']['title'])) {
-							// 		$value['words']['title'] = $value['section'][COUNTRY_CODE];
-							// 	}
-							// } else {
-							// 	$value['words']['title'] = $value['section'][COUNTRY_CODE];
-							// }
-							// $includeContent['words'] = $value['words'];
-							// if (isset($value['title'])) {
-							// 	$includeContent['title'] = $value['title'];
-							// }
 							$this->content = $value;
 							if (isset($value['words'])) {
 								unset($this->content['words']);
@@ -156,11 +145,6 @@
 				} catch (Exception $e) {
 					$e->getMessage();
 				}
-				//}
-				// Changing naming content before created
-				// if (isset($this->renameVerify)) {
-				// 	$content = self::multiRenameKey($content, $this->renameVerify['wrong'], $this->renameVerify['verify']);
-				// }
 				
 			} else {
 				$content = null;
@@ -170,18 +154,7 @@
 			 * If the extension has words (title, buttons, etc) we merge with
 			 * the content array.
 			 */
-			//print_r($content);
 			$this->content['content'] = $content;
-			// if (!is_array($this->content)) {
-			// 	$this->content = [];
-			// }
-			// if (is_array($includeContent['words'])) {
-			// 	$this->content = array_merge($this->content, $includeContent['words']);
-			// }
-			// if (is_array($includeContent['title']) && (!isset($includeContent['words']['title']))) {
-			// 	$this->content['title'] = $includeContent['title'];
-			// }
-			// print_r($this->content);
 		}
 		
 		/**
