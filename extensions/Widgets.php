@@ -94,6 +94,7 @@
 											loop: ".$loop.",
 											spaceBetween: ".$spacebetween.",
 											mousewheel: ".$mousewheel.",
+											initialSlide: '{@initialSlide}',
 											navigation: {
 												nextEl: '.swiper-button-next',
 												prevEl: '.swiper-button-prev',
@@ -140,7 +141,16 @@
 					}
 					if (isset($name)) {
 						$model = new $name();
-						$content = $model->model($params['data']['content']);	
+						$content = $model->model($params['data']['content']);
+
+						if ($params['data']['content']['actual_date']) {
+							if (isset($this->options['scripts'][1])){
+								$var = $this->options['scripts'][1]['content'];
+
+								$var = str_replace("initialSlide: '{@initialSlide}'", "initialSlide: ".$params['data']['content']['actual_date'], $var);
+								$this->options['scripts'][1]['content'] = $var;
+							}
+						}
 					}
 				} catch (Exception $e) {
 					$e->getMessage();
