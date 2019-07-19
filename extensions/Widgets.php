@@ -144,6 +144,7 @@
 						$content = $model->model($params['data']['content']);
 
 						if ($params['data']['content']['actual_date']) {
+							echo "aca";
 							if (isset($this->options['scripts'][1])){
 								$var = $this->options['scripts'][1]['content'];
 

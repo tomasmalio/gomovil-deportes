@@ -127,9 +127,6 @@
 		</div>
 		<!-- Eof next matches -->
 	</div>
-	<script type="text/javascript">
-		swiper<?=get_class($this) . $this->extensionId?>.slideTo(4);
-	</script>
 </section>
 <!-- Eof Next matches-->
 <?php }?>
