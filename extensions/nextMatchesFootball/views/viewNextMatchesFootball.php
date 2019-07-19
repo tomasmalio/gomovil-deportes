@@ -19,7 +19,7 @@
 					if ($slider) {
 			?>
 				<!-- Slider -->
-					<div class="swiper-slide<?php if ($content['content']['actual_date'] == $key) {?>swiper-slide-active<?php }?>">
+					<div class="swiper-slide">
 				<?php }?>
 				<div class="date-matches"><?php if (is_numeric($key)) { echo 'Fecha '.$key; } else { echo $content['titles']['phases'][$key][COUNTRY_CODE];}?></div>
 				<div class="competition-divider"></div>
