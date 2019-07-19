@@ -5,7 +5,7 @@
 <!-- Next matches football -->
 <section class="nextmatchesfootball">
 	<h2><?= $content['title'];?></h2>
-	<div class="nextmatchesfootball-content <?php if ($slider) {?>swiper-container swiper-init<?php }?>"<?php if (is_numeric($content['content']['actual_date'])) {?> data-initial-slide="<?= $content['content']['actual_date']?>"<?php }?>>
+	<div class="nextmatchesfootball-content <?php if ($slider) {?>swiper-container<?php }?>">
 
 		<?php if ($navigation) {?>
 		<div class="swiper-button-next"></div>
@@ -19,7 +19,7 @@
 					if ($slider) {
 			?>
 				<!-- Slider -->
-				<div class="swiper-slide">
+					<div class="swiper-slide<?php if ($content['content']['actual_date'] == $key) {?>swiper-slide-active<?php }?>">
 				<?php }?>
 				<div class="date-matches"><?php if (is_numeric($key)) { echo 'Fecha '.$key; } else { echo $content['titles']['phases'][$key][COUNTRY_CODE];}?></div>
 				<div class="competition-divider"></div>
