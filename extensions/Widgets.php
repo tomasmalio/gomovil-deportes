@@ -143,14 +143,14 @@
 						$model = new $name();
 						$content = $model->model($params['data']['content']);
 
-						if ($content['actual_date']) {
-							
+						if (isset($content['actual_date'])) {
 							if (isset($this->options['scripts'][1])){
 								$var = $this->options['scripts'][1]['content'];
-
 								$var = str_replace("initialSlide: '{@initialSlide}'", "initialSlide: ".($content['actual_date']-1), $var);
 								$this->options['scripts'][1]['content'] = $var;
 							}
+						} else {
+							$this->options['scripts'][1]['content'] = str_replace("initialSlide: '{@initialSlide}'", "", $this->options['scripts'][1]['content']);
 						}
 					}
 				} catch (Exception $e) {
