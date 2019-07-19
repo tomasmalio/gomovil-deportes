@@ -1,6 +1,7 @@
+<pre><?php print_r($content['content']);?></pre>
 <?php
 	$positions = $content['content']['positions'];
-
+	// Validate that there're position content
 	if (isset($positions)) {
 ?>
 <section class="positionlist">
