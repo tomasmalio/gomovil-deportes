@@ -1,10 +1,4 @@
-<pre>
-<?php 
-print_r($content);
-?>
-</pre>
 <?php
-
 	$match = $content['content'];
 	$interactions = $content['content']['interaction'];
 
