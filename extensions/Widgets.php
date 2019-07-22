@@ -32,7 +32,6 @@
 			unset($params['clientName']);
 			unset($params['id']);
 
-			//print_r($params);
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
@@ -305,7 +304,6 @@
 							} else {
 								// Validate if an authorize file and exits
 								if (self::validateFile($file) && file_exists($this->source . '/'. self::getExtension($file) . '/' .$file)) {
-									//$src .= '/' . self::getExtension($file);
 									$original = $this->source . '/'. self::getExtension($file) . '/' . $file;
 									$filename = $dest .'/'. basename($file, '.'. self::getExtension($file));
 									
@@ -316,8 +314,6 @@
 										// Create a copy of the original file to keep it save
 										self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
 										self::xcopy($original, $backupFile, 0755);
-										// shell_exec("chmod -R 0755 $this->temporal");
-										// shell_exec("cp -r $original $backupFile");
 										// Import global less files
 										if (!isset($options['importGlobalLess']) || $options['importGlobalLess']) {
 											self::addImportsLess($backupFile);
@@ -345,13 +341,6 @@
 										 * the original value continues
 										 */
 										if (!empty($options['styles'])) {
-											//$backupFile = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk.less';
-											
-											// Create a copy of the original file to keep it save
-											//self::createDirectory($this->temporal . '/'. self::getExtension($file), '0755');
-											//self::xcopy($original, $backupFile, 0755);
-											//shell_exec("cp -r $original $backupFile");
-
 											// Replacement of the class name
 											$newFile = file_get_contents($backupFile);
 											$newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
@@ -369,7 +358,6 @@
 											// Compile the less but first verify if the css exist
 											$less->checkedCompile($backupFile, $filename);
 										}
-										//shell_exec("rm -rf $this->temporal");
 									}
 									// File in a CSS format
 									elseif (strpos($file, 'css')) {
