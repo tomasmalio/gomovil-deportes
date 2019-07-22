@@ -370,8 +370,52 @@
 					$$variable = null;
 				}
 				if ($$variable != null) {
-					$$widget 						= $$variable->renderView(); 
-					$assetExtension 				= $$variable->assets(strtotime($extension['modify_date']));
+					$$widget 				= $$variable->renderView(); 
+
+					/**
+					 * Assets generator of extension
+					 * 
+					 * If we modify the styles or de scripts we 
+					 * generate the compile and minify.
+					 * If not we look forward for the old files 
+					 * generated before
+					 */
+					if (isset($extension['modify_status']) && $extension['modify_status']) {
+
+						$assetExtension 	= $$variable->assets(strtotime($extension['modify_date']));
+						
+						$assetCss = '';
+						$assetScript = '';
+						foreach ($assetExtension['css'] as $css) {
+							$assetCss .= $css.',';
+						}
+						foreach ($assetExtension['js'] as $js) {
+							$assetScript .= $js.',';
+						}
+						$assetCss = rtrim($assetCss,',');
+						$assetScript = rtrim($assetScript,',');
+						
+						// Update the new info for the section extension
+						$db->prepare("UPDATE section_extension 
+									  SET modify_date = '".date('Y-m-d H:i:s')."', 
+									  modify_status = '0',
+									  styles_files = '".$assetCss."',
+									  scripts_files = '".$assetScript."'
+									  WHERE id = ".$extension['idExtension'].";");
+						$db->execute();
+					} else {
+						if ($extension['styles_files'] != '') {
+							$assetExtension['css'] 	= explode(',', $extension['styles_files']);
+						} else {
+							$assetExtension['css'] = [];
+						}
+						if ($extension['scripts_files'] != '') {
+							$assetExtension['js'] 	= explode(',', $extension['scripts_files']);
+						} else {
+							$assetExtension['js'] = [];
+						}
+					}
+					
 					array_push($assets['css'], $assetExtension['css']);
 					array_push($assets['js'], $assetExtension['js']);
 					$widgets['widget'.$i]['content'] 	= $$widget;
@@ -380,7 +424,6 @@
 					} else {
 						$widgets['widget'.$i]['position'] 	= $extension['position'];
 					}
-					
 				}
 				$i++;
 			} else {
