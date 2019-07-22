@@ -377,7 +377,6 @@
 										if (!isset($options['minify']) || $options['minify']) {
 											$filename .= '.min.css';
 											(new Minify\CSS($original))->minify($filename);
-											(new Minify\CSS($original))->gzip($filename);
 										} else {
 											$filename .= '.css';
 											shell_exec("cp -r $original $filename");
@@ -427,7 +426,6 @@
 										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.min.js';
 										
 										(new Minify\JS($original))->minify($filename);
-										(new Minify\JS($original))->gzip($filename);
 									} else {
 										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.js';
 									}
