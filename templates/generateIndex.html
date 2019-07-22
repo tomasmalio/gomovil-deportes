@@ -23,11 +23,12 @@
 		<link rel="stylesheet" href="{{globalStyle}}">
 		<script src="/assets/jquery/jquery.min.js"></script>
 		<script src="/assets/masonry/imageresize/masonry.imageresize.js"></script>
-		<body>
-			<div id="sb-site">
-				{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
-				<article>
-					<div class="container-fluid">
+	</head>
+	<body>
+		<div id="sb-site">
+			{% include 'header.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
+			<article>
+				<div class="container-fluid">
 {% endblock %}
 
 {% block widget1 %}
