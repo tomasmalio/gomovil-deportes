@@ -69,7 +69,7 @@
 								/**
 								 * Creating scripts for slider
 								 */
-								if (($this->options['slider']['desktop']['display'] && !IS_MOBILE) || ($this->options['slider']['mobile']['display'] && IS_MOBILE)) {
+								if ($this->options['slider']['desktop']['display'] || $this->options['slider']['mobile']['display']) {
 									
 									// Setting variables for the swiper
 									$mousewheel = 'true';
