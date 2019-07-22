@@ -80,9 +80,11 @@
 			if ($params['match']) {
 				$match = self::getMatchDetails($params['match']);
 				$match['trends'] = '';
-				// echo "<pre>";
-				// print_r($match);
-				// echo "</pre>";
+
+				echo "<pre>";
+				print_r($match);
+				echo "</pre>";
+				exit;
 				// echo "<pre>";
 				// print_r(Widgets::multiRenameKey($match, $this->mappingName['wrong'], $this->mappingName['verify']));
 				// echo "</pre>";
