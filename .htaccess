@@ -6,3 +6,7 @@ RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)$    index.php?s=$2 [L]
 RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)$    index.php?s=$2&id=$3 [L]
 RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$    index.php?s=$2&filter1=$3&filter2=$4 [L]
 RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$		index.php?s=$2&filter1=$3&filter2=$4&filter3=$5&filter4=$6 [L]
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
