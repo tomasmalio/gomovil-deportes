@@ -33,9 +33,9 @@
 
 		public function renderView () {
 			return parent::renderViewHtml([
-					'content' 	=> $this->content,
-					'slider'	=> parent::slider(),
-					'items'		=> parent::items(),
+					'content' 		=> $this->content,
+					'slider'		=> parent::slider(),
+					'items'			=> parent::items(),
 					'pagination'	=> parent::sliderPagination(),
 					'navigation'	=> parent::sliderNavigation(),
 				],

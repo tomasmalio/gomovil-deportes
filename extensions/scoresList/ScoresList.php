@@ -3,8 +3,7 @@
 	 * Scores List
 	 */
 	class ScoresList extends Widgets {
-		public $title = 'Goleadores';
-		//
+		
 		public $content;
 
 		// Assets files
@@ -36,7 +35,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'title'				=> $this->title,
 					'content'			=> $this->content,
 				],

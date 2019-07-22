@@ -3,10 +3,7 @@
 	 * Next Matches
 	 */
 	class NextMatches extends Widgets {
-		public $content = [
-			'title' => 'Próximos partidos',
-			'titleCalendar' => 'Ver calendario',
-		];
+		public $content;
 
 		// Assets files
 		public $files = [
@@ -17,14 +14,16 @@
 		public $options = [];
 
 		public function __construct($params = []) {
-			parent::__construct($params);			
-			$this->date = date('Y-m-d');
+			parent::__construct($params);
 		}
 
 		public function renderView () {
 			return Widgets::renderViewHtml([
-					'date'				=> $this->date,
 					'content'			=> $this->content,
+					'slider'			=> parent::slider(),
+					'items'				=> parent::items(),
+					'pagination'		=> parent::sliderPagination(),
+					'navigation'		=> parent::sliderNavigation(),
 				],
 				$this->viewName
 			);

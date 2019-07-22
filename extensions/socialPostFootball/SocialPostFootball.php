@@ -18,7 +18,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content'			=> $this->content,
 				],
 				$this->viewName

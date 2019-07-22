@@ -20,7 +20,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content' 		=> $this->content,
 					'slider'		=> parent::slider(),
 					'items'			=> parent::items(),

@@ -1,9 +1,9 @@
 <section class="scores-list">
-	<h2><?=$title?></h2>
+	<?php if (isset($content['title'])){?><h2><?=$content['title']?></h2><?php }?>
 	<div class="content-list-players">
 		<div class="titles-list">
-			<div class="title-player-name">Jugador</div>
-			<div class="title-goals">Goles</div>
+			<div class="title-player-name"><?= $content['titles']['player'][COUNTRY_CODE]?></div>
+			<div class="title-goals"><?= $content['titles']['goals'][COUNTRY_CODE]?></div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="results-list">

@@ -46,7 +46,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content' 		=> $this->content,
 					'label'			=> $this->label,
 					'titleVote'		=> $this->titleVote,

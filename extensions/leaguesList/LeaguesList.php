@@ -28,8 +28,9 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content'			=> $this->content,
+					'items'				=> parent::items(),
 					'slider'			=> parent::slider(),
 					'pagination'		=> parent::sliderPagination(),
 					'navigation'		=> parent::sliderNavigation(),

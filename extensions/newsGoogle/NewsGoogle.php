@@ -39,7 +39,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content' 		=> $this->content,
 					'options'		=> $this->options['content'],
 					'slider'		=> parent::slider(),
