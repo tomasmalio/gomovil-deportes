@@ -80,6 +80,7 @@
 			if ($params['match']) {
 				$match = self::getMatchDetails($params['match']);
 				unset($match->trends);
+				unset($match->eventos);
 
 				// echo "<pre>";
 				// print_r($match);
