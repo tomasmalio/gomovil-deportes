@@ -1,8 +1,3 @@
-<pre>
-<?php 
-// print_r($content);
-?>
-</pre>
 <?php
 
 	$match = $content['content'];
