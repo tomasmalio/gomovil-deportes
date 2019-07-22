@@ -80,7 +80,9 @@
 			if ($params['match']) {
 				$match = self::getMatchDetails($params['match']);
 				// print_r($match);
+				echo "<pre>";
 				print_r(Widgets::multiRenameKey($match, $this->mappingName['wrong'], $this->mappingName['verify']));
+				echo "</pre>";
 				exit;
 				return Widgets::multiRenameKey($match, $this->mappingName['wrong'], $this->mappingName['verify']);
 			} else {
