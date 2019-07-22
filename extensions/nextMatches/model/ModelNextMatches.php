@@ -5,7 +5,7 @@
 	class ModelNextMatches {
 		
 		private $urlFootball 	= 'http://apiuf.gomovil.co/partido/partidos.json';
-		private $urlBasket		 	= 'http://apiuf.gomovil.co/partido/partidos-basquet.json';
+		private $urlBasket		= 'http://apiuf.gomovil.co/partido/partidos-basquet.json';
 		private $urlTennis 		= 'http://apiuf.gomovil.co/partido/partidos-tenis.json';
 
 		// Format content to display
