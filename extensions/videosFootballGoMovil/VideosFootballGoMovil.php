@@ -45,7 +45,7 @@
 		}
 
 		public function renderView () {
-			return parent::renderViewHtml([
+			return Widgets::renderViewHtml([
 					'content'			=> $this->content,
 					'options'			=> $this->options,
 					'slider'			=> parent::slider(),
