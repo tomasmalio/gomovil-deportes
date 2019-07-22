@@ -1,6 +1,6 @@
 <pre>
 <?php 
-// print_r($content);
+print_r($content);
 ?>
 </pre>
 <?php
