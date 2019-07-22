@@ -1,9 +1,7 @@
 <?php 
 	$match = $content['content'];
 	$interactions = $content['content']['interaction'];
-
-	print_r($match);
-	exit;
+	
 	/* Switch of each status */
 	switch ($match['status']) {
 		case 'Por comenzar':
