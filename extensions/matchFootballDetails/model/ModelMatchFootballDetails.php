@@ -79,7 +79,7 @@
 		public function model ($params = []) {
 			if ($params['match']) {
 				$match = self::getMatchDetails($params['match']);
-				$match['trends'] = '';
+				//$match['trends'] = '';
 
 				echo "<pre>";
 				print_r($match);
