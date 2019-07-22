@@ -79,7 +79,7 @@
 		public function model ($params = []) {
 			if ($params['match']) {
 				$match = self::getMatchDetails($params['match']);
-				print_r($match);
+				// print_r($match);
 				print_r(Widgets::multiRenameKey($match, $this->mappingName['wrong'], $this->mappingName['verify']));
 				exit;
 				return Widgets::multiRenameKey($match, $this->mappingName['wrong'], $this->mappingName['verify']);
