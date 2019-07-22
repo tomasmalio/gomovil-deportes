@@ -56,13 +56,23 @@
 @news-featured-content-height: 350px;
 @news-featured-content-width: 100%;
 
-@news-featured-content-label-padding: 15px 0 0 0;
-@news-featured-content-label-background: @color-second;
-@news-featured-content-label-color: white;
-@news-featured-content-label-font-size: 12pt;
+// @news-featured-content-label-padding: 15px 0 0 0;
+// @news-featured-content-label-background: @color-second;
+// @news-featured-content-label-color: white;
+// @news-featured-content-label-font-size: 12pt;
+// @news-featured-content-label-padding: 20px 8px 5px 20px;
+// @news-featured-content-label-padding-responsive: 20px 8px 5px 10px;
+// @news-featured-content-label-text-transform: uppercase;
+
 @news-featured-content-label-padding: 20px 8px 5px 20px;
 @news-featured-content-label-padding-responsive: 20px 8px 5px 10px;
-@news-featured-content-label-text-transform: uppercase;
+
+@news-featured-content-label-title-background: @color-second;
+@news-featured-content-label-title-color: white;
+@news-featured-content-label-title-font-size: 12pt;
+@news-featured-content-label-title-padding: 8px;
+@news-featured-content-label-title-text-transform: uppercase;
+
 
 @news-featured-content-title-bottom: 30px;
 @news-featured-content-title-color: white;
@@ -266,11 +276,11 @@ section.newssportsgomovil.featured {
 					padding: @news-featured-content-label-padding-responsive;
 				}
 				span {
-					background: @news-featured-content-label-background;
-					color: @news-featured-content-label-color;
-					font-size: @news-featured-content-label-font-size;
-					padding: @news-featured-content-label-padding;
-					text-transform: @news-featured-content-label-text-transform;
+					background: @news-featured-content-label-title-background;
+					color: @news-featured-content-label-title-color;
+					font-size: @news-featured-content-label-title-font-size;
+					padding: @news-featured-content-label-title-padding;
+					text-transform: @news-featured-content-label-title-text-transform;
 				}
 			}
 			h2 {
