@@ -376,6 +376,7 @@
 										// Minify the file if is not set or if it's true
 										if (!isset($options['minify']) || $options['minify']) {
 											$filename .= '.min.css';
+											(new Minify\CSS($original))->minify($filename);
 											(new Minify\CSS($original))->gzip($filename);
 										} else {
 											$filename .= '.css';
@@ -425,6 +426,7 @@
 										$original = $src .'/'. basename($file, '.js') . '.js';
 										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.min.js';
 										
+										(new Minify\JS($original))->minify($filename);
 										(new Minify\JS($original))->gzip($filename);
 									} else {
 										$filename = $dest .'/'. basename($file, '.js') . $this->extensionId . '.js';
@@ -450,6 +452,7 @@
 							// Minify the file if is not set or if it's true
 							if (!isset($options['minify']) || $options['minify']) {
 								$filename = str_replace('.js', '.min.js', $original);
+								(new Minify\JS($original))->minify($filename);
 								(new Minify\JS($original))->gzip($filename);
 							} else {
 								$filename = $original;
