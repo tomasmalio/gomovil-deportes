@@ -17,7 +17,6 @@
 			}
 ?>
 <section class="videosfootballgomovil">
-
 	<div class="videosfootballgomovil-content">
 		<?php if ($content['title']){?><h2><?=$content['title']?></h2><?php }?>
 		<div class="row">

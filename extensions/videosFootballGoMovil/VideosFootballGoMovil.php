@@ -6,8 +6,6 @@
 		// Video content
 		public $content;
 
-		public $view = 'videosFootballGoMovil';
-
 		// Assets files
 		public $files = [
 			'style'		=> ['skin.bitel.jplayer.less', 'videos-football-gomovil.less'],
@@ -45,7 +43,7 @@
 		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
+			return parent::renderViewHtml([
 					'content'			=> $this->content,
 					'options'			=> $this->options,
 					'slider'			=> parent::slider(),
