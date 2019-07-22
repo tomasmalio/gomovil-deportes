@@ -77,7 +77,7 @@
 		];
 		
 		public function model ($params = []) {
-
+			echo $params['match'];
 			if ($params['match']) {
 				return Widgets::multiRenameKey(self::getMatchDetails($params['match']), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
@@ -85,8 +85,6 @@
 
 		private function getMatchDetails ($key) {
 			$json = @file_get_contents($this->url . $key . '.json');
-			echo $json;
-			exit;
 			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json);
 			} else { 
