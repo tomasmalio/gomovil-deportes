@@ -434,7 +434,7 @@
 			echo 'Error '. $e->getMessage();
 		}
 	}
-	
+
 	/**
 	 * Render view
 	 */
@@ -447,7 +447,6 @@
 		'assetsJs'					=> $assetsConstructor->generateAssets($assets['js']),
 		'widgets'					=> $widgets,
 		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
-		//'template'					=> (isset($section['layout_id'])) ? $section['layout_id'] : 1,
 		'logo'						=> $client['logo'],
 		'menu'						=> $menu,
 		'country'					=> COUNTRY_CODE,
