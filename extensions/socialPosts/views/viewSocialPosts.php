@@ -15,7 +15,9 @@
 <section class="socialposts">
 	<?php if (isset($content['title'])) {?>
 	<div class="row">
-		<h3><?= $content['title']?></h3>
+		<div class="col-12">
+			<h3><?= $content['title']?></h3>
+	</div>
 	</div>
 	<?php }?>
 	<div class="row grid-social">
