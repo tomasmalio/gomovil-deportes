@@ -136,6 +136,32 @@
 			}
 		}
 
+		/**
+		 * Generate Assets for AMP
+		 * 
+		 * @param 		string 			String with the link file
+		 * @return		array			Array with the assets links CSS & JS
+		 */
+		public function generateAssetsAmp ($asssetCss) {
+			
+			$styles = '';
+			foreach ($asssetCss as $asset) {
+				if (!empty($asset)) {
+					foreach ($asset as $file) {
+						if (strpos($file, 'css')) {
+							if (!self::externalFile($file)) {
+								$file = '/' . $file;
+							}
+							$s = file_get_contents($file);
+							$styles .= $s;
+						}
+					}
+				}
+				
+			}
+			return $styles;
+		}
+
 	}
 
 ?>

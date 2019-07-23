@@ -2,6 +2,9 @@
 	<?php
 		$gifs = $content['content'];
 		if ($gifs) {
+	?>
+	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
+	<?php
 			foreach ($gifs as $gif) {
 	?>
 	<div class="col-12">

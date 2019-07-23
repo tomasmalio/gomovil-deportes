@@ -435,6 +435,13 @@
 		}
 	}
 
+	// if (IS_MOBILE) {
+	// $ampStyles = $assetsConstructor->generateAssetsAmp($assets['css']);
+	// // }
+
+	// print_r($ampStyles);
+	// exit;
+
 	/**
 	 * Render view
 	 */
