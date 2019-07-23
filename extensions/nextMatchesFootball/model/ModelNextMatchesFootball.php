@@ -73,7 +73,7 @@
 				$q = 1;
 				foreach ($array['fixture'] as $key => $a) {
 					if ($key == $array['fecha_actual']) {
-						echo $key .' / ' . $array['fecha_actual'];
+						echo $key .' / ' . $array['fecha_actual'] . ' / '. $q;
 						exit;
 						self::setSliderPosition($q);
 						break;
