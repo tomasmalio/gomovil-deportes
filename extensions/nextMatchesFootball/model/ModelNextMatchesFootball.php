@@ -70,7 +70,7 @@
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
 			if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
-				$q = 1;
+				$q = 0;
 				foreach ($array['fixture'] as $key => $a) {
 					if ($key == $array['fecha_actual']) {
 						self::setSliderPosition($q);
