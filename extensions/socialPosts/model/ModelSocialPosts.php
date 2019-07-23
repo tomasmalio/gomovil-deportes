@@ -25,6 +25,9 @@
 				case '+deportes':
 					$json = file_get_contents($this->url . 'polideportivo-peru.json');
 					break;
+				case 'virales':
+					$json = file_get_contents($this->url . 'virales.json');
+					break;
 				default:
 					$json = file_get_contents($this->url . 'deportes-peru.json');
 					break;
