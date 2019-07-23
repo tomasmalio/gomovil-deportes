@@ -32,7 +32,7 @@
 						<div class="col-12">
 							<?php if (isset($news['image'])) {?>
 							<div class="content-image">
-								<div class="img-wrap ratio-16-9">
+								<div class="img-wrap ratio-4-3">
 									<div class="image ">
 										<img src="<?=$news['image']?>" name="<?=$news['title']?>" alt="<?=$news['title']?>" title="<?=$news['title']?>" />
 									</div>
