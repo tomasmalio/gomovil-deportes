@@ -1,7 +1,5 @@
 <?php
 	if (count($content['content']) > 0) {
-		// print_r($content);
-		// exit;
 		if (isset($content['social_image']) && $content['social_image']) {
 			$showImages = true;
 		} else {
@@ -9,15 +7,27 @@
 		}
 
 		// Define columns sizes
-		$val = 12 / $items;
-		$col = ((strpos($val, '.')) ? (ceil($val)) : $val);
+		if (IS_MOBILE) {
+			if (isset($content['columns']['mobile'])) {
+				$col = 12 / $content['columns']['mobile'];
+			} else {
+				$col = 12 / 1;
+			}
+			
+		} else {
+			if (isset($content['columns']['desktop'])) {
+				$col = 12 / $content['columns']['desktop'];
+			} else {
+				$col = 12 / 1;
+			}
+		}
 ?>
 <section class="socialposts">
 	<?php if (isset($content['title'])) {?>
 	<div class="row">
 		<div class="col-12">
 			<h3><?= $content['title']?></h3>
-	</div>
+		</div>
 	</div>
 	<?php }?>
 	<div class="row grid-social">

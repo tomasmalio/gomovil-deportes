@@ -30,7 +30,7 @@
 				<a href="<?=$news['link']?>" title="<?=$news['title']?>" target="_blank">
 					<div class="row">
 						<div class="col-12">
-							<?php if (isset($news['image'])) {?>
+							<?php if (isset($news['image']) && (!isset($content['show_images']) || (isset($content['show_images']) && $content['show_images']))) {?>
 							<div class="content-image">
 								<div class="img-wrap ratio-4-3">
 									<div class="image ">
