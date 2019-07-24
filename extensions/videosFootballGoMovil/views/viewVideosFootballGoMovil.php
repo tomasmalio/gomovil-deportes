@@ -26,7 +26,7 @@
 			?>
 			<div class="col-<?=$col?>">
 				<div class="box-video">
-					<div class="video-content" data-video="true" data-source="<?=$video->video?>">
+					<div class="video-content" data-video="true" data-source="<?=$video['video']?>">
 						<div class="video-container">
 							<div class="video-image">
 								<div class="play-content">
@@ -38,12 +38,15 @@
 										</div>
 									</div>
 								</div>
-								<?php if (isset($video->preview) && $video->preview){?>
-								<img src="<?=$video->preview?>" name="image" alt="" title="" class="video-image-preview" />
+								<?php if (isset($video['preview']) && $video['preview']){?>
+								<img src="<?=$video['preview']?>" name="image" alt="" title="" class="video-image-preview" />
 								<?php }?>
 							</div>
 						</div>
-						<div class="video-description"><?=$video->nombre?></div>
+						<div class="video-description">
+							<div class="video-time"><?=$video['datetime']?></div>
+							<div class="video-name"><?=$video['name']?></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -67,9 +70,9 @@
 					$quantity = 0;
 					foreach ($content['content'] as $video) {?>
 				{
-					title: "<?=$video->nombre;?>",
-					m4v: "<?=$video->video;?>",
-					poster: "<?=$video->preview;?>"
+					title: "<?=$video['name'];?>",
+					m4v: "<?=$video['video'];?>",
+					poster: "<?=$video['preview'];?>"
 				},
 				<?php 
 						$quantity++;
@@ -190,7 +193,7 @@
 				foreach ($videoContent as $video) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<div class="video-content" data-video="true" data-source="<?=$video->video?>">
+				<div class="video-content" data-video="true" data-source="<?=$video['video']?>">
 					<div class="video-container">
 						<div class="video-image">
 							<div class="play-content">
@@ -202,12 +205,15 @@
 									</div>
 								</div>
 							</div>
-							<?php if (isset($video->preview) && $video->preview){?>
-							<img src="<?=$video->preview?>" name="image" alt="" title="" class="video-image-preview" />
+							<?php if (isset($video['preview']) && $video['preview']){?>
+							<img src="<?=$video['preview']?>" name="image" alt="" title="" class="video-image-preview" />
 							<?php }?>
 						</div>
 					</div>
-					<div class="video-description"><?=$video->nombre?></div>
+					<div class="video-description">
+						<div class="video-time"><?=$video['datetime']?></div>
+						<div class="video-name"><?=$video['name']?></div>
+					</div>
 				</div>
 			</li>
 			<?php 
