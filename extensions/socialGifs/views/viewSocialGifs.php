@@ -4,8 +4,6 @@
 		if ($gifs) {
 	?>
 	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
-	<a href="share:?title=Example%20Page&amp;url=https://example.com/page">Share this</a>
-	<button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;" share-title="Te comparto" share-text="acaca" share-ul="https://localhost/">Share me!</button>
 	<div class="row">
 		<?php
 				foreach ($gifs as $gif) {
@@ -26,7 +24,11 @@
 		?>
 	</div>
 </div>
-
+<?php /**
+ * 
+ * <a href="share:?title=Example%20Page&amp;url=https://example.com/page">Share this</a>
+ * <button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;" share-title="Te comparto" share-text="acaca" share-ul="https://localhost/">Share me!</button>
+ */
 <script>
 	// const shareBtn = document.querySelector('.share-btn');
 	// shareBtn.addEventListener('click', () => {
@@ -44,7 +46,7 @@
 	// 			console.log( 'Error sharing', error )
 	// 		});
 	// });
-	
+
 // 	const shareBtn = document.querySelector('.share-btn');
 // const ogBtnContent = shareBtn.textContent;
 // const title = document.querySelector('h1').textContent;
@@ -99,3 +101,4 @@
 	// 	}, 2000);
 	// }
 </script>
+*/?>
