@@ -25,6 +25,10 @@
 							$className = 'horizontal col-'.$q;
 						}
 					}
+					// Validate if we display image
+					if (!(isset($news['image']) && (!isset($content['show_images']) || (isset($content['show_images']) && $content['show_images'])))) {
+						$className .= ' no-image';
+					}
 			?>
 			<li class="<?=$className;?>">
 				<a href="<?=$news['link']?>" title="<?=$news['title']?>" target="_blank">
