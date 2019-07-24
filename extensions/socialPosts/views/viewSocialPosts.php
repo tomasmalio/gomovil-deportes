@@ -18,7 +18,7 @@
 			if (isset($content['columns']['desktop'])) {
 				$col = 12 / $content['columns']['desktop'];
 			} else {
-				$col = 12 / 1;
+				$col = 12 / 3;
 			}
 		}
 ?>
