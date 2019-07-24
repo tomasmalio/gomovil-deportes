@@ -13,8 +13,8 @@
 		<div class="col-12">
 			<div class="post-gif">
 				<?php if (IS_MOBILE) {?>
-					<?php /*<a href="whatsapp://send?text=Te invitó a descargar este GIF: <?=$gif['images']['downsized_large']['url']?>" data-action="share/whatsapp/share" target="_blank"><img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>"></a>*/?>
-					<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">
+					<a href="whatsapp://send?text=Te invitó a descargar este GIF: <?=$gif['images']['downsized_large']['url']?>" data-action="share/whatsapp/share" target="_blank"><img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>"></a>
+					<?php /*<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">*/?>
 				<?php } else {?>
 					<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">
 				<?php }?>
@@ -28,22 +28,23 @@
 </div>
 
 <script>
-	const shareBtn = document.querySelector('.share-btn');
-	shareBtn.addEventListener('click', () => {
-		var share = {
-			title: self.getAttributeValue( target, "share-title" ),
-			text: self.getAttributeValue( target, "share-text" ),
-			url: self.getAttributeValue( target, "share-url" )
-		};
+	// const shareBtn = document.querySelector('.share-btn');
+	// shareBtn.addEventListener('click', () => {
+	// 	var share = {
+	// 		title: self.getAttributeValue( target, "share-title" ),
+	// 		text: self.getAttributeValue( target, "share-text" ),
+	// 		url: self.getAttributeValue( target, "share-url" )
+	// 	};
 
-		navigator.share( share )
-			.then( function () {
-				console.log( 'Successful share' )
-			} )
-			.catch( function ( error ) {
-				console.log( 'Error sharing', error )
-			});
-	});
+	// 	navigator.share( share )
+	// 		.then( function () {
+	// 			console.log( 'Successful share' )
+	// 		} )
+	// 		.catch( function ( error ) {
+	// 			console.log( 'Error sharing', error )
+	// 		});
+	// });
+	
 // 	const shareBtn = document.querySelector('.share-btn');
 // const ogBtnContent = shareBtn.textContent;
 // const title = document.querySelector('h1').textContent;
