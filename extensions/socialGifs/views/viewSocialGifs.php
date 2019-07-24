@@ -23,7 +23,7 @@
 			}
 		?>
 	</div>
-	<button type="button" class="button small share-btn" style="display:none;">Share me!</button>
+	<button type="button" class="button small share-btn">Share me!</button>
 </div>
 
 <script>
