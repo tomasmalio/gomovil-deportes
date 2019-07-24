@@ -34,7 +34,7 @@
 							if (v.includes('youtube')) {
 								videoTag = '<iframe width=\"' + w + '\" height=\"' + h + '\" src=\"' + v + '\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>';
 							} else {
-								videoTag = '<video width=\"' + w + '\" height=\"' + h + '\" controls autoplay><source src=\"' + v + '\"</video>';
+								videoTag = '<video width=\"' + w + '\" height=\"' + h + '\" controls autoplay><source src=\"' + v + '\"></video>';
 							}
 							$(this).find('.card-video').prepend(videoTag);
 							$(this).find('.video-image').remove();

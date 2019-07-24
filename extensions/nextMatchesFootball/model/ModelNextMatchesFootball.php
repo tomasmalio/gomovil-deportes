@@ -67,6 +67,9 @@
 			}
 		}
 
+		/**
+		 * Get the fixture by the key
+		 */
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
 			if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
@@ -84,6 +87,9 @@
 			return array_merge($array, ['slider_position' => $this->sliderPosition]);
 		}
 
+		/**
+		 * Get the tournament
+		 */
 		private function getTournaments ($type, $name) {
 			$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			foreach ($tournament as $key => $t) {
@@ -97,6 +103,9 @@
 			}
 		}
 
+		/**
+		 * Set the position for the slider
+		 */
 		private function setSliderPosition ($pos) {
 			if (isset($pos) && is_numeric($pos)) {
 				$this->sliderPosition = $pos;
