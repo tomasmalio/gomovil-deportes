@@ -24,25 +24,27 @@
 				$videoContent = $content['content'];
 				foreach ($videoContent as $video) {
 			?>
-			<div class="box-video col-<?=$col?>">
-				<div class="video-content" data-video="true" data-source="<?=$video->video?>">
-					<div class="video-container">
-						<div class="video-image">
-							<div class="play-content">
-								<div class="box">
-									<div class="button-play">
-										<div class="circle">
-											<div class="play"></div>
+			<div class="col-<?=$col?>">
+				<div class="box-video">
+					<div class="video-content" data-video="true" data-source="<?=$video->video?>">
+						<div class="video-container">
+							<div class="video-image">
+								<div class="play-content">
+									<div class="box">
+										<div class="button-play">
+											<div class="circle">
+												<div class="play"></div>
+											</div>
 										</div>
 									</div>
 								</div>
+								<?php if (isset($video->preview) && $video->preview){?>
+								<img src="<?=$video->preview?>" name="image" alt="" title="" class="video-image-preview" />
+								<?php }?>
 							</div>
-							<?php if (isset($video->preview) && $video->preview){?>
-							<img src="<?=$video->preview?>" name="image" alt="" title="" class="video-image-preview" />
-							<?php }?>
 						</div>
+						<div class="video-description"><?=$video->nombre?></div>
 					</div>
-					<div class="video-description"><?=$video->nombre?></div>
 				</div>
 			</div>
 			<?php }?>
