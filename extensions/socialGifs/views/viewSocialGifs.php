@@ -27,6 +27,24 @@
 </div>
 
 <script>
+	const shareBtn = document.querySelector('.share-btn');
+
+	shareBtn.addEventListener('click', () => {
+	if (navigator.share) {
+	navigator.share({
+	title: 'My awesome post!',
+	text: 'This post may or may not contain the answer to the universe',
+	url: window.location.href
+	}).then(() => {
+	console.log('Thanks for sharing!');
+	})
+	.catch(err => {
+	console.log(`Couldn't share because of`, err.message);
+	});
+	} else {
+	console.log('web share not supported');
+	}
+	});
 	// const shareBtn = document.querySelector('.share-btn');
 	// const ogBtnContent = shareBtn.textContent;
 	// const title = document.querySelector('h1').textContent;
@@ -51,19 +69,4 @@
 	// 		element.textContent = ogBtnContent;
 	// 	}, 2000);
 	// }
-	var title = 'Comparti';
-	var url = 'http://www.google.com';
-	$('.share-btn').click(function() {
-		if (navigator.share) {
-			navigator.share({
-				title, url
-			}).then(() => {
-				//showMessage(shareBtn, 'Thanks! 😄');
-			}).catch(err => {
-				//showMessage(shareBtn, `Couldn't share 🙁`);
-			});
-		} else {
-			//showMessage(shareBtn, 'Not supported 🙅&zwj;');
-		}
-	});
 </script>
