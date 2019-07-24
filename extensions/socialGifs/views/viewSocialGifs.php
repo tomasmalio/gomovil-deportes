@@ -28,6 +28,7 @@
 
 <script>
 	const shareBtn = document.querySelector('.share-btn');
+	console.log(self.getAttributeValue());
 	shareBtn.addEventListener('click', () => {
 		var share = {
 			title: self.getAttributeValue( target, "share-title" ),
