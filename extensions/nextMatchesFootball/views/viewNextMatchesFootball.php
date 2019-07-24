@@ -134,7 +134,7 @@
 		loop: true,
 		spaceBetween: 30,
 		mousewheel: true,
-		initialSlide: <?=$content['content']['slider_position']?>,
+		initialSlide: <?= ($content['content']['slider_position'] - 1)?>,
 		navigation: {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
