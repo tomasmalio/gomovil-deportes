@@ -4,16 +4,18 @@
 		if ($gifs) {
 	?>
 	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
-	<?php
-			foreach ($gifs as $gif) {
-	?>
-	<div class="col-12">
-		<div class="post-gif">
-			<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">
+	<div class="row">
+		<?php
+				foreach ($gifs as $gif) {
+		?>
+		<div class="col-12">
+			<div class="post-gif">
+				<img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>">
+			</div>
 		</div>
-	</div>
-	<?php 
+		<?php 
+				}
 			}
-		}
-	?>
+		?>
+	</div>
 </div>
