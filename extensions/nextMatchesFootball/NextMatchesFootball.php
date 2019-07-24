@@ -26,7 +26,8 @@
 				],
 				'options' => [
 					'mousewheel' 	=> false
-				]
+				],
+				'dynamic' 	=> true,
 			]
 		];
 

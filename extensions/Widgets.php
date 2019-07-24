@@ -85,25 +85,28 @@
 										$mousewheel = 'false';
 									}
 									
-									// Slider script generator
-									$script['scripts'][1] = [
-										'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
-										'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
-											slidesPerView: 'auto',
-											loop: ".$loop.",
-											spaceBetween: ".$spacebetween.",
-											mousewheel: ".$mousewheel.",
-											initialSlide: '{@initialSlide}',
-											navigation: {
-												nextEl: '.swiper-button-next',
-												prevEl: '.swiper-button-prev',
-											},
-											pagination: {
-												el: '.swiper-pagination',
-												clickable: true,
-											},
-										});"
-									];
+									if (!isset($this->options['slider']['dynamic']) || (isset($this->options['slider']['dynamic']) && (!$this->options['slider']['dynamic']))) {
+
+										// Slider script generator
+										$script['scripts'][1] = [
+											'name'		=> 'swiper.' . strtolower(get_class($this)) . $this->extensionId,
+											'content' 	=> "var swiper" . get_class($this) . $this->extensionId . " = new Swiper('.". strtolower(get_class($this)) ."-content', {
+												slidesPerView: 'auto',
+												loop: ".$loop.",
+												spaceBetween: ".$spacebetween.",
+												mousewheel: ".$mousewheel.",
+												initialSlide: '{@initialSlide}',
+												navigation: {
+													nextEl: '.swiper-button-next',
+													prevEl: '.swiper-button-prev',
+												},
+												pagination: {
+													el: '.swiper-pagination',
+													clickable: true,
+												},
+											});"
+										];
+									}
 								}
 								// If there're scripts we include in our options variable
 								(is_array($script)) ? $this->options = array_merge($this->options, $script): '';

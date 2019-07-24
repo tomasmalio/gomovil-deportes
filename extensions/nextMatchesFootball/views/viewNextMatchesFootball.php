@@ -128,5 +128,22 @@
 		<!-- Eof next matches -->
 	</div>
 </section>
+<script type="text/javascript">
+	var swiper<?= get_class($this) . $this->extensionId?> = new Swiper('.<?= strtolower(get_class($this))?>-content', {
+		slidesPerView: 'auto',
+		loop: true,
+		spaceBetween: 30,
+		mousewheel: true,
+		initialSlide: <?=$content['content']['slider_position']?>,
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+	});
+</script>
 <!-- Eof Next matches-->
 <?php }?>
