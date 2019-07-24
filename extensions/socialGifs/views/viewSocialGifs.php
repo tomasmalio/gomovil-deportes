@@ -41,8 +41,7 @@
 			.catch( function ( error ) {
 				console.log( 'Error sharing', error )
 			});
-
-	}
+	});
 // 	const shareBtn = document.querySelector('.share-btn');
 // const ogBtnContent = shareBtn.textContent;
 // const title = document.querySelector('h1').textContent;
