@@ -4,7 +4,7 @@
 		if ($gifs) {
 	?>
 	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
-	<button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;">Share me!</button>
+	<button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;" share-title="Te comparto" share-text="acaca" share-ul="https://localhost/">Share me!</button>
 	<div class="row">
 		<?php
 				foreach ($gifs as $gif) {
@@ -27,35 +27,51 @@
 </div>
 
 <script>
-	const shareBtn = document.querySelector('.share-btn');
-const ogBtnContent = shareBtn.textContent;
-const title = document.querySelector('h1').textContent;
-const url = document.querySelector('link[rel=canonical]') &&
-            document.querySelector('link[rel=canonical]').href ||
-            window.location.href;
+	shareBtn.addEventListener('click', () => {
+		var share = {
+			title: self.getAttributeValue( target, "share-title" ),
+			text: self.getAttributeValue( target, "share-text" ),
+			url: self.getAttributeValue( target, "share-url" )
+		};
 
-shareBtn.addEventListener('click', () => {
-  if (navigator.share) {
-    navigator.share({
-      title,
-      url
-    }).then(() => {
-      showMessage(shareBtn, 'Thanks! 😄');
-    })
-    .catch(err => {
-      showMessage(shareBtn, `Couldn't share 🙁`);
-    });
-  } else {
-    showMessage(shareBtn, 'Not supported 🙅‍');
-  }
-});
+		navigator.share( share )
+			.then( function () {
+				console.log( 'Successful share' )
+			} )
+			.catch( function ( error ) {
+				console.log( 'Error sharing', error )
+			});
 
-function showMessage(element, msg) {
-  element.textContent = msg;
-  setTimeout(() => {
-    element.textContent = ogBtnContent;
-  }, 2000);
-}
+	}
+// 	const shareBtn = document.querySelector('.share-btn');
+// const ogBtnContent = shareBtn.textContent;
+// const title = document.querySelector('h1').textContent;
+// const url = document.querySelector('link[rel=canonical]') &&
+//             document.querySelector('link[rel=canonical]').href ||
+//             window.location.href;
+
+// shareBtn.addEventListener('click', () => {
+//   if (navigator.share) {
+//     navigator.share({
+//       title,
+//       url
+//     }).then(() => {
+//       showMessage(shareBtn, 'Thanks! 😄');
+//     })
+//     .catch(err => {
+//       showMessage(shareBtn, `Couldn't share 🙁`);
+//     });
+//   } else {
+//     showMessage(shareBtn, 'Not supported 🙅‍');
+//   }
+// });
+
+// function showMessage(element, msg) {
+//   element.textContent = msg;
+//   setTimeout(() => {
+//     element.textContent = ogBtnContent;
+//   }, 2000);
+// }
 	// const shareBtn = document.querySelector('.share-btn');
 	// const ogBtnContent = shareBtn.textContent;
 	// const title = document.querySelector('h1').textContent;
