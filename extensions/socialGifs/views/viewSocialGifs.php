@@ -4,6 +4,7 @@
 		if ($gifs) {
 	?>
 	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
+	<a href="share:?title=Example%20Page&amp;url=https://example.com/page">Share this</a>
 	<button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;" share-title="Te comparto" share-text="acaca" share-ul="https://localhost/">Share me!</button>
 	<div class="row">
 		<?php
@@ -28,7 +29,6 @@
 
 <script>
 	const shareBtn = document.querySelector('.share-btn');
-	console.log(self.getAttributeValue());
 	shareBtn.addEventListener('click', () => {
 		var share = {
 			title: self.getAttributeValue( target, "share-title" ),
