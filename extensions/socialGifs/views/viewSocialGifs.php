@@ -4,7 +4,7 @@
 		if ($gifs) {
 	?>
 	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
-	<button type="button" class="button small share-btn">Share me!</button>
+	<button type="button" class="button small share-btn" style="display:block;width:150px;height:40px;">Share me!</button>
 	<div class="row">
 		<?php
 				foreach ($gifs as $gif) {
