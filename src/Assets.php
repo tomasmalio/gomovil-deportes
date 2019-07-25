@@ -162,16 +162,15 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
-							if (!self::externalFile($file)) {
-								$file = '//' . $file;
-							}
+							// if (!self::externalFile($file)) {
+							// 	$file = '//' . $file;
+							// }
 							echo $file;
 							$s = @file_get_contents($file);
 							if (strpos($http_response_header[0], "200")) { 
 								$styles .= $s;
 							} else {
 								echo "error<br>";
-								print_r(file_get_contents('http://bitelnoticias.thinkmovil.com/assets/bitelnoticias/newstrendio/css/news-trendio11.min.css?v=20190725090119'));
 							}
 							
 						}
