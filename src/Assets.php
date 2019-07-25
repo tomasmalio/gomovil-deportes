@@ -157,11 +157,13 @@
 		 * @return		array			Array with the assets links CSS & JS
 		 */
 		public function generateAssetsAmp ($asssetCss) {
+			echo "aca";
 			
 			$styles = '';
 			foreach ($asssetCss as $asset) {
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
+						echo $file;
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
 								$file = '/' . $file;
