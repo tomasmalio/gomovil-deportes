@@ -337,10 +337,8 @@
 										 */
 										$fileExits = ['validate' => false, 'minify' => false];
 										if (!empty($options['styles'])) {
-											echo "no se repite";
 											$filename .= $this->extensionId;
 										} else {
-											echo "se repite";
 											// Backup for validate if the file exits
 											$fileOriginal = $filename;
 											if (!isset($options['minify']) || $options['minify']) {
@@ -413,7 +411,12 @@
 											$filename .= '.css';
 										}
 									}
-									$filename .= '?v='.date('YmdHi', filemtime($filename));
+									if (date('YmdHi', filemtime($filename))) {
+										$version = date('YmdHi', filemtime($filename));
+									} else {
+										$version = date('YmdHi', $date);
+									}
+									$filename .= '?v='.$version;
 									array_push($arrayReturn, $filename);
 								}
 							}
