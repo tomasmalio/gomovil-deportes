@@ -188,6 +188,7 @@
 									$styles .= $s;
 								}
 							}
+							$assetUse = array_push($assetUse, $file);
 						}
 					}
 				}
