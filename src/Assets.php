@@ -1,4 +1,18 @@
 <?php
+	/**
+	 *	   ###     ######   ######  ######## ########  ######  
+	 *	  ## ##   ##    ## ##    ## ##          ##    ##    ## 
+	 *	 ##   ##  ##       ##       ##          ##    ##       
+	 *	##     ##  ######   ######  ######      ##     ######  
+	 *	#########       ##       ## ##          ##          ## 
+	 *	##     ## ##    ## ##    ## ##          ##    ##    ## 
+	 *	##     ##  ######   ######  ########    ##     ######
+	 * 
+	 * Assets class
+	 * @author			Tomas Malio <tomasmalio@gmail.com>
+	 * @version 		2.0
+	 * 
+	 */
 	namespace GoMovil;
 	use GoMovil\Db;
 	class Assets {
@@ -150,7 +164,7 @@
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
-								$file = '/' . $file;
+								$file = 'http://'.$_SERVER['HTTP_HOST']. '/' . $file;
 							}
 							$s = file_get_contents($file);
 							$styles .= $s;
