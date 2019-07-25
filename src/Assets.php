@@ -163,11 +163,10 @@
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
-								$file = '/' . $file;
+								$file = $_SERVER['HTTP_HOST'].'/' . $file;
 							}
 							echo $file;
 							$s = file_get_contents($file);
-							print_r($s);
 							$styles .= $s;
 						}
 					}
