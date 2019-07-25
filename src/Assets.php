@@ -164,7 +164,7 @@
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
-								$file = 'http://'.$_SERVER['HTTP_HOST']. '/' . $file;
+								$file = '/' . $file;
 							}
 							$s = file_get_contents($file);
 							$styles .= $s;
