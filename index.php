@@ -447,9 +447,7 @@
 	 */
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
-		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['cs']);
-		echo "aca";
-
+		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
 		print_r($assetsStyle);

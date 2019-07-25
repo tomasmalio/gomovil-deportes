@@ -167,12 +167,6 @@
 								$file = '/' . $file;
 							}
 							$s = file_get_contents($file);
-							if ($s) {
-								echo "acaaaaa";
-							} else {
-								echo "nooo";
-							}
-							echo "ACA". $s;
 							$styles .= $s;
 						}
 					}
