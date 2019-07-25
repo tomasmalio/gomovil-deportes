@@ -162,9 +162,9 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
-							// if (!self::externalFile($file)) {
-							// 	$file = '//' . $file;
-							// }
+							if (!self::externalFile($file)) {
+								$file = ROOTPATH . '/' . $file;
+							}
 							echo $file;
 							$s = @file_get_contents($file);
 							if (strpos($http_response_header[0], "200")) { 
