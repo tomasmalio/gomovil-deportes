@@ -467,12 +467,11 @@
 	 */
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
-		echo "aca";
-		exit;
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 		print_r($assetsStyle);
+		exit;
 	} else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
