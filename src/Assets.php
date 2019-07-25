@@ -158,12 +158,28 @@
 		 */
 		public function generateAssetsAmp ($asssetCss) {
 			$styles = '';
+
+			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+				$link = "https"; 
+			} else {
+				$link = "http";
+			} 
+
+			// Here append the common URL characters. 
+			$link .= "://"; 
+
+			// Append the host(domain name, ip) to the URL. 
+			$link .= $_SERVER['HTTP_HOST']; 
+
+			// Append the requested resource location to the URL 
+			$link .= $_SERVER['REQUEST_URI']; 
+
 			foreach ($asssetCss as $asset) {
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
-								$file = ROOTPATH . '/' . $file;
+								$file = $link . $file;
 							}
 							echo $file;
 							$s = @file_get_contents($file);
