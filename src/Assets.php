@@ -157,8 +157,6 @@
 		 * @return		array			Array with the assets links CSS & JS
 		 */
 		public function generateAssetsAmp ($asssetCss) {
-			echo "aca";
-			
 			$styles = '';
 			foreach ($asssetCss as $asset) {
 				if (!empty($asset)) {
@@ -169,7 +167,7 @@
 								$file = '/' . $file;
 							}
 							$s = file_get_contents($file);
-							echo $s;
+							print_r($s);
 							$styles .= $s;
 						}
 					}
