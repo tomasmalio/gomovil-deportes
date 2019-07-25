@@ -188,8 +188,7 @@
 									$styles .= $s;
 								}
 							}
-							echo $file;
-							$assetUse = array_push($assetUse, $file);
+							array_push($assetUse, $file);
 						}
 					}
 				}
