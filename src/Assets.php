@@ -170,7 +170,8 @@
 							if (strpos($http_response_header[0], "200")) { 
 								$styles .= $s;
 							} else {
-								echo "error";
+								echo "error<br>";
+								print_r(file_get_contents('http://bitelnoticias.thinkmovil.com/assets/bitelnoticias/newstrendio/css/news-trendio11.min.css?v=20190725090119'));
 							}
 							
 						}
