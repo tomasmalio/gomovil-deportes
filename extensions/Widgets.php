@@ -338,7 +338,9 @@
 										$fileExits = ['validate' => false, 'minify' => false];
 										if (!empty($options['styles'])) {
 											$filename .= $this->extensionId;
-										} else {
+										} 
+										/**
+										else {
 											// Backup for validate if the file exits
 											$fileOriginal = $filename;
 											if (!isset($options['minify']) || $options['minify']) {
@@ -357,7 +359,7 @@
 													unlink($fileBackUpCheck);
 												}
 											}
-										}
+										}*/
 
 										if (!$fileExits['validate']) {
 											// Minify the file if is not set or if it's true
