@@ -37,6 +37,16 @@
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
 	session_start();
+	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
+		$return = @file_get_contents('https://api.armadillo.mobi/v1/checkToken/.'.$_POST['subscriptionId'].'/'.$_POST['token']);
+		if (strpos($http_response_header[0], "200")) {
+			$_SESSION['suscribe'] = true;
+		} else {
+			header('Location: '.$_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	session_start();
 	if (isset($_POST['ageControl'])) {
 		$_SESSION['age_control'] = true;
 		header('Location: ' . $_POST['url']);
@@ -79,10 +89,20 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control, sc.security_id from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
 
+	// Security validation
+	if (isset($section['security_id']) && $section['security_id'] && !$_SESSION['suscribe']) {
+		$db->prepare("select * from security s where s.id = ". $section['security_id'] ." and s.status = 1");
+		$db->execute();
+		$security = $db->fetch();
+		$_SESSION['suscribe'] = false;
+		if ($security) {
+			header('Location: '.$security['address']);
+		}
+	}
 	/**
 	 * Naming sections & subsections
 	 */
@@ -447,10 +467,11 @@
 	 */
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
+		echo "aca";
+		exit;
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-
 		print_r($assetsStyle);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
@@ -461,8 +482,6 @@
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 		'globalStyle'				=> $globalStyle,
-		// 'assetsStyle'				=> $assetsConstructor->generateAssets($assets['css']),
-		// 'assetsJs'					=> $assetsConstructor->generateAssets($assets['js']),
 		'assetsStyle'				=> $assetsStyle,
 		'assetsJs'					=> $assetsJs,
 		'widgets'					=> $widgets,

@@ -275,7 +275,6 @@
 			try {
 				self::xcopy($this->source.'/images', $this->destination.'/images', 0755);
 				self::xcopy($this->source.'/fonts', $this->destination.'/fonts', 0755);
-
 				return [
 					'css' => self::compileAssets('CSS', $this->files['style'], $date, $this->options), 
 					'js' => self::compileAssets('JS', $this->files['js'], $date, $this->options)
@@ -336,40 +335,64 @@
 										 * If there's styles define we concat to the 
 										 * filename the id extension to identify
 										 */
+										$fileExits = ['validate' => false, 'minify' => false];
 										if (!empty($options['styles'])) {
+											echo "no se repite";
 											$filename .= $this->extensionId;
+										} else {
+											echo "se repite";
+											// Backup for validate if the file exits
+											$fileOriginal = $filename;
+											if (!isset($options['minify']) || $options['minify']) {
+												$fileOriginal .= '.min.css';
+											} else {
+												$fileOriginal .= 'css';
+											}
+											if (strpos($fileOriginal, 'min')) {
+												$fileBackUpCheck = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk-exits.less';
+												$less->setFormatter("compressed");
+												$less->checkedCompile($backupFile, $fileBackUpCheck);
+											}
+											if (file_get_contents($fileOriginal) == file_get_contents($fileBackUpCheck)) {
+												$fileExits['validate']  = true; 
+												if ($fileExits['minify']) {
+													unlink($fileBackUpCheck);
+												}
+											}
 										}
 
-										// Minify the file if is not set or if it's true
-										if (!isset($options['minify']) || $options['minify']) {
-											$filename .= '.min.css';
-											$less->setFormatter("compressed");
-										} else {
-											$filename .= '.css';
-										}
+										if (!$fileExits['validate']) {
+											// Minify the file if is not set or if it's true
+											if (!isset($options['minify']) || $options['minify']) {
+												$filename .= '.min.css';
+												$less->setFormatter("compressed");
+											} else {
+												$filename .= '.css';
+											}
 
-										/**
-										 * If there's styles define we modify the original file 
-										 * with the new content. If the variable is not change
-										 * the original value continues
-										 */
-										if (!empty($options['styles'])) {
-											// Replacement of the class name
-											$newFile = file_get_contents($backupFile);
-											$newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
-											file_put_contents($backupFile, $newFile);
+											/**
+											 * If there's styles define we modify the original file 
+											 * with the new content. If the variable is not change
+											 * the original value continues
+											 */
+											if (!empty($options['styles'])) {
+												// Replacement of the class name
+												$newFile = file_get_contents($backupFile);
+												$newFile = str_replace([strtolower(get_class($this)).' ', strtolower(get_class($this)).'{'], [strtolower(get_class($this)) . $this->extensionId . ' ', strtolower(get_class($this)) . $this->extensionId . '{'], $newFile);
+												file_put_contents($backupFile, $newFile);
 
-											// Modify the variables
-											self::modifyVars($options['styles'], $backupFile);
-											
-											// Compile the file
-											$less->checkedCompile($backupFile, $filename);
+												// Modify the variables
+												self::modifyVars($options['styles'], $backupFile);
+												
+												// Compile the file
+												$less->checkedCompile($backupFile, $filename);
 
-											// Remove the backup file
-											unlink($backupFile);
-										} else {
-											// Compile the less but first verify if the css exist
-											$less->checkedCompile($backupFile, $filename);
+												// Remove the backup file
+												unlink($backupFile);
+											} else {
+												// Compile the less but first verify if the css exist
+												$less->checkedCompile($backupFile, $filename);
+											}
 										}
 									}
 									// File in a CSS format
@@ -383,7 +406,15 @@
 											shell_exec("cp -r $original $filename");
 										}
 									}
-									$filename .= '?v='.date('YmdHis', $date);
+									if ($fileExits['validate']) {
+										if ($fileExits['minify']) {
+											$filename .= '.min.css';
+										} else {
+											$filename .= '.css';
+										}
+									}
+									echo date('YmdHi', strtotime(filemtime($filename)));
+									$filename .= '?v='.date('YmdHi', filemtime($filename));
 									array_push($arrayReturn, $filename);
 								}
 							}

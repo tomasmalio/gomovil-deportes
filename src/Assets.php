@@ -174,25 +174,35 @@
 			// Append the requested resource location to the URL 
 			$link .= $_SERVER['REQUEST_URI']; 
 
+			$assetUse = [];
 			foreach ($asssetCss as $asset) {
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
-						if (strpos($file, 'css')) {
-							if (!self::externalFile($file)) {
-								$file = $link . $file;
-							}
-							$s = @file_get_contents($file);
-							if (strpos($http_response_header[0], "200")) { 
-								$styles .= $s;
+						if (!in_array($file, $assetUse)) {
+							if (strpos($file, 'css')) {
+								if (!self::externalFile($file)) {
+									$file = $link . $file;
+								}
+								$s = @file_get_contents($file);
+								if (strpos($http_response_header[0], "200")) { 
+									$styles .= $s;
+								}
 							}
 						}
 					}
 				}
-				
 			}
 			return $styles;
 		}
 
+		// private function searchInsideArray ($array) {
+		// 	$q = 0;
+		// 	foreach ($array as $item) {
+		// 		if ($item) {
+					
+		// 		}
+		// 	}
+		// }
 	}
 
 ?>
