@@ -161,11 +161,11 @@
 			foreach ($asssetCss as $asset) {
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
-						echo $file;
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
 								$file = '/' . $file;
 							}
+							echo $file;
 							$s = file_get_contents($file);
 							print_r($s);
 							$styles .= $s;
