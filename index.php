@@ -449,6 +449,8 @@
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['cs']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
+
+		print_r($assetsStyle);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
