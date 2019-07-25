@@ -167,6 +167,7 @@
 								$file = '/' . $file;
 							}
 							$s = file_get_contents($file);
+							echo $s;
 							$styles .= $s;
 						}
 					}
