@@ -181,14 +181,10 @@
 							if (!self::externalFile($file)) {
 								$file = $link . $file;
 							}
-							echo $file;
 							$s = @file_get_contents($file);
 							if (strpos($http_response_header[0], "200")) { 
 								$styles .= $s;
-							} else {
-								echo "error<br>";
 							}
-							
 						}
 					}
 				}
