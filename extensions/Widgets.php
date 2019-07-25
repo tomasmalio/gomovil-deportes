@@ -413,8 +413,7 @@
 											$filename .= '.css';
 										}
 									}
-									echo date('YmdHi', strtotime(filemtime($filename)));
-									$filename .= '?v='.date('YmdHi', filemtime($filename));
+									$filename .= '?v='.date('YmdHi', strtotime(filemtime($filename)));
 									array_push($arrayReturn, $filename);
 								}
 							}
