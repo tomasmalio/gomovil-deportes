@@ -193,20 +193,8 @@
 					}
 				}
 			}
-			echo "aca";
-			print_r($assetUse);
-			exit;
 			return $styles;
 		}
-
-		// private function searchInsideArray ($array) {
-		// 	$q = 0;
-		// 	foreach ($array as $item) {
-		// 		if ($item) {
-					
-		// 		}
-		// 	}
-		// }
 	}
 
 ?>
