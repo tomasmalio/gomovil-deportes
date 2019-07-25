@@ -336,9 +336,9 @@
 										 * If there's styles define we concat to the 
 										 * filename the id extension to identify
 										 */
-										// if (!empty($options['styles'])) {
+										if (!empty($options['styles'])) {
 											$filename .= $this->extensionId;
-										// }
+										}
 
 										// Minify the file if is not set or if it's true
 										if (!isset($options['minify']) || $options['minify']) {
