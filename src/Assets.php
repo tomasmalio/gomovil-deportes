@@ -188,11 +188,13 @@
 									$styles .= $s;
 								}
 							}
+							echo $file;
 							$assetUse = array_push($assetUse, $file);
 						}
 					}
 				}
 			}
+			echo "aca";
 			print_r($assetUse);
 			exit;
 			return $styles;
