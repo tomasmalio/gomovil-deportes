@@ -179,6 +179,7 @@
 				if (!empty($asset)) {
 					foreach ($asset as $file) {
 						if (!in_array($file, $assetUse)) {
+							array_push($assetUse, $file);
 							if (strpos($file, 'css')) {
 								if (!self::externalFile($file)) {
 									$file = $link . $file;
@@ -188,7 +189,6 @@
 									$styles .= $s;
 								}
 							}
-							array_push($assetUse, $file);
 						}
 					}
 				}
