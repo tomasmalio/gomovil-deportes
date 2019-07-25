@@ -450,6 +450,8 @@
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
+
+		print_r($assetsStyle);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
