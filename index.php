@@ -1,6 +1,6 @@
 <?php
 	require_once __DIR__.'/bootstrap.php';
-	ini_set('display_errors', 1);
+	//ini_set('display_errors', 1);
 	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
