@@ -163,11 +163,16 @@
 					foreach ($asset as $file) {
 						if (strpos($file, 'css')) {
 							if (!self::externalFile($file)) {
-								$file = $_SERVER['HTTP_HOST'].'/' . $file;
+								$file = '//' . $file;
 							}
 							echo $file;
-							$s = file_get_contents($file);
-							$styles .= $s;
+							$s = @file_get_contents($file);
+							if (strpos($http_response_header[0], "200")) { 
+								$styles .= $s;
+							} else {
+								echo "error";
+							}
+							
 						}
 					}
 				}
