@@ -468,4 +468,5 @@
 		'menu'						=> $menu,
 		'country'					=> COUNTRY_CODE,
 		'url'						=> $_SERVER['REQUEST_URI'],
+		'urlCanonical'				=> $_SERVER['HTTP_HOST'],
 	]);
