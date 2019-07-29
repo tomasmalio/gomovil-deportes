@@ -103,6 +103,12 @@
 	$db->execute();
 	$section = $db->fetch();
 
+	// If the client doesn't exit we redirect to generic HTML Error page
+	if (empty($section)) {
+		header('Location: error.html');
+		exit;
+	}
+
 	// Security validation
 	if (isset($section['security_id']) && $section['security_id'] && !$_SESSION['suscribe']) {
 		$db->prepare("select * from security s where s.id = ". $section['security_id'] ." and s.status = 1");
@@ -407,7 +413,7 @@
 					 */
 					if (isset($extension['modify_status']) && $extension['modify_status']) {
 
-						$assetExtension 	= $$variable->assets(strtotime($extension['modify_date']));
+						$assetExtension = $$variable->assets(strtotime($extension['modify_date']));
 						
 						$assetCss = '';
 						$assetScript = '';
