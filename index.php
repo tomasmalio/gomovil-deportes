@@ -465,9 +465,6 @@
 	 **********************************/
 
 	require_once __DIR__.''.EXTENSIONS_URL.'/metaTags/MetaTags.php';
-	// print_r($file);
-	// exit;
-
 	$json = [
 		'clientName'	=> CLIENT_NAME,
 		'data' => [
