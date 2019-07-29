@@ -51,7 +51,6 @@
 			// If there's response we set the suscribe session
 			if (strpos($http_response_header[0], "200")) {
 				$_SESSION['suscribe'] = true;
-				echo "Si Dani";
 			} 
 			// Redirect to the page before
 			else {
