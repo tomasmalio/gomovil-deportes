@@ -23,16 +23,6 @@
 			
 			if ($params['modify_status'] == '1' || !file_exists($filename) || file_get_contents($filename) == '') {
 				try {
-					/**
-					 * Generate the config and the aditional content
-					 * of the client
-					 */
-					$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
-					$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
-					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
-					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
-					$data 				= '';
-
 					// Update the DB
 					$db = new Db();
 					$db->setUsername('gomovil_db');
@@ -44,17 +34,26 @@
 					if (!file_exists($filename)) {
 						$db->prepare("SELECT * FROM section_client where client_id = ". $client_id . ";");
 						$db->execute();
-						$section = $db->fetch();
-
-						foreach ($section as $section_client) {
+						$section = $db->fetchAll();
+						foreach ($section as $sectionClient) {
 							$db->prepare("UPDATE section_extension 
 									SET modify_date = '".date('Y-m-d H:i:s')."', modify_status = '1' 
-									WHERE section_client_id = ".$section_client['id']." AND status = '1';");
+									WHERE section_client_id = ".$sectionClient['id']." AND status = '1';");
 							$db->execute();
 						}
 					}
 
+					/**
+					 * Generate the config and the aditional content
+					 * of the client
+					 */
+					$filenameContent 	= ROOTPATH. '/less/content.' . $name . '.less';
+					$globalLess 		= ROOTPATH. '/less/styles.' . $name . '.less';
+					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
+					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
+					$data 				= '';
 
+					// 
 					foreach ($params as $key => $value) {
 						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
 							if ($key != 'variables') {
