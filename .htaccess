@@ -10,3 +10,7 @@ RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([A-Za-z0-9]+)/([A-Za-z0-9-]+)/([A-Z
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript
 </IfModule>
+
+RedirectMatch 404 /\.git
+RedirectMatch 404 README.md
+RedirectMatch 403 db.sql
