@@ -36,15 +36,30 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
+	/**
+	 * Client definitions
+	 */
+	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
+	$db->execute();
+	$client = $db->fetch();
+
 	session_start();
 	/* Security control */
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
-		$return = @file_get_contents('https://api.armadillo.mobi/v1/checkToken/'.$_POST['subscriptionId'].'/'.$_POST['token']);
-		if (strpos($http_response_header[0], "200")) {
-			$_SESSION['suscribe'] = true;
-			echo "Si Dani";
-		} else {
-			echo "NO";
+		if (isset($client['security_endpoint']) && $client['security_endpoint'] <> '') {
+			$return = @file_get_contents($client['security_endpoint']);
+			// If there's response we set the suscribe session
+			if (strpos($http_response_header[0], "200")) {
+				$_SESSION['suscribe'] = true;
+				echo "Si Dani";
+			} 
+			// Redirect to the page before
+			else {
+				header('Location: '.$_SERVER['HTTP_REFERER']);
+			}
+		}
+		// There's not security endpoint define
+		else {
 			header('Location: '.$_SERVER['HTTP_REFERER']);
 		}
 	}
@@ -55,13 +70,6 @@
 		header('Location: ' . $_POST['url']);
 		exit;
 	}
-
-	/**
-	 * Client definitions
-	 */
-	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
-	$db->execute();
-	$client = $db->fetch();
 
 	// If the client doesn't exit we redirect to generic HTML Error page
 	if (empty($client)) {
