@@ -3,43 +3,17 @@
 	 * MetaTags
 	 */
 	class MetaTags extends Widgets {
-		//public $title;
-		public $general = [
-			'title' 			=> '',
-			'description' 		=> '',
-			'keywords' 			=> '',
-			'image'				=> '',
-			'url'				=> '',
-		];
-		
-		public $facebook = [
-			'title' 			=> '',
-			'description' 		=> '',
-			'image'				=> '',
-			'url'				=> '',
-			'app_id'			=> '',
-			'type'				=> '',
-			'site'				=> '',
-			'siteLink'			=> 'https://www.facebook.com/',
-		];
+		public $content;
 
-		public $twitter = [
-			'title' 			=> '',
-			'description' 		=> '',
-			'image'				=> '',
-			'url'				=> '',
-			'site'				=> '',
-			'siteLink'			=> 'https://www.twitter.com/',
-			'creator'			=> '',
-			'card'				=> '',
-		];
+		public function __construct($params = []) {
+			parent::__construct($params);
+		}
 
 		public function renderView () {
-			return Widgets::renderViewHtml([
-					'general' 	=> $this->general,
-					'twitter' 	=> $this->twitter,
-					'facebook' 	=> $this->facebook,
-				]
+			return parent::renderViewHtml([
+					'content' 	=> $this->content,
+				],
+				$this->viewName
 			);
 		}
 	}

@@ -37,6 +37,7 @@
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
 	session_start();
+	/* Security control */
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
 		$return = @file_get_contents('https://api.armadillo.mobi/v1/checkToken/.'.$_POST['subscriptionId'].'/'.$_POST['token']);
 		if (strpos($http_response_header[0], "200")) {
@@ -46,7 +47,7 @@
 		}
 	}
 
-	session_start();
+	/* Age control */
 	if (isset($_POST['ageControl'])) {
 		$_SESSION['age_control'] = true;
 		header('Location: ' . $_POST['url']);
@@ -273,11 +274,6 @@
 		];
 		unset($submenu);
 	}
-	
-	// print_r($keywords);
-	// print_r($keywordsChange);
-	// var_dump($menu);
-	// exit;
 
 	/**********************************
 	 * 			CUSTOMIZATION
@@ -455,12 +451,33 @@
 		}
 	}
 
-	// if (IS_MOBILE) {
-	//$ampStyles = $assetsConstructor->generateAssetsAmp($assets['css']);
-	// // }
+	/**********************************
+	 * 			METATAGS
+	 **********************************/
 
-	// print_r($ampStyles);
+	require_once __DIR__.''.EXTENSIONS_URL.'/metaTags/MetaTags.php';
+	// print_r($file);
 	// exit;
+
+	$json = [
+		'clientName'	=> CLIENT_NAME,
+		'data' => [
+			'content' 	=> [
+				'title' 			=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+				'description' 		=> str_replace($keywords, $keywordsChange, utf8_encode($section['description'])),
+				'image'				=> isset($section['image']) ? $section['image'] : '',
+				'url'				=> $_SERVER['HTTP_HOST'],
+				'keywords'			=> isset($section['keywords']) ? $section['keywords'] : '',
+				'twitterAccount'	=> isset($client['twitterAccount']) ? $client['twitterAccount'] : '',
+				'facebookAccount'	=> isset($client['facebookAccount']) ? $client['facebookAccount'] : '',
+				'facebookAppAId'	=> isset($client['facebook_app_id']) ? $client['facebook_app_id'] : '',
+				'type'				=> '',
+				'card'				=> 'summary',
+			],
+		],
+	];
+	$metatags = new MetaTags($json);
+	$metatag = $metatags->renderView(); 
 
 	/**
 	 * Render view
@@ -482,6 +499,8 @@
 		'globalStyle'				=> $globalStyle,
 		'assetsStyle'				=> $assetsStyle,
 		'assetsJs'					=> $assetsJs,
+		//'metatags'					=> $metatags,
+		'metatags'					=> $metatag,
 		'widgets'					=> $widgets,
 		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
 		'logo'						=> $client['logo'],
