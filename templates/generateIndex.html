@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="http://schema.org/WebPage" xml:lang="es" lang="es">
 	<head>
+		{% if googleAnalytics is not empty %}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalytics | raw }}"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', '{{ googleAnalytics | raw }}');
+		</script>
+		{% endif %}
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -67,23 +77,11 @@
 {% block htmlEnd %}
 				</div>
 			</article>
-			<!-- Footer -->
-			<!-- <footer>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12">
-							<p>C.Bitel. Todos los derechos reservados © 2018</p>
-						</div>
-					</div>
-				</div>
-			</footer> -->
-			<!-- Eof Footer -->
 		</div>
 		<div class="sb-slidebar sb-right">
 			{% include 'menu.inc.php' with {'logo': logo, 'menu': menu, 'country': country} %}
 		</div>
 		<script src="/assets/masonry/masonry.pkgd.min.js"></script>		
-		<!-- <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script> -->
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$.slidebars();
@@ -99,8 +97,6 @@
 		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="/assets/slidebars/slidebars.min.js?v=20190701"></script>
-		<!-- <script type="text/javascript" src="/assets/bootstrap-modal/js/bootstrap-modal.js"></script>
-		<script type="text/javascript" src="/assets/bootstrap-modal/js/bootstrap-modalmanager.js"></script> -->
 		{% for asset in assetsJs %}
 			{{asset | raw}}
 		{% endfor %}

@@ -508,6 +508,7 @@
 	
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+		'googleAnalytics'			=> isset($client['google_aalytics']) ? $client['google_aalytics'] : '',
 		'globalStyle'				=> $globalStyle,
 		'assetsStyle'				=> $assetsStyle,
 		'assetsJs'					=> $assetsJs,
