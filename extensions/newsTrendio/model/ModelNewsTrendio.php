@@ -38,7 +38,7 @@
 			$array = json_decode(self::getNews(), true);
 			$type = ['news' => $this->return_news, 'trends' => $this->return_trends];
 			$array = array_merge($array, $type);
-			return $array['data'];
+			return $array;
 		}
 
 		public function setCountryCode ($country_code) {

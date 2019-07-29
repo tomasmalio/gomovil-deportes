@@ -1,11 +1,12 @@
 <section class="newstrendio">
 	<?php if ($content['title']) {?><h2><?= $content['title']?></h2><?php }?>
 	<div class="newstrendio-content <?php if ($slider) {?>swiper-container<?php }?>">
-		<?php if ($content['news']) {?>
+		<?php if ($content['content']['news']) {?>
 		<ul class="<?php if (!$slider) {?>row <?php }?>list-trendio <?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content['content'] as $news) {
+				$contentNews = $content['content']['data'];
+				foreach ($contentNews as $news) {
 			?>
 			<li class="<?php if ($slider) {?>swiper-slide<?php } else {?>col-lg-3 col-md-3 col-sm-6 col-xs-12<?php }?>" itemscope itemtype="http://schema.org/NewsArticle">
 				<?php if (!$slider) {?>
@@ -53,7 +54,8 @@
 		?>
 		<div class="row grid-social">
 			<?php
-				foreach ($content['content'] as $news) {
+				$contentNews = $content['content']['data'];
+				foreach ($contentNews as $news) {
 			?>
 				<div class="grid-item-social col-lg-3 col-md-3 col-sm-12 col-xs-12" <?php if (isset($news['video']) && $news['video']){?>data-video="true" data-source="<?=$news['video']?>"<?php }?>>
 					<div class="social-post <?php if (!isset($news['video']) && !isset($news['video'])){?>only-text<?php }?>">
