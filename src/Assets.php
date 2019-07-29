@@ -10,7 +10,7 @@
 	 * 
 	 * Assets class
 	 * @author			Tomas Malio <tomasmalio@gmail.com>
-	 * @version 		2.0
+	 * @version 		2.1
 	 * 
 	 */
 	namespace GoMovil;
@@ -32,6 +32,28 @@
 					$globalCss			= ROOTPATH. '/css/styles.' . $name . '.min.css';
 					$handle 			= fopen($filename, 'w') or die('Cannot open file:  '. $filename); 
 					$data 				= '';
+
+					// Update the DB
+					$db = new Db();
+					$db->setUsername('gomovil_db');
+					$db->setPassword('g0m0v1lc0');
+					$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
+					$db->connect();
+
+					// Set extensions to update
+					if (!file_exists($filename)) {
+						$db->prepare("SELECT * FROM section_client where client_id = ". $client_id . ";");
+						$db->execute();
+						$section = $db->fetch();
+
+						foreach ($section as $section_client) {
+							$db->prepare("UPDATE section_extension 
+									SET modify_date = '".date('Y-m-d H:i:s')."', modify_status = '1' 
+									WHERE section_client_id = ".$section_client['id']." AND status = '1';");
+							$db->execute();
+						}
+					}
+
 
 					foreach ($params as $key => $value) {
 						if (!in_array($key, ['id','client_id','modify_status','modify_date','less_content','status'], true)) {
@@ -88,12 +110,6 @@
 					//$less->setFormatter("compressed");
 					$less->checkedCompile($globalLess, $globalCss);
 
-					// Update the DB
-					$db = new Db();
-					$db->setUsername('gomovil_db');
-					$db->setPassword('g0m0v1lc0');
-					$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
-					$db->connect();
 					$db->prepare("UPDATE customization SET modify_date = '".date('Y-m-d H:i:s')."', modify_status = '0' WHERE client_id = '". $client_id. "' AND status = '1';");
 					$db->execute();
 
