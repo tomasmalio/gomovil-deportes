@@ -49,6 +49,7 @@
 			header('Location: '.$_SERVER['HTTP_REFERER']);
 		}
 	} else {
+		print_r($_POST);
 		echo "NO";
 		exit;
 	}
