@@ -1,5 +1,5 @@
-<?php if (isset($content['description'])) {?><meta name="description" content="<?= $content['description']?>" /><?php }?>
-<?php if (isset($content['keywords'])) {?><meta name="keywords" content="<?= $content['keywords']?>" /><?php }?>
+<?php if (isset($content['description']) && $content['description'] <> '') {?><meta name="description" content="<?= $content['description']?>" /><?php }?>
+<?php if (isset($content['keywords']) && $content['keywords'] <> '') {?><meta name="keywords" content="<?=  utf8_encode($content['keywords'])?>" /><?php }?>
 <?php if (isset($content['title']) && $content['title'] <> '') {?><meta itemprop="name" content="<?= $content['title']?>" /><?php }?>
 <?php if (isset($content['description']) && $content['description'] <> '') {?><meta itemprop="description" content="<?= $content['description']?>" /><?php }?>
 <?php if (isset($content['url']) && $content['url'] <> '') {?><meta itemprop="url" content="<?= $content['url']?>" /><?php }?>
