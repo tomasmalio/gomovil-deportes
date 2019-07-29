@@ -48,6 +48,9 @@
 		} else {
 			header('Location: '.$_SERVER['HTTP_REFERER']);
 		}
+	} else {
+		echo "NO";
+		exit;
 	}
 
 	/* Age control */
