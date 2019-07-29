@@ -1,0 +1,78 @@
+{% if metatags.description is not empty %}
+<meta name="description" content="{{ metatags.description }}" />
+{% endif %}
+{% if metatags.keywords is not empty %}
+<meta name="keywords" content="{{ metatags.keywords }}" />
+{% endif %}
+{% if metatags.title is not empty %}
+<meta itemprop="name" content="{{ metatags.title }}" />
+{% endif %}
+{% if metatags.description is not empty %}
+<meta itemprop="description" content="{{ metatags.description }}" />
+{% endif %}
+{% if metatags.url is not empty %}
+<meta itemprop="url" content="{{ metatags.url }}" />
+{% endif %}
+{% if metatags.image is not empty %}
+<meta itemprop="image" content="{{ metatags.image }}" />
+{% endif %}
+{% if metatags.title is not empty %}
+<meta name="schema:title" content="{{ metatags.title }}" />
+{% endif %}
+{% if metatags.description is not empty %}
+<meta name="schema:description" content="{{ metatags.description }}" />
+{% endif %}
+{% if metatags.image is not empty %}
+<meta name="schema:image" content="{{ metatags.image }}" />
+{% endif %}
+{% if metatags.title is not empty %}
+<meta property="og:title" content="{{ metatags.title }}" />
+{% endif %}
+{% if metatags.description is not empty %}
+<meta property="og:description" content="{{ metatags.description }}" />
+{% endif %}
+{% if metatags.url is not empty %}
+<meta property="og:url" content="{{ metatags.url }}" />
+{% endif %}
+{% if metatags.type is not empty %}
+<meta property="og:type" content="{{ metatags.type }}" />
+{% endif %}
+{% if metatags.image is not empty %}
+<meta property="og:image" content="{{ metatags.image }}" />
+{% endif %}
+{% if metatags.title is not empty %}
+<meta property="og:site_name" content="{{ metatags.title }}" />
+{% endif %}
+{% if metatags.facebookAppId is not empty %}
+<meta property="fb:app_id" content="{{ metatags.facebookAppId }}" />
+{% endif %}
+{% if metatags.card is not empty %}
+<meta name="twitter:card" content="{{ metatags.card }}" />
+{% endif %}
+{% if metatags.title is not empty %}
+<meta name="twitter:title" content="{{ metatags.title }}" />
+{% endif %}
+{% if metatags.description is not empty %}
+<meta name="twitter:description" content="{{ metatags.description }}" />
+{% endif %}
+{% if metatags.url is not empty %}
+<meta name="twitter:url" content="{{ metatags.url }}>" />
+{% endif %}
+{% if metatags.site is not empty %}
+<meta name="twitter:site" content="{{ metatags.site }}" />
+{% endif %}
+{% if metatags.creator is not empty %}
+<meta name="twitter:creator" content="{{ metatags.creator }}" />
+{% endif %}
+{% if metatags.image is not empty %}
+<meta name="twitter:image" content="{{ metatags.image }}" />
+{% endif %}
+{% if metatags.twitterAccount is not empty %}
+<link itemprop="sameAs" id="sitelink-profile-twitter" href="{{ metatags.twitterAccount }}" />
+{% endif %}
+{% if metatags.facebookAccount is not empty %}
+<link itemprop="sameAs" id="sitelink-profile-facebook" href="{{ metatags.facebookAccount }}" />
+{% endif %}
+{% if metatags.url is not empty %}
+<link rel="canonical" href="{{ metatags.url }}" />
+{% endif %}

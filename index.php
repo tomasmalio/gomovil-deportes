@@ -499,7 +499,6 @@
 		'globalStyle'				=> $globalStyle,
 		'assetsStyle'				=> $assetsStyle,
 		'assetsJs'					=> $assetsJs,
-		//'metatags'					=> $metatags,
 		'metatags'					=> $metatag,
 		'widgets'					=> $widgets,
 		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
