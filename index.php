@@ -39,7 +39,7 @@
 	session_start();
 	/* Security control */
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
-		$return = @file_get_contents('https://api.armadillo.mobi/v1/checkToken/.'.$_POST['subscriptionId'].'/'.$_POST['token']);
+		$return = @file_get_contents('https://api.armadillo.mobi/v1/checkToken/'.$_POST['subscriptionId'].'/'.$_POST['token']);
 		if (strpos($http_response_header[0], "200")) {
 			$_SESSION['suscribe'] = true;
 			echo "Si Dani";
