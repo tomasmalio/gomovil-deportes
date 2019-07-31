@@ -490,8 +490,17 @@
 	/**
 	 * Render view
 	 */
+	// print_r($assets['css']);
+	
+	// exit;
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
+
+		array_push($assets['css'], 'css/bootstrap-amp.min.css');
+		array_push($assets['css'], 'https://use.fontawesome.com/releases/v5.7.0/css/all.css');
+		array_push($assets['css'], 'assets/slidebars/slidebars.min.css?v=20190701');
+		array_push($assets['css'], 'assets/swiper/css/swiper.min.css?v=20190701');
+
 		$assetsStyle	= '<![CDATA[';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
