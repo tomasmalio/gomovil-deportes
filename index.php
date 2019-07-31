@@ -496,10 +496,10 @@
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
 		$assetsGeneral['css'] = [];
-		$assetsGeneral['css'] = array_push($assetsGeneral['css'], 'assets/bootstrap/css/bootstrap.min.css');
-		$assetsGeneral['css'] = array_push($assetsGeneral['css'], 'https://use.fontawesome.com/releases/v5.7.0/css/all.css');
-		$assetsGeneral['css'] = array_push($assetsGeneral['css'], 'assets/slidebars/slidebars.min.css?v=20190701');
-		$assetsGeneral['css'] = array_push($assetsGeneral['css'], 'assets/swiper/css/swiper.min.css?v=20190701');
+		$array_push($assetsGeneral['css'], ['assets/bootstrap/css/bootstrap.min.css']);
+		array_push($assetsGeneral['css'], ['https://use.fontawesome.com/releases/v5.7.0/css/all.css']);
+		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
+		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 
 		$assetsStyle	= '<![CDATA[';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
