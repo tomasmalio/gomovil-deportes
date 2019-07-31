@@ -221,7 +221,7 @@
 										if ($s === '') {
 											echo "aca";
 										} else {
-											echo "acaaaa ".$s
+											echo "acaaaa ".$s;
 										}
 										$styles .= $s;
 									}
