@@ -190,11 +190,17 @@
 			$link .= $_SERVER['REQUEST_URI']; 
 
 			$assetUse = [];
+
+			/**
+			 * 
+			 */
 			foreach ($asssetCss as $asset) {
+				// Validate if the assets exists and is not empty
 				if (!empty($asset)) {
-					foreach ($asset as $file) {
-						if (!in_array($file, $assetUse)) {
-							array_push($assetUse, $file);
+					// Getting the files of the assets
+					if (!is_array($asset)) {
+						if (!in_array($asset, $assetUse)) {
+							array_push($assetUse, $asset);
 							if (strpos($file, 'css')) {
 								if (!self::externalFile($file)) {
 									$file = $link . $file;
@@ -205,7 +211,23 @@
 								}
 							}
 						}
+					} else {
+						foreach ($asset as $file) {
+							if (!in_array($file, $assetUse)) {
+								array_push($assetUse, $file);
+								if (strpos($file, 'css')) {
+									if (!self::externalFile($file)) {
+										$file = $link . $file;
+									}
+									$s = @file_get_contents($file);
+									if (strpos($http_response_header[0], "200")) { 
+										$styles .= $s;
+									}
+								}
+							}
+						}
 					}
+					
 				}
 			}
 			return $styles;

@@ -3,27 +3,27 @@
 	 * Model NewsTrendio
 	 */
 	class ModelNewsTrendio {
-		
+		// Url trendio
 		private $url = 'http://news.plugty.com/api/';
-		
+		// key
 		private $key = '123';
-		
-		public $country_id;
-		
-		public $country_code;
-
+		// Country id
+		private $country_id;
+		// Country code
+		private $country_code;
+		// Article difinition
 		private $article = null;
-		
+		// Trending news
 		public $trending = false;
-
+		// Category
 		public $category;
-		
+		// Format type
 		public $type = 'feedcards';
-
+		// News content
 		public $return_news = '1';
-
+		// News trends
 		public $return_trends = '0';
-
+		// Limit
 		public $limit = '10';
 		
 		public function model ($params = []) {
@@ -35,31 +35,32 @@
 			self::setTrends($params['trends']);
 			self::setNews($params['news']);
 			self::setLimit($params['limit']);
+
 			$array = json_decode(self::getNews(), true);
 			$type = ['news' => $this->return_news, 'trends' => $this->return_trends];
 			$array = array_merge($array, $type);
 			return $array;
 		}
 
-		public function setCountryCode ($country_code) {
+		private function setCountryCode ($country_code) {
 			if (!empty($country_code)) {
 				$this->country_code = $country_code;
 			}
 		}
 
-		public function setArticle ($article) {
+		private function setArticle ($article) {
 			if (!empty($article)) {
 				$this->article = $article;
 			}
 		}
 
-		public function setTrending ($trending) {
+		private function setTrending ($trending) {
 			if (!empty($trending)) {
 				$this->trending = $trending;
 			}
 		}
 
-		public function setCategory ($category) {
+		private function setCategory ($category) {
 			if (!empty($category)) {
 				$json = file_get_contents($this->url .'menu?key=' . $this->key . '&country_id=' . $this->country_code . '&show_news=1&show_trends=0');
 				$data = json_decode($json);
@@ -107,7 +108,7 @@
 			}
 		}
 
-		public function getNews () {
+		private function getNews () {
 			return $this->processNews();
 		}
 
