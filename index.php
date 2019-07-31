@@ -298,7 +298,7 @@
 	$customization = $db->fetch();
 
 	$assetsConstructor = new Assets($client['name'], $client['id'], $customization);
-	$globalStyle = 'css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
+	$globalStyle = '/css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
 	
 	/**********************************
 	 * 			EXTENSIONS
@@ -505,6 +505,7 @@
 		$assetsStyle	= '';
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
+		echo $globalStyle;
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
