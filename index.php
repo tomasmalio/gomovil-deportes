@@ -496,8 +496,6 @@
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
 		$assetsGeneral['css'] = [];
-		print_r(file_get_contents($globalStyle));
-		exit;
 		array_push($assetsGeneral['css'], ['less/bootstrap-amp.min.css']);
 		array_push($assetsGeneral['css'], ['https://use.fontawesome.com/releases/v5.7.0/css/all.css']);
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);

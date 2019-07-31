@@ -219,6 +219,9 @@
 									$s = @file_get_contents($file);
 									echo $file;
 									if (strpos($http_response_header[0], "200")) { 
+										if ($s == null) {
+											echo "aca";
+										}
 										$styles .= $s;
 									}
 								}
