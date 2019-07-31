@@ -503,7 +503,7 @@
 
 		$assetsStyle	= '<![CDATA[';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
+		//$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		$assetsStyle	.= ']]>';
