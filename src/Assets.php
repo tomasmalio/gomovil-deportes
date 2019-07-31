@@ -194,6 +194,7 @@
 			/**
 			 * 
 			 */
+			print_r($asssetCss);
 			foreach ($asssetCss as $asset) {
 				// Validate if the assets exists and is not empty
 				if (!empty($asset)) {
