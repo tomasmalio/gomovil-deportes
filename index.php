@@ -304,18 +304,28 @@
 	 * 			EXTENSIONS
 	 **********************************/
 	if (IS_MOBILE) {
-		$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
-		from section_extension se, extension e 
-		where se.section_client_id = '" . $section['id'] . "' 
-		and se.extension_id = e.id 
-		and se.status = 1 ORDER BY se.position_mobile ASC");
+		$orderByName = 'se.position_mobile';
 	} else {
-		$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+		$orderByName = 'se.position';
+	}
+	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
 		from section_extension se, extension e 
 		where se.section_client_id = '" . $section['id'] . "' 
 		and se.extension_id = e.id 
-		and se.status = 1 ORDER BY se.position ASC");
-	}
+		and se.status = 1 ORDER BY ".$orderByName." ASC");
+
+	// 	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+	// 	from section_extension se, extension e 
+	// 	where se.section_client_id = '" . $section['id'] . "' 
+	// 	and se.extension_id = e.id 
+	// 	and se.status = 1 ORDER BY se.position_mobile ASC");
+	// } else {
+	// 	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+	// 	from section_extension se, extension e 
+	// 	where se.section_client_id = '" . $section['id'] . "' 
+	// 	and se.extension_id = e.id 
+	// 	and se.status = 1 ORDER BY se.position ASC");
+	// }
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
@@ -499,9 +509,6 @@
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		// $assetsStyle 	= str_replace('!&quot;', '"', $assetsStyle);
-		// print_r($assetsStyle);
-		// exit;
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
