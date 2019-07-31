@@ -217,10 +217,11 @@
 										$file = $link . $file;
 									}
 									$s = @file_get_contents($file);
-									echo $file;
 									if (strpos($http_response_header[0], "200")) { 
 										if ($s === '') {
 											echo "aca";
+										} else {
+											echo "acaaaa ".$s
 										}
 										$styles .= $s;
 									}
