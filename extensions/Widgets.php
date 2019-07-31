@@ -46,12 +46,15 @@
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
 						/**
-						 * If the extensions receive words that are going to
-						 * be use for titles, buttons, etc we obtain and then
-						 * separated from the main content
+						 * Extension Content
 						 */
 						if ($key == 'content') {
 							$this->content = $value;
+							/**
+							 * If the extensions receive words that are going to
+							 * be use for titles, buttons, etc, we obtain and then
+							 * separated from the main content
+							 */
 							if (isset($value['words'])) {
 								unset($this->content['words']);
 								foreach ($value['words'] as $k => $v) {
@@ -109,13 +112,7 @@
 							 */
 							$this->content['content'] = $content;
 
-
-
-
-
-
-
-							/** ACAAAAAA */
+							/* Eof for content */
 						}
 						if ($key != 'content' && $key != 'options') {
 							$this->$key = $value;
