@@ -509,6 +509,7 @@
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
+		echo $globalStyle;
 		print_r($assetsStyle);
 		exit;
 	} else {
