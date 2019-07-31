@@ -500,14 +500,12 @@
 		array_push($assetsGeneral['css'], ['https://use.fontawesome.com/releases/v5.7.0/css/all.css']);
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
+		array_push($assetsGeneral['css'], [$globalStyle]);
 
 		// $assetsStyle	= '<![CDATA[';
 		$assetsStyle	= '';
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
-		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
-		echo $globalStyle;
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([0 => $globalStyle]);
-		print_r($assetsStyle);
+		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
