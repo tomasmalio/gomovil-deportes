@@ -502,8 +502,8 @@
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 
 		$assetsStyle	= '<![CDATA[';
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
+		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		$assetsStyle	.= ']]>';
