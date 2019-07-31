@@ -106,7 +106,7 @@
 					unset($file);
 					
 					$less = new \lessc;
-					$less->setFormatter("compressed");
+					// $less->setFormatter("compressed");
 					$less->checkedCompile($globalLess, $globalCss);
 
 					$db->prepare("UPDATE customization SET modify_date = '".date('Y-m-d H:i:s')."', modify_status = '0' WHERE client_id = '". $client_id. "' AND status = '1';");
