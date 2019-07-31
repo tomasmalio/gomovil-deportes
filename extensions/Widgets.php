@@ -58,6 +58,64 @@
 									$this->content[$k] = $v;
 								}
 							}
+							/**
+							 * Getting the content info
+							 * 
+							 * Returns array info of the model 
+							 **/ 
+							$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
+							if (is_dir($modelUrl)) {
+								try {
+									if (isset($params['modelView']) && $params['modelView']) {
+										if (file_exists($modelUrl .'/Model' . $params['modelView'] . '.php')) {
+											require_once $modelUrl .'/Model' . $params['modelView'] . '.php';
+											$name = 'Model'.$params['modelView'];
+										} else {
+											throw new Exception('No model find for '.$modelUrl .'/Model' . $params['modelView'] . '.php');
+										}
+									} else {
+										if (file_exists($modelUrl .'/Model' . get_class($this) . '.php')) {
+											require_once $modelUrl .'/Model' . get_class($this) . '.php';
+											$name = 'Model'.get_class($this);
+										} else {
+											throw new Exception('No model find for '.$modelUrl .'/Model' . get_class($this) . '.php');
+										}
+									}
+									if (isset($name)) {
+										$model = new $name();
+										$content = $model->model($params['data']['content']);
+
+										if (isset($this->options['scripts'][1])){
+											$var = $this->options['scripts'][1]['content'];
+											if (isset($content['slider_position'])) {
+												$var = str_replace("initialSlide: '{@initialSlide}',", "initialSlide: ".($content['slider_position']-1).",", $var);
+											} else {
+												$var = str_replace("initialSlide: '{@initialSlide}',", "", $var);
+											}
+											$this->options['scripts'][1]['content'] = $var;
+										}
+									}
+								} catch (Exception $e) {
+									$e->getMessage();
+								}
+								
+							} else {
+								$content = null;
+							}
+							/**
+							 * Creating the content var for using in the front html. 
+							 * If the extension has words (title, buttons, etc) we merge with
+							 * the content array.
+							 */
+							$this->content['content'] = $content;
+
+
+
+
+
+
+
+							/** ACAAAAAA */
 						}
 						if ($key != 'content' && $key != 'options') {
 							$this->$key = $value;
@@ -128,56 +186,7 @@
 			if (isset($params['viewName']) && $params['viewName']) {
 				$this->viewName = $params['viewName'];
 			}
-			/**
-			 * Getting the content info
-			 * 
-			 * Returns array info of the model 
-			 **/ 
-			$modelUrl = 'extensions/'.lcfirst(get_class($this)).'/model';
-			if (is_dir($modelUrl)) {
-				try {
-					if (isset($params['modelView']) && $params['modelView']) {
-						if (file_exists($modelUrl .'/Model' . $params['modelView'] . '.php')) {
-							require_once $modelUrl .'/Model' . $params['modelView'] . '.php';
-							$name = 'Model'.$params['modelView'];
-						} else {
-							throw new Exception('No model find for '.$modelUrl .'/Model' . $params['modelView'] . '.php');
-						}
-					} else {
-						if (file_exists($modelUrl .'/Model' . get_class($this) . '.php')) {
-							require_once $modelUrl .'/Model' . get_class($this) . '.php';
-							$name = 'Model'.get_class($this);
-						} else {
-							throw new Exception('No model find for '.$modelUrl .'/Model' . get_class($this) . '.php');
-						}
-					}
-					if (isset($name)) {
-						$model = new $name();
-						$content = $model->model($params['data']['content']);
-
-						if (isset($this->options['scripts'][1])){
-							$var = $this->options['scripts'][1]['content'];
-							if (isset($content['slider_position'])) {
-								$var = str_replace("initialSlide: '{@initialSlide}',", "initialSlide: ".($content['slider_position']-1).",", $var);
-							} else {
-								$var = str_replace("initialSlide: '{@initialSlide}',", "", $var);
-							}
-							$this->options['scripts'][1]['content'] = $var;
-						}
-					}
-				} catch (Exception $e) {
-					$e->getMessage();
-				}
-				
-			} else {
-				$content = null;
-			}
-			/**
-			 * Creating the content var for using in the front html. 
-			 * If the extension has words (title, buttons, etc) we merge with
-			 * the content array.
-			 */
-			$this->content['content'] = $content;
+			
 		}
 		
 		/**
@@ -338,28 +347,7 @@
 										$fileExits = ['validate' => false, 'minify' => false];
 										if (!empty($options['styles'])) {
 											$filename .= $this->extensionId;
-										} 
-										/**
-										else {
-											// Backup for validate if the file exits
-											$fileOriginal = $filename;
-											if (!isset($options['minify']) || $options['minify']) {
-												$fileOriginal .= '.min.css';
-											} else {
-												$fileOriginal .= 'css';
-											}
-											if (strpos($fileOriginal, 'min')) {
-												$fileBackUpCheck = $this->temporal . '/'. self::getExtension($file) . '/' . basename($file, '.less').'.bk-exits.less';
-												$less->setFormatter("compressed");
-												$less->checkedCompile($backupFile, $fileBackUpCheck);
-											}
-											if (file_get_contents($fileOriginal) == file_get_contents($fileBackUpCheck)) {
-												$fileExits['validate']  = true; 
-												if ($fileExits['minify']) {
-													unlink($fileBackUpCheck);
-												}
-											}
-										}*/
+										}
 
 										if (!$fileExits['validate']) {
 											// Minify the file if is not set or if it's true

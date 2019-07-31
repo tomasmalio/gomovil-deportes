@@ -499,7 +499,9 @@
 		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		$assetsStyle 	= str_replace('!&quot;', '"', $assetsStyle);
+		// $assetsStyle 	= str_replace('!&quot;', '"', $assetsStyle);
+		print_r($assetsStyle);
+		exit;
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
