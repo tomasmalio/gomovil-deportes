@@ -46,7 +46,7 @@
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
 						/**
-						 * Extension Content
+						 * Extension content
 						 */
 						if ($key == 'content') {
 							$this->content = $value;
@@ -114,9 +114,6 @@
 
 							/* Eof for content */
 						}
-						if ($key != 'content' && $key != 'options') {
-							$this->$key = $value;
-						}
 						/**
 						 * Extension options
 						 */
@@ -177,9 +174,18 @@
 								(is_array($script)) ? $this->options = array_merge($this->options, $script): '';
 							}
 						}
+						/* Eof extension options */
+						/**
+						 * The rest of key names we set inside the
+						 * array $this with the key name.
+						 */
+						if ($key != 'content' && $key != 'options') {
+							$this->$key = $value;
+						}
 					}
 				}
 			}
+			/* Setting the viewName if it's set */
 			if (isset($params['viewName']) && $params['viewName']) {
 				$this->viewName = $params['viewName'];
 			}
