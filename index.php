@@ -505,14 +505,9 @@
 		$assetsStyle	= '';
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
-		print_r($assetsStyle);
-		exit;
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-		//echo $globalStyle;
-		print_r($assetsStyle);
-		exit;
 	} else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
