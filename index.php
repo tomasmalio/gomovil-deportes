@@ -506,7 +506,7 @@
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		echo $globalStyle;
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
+		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([0 => $globalStyle]);
 		print_r($assetsStyle);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// $assetsStyle	.= ']]>';
