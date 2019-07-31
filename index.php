@@ -501,6 +501,7 @@
 		array_push($assetsGeneral['css'], 'assets/slidebars/slidebars.min.css?v=20190701');
 		array_push($assetsGeneral['css'], 'assets/swiper/css/swiper.min.css?v=20190701');
 
+		print_r($assetsGeneral['css']);
 		
 		$assetsStyle	= '<![CDATA[';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
