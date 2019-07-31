@@ -303,36 +303,22 @@
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	if (IS_MOBILE) {
-		$orderByName = 'se.position_mobile';
-	} else {
-		$orderByName = 'se.position';
-	}
+	(IS_MOBILE) ? $orderByName = 'se.position_mobile' : $orderByName = 'se.position';
 	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
 		from section_extension se, extension e 
 		where se.section_client_id = '" . $section['id'] . "' 
 		and se.extension_id = e.id 
 		and se.status = 1 ORDER BY ".$orderByName." ASC");
-
-	// 	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
-	// 	from section_extension se, extension e 
-	// 	where se.section_client_id = '" . $section['id'] . "' 
-	// 	and se.extension_id = e.id 
-	// 	and se.status = 1 ORDER BY se.position_mobile ASC");
-	// } else {
-	// 	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
-	// 	from section_extension se, extension e 
-	// 	where se.section_client_id = '" . $section['id'] . "' 
-	// 	and se.extension_id = e.id 
-	// 	and se.status = 1 ORDER BY se.position ASC");
-	// }
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
 	// Widgets Constructor
 	$widgets = [];
 	$i = 1;
-
+	
+	/**
+	 * Getting info of the section
+	 */
 	foreach ($sectionExtensions as $extension) {
 
 		if (isset($extension['external_content']) && $extension['external_content'] != '') {
@@ -506,9 +492,11 @@
 	 */
 	if (isset($client['amp']) && $client['amp']) {
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
-		$assetsStyle 	= $assetsConstructor->generateAssetsAmp($assets['css']);
+		$assetsStyle	= '<![CDATA[';
+		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
+		$assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
