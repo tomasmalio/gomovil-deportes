@@ -501,13 +501,13 @@
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 
-		$assetsStyle	= '<![CDATA[';
-		// $assetsStyle	= '';
+		// $assetsStyle	= '<![CDATA[';
+		$assetsStyle	= '';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp([$globalStyle]);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		$assetsStyle	.= ']]>';
+		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 	} else {
 		$template 		= $twig->load('generateIndex.html');
