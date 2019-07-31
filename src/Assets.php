@@ -218,11 +218,6 @@
 									}
 									$s = @file_get_contents($file);
 									if (strpos($http_response_header[0], "200")) { 
-										if ($s === '') {
-											echo "aca";
-										} else {
-											echo "acaaaa ".$s;
-										}
 										$styles .= $s;
 									}
 								}
