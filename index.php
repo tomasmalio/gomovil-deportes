@@ -501,11 +501,13 @@
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], [''.$globalStyle.'']);
-exit;
+		print_r($assetsGeneral['css']);
+		exit;
 		// $assetsStyle	= '<![CDATA[';
 		$assetsStyle	= '';
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
+		exit;
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
