@@ -197,6 +197,7 @@
 					print_r($asset);
 					// Getting the files of the assets
 					if (!is_array($asset)) {
+						echo $asset;
 						if (!in_array($asset, $assetUse)) {
 							array_push($assetUse, $asset);
 							if (strpos($file, 'css')) {
@@ -210,6 +211,7 @@
 							}
 						}
 					} else {
+						echo "aca";
 						foreach ($asset as $file) {
 							if (!in_array($file, $assetUse)) {
 								array_push($assetUse, $file);
