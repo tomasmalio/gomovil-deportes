@@ -191,13 +191,10 @@
 
 			$assetUse = [];
 
-			/**
-			 * 
-			 */
-			print_r($asssetCss);
 			foreach ($asssetCss as $asset) {
 				// Validate if the assets exists and is not empty
 				if (!empty($asset)) {
+					print_r($asset);
 					// Getting the files of the assets
 					if (!is_array($asset)) {
 						if (!in_array($asset, $assetUse)) {
