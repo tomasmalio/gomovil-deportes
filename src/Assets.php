@@ -217,6 +217,7 @@
 										$file = $link . $file;
 									}
 									$s = @file_get_contents($file);
+									print_r($s);
 									if (strpos($http_response_header[0], "200")) { 
 										$styles .= $s;
 									} else {
