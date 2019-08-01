@@ -507,7 +507,7 @@
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		print_r($assetsStyle);
+		//print_r($assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
@@ -527,6 +527,8 @@
 			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
 		]);
 
+		var_dump($htmlContent);
+		exit;
 		/* Amp Remove Unused CSS */
 		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
 		$ampRemoveUnusedCSS->process($htmlContent);
