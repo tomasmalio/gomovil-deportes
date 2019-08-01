@@ -509,7 +509,7 @@
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// print_r($assetsStyle);
-		print_r($assets['css']);
+		// print_r($assets['css']);
 		// $assetsStyle	.= '';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 		$htmlContent = $template->render([
