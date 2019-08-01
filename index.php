@@ -532,7 +532,7 @@
 		/* Amp Remove Unused CSS */
 		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
 		$ampRemoveUnusedCSS->process($htmlContent);
-		echo $ampRemoveUnusedCSS->result();
+		print_r($ampRemoveUnusedCSS->result());
 
 		// $tmp = new AmpRemoveUnusedCss();
 		// $css_minified = $tmp->minify($assetsStyle);
