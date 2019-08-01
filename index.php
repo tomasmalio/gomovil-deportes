@@ -502,8 +502,8 @@
 		array_push($assetsGeneral['css'], [''.$globalStyle.'']);
 		// $assetsStyle	= '<![CDATA[';
 		$assetsStyle	= '';
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
+		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		// print_r($assetsStyle);
 		// $assetsStyle	.= ']]>';
