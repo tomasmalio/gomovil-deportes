@@ -512,6 +512,14 @@
 		// exit;
 		// print_r($assets['css']);
 		// $assetsStyle	.= '';
+
+
+		preg_match('(^@keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}',$assetsStyle, $array);
+
+		print_r($array);
+		exit;
+
+
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 		$htmlContent = $template->render([
 			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
