@@ -505,6 +505,7 @@
 		// $assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
+		print_r($assetsStyle);
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 	} else {
