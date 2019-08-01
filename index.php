@@ -508,13 +508,13 @@
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		// print_r($assetsStyle);
+		print_r($assetsStyle);
 		// exit;
 		// print_r($assets['css']);
 		// $assetsStyle	.= '';
 
 
-		preg_match('(^@keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}',$assetsStyle, $array);
+		preg_match("/(^@keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}/",$assetsStyle, $array);
 
 		echo 'Hola';
 		print_r($array);
