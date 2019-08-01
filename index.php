@@ -511,21 +511,21 @@
 		// $assetsStyle	.= ']]>';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
-		$htmlContent = $template->render([
-			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
-			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
-			'globalStyle'				=> $globalStyle,
-			'assetsStyle'				=> $assetsStyle,
-			'assetsJs'					=> $assetsJs,
-			'metatags'					=> $metatag,
-			'widgets'					=> $widgets,
-			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
-			'logo'						=> $client['logo'],
-			'menu'						=> $menu,
-			'country'					=> COUNTRY_CODE,
-			'url'						=> $_SERVER['REQUEST_URI'],
-			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
-		]);
+		// $htmlContent = $template->render([
+		// 	'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+		// 	'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
+		// 	'globalStyle'				=> $globalStyle,
+		// 	'assetsStyle'				=> $assetsStyle,
+		// 	'assetsJs'					=> $assetsJs,
+		// 	'metatags'					=> $metatag,
+		// 	'widgets'					=> $widgets,
+		// 	'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
+		// 	'logo'						=> $client['logo'],
+		// 	'menu'						=> $menu,
+		// 	'country'					=> COUNTRY_CODE,
+		// 	'url'						=> $_SERVER['REQUEST_URI'],
+		// 	'urlCanonical'				=> $_SERVER['HTTP_HOST'],
+		// ]);
 		//print_r($htmlContent);
 		/* Amp Remove Unused CSS */
 		// $ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
