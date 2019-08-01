@@ -528,9 +528,13 @@
 		]);
 		//print_r($htmlContent);
 		/* Amp Remove Unused CSS */
-		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
-		$ampRemoveUnusedCSS->process($htmlContent);
-		echo $ampRemoveUnusedCSS->result();
+		// $ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
+		// $ampRemoveUnusedCSS->process($htmlContent);
+		// echo $ampRemoveUnusedCSS->result();
+
+		$tmp = new AmpRemoveUnusedCss();
+		$css_minified = $tmp->minify($assetsStyle);
+		print_r($css_minified);
 		exit;
 
 	} else {
