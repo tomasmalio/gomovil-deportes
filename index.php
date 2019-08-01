@@ -16,7 +16,7 @@
 	
 	use GoMovil\Assets;
 	use GoMovil\Db;
-	use AmpRemoveUnusedCss\AmpRemoveUnusedCss;
+	use AmpRemoveUnusedCss;
 	
 	/* Db Connection */
 	$db = new Db();
