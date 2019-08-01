@@ -532,31 +532,30 @@
 		/* Amp Remove Unused CSS */
 		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
 		$ampRemoveUnusedCSS->process($htmlContent);
-		print_r($ampRemoveUnusedCSS->result());
+		echo $ampRemoveUnusedCSS->result();
 
 		// $tmp = new AmpRemoveUnusedCss();
 		// $css_minified = $tmp->minify($assetsStyle);
 		// print_r($css_minified);
-		exit;
 
 	} else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
+
+		echo $template->render([
+			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
+			'globalStyle'				=> $globalStyle,
+			'assetsStyle'				=> $assetsStyle,
+			'assetsJs'					=> $assetsJs,
+			'metatags'					=> $metatag,
+			'widgets'					=> $widgets,
+			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
+			'logo'						=> $client['logo'],
+			'menu'						=> $menu,
+			'country'					=> COUNTRY_CODE,
+			'url'						=> $_SERVER['REQUEST_URI'],
+			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
+		]);
 	}
-	
-	echo $template->render([
-		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
-		'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
-		'globalStyle'				=> $globalStyle,
-		'assetsStyle'				=> $assetsStyle,
-		'assetsJs'					=> $assetsJs,
-		'metatags'					=> $metatag,
-		'widgets'					=> $widgets,
-		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
-		'logo'						=> $client['logo'],
-		'menu'						=> $menu,
-		'country'					=> COUNTRY_CODE,
-		'url'						=> $_SERVER['REQUEST_URI'],
-		'urlCanonical'				=> $_SERVER['HTTP_HOST'],
-	]);
