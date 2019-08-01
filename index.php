@@ -514,7 +514,7 @@
 		// $assetsStyle	.= '';
 
 
-		preg_match('/(keyframes\([\-aA-zZ0-9%;:(){}\ ]+))}}/',$assetsStyle, $array, PREG_OFFSET_CAPTURE);
+		preg_match('/(keyframes\([\-aA-zZ0-9%;:(){}\ ]+))}}/',$assetsStyle, $array);
 
 		echo 'Hola';
 		print_r($array);
