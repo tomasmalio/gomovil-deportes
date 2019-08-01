@@ -508,7 +508,7 @@
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		print_r($assetsStyle);
+		// print_r($assetsStyle);
 		// exit;
 		// print_r($assets['css']);
 		// $assetsStyle	.= '';
@@ -531,9 +531,12 @@
 		// print_r($htmlContent);
 		// exit;
 		/* Amp Remove Unused CSS */
-		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
-		$ampRemoveUnusedCSS->process($htmlContent);
-		echo $ampRemoveUnusedCSS->result();
+		if ($htmlContent) {
+			$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
+			$ampRemoveUnusedCSS->process($htmlContent);
+			echo $ampRemoveUnusedCSS->result();
+		}
+		
 		// echo $htmlContent;
 		// $tmp = new AmpRemoveUnusedCss();
 		// $css_minified = $tmp->minify($assetsStyle);
