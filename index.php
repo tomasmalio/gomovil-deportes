@@ -527,8 +527,8 @@
 			'url'						=> $_SERVER['REQUEST_URI'],
 			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
 		]);
-		print_r($htmlContent);
-		exit;
+		// print_r($htmlContent);
+		// exit;
 		/* Amp Remove Unused CSS */
 		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
 		$ampRemoveUnusedCSS->process($htmlContent);
