@@ -35,6 +35,7 @@ ONLY MINIFY CSS (can be used in no-AMP pages, too)
 TO-DO : process @media
 
 **************************************************************/
+namespace AmpRemoveUnusedCss;
 
 class AmpRemoveUnusedCss 
 {
