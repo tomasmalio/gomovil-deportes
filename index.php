@@ -503,15 +503,14 @@
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], [''.$globalStyle.'']);
-		// $assetsStyle	= '<![CDATA[';
+		// $assetsStyle	= '';
 		$assetsStyle	= '';
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 		//print_r($assetsStyle);
-		// $assetsStyle	.= ']]>';
+		// $assetsStyle	.= '';
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-
 		$htmlContent = $template->render([
 			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
