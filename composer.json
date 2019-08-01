@@ -24,8 +24,7 @@
 		"psr-4": {
 			"GoMovil\\":"src/",
 			"MatthiasMullie\\Minify\\": "src/minify/src/",
-			"MobileDetect\\":"src/mobiledetect/",
-			"AmpRemoveUnusedCss\\":"src/ampremoveunusedcss/"
+			"MobileDetect\\":"src/mobiledetect/"
 		}
 	},
 	"scripts": {
