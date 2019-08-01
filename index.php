@@ -529,7 +529,7 @@
 		//print_r($htmlContent);
 		/* Amp Remove Unused CSS */
 		$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
-		$ampRemoveUnusedCSS->process($assetsStyle);
+		$ampRemoveUnusedCSS->process($htmlContent);
 		echo $ampRemoveUnusedCSS->result();
 		exit;
 
