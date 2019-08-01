@@ -13,9 +13,10 @@
 	define('IS_MOBILE', $detect->isMobile(), true);
 	
 	$assets = ['css' => [], 'js' => []];
-
+	
 	use GoMovil\Assets;
 	use GoMovil\Db;
+	use AmpRemoveUnusedCss\AmpRemoveUnusedCss;
 	
 	/* Db Connection */
 	$db = new Db();

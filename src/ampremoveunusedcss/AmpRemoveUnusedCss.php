@@ -36,8 +36,6 @@ TO-DO : process @media
 
 **************************************************************/
 
-use AmpRemoveUnusedCss;
-
 class AmpRemoveUnusedCss 
 {
 	private $include_selectors = array('div','span','a','p','body','ul','li','nav'); //this tags will be ignored in process
