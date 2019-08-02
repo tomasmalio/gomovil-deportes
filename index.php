@@ -582,7 +582,7 @@
 	
 	/* Desktop */
 	else {
-		$template 		= $twig->load('generateIndex.html');
+		$template 		= $twig->loadTemplate('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
