@@ -17,24 +17,21 @@
 	use GoMovil\Assets;
 	use GoMovil\Db;
 	use GoMovil\AmpRemoveUnusedCss;
-	
 
-	use React\EventLoop\Factory;
-	use seregazhuk\React\Cache\Memcached\Memcached;
-	
-	$loop = Factory::create();
-	$cache = new Memcached($loop);
-	
-	// store
-	$cache->set('key', 12345);
-	
-	// store for a minute
-	$cache->set('key', 12345, 60);
-	
-	// retrieve
-	$cache->get('key')->then(function($value){
-		echo $key . ' - '. $value;
+	// React PHP Cache
+	$cache = new React\Cache\ArrayCache();
+
+	$var = 'key';
+	$asfafsa = 'aca';
+	$cache->set($var, $asfafsa, 60);
+
+	$cache->get($var)->then(function($value){
+		print_r($value);
+	})
+	->otherwise(function(){
+		echo "There is no value in cache";
 	});
+	//exit;
 
 	/* Db Connection */
 	$db = new Db();
@@ -55,6 +52,8 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
+	print_r($filters);
+	exit;
 	/**
 	 * Client definitions
 	 */
