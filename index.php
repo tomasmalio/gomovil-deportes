@@ -52,7 +52,16 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
-	print_r($filters);
+	$cacheVarName = '';
+	if (count($filters)  > 0){
+		foreach ($filters as $filter) {
+			$cacheVarName .= $filter;
+		}
+	}  else {
+		$cacheVarName = 'index';
+	}
+	
+	print_r($cacheVarName);
 	exit;
 	/**
 	 * Client definitions
