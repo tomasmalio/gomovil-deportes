@@ -18,21 +18,6 @@
 	use GoMovil\Db;
 	use GoMovil\AmpRemoveUnusedCss;
 
-	// React PHP Cache
-	$cache = new React\Cache\ArrayCache();
-
-	$var = 'key';
-	$asfafsa = 'aca';
-	$cache->set($var, $asfafsa, 60);
-
-	$cache->get($var)->then(function($value){
-		print_r($value);
-	})
-	->otherwise(function(){
-		echo "There is no value in cache";
-	});
-	//exit;
-
 	/* Db Connection */
 	$db = new Db();
 	$db->setUsername('gomovil_db');
@@ -61,8 +46,18 @@
 		$cacheVarName = 'index';
 	}
 	
-	print_r($cacheVarName);
-	exit;
+	// print_r($cacheVarName);
+	// exit;
+
+	// React PHP Cache
+	//$cache = new React\Cache\ArrayCache();
+
+	// $var = 'key';
+	// $asfafsa = 'aca';
+	// $cache->set($var, $asfafsa, 60);
+	
+
+
 	/**
 	 * Client definitions
 	 */
