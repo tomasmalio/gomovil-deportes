@@ -11,7 +11,8 @@
 		"nolimits4web/swiper": "^4.5",
 		"mobiledetect/mobiledetectlib": "^2.8",
 		"slidebars/slidebars": "dev-master",
-		"jschr/bootstrap-modal": "^2.2"
+		"jschr/bootstrap-modal": "^2.2",
+		"seregazhuk/react-cache-memcached": "^1.0"
 	},
 	"config": {
 		"component-dir": "assets"

@@ -18,6 +18,24 @@
 	use GoMovil\Db;
 	use GoMovil\AmpRemoveUnusedCss;
 	
+
+	use React\EventLoop\Factory;
+	use seregazhuk\React\Cache\Memcached\Memcached;
+	
+	$loop = Factory::create();
+	$cache = new Memcached($loop);
+	
+	// store
+	$cache->set('key', 12345);
+	
+	// store for a minute
+	$cache->set('key', 12345, 60);
+	
+	// retrieve
+	$cache->get('key')->then(function($value){
+		echo $key . ' - '. $value;
+	});
+
 	/* Db Connection */
 	$db = new Db();
 	$db->setUsername('gomovil_db');
@@ -100,7 +118,14 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control, sc.security_id from section s, section_client sc left join content c on c.id = sc.content_id where s.uri = '".$s."' and s.id = sc.section_id and client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control, sc.security_id 
+				from section s, section_client sc 
+				left join content c on c.id = sc.content_id 
+				where s.uri = '".$s."' 
+				and s.id = sc.section_id 
+				and client_id = '" . $client['id'] . "' 
+				and s.status = 1 
+				and sc.status = 1");
 	$db->execute();
 	$section = $db->fetch();
 
@@ -238,14 +263,14 @@
 		 * @* @param Object var Description
 		 */
 		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display 
-		from section_client sc, section s, content c 
-		where sc.section_id = s.id 
-		and sc.client_id = '" . $client['id'] . "' 
-		and sc.parent_id = '".$item['id']."' 
-		and sc.content_id = c.id
-		/*and sc.menu_display = 1*/
-		and s.status = 1 
-		and sc.status = 1");
+					from section_client sc, section s, content c 
+					where sc.section_id = s.id 
+					and sc.client_id = '" . $client['id'] . "' 
+					and sc.parent_id = '".$item['id']."' 
+					and sc.content_id = c.id
+					/*and sc.menu_display = 1*/
+					and s.status = 1 
+					and sc.status = 1");
 		$db->execute();
 		$items = $db->fetchAll();
 		
@@ -309,7 +334,8 @@
 		from section_extension se, extension e 
 		where se.section_client_id = '" . $section['id'] . "' 
 		and se.extension_id = e.id 
-		and se.status = 1 ORDER BY ".$orderByName." ASC");
+		and se.status = 1 
+		ORDER BY ".$orderByName." ASC");
 	$db->execute();
 	$sectionExtensions = $db->fetchAll();
 
@@ -491,8 +517,6 @@
 	/**
 	 * Render view
 	 */
-	// print_r($assets['css']);
-	
 	if (isset($client['amp']) && $client['amp']) {
 		
 
@@ -514,11 +538,11 @@
 		// $assetsStyle	.= '';
 
 
-		preg_match('/(@(-webkit-)*keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}/',$assetsStyle, $array);
+		// preg_match('/((-webkit-)*keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}/', $assetsStyle, $array);
 
-		echo 'Hola';
-		print_r($array);
-		exit;
+		// echo 'Hola';
+		// print_r($array);
+		// exit;
 
 
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
@@ -551,7 +575,10 @@
 		// $css_minified = $tmp->minify($assetsStyle);
 		// print_r($css_minified);
 
-	} else {
+	} 
+	
+	/* Desktop */
+	else {
 		$template 		= $twig->load('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
