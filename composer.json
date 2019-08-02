@@ -49,7 +49,9 @@
 			"cp -R vendor/jschr/bootstrap-modal/img assets/bootstrap-modal/img",
 			"cp -R vendor/jschr/bootstrap-modal/js assets/bootstrap-modal/js",
 			"mkdir tmp",
+			"mkdir cache",
 			"chmod -R 0755 tmp",
+			"chmod -R 0755 cache",
 			"sh gomovil-install.sh",
 			"php composer dump-autoload"
 		]
