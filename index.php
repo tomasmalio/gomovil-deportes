@@ -1,6 +1,19 @@
 <?php
+	use Phpfastcache\CacheManager;
+	use Phpfastcache\Drivers\Memcached\Config;
+
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
+
+	
+
+	$InstanceCache = CacheManager::getInstance('memcached', new Config([
+		'host' =>'db.gomovil.co',
+		'port' => 11211,
+	]));
+
+	php_info();
+	exit;
 	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
@@ -16,7 +29,7 @@
 	
 	use GoMovil\Assets;
 	use GoMovil\Db;
-	use GoMovil\AmpRemoveUnusedCss;
+	//use GoMovil\AmpRemoveUnusedCss;
 
 	/* Db Connection */
 	$db = new Db();
@@ -46,8 +59,8 @@
 		$cacheVarName = 'index';
 	}
 	
-	// print_r($cacheVarName);
-	// exit;
+	print_r($cacheVarName);
+	exit;
 
 	// React PHP Cache
 	//$cache = new React\Cache\ArrayCache();
@@ -56,7 +69,6 @@
 	// $asfafsa = 'aca';
 	// $cache->set($var, $asfafsa, 60);
 	
-
 
 	/**
 	 * Client definitions
