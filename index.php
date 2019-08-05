@@ -1,7 +1,8 @@
 <?php
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
-
+	use Phpfastcache\Drivers\Memcached\Config;
+	
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
