@@ -6,7 +6,7 @@
 	//ini_set('display_errors', 1);
 
 	$InstanceCache = CacheManager::getInstance('memcached', new Config([
-		'host' =>'db.gomovil.co',
+		'host' =>'127.0.0.1',
 		'port' => 11211,
 	]));
 
