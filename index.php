@@ -5,6 +5,8 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
+	$InstanceCache = CacheManager::getInstance("memcached", ['memcache' =>[ ['host' => "127.0.0.1",'port' => 11211]]]);
+		
 	// $InstanceCache = CacheManager::getInstance('memcached', new Config([
 	// 	'host' =>'127.0.0.1',
 	// 	'port' => 11211,
@@ -57,8 +59,8 @@
 		$cacheVarName = 'index';
 	}
 	
-	print_r($cacheVarName);
-	exit;
+	// print_r($cacheVarName);
+	// exit;
 
 	// React PHP Cache
 	//$cache = new React\Cache\ArrayCache();
