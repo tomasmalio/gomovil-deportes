@@ -11,7 +11,6 @@
 		"nolimits4web/swiper": "^4.5",
 		"mobiledetect/mobiledetectlib": "^2.8",
 		"slidebars/slidebars": "dev-master",
-		"jschr/bootstrap-modal": "^2.2",
 		"seregazhuk/react-cache-memcached": "^1.0",
 		"phpfastcache/phpfastcache": "^7.0"
 	},
@@ -26,7 +25,8 @@
 		"psr-4": {
 			"GoMovil\\":"src/",
 			"MatthiasMullie\\Minify\\": "src/minify/src/",
-			"MobileDetect\\":"src/mobiledetect/"
+			"MobileDetect\\":"src/mobiledetect/",
+			"Phpfastcache\\":"src/phpfastcache/"
 		}
 	},
 	"scripts": {
@@ -45,10 +45,7 @@
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
 			"cp -R vendor/slidebars/slidebars/dist assets/slidebars",
 			"cp -R vendor/nolimits4web/swiper/dist assets/swiper",
-			"mkdir assets/bootstrap-modal",
-			"cp -R vendor/jschr/bootstrap-modal/css assets/bootstrap-modal/css",
-			"cp -R vendor/jschr/bootstrap-modal/img assets/bootstrap-modal/img",
-			"cp -R vendor/jschr/bootstrap-modal/js assets/bootstrap-modal/js",
+			"cp -R vendor/phpfastcache/phpfastcache/lib/Phpfastcache src/phpfastcache",
 			"mkdir tmp",
 			"mkdir cache",
 			"chmod -R 0755 tmp",
