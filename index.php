@@ -5,7 +5,7 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	$InstanceCache = CacheManager::getInstance("memcached", ['host' => "127.0.0.1",'port' => 11211]);
+	//$InstanceCache = CacheManager::getInstance("memcached", ['host' => "127.0.0.1",'port' => 11211]);
 		
 	// Init default configuration for "redis" adapter
 	CacheManager::setDefaultConfig([
