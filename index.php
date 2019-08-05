@@ -1,11 +1,15 @@
 <?php
 	use Phpfastcache\CacheManager;
-	use Phpfastcache\Drivers\Memcached\Config;
+	use Phpfastcache\Config\ConfigurationOption;
 
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	$InstanceCache = CacheManager::getInstance("memcached", ['host' => "127.0.0.1",'port' => 11211]);
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		'path' => '/files',
+	]));
+	$InstanceCache = CacheManager::getInstance("memcached");
+	// $InstanceCache = CacheManager::getInstance("memcached", ['host' => "127.0.0.1",'port' => 11211]);
 
 	// $InstanceCache = CacheManager::getInstance('memcached', new Config([
 	// 	'host' =>'127.0.0.1',
