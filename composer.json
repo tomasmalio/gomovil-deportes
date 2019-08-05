@@ -48,8 +48,10 @@
 			"cp -R vendor/phpfastcache/phpfastcache/lib/Phpfastcache src/phpfastcache",
 			"mkdir tmp",
 			"mkdir cache",
+			"mkdir files",
 			"chmod -R 0755 tmp",
 			"chmod -R 0755 cache",
+			"chmod -R 0755 files",
 			"sh gomovil-install.sh",
 			"php composer dump-autoload"
 		]
