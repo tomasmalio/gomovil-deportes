@@ -6,4 +6,5 @@ if [ -n "$username" ]; then
 	sudo -u root chown -R $username:$username less/
 	sudo -u root chown -R $username:$username tmp/
 	sudo -u root chown -R $username:$username cache/
+	sudo -u root chown -R $username:$username files/
 fi
