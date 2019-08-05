@@ -26,7 +26,7 @@
 			"GoMovil\\":"src/",
 			"MatthiasMullie\\Minify\\": "src/minify/src/",
 			"MobileDetect\\":"src/mobiledetect/",
-			"Phpfastcache":"src/phpfastcache/"
+			"Phpfastcache\\":"src/phpfastcache/"
 		}
 	},
 	"scripts": {
