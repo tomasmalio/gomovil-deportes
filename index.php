@@ -5,8 +5,6 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	
-
 	$InstanceCache = CacheManager::getInstance('memcached', new Config([
 		'host' =>'db.gomovil.co',
 		'port' => 11211,
