@@ -55,6 +55,7 @@
 	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
 	if ($Psr16Adapter->has($cacheVarName)) {
+		echo "aca";
 		echo $Psr16Adapter->get($cacheVarName);
 	} else {
 
