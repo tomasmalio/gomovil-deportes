@@ -8,7 +8,7 @@
 	// 	"storage"   =>  "memcache",
 	// );
 	// CacheManager::setup($config);
-	CacheManager::setup("storage","memcache");
+	CacheManager::setup(["storage" => "memcache"]);
 
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
