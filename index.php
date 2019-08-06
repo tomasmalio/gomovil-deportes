@@ -16,7 +16,7 @@
 		$data = $Psr16Adapter->get('test-key');
 	}
 
-	echo "aca";
+	echo 'aca  '.$data;
 	exit;
 
 
