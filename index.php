@@ -143,7 +143,7 @@
 		$db->execute();
 		$clientSQL = $db->fetch();
 
-		$CachedClient->set($clientSQL)->expiresAfter(1);//in seconds, also accepts Datetime
+		$CachedClient->set($clientSQL)->expiresAfter(100);//in seconds, also accepts Datetime
 		$InstanceCache->save($CachedClient); // Save the cache item just like you do with doctrine and entities
 		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
 	} else {
