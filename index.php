@@ -137,7 +137,7 @@
 	$CachedClient = $InstanceCache->getItem('client');
 
 	print_r($CachedClient->get());
-	echo $CachedClient->isHit();
+	echo "aca".$CachedClient->isHit();
 	exit;
 
 
