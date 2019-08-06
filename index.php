@@ -49,14 +49,22 @@
 	// print_r($cacheVarName);
 	// exit;
 
-	use Phpfastcache\Helper\Psr16Adapter;
+	$cfg = [
+		'host' => $ip,
+		'port' => $port
+	];
+	
+	$driver = CacheManager::Memcached(new Drivers\Memcached\Config($cfg));
+	$cache = new Psr16Adapter($driver);
+	
+	// use Phpfastcache\Helper\Psr16Adapter;
 
-	$defaultDriver = 'Files';
-	$Psr16Adapter = new Psr16Adapter($defaultDriver);
+	// $defaultDriver = 'Files';
+	// $Psr16Adapter = new Psr16Adapter($defaultDriver);
 
 	if ($Psr16Adapter->has($cacheVarName)) {
-		echo "aca";
-		echo $Psr16Adapter->get($cacheVarName);
+		// echo "aca";
+		// echo $Psr16Adapter->get($cacheVarName);
 	} else {
 
 		// React PHP Cache
@@ -612,6 +620,21 @@
 			]);
 		}
 
-		$Psr16Adapter->set($cacheVarName, $data, 300);
-		echo $Psr16Adapter->get($cacheVarName);
+		// $Psr16Adapter->set($cacheVarName, $data, 300);
+		// echo $Psr16Adapter->get($cacheVarName);
+
+		echo $cacheVarName;
 	}
+
+
+
+
+
+
+	// if (!$Psr16Adapter->has($cacheVarName)) {
+	// 	// Setter action
+	// 	$data = 'lorem ipsum';
+	// 	$Psr16Adapter->set($cacheVarName, $data, 300);// 5 minutes
+	// } else {
+	// 	echo $Psr16Adapter->get($cacheVarName);
+	// }
