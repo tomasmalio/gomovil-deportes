@@ -606,21 +606,24 @@
 				* Try to get WIDGET JSON from cache
 				*/
 				$key = 'widgetJson'. $variable . $extension['idExtension'];
-				echo $key;
-				exit;
-				$CachedSection = $InstanceCache->getItem($key);
+				$CachedWidgetJson = $InstanceCache->getItem($key);
 
+				if (!$CachedWidgetJson->isHit()) {
+					$jsonGenerator = [
+						'id'			=> $extension['idExtension'],
+						'clientName'	=> CLIENT_NAME,
+						'modelView' 	=> $extension['model_name'],
+						'viewName' 		=> (isset($extension['view_name'])) ? $extension['view_name'] : '',
+						'data' => [
+							'content' 	=> ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
+							'options'	=> $options,
+						],
+					];
 
-				$json = [
-					'id'			=> $extension['idExtension'],
-					'clientName'	=> CLIENT_NAME,
-					'modelView' 	=> $extension['model_name'],
-					'viewName' 		=> (isset($extension['view_name'])) ? $extension['view_name'] : '',
-					'data' => [
-						'content' 	=> ($extensionContent != NULL) ? json_decode($extensionContent, true) : [],
-						'options'	=> $options,
-					],
-				];
+					$CachedWidgetJson->set($jsonGenerator)->expiresAfter(86400); // In seconds, also accepts Datetime
+					$InstanceCache->save($CachedWidgetJson); // Save the cache item just like you do with doctrine and entities	
+				}
+				$json = $CachedWidgetJson->get();
 
 				try {
 					$$variable 						= new $objetName($json);
