@@ -4,19 +4,19 @@
 
 	use Phpfastcache\CacheManager;
 
-	// CacheManager::getInstance('files', $config);
+	CacheManager::getInstance('memcached', $config);
 	// An alternative exists:
-	// CacheManager::Files($config);
+	CacheManager::Memcached($config);
 
 
-	$InstanceCache = CacheManager::getInstance('memcached',['servers' => [
-		[
-			'host' => '127.0.0.1',
-			'port' => 11211,
-			// 'sasl_user' => false, // optional
-			// 'sasl_password' => false // optional
-		],
-	]]);
+	// $InstanceCache = CacheManager::getInstance('memcached',['servers' => [
+	// 	[
+	// 		'host' => '127.0.0.1',
+	// 		'port' => 11211,
+	// 		// 'sasl_user' => false, // optional
+	// 		// 'sasl_password' => false // optional
+	// 	],
+	// ]]);
 
 
 
