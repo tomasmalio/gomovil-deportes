@@ -602,6 +602,15 @@
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
 
+				/**
+				* Try to get WIDGET JSON from cache
+				*/
+				$key = 'widgetJson'. $variable;
+				echo $key;
+				exit;
+				$CachedSection = $InstanceCache->getItem($key);
+
+
 				$json = [
 					'id'			=> $extension['idExtension'],
 					'clientName'	=> CLIENT_NAME,
