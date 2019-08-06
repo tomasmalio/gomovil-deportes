@@ -5,16 +5,13 @@
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
 
-	// $config = array(
-	// 	"storage"   =>  "memcache",
-	// );
-	// CacheManager::setup($config);
 	CacheManager::setDefaultConfig(new ConfigurationOption([
-		"storage" => "memcache",
-		// 'path' => 'files', // or in windows "C:/tmp/"
+		'path' => 'files', // or in windows "C:/tmp/"
 	]));
-	//CacheManager::setup(["storage" => "memcache"]);
-
+	
+	// In your class, function, you can call the Cache
+	$InstanceCache = CacheManager::getInstance('files');
+	
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
 
@@ -25,6 +22,7 @@
 	}
 
 	print_r($productos);
+	exit;
 
 	// use Phpfastcache\CacheManager;
 	// use Phpfastcache\Config\ConfigurationOption;
