@@ -235,9 +235,20 @@
 		$flag = true;
 	
 		do {
-			$db->prepare("select sc.*, s.name from section s, section_client sc where sc.id = '".$findSection."' and s.id = sc.section_id AND client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
-			$db->execute();
-			$subsection = $db->fetch();
+			/**
+			 * Try to get SUBSECTION from cache
+			 */
+			$CachedSubSection = $InstanceCache->getItem('subsection');
+
+			if (!$CachedSubSection->isHit()) {
+				$db->prepare("select sc.*, s.name from section s, section_client sc where sc.id = '".$findSection."' and s.id = sc.section_id AND client_id = '" . $client['id'] . "' and s.status = 1 and sc.status = 1");
+				$db->execute();
+				$subsectionSql = $db->fetch();
+
+				$CachedSubSection->set($subsectionSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+				$InstanceCache->save($CachedSubSection); // Save the cache item just like you do with doctrine and entities	
+			}
+			$subsection = $CachedSubSection->get();
 
 			$findSection = $subsection['parent_id'];
 		
@@ -333,28 +344,58 @@
 	/**********************************
 	 * 			MENU
 	 **********************************/
-	$db->prepare("select sc.id, sc.title as title, sc.age_control, s.uri as url from section_client sc, section s where sc.section_id = s.id and sc.client_id = '" . $client['id'] . "' and sc.parent_id is null and sc.menu_display IS NOT NULL and s.status = 1 and sc.status = 1 ORDER BY sc.menu_display ASC");
-	$db->execute();
-	$menu_principal = $db->fetchAll();
+	/**
+	 * Try to get MENU from cache
+	 */
+	$CachedMenu = $InstanceCache->getItem('menu');
+	
+	if (!$CachedMenu->isHit()) {
+		$db->prepare("select sc.id, sc.title as title, sc.age_control, s.uri as url 
+					from section_client sc, section s 
+					where sc.section_id = s.id 
+					and sc.client_id = '" . $client['id'] . "' 
+					and sc.parent_id is null 
+					and sc.menu_display IS NOT NULL 
+					and s.status = 1 
+					and sc.status = 1 
+					ORDER BY sc.menu_display ASC");
+		$db->execute();
+		$menuPrincipalSql = $db->fetchAll();
+
+		$CachedMenu->set($menuPrincipalSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+		$InstanceCache->save($CachedMenu); // Save the cache item just like you do with doctrine and entities	
+	}
+	$menuPrincipal = $CachedMenu->get();
 
 	$menu = [];
-	foreach ($menu_principal as $item) {
+	foreach ($menuPrincipal as $item) {
 
 		/**
 		 * Object 			menu_display if it's not null we you use for order menu buttons
 		 * @* @param Object var Description
 		 */
-		$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display 
-					from section_client sc, section s, content c 
-					where sc.section_id = s.id 
-					and sc.client_id = '" . $client['id'] . "' 
-					and sc.parent_id = '".$item['id']."' 
-					and sc.content_id = c.id
-					/*and sc.menu_display = 1*/
-					and s.status = 1 
-					and sc.status = 1");
-		$db->execute();
-		$items = $db->fetchAll();
+		/**
+		 * Try to get MENU_ITEMS from cache
+		 */
+		$CachedMenuItems = $InstanceCache->getItem('menuItems');
+
+		if (!$CachedMenuItems->isHit()) {
+			$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display 
+						from section_client sc, section s, content c 
+						where sc.section_id = s.id 
+						and sc.client_id = '" . $client['id'] . "' 
+						and sc.parent_id = '".$item['id']."' 
+						and sc.content_id = c.id
+						/*and sc.menu_display = 1*/
+						and s.status = 1 
+						and sc.status = 1");
+			$db->execute();
+			$itemsSql = $db->fetchAll();
+			
+			$CachedMenuItems->set($itemsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+			$InstanceCache->save($CachedMenuItems); // Save the cache item just like you do with doctrine and entities	
+		}
+		$items = $CachedMenuItems->get();
 		
 		/**
 		 * 
