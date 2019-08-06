@@ -1,10 +1,9 @@
 <?php
-
-	use phpFastCache\CacheManager;
+	use Phpfastcache\CacheManager;
 
 	$config = array(
-	"storage"   =>  "files",
-	"path"      =>  "/cache/db/", //U otro directorio
+		"storage"   =>  "files",
+		"path"      =>  "/cache/db/", //U otro directorio
 	);
 	CacheManager::setup($config);
 
