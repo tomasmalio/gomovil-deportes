@@ -606,6 +606,7 @@
 				* Try to get WIDGET JSON from cache
 				*/
 				$key = 'widgetJson'. $variable . $extension['idExtension'];
+				echo $key;
 				$CachedWidgetJson = $InstanceCache->getItem($key);
 
 				if (!$CachedWidgetJson->isHit()) {
