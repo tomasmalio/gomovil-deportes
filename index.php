@@ -17,75 +17,6 @@
 		// Getter action
 		$data = $Psr16Adapter->get($key);
 	}
-
-	echo '  '.$data;
-	exit;
-
-
-	// use Phpfastcache\CacheManager;
-
-	// $config = ['127.0.0.1', 11211];
-
-	// CacheManager::getInstance('memcached', $config);
-	// // An alternative exists:
-	// CacheManager::Memcached($config);
-
-	// $InstanceCache = CacheManager::getInstance('memcached',['servers' => [
-	// 	[
-	// 		'host' => '127.0.0.1',
-	// 		'port' => 11211,
-	// 		// 'sasl_user' => false, // optional
-	// 		// 'sasl_password' => false // optional
-	// 	],
-	// ]]);
-
-
-
-
-
-	// CacheManager::setDefaultConfig(new ConfigurationOption([
-	// 	'path' => 'files', // or in windows "C:/tmp/"
-	// ]));
-	
-	// // In your class, function, you can call the Cache
-	// $InstanceCache = CacheManager::getInstance('memcached');
-	
-	// //Intenta obtener productos
-	// $productos = CacheManager::get("productos");
-
-	// // Si no esta disponible, hacemos la llamada a la base de datos y guardamos
-	// if(is_null($productos)) {
-	// 	$products = ['nombre' =>' tomas'];
-	// CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
-	// }
-
-	// print_r($productos);
-	// exit;
-
-	// use Phpfastcache\CacheManager;
-	// use Phpfastcache\Config\ConfigurationOption;
-	
-	// Setup File Path on your config files
-	// Please note that as of the V6.1 the "path" config 
-	// can also be used for Unix sockets (Redis, Memcache, etc)
-	// CacheManager::setDefaultConfig(new ConfigurationOption([
-	// 	'path' => 'files', // or in windows "C:/tmp/"
-	// ]));
-	
-	// In your class, function, you can call the Cache
-	// $InstanceCache = CacheManager::getInstance('files');
-
-
-	//$InstanceCache = CacheManager::getInstance("memcache", ['host' => "127.0.0.1",'port' => 11211]);
-	// $InstanceCache = CacheManager::getInstance("memcached");
-
-	// $InstanceCache = CacheManager::getInstance('memcached', new Config([
-	// 	'host' =>'127.0.0.1',
-	// 	'port' => 11211,
-	// ]));
-
-	// php_info();
-	// exit;
 	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
@@ -131,8 +62,8 @@
 		$cacheVarName = 'index';
 	}
 	
-	// print_r($cacheVarName);
-	// exit;
+	print_r($cacheVarName);
+	exit;
 
 	// React PHP Cache
 	//$cache = new React\Cache\ArrayCache();
