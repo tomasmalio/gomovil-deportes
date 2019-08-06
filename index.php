@@ -6,7 +6,7 @@
 	use Phpfastcache\Config\ConfigurationOption;
 
 	CacheManager::setDefaultConfig(new ConfigurationOption([
-		//'path' => 'files', // or in windows "C:/tmp/"
+		'path' => 'files', // or in windows "C:/tmp/"
 	]));
 	
 	// In your class, function, you can call the Cache
