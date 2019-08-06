@@ -191,7 +191,8 @@
 	/**
 	 * Try to get SECTION from cache
 	 */
-	$CachedSection = $InstanceCache->getItem('section');
+	$key = 'section'. $s;
+	$CachedSection = $InstanceCache->getItem($key);
 
 	if (!$CachedSection->isHit()) {
 		// Charge section info to cache
@@ -499,6 +500,7 @@
 	
 	} else {
 		$key = 'sectionExtensions'. $section['id'];
+		echo $key;
 		$CachedSectionExtensions = $InstanceCache->getItem($key);
 	
 		if (!$CachedSectionExtensions->isHit()) {
