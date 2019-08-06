@@ -64,35 +64,34 @@
 	 * Try to get $products from Caching First
 	 * product_page is "identity keyword";
 	 */
-	$key = "product_page";
+	$key = "client";
 	$CachedString = $InstanceCache->getItem($key);
 
-	$your_product_data = '<html><body>acaaa</body></html>';
+	// $your_product_data = [
+	// 	'First product',
+	// 	'Second product',
+	// 	'Third product'
+	// 	/* ... */
+	// ];
 
-	if (!$CachedString->isHit()) {
-		$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
-		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
+	// if (!$CachedString->isHit()) {
+	// 	$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
+	// 	$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
 	
-		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
-		print_r($CachedString->get());
+	// 	echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+	// 	echo $CachedString->get();
 	
-	} else {
-		echo 'READ FROM CACHE // ';
-		//echo $CachedString->get()[0];// Will print 'First product'
-	}
+	// } else {
+	// 	echo 'READ FROM CACHE // ';
+	// 	echo $CachedString->get()[0];// Will print 'First product'
+	// }
 	
-	/**
-	 * use your products here or return them;
-	 */
-	//echo implode('<br />', $CachedString->get());// Will echo your product list
+	// /**
+	//  * use your products here or return them;
+	//  */
+	// echo implode('<br />', $CachedString->get());// Will echo your product list
 
-	print_r($CacheString->get());
-
-
-	exit;
-
-
-
+	// exit;
 
 	// print_r($cacheVarName);
 	// exit;
@@ -124,9 +123,17 @@
 	/**
 	 * Client definitions
 	 */
-	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
-	$db->execute();
-	$client = $db->fetch();
+	if (!$CachedString->isHit()) {
+		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
+		$db->execute();
+		$client = $db->fetch();
+
+		$CachedString->set($client)->expiresAfter(100);//in seconds, also accepts Datetime
+		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
+	} else {
+		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+		$client = $CachedString->get();
+	}
 
 	session_start();
 	/* Security control */
