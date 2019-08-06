@@ -3,6 +3,7 @@
 	//ini_set('display_errors', 1);
 
 	use Phpfastcache\CacheManager;
+	use Phpfastcache\Config\ConfigurationOption;
 
 	// $config = array(
 	// 	"storage"   =>  "memcache",
