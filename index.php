@@ -5,8 +5,8 @@
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
 
-
-	$cache = new memcached();
+	use Phpfastcache\Drivers\Memcached\Driver;
+	$cache = new Memcached();
 	$cache->addServer("127.0.0.1", 11211);
 
 
