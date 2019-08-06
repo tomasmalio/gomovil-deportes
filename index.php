@@ -135,27 +135,18 @@
 	 * product_page is "identity keyword";
 	 */
 	$CachedClient = $InstanceCache->getItem('client');
-
-	print_r($CachedClient->get());
-
-	if (!$CachedClient->isHit()) {
-		echo "aca";
-	}
-	
-	exit;
-
-
 	/**
 	 * Client definitions
 	 */
 	if (!$CachedClient->isHit()) {
+		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
 		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 		$db->execute();
 		$client = $db->fetch();
 
 		$CachedClient->set($client)->expiresAfter(100);//in seconds, also accepts Datetime
 		$InstanceCache->save($CachedClient); // Save the cache item just like you do with doctrine and entities
-		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+		
 	} else {
 		echo 'SECOND LOAD';	
 	}
