@@ -153,7 +153,7 @@
 	print_r($CachedClient->get());
 
 
-	$InstanceCache->clear();
+	//$InstanceCache->clear();
 	exit;
 
 	session_start();
