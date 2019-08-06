@@ -10,7 +10,7 @@
 	]));
 	
 	// In your class, function, you can call the Cache
-	$InstanceCache = CacheManager::getInstance('files');
+	$InstanceCache = CacheManager::getInstance('memcached');
 	
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
