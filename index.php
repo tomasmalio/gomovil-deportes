@@ -137,7 +137,10 @@
 	$CachedClient = $InstanceCache->getItem('client');
 
 	print_r($CachedClient->get());
+	echo $CachedClient->isHit();
 	exit;
+
+
 	/**
 	 * Client definitions
 	 */
