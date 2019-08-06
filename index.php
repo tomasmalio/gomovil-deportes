@@ -133,7 +133,7 @@
 		$client = $CachedString->get();
 	}
 
-	$CachedString->detachAllItems();
+	$InstanceCache->detachAllItems();
 
 	session_start();
 	/* Security control */
