@@ -2,13 +2,30 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	use Phpfastcache\CacheManager;
+	use Phpfastcache\Helper\Psr16Adapter;
 
-	$config = ['127.0.0.1', 11211];
+	$defaultDriver = 'Files';
+	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
-	CacheManager::getInstance('memcached', $config);
-	// An alternative exists:
-	CacheManager::Memcached($config);
+	if(!$Psr16Adapter->has('test-key')){
+		// Setter action
+		$data = 'lorem ipsum';
+		$Psr16Adapter->set('test-key', 'lorem ipsum', 300);// 5 minutes
+	}else{
+		// Getter action
+		$data = $Psr16Adapter->get('test-key');
+	}
+
+	exit;
+
+
+	// use Phpfastcache\CacheManager;
+
+	// $config = ['127.0.0.1', 11211];
+
+	// CacheManager::getInstance('memcached', $config);
+	// // An alternative exists:
+	// CacheManager::Memcached($config);
 
 
 	// $InstanceCache = CacheManager::getInstance('memcached',['servers' => [
