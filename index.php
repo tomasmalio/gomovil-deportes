@@ -55,7 +55,7 @@
 		'port' => $port
 	];
 	
-	$driver = CacheManager::Memcached(new Drivers\Memcached\Config($cfg));
+	$driver = CacheManager::Memcached(new Phpfastcache\Drivers\Memcached\Config($cfg));
 	$cache = new Psr16Adapter($driver);
 
 	// use Phpfastcache\Helper\Psr16Adapter;
