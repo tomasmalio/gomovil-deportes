@@ -125,13 +125,15 @@
 		$db->execute();
 		$client = $db->fetch();
 
-		$CachedString->set($client)->expiresAfter(10);//in seconds, also accepts Datetime
+		$CachedString->set($client)->expiresAfter(1);//in seconds, also accepts Datetime
 		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
 		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
 	} else {
 		echo 'SECOND LOAD';
 		$client = $CachedString->get();
 	}
+
+	$CachedString->detachAllItems();
 
 	session_start();
 	/* Security control */
