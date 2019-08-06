@@ -739,7 +739,6 @@
 	 */
 	if (isset($client['amp']) && $client['amp']) {
 		
-
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
 		$assetsGeneral['css'] = [];
 		array_push($assetsGeneral['css'], ['less/bootstrap-amp.min.css']);
