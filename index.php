@@ -8,7 +8,11 @@
 	// 	"storage"   =>  "memcache",
 	// );
 	// CacheManager::setup($config);
-	CacheManager::setup(["storage" => "memcache"]);
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		"storage" => "memcache",
+		// 'path' => 'files', // or in windows "C:/tmp/"
+	]));
+	//CacheManager::setup(["storage" => "memcache"]);
 
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
