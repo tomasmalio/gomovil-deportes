@@ -6,7 +6,7 @@
 
 	$config = ['127.0.0.1', '11211'];
 
-	CacheManager::getInstance('memcached', $config);
+	CacheManager::getInstance('memcache', $config);
 	// An alternative exists:
 	CacheManager::Memcached($config);
 
