@@ -63,7 +63,7 @@
 	}
 
 	echo $cacheVarName;
-	echo $data;
+	print_r($data);
 	exit;
 	// React PHP Cache
 	//$cache = new React\Cache\ArrayCache();
