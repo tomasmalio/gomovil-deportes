@@ -362,7 +362,7 @@
 		$db->execute();
 		$menuPrincipalSql = $db->fetchAll();
 
-		$CachedMenu->set($menuPrincipalSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+		$CachedMenu->set($menuPrincipalSql)->expiresAfter(604800); // In seconds, also accepts Datetime
 		$InstanceCache->save($CachedMenu); // Save the cache item just like you do with doctrine and entities	
 	}
 	$menuPrincipal = $CachedMenu->get();
@@ -392,7 +392,7 @@
 			$db->execute();
 			$itemsSql = $db->fetchAll();
 			
-			$CachedMenuItems->set($itemsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+			$CachedMenuItems->set($itemsSql)->expiresAfter(604800); // In seconds, also accepts Datetime
 			$InstanceCache->save($CachedMenuItems); // Save the cache item just like you do with doctrine and entities	
 		}
 		$items = $CachedMenuItems->get();
@@ -469,22 +469,52 @@
 		$InstanceCache->save($CachedAsssets); // Save the cache item just like you do with doctrine and entities	
 	}
 	$assetsConstructor = $CachedAsssets->get();
-	
+
 	$globalStyle = '/css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
 	
 	/**********************************
 	 * 			EXTENSIONS
 	 **********************************/
-	(IS_MOBILE) ? $orderByName = 'se.position_mobile' : $orderByName = 'se.position';
-	$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
-		from section_extension se, extension e 
-		where se.section_client_id = '" . $section['id'] . "' 
-		and se.extension_id = e.id 
-		and se.status = 1 
-		ORDER BY ".$orderByName." ASC");
-	$db->execute();
-	$sectionExtensions = $db->fetchAll();
+	/**
+	* Try to get SECTION EXTENSIONS from cache
+	*/
+	if (IS_MOBILE) {
+		$CachedSectionExtensionsMobile = $InstanceCache->getItem('sectionextensionsMobile');
+	
+		if (!$CachedSectionExtensionsMobile->isHit()) {
+			$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+			from section_extension se, extension e 
+			where se.section_client_id = '" . $section['id'] . "' 
+			and se.extension_id = e.id 
+			and se.status = 1 
+			ORDER BY se.position_mobile ASC");
+			$db->execute();
+			$sectionExtensionsSql = $db->fetchAll();
 
+			$CachedSectionExtensionsMobile->set($sectionExtensionsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+			$InstanceCache->save($CachedSectionExtensionsMobile); // Save the cache item just like you do with doctrine and entities	
+		}
+		$sectionExtensions = $CachedSectionExtensionsMobile->get();
+	
+	} else {
+		$CachedSectionExtensions = $InstanceCache->getItem('sectionextensions');
+	
+		if (!$CachedSectionExtensions->isHit()) {
+			$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
+			from section_extension se, extension e 
+			where se.section_client_id = '" . $section['id'] . "' 
+			and se.extension_id = e.id 
+			and se.status = 1 
+			ORDER BY se.position ASC");
+			$db->execute();
+			$sectionExtensionsSql = $db->fetchAll();
+
+			$CachedSectionExtensions->set($sectionExtensionsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+			$InstanceCache->save($CachedSectionExtensions); // Save the cache item just like you do with doctrine and entities	
+		}
+		$sectionExtensions = $CachedSectionExtensions->get();
+	}
+	
 	// Widgets Constructor
 	$widgets = [];
 	$i = 1;
@@ -495,7 +525,10 @@
 	foreach ($sectionExtensions as $extension) {
 
 		if (isset($extension['external_content']) && $extension['external_content'] != '') {
-			$db->prepare("select * from content c where c.id = '" . $extension['external_content'] . "' and c.status = 1");
+			$db->prepare("select * 
+						from content c 
+						where c.id = '" . $extension['external_content'] . "' 
+						and c.status = 1");
 			$db->execute();
 			$externalContent = $db->fetch();
 		}
