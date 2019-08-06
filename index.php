@@ -528,12 +528,25 @@
 	foreach ($sectionExtensions as $extension) {
 
 		if (isset($extension['external_content']) && $extension['external_content'] != '') {
-			$db->prepare("select * 
-						from content c 
-						where c.id = '" . $extension['external_content'] . "' 
-						and c.status = 1");
-			$db->execute();
-			$externalContent = $db->fetch();
+
+			/**
+			* Try to get EXTERNAL CONTENT from cache
+			*/
+			$key = 'externalContent'.$extension['external_content'];
+			$CachedExternalContent = $InstanceCache->getItem($key);
+
+			if (!$CachedExternalContent->isHit()) {
+				$db->prepare("select * 
+							from content c 
+							where c.id = '" . $extension['external_content'] . "' 
+							and c.status = 1");
+				$db->execute();
+				$externalContentSql = $db->fetch();
+
+				$CachedExternalContent->set($externalContentSql)->expiresAfter(604800); // In seconds, also accepts Datetime
+    			$InstanceCache->save($CachedExternalContent); // Save the cache item just like you do with doctrine and entities	
+			}
+			$externalContent = $CachedExternalContent->get();
 		}
 
 		$extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
