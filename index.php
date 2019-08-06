@@ -127,9 +127,9 @@
 
 		$CachedString->set($client)->expiresAfter(144000);//in seconds, also accepts Datetime
 		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
-		echo 'SECOND LOAD';
-	} else {
 		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+	} else {
+		echo 'SECOND LOAD';
 		$client = $CachedString->get();
 	}
 
