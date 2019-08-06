@@ -612,5 +612,6 @@
 			]);
 		}
 
-		echo $cacheVarName;
+		$Psr16Adapter->set($cacheVarName, $data, 300);
+		echo $Psr16Adapter->get($cacheVarName);
 	}
