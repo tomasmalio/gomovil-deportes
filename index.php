@@ -74,11 +74,11 @@
 		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
 	
 		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
-		echo $CachedString->get();
+		print_r($CachedString->get());
 	
 	} else {
 		echo 'READ FROM CACHE // ';
-		echo $CachedString->get()[0];// Will print 'First product'
+		//echo $CachedString->get()[0];// Will print 'First product'
 	}
 	
 	/**
