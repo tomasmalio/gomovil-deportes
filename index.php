@@ -1,14 +1,14 @@
 <?php
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
-	
+
 	use Phpfastcache\CacheManager;
 
-	$config = array(
-		"storage"   =>  "files",
-		"path"      =>  "/cache/db/", //U otro directorio
-	);
-	CacheManager::setup($config);
+	// $config = array(
+	// 	"storage"   =>  "memcache",
+	// );
+	// CacheManager::setup($config);
+	phpFastCache::setup("storage","auto");
 
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
