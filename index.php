@@ -609,7 +609,6 @@
 				$CachedWidgetJson = $InstanceCache->getItem($key);
 
 				if (!$CachedWidgetJson->isHit()) {
-					echo "entro";
 					$jsonGenerator = [
 						'id'			=> $extension['idExtension'],
 						'clientName'	=> CLIENT_NAME,
@@ -627,7 +626,20 @@
 				$json = $CachedWidgetJson->get();
 
 				try {
-					$$variable 						= new $objetName($json);
+					/**
+					* Try to get OBJECT WIDGET from cache
+					*/
+					$key = 'objectWidget'.$variable . $extension['idExtension'];
+					$CachedObjectWidget = $InstanceCache->getItem($key);
+					
+					if (!$CachedObjectWidget->isHit()) {
+						$variableObjectWidget = new $objetName($json);
+
+						$CachedObjectWidget->set($variableObjectWidget)->expiresAfter(86400); // In seconds, also accepts Datetime
+    					$InstanceCache->save($CachedObjectWidget); // Save the cache item just like you do with doctrine and entities	
+					}
+					$$variable = $CachedObjectWidget->get();
+
 				} catch (Exception $e) {
 					$$variable = null;
 				}
