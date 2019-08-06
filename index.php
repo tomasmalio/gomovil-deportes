@@ -1,16 +1,36 @@
 <?php
-	use Phpfastcache\CacheManager;
-	use Phpfastcache\Config\ConfigurationOption;
+
+	use phpFastCache\CacheManager;
+
+	$config = array(
+	"storage"   =>  "files",
+	"path"      =>  "/cache/db/", //U otro directorio
+	);
+	CacheManager::setup($config);
+
+	//Intenta obtener productos
+	$productos = CacheManager::get("productos");
+
+	// Si no esta disponible, hacemos la llamada a la base de datos y guardamos
+	if(is_null($productos)) {
+		$products = ['nombre' =>' tomas'];
+	CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
+	}
+
+	print_r($productos);
+
+	// use Phpfastcache\CacheManager;
+	// use Phpfastcache\Config\ConfigurationOption;
 	
 	// Setup File Path on your config files
 	// Please note that as of the V6.1 the "path" config 
 	// can also be used for Unix sockets (Redis, Memcache, etc)
-	CacheManager::setDefaultConfig(new ConfigurationOption([
-		'path' => 'files', // or in windows "C:/tmp/"
-	]));
+	// CacheManager::setDefaultConfig(new ConfigurationOption([
+	// 	'path' => 'files', // or in windows "C:/tmp/"
+	// ]));
 	
 	// In your class, function, you can call the Cache
-	$InstanceCache = CacheManager::getInstance('files');
+	// $InstanceCache = CacheManager::getInstance('files');
 
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
