@@ -46,18 +46,68 @@
 		$cacheVarName = 'index';
 	}
 	
+
+	use Phpfastcache\CacheManager;
+	use Phpfastcache\Config\ConfigurationOption;
+
+	// Setup File Path on your config files
+	// Please note that as of the V6.1 the "path" config 
+	// can also be used for Unix sockets (Redis, Memcache, etc)
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		'path' => '/var/www/html/bitelnoticias/files', // or in windows "C:/tmp/"
+	]));
+
+	// In your class, function, you can call the Cache
+	$InstanceCache = CacheManager::getInstance('files');
+
+	/**
+	 * Try to get $products from Caching First
+	 * product_page is "identity keyword";
+	 */
+	$key = "product_page";
+	$CachedString = $InstanceCache->getItem($key);
+
+	$your_product_data = [
+	'First product',
+	'Second product',
+	'Third product'
+	/* ... */
+	];
+
+	if (!$CachedString->isHit()) {
+		$CachedString->set($your_product_data)->expiresAfter(5);//in seconds, also accepts Datetime
+		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
+	
+		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+		echo $CachedString->get();
+	
+	} else {
+		echo 'READ FROM CACHE // ';
+		echo $CachedString->get()[0];// Will print 'First product'
+	}
+	
+	/**
+	 * use your products here or return them;
+	 */
+	echo implode('<br />', $CachedString->get());// Will echo your product list
+
+	exit;
+
+
+
+
 	// print_r($cacheVarName);
 	// exit;
 
-	use Phpfastcache\Helper\Psr16Adapter;
+	// use Phpfastcache\Helper\Psr16Adapter;
 
-	$defaultDriver = 'Files';
-	$Psr16Adapter = new Psr16Adapter($defaultDriver);
+	// $defaultDriver = 'Files';
+	// $Psr16Adapter = new Psr16Adapter($defaultDriver);
 
 	// if (!$Psr16Adapter->has($cacheVarName)) {
 	// 	// Setter action
-	// 	$data = '<html><head></head><body>aaaa lorem ipsum</body></html>';
-	// 	$Psr16Adapter->set($cacheVarName, $data, 100);// 1 minute
+	// 	$data = '<html><head></head><body>aaaalorem ipsum</body></html>';
+	// 	$Psr16Adapter->set($cacheVarName, $data, 300);// 5 minutes
 	// } else {
 	// 	$data = $Psr16Adapter->get($cacheVarName);
 	// }
@@ -71,19 +121,14 @@
 	// $var = 'key';
 	// $asfafsa = 'aca';
 	// $cache->set($var, $asfafsa, 60);
+	
 
 	/**
 	 * Client definitions
 	 */
-	if (!$Psr16Adapter->has($client)) {
-		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
-		$db->execute();
-		//$client = $db->fetch();
-
-		$Psr16Adapter->set($client, $db->fetch(), 14400);// 24 hours
-	} else {
-		$client = $Psr16Adapter->get($client);
-	}
+	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
+	$db->execute();
+	$client = $db->fetch();
 
 	session_start();
 	/* Security control */
