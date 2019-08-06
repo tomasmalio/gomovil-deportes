@@ -4,6 +4,8 @@
 
 	use Phpfastcache\CacheManager;
 
+	$config = ['host' => '127.0.0.1', 'port' => '11211'];
+
 	CacheManager::getInstance('memcached', $config);
 	// An alternative exists:
 	CacheManager::Memcached($config);
