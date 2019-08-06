@@ -110,53 +110,27 @@
 	// In your class, function, you can call the Cache
 	$InstanceCache = CacheManager::getInstance('files');
 
-	// $CachedString = $InstanceCache->getItem('products');
-	// $your_product_data = [
-	// 	'First product',
-	// 	'Second product',
-	// 	'Third product'
-	// 	/* ... */
-	// ];
-
-	// if (!$CachedString->isHit()) {
-	// 	$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
-	// 	$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
-	
-	// 	echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
-	// 	print_r($CachedString->get());
-	
-	// } else {
-	// 	echo 'READ FROM CACHE // ';
-	// 	echo $CachedString->get()[0];// Will print 'First product'
-	// }
-
 	/**
-	 * Try to get $products from Caching First
-	 * product_page is "identity keyword";
+	 * Try to get CLIENT from cache
 	 */
 	$CachedClient = $InstanceCache->getItem('client');
+
 	/**
 	 * Client definitions
 	 */
 	if (!$CachedClient->isHit()) {
-		echo "no cargo";
-		// Charge info client to cache
+		// Charge client info to cache
 		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 		$db->execute();
 		$clientSql = $db->fetch();
 
-		$CachedClient->set($clientSql)->expiresAfter(100); // In seconds, also accepts Datetime
+		$CachedClient->set($clientSql)->expiresAfter(86400); // In seconds, also accepts Datetime
 		$InstanceCache->save($CachedClient); // Save the cache item just like you do with doctrine and entities	
-	} else {
-		echo "cargo";
-		// Loading client info from cache
 	}
 	$client = $CachedClient->get();
-	print_r($client);
 
 	// Delete everything
 	//$InstanceCache->clear();
-	exit;
 
 	session_start();
 	/* Security control */
@@ -214,16 +188,28 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control, sc.security_id 
-				from section s, section_client sc 
-				left join content c on c.id = sc.content_id 
-				where s.uri = '".$s."' 
-				and s.id = sc.section_id 
-				and client_id = '" . $client['id'] . "' 
-				and s.status = 1 
-				and sc.status = 1");
-	$db->execute();
-	$section = $db->fetch();
+	/**
+	 * Try to get SECTION from cache
+	 */
+	$CachedSection = $InstanceCache->getItem('section');
+
+	if (!$CachedSection->isHit()) {
+		// Charge section info to cache
+		$db->prepare("select sc.*, c.data as content_external, s.name as section_name, s.uri as uri, sc.age_control as age_control, sc.security_id 
+					from section s, section_client sc 
+					left join content c on c.id = sc.content_id 
+					where s.uri = '".$s."' 
+					and s.id = sc.section_id 
+					and client_id = '" . $client['id'] . "' 
+					and s.status = 1 
+					and sc.status = 1");
+		$db->execute();
+		$sectionSql = $db->fetch();
+
+		$CachedSection->set($sectionSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+		$InstanceCache->save($CachedSection); // Save the cache item just like you do with doctrine and entities	
+	}
+	$section = $CachedSection->get();
 
 	// If the client doesn't exit we redirect to generic HTML Error page
 	if (empty($section)) {
