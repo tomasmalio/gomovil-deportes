@@ -150,10 +150,11 @@
 		echo 'SECOND LOAD';	
 	}
 	print_r($CachedClient->get());
-	exit;
+
 
 	$InstanceCache->detachAllItems();
-
+	exit;
+	
 	session_start();
 	/* Security control */
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
