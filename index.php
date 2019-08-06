@@ -130,7 +130,7 @@
 	$client = $CachedClient->get();
 
 	// Delete everything
-	$InstanceCache->clear();
+	// $InstanceCache->clear();
 
 	session_start();
 	/* Security control */
