@@ -4,7 +4,7 @@
 
 	use Phpfastcache\CacheManager;
 
-	$driverInstance = CacheManager::getInstance('memcached', $config);
+	$driverInstance = CacheManager::getInstance('memcache', $config);
 // An alternative exists:
 	//CacheManager::Files($config);
 
