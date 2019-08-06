@@ -5,24 +5,33 @@
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
 
-	CacheManager::setDefaultConfig(new ConfigurationOption([
-		'path' => 'files', // or in windows "C:/tmp/"
-	]));
-	
-	// In your class, function, you can call the Cache
-	$InstanceCache = CacheManager::getInstance('memcached');
-	
-	//Intenta obtener productos
-	$productos = CacheManager::get("productos");
 
-	// Si no esta disponible, hacemos la llamada a la base de datos y guardamos
-	if(is_null($productos)) {
-		$products = ['nombre' =>' tomas'];
-	CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
-	}
+	$cache = new memcached();
+	$cache->addServer("127.0.0.1", 11211);
 
-	print_r($productos);
-	exit;
+
+
+
+
+
+	// CacheManager::setDefaultConfig(new ConfigurationOption([
+	// 	'path' => 'files', // or in windows "C:/tmp/"
+	// ]));
+	
+	// // In your class, function, you can call the Cache
+	// $InstanceCache = CacheManager::getInstance('memcached');
+	
+	// //Intenta obtener productos
+	// $productos = CacheManager::get("productos");
+
+	// // Si no esta disponible, hacemos la llamada a la base de datos y guardamos
+	// if(is_null($productos)) {
+	// 	$products = ['nombre' =>' tomas'];
+	// CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
+	// }
+
+	// print_r($productos);
+	// exit;
 
 	// use Phpfastcache\CacheManager;
 	// use Phpfastcache\Config\ConfigurationOption;
