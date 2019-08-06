@@ -51,34 +51,39 @@
 
 	use Phpfastcache\Helper\Psr16Adapter;
 
-	$defaultDriver = 'Memcache';
+	$defaultDriver = 'Files';
 	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
-	if (!$Psr16Adapter->has($cacheVarName)) {
-		// Setter action
-		$data = '<html><head></head><body>aaaa lorem ipsum</body></html>';
-		$Psr16Adapter->set($cacheVarName, $data, 100);// 1 minutes
-	} else {
-		$data = $Psr16Adapter->get($cacheVarName);
-	}
+	// if (!$Psr16Adapter->has($cacheVarName)) {
+	// 	// Setter action
+	// 	$data = '<html><head></head><body>aaaa lorem ipsum</body></html>';
+	// 	$Psr16Adapter->set($cacheVarName, $data, 100);// 1 minute
+	// } else {
+	// 	$data = $Psr16Adapter->get($cacheVarName);
+	// }
 
-	echo $cacheVarName;
-	print_r($data);
-	exit;
+	// echo $cacheVarName;
+	// print_r($data);
+	// exit;
 	// React PHP Cache
 	//$cache = new React\Cache\ArrayCache();
 
 	// $var = 'key';
 	// $asfafsa = 'aca';
 	// $cache->set($var, $asfafsa, 60);
-	
 
 	/**
 	 * Client definitions
 	 */
-	$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
-	$db->execute();
-	$client = $db->fetch();
+	if (!$Psr16Adapter->has($client)) {
+		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
+		$db->execute();
+		//$client = $db->fetch();
+
+		$Psr16Adapter->set($client, $db->fetch(), 14400);// 24 hours
+	} else {
+		$client = $Psr16Adapter->get($client);
+	}
 
 	session_start();
 	/* Security control */
