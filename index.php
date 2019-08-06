@@ -110,6 +110,29 @@
 	// In your class, function, you can call the Cache
 	$InstanceCache = CacheManager::getInstance('files');
 
+
+	$CachedString = $InstanceCache->getItem('products');
+	$your_product_data = [
+		'First product',
+		'Second product',
+		'Third product'
+		/* ... */
+	];
+
+	if (!$CachedString->isHit()) {
+		$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
+		$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
+	
+		echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
+		echo $CachedString->get();
+	
+	} else {
+		echo 'READ FROM CACHE // ';
+		echo $CachedString->get()[0];// Will print 'First product'
+	}
+
+
+
 	/**
 	 * Try to get $products from Caching First
 	 * product_page is "identity keyword";
@@ -132,6 +155,9 @@
 		echo 'SECOND LOAD';
 		$client = $CachedString->get();
 	}
+
+	echo $CachedString->get());
+	exit;
 
 	$InstanceCache->detachAllItems();
 
