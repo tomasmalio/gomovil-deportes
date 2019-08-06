@@ -45,28 +45,6 @@
 	}  else {
 		$cacheVarName = 'index';
 	}
-	
-
-	use Phpfastcache\CacheManager;
-	use Phpfastcache\Config\ConfigurationOption;
-
-	// Setup File Path on your config files
-	// Please note that as of the V6.1 the "path" config 
-	// can also be used for Unix sockets (Redis, Memcache, etc)
-	CacheManager::setDefaultConfig(new ConfigurationOption([
-		'path' => '/var/www/html/bitelnoticias/files', // or in windows "C:/tmp/"
-	]));
-
-	// In your class, function, you can call the Cache
-	$InstanceCache = CacheManager::getInstance('files');
-
-	/**
-	 * Try to get $products from Caching First
-	 * product_page is "identity keyword";
-	 */
-	$key = "client";
-	$CachedString = $InstanceCache->getItem($key);
-
 	// $your_product_data = [
 	// 	'First product',
 	// 	'Second product',
@@ -119,7 +97,26 @@
 	// $asfafsa = 'aca';
 	// $cache->set($var, $asfafsa, 60);
 	
+	use Phpfastcache\CacheManager;
+	use Phpfastcache\Config\ConfigurationOption;
 
+	// Setup File Path on your config files
+	// Please note that as of the V6.1 the "path" config 
+	// can also be used for Unix sockets (Redis, Memcache, etc)
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		'path' => '/var/www/html/bitelnoticias/files', // or in windows "C:/tmp/"
+	]));
+
+	// In your class, function, you can call the Cache
+	$InstanceCache = CacheManager::getInstance('files');
+
+	/**
+	 * Try to get $products from Caching First
+	 * product_page is "identity keyword";
+	 */
+	$key = "client";
+	$CachedString = $InstanceCache->getItem($key);
+	
 	/**
 	 * Client definitions
 	 */
