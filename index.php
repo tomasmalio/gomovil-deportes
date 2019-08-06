@@ -8,7 +8,7 @@
 	// 	"storage"   =>  "memcache",
 	// );
 	// CacheManager::setup($config);
-	phpFastCache::setup("storage","auto");
+	CacheManager::setup("storage","auto");
 
 	//Intenta obtener productos
 	$productos = CacheManager::get("productos");
