@@ -67,12 +67,7 @@
 	$key = "product_page";
 	$CachedString = $InstanceCache->getItem($key);
 
-	$your_product_data = [
-	'First product',
-	'Second product',
-	'Third product'
-	/* ... */
-	];
+	$your_product_data = '<html><body>acaaa</body></html>';
 
 	if (!$CachedString->isHit()) {
 		$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
@@ -89,7 +84,10 @@
 	/**
 	 * use your products here or return them;
 	 */
-	echo implode('<br />', $CachedString->get());// Will echo your product list
+	//echo implode('<br />', $CachedString->get());// Will echo your product list
+
+	print_r($CacheString->get());
+
 
 	exit;
 
