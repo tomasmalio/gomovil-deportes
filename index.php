@@ -2,44 +2,27 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	// use Phpfastcache\CacheManager;
-	// use Phpfastcache\Config\ConfigurationOption;
-
-	use Phpfastcache\Helper\Psr16Adapter;
 	use Phpfastcache\CacheManager;
-	use Phpfastcache\Drivers;
+	use Phpfastcache\Config\ConfigurationOption;
 
-	$ip = '127.0.0.1';
-	$port = 11211;
-
-	$cfg = [
-		'host' => $ip,
-		'port' => $port
-	];
-
-	$driver = CacheManager::Memcached(new Drivers\Memcached\Config($cfg));
-	$cache = new Psr16Adapter($driver);
-	$cache->set('foo', 'bar');
-	echo $cache->get('foo');
-
-	// CacheManager::setDefaultConfig(new ConfigurationOption([
-	// 	'path' => 'files', // or in windows "C:/tmp/"
-	// ]));
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		//'path' => 'files', // or in windows "C:/tmp/"
+	]));
 	
-	// // In your class, function, you can call the Cache
-	// $InstanceCache = CacheManager::getInstance('files');
+	// In your class, function, you can call the Cache
+	$InstanceCache = CacheManager::getInstance('files');
 	
-	// //Intenta obtener productos
-	// $productos = CacheManager::get("productos");
+	//Intenta obtener productos
+	$productos = CacheManager::get("productos");
 
-	// // Si no esta disponible, hacemos la llamada a la base de datos y guardamos
-	// if(is_null($productos)) {
-	// 	$products = ['nombre' =>' tomas'];
-	// CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
-	// }
+	// Si no esta disponible, hacemos la llamada a la base de datos y guardamos
+	if(is_null($productos)) {
+		$products = ['nombre' =>' tomas'];
+	CacheManager::set('productos', $productos,600); //En este caso enviamos la llave, el contenido y el tiempo en milisegundos que durará la caché
+	}
 
-	// print_r($productos);
-	// exit;
+	print_r($productos);
+	exit;
 
 	// use Phpfastcache\CacheManager;
 	// use Phpfastcache\Config\ConfigurationOption;
