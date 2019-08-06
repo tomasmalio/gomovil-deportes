@@ -56,8 +56,8 @@
 
 	if (!$Psr16Adapter->has($cacheVarName)) {
 		// Setter action
-		$data = '<html><head></head><body>lorem ipsum</body></html>';
-		$Psr16Adapter->set($cacheVarName, $data, 300);// 5 minutes
+		$data = '<html><head></head><body>aaaa lorem ipsum</body></html>';
+		$Psr16Adapter->set($cacheVarName, $data, 100);// 1 minutes
 	} else {
 		$data = $Psr16Adapter->get($cacheVarName);
 	}
