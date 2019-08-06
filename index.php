@@ -605,7 +605,7 @@
 				/**
 				* Try to get WIDGET JSON from cache
 				*/
-				$key = 'widgetJson'. $variable;
+				$key = 'widgetJson'. $variable . $extension['idExtension'];
 				echo $key;
 				exit;
 				$CachedSection = $InstanceCache->getItem($key);
