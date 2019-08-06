@@ -442,11 +442,34 @@
 	/**********************************
 	 * 			CUSTOMIZATION
 	 **********************************/
-	$db->prepare("select * from customization c where c.client_id = '" . $client['id'] . "' and c.status = 1");
-	$db->execute();
-	$customization = $db->fetch();
+	/**
+	* Try to get CUSTOMIZATION from cache
+	*/
+	$CachedCustomization = $InstanceCache->getItem('customization');
 
-	$assetsConstructor = new Assets($client['name'], $client['id'], $customization);
+	if (!$CachedCustomization->isHit()) {
+		$db->prepare("select * from customization c where c.client_id = '" . $client['id'] . "' and c.status = 1");
+		$db->execute();
+		$customizationSql = $db->fetch();
+
+		$CachedCustomization->set($customizationSql)->expiresAfter(604800); // In seconds, also accepts Datetime
+		$InstanceCache->save($CachedCustomization); // Save the cache item just like you do with doctrine and entities	
+	}
+	$customization = $CachedCustomization->get();
+
+	/**
+	* Try to get GENERAL ASSETS from cache
+	*/
+	$CachedAsssets = $InstanceCache->getItem('assets');
+
+	if (!$CachedAsssets->isHit()) {
+		$assetsConstructorBase = new Assets($client['name'], $client['id'], $customization);
+
+		$CachedAsssets->set($assetsConstructorBase)->expiresAfter(86400); // In seconds, also accepts Datetime
+		$InstanceCache->save($CachedAsssets); // Save the cache item just like you do with doctrine and entities	
+	}
+	$assetsConstructor = $CachedAsssets->get();
+	
 	$globalStyle = '/css/styles.'.CLIENT_NAME.'.min.css?v=' . date('YmdHis', strtotime($customization['modify_date']));
 	
 	/**********************************
