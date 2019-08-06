@@ -51,7 +51,7 @@
 
 	use Phpfastcache\Helper\Psr16Adapter;
 
-	$defaultDriver = 'Memcached';
+	$defaultDriver = 'Memcache';
 	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
 	if (!$Psr16Adapter->has($cacheVarName)) {
