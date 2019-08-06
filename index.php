@@ -7,14 +7,15 @@
 	$defaultDriver = 'Files';
 	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
-	if (!$Psr16Adapter->has('test-key')) {
+	$key = 'test-key';
+	if (!$Psr16Adapter->has($key)) {
 		// Setter action
 		$data = 'lorem ipsum';
-		$Psr16Adapter->set('test-key', $data, 300);// 5 minutes
+		$Psr16Adapter->set($key, $data, 300);// 5 minutes
 	} else {
 		echo 'aaaaaaa';
 		// Getter action
-		$data = $Psr16Adapter->get('test-key');
+		$data = $Psr16Adapter->get($key);
 	}
 
 	echo '  '.$data;
