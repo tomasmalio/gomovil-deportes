@@ -479,7 +479,8 @@
 	* Try to get SECTION EXTENSIONS from cache
 	*/
 	if (IS_MOBILE) {
-		$CachedSectionExtensionsMobile = $InstanceCache->getItem('sectionextensionsMobile');
+		$key = 'sectionExtensionsMobile'. $section['id'];
+		$CachedSectionExtensionsMobile = $InstanceCache->getItem($key);
 	
 		if (!$CachedSectionExtensionsMobile->isHit()) {
 			$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
@@ -497,7 +498,8 @@
 		$sectionExtensions = $CachedSectionExtensionsMobile->get();
 	
 	} else {
-		$CachedSectionExtensions = $InstanceCache->getItem('sectionextensions');
+		$key = 'sectionExtensions'. $section['id'];
+		$CachedSectionExtensions = $InstanceCache->getItem($key);
 	
 		if (!$CachedSectionExtensions->isHit()) {
 			$db->prepare("select *, se.id as idExtension, se.content as extensionContent 
