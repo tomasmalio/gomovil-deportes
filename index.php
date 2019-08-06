@@ -1,11 +1,21 @@
 <?php
 	use Phpfastcache\CacheManager;
-	use Phpfastcache\Drivers\Memcached\Config;
+	use Phpfastcache\Config\ConfigurationOption;
+	
+	// Setup File Path on your config files
+	// Please note that as of the V6.1 the "path" config 
+	// can also be used for Unix sockets (Redis, Memcache, etc)
+	CacheManager::setDefaultConfig(new ConfigurationOption([
+		'path' => 'files', // or in windows "C:/tmp/"
+	]));
+	
+	// In your class, function, you can call the Cache
+	$InstanceCache = CacheManager::getInstance('files');
 
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	$InstanceCache = CacheManager::getInstance("memcache", ['host' => "127.0.0.1",'port' => 11211]);
+	//$InstanceCache = CacheManager::getInstance("memcache", ['host' => "127.0.0.1",'port' => 11211]);
 	// $InstanceCache = CacheManager::getInstance("memcached");
 
 	// $InstanceCache = CacheManager::getInstance('memcached', new Config([
