@@ -48,7 +48,8 @@
 	
 	// print_r($cacheVarName);
 	// exit;
-
+	$ip = '127.0.0.1';
+	$port = 11211;
 	$cfg = [
 		'host' => $ip,
 		'port' => $port
@@ -56,7 +57,7 @@
 	
 	$driver = CacheManager::Memcached(new Drivers\Memcached\Config($cfg));
 	$cache = new Psr16Adapter($driver);
-	
+
 	// use Phpfastcache\Helper\Psr16Adapter;
 
 	// $defaultDriver = 'Files';
