@@ -3,11 +3,10 @@
 	//ini_set('display_errors', 1);
 
 	use Phpfastcache\CacheManager;
-	use Phpfastcache\Config\ConfigurationOption;
 
-	use Phpfastcache\Drivers\Memcached\Driver;
-	$cache = new Memcached();
-	$cache->addServer("127.0.0.1", 11211);
+CacheManager::getInstance('files', $config);
+// An alternative exists:
+CacheManager::Files($config);
 
 
 
