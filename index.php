@@ -500,7 +500,6 @@
 	
 	} else {
 		$key = 'sectionExtensions'. $section['id'];
-		echo $key;
 		$CachedSectionExtensions = $InstanceCache->getItem($key);
 	
 		if (!$CachedSectionExtensions->isHit()) {
