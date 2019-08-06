@@ -156,7 +156,7 @@
 		$client = $CachedString->get();
 	}
 
-	echo $CachedString->get();
+	print_r($CachedString->get());
 	exit;
 
 	$InstanceCache->detachAllItems();
