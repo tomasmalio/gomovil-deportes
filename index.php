@@ -135,6 +135,9 @@
 	 * product_page is "identity keyword";
 	 */
 	$CachedClient = $InstanceCache->getItem('client');
+
+	print_r($CachedClient->get());
+	exit;
 	/**
 	 * Client definitions
 	 */
