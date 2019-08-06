@@ -613,6 +613,18 @@
 					],
 				];
 
+				/**
+				* Try to get JSON of WIDGET from cache
+				*/
+				$key = 'widgetJson'.$$variable;
+				$CachedWidgetJson = $InstanceCache->getItem($key);
+
+				if (!$CachedWidgetJson->isHit()) {
+					$CachedWidgetJson->set($json)->expiresAfter(86400); // In seconds, also accepts Datetime
+					$InstanceCache->save($CachedWidgetJson); // Save the cache item just like you do with doctrine and entities	
+				}
+				$json = $CachedWidgetJson->get();
+
 				try {
 					$$variable 						= new $objetName($json);
 				} catch (Exception $e) {
