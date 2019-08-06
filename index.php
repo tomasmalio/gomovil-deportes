@@ -7,16 +7,17 @@
 	$defaultDriver = 'Files';
 	$Psr16Adapter = new Psr16Adapter($defaultDriver);
 
-	if(!$Psr16Adapter->has('test-key')){
+	if (!$Psr16Adapter->has('test-key')) {
 		// Setter action
 		$data = 'lorem ipsum';
-		$Psr16Adapter->set('test-key', 'lorem ipsum', 300);// 5 minutes
-	}else{
+		$Psr16Adapter->set('test-key', $data, 300);// 5 minutes
+	} else {
+		echo 'aaaaaaa';
 		// Getter action
 		$data = $Psr16Adapter->get('test-key');
 	}
 
-	echo 'aca  '.$data;
+	echo '  '.$data;
 	exit;
 
 
@@ -27,7 +28,6 @@
 	// CacheManager::getInstance('memcached', $config);
 	// // An alternative exists:
 	// CacheManager::Memcached($config);
-
 
 	// $InstanceCache = CacheManager::getInstance('memcached',['servers' => [
 	// 	[
