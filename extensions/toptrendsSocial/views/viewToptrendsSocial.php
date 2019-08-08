@@ -62,12 +62,12 @@
 						<div class="author">
 							<div class="author-image">
 								<?php 
-									$url=getimagesize($social['profile_image']);
-									if (!is_array($url)) {
+									$url = @file_get_contents($social['profile_image']);
+									if (strpos($http_response_header[0], "200")) {
 								?>
-								<img src="https://i.ibb.co/dPdG7pb/no-user-image.jpg" name="imagedefault" alt="" title="">
+								<img src="<?=$social['profile_image']?>" name="" alt="" title="">
 								<?php } else {?>
-									<img src="<?=$social['profile_image']?>" name="" alt="" title="">
+								<img src="https://i.ibb.co/dPdG7pb/no-user-image.jpg" name="imagedefault" alt="" title="">
 								<?php }?>
 							</div>
 							<div class="author-name float-left">
