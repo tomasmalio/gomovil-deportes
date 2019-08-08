@@ -352,8 +352,8 @@
 		/**
 		 * Generate the items for the menu item
 		 */
+		$submenu = [];
 		if (count($items) > 0) {
-			$submenu = [];
 			/**
 			 * Getting the info from the content  to create subitem
 			 * associate the url of the child of the parent
