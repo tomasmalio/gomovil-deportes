@@ -3,12 +3,12 @@
 	//ini_set('display_errors', 1);
 
 	echo $_SERVER['REQUEST_URI'];
-	exit;
+	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
 
 	echo ROOTPATH;
-
+	exit;
 	/* Declare of extensions directory */
 	define('EXTENSIONS_URL', '/extensions', true);
 
