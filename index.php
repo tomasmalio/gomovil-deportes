@@ -176,8 +176,6 @@
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
 
-	echo CLIENT_NAME;
-
 	/* Definition of the time zone */
 	date_default_timezone_set($client['zone_name']);
 	setlocale(LC_TIME, explode('_', $client['language'])[0] .'_'. strtoupper(explode('_', $client['language'])[0]));
