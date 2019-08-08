@@ -28,8 +28,7 @@
 	$db->connect();
 	
 	/* Getting sections */
-	$s = '';
-	$s 	= $_GET['s'];
+	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	/* Filters */
 	$filters = [];
