@@ -63,7 +63,7 @@
 							<div class="author-image"><img src="<?=$social['profile_image']?>" name="" alt="" title=""></div>
 							<div class="author-name float-left">
 								<div class="author-complete-name"><?=$social['username']?></div>
-								<?php if (strtolower($social['origen']) != 'youtube') {?><div class="author-username">@<?=$social['screen_name']?></div><?php }?>
+								<?php if (strtolower($social['origen']) != 'youtube') {?><div class="author-username"><?=$social['screen_name']?></div><?php }?>
 							</div>
 						</div>
 						<?php /*<p class="text"><?=Widgets::convertSocialLinks(Widgets::makeLinks($social['text']), strtolower($social['origen']))?></p>*/?>
