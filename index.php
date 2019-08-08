@@ -399,6 +399,8 @@
 		}
 		$items = $CachedMenuItems->get();
 		
+		//
+		print_r($items);
 		/**
 		 * 
 		 */
