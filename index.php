@@ -372,7 +372,7 @@
 						break;
 					}
 				}
-				if (is_array($array[$subitem['url']])) {
+				if (isset($array[$subitem['url']]) && is_array($array[$subitem['url']])) {
 					$submenu[] = [
 						'url' 	=> strtolower($titles[$subitem['url']][COUNTRY_CODE]),
 						'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
