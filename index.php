@@ -2,6 +2,8 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
+	echo $_SERVER['REQUEST_URI'];
+	exit;
 	/* Directory */
 	define('ROOTPATH', __DIR__);
 
