@@ -2,13 +2,9 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	echo $_SERVER['REQUEST_URI'];
-	
 	/* Directory */
 	define('ROOTPATH', __DIR__);
 
-	echo ROOTPATH;
-	exit;
 	/* Declare of extensions directory */
 	define('EXTENSIONS_URL', '/extensions', true);
 
@@ -108,7 +104,7 @@
 	// Please note that as of the V6.1 the "path" config 
 	// can also be used for Unix sockets (Redis, Memcache, etc)
 	CacheManager::setDefaultConfig(new ConfigurationOption([
-		'path' => '/files', // or in windows "C:/tmp/"
+		'path' => ROOTPATH . '/files', // or in windows "C:/tmp/"
 	]));
 
 	// In your class, function, you can call the Cache
