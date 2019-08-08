@@ -60,7 +60,16 @@
 					<?php }?>
 					<div class="card-content">
 						<div class="author">
-							<div class="author-image"><img src="<?=$social['profile_image']?>" name="" alt="" title=""></div>
+							<div class="author-image">
+								<?php 
+									$url=getimagesize($social['profile_image']);
+									if (!is_array($url)) {
+								?>
+								<img src="https://i.ibb.co/dPdG7pb/no-user-image.jpg" name="imagedefault" alt="" title="">
+								<?php } else {?>
+									<img src="<?=$social['profile_image']?>" name="" alt="" title="">
+								<?php }?>
+							</div>
 							<div class="author-name float-left">
 								<div class="author-complete-name"><?=$social['username']?></div>
 								<?php if (strtolower($social['origen']) != 'youtube') {?><div class="author-username"><?=$social['screen_name']?></div><?php }?>
