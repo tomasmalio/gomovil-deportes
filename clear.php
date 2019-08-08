@@ -15,6 +15,9 @@
 
 	// In your class, function, you can call the Cache
 	$InstanceCache = CacheManager::getInstance('files');
-	$InstanceCache->clear();
-	$InstanceCache->clearInstances();
+
+	if ($InstanceCache->clear()) {
+		echo 'Cleaning cache...';
+	}
+
 ?>
