@@ -22,7 +22,7 @@
 	<?php
 				$tournaments = [];
 				foreach ($matches as $match) {
-					if (!is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
+					if (isset($match['tournament']) && !is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
 						$tournaments[Widgets::normalizeString($match['tournament'])] = [];
 					}
 					array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
