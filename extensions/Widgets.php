@@ -34,7 +34,7 @@
 
 		public function __construct($params = []) {
 			$this->clientName 	= $params['clientName'];
-			$this->extensionId 	= $params['id'];
+			(isset($params['id'])) ? $this->extensionId = $params['id'] : '';
 			$this->source 		= 'extensions/'.lcfirst(get_class($this)) . '/assets';
 			$this->destination 	= 'assets/'. $this->clientName . '/' . strtolower(get_class($this));
 			$this->temporal 	= 'tmp/'. strtolower(get_class($this));
