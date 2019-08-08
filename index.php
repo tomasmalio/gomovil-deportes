@@ -285,7 +285,7 @@
 			}
 		}
 	} else {
-		if ($filters[0]) {
+		if (isset($filters[0])) {
 			$keywords[] = '{@filter0}';
 			$keywordsChange[] = $filters[0];
 		}
