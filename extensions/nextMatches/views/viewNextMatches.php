@@ -22,7 +22,7 @@
 	<?php
 				$tournaments = [];
 				foreach ($matches as $match) {
-					if (isset($match['tournament']) && !is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
+					if (isset($match['tournament']) && !is_array($tournaments[parent::normalizeString($match['tournament'])])) {
 						$tournaments[Widgets::normalizeString($match['tournament'])] = [];
 					}
 					array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
@@ -35,7 +35,7 @@
 		<?php
 					$first 	= true;
 					$i 		= 0;
-					
+
 					foreach ($tournament as $match) {
 						// If First we display info
 						if ($first) {
