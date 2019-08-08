@@ -16,6 +16,8 @@
 	
 	use GoMovil\Assets;
 	use GoMovil\Db;
+	use Phpfastcache\CacheManager;
+	use Phpfastcache\Config\ConfigurationOption;
 	//use GoMovil\AmpRemoveUnusedCss;
 
 	/* Db Connection */
@@ -36,69 +38,6 @@
 	/* Identify the client */
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
-
-	$cacheVarName = '';
-	if (count($filters)  > 0){
-		foreach ($filters as $filter) {
-			$cacheVarName .= $filter;
-		}
-	}  else {
-		$cacheVarName = 'index';
-	}
-	// $your_product_data = [
-	// 	'First product',
-	// 	'Second product',
-	// 	'Third product'
-	// 	/* ... */
-	// ];
-
-	// if (!$CachedString->isHit()) {
-	// 	$CachedString->set($your_product_data)->expiresAfter(100);//in seconds, also accepts Datetime
-	// 	$InstanceCache->save($CachedString); // Save the cache item just like you do with doctrine and entities
-	
-	// 	echo 'FIRST LOAD // WROTE OBJECT TO CACHE // RELOAD THE PAGE AND SEE // ';
-	// 	echo $CachedString->get();
-	
-	// } else {
-	// 	echo 'READ FROM CACHE // ';
-	// 	echo $CachedString->get()[0];// Will print 'First product'
-	// }
-	
-	// /**
-	//  * use your products here or return them;
-	//  */
-	// echo implode('<br />', $CachedString->get());// Will echo your product list
-
-	// exit;
-
-	// print_r($cacheVarName);
-	// exit;
-
-	// use Phpfastcache\Helper\Psr16Adapter;
-
-	// $defaultDriver = 'Files';
-	// $Psr16Adapter = new Psr16Adapter($defaultDriver);
-
-	// if (!$Psr16Adapter->has($cacheVarName)) {
-	// 	// Setter action
-	// 	$data = '<html><head></head><body>aaaalorem ipsum</body></html>';
-	// 	$Psr16Adapter->set($cacheVarName, $data, 300);// 5 minutes
-	// } else {
-	// 	$data = $Psr16Adapter->get($cacheVarName);
-	// }
-
-	// echo $cacheVarName;
-	// print_r($data);
-	// exit;
-	// React PHP Cache
-	//$cache = new React\Cache\ArrayCache();
-
-	// $var = 'key';
-	// $asfafsa = 'aca';
-	// $cache->set($var, $asfafsa, 60);
-	
-	use Phpfastcache\CacheManager;
-	use Phpfastcache\Config\ConfigurationOption;
 
 	// Setup File Path on your config files
 	// Please note that as of the V6.1 the "path" config 
@@ -130,7 +69,7 @@
 	$client = $CachedClient->get();
 
 	// Delete everything
-	$InstanceCache->clear();
+	//$InstanceCache->clear();
 
 	session_start();
 	/* Security control */
@@ -399,11 +338,9 @@
 			$InstanceCache->save($CachedMenuItems); // Save the cache item just like you do with doctrine and entities	
 		}
 		$items = $CachedMenuItems->get();
-		
-		//
-		// print_r($items);
+
 		/**
-		 * 
+		 * Generate the items for the menu item
 		 */
 		if (count($items) > 0) {
 			$submenu = [];
