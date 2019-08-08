@@ -25,10 +25,10 @@
 					print_r($match);
 					exit;
 					if (isset($match['tournament'])) {
-						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-							$tournaments[Widgets::normalizeString($match['tournament'])] = [];
+						if (isset($tournaments[$this->normalizeString($match['tournament'])]) && !is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+							$tournaments[$this->normalizeString($match['tournament'])] = [];
 						}
-						array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
+						array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
 					}
 				}
 
@@ -44,7 +44,7 @@
 						// If First we display info
 						if ($first) {
 		?>
-		<a href="/<?=$nextMatches['football']['url'];?>/torneos/<?= Widgets::normalizeString($match['type']);?>/<?= Widgets::normalizeString($match['tournament']);?>" class="competition-name"><span><?= $match['tournament']?></span></a>
+		<a href="/<?=$nextMatches['football']['url'];?>/torneos/<?= $this->normalizeString($match['type']);?>/<?= Widgets::normalizeString($match['tournament']);?>" class="competition-name"><span><?= $match['tournament']?></span></a>
 		<div class="competition-divider"></div>
 		<?php 
 							if (isset($match['step']) && !empty($match['step'])) {
