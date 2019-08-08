@@ -28,9 +28,11 @@
 	$db->connect();
 	
 	/* Getting sections */
+	$s = '';
 	$s 	= $_GET['s'];
 
 	/* Filters */
+	$filters = [];
 	foreach($_GET as $key => $value) {
 		$filters[] = $value;
 	}
