@@ -39,6 +39,13 @@
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
 
+	$cacheNameSection = '';
+	foreach ($filters as $filter) {
+		$cacheNameSection .= $filter;
+	}
+
+	print_r($cacheNameSection);
+
 	// Setup File Path on your config files
 	// Please note that as of the V6.1 the "path" config 
 	// can also be used for Unix sockets (Redis, Memcache, etc)
