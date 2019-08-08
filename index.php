@@ -44,7 +44,7 @@
 		$cacheNameSection .= $filter;
 	}
 
-	print_r($cacheNameSection);
+	($cacheNameSection == '') ? $cacheNameSection = 'home' : '';
 
 	// Setup File Path on your config files
 	// Please note that as of the V6.1 the "path" config 
@@ -553,7 +553,7 @@
 				/**
 				* Try to get WIDGET JSON from cache
 				*/
-				$key = 'widgetJson'. $variable . $extension['idExtension'];
+				$key = 'widgetJson'. $variable . $extension['idExtension'] . $cacheNameSection;
 				$CachedWidgetJson = $InstanceCache->getItem($key);
 
 				if (!$CachedWidgetJson->isHit()) {
