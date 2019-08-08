@@ -23,7 +23,7 @@
 				$tournaments = [];
 				foreach ($matches as $match) {
 					if (isset($match['tournament'])) {
-						print_r($tournaments[$this->normalizeString($match['tournament'])]);
+						print_r($tournaments[Widgets::normalizeString($match['tournament'])]);
 						exit;
 						if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
 							if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
