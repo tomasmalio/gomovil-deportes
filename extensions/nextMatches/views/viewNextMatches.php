@@ -128,7 +128,7 @@
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?php if ($match['datetime']) { echo date('H:i', strtotime($match['datetime']));}?></div>
+											<div class="time-to-play"><?php echo date('H:i', strtotime($match['datetime']));?></div>
 										</div>
 									</div>
 								<?php }?>
