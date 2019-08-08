@@ -22,8 +22,6 @@
 	<?php
 				$tournaments = [];
 				foreach ($matches as $match) {
-					print_r($match);
-					exit;
 					if (isset($match['tournament'])) {
 						if (isset($tournaments[$this->normalizeString($match['tournament'])]) && !is_array($tournaments[$this->normalizeString($match['tournament'])])) {
 							$tournaments[$this->normalizeString($match['tournament'])] = [];
