@@ -577,7 +577,7 @@
 					/**
 					* Try to get OBJECT WIDGET from cache
 					*/
-					$key = 'objectWidget'.$variable . $extension['idExtension'];
+					$key = 'objectWidget'.$variable . $extension['idExtension'] . $cacheNameSection;
 					$CachedObjectWidget = $InstanceCache->getItem($key);
 					
 					if (!$CachedObjectWidget->isHit()) {
