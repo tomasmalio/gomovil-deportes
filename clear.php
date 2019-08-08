@@ -17,7 +17,7 @@
 	$InstanceCache = CacheManager::getInstance('files');
 
 	if ($InstanceCache->clear()) {
-		echo 'Cleaning cache...';
+		echo 'The cache was clean.';
 	}
 
 ?>
