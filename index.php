@@ -393,6 +393,8 @@
 						and sc.status = 1");
 			$db->execute();
 			$itemsSql = $db->fetchAll();
+
+			print_r($itemsSql);
 			
 			$CachedMenuItems->set($itemsSql)->expiresAfter(604800); // In seconds, also accepts Datetime
 			$InstanceCache->save($CachedMenuItems); // Save the cache item just like you do with doctrine and entities	
@@ -400,7 +402,7 @@
 		$items = $CachedMenuItems->get();
 		
 		//
-		print_r($items);
+		// print_r($items);
 		/**
 		 * 
 		 */
