@@ -287,6 +287,8 @@
 	} else {
 		$keywords[] = '{@filter0}';
 		$keywordsChange[] = $filters[0];
+		echo $filters[0];
+		exit;
 	}
 
 	/**********************************
