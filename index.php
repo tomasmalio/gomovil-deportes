@@ -370,7 +370,7 @@
 
 	$menu = [];
 
-	print($menuPrincipal);
+	var_dump($menuPrincipal);
 	exit;
 	foreach ($menuPrincipal as $item) {
 
