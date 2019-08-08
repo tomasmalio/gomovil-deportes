@@ -374,19 +374,19 @@
 				}
 				if (isset($array[$subitem['url']]) && is_array($array[$subitem['url']])) {
 					$submenu[] = [
-						'url' 	=> strtolower($titles[$subitem['url']][COUNTRY_CODE]),
-						'title' => str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
-						'display' => (isset($subitem['display']) && $subitem['display']) ? true : false,
-						'items' => $array[$subitem['url']],
+						'url' 		=> strtolower($titles[$subitem['url']][COUNTRY_CODE]),
+						'title' 	=> str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
+						'display' 	=> (isset($subitem['display']) && $subitem['display']) ? true : false,
+						'items' 	=> $array[$subitem['url']],
 					];
 				}
 			}
 		}
 		$menu[] = [
-			'url' 	=> $item['url'],
-			'title' => str_replace($keywords, $keywordsChange, utf8_encode($item['title'])),
-			'submenu' => $submenu,
-			'age_control' => $item['age_control']
+			'url' 			=> $item['url'],
+			'title' 		=> str_replace($keywords, $keywordsChange, utf8_encode($item['title'])),
+			'submenu' 		=> $submenu,
+			'age_control' 	=> $item['age_control']
 		];
 		unset($submenu);
 	}
