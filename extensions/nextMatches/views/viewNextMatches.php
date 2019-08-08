@@ -33,7 +33,9 @@
 	?>
 	<div class="competition">
 		<?php
-					$first = true;
+					$first 	= true;
+					$i 		= 0;
+					
 					foreach ($tournament as $match) {
 						// If First we display info
 						if ($first) {
