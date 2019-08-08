@@ -460,7 +460,7 @@
 			$db->execute();
 			$sectionExtensionsSql = $db->fetchAll();
 
-			$CachedSectionExtensions->set($sectionExtensionsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
+			$CachedSectionExtensions->set($sectionExtensionsSql)->expiresAfter($section['time_cache']); // In seconds, also accepts Datetime
 			$InstanceCache->save($CachedSectionExtensions); // Save the cache item just like you do with doctrine and entities	
 		}
 		$sectionExtensions = $CachedSectionExtensions->get();
