@@ -104,7 +104,7 @@
 	// Please note that as of the V6.1 the "path" config 
 	// can also be used for Unix sockets (Redis, Memcache, etc)
 	CacheManager::setDefaultConfig(new ConfigurationOption([
-		'path' => '/var/www/html/bitelnoticias/files', // or in windows "C:/tmp/"
+		'path' => '/files', // or in windows "C:/tmp/"
 	]));
 
 	// In your class, function, you can call the Cache
@@ -130,7 +130,7 @@
 	$client = $CachedClient->get();
 
 	// Delete everything
-	// $InstanceCache->clear();
+	$InstanceCache->clear();
 
 	session_start();
 	/* Security control */
