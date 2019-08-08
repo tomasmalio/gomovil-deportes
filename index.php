@@ -370,8 +370,6 @@
 
 	$menu = [];
 
-	var_dump($menuPrincipal);
-	exit;
 	foreach ($menuPrincipal as $item) {
 
 		/**
@@ -381,7 +379,7 @@
 		/**
 		 * Try to get MENU_ITEMS from cache
 		 */
-		$key = 'menuItems' . $item;
+		$key = 'menuItems' . $item['id'];
 		$CachedMenuItems = $InstanceCache->getItem($key);
 
 		if (!$CachedMenuItems->isHit()) {
