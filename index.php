@@ -378,7 +378,8 @@
 		/**
 		 * Try to get MENU_ITEMS from cache
 		 */
-		$CachedMenuItems = $InstanceCache->getItem('menuItems');
+		$key = 'menuItems' . $item;
+		$CachedMenuItems = $InstanceCache->getItem($key);
 
 		if (!$CachedMenuItems->isHit()) {
 			$db->prepare("select sc.title as title, s.name as url, c.data as content, sc.menu_display as display 
