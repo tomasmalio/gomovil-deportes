@@ -1,4 +1,5 @@
 <?php
+	require_once __DIR__.'/bootstrap.php';
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
 
