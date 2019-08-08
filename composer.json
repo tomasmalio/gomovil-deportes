@@ -53,8 +53,12 @@
 			"cp -R vendor/matthiasmullie/minify/src src/minify",
 			"cp -R vendor/slidebars/slidebars/dist assets/slidebars",
 			"cp -R vendor/nolimits4web/swiper/dist assets/swiper",
+			"mkdir tmp",
+			"mkdir cache",
+			"mkdir files",
 			"chmod -R 0755 tmp",
 			"chmod -R 0755 cache",
+			"chmod -R 0755 files",
 			"sh gomovil-install.sh",
 			"php composer dump-autoload"
 		]
