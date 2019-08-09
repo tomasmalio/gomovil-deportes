@@ -23,7 +23,8 @@
 				$tournaments = [];
 				foreach ($matches as $match) {
 					
-					if ($tournaments[$this->normalizeString($match['tournament'])] !== '') {
+					if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
+
 						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
 							$tournaments[$this->normalizeString($match['tournament'])] = [];
 						}
