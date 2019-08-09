@@ -159,7 +159,7 @@
 			<!-- Eof Match -->
 			<?php 
 					$i++;
-					if ($i == $content['football']['items']) {
+					if (isset($content['football']['items']) && $i == $content['football']['items']) {
 						break;
 					}
 					$first = false;
