@@ -57,22 +57,19 @@
 	// In your class, function, you can call the Cache
 	$InstanceCache = CacheManager::getInstance('files');
 
-	/**
-	 * Try to get CLIENT from cache
-	 */
+	/**********************************
+	 * 			CLIENT
+	 **********************************/
+	// Try to get CLIENT from cache
 	$CachedClient = $InstanceCache->getItem('client');
-
-	/**
-	 * Client definitions
-	 */
 	if (!$CachedClient->isHit()) {
 		// Charge client info to cache
 		$db->prepare("select c.*, cy.code as country_code, cy.name as country_name, l.value as language, z.zone_name from client c, country cy, language l, zone z where url like '%" . $domain . "%' and c.country_id = cy.id and c.language_id = l.id and c.zone_id = z.id and c.status = 1");
 		$db->execute();
 		$clientSql = $db->fetch();
 
-		$CachedClient->set($clientSql)->expiresAfter(86400); // In seconds, also accepts Datetime
-		$InstanceCache->save($CachedClient); // Save the cache item just like you do with doctrine and entities	
+		$CachedClient->set($clientSql)->expiresAfter(604800);
+		$InstanceCache->save($CachedClient);
 	}
 	$client = $CachedClient->get();
 
@@ -135,9 +132,7 @@
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
-	/**
-	 * Try to get SECTION from cache
-	 */
+	// Try to get SECTION from cache
 	$key = 'section'. $s;
 	$CachedSection = $InstanceCache->getItem($key);
 
@@ -154,8 +149,8 @@
 		$db->execute();
 		$sectionSql = $db->fetch();
 
-		$CachedSection->set($sectionSql)->expiresAfter(86400); // In seconds, also accepts Datetime
-		$InstanceCache->save($CachedSection); // Save the cache item just like you do with doctrine and entities	
+		$CachedSection->set($sectionSql)->expiresAfter(86400);
+		$InstanceCache->save($CachedSection);
 	}
 	$section = $CachedSection->get();
 
@@ -183,9 +178,10 @@
 		$flag = true;
 	
 		do {
-			/**
-			 * Try to get SUBSECTION from cache
-			 */
+			/**********************************
+			 * 			SUBSECTIONS
+			 **********************************/
+			// Try to get SUBSECTION from cache
 			$CachedSubSection = $InstanceCache->getItem('subsection');
 
 			if (!$CachedSubSection->isHit()) {
@@ -193,8 +189,8 @@
 				$db->execute();
 				$subsectionSql = $db->fetch();
 
-				$CachedSubSection->set($subsectionSql)->expiresAfter(86400); // In seconds, also accepts Datetime
-				$InstanceCache->save($CachedSubSection); // Save the cache item just like you do with doctrine and entities	
+				$CachedSubSection->set($subsectionSql)->expiresAfter(86400);
+				$InstanceCache->save($CachedSubSection);
 			}
 			$subsection = $CachedSubSection->get();
 
@@ -294,9 +290,7 @@
 	/**********************************
 	 * 			MENU
 	 **********************************/
-	/**
-	 * Try to get MENU from cache
-	 */
+	// Try to get MENU from cache
 	$CachedMenu = $InstanceCache->getItem('menu');
 	
 	if (!$CachedMenu->isHit()) {
@@ -312,13 +306,14 @@
 		$db->execute();
 		$menuPrincipalSql = $db->fetchAll();
 
-		$CachedMenu->set($menuPrincipalSql)->expiresAfter(604800); // In seconds, also accepts Datetime
-		$InstanceCache->save($CachedMenu); // Save the cache item just like you do with doctrine and entities	
+		$CachedMenu->set($menuPrincipalSql)->expiresAfter(604800);
+		$InstanceCache->save($CachedMenu);
 	}
 	$menuPrincipal = $CachedMenu->get();
 
 	$menu = [];
 
+	
 	foreach ($menuPrincipal as $item) {
 
 		/**
@@ -338,14 +333,13 @@
 						and sc.client_id = '" . $client['id'] . "' 
 						and sc.parent_id = '".$item['id']."' 
 						and sc.content_id = c.id
-						/*and sc.menu_display = 1*/
 						and s.status = 1 
 						and sc.status = 1");
 			$db->execute();
 			$itemsSql = $db->fetchAll();
 			
-			$CachedMenuItems->set($itemsSql)->expiresAfter(604800); // In seconds, also accepts Datetime
-			$InstanceCache->save($CachedMenuItems); // Save the cache item just like you do with doctrine and entities	
+			$CachedMenuItems->set($itemsSql)->expiresAfter(604800);
+			$InstanceCache->save($CachedMenuItems);
 		}
 		$items = $CachedMenuItems->get();
 
@@ -404,8 +398,8 @@
 		$db->execute();
 		$customizationSql = $db->fetch();
 
-		$CachedCustomization->set($customizationSql)->expiresAfter(604800); // In seconds, also accepts Datetime
-		$InstanceCache->save($CachedCustomization); // Save the cache item just like you do with doctrine and entities	
+		$CachedCustomization->set($customizationSql)->expiresAfter(604800);
+		$InstanceCache->save($CachedCustomization);
 	}
 	$customization = $CachedCustomization->get();
 
@@ -417,8 +411,8 @@
 	if (!$CachedAsssets->isHit()) {
 		$assetsConstructorBase = new Assets($client['name'], $client['id'], $customization);
 
-		$CachedAsssets->set($assetsConstructorBase)->expiresAfter(86400); // In seconds, also accepts Datetime
-		$InstanceCache->save($CachedAsssets); // Save the cache item just like you do with doctrine and entities	
+		$CachedAsssets->set($assetsConstructorBase)->expiresAfter(86400);
+		$InstanceCache->save($CachedAsssets);
 	}
 	$assetsConstructor = $CachedAsssets->get();
 
@@ -444,8 +438,8 @@
 			$db->execute();
 			$sectionExtensionsSql = $db->fetchAll();
 
-			$CachedSectionExtensionsMobile->set($sectionExtensionsSql)->expiresAfter(86400); // In seconds, also accepts Datetime
-			$InstanceCache->save($CachedSectionExtensionsMobile); // Save the cache item just like you do with doctrine and entities	
+			$CachedSectionExtensionsMobile->set($sectionExtensionsSql)->expiresAfter($section['time_cache']);
+			$InstanceCache->save($CachedSectionExtensionsMobile);
 		}
 		$sectionExtensions = $CachedSectionExtensionsMobile->get();
 	
@@ -463,8 +457,8 @@
 			$db->execute();
 			$sectionExtensionsSql = $db->fetchAll();
 
-			$CachedSectionExtensions->set($sectionExtensionsSql)->expiresAfter($section['time_cache']); // In seconds, also accepts Datetime
-			$InstanceCache->save($CachedSectionExtensions); // Save the cache item just like you do with doctrine and entities	
+			$CachedSectionExtensions->set($sectionExtensionsSql)->expiresAfter($section['time_cache']);
+			$InstanceCache->save($CachedSectionExtensions);
 		}
 		$sectionExtensions = $CachedSectionExtensions->get();
 	}
@@ -494,8 +488,8 @@
 				$db->execute();
 				$externalContentSql = $db->fetch();
 
-				$CachedExternalContent->set($externalContentSql)->expiresAfter(604800); // In seconds, also accepts Datetime
-    			$InstanceCache->save($CachedExternalContent); // Save the cache item just like you do with doctrine and entities	
+				$CachedExternalContent->set($externalContentSql)->expiresAfter(604800);
+    			$InstanceCache->save($CachedExternalContent);
 			}
 			$externalContent = $CachedExternalContent->get();
 		}
@@ -571,8 +565,8 @@
 						],
 					];
 
-					$CachedWidgetJson->set($jsonGenerator)->expiresAfter(86400); // In seconds, also accepts Datetime
-					$InstanceCache->save($CachedWidgetJson); // Save the cache item just like you do with doctrine and entities	
+					$CachedWidgetJson->set($jsonGenerator)->expiresAfter(86400);
+					$InstanceCache->save($CachedWidgetJson);
 				}
 				$json = $CachedWidgetJson->get();
 
@@ -586,8 +580,8 @@
 					if (!$CachedObjectWidget->isHit()) {
 						$variableObjectWidget = new $objetName($json);
 
-						$CachedObjectWidget->set($variableObjectWidget)->expiresAfter(86400); // In seconds, also accepts Datetime
-    					$InstanceCache->save($CachedObjectWidget); // Save the cache item just like you do with doctrine and entities	
+						$CachedObjectWidget->set($variableObjectWidget)->expiresAfter(86400);
+    					$InstanceCache->save($CachedObjectWidget);
 					}
 					$$variable = $CachedObjectWidget->get();
 
