@@ -85,6 +85,8 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
+					$array = explode(' - '.$source, $title);
+					print_r($array);
 					$replace = [' - ', ' | ', (string)$source, $$source];
 					$replacement = ['', '', '', ''];
 					$title = str_replace($replace, $replacement, $title);
