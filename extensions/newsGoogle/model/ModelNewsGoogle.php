@@ -81,6 +81,7 @@
 				$source =  explode('<p>', str_replace('<font color="#6f6f6f">', '</font>', (explode('<font color="#6f6f6f">', $item->description))[1]));
 				$source = $source[0];
 				$title = (string)$item->title;
+				echo $title;
 				$pos = strpos($item->title, $source);
 				if ($pos !== false) {
 					$title = (string)$item->title;
