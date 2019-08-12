@@ -87,7 +87,7 @@
 				} else {
 					echo rtrim($title, ' - ').'<br>';
 					echo $title .'<br>';
-					$count = strlen($source[0]);
+					$count = strlen($source);
 					echo $source . ' ' . $count. '<br>';
 					
 					$title = substr_replace($title, '', -(((strlen($source))/2)+3));
