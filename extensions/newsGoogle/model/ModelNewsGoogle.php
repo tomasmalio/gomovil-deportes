@@ -87,9 +87,9 @@
 				} else {
 					echo $title;
 					echo $source;
-					$title = str_replace(' - '.$source, '', $title);
+					$titleNew = str_replace(' - '.$source, '', $title);
 					$title = str_replace(' | '.$source, '', $title);
-					echo $title;
+					echo $titleNew;
 					exit;
 				}
 
