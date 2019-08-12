@@ -85,17 +85,10 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					// $array = explode(' - '.$source, $title);
-					echo $source;
-					echo strlen('EL PAIS');
-					echo strlen($source);
 					$title = substr_replace($title, '', -((strlen($source))/2));
-					$replace = [' - ', ' | ', (string)$source, $$source];
-					$replacement = ['', '', '', ''];
+					$replace = [' - ', ' | '];
+					$replacement = ['', '', ''];
 					$title = str_replace($replace, $replacement, $title);
-					// $title = str_replace(array(' - ', ' | '), array('', ''), $title);
-					echo $title;
-					exit;
 				}
 
 				/**
