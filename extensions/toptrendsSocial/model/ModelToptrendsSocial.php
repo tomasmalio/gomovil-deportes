@@ -9,7 +9,7 @@
 		private $interval = '24';
 		
 		public function model ($params = []) {
-			self::setInterval($params['interval']);
+			(isset($params['interval'])) ? self::setInterval($params['interval']) : '';
 			if ($params['search']) {
 				$json = self::getSocial($params['search']);
 				if ($json) {
@@ -20,7 +20,7 @@
 			}
 		}
 
-		public function setInterval ($interval) {
+		private function setInterval ($interval) {
 			if (!empty($interval)) {
 				$this->interval = $interval;
 			}
