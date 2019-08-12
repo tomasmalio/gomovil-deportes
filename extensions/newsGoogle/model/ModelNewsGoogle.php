@@ -85,7 +85,10 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					$title = (explode('-', (string)$item->title))[0];
+					if (strpost($item->title, '- '.$source)) {
+						$title = str_replace('- '.$source, '', $item->title);
+					}
+					//$title = (explode('-', (string)$item->title))[0];
 				}
 
 				/**
