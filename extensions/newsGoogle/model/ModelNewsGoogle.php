@@ -87,6 +87,7 @@
 				} else {
 					// $array = explode(' - '.$source, $title);
 					echo $source;
+					echo strlen('EL PAIS');
 					echo strlen($source);
 					$title = substr_replace($title, '', -3);
 					$replace = [' - ', ' | ', (string)$source, $$source];
