@@ -85,12 +85,14 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
+					echo $title;
 					$array = explode(' - ', $title);
 					$title = '';
 					
 					for ($j = 0; $j < count($array); $j++) {
 						$title .= $array[$j];
 					}
+					echo $title;
 				}
 
 				/**
@@ -115,6 +117,7 @@
 				}
 				unset($image);
 			}
+			exit;
 			return json_encode($news);
 		}
 
