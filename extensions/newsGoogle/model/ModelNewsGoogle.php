@@ -93,6 +93,7 @@
 					} elseif (strpos($title, ' | '.$source)) {
 						$title = str_replace(' | '.$source, '', $title);
 					} else {
+						echo $title;
 						echo 'no entro';
 						exit;
 					}
