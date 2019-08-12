@@ -86,8 +86,11 @@
 					$title = (string)$item->title;
 				} else {
 					$array = explode(' - ', $title);
-					echo count($array);
-					
+					$title = '';
+					for($i = 0; $i < count($array); $i++) {
+						$title .= $array[$i];
+					}
+
 					// echo $title.'<br>';
 					// $arrayTitle = explode(' - ', $title);
 					// $newTitle = '';
