@@ -90,6 +90,7 @@
 					$title = '';
 					
 					for ($j = 0; $j < (count($array) -1); $j++) {
+						echo $array[$j];
 						$title .= $array[$j];
 					}
 					echo $title;
@@ -117,6 +118,7 @@
 				}
 				unset($image);
 			}
+			exit;
 			return json_encode($news);
 		}
 
