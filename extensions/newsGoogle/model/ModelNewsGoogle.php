@@ -85,15 +85,15 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					echo $title;
+					// echo $title;
 					$array = explode(' - ', $title);
 					$title = '';
 					
 					for ($j = 0; $j < (count($array) -1); $j++) {
-						echo $array[$j];
+						echo $array[$j].'<br>';
 						$title .= $array[$j];
 					}
-					echo $title;
+					echo $title.'<br>';
 				}
 
 				/**
