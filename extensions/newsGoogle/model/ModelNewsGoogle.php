@@ -87,7 +87,7 @@
 				} else {
 					echo $title;
 					echo $source;
-					$title = str_replace(array(' - '.$source, ' | '.$source), array('', ''), $title);
+					$title = str_replace(array(' - '.$source, ' | '.$source), array('', ''), (string)$title);
 					echo $title;
 					exit;
 				}
