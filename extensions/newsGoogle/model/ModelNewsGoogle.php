@@ -85,6 +85,12 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
+					$arrayTitle = explode(' - ', $title);
+					$newTitle = '';
+					for($i = 0; $i < count($arrayTitle)-1; $i++) {
+						$newTitle .= $arrayTitle[$i];
+					}
+					echo $newTitle;
 					echo rtrim($title, ' - ').'<br>';
 					echo $title .'<br>';
 					$count = strlen($source);
