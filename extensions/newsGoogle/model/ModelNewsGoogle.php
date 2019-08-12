@@ -115,8 +115,6 @@
 				}
 				unset($image);
 			}
-			print_r($news);
-			exit;
 			return json_encode($news);
 		}
 
