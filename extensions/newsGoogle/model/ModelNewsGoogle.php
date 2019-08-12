@@ -92,6 +92,8 @@
 					}
 				}
 
+				$title = substr($title, 0, -3);
+
 				/**
 				 * Generate the array with the info
 				 * 
