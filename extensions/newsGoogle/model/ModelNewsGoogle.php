@@ -85,13 +85,13 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					if (strpos($item->title, '- '.$source)) {
+					if (strpos($title, '- '.$source)) {
 						echo 'acaaaa';
-						$title = str_replace('- '.$source, '', $item->title);
+						$title = str_replace('- '.$source, '', $title);
 						echo $title;
 						exit;
-					} elseif (strpos($item->title, '| '.$source)) {
-						$title = str_replace('| '.$source, '', $item->title);
+					} elseif (strpos($title, '| '.$source)) {
+						$title = str_replace('| '.$source, '', $title);
 					}
 					//$title = (explode('-', (string)$item->title))[0];
 				}
