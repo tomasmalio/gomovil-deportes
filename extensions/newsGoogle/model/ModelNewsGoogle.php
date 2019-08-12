@@ -87,18 +87,10 @@
 				} else {
 					$array = explode(' - ', $title);
 					$title = '';
-					for($i = 0; $i < count($array); $i++) {
-						$title .= $array[$i];
+					
+					for ($j = 0; $j < count($array); $j++) {
+						$title .= $array[$j];
 					}
-
-					// echo $title.'<br>';
-					// $arrayTitle = explode(' - ', $title);
-					// $newTitle = '';
-					// for($i = 0; $i < count($arrayTitle)-1; $i++) {
-					// 	$newTitle .= $arrayTitle[$i];
-					// }
-					// $title = $newTitle;
-					// echo $title.'<br>';
 				}
 
 				/**
