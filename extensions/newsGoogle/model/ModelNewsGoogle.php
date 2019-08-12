@@ -85,8 +85,12 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
+					echo $title;
+					echo $source;
 					$title = str_replace(' - '.$source, '', $title);
 					$title = str_replace(' | '.$source, '', $title);
+					echo $title;
+					exit;
 				}
 
 				/**
