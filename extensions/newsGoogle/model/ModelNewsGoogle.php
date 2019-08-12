@@ -86,9 +86,9 @@
 					$title = (string)$item->title;
 				} else {
 					if (strpost($item->title, '- '.$source)) {
-						echo 'aca';
-						exit;
 						$title = str_replace('- '.$source, '', $item->title);
+					} elseif (strpost($item->title, '| '.$source)) {
+						$title = str_replace('| '.$source, '', $item->title);
 					}
 					//$title = (explode('-', (string)$item->title))[0];
 				}
