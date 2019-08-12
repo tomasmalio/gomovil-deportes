@@ -89,7 +89,7 @@
 					echo $source;
 					echo strlen('EL PAIS');
 					echo strlen($source);
-					$title = substr_replace($title, '', -3);
+					$title = substr_replace($title, '', -((strlen($source))/2));
 					$replace = [' - ', ' | ', (string)$source, $$source];
 					$replacement = ['', '', '', ''];
 					$title = str_replace($replace, $replacement, $title);
