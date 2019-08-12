@@ -86,7 +86,7 @@
 					$title = (string)$item->title;
 				} else {
 					echo $title .'<br>';
-					echo strlen($source). '<br>';
+					echo strlen($$source). '<br>';
 					$title = substr_replace($title, '', -(((strlen($source))/2)+3));
 					// $replace = [' - ', ' | '];
 					// $replacement = ['', '', ''];
