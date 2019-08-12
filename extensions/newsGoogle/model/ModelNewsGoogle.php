@@ -85,9 +85,9 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					$title = substr_replace($title, '', -((strlen($source))/2));
-					$replace = [' - ', ' | '];
-					$replacement = ['', '', ''];
+					$title = substr_replace($title, '', -(((strlen($source))/2)+3));
+					// $replace = [' - ', ' | '];
+					// $replacement = ['', '', ''];
 					$title = str_replace($replace, $replacement, $title);
 				}
 
