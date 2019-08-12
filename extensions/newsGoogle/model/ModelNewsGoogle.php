@@ -89,6 +89,8 @@
 					// $replace = [' - ', ' | '];
 					// $replacement = ['', '', ''];
 					$title = str_replace($replace, $replacement, $title);
+
+					echo $title;
 				}
 
 				/**
@@ -113,6 +115,7 @@
 				}
 				unset($image);
 			}
+			exit;
 			return json_encode($news);
 		}
 
