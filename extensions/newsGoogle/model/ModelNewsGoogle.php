@@ -82,6 +82,7 @@
 				$source = $source[0];
 				$title = (string)$item->title;
 				echo $title;
+				exit;
 				$pos = strpos($item->title, $source);
 				if ($pos !== false) {
 					$title = (string)$item->title;
