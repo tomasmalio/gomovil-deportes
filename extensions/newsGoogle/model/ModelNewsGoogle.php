@@ -85,19 +85,8 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					if (strpos($title, ' - '.$source)) {
-						echo 'acaaaa';
-						$title = str_replace(' - '.$source, '', $title);
-						echo $title;
-						exit;
-					} elseif (strpos($title, ' | '.$source)) {
-						$title = str_replace(' | '.$source, '', $title);
-					} else {
-						echo $title;
-						echo 'no entro';
-						exit;
-					}
-					//$title = (explode('-', (string)$item->title))[0];
+					$title = str_replace(' - '.$source, '', $title);
+					$title = str_replace(' | '.$source, '', $title);
 				}
 
 				/**
