@@ -88,6 +88,9 @@
 					$replace = [' - ', ' | ', 'EL PAIS'];
 					$replacement = ['', '', ''];
 					$title = str_replace($replace, $replacement, $title);
+
+					$aca = explode($source, $title);
+					print_r($aca);
 					// $title = str_replace(array(' - ', ' | '), array('', ''), $title);
 					echo $title;
 					exit;
