@@ -85,7 +85,7 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					echo rtrim($title, ' - ').'<br';
+					echo rtrim($title, ' - ').'<br>';
 					echo $title .'<br>';
 					echo strlen($source). '<br>';
 					
