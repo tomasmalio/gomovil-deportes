@@ -85,8 +85,8 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					$replace = [' - ', ' | ', 'EL PAIS'];
-					$replacement = ['', '', ''];
+					$replace = [' - ', ' | ',];
+					$replacement = ['', ''];
 					$title = str_replace($replace, $replacement, $title);
 
 					$aca = explode($source, $title);
