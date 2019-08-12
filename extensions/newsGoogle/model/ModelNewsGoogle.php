@@ -88,7 +88,7 @@
 					$array = explode(' - ', $title);
 					$title = '';
 					for ($j = 0; $j < (count($array) -1); $j++) {
-						$title .= $array[$j];
+						$title .= $array[$j] . ' - ';
 					}
 				}
 
