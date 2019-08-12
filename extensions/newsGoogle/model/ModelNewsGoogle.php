@@ -100,7 +100,7 @@
 				 * It's important that if newsWithImages it's set in true and the news received
 				 * doesn't have image, the array is not going to be added.
 				 **/
-				if ((isset($this->newsWithImages) && $this->newsWithImages && $image) || !isset($this->newsWithImages)) {
+				if ((isset($this->newsWithImages) && $this->newsWithImages && isset($image) && $image) || !isset($this->newsWithImages)) {
 					$news[$i]['id'] = (string)$item->guid;
 					$news[$i]['title'] = $title;
 					$news[$i]['description'] = $description;
