@@ -87,6 +87,7 @@
 				} else {
 					$array = explode(' - ', $title);
 					echo count($array);
+					
 					// echo $title.'<br>';
 					// $arrayTitle = explode(' - ', $title);
 					// $newTitle = '';
@@ -120,6 +121,7 @@
 				unset($image);
 			}
 			print_r($news);
+			exit;
 			return json_encode($news);
 		}
 
