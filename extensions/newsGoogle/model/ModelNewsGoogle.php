@@ -85,10 +85,8 @@
 				if ($pos !== false) {
 					$title = (string)$item->title;
 				} else {
-					echo "aca";
-					echo $item->title . ' ' .$source;
-					exit;
 					if (strpos($item->title, '- '.$source)) {
+						echo 'acaaaa';
 						$title = str_replace('- '.$source, '', $item->title);
 					} elseif (strpos($item->title, '| '.$source)) {
 						$title = str_replace('| '.$source, '', $item->title);
