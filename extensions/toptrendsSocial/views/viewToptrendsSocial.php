@@ -32,7 +32,7 @@
 					}
 		?>
 		<div class="grid-item-social col-<?=$col?>" <?php if (isset($social['video']) && $social['video']){?>data-video="true" data-source="<?=$social['video']?>"<?php }?>>
-			<div class="social-post <?php if ($social['video'] == '' && $social['image'] == ''){?>only-text<?php }?>">
+			<div class="social-post <?php if ((!isset($social['video']) || $social['video'] == '') && (!isset($social['image']) || $social['image'] == '')){?>only-text<?php }?>">
 				<div class="card">
 					<?php if (isset($social['video']) && $social['video']){?>
 						<div class="card-video social-card-<?=$quantity?>">
