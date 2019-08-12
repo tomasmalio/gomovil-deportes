@@ -91,17 +91,17 @@
 						$newTitle .= $arrayTitle[$i];
 					}
 					echo $newTitle;
-					echo rtrim($title, ' - ').'<br>';
-					echo $title .'<br>';
-					$count = strlen($source);
-					echo $source . ' ' . $count. '<br>';
+					// echo rtrim($title, ' - ').'<br>';
+					// echo $title .'<br>';
+					// $count = strlen($source);
+					// echo $source . ' ' . $count. '<br>';
 					
 					$title = substr_replace($title, '', -(((strlen($source))/2)+3));
 					// $replace = [' - ', ' | '];
 					// $replacement = ['', '', ''];
 					$title = str_replace($replace, $replacement, $title);
 
-					echo $title .'<br>';
+					// echo $title .'<br>';
 
 					$count = '';
 				}
