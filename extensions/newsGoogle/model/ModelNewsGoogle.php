@@ -87,7 +87,7 @@
 				} else {
 					$array = explode(' - '.$source, $title);
 					echo strlen($source);
-					$title = substr_replace($title, '', -(strlen($source)));
+					$title = substr_replace($title, '', -3);
 					$replace = [' - ', ' | ', (string)$source, $$source];
 					$replacement = ['', '', '', ''];
 					$title = str_replace($replace, $replacement, $title);
