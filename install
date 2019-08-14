@@ -16,9 +16,9 @@ echo '+--------------------------------------------------+'
 echo 'Select the type of platform you want to install (default: development):'
 type_platform=$typePlatform
 read typePlatform;
-php "$file = file_get_contents($index.php);"
-php "str_replace({@TYPE_PRODUCTION}, $typePlatform, $file);"
-php "file_put_contents($file);"
+php -r "$file = file_get_contents($index.php);"
+php -r "str_replace({@TYPE_PRODUCTION}, $typePlatform, $file);"
+php -r "file_put_contents($file);"
 #echo $typePlatform
 echo '+--------------------------------------------------+'
 # 
