@@ -1,5 +1,6 @@
 <?php 
 	$typePlatform = $_GET['typePlatform'];
+	print_r($_GET);
 
 	if (isset($typePlatform) && $typePlatform != '') {
 		$file = file_get_contents('index.php');
