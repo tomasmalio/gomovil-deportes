@@ -12,7 +12,8 @@ php composer install
 echo 'Installation ended successfully'
 echo '+--------------------------------------------------+'
 echo '| Installation ended successfully                  |'
-echo '| Type of platform (default: development):         |'
+echo '+--------------------------------------------------+'
+echo ' Select the type of platform you want to install (default: development):'
 type_platform=$typePlatform
 echo '>'; read typePlatform;
 echo '| '$typePlatform'                                  |'
