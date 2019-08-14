@@ -15,8 +15,8 @@ echo '| Installation ended successfully                  |'
 echo '+--------------------------------------------------+'
 echo ' Select the type of platform you want to install (default: development):'
 type_platform=$typePlatform
-echo '>'; read typePlatform;
-echo '| '$typePlatform'                                  |'
+read typePlatform;
+echo $typePlatform
 echo '+--------------------------------------------------+'
 # 
 # type_platform=$typePlatform
