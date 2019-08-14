@@ -18,7 +18,7 @@ type_platform=$typePlatform
 read typePlatform
 php -r "install-config.php;"
 # php -r "$file = file_get_contents('index.php');"
-#echo $typePlatform
+echo $typePlatform
 echo '+--------------------------------------------------+'
 # 
 # type_platform=$typePlatform
