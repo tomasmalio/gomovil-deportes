@@ -1,8 +1,8 @@
 <?php 
+	$typePlatform = $_GET['typePlatform'];
 
 	if (isset($typePlatform) && $typePlatform != '') {
 		$file = file_get_contents('index.php');
-		var_dump($file);
 		$file = str_replace('{@TYPE_PRODUCTION}', $typePlatform, $file); 
 		file_put_contents($file);
 	} else {
