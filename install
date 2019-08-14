@@ -10,11 +10,15 @@ php -r "unlink('composer-setup.php');"
 echo '2) Installing PHP Composer...'
 php composer install
 echo 'Installation ended successfully'
-echo 'Type of platform (default: dev):'
-read typePlatform;
-echo typePlatform;
+echo '+--------------------------------------------------+'
+echo '| Installation ended successfully                  |'
+echo '| Type of platform (default: development):' read typePlatform '|'
 type_platform=$typePlatform
-echo $type_platform;
+echo '| '$typePlatform'                                  |'
+echo '+--------------------------------------------------+'
+# 
+# type_platform=$typePlatform
+# echo $type_platform;
 # eval "`echo 'NL=qsq' | tr 'qs' '\047\012'`"; # newline
 # echo DB_NAME; read DB_NAME;
 
