@@ -13,10 +13,13 @@ echo 'Installation ended successfully'
 echo '+--------------------------------------------------+'
 echo '| Installation ended successfully                  |'
 echo '+--------------------------------------------------+'
-echo ' Select the type of platform you want to install (default: development):'
+echo 'Select the type of platform you want to install (default: development):'
 type_platform=$typePlatform
 read typePlatform;
-echo $typePlatform
+php "$file = file_get_contents($index.php);"
+php "str_replace({@TYPE_PRODUCTION}, $typePlatform, $file);"
+php "file_put_contents($file);"
+#echo $typePlatform
 echo '+--------------------------------------------------+'
 # 
 # type_platform=$typePlatform
