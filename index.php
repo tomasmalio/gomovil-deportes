@@ -2,10 +2,12 @@
 	require_once __DIR__.'/bootstrap.php';
 	//ini_set('display_errors', 1);
 
-	define(TYPE_PLATFORM, 'production');
+	define(TYPE_PLATFORM, '{@TYPE_PRODUCTION}');
 
 	/* Directory */
 	define('ROOTPATH', __DIR__);
+
+	echo ROOTPATH;
 
 	/* Declare of extensions directory */
 	define('EXTENSIONS_URL', '/extensions', true);
