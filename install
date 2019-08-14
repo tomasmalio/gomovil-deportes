@@ -14,7 +14,7 @@ echo '+--------------------------------------------------+'
 echo '| Installation ended successfully                  |'
 echo '| Type of platform (default: development):         |'
 type_platform=$typePlatform
-read typePlatform
+echo '>'; read typePlatform;
 echo '| '$typePlatform'                                  |'
 echo '+--------------------------------------------------+'
 # 
