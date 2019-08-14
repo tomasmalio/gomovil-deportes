@@ -14,7 +14,7 @@ echo 'Type of platform (default: dev):'
 read typePlatform;
 echo typePlatform;
 type_platform=$typePlatform
-echo type_platform;
+echo $type_platform;
 # eval "`echo 'NL=qsq' | tr 'qs' '\047\012'`"; # newline
 # echo DB_NAME; read DB_NAME;
 
