@@ -11,10 +11,13 @@ echo '2) Installing PHP Composer...'
 php composer install
 echo 'Installation ended successfully'
 echo 'Type of platform (default: dev):'
-read typePlatform
+read typePlatform;
+echo typePlatform;
+type_platform=$typePlatform
+echo type_platform;
 # eval "`echo 'NL=qsq' | tr 'qs' '\047\012'`"; # newline
 # echo DB_NAME; read DB_NAME;
-echo typePlatform
+
 # db_name_esc=${db_name_esc//\\/\\\\\\\\}   # escape backslash
 # db_name_esc=${db_name_esc//\'/\\\\\'}     # escape single quote
 # db_name_esc=${db_name_esc//\"/\\\"}       # escape double quote
