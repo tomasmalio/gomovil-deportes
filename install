@@ -10,3 +10,17 @@ php -r "unlink('composer-setup.php');"
 echo '2) Installing PHP Composer...'
 php composer install
 echo 'Installation ended successfully'
+echo 'Type of platform (default: dev):'
+read typePlatform
+# eval "`echo 'NL=qsq' | tr 'qs' '\047\012'`"; # newline
+# echo DB_NAME; read DB_NAME;
+echo typePlatform
+# db_name_esc=${db_name_esc//\\/\\\\\\\\}   # escape backslash
+# db_name_esc=${db_name_esc//\'/\\\\\'}     # escape single quote
+# db_name_esc=${db_name_esc//\"/\\\"}       # escape double quote
+# db_name_esc=${db_name_esc//&/\\&}         # escape & special to sed
+# db_name_esc=${db_name_esc//\//\\\/}       # escape / special to s///
+# db_name_esc=${db_name_esc//${NL}/\\${NL}} # esc literal newline for sed
+
+# and then plug in your variables properly escaped for both PHP+sed
+# sed -e "s/\\(define('TYPE_PLATFORM',\\).*/\\1 '$type_platform');/" "index.php"
