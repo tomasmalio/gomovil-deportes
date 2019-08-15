@@ -1,4 +1,5 @@
 <?php 
+	//
 	$file = file_get_contents('index.php');
 	if (isset($typePlatform) && $typePlatform != '') {
 		echo $typePlatform;
