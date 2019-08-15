@@ -1,6 +1,7 @@
 <?php 
 	//
 	$opts = getopt('type:');
+	print_r($opts);
 	$file = file_get_contents('index.php');
 	if (isset($opts['type']) && $opts['type'] != '') {
 		// echo $typePlatform;
