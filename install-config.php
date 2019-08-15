@@ -5,7 +5,7 @@
 	$values = parse_str($argv);
 	//
 	print_r($values);
-	$val = explode('&',$values);
+	$val = explode('&',$values[2]);
 
 	print_r($val);
 	//print_r($argv);
