@@ -22,10 +22,10 @@ read -ep '| Database Password: ' dbPassword;
 read -ep '| Database Name: ' dbName;
 read -ep '| Database Host: ' dbHost;
 echo '| System creating your new platform. Please wait   |'
-php  /var/www/html/bitelnoticias/install-config.php -u=$dbUsername 
-php  /var/www/html/bitelnoticias/install-config.php -p=$dbPassword
-php  /var/www/html/bitelnoticias/install-config.php -n=$dbName
-php  /var/www/html/bitelnoticias/install-config.php -h=$dbHost
+php  /var/www/html/bitelnoticias/install-config.php -- 'username='$dbUsername'&pass='$dbPassword'&db='$dbName'&host='$dbHost
+# php  /var/www/html/bitelnoticias/install-config.php -p=$dbPassword
+# php  /var/www/html/bitelnoticias/install-config.php -n=$dbName
+# php  /var/www/html/bitelnoticias/install-config.php -h=$dbHost
 echo '| Loading platform....                             |'
 echo '|                                                  |'
 echo '| Platform install ended successfully              |'
