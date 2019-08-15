@@ -3,6 +3,7 @@
 	 * Creating the index for Production or Development
 	 */
 	$val = getopt("p:");
+	print_r($val);
 	$file = file_get_contents('index.php');
 	if ($val['p'] === 'prod') {
 		$file = str_replace('{@TYPE_PRODUCTION}', $val['p'], $file);

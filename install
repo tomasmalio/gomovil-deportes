@@ -13,12 +13,16 @@ echo '|                                                  |'
 echo '+--------------------------------------------------+'
 echo '| Installation ended successfully                  |'
 echo '+--------------------------------------------------+'
-echo '| Select the type of platform you want to install  |'
-echo '| between (dev | prod)                             |'
-type_platform=$typePlatform
-read -ep '| (default: dev): ' typePlatform;
+echo '| We are going to configure the platform           |'
+echo '| IMPORTANT: te information that you include it is |'
+echo '| going to be write and you can not modify         |'
+# type_platform=$typePlatform
+read -ep '| Database Username: ' dbUsername;
+read -ep '| Database Password: ' dbPassword;
+read -ep '| Database Name: ' dbName;
+read -ep '| Database Host: ' dbHost;
 echo '| System creating your new platform. Please wait   |'
-php  /var/www/html/bitelnoticias/install-config.php -p=$typePlatform
+php  /var/www/html/bitelnoticias/install-config.php -u=$dbUsername -p=$dbPassword -n=$dbName -h=$dbHost
 echo '| Loading platform....                             |'
 echo '|                                                  |'
 echo '| Platform install ended successfully              |'
