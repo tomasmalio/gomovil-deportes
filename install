@@ -18,7 +18,7 @@ type_platform=$typePlatform
 read -ep '(default: development): ' typePlatform;
 chmod 777 index.php
 php  /var/www/html/bitelnoticias/install-config.php -p=$typePlatform
-# chmod 775 index.php
+chmod 775 index.php
 # php -r "$file = file_get_contents('index.php');"
 # echo $typePlatform
 echo '+--------------------------------------------------+'

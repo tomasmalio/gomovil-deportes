@@ -8,11 +8,10 @@
 		// echo $typePlatform;
 		// echo $val['p'];
 		$fileNew = str_replace('{@TYPE_PRODUCTION}', $val['p'], $file);
-		file_put_contents($file, '');
-		file_put_contents($file, $fileNew);
+		file_put_contents('index.php', $fileNew);
 	} else {
 		$file = file_get_contents('index.php');
 		$fileNew = str_replace('{@TYPE_PRODUCTION}', 'development', $file);
 		// print_r($file);
-		// file_put_contents($fileNew);
+		file_put_contents('index.php', $fileNew);
 	}
