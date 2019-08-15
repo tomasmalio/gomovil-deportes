@@ -8,6 +8,8 @@
 	echo $argv[2];
 
 	$val = explode('&', $argv[2]);
+
+	echo $val;
 	
 
 	$file = file_get_contents('include/db.php');
