@@ -1,6 +1,8 @@
 <?php 
 	//
-	$opts = getopt('f:');
+	$val = getopt("p:");
+	print_r($val);
+	// $opts = getopt('f:');
 	echo $opts['f'];
 	$file = file_get_contents('index.php');
 	if (isset($typePlatform) && $typePlatform != '') {

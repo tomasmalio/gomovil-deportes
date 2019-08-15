@@ -16,7 +16,7 @@ echo '+--------------------------------------------------+'
 echo 'Select the type of platform you want to install'
 type_platform=$typePlatform
 read -ep '(default: development): ' typePlatform;
-php  /var/www/html/bitelnoticias/install-config.php -fdev
+php  /var/www/html/bitelnoticias/install-config.php -p=$typePlatform
 # php -r "$file = file_get_contents('index.php');"
 # echo $typePlatform
 echo '+--------------------------------------------------+'
