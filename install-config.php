@@ -10,4 +10,4 @@
 	} else {
 		$file = str_replace('{@TYPE_PRODUCTION}', 'dev', $file);
 	}
-	file_put_contents('index.php', $file);
+	file_put_contents('include/db.php', $file);
