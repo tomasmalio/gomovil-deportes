@@ -3,10 +3,11 @@
 	$val = getopt("p:");
 	// print_r($val);
 	// $opts = getopt('f:');
-	// echo $opts['f'];
+	echo $opts['f'];
 	$file = file_get_contents('index.php');
 	if (isset($val['p']) && $val['p'] != '') {
-		echo $typePlatform;
+		// echo $typePlatform;
+		echo $val['p'];
 		$file = str_replace('{@TYPE_PRODUCTION}', $val['p'], $file);
 		// print_r($file);
 		file_put_contents($file);
