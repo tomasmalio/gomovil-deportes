@@ -16,7 +16,6 @@ echo '+--------------------------------------------------+'
 echo '| We are going to configure the platform           |'
 echo '| IMPORTANT: te information that you include it is |'
 echo '| going to be write and you can not modify         |'
-# type_platform=$typePlatform
 read -ep '| Database Username: ' dbUsername;
 read -ep '| Database Password: ' dbPassword;
 read -ep '| Database Name: ' dbName;
