@@ -1,10 +1,10 @@
 <?php 
 	//
-	echo 'aca '. $type_platform;
+	echo 'aca '. $typePlatform;
 	$file = file_get_contents('index.php');
-	if (isset($type_platform) && $type_platform != '') {
+	if (isset($typePlatform) && $typePlatform != '') {
 		echo $typePlatform;
-		$file = str_replace('{@TYPE_PRODUCTION}', $type_platform, $file);
+		$file = str_replace('{@TYPE_PRODUCTION}', $typePlatform, $file);
 		// print_r($file);
 		file_put_contents($file);
 	} else {
