@@ -7,8 +7,6 @@
 	/* Directory */
 	define('ROOTPATH', __DIR__);
 
-	echo ROOTPATH;
-
 	/* Declare of extensions directory */
 	define('EXTENSIONS_URL', '/extensions', true);
 
