@@ -24,7 +24,7 @@
 			if ($params['modify_status'] == '1' || !file_exists($filename) || file_get_contents($filename) == '') {
 				try {
 					// Update the DB
-					include __DIR__.'/include/db.php';
+					include __DIR__.'/../include/db.php';
 
 					// Set extensions to update
 					if (!file_exists($filename)) {
