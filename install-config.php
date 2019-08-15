@@ -8,12 +8,12 @@
 	
 	$file = file_get_contents('include/db.php');
 
-	echo $val[0];
 	$file = str_replace('{@Username}', $val[0], $file);
 	$file = str_replace('{@Password}', $val[1], $file);
 	$file = str_replace('{@Dbname}', $val[2], $file);
 	$file = str_replace('{@Host}', $val[3], $file);
 
+	var_dump($file);
 	file_put_contents('include/db.php', $file);
 
 	// $val = getopt("p:");
