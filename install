@@ -15,7 +15,7 @@ echo '| Installation ended successfully                  |'
 echo '+--------------------------------------------------+'
 echo 'Select the type of platform you want to install (default: development):'
 type_platform=$typePlatform
-read typePlatform
+read -ep '(default: development)' typePlatform
 php  /var/www/html/bitelnoticias/install-config.php -f$typePlatform
 # php -r "$file = file_get_contents('index.php');"
 # echo $typePlatform
