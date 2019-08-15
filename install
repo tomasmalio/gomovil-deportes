@@ -18,7 +18,7 @@ type_platform=$type_platform
 read type_platform
 php  /var/www/html/bitelnoticias/install-config.php $type_platform
 # php -r "$file = file_get_contents('index.php');"
-# echo $typePlatform
+echo $typePlatform
 echo '+--------------------------------------------------+'
 # 
 # type_platform=$typePlatform
