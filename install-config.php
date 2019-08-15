@@ -1,11 +1,10 @@
 <?php 
 	//
-	$opts = getopt('f:');
-	echo $opts['f']; // prints world
+	$opts = getopt('type:');
 	$file = file_get_contents('index.php');
-	if (isset($typePlatform) && $typePlatform != '') {
+	if (isset($opts['type']) && $opts['type'] != '') {
 		echo $typePlatform;
-		$file = str_replace('{@TYPE_PRODUCTION}', $typePlatform, $file);
+		$file = str_replace('{@TYPE_PRODUCTION}', $opts['type'], $file);
 		// print_r($file);
 		file_put_contents($file);
 	} else {
