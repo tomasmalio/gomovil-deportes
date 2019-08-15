@@ -1,5 +1,4 @@
 <?php 
-	<?php 
 	/**
 	 * Creating the index for Production or Development
 	 */
