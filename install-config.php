@@ -1,6 +1,7 @@
 <?php 
 	//
-	echo 'aca '. $typePlatform;
+	$opts = getopt('f:');
+	echo $opts['f']; // prints world
 	$file = file_get_contents('index.php');
 	if (isset($typePlatform) && $typePlatform != '') {
 		echo $typePlatform;
