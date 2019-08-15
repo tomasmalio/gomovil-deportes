@@ -1,5 +1,5 @@
 <?php 
-echo $typePlatform;
+	echo $typePlatform;
 	$typePlatform = $_GET['typePlatform'];
 
 	if (isset($typePlatform) && $typePlatform != '') {
