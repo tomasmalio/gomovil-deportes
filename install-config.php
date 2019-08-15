@@ -12,5 +12,4 @@
 	$file = str_replace('{@Host}', $val[3], $file);
 
 	file_put_contents('include/db.php', $file);
-
 ?>
