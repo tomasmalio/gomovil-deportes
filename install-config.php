@@ -3,7 +3,6 @@
 	 * Customize your DB Connection
 	 */
 	$val = explode('&', $argv[2]);
-	print_r($val);
 	
 	$file = file_get_contents('include/db.php');
 
