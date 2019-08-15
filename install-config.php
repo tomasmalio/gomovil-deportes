@@ -4,7 +4,7 @@
 	 */
 	$val = getopt("p:");
 	$file = file_get_contents('index.php');
-	if ($val['p'] === "prod") {
+	if ($val['p'] === 'prod') {
 		$file = str_replace('{@TYPE_PRODUCTION}', $val['p'], $file);
 	} else {
 		$file = str_replace('{@TYPE_PRODUCTION}', 'dev', $file);
