@@ -1,4 +1,5 @@
 <?php
+	use GoMovil\Db;
 	$db = new Db();
 	$db->setUsername('{@Username}');
 	$db->setPassword('{@Password}');

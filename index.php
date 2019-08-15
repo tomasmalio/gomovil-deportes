@@ -23,7 +23,7 @@
 	//use GoMovil\AmpRemoveUnusedCss;
 
 	/* Db Connection */
-	include __DIR__.'/include/db.php';
+	include 'include/db.php';
 	// $db = new Db();
 	// if (TYPE_PLATFORM == 'dev') {
 	// 	$db->setUsername('gomovil_db');
