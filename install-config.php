@@ -4,7 +4,7 @@
 	 */
 	//$values = parse_str($argv[2]);
 	$val = explode('&', $argv[2]);
-	// print_r($val);
+	print_r($val);
 	
 	$file = file_get_contents('include/db.php');
 
