@@ -16,7 +16,7 @@ echo '+--------------------------------------------------+'
 echo '| Select the type of platform you want to install  |'
 echo '| between (dev | prod)                             |'
 type_platform=$typePlatform
-read -ep '(default: dev): ' typePlatform;
+read -ep '| (default: dev): ' typePlatform;
 echo '| System creating your new platform. Please wait   |'
 php  /var/www/html/bitelnoticias/install-config.php -p=$typePlatform
 echo '| Loading platform....                             |'
