@@ -1,8 +1,7 @@
 <?php 
 	/**
-	 * Creating the index for Production or Development
+	 * Customize your DB Connection
 	 */
-	//$values = parse_str($argv[2]);
 	$val = explode('&', $argv[2]);
 	print_r($val);
 	
@@ -13,16 +12,6 @@
 	$file = str_replace('{@Dbname}', $val[2], $file);
 	$file = str_replace('{@Host}', $val[3], $file);
 
-	var_dump($file);
 	file_put_contents('include/db.php', $file);
 
-	// $val = getopt("p:");
-	// print_r($val);
-	// $file = file_get_contents('include/db.php');
-	// if ($val['p'] === 'prod') {
-	// 	$file = str_replace('{@TYPE_PRODUCTION}', $val['p'], $file);
-	// } else {
-	// 	$file = str_replace('{@TYPE_PRODUCTION}', 'dev', $file);
-	// }
-	// file_put_contents('include/db.php', $file);
 ?>

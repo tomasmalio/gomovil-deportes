@@ -23,9 +23,7 @@ read -ep '| Database Name: ' dbName;
 read -ep '| Database Host: ' dbHost;
 echo '| System creating your new platform. Please wait   |'
 php  /var/www/html/bitelnoticias/install-config.php -- $dbUsername'&'$dbPassword'&'$dbName'&'$dbHost
-# php  /var/www/html/bitelnoticias/install-config.php -p=$dbPassword
-# php  /var/www/html/bitelnoticias/install-config.php -n=$dbName
-# php  /var/www/html/bitelnoticias/install-config.php -h=$dbHost
+echo '| Creating your connection database....            |'
 echo '| Loading platform....                             |'
 echo '|                                                  |'
 echo '| Platform install ended successfully              |'

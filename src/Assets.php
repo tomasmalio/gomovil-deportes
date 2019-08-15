@@ -24,11 +24,7 @@
 			if ($params['modify_status'] == '1' || !file_exists($filename) || file_get_contents($filename) == '') {
 				try {
 					// Update the DB
-					$db = new Db();
-					$db->setUsername('gomovil_db');
-					$db->setPassword('g0m0v1lc0');
-					$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
-					$db->connect();
+					include __DIR__.'/include/db.php';
 
 					// Set extensions to update
 					if (!file_exists($filename)) {
