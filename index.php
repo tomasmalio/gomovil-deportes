@@ -23,17 +23,18 @@
 	//use GoMovil\AmpRemoveUnusedCss;
 
 	/* Db Connection */
-	$db = new Db();
-	if (TYPE_PLATFORM == 'dev') {
-		$db->setUsername('gomovil_db');
-		$db->setPassword('g0m0v1lc0');
-		$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
-	} else {
-		$db->setUsername('gomovil_db');
-		$db->setPassword('g0m0v1lc0');
-		$db->setDsn('mysql:dbname=biteldeportes-prod;host=db.gomovil.co');
-	}
-	$db->connect();
+	include __DIR__.'/include/db.php';
+	// $db = new Db();
+	// if (TYPE_PLATFORM == 'dev') {
+	// 	$db->setUsername('gomovil_db');
+	// 	$db->setPassword('g0m0v1lc0');
+	// 	$db->setDsn('mysql:dbname=gosports_dev;host=db.gomovil.co');
+	// } else {
+	// 	$db->setUsername('gomovil_db');
+	// 	$db->setPassword('g0m0v1lc0');
+	// 	$db->setDsn('mysql:dbname=biteldeportes-prod;host=db.gomovil.co');
+	// }
+	// $db->connect();
 	
 	/* Getting sections */
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
