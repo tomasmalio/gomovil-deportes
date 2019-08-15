@@ -2,7 +2,7 @@
 	/**
 	 * Creating the index for Production or Development
 	 */
-	$values = parse_str($argv[2]);
+	$values = parse_str($argv);
 	//
 	print_r($values);
 	$val = explode('&',$values);
