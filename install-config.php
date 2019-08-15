@@ -2,11 +2,8 @@
 	/**
 	 * Creating the index for Production or Development
 	 */
-	$values = parse_str($argv[1]);
-	$val = explode('&',$values);
-
-	print_r($val);
-	//print_r($argv);
+	parse_str($argv[1]);
+	print_r($argv);
 	$val = getopt("p:");
 	print_r($val);
 	$file = file_get_contents('include/db.php');
