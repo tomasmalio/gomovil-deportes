@@ -21,7 +21,7 @@ read -ep '| Database Password: ' dbPassword;
 read -ep '| Database Name: ' dbName;
 read -ep '| Database Host: ' dbHost;
 echo '| System creating your new platform. Please wait   |'
-php  $_SERVER['PWD'] . '/install-config.php' -- $dbUsername'&'$dbPassword'&'$dbName'&'$dbHost
+php  'install-config.php' -- $dbUsername'&'$dbPassword'&'$dbName'&'$dbHost
 echo '| Creating your connection database....            |'
 echo '| Loading platform....                             |'
 echo '|                                                  |'
