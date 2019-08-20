@@ -21,17 +21,17 @@
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
-				foreach ($matches as $match) {
+				// foreach ($matches as $match) {
 					
-					print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
-					if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
+				// 	print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
+				// 	if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
 
-						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-							$tournaments[$this->normalizeString($match['tournament'])] = [];
-						}
-						array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
-					}
-				}
+				// 		if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+				// 			$tournaments[$this->normalizeString($match['tournament'])] = [];
+				// 		}
+				// 		array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+				// 	}
+				// }
 
 				// foreach ($matches as $match) {
 				// 	if (isset($tournaments[Widgets::normalizeString($match['tournament'])])) {
@@ -42,19 +42,19 @@
 				// 	}	
 				// }
 
-				// foreach ($matches as $match) {
-				// 	if (isset($match['tournament'])) {
-				// 		echo $this->normalizeString($match['tournament']);
-				// 		print_r($tournaments[$this->normalizeString($match['tournament'])]);
-				// 		exit;
-				// 		if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
-				// 			if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-				// 				$tournaments[$this->normalizeString($match['tournament'])] = [];
-				// 			}
-				// 			array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
-				// 		}
-				// 	}
-				// }
+				foreach ($matches as $match) {
+					if (isset($match['tournament'])) {
+						echo $this->normalizeString($match['tournament']);
+						print_r($tournaments[$this->normalizeString($match['tournament'])]);
+						exit;
+						if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
+							if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+								$tournaments[$this->normalizeString($match['tournament'])] = [];
+							}
+							array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+						}
+					}
+				}
 
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
