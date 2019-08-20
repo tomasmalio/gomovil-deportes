@@ -45,6 +45,7 @@
 
 				foreach ($matches as $match) {
 					if (isset($match['tournament'])) {
+						print_r($match);
 						echo $this->normalizeString($match['tournament']);
 						// print_r($tournaments[$this->normalizeString($match['tournament'])]);
 						// exit;
