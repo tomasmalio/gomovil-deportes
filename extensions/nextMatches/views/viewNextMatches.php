@@ -21,7 +21,7 @@
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
-				print_r($matches);
+				// print_r($matches);
 				// foreach ($matches as $match) {
 					
 				// 	print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
@@ -56,6 +56,8 @@
 						}
 					}
 				}
+
+				print_r($tournaments);
 
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
