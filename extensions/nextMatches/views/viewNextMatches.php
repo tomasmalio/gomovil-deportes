@@ -46,7 +46,7 @@
 					if (isset($match['tournament'])) {
 						echo $this->normalizeString($match['tournament']);
 						print_r($tournaments[$this->normalizeString($match['tournament'])]);
-						exit;
+						// exit;
 						if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
 							if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
 								$tournaments[$this->normalizeString($match['tournament'])] = [];
