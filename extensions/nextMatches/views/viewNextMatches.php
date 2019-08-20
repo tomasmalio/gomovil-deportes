@@ -21,26 +21,27 @@
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
-				// foreach ($matches as $match) {
-					
-				// 	print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
-				// 	if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
-
-				// 		if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-				// 			$tournaments[$this->normalizeString($match['tournament'])] = [];
-				// 		}
-				// 		array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
-				// 	}
-				// }
-
+				print_r($matches);
 				foreach ($matches as $match) {
-					if (isset($tournaments[Widgets::normalizeString($match['tournament'])])) {
-						if (!is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
-							$tournaments[Widgets::normalizeString($match['tournament'])] = [];
+					
+					print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
+					if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
+
+						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+							$tournaments[$this->normalizeString($match['tournament'])] = [];
 						}
-						array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
-					}	
+						array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+					}
 				}
+
+				// foreach ($matches as $match) {
+				// 	if (isset($tournaments[Widgets::normalizeString($match['tournament'])])) {
+				// 		if (!is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
+				// 			$tournaments[Widgets::normalizeString($match['tournament'])] = [];
+				// 		}
+				// 		array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
+				// 	}	
+				// }
 
 				// foreach ($matches as $match) {
 				// 	if (isset($match['tournament'])) {
