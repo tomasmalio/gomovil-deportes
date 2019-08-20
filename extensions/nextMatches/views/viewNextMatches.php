@@ -47,6 +47,7 @@
 					if (isset($match['tournament'])) {
 						print_r($match);
 						echo $this->normalizeString($match['tournament']);
+						echo "ACA";
 						print_r($tournaments[$this->normalizeString($match['tournament'])]);
 						// exit;
 						if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
@@ -58,7 +59,7 @@
 					}
 				}
 
-				print_r($tournaments);
+				// print_r($tournaments);
 
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
