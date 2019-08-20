@@ -65,7 +65,7 @@
 				// 	}
 				// }
 
-				print_r($tournaments);
+				// print_r($tournaments);
 
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
