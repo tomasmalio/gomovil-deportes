@@ -530,11 +530,11 @@
 				 * We validate if the extensions has external content and from the client
 				 */
 				$extensionContent = null;
-				echo "content id";
+				echo "content id<br>";
 				print_r($section['content_id']);
-				echo "content";
+				echo "content<br>";
 				print_r($extension['content']);
-				echo "external";
+				echo "external<br>";
 				print_r($extension['external_content']);
 				
 				if (isset($section['content_id']) && (isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
