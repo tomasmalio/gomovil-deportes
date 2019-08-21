@@ -50,7 +50,7 @@
 						$url .= strtolower($content['titles']['article']['default']);
 					}
 					$url .= '/';
-					$url .= $content['content']['id'] .'/'. $this->normalizeString($content['content']['title']);
+					$url .= $news['id'] .'/'. $this->normalizeString($news['title']);
 
 				?>
 				<a href="<?= $url?>" title="<?=$news['title']?>">
