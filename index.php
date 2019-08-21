@@ -469,6 +469,7 @@
 	foreach ($sectionExtensions as $extension) {
 
 		if (isset($extension['external_content']) && $extension['external_content'] != '') {
+			echo "external_content";
 
 			/**
 			* Try to get EXTERNAL CONTENT from cache
@@ -529,8 +530,11 @@
 				 * We validate if the extensions has external content and from the client
 				 */
 				$extensionContent = null;
+				echo "content id";
 				print_r($section['content_id']);
+				echo "content";
 				print_r($extension['content']);
+				echo "external";
 				print_r($extension['external_content']);
 				
 				if (isset($section['content_id']) && (isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
