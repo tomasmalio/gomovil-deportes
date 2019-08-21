@@ -469,8 +469,6 @@
 	foreach ($sectionExtensions as $extension) {
 
 		if (isset($extension['external_content']) && $extension['external_content'] != '') {
-			echo "external_content";
-
 			/**
 			* Try to get EXTERNAL CONTENT from cache
 			*/
@@ -531,7 +529,7 @@
 				 */
 				$extensionContent = null;
 				echo "content id<br>";
-				print_r($section['content_id']);
+				echo $section['content_id'];
 				echo "content<br>";
 				print_r($extension['content']);
 				echo "external<br>";
