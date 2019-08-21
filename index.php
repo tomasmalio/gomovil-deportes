@@ -529,6 +529,7 @@
 				 */
 				$extensionContent = null;
 				echo "content id<br>";
+				print_r($section);
 				echo $section['content_id'];
 				echo "content<br>";
 				print_r($extension['content']);
