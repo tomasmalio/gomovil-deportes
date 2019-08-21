@@ -540,10 +540,12 @@
 				} 
 				
 				elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
+					echo "no";
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 				} 
 				
 				else {
+					echo "si";
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
 
