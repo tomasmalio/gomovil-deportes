@@ -529,6 +529,7 @@
 				 * We validate if the extensions has external content and from the client
 				 */
 				$extensionContent = null;
+				echo $extension['external_content'];
 				if (isset($section['content_id']) && (isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
