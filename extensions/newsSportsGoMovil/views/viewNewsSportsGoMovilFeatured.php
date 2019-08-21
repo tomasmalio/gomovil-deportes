@@ -1,5 +1,4 @@
 <!-- Featured Content -->
-<?php print_r($content)?>
 <section class="newssportsgomovil featured">
 	<div class="newssportsgomovil-content">
 		<?php 
