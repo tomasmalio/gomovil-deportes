@@ -37,6 +37,7 @@
 			?>
 			<li class="<?=$className;?>">
 			<?php 
+				print_r($content);
 				if (isset($content['titles']['news'][COUNTRY_CODE])) { echo strtolower($content['titles']['news'][COUNTRY_CODE]); } else { echo strtolower($content['titles']['news']['default']);}
 				exit;
 			?>
