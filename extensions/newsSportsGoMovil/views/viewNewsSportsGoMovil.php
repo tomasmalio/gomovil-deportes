@@ -38,8 +38,7 @@
 			<li class="<?=$className;?>">
 				<?php
 					$url = '';
-					$url .= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
-					$url .= '/';
+					$url .= DOMAIN . '/';
 					if (isset($content['titles']['news'][COUNTRY_CODE])) { 
 						$url .= strtolower($content['titles']['news'][COUNTRY_CODE]); 
 					} else { 

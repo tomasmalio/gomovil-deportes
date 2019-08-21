@@ -112,6 +112,7 @@
 	 * COUNTRY_CODE
 	 * COUNTRY_NAME
 	 */
+	define('DOMAIN', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST']);
 	define('CLIENT_NAME', str_replace(' ', '', strtolower($client['name'])), true);
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
@@ -282,7 +283,7 @@
 			$keywordsChange[] = $filters[0];
 		}
 	}
-	
+
 	/**********************************
 	 * 			MENU
 	 **********************************/
