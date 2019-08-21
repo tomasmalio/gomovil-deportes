@@ -108,6 +108,7 @@
 	/**
 	 * Define Global
 	 * 
+	 * DOMAIN
 	 * CLIENT_NAME
 	 * COUNTRY_CODE
 	 * COUNTRY_NAME
