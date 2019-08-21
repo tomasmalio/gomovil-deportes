@@ -31,6 +31,7 @@
 			$json = json_decode(file_get_contents($this->url), true);
 			$array['tournaments'] = Widgets::multiRenameKey($json, $this->mappingName['wrong'], $this->mappingName['verify']);
 			print_r($array['tournaments']);
+			print_r($params);
 			return $params;
 		}
 	}
