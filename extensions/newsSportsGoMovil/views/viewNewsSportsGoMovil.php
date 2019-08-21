@@ -36,8 +36,24 @@
 						}
 			?>
 			<li class="<?=$className;?>">
-			
-				<a href="/<?= (isset($content['titles']['news'][COUNTRY_CODE])) ? strtolower($content['titles']['news'][COUNTRY_CODE]) : strtolower($content['titles']['news']['default']) . '/'. (isset($content['titles']['news'][COUNTRY_CODE])) ? strtolower($content['titles']['article'][COUNTRY_CODE]) : strtolower($content['titles']['article']['default']) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
+				<?php
+					$url = '';
+					if (isset($content['titles']['news'][COUNTRY_CODE])) { 
+						$url .= strtolower($content['titles']['news'][COUNTRY_CODE]); 
+					} else { 
+						$url .= strtolower($content['titles']['news']['default']);
+					}
+					$url .= '/';
+					if (isset($content['titles']['news'][COUNTRY_CODE])) {
+						$url .= strtolower($content['titles']['article'][COUNTRY_CODE]);
+					} else {
+						$url .= strtolower($content['titles']['article']['default']);
+					}
+					$url .= '/';
+					$url .= $content['content']['id'] .'/'. $this->normalizeString($content['content']['title']);
+
+				?>
+				<a href="<?= $url?>" title="<?=$news['title']?>">
 					<div class="row">
 						<div class="col-12">
 							<div class="content-image">
