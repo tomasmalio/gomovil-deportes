@@ -22,7 +22,7 @@
 
 	/* Db Connection */
 	include 'include/db.php';
-	
+
 	/* Getting sections */
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
@@ -533,6 +533,8 @@
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
+					print_r($external);
+					print_r($extensionContent);
 				} 
 				
 				elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
@@ -692,18 +694,6 @@
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
 		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
-		//print_r($assetsStyle);
-		// exit;
-		// print_r($assets['css']);
-		// $assetsStyle	.= '';
-
-
-		// preg_match('/((-webkit-)*keyframes\ ([\-aA-zZ0-9%;:(){}\ ]+))}}/', $assetsStyle, $array);
-
-		// echo 'Hola';
-		// print_r($array);
-		// exit;
-
 
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 		$htmlContent = $template->render([
