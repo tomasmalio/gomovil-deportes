@@ -534,6 +534,7 @@
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
+					echo "aca";
 					print_r($external);
 					print_r($extensionContent);
 				} 
