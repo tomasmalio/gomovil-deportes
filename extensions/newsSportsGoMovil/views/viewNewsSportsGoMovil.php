@@ -53,6 +53,7 @@
 					$url .= '/';
 					$url .= $news['id'] .'/'. $this->normalizeString($news['title']);
 
+					echo $url;
 				?>
 				<a href="<?= $url?>" title="<?=$news['title']?>">
 					<div class="row">
