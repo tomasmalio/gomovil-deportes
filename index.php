@@ -282,9 +282,7 @@
 			$keywordsChange[] = $filters[0];
 		}
 	}
-
-	print_r($keywords);
-	print_r($keywordsChange);
+	
 	/**********************************
 	 * 			MENU
 	 **********************************/
