@@ -528,25 +528,14 @@
 				 * We validate if the extensions has external content and from the client
 				 */
 				$extensionContent = null;
-				echo "content id<br>";
-				print_r($section);
-				echo $section['content_id'];
-				echo "content<br>";
-				print_r($extension['content']);
-				echo "external<br>";
-				print_r($extension['external_content']);
 				
 				if ((isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
-					echo "aca";
-					print_r($external);
-					print_r($extensionContent);
 				} 
 				
 				elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
-					echo "no";
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 				} 
 				
