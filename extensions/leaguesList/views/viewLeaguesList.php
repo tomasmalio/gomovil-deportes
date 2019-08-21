@@ -12,15 +12,32 @@
 		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php }?>">
 			<?php
 				// Leagues
-				if (isset($content['titles']['leagues'][COUNTRY_CODE]) && $content['titles']['leagues'][COUNTRY_CODE] != '' && !$slider) {
+				if (!$slider) {
+					if (isset($content['titles']['leagues'][COUNTRY_CODE]) && $content['titles']['leagues'][COUNTRY_CODE] != '') {
 			?>
 			<h2><?=$content['titles']['leagues'][COUNTRY_CODE]?></h2>
 			<?php 
+					} else if (isset($content['titles']['leagues']['default']) && $content['titles']['leagues']['default'] != '') {
+			?>
+			<h2><?=$content['titles']['leagues']['default']?></h2>
+			<?php
+					}
 				}
 				foreach ($content['content']['tournaments']['leagues'] as $key => $leagues) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-				<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
+			<?php 
+				$url = '';
+				$url .= DOMAIN . '/';
+				$url .= (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']));
+				$url .= '/';
+				$url .= (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'];
+				$url .= '/';
+				$url .= (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'];
+				$url .= '/';
+				$url .= $key;
+			?>
+				<a href="<?=$url?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 				</a>
