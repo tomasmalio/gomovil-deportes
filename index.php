@@ -530,9 +530,6 @@
 				 * We validate if the extensions has external content and from the client
 				 */
 				$extensionContent = null;
-				print_r($extension);
-				print_r($extension['content']);
-				print_r($extension['external_content']);
 				if ((isset($extension['content']) && $extension['content'] != '') && (isset($extension['external_content']) && $extension['external_content'] != '')) {
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
@@ -547,6 +544,7 @@
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
 
+				print_r($externalContent);
 				/**
 				* Try to get WIDGET JSON from cache
 				*/
