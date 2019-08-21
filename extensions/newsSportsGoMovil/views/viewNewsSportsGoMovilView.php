@@ -1,5 +1,4 @@
 <!-- News article -->
-<?php print_r($content)?>
 <section class="newssportsgomovil view">
 	<div class="newssportsgomovil-content">
 		<h1><?=$content['content']['title']?></h1>
