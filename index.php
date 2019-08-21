@@ -535,7 +535,7 @@
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
 				} 
 				
-				elseif (isset($section['content_id']) && !isset($extension['content']) && isset($extension['external_content'])) {
+				elseif (!isset($extension['content']) && isset($extension['external_content'])) {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 				} 
 				
