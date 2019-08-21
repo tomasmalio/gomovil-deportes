@@ -15,7 +15,7 @@
 				$url .= strtolower($content['titles']['article']['default']);
 			}
 			$url .= '/';
-			$url .= $news['id'] .'/'. Widgets::normalizeString($news['title']);
+			$url .= $news['content']['id'] .'/'. $this->normalizeString($news['content']['title']);
 		?>	
 		<a href="<?=$url?>" title="<?=$news['title']?>">
 			<div class="content" style="background-image: url('<?=$content['content']['image']?>');">

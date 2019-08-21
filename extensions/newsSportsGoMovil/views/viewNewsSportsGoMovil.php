@@ -36,9 +36,7 @@
 						}
 			?>
 			<li class="<?=$className;?>">
-			<?php 
-				if (isset($content['titles']['news'][COUNTRY_CODE])) { echo strtolower($content['titles']['news'][COUNTRY_CODE]); } else { echo strtolower($content['titles']['news']['default']);}
-			?>
+			
 				<a href="/<?= (isset($content['titles']['news'][COUNTRY_CODE])) ? strtolower($content['titles']['news'][COUNTRY_CODE]) : strtolower($content['titles']['news']['default']) . '/'. (isset($content['titles']['news'][COUNTRY_CODE])) ? strtolower($content['titles']['article'][COUNTRY_CODE]) : strtolower($content['titles']['article']['default']) .'/'.$news['id'] .'/'. Widgets::normalizeString($news['title']);?>" title="<?=$news['title']?>">
 					<div class="row">
 						<div class="col-12">
