@@ -125,8 +125,6 @@
 	$keywords[] = '{@countryCode}';
 	$keywordsChange[] = COUNTRY_CODE;
 
-	print_r($keywords);
-	print_r($keywordsChange);
 	/**********************************
 	 * 			SECTIONS
 	 **********************************/
@@ -285,6 +283,8 @@
 		}
 	}
 
+	print_r($keywords);
+	print_r($keywordsChange);
 	/**********************************
 	 * 			MENU
 	 **********************************/
