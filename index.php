@@ -358,7 +358,11 @@
 				foreach ($array as $key => $items) {
 					if ($key == $subitem['url']) {
 						foreach ($items as $k => $value) {
-							$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = $value;
+							if (isset($titles[$k][COUNTRY_CODE])) {
+								$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = $value;
+							} else {
+								$array[$subitem['url']][$titles[$k]['default']] = $value;
+							}
 							unset($array[$subitem['url']][$k]);
 						}
 						break;
@@ -366,7 +370,7 @@
 				}
 				if (isset($array[$subitem['url']]) && is_array($array[$subitem['url']])) {
 					$submenu[] = [
-						'url' 		=> strtolower($titles[$subitem['url']][COUNTRY_CODE]),
+						'url' 		=> (isset($titles[$subitem['url']][COUNTRY_CODE]) ? strtolower($titles[$subitem['url']][COUNTRY_CODE]) : strtolower($titles[$subitem['url']]['default'])),
 						'title' 	=> str_replace($keywords, $keywordsChange, utf8_encode($subitem['title'])),
 						'display' 	=> (isset($subitem['display']) && $subitem['display']) ? true : false,
 						'items' 	=> $array[$subitem['url']],
