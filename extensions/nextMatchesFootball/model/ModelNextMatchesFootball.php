@@ -59,13 +59,10 @@
 			],
 		];
 		public function model ($params = []) {
-			print_r($params);
 			if ($params['type'] && $params['tournament']) {
 				$typeTournament = $params['type'];
 				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
 				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				echo $typeTournament;
-				echo $tournamentName;
 				return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}

@@ -387,8 +387,8 @@
 		unset($submenu);
 	}
 
-	print_r($keywords);
-	print_r($keywordsChange);
+	// print_r($keywords);
+	// print_r($keywordsChange);
 
 	/**********************************
 	 * 			CUSTOMIZATION
