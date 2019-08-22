@@ -54,7 +54,8 @@
 					<li class="row match <?= $match['status']?>">
 						<div class="col-12">
 							<?php 
-								$url = DOMAIN . '/' . (isset($content['section'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['section']['default'])))). '/' . (issset($content['titles']['match'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['titles']['match'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['titles']['match']['default'])))). '/'. $match['id'] . '/'.  ($this->normalizeString($match['team_local'])) . '-vs-' . ($this->normalizeString($match['team_visit']));
+							//$url = DOMAIN . '/' . (isset($content['section'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['section']['default'])))). '/' . (issset($content['titles']['match'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['titles']['match'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['titles']['match']['default'])))). '/'. $match['id'] . '/'.  ($this->normalizeString($match['team_local'])) . '-vs-' . ($this->normalizeString($match['team_visit']));
+							$url = '';
 							?>
 							<a href="<?=$url?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
 								<div class="competition-date"><?= strftime('%d de %B', strtotime($match['date_begin']));?></div>
