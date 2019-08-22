@@ -28,8 +28,8 @@
 			<?php 
 				// $url = '';
 				// $url .= 
-				$url = DOMAIN . '/';
-				$url2 = (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default'])) . '/' . (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'] . '/' . (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'] . '/' . $key; 
+				$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']))) . '/';
+				$url2 =  (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'] . '/' . (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'] . '/' . $key; 
 				// $url .= ;
 				// $url .= ;
 				// $url .= ;
