@@ -43,11 +43,16 @@
 			</li>
 			<?php 
 				}
-				// Cups
-				if (isset($content['titles']['cups'][COUNTRY_CODE]) && $content['titles']['cups'][COUNTRY_CODE] != '' && !$slider) {
+				if (!$slider) {
+					if (isset($content['titles']['cups'][COUNTRY_CODE]) && $content['titles']['cups'][COUNTRY_CODE] != '') {
 			?>
 			<h2><?=$content['titles']['cups'][COUNTRY_CODE]?></h2>
 			<?php 
+					} else if (isset($content['titles']['cups']['default']) && $content['titles']['cups']['default'] != '') {
+			?>
+			<h2><?=$content['titles']['cups']['default']?></h2>
+			<?php
+					}
 				}
 				foreach ($content['content']['tournaments']['cups'] as $key => $cups) {
 			?>
@@ -60,21 +65,27 @@
 			<?php 
 				}
 				// Soccer Team
-				if (isset($content['titles']['selections'][COUNTRY_CODE]) && $content['titles']['selections'][COUNTRY_CODE] != '' && !$slider) {
-					?>
-					<h2><?=$content['titles']['selections'][COUNTRY_CODE]?></h2>
-					<?php 
-						}
-						foreach ($content['content']['tournaments']['selections'] as $key => $selections) {
-					?>
-					<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
-					<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['selections'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
-							<div class="league-image"><img src="<?=$selections['image']?>" name="" alt="" title=""></div>
-							<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
-						</a>
-					</li>
-					<?php 
-						}
+				if (!$slider) {
+					if (isset($content['titles']['selections'][COUNTRY_CODE]) && $content['titles']['selections'][COUNTRY_CODE] != '') {
+			?>
+			<h2><?=$content['titles']['selections'][COUNTRY_CODE]?></h2>
+			<?php 
+					} else if (isset($content['titles']['selections']['default']) && $content['titles']['selections']['default'] != '') {
+			?>
+			<h2><?=$content['titles']['selections']['default']?></h2>
+			<?php
+					}
+				}
+				foreach ($content['content']['tournaments']['selections'] as $key => $selections) {
+			?>
+			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
+			<a href="<?= strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE]))?>/<?= strtolower($this->normalizeString($content['titles']['selections'][COUNTRY_CODE]))?>/<?=$key?>" class="content-league">
+					<div class="league-image"><img src="<?=$selections['image']?>" name="" alt="" title=""></div>
+					<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
+				</a>
+			</li>
+			<?php 
+				}
 			?>
 		</ul>
 		<?php if ($pagination) {?>
