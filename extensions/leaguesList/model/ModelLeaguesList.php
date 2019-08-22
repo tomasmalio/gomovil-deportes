@@ -28,6 +28,8 @@
 		];
 
 		public function model ($params = []) {
+			print_r($params);
+			exit;
 			$json = json_decode(file_get_contents($this->url), true);
 			$array['tournaments'] = Widgets::multiRenameKey($json, $this->mappingName['wrong'], $this->mappingName['verify']);
 			print_r($array['tournaments']);
