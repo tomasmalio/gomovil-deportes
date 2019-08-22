@@ -534,14 +534,17 @@
 					$insert = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					$external = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
 					$extensionContent = json_encode(array_merge(json_decode($insert, true), json_decode($external, true)));
+					echo "aca";
 				} 
 				
 				elseif (!isset($extension['content']) && isset($extension['external_content'])) {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
+					echo "aca";
 				} 
 				
 				else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
+					echo "aca";
 				}
 				print_r(json_decode($extensionContent, true));
 				/**
