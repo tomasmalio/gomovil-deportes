@@ -546,6 +546,8 @@
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 					echo "aca3";
 				}
+				print_r($extensionContent);
+				echo "despues";
 				print_r(json_decode($extensionContent, true));
 				/**
 				* Try to get WIDGET JSON from cache
