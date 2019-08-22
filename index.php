@@ -548,7 +548,7 @@
 				}
 				print_r($extensionContent);
 				echo "despues";
-				print_r(json_decode($extensionContent, true));
+				print_r(json_decode($extensionContent));
 				/**
 				* Try to get WIDGET JSON from cache
 				*/
