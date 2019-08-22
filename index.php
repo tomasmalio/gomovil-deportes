@@ -215,10 +215,10 @@
 					foreach ($findingNamingContent as $k => $find) {
 						if ($k == 'titles') {
 							foreach ($find as $key => $finding) {
-								if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
+								if ((strtolower($finding[COUNTRY_CODE]) == $filters[$i]) || (strtolower($finding['default']) == $filters[$i])) {
 									$keywordsChange[] = $key;
 									$keywords[] = '{@'.$subsectionTitle.'Section}';
-									$keywordsChange[] = $finding[COUNTRY_CODE];
+									$keywordsChange[] = (isset($finding[COUNTRY_CODE]) ? $finding[COUNTRY_CODE] : $finding['default']);
 									$flag = true;
 									break;
 								}
@@ -230,11 +230,11 @@
 					$flag = false;
 					foreach ($findingNamingContent as $k => $find) {
 						foreach ($find as $key => $finding) {
-							if (isset($finding[COUNTRY_CODE])) {
-								if (strtolower($finding[COUNTRY_CODE]) == $filters[$i]) {
+							if (isset($finding[COUNTRY_CODE]) || isset($finding['default'])) {
+								if ((strtolower($finding[COUNTRY_CODE]) == $filters[$i]) || (strtolower($finding['default']) == $filters[$i])) {
 									$keywordsChange[] = $key;
 									$keywords[] = '{@'.$subsectionTitle.'Section}';
-									$keywordsChange[] = $finding[COUNTRY_CODE];
+									$keywordsChange[] = (isset($finding[COUNTRY_CODE]) ? $finding[COUNTRY_CODE] : $finding['default']);
 									$flag = true;
 								}
 								if ($flag) {break; };
