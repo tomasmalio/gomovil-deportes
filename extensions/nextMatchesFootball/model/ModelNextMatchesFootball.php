@@ -59,6 +59,7 @@
 			],
 		];
 		public function model ($params = []) {
+			print_r($params);
 			if ($params['type'] && $params['tournament']) {
 				$typeTournament = $params['type'];
 				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
