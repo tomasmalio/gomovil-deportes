@@ -28,13 +28,14 @@
 			<?php 
 				// $url = '';
 				// $url .= 
-				$url = DOMAIN . '/'. (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default'])) . '/' . (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'] . '/' . (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'] . '/' . $key; 
+				echo DOMAIN . '/'. (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default'])) . '/' . (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'] . '/' . (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'] . '/' . $key; 
 				// $url .= ;
 				// $url .= ;
 				// $url .= ;
 				// $url .= ;
 				// $url .= ;
 				// $url .= ;
+				$url = 'aca';
 			?>
 				<a href="<?=$url?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
