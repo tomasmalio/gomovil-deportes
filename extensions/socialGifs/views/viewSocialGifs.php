@@ -10,7 +10,7 @@
 		?>
 		<div class="col-12">
 			<div class="post-gif">
-				<a href="https://api.whatsapp.com/send?text=Te%20invitó%20a%20descargar%20este%20GIF:%20<?=$gif['images']['downsized_large']['url']?>" data-action="share/whatsapp/share" target="_blank"><img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>"></a>
+				<a href="https://wa.me/?text=Te%20invitó%20a%20descargar%20este%20GIF:%20<?=$gif['images']['downsized_large']['url']?>" data-action="share/whatsapp/share" target="_blank"><img src="<?=$gif['images']['downsized_large']['url'];?>" name="<?=$gif['slug']?>" width="<?=$gif['images']['downsized_large']['width'];?>" height="<?=$gif['images']['downsized_large']['height'];?>"></a>
 			</div>
 		</div>
 		<?php 
