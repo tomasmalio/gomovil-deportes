@@ -539,12 +539,12 @@
 				
 				elseif (!isset($extension['content']) && isset($extension['external_content'])) {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $externalContent['data']));
-					echo "aca";
+					echo "aca2";
 				} 
 				
 				else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
-					echo "aca";
+					echo "aca3";
 				}
 				print_r(json_decode($extensionContent, true));
 				/**
