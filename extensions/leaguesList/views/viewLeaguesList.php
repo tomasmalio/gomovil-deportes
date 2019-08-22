@@ -26,15 +26,15 @@
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 			<?php 
-				$url = '';
-				$url .= DOMAIN . '/';
-				$url .= (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']));
-				$url .= '/';
-				$url .= (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'];
-				$url .= '/';
-				$url .= (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'];
-				$url .= '/';
-				$url .= $key;
+				// $url = '';
+				// $url .= 
+				$url = DOMAIN . '/'. (isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default'])) . '/' . (isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) : $content['titles']['tournaments']['default'] . '/' . (isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) : $content['titles']['leagues']['default'] . '/' . $key; 
+				// $url .= ;
+				// $url .= ;
+				// $url .= ;
+				// $url .= ;
+				// $url .= ;
+				// $url .= ;
 			?>
 				<a href="<?=$url?>" class="content-league">
 					<div class="league-image"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
