@@ -24,6 +24,7 @@
 		];
 
 		public function __construct($params = []) {
+			print_r($params);
 			parent::__construct($params);
 		}
 
