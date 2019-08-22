@@ -543,7 +543,7 @@
 				else {
 					$extensionContent = utf8_encode(str_replace($keywords, $keywordsChange, $extension['content']));
 				}
-				
+				print_r($extensionContent);
 				/**
 				* Try to get WIDGET JSON from cache
 				*/
