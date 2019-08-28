@@ -12,8 +12,8 @@
 
 		// Assets files
 		public $files = [
-			'style'	=> ['matches-featured.less','swiper.css'],
-			'js'	=> ['swiper.js'],
+			'style'	=> ['matches-featured.less'],
+			'js'	=> [],
 		];
 
 		// Options
