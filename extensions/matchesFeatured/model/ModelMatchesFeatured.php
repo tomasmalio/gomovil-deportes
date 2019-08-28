@@ -11,6 +11,7 @@
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
+				'id',
 				'torneo',
 				'tipo',
 				'local',
@@ -29,6 +30,7 @@
 				'minuto',
 			],
 			'verify'	=> [
+				'id',
 				'tournament',
 				'type',
 				'local_name',
