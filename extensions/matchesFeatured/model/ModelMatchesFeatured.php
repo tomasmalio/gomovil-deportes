@@ -59,7 +59,9 @@
 					$json = file_get_contents($this->urlNba);
 					break;
 			}
-			return $this->multiRenameKey(json_decode($json, true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			$result = $this->multiRenameKey(json_decode($json, true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			print_r($result);
+			return $result;
 		}
 	}
 ?>
