@@ -11,7 +11,7 @@
 		<ul class="<?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
-				foreach ($content['data'] as $match) {
+				foreach ($content['content'] as $match) {
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<div class="match-featured">
