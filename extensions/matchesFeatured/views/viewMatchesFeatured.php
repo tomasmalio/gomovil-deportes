@@ -11,7 +11,6 @@
 			<?php 
 				$quantity = 0;
 				foreach ($content['content'] as $match) {
-					print_r($match);
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<div class="match-featured">
