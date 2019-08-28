@@ -45,6 +45,7 @@
 				'hour',
 				'datetime_start',
 				'datetime_end',
+				'status',
 				'minute',
 			],
 		];
