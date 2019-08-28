@@ -54,7 +54,7 @@
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?= date('H:i', strtotime($match['datetime']))?></div>
+											<div class="time-to-play"><?= date('H:i', strtotime($match['datetime_start']))?></div>
 										</div>
 									</div>
 								<?php }?>
