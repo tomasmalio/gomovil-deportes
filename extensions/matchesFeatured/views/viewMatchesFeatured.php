@@ -1,5 +1,4 @@
 <!-- Match Featured -->
-<?php print_r($content)?>
 <section class="matchfeatured">
 	<h3>
 		<span><?=$label?></span>
