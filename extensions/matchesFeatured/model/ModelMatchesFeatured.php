@@ -11,7 +11,6 @@
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
-				'id',
 				'torneo',
 				'tipo',
 				'local',
@@ -30,7 +29,6 @@
 				'minuto',
 			],
 			'verify'	=> [
-				'id',
 				'tournament',
 				'type',
 				'team_local',
@@ -62,7 +60,10 @@
 					$json = file_get_contents($this->urlNba);
 					break;
 			}
-			return Widgets::multiRenameKey(json_decode($json, true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			$res = Widgets::multiRenameKey(json_decode($json, true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			print_r($res);
+			exit;
+			return $res;
 		}
 	}
 ?>
