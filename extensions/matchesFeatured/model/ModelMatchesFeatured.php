@@ -61,8 +61,6 @@
 					break;
 			}
 			$res = Widgets::multiRenameKey(json_decode($json, true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			print_r($res);
-			exit;
 			return $res;
 		}
 	}
