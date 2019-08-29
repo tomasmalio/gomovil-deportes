@@ -7,6 +7,10 @@
 		<i class="fas fa-futbol football"></i> <span>Fútbol</span>
 	</a>
 	<div class="matchesfeatured-content <?php if ($slider) {?>swiper-container<?php }?>">
+		<?php if ($navigation) {?>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<?php }?>
 		<ul class="<?php if ($slider) {?>swiper-wrapper<?php }?>">
 			<?php 
 				$quantity = 0;
