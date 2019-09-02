@@ -76,7 +76,8 @@
 					$i 		= 0;
 
 					foreach ($tournament as $match) {
-						// print_r($match);
+						print_r($match);
+						exit;
 						// If First we display info
 						if ($first) {
 		?>
