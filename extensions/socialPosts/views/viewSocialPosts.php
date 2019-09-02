@@ -100,7 +100,15 @@
 						<p class="text"><?=SocialPosts::convertSocialLinks(SocialPosts::makeLinks($social->text), strtolower($social->origen))?></p>
 					</div>
 					<div class="card-footer">
-						<div class="social-datetime float-left"><?=$social->fecha?></div>
+						<div class="social-datetime float-left"><?php
+							if (date('Y-m-d') == date('Y-m-d', strtotime($social->fecha))) {
+								echo "Hoy";
+							} elseif (date('Y-m-d', strtotime( '-1 days' )) == date('Y-m-d', strtotime($social->fecha))) {
+								echo "Ayer";
+							} else {
+								echo strftime('%d %B - %H:%M', strtotime($social->fecha));
+							}
+						?></div>
 						<div class="social-source float-right"><a href="<?= current(SocialPosts::getLinks($social->text))[0]?>" target="_blank"><i class="social-icon <?= strtolower($social->origen)?>"></i></a></div>
 					</div>
 				</div>
