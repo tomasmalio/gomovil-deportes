@@ -117,6 +117,8 @@
 	define('CLIENT_NAME', str_replace(' ', '', strtolower($client['name'])), true);
 	define('COUNTRY_CODE', $client['country_code'], true);
 	define('COUNTRY_NAME', $client['country_name'], true);
+	define('DATE_TIMEZONE', $client['zone_name']);
+	define('LOCAL_TIME', explode('_', $client['language'])[0] .'_'. strtoupper(explode('_', $client['language'])[0]));
 
 	/* Definition of the time zone */
 	date_default_timezone_set($client['zone_name']);

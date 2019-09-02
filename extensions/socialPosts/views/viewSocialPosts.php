@@ -21,6 +21,9 @@
 				$col = 12 / 3;
 			}
 		}
+
+		date_default_timezone_set(DATE_TIMEZONE);
+		setlocale(LC_TIME, LOCAL_TIME);
 ?>
 <section class="socialposts">
 	<?php if (isset($content['title'])) {?>
