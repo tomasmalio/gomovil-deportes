@@ -32,7 +32,8 @@ We've installed the software so it's time to create our clients in the system.
 - status: status of oyur client active (1) or desable (0 | null)
 
 ```sql
-INSERT INTO `gosports_dev`.`client` (`name`, `url`, `title`, `country_id`, `zone_id`, `language_id`, `logo`, `status`) VALUES ('Sports Dev', 'sports-dev.gomovil.co', 'Sports Dev', '11', '19', '39', 'logo-gosports.png', '1');
+INSERT INTO `client` (`name`, `url`, `title`, `country_id`, `zone_id`, `language_id`, `logo`, `status`) 
+VALUES ('Sports Dev', 'sports-dev.gomovil.co', 'Sports Dev', '11', '19', '39', 'logo-gosports.png', '1');
 ```
 
 
