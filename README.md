@@ -18,6 +18,24 @@ yum install php71-cli.x86_64
 sh install
 ```
 
+## [Starting](#start)
+We've installed the software so it's time to create our clients in the system.
+
+1) To **create** a new client we must go to the **table client**:
+- name: name of the project (it's internal)
+- url: your project contain domains so you must put it here. You can put more than one separated by comma (,)
+- title: the title of the project. It's use for al the site.
+- country_id: reference to table country
+- zone_id: reference to table zone
+- language_id: reference to table language
+- logo: name of the logo image
+- status: status of oyur client active (1) or desable (0 | null)
+
+```sql
+INSERT INTO `gosports_dev`.`client` (`name`, `url`, `title`, `country_id`, `zone_id`, `language_id`, `logo`, `status`) VALUES ('Sports Dev', 'sports-dev.gomovil.co', 'Sports Dev', '11', '19', '39', 'logo-gosports.png', '1');
+```
+
+
 ## [Development](#development)
 
 #### LESS compiler with PHP
