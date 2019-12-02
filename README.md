@@ -21,7 +21,9 @@ sh install
 ## [Starting](#start)
 We've installed the software so it's time to create our clients in the system.
 
-1) To **create** a new client we must go to the **table client**:
+
+### [1) Create a new client](#newclient)
+To **create** a new client we must go to the **table client**:
 - name: name of the project (it's internal)
 - url: your project contain domains so you must put it here. You can put more than one separated by comma (,)
 - title: the title of the project. It's use for al the site.
@@ -37,7 +39,8 @@ INSERT INTO `client:(`name`, `url`, `title`, `country_id`, `zone_id`, `language_
 VALUES ('Sports Dev', 'sports-dev.gomovil.co', 'Sports Dev', '11', '19', '39', 'logo-gosports.png', '1');
 ```
 
-2) We've created our client so the next step is to add **customizations params** in your new client. The possibility that you've is to change colors, font family, size, buttons, to change global variables and add your CSS content.
+### [2) Create new customization](#newcustomization)
+We've created our client so the next step is to add **customizations params** in your new client. The possibility that you've is to change colors, font family, size, buttons, to change global variables and add your CSS content.
 
 - client_id: client number, reference to _table client_
 - color_first:
@@ -102,7 +105,8 @@ VALUES ('Sports Dev', 'sports-dev.gomovil.co', 'Sports Dev', '11', '19', '39', '
 - modify_date: when you change the customization remember to change the modify date so you've a record of this.
 - status (default: 0): remember to put in 1 if you're using.
 
-3) When you've created your client you can start creating sections for the site. To understand this you must see the **table section**, that contains all the kind of sections that can be use. _Example: Home, Football, News._
+### [3) Create a new section](#newsection)
+When you've created your client you can start creating sections for the site. To understand this you must see the **table section**, that contains all the kind of sections that can be use. _Example: Home, Football, News._
 
 Attributes when you create a new section for a client:
 - client_id: client number id, reference to _table client_
@@ -128,7 +132,8 @@ INSERT INTO `section_client:(`client_id`, `section_id`, `layout_id`, `content_id
 VALUES ('1', '1', '1', NULL, NULL, NULL, 'Principal', `Descripción de la página principal`, `palabra clave, palabra clave dos`, NULL, '86400', '2019-11-29 17:00:00', '1');
 ```
 
-4) If you finished creating your sections you can add widgets to them associating with **section_extension**.
+### [4) Adding widgets to your section](#addwidgets)
+If you finished creating your sections you can add widgets to them associating with **section_extension**.
 When you created your **section client** you're available to add widgets to that sections. But where're the widgets extensions? You can find them in the **table extension**.
 
 When you've a new widget to add in the platform you must incorporate in the **extensions/** folder and then in your table add:
