@@ -30,6 +30,7 @@
 					}
 				}
 				// Tournaments
+				// print_r($tournaments);
 				foreach ($tournaments as $key => $tournament) {
 	?>
 	<div class="competition">
@@ -57,6 +58,7 @@
 							$match['status'] = 'to-start';
 							break;
 						case 'En vivo':
+						case 'En Juego':
 							$match['status'] = 'live';
 							break;
 						case 'Finalizado':
@@ -91,7 +93,7 @@
 							<div class="col-2 match-info">
 								<?php if ($match['status'] == 'live' || $match['status'] == 'end') {?>
 									<?php if ($match['status'] == 'live'){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-								<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['match_time']['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']?></time><?php } else {?>Final<?php }?></div>
+								<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['minutes']?>:<?php if (isset($match['seconds'])) { echo $match['seconds'];} else { echo '00';}?></time><?php } else {?>Final<?php }?></div>
 									<div class="match-divider">
 										<div class="match-divider-content">
 											<div class="result football">
