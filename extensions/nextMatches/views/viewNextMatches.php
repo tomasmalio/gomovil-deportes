@@ -107,7 +107,7 @@
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?php if (isset($match['time'])) { echo date('H:i', strtotime($match['time']));}?></div>
+											<div class="time-to-play"><?php if (isset($match['date_begin'])) { echo date('H:i', strtotime($match['date_begin']));}?></div>
 										</div>
 									</div>
 								<?php }?>
