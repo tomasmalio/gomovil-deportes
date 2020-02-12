@@ -68,11 +68,15 @@
 		$InstanceCache->save($CachedClient);
 	}
 	$client = $CachedClient->get();
+	
+	// Sessions
+	session_start();
+
+	$_SESSION['clientConfig'] = json_decode($client['config']);
 
 	// Delete everything
 	//$InstanceCache->clear();
-
-	session_start();
+	
 	/* Security control */
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
 		if (isset($client['security_endpoint']) && $client['security_endpoint'] <> '') {

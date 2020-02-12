@@ -17,12 +17,14 @@
 	?>
 	<div class="date-matches"><?= strftime('%d de %B', strtotime($keyDate));?></div>
 	<!-- Football Sport / Next matches -->
+	<?php if (isset($content['display_sport_name']) && $content['display_sport_name'] || !isset($content['display_sport_name'])){?>
 	<a href="<?=$nextMatches['football']['url']?>" class="sport football"><i class="<?= $nextMatches['football']['icon_name']?>"></i> <span><?= $nextMatches['football']['name'];?></span></a>
+	<?php }?>
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
 				foreach ($matches as $match) {
-					if ((isset($content['tournaments']) && $content['tournaments'][$this->normalizeString($match['tournament'])] == true) || (!isset($content['tournaments']))) {
+					if (in_array($this->normalizeString($match['tournament']), $_SESSION['clientConfig']->sports->football->available_tournaments)) {
 						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
 							$tournaments[$this->normalizeString($match['tournament'])] = [];
 						}
@@ -30,7 +32,6 @@
 					}
 				}
 				// Tournaments
-				// print_r($tournaments);
 				foreach ($tournaments as $key => $tournament) {
 	?>
 	<div class="competition">
