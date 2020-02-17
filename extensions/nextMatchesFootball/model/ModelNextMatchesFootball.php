@@ -73,6 +73,7 @@
 		 */
 		private function getFixture ($key) {
 			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
+			print_r($array);
 			if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
 				$q = 1;
 				foreach ($array['fixture'] as $key => $a) {
@@ -85,7 +86,6 @@
 			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
 				self::setSliderPosition($array['fecha_actual']);
 			}
-			echo "aca";
 			// return array_merge($array, ['slider_position' => $this->sliderPosition]);
 			print_r($array);
 		}
