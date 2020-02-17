@@ -33,6 +33,8 @@
 		];
 		
 		public function model ($params = []) {
+			$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			print_r($tournament);
 			if ($params['type'] && $params['tournament']) {
 				$array = file_get_contents($this->tournaments . '&user=' . $this->user . '&pwd=' . $this->pass);
 				$array = json_decode($array->torneos);
