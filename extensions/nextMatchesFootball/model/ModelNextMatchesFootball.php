@@ -55,7 +55,9 @@
 				//print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
+						print_r($value);
 						foreach ($value as $key => $v) {
+							print_r($v);
 							if ($v['key'] == $params['tournament']) {
 								echo "si";
 							}
