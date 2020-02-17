@@ -56,11 +56,11 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						//print_r($value);
-						foreach ($value as $key => $v) {
+						foreach ($value as $v) {
 							//print_r($key);
-							echo $v;
-							if ($key == 'key' && $v == $params['tournament']) {
-								echo "si";
+							// echo $v;
+							if ($v['key'] == $params['tournament']) {
+								echo $v['division'];
 							}
 						}
 					}
