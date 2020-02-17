@@ -58,6 +58,7 @@
 				'minutes'
 			],
 		];
+		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$typeTournament = $params['type'];
@@ -84,7 +85,9 @@
 			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
 				self::setSliderPosition($array['fecha_actual']);
 			}
-			return array_merge($array, ['slider_position' => $this->sliderPosition]);
+			echo "aca";
+			// return array_merge($array, ['slider_position' => $this->sliderPosition]);
+			print_r(array_merge($array, ['slider_position' => $this->sliderPosition]));
 		}
 
 		/**
