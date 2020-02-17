@@ -56,21 +56,11 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							echo $value['division'];
-							echo $value['championship'];
+							print_r($this->getFixture($value['division'], $value['championship']));
 						}
-						// print_r($value);
-						// echo "<br>";
-						// foreach ($value as $v) {
-						// 	print_r($v);
-						// 	// if ($key == 'key' && $v == $params['tournament']) {
-						// 	// }
-						// 	echo "=====";
-						// }
+						
 					}
-					// print_r($value);
 				}
-				// $this->getFixture()
 			}
 			
 			
@@ -84,6 +74,7 @@
 
 		private function getFixture ($division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			return $array;
 		}
 
 		/**
