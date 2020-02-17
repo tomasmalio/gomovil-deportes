@@ -35,8 +35,8 @@
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array = file_get_contents($this->tournaments . '&user=' . $this->user . '&pwd=' . $this->pass);
-				print_r($array);
-				$array = Widgets::multiRenameKey($array['torneos'], $this->mappingName['wrong'], $this->mappingName['verify']);
+				$array = json_decode($array->torneos);
+				$array = Widgets::multiRenameKey($array, $this->mappingName['wrong'], $this->mappingName['verify']);
 				print_r($array);
 			}
 			
