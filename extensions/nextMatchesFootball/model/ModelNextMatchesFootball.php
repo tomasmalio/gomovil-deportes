@@ -8,8 +8,7 @@
 		// Url tournaments content JSON
 		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
-
-		private $tournaments = 'http://gomovil.universofutbol.com/data.php?metodo=torneos';
+		private $json = 'http://gomovil.universofutbol.com/data.php?';
 
 		private $user = 'gomovil';
 
@@ -24,20 +23,41 @@
 				'nombre',
 				'torneo',
 				'campeonato',
-				'escudo'
+				'fecha',
+				'local_escudo',
+				'local_resultado',
+				'visitante',
+				'visitante_escudo',
+				'visitante_id',
+				'visitante_resultado',
+				'dia',
+				'hora'
 			],
 			'verify'	=> [
 				'name',
 				'tournament',
 				'championship',
-				'shield'
+				'match_date',
+				'local_shield',
+				'local_result',
+				'visitor',
+				'visitor_shield',
+				'visitor_id',
+				'visitor_result',
+				'day',
+				'hour'
 			],
 		];
 		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
-				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->tournaments . '&user=' . $this->user . '&pwd=' . $this->pass), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-				print_r($array);
+				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+				//print_r($array);
+				foreach ($array as $key => $value) {
+					echo $key;
+					echo $value;
+				}
+				// $this->getFixture()
 			}
 			
 			
@@ -49,27 +69,30 @@
 			// }
 		}
 
+		private function getFixture ($division, $championship) {
+			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+		}
+
 		/**
 		 * Get the fixture by the key
 		 */
-		private function getFixture ($key) {
-			$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
-			print_r($array);
-			if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
-				$q = 1;
-				foreach ($array['fixture'] as $key => $a) {
-					if ($key == $array['fecha_actual']) {
-						self::setSliderPosition($q);
-						break;
-					}
-					$q++;
-				}
-			} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
-				self::setSliderPosition($array['fecha_actual']);
-			}
-			// return array_merge($array, ['slider_position' => $this->sliderPosition]);
-			print_r($array);
-		}
+		// private function getFixture ($key) {
+		// 	$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
+		// 	print_r($array);
+		// 	if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
+		// 		$q = 1;
+		// 		foreach ($array['fixture'] as $key => $a) {
+		// 			if ($key == $array['fecha_actual']) {
+		// 				self::setSliderPosition($q);
+		// 				break;
+		// 			}
+		// 			$q++;
+		// 		}
+		// 	} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
+		// 		self::setSliderPosition($array['fecha_actual']);
+		// 	}
+		// 	return array_merge($array, ['slider_position' => $this->sliderPosition]);
+		// }
 
 		/**
 		 * Get the tournament
