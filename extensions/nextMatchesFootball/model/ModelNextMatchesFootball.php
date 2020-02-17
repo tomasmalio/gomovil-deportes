@@ -24,11 +24,13 @@
 				'torneo',
 				'division',
 				'campeonato',
+				'escudo'
 			],
 			'verify'	=> [
 				'tournament',
 				'division',
-				'championship'
+				'championship',
+				'shield'
 			],
 		];
 		
