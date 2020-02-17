@@ -22,13 +22,11 @@
 		private $mappingName = [
 			'wrong' 	=> [
 				'torneo',
-				'division',
 				'campeonato',
 				'escudo'
 			],
 			'verify'	=> [
 				'tournament',
-				'division',
 				'championship',
 				'shield'
 			],
