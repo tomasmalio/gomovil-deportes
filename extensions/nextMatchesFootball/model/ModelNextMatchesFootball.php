@@ -8,6 +8,13 @@
 		// Url tournaments content JSON
 		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
+
+		private $tournaments = 'http://gomovil.universofutbol.com/data.php?metodo=torneos';
+
+		private $user = 'gomovil';
+
+		private $pass = 'g0m0v1lc0&';
+
 		// Slider position
 		private $sliderPosition = 0;
 
@@ -61,11 +68,18 @@
 		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
-				$typeTournament = $params['type'];
-				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
-				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+				$array = json_decode(file_get_contents($this->tournaments . '&user=' . $this->user . '&pwd=' . $this->pass));
+
+				print_r($array);
 			}
+			
+			
+			// if ($params['type'] && $params['tournament']) {
+			// 	$typeTournament = $params['type'];
+			// 	$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
+			// 	$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
+			// 	return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+			// }
 		}
 
 		/**
