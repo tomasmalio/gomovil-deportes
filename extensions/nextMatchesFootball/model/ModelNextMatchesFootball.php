@@ -55,14 +55,18 @@
 				//print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
-						print_r($value);
-						echo "<br>";
-						foreach ($value as $v) {
-							print_r($v);
-							// if ($key == 'key' && $v == $params['tournament']) {
-							// }
-							echo "=====";
+						if ($value['key'] == $params['tournament']) {
+							echo $value['division'];
+							echo $value['championship'];
 						}
+						// print_r($value);
+						// echo "<br>";
+						// foreach ($value as $v) {
+						// 	print_r($v);
+						// 	// if ($key == 'key' && $v == $params['tournament']) {
+						// 	// }
+						// 	echo "=====";
+						// }
 					}
 					// print_r($value);
 				}
