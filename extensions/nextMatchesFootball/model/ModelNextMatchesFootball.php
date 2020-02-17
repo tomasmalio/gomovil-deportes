@@ -57,8 +57,9 @@
 					foreach ($res as $value) {
 						//print_r($value);
 						foreach ($value as $v) {
-							//print_r($key);
+							print_r($v);
 							// echo $v;
+
 							if ($v['key'] == $params['tournament']) {
 								echo $v['division'];
 							}
