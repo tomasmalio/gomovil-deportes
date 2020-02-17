@@ -87,7 +87,7 @@
 			}
 			echo "aca";
 			// return array_merge($array, ['slider_position' => $this->sliderPosition]);
-			print_r(array_merge($array, ['slider_position' => $this->sliderPosition]));
+			print_r($array);
 		}
 
 		/**
