@@ -32,9 +32,6 @@
 		$filters[] = $value;
 	}
 
-	print_r($s);
-	print_r($filters);
-
 	/* Identify the client */
 	$domain 	= $_SERVER['HTTP_HOST'];
 	(!isset($s) && (!isset($s) && !isset($ss))) ? $s = '' : '';
