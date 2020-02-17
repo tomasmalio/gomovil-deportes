@@ -55,7 +55,8 @@
 				//print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
-						//print_r($value);
+						print_r($value);
+						echo "<br>";
 						foreach ($value as $v) {
 							print_r($v);
 							// if ($key == 'key' && $v == $params['tournament']) {
