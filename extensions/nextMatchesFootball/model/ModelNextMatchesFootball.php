@@ -54,9 +54,8 @@
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 				//print_r($array);
 				foreach ($array as $res) {
-					foreach ($res as $key => $value) {
-						echo $key;
-						echo $value;
+					foreach ($res as $value) {
+						print_r($value);
 					}
 					// print_r($value);
 				}
