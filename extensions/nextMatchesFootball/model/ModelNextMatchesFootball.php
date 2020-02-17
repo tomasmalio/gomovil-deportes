@@ -51,15 +51,15 @@
 		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
-				echo $params['tournament'];
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 				//print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
-						print_r($value);
+						//print_r($value);
 						foreach ($value as $key => $v) {
-							print_r($key);
-							if ($v === $params['tournament']) {
+							//print_r($key);
+							echo $v;
+							if ($key == 'key' && $v == $params['tournament']) {
 								echo "si";
 							}
 						}
