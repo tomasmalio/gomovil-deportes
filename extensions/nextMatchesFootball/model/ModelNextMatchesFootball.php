@@ -21,55 +21,21 @@
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
-				'ligas',
-				'copas',
-				'selecciones',
-				'nombre',
-				'equipos',
-				'imagen',
-				'fecha_actual',
-				'posiciones',
-				'local',
-				'local_img',
-				'penal_local',
-				'visitante',
-				'visitante_img',
-				'gol_visitante',
-				'penal_visitante',
-				'estado',
-				'hora_inicio',
-				'dia',
-				'hora',
-				'minuto'
+				'torneo',
+				'division',
+				'campeonato',
 			],
 			'verify'	=> [
-				'leagues',
-				'cups',
-				'selections',
-				'name',
-				'teams',
-				'image',
-				'actual_date',
-				'positions',
-				'team_local',
-				'team_image_local',
-				'penalty_local',
-				'team_visit',
-				'team_image_visit',
-				'gol_visit',
-				'penalty_visit',
-				'status',
-				'date_begin',
-				'date',
-				'time',
-				'minutes'
+				'tournament',
+				'division',
+				'championship'
 			],
 		];
 		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array = json_decode(file_get_contents($this->tournaments . '&user=' . $this->user . '&pwd=' . $this->pass));
-
+				$array = Widgets::multiRenameKey($array, $this->mappingName['wrong'], $this->mappingName['verify']);
 				print_r($array);
 			}
 			
