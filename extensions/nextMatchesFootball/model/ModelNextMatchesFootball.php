@@ -81,7 +81,7 @@
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
 				
-				$fixture[$key] = $res['match'];
+				$fixture[$key] = array_push($fixture[$key], $res['match']);
 			}
 			print_r($fixture);
 			
