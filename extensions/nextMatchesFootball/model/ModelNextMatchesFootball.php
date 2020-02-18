@@ -77,17 +77,21 @@
 		private function getFixture ($division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 
-
 			$fixture = []; 
+			$q = 1;
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
+					$q++;
+				}
+				if ($res['match']['day'] >= date('Y-m-d')) {
+					self::setSliderPosition($q);
 				}
 				array_push($fixture[$key], $res['match']);
 			}
-			print_r($fixture);
-
+			$return = array_merge($fixture, ['slider_position' => $this->sliderPosition]);
+			print_r($return);
 		}
 
 		/**
@@ -114,18 +118,18 @@
 		/**
 		 * Get the tournament
 		 */
-		private function getTournaments ($type, $name) {
-			$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			foreach ($tournament as $key => $t) {
-				if ($key == $type) {
-					foreach ($t as $value) {
-						if (Widgets::normalizeString($value['name']) == $name) {
-							return $value['key'];
-						}
-					}
-				}
-			}
-		}
+		// private function getTournaments ($type, $name) {
+		// 	$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+		// 	foreach ($tournament as $key => $t) {
+		// 		if ($key == $type) {
+		// 			foreach ($t as $value) {
+		// 				if (Widgets::normalizeString($value['name']) == $name) {
+		// 					return $value['key'];
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 
 		/**
 		 * Set the position for the slider
