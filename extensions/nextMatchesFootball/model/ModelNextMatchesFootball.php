@@ -75,11 +75,8 @@
 			$actualDate = false;
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
-				print_r($res['match']);
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
-					print_r($fixture);
-					exit;
 					$q++;
 				}
 				if ($res['match']['day'] >= date('Y-m-d') && !$actualDate) {
@@ -87,6 +84,8 @@
 					$actualDate = true;
 				}
 				array_push($fixture[$key], $res['match']);
+				print_r($fixture);
+				exit;
 			}
 			return array_merge($fixture, ['slider_position' => $this->sliderPosition]);
 		}
