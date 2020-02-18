@@ -1,8 +1,4 @@
 <?php
-echo "<pre>";
-	print_r($content['content']);
-	echo "</pre>";
-	exit;
 	$nextMatches = $content['content']['fixture'];
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
