@@ -86,17 +86,17 @@
 											<div class="match-divider">
 												<div class="match-divider-content">
 													<div class="result football">
-														<span class="number"><?=$match['gol_local'];?></span> - <span class="number"><?=$match['gol_visit'];?></span>
+														<span class="number"><?=$match['local_result'];?></span> - <span class="number"><?=$match['visit_result'];?></span>
 													</div>
 												</div>
 											</div>
 											<?php if (isset($match['penalties']) && !empty($match['penalties'])) {?>
-											<div class="penalty-score">(<?=$match['penalties']['gol_local']?>) - (<?=$match['penalties']['gol_visit']?>)</div>
+											<div class="penalty-score">(<?=$match['penalties']['team_result_local']?>) - (<?=$match['penalties']['team_result_visit']?>)</div>
 											<?php }?>
 										<?php } else {?>
 											<div class="match-divider">
 												<div class="match-divider-content">
-													<div class="time-to-play"><?=date('H:i', strtotime($match['datetime']))?></div>
+													<div class="time-to-play"><?=date('H:i', strtotime($match['hour']))?></div>
 												</div>
 											</div>
 										<?php }?>
