@@ -1,6 +1,6 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
-	print_r($nextMatches);
+	// print_r($nextMatches);
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
 <!-- Next matches football -->
@@ -38,6 +38,8 @@
 					<?php 
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
+							print_r($match);
+							exit;
 							/* Switch of each status */
 							switch ($match['status']) {
 								case 'Por comenzar':
