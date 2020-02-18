@@ -88,6 +88,8 @@
 					echo "<br>";
 				}
 				if ($res['match']['day'] >= date('Y-m-d')) {
+					echo $res['match']['day'];
+					echo "aca<br>";
 					self::setSliderPosition($q);
 				}
 				array_push($fixture[$key], $res['match']);
