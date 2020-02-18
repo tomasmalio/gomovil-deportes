@@ -81,7 +81,8 @@
 			foreach ($array['fixture'] as $res) {
 				// print_r($res['match']);
 				if (!$fixture[$res['match']['match_date']]) {
-					echo "si";
+					echo $res['match']['match_date'];
+					echo "<br>";
 					array_push($fixture, $fixture[$res['match']['match_date']]);
 				}
 				array_push($fixture[$res['match']['match_date']], $res['match']);
