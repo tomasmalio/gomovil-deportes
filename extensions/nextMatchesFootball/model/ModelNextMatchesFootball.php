@@ -54,24 +54,15 @@
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-				//print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							print_r($this->getFixture($value['division'], $value['championship']));
+							return $this->getFixture($value['division'], $value['championship']);
 						}
-						
 					}
 				}
 			}
-			
-			
-			// if ($params['type'] && $params['tournament']) {
-			// 	$typeTournament = $params['type'];
-			// 	$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
-			// 	$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-			// 	return Widgets::multiRenameKey(self::getFixture($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
-			// }
+			return null;
 		}
 
 		private function getFixture ($division, $championship) {
@@ -85,8 +76,6 @@
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 					$q++;
-					echo $q;
-					echo "<br>";
 				}
 				if ($res['match']['day'] >= date('Y-m-d') && !$actualDate) {
 					self::setSliderPosition($q);
@@ -94,10 +83,7 @@
 				}
 				array_push($fixture[$key], $res['match']);
 			}
-			$return = array_merge($fixture, ['slider_position' => $this->sliderPosition]);
-			echo "<pre>";
-			print_r($return);
-			echo "</pre>";
+			return array_merge($fixture, ['slider_position' => $this->sliderPosition]);
 		}
 
 		/**

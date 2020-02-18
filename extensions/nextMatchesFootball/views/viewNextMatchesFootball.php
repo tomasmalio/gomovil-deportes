@@ -1,5 +1,6 @@
 <?php
-echo "estamos aca";
+	print_r($content);
+	exit;
 	$nextMatches = $content['content']['fixture'];
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
