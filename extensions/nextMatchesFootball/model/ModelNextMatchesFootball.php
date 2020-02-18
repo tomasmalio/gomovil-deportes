@@ -84,7 +84,7 @@
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 				}
-				$fixture[$key] = array_push($fixture[$key], $res['match']);
+				array_push($fixture[$key], $res['match']);
 			}
 			print_r($fixture);
 
