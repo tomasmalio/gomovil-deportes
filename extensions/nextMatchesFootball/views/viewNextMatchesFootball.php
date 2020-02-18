@@ -1,5 +1,6 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
+	print_r($nextMatches);
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
 <!-- Next matches football -->
