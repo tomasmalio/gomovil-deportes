@@ -79,7 +79,7 @@
 
 			$fixture = []; 
 			foreach ($array['fixture'] as $res) {
-				// print_r($res);
+				print_r($res['match']);
 				if (!$fixture[$res['match']['match_date']]) {
 					array_push($fixture, $fixture[$res['match']['match_date']]);
 				}
