@@ -75,9 +75,11 @@
 			$actualDate = false;
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
+				print_r($res['match']);
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					echo "primera";
 					echo $res['match']['match_date'];
+					print_r($res);
 					exit;
 					$fixture[$key] = [];
 					$q++;
