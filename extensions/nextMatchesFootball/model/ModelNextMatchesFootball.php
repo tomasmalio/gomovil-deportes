@@ -57,9 +57,7 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							$return = $this->getFixture($value['division'], $value['championship']);
-							print_r($return);
-							exit;
+							return $this->getFixture($value['division'], $value['championship']);
 						}
 					}
 				}
@@ -87,9 +85,7 @@
 			}
 			$return = [];
 			$return['fixture'] = $fixture;
-			$return = array_merge($return, ['slider_position' => $this->sliderPosition]);
-			print_r($return);
-			exit;
+			return array_merge($return, ['slider_position' => $this->sliderPosition]);
 		}
 
 		/**
