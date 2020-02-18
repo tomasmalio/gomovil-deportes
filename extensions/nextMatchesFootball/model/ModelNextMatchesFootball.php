@@ -76,9 +76,15 @@
 
 		private function getFixture ($division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			foreach ($array['fixture'] as $fixture) {
-				print_r($fixture['match']);
+
+			$fixture = []; 
+			foreach ($array['fixture'] as $res) {
+				if (!$fixture[$res['match_date']]) {
+					array_push($fixture, $fixture[$res['match_date']]);
+				}
+				array_push($fixture[$res['match_date']], $res['match']);
 			}
+			print_r($fixture);
 			
 		}
 
