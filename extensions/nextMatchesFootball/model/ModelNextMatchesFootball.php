@@ -78,12 +78,14 @@
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 
 			$fixture = []; 
-			$q = 1;
+			$q = 0;
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 					$q++;
+					echo $q;
+					echo "<br>";
 				}
 				if ($res['match']['day'] >= date('Y-m-d')) {
 					self::setSliderPosition($q);
