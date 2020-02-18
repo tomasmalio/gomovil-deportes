@@ -80,11 +80,14 @@
 			$fixture = []; 
 			foreach ($array['fixture'] as $res) {
 				// print_r($res['match']);
-				if (!$fixture[$res['match']['match_date']]) {
-					echo $res['match']['match_date'];
-					echo "<br>";
-					array_push($fixture, $fixture[$res['match']['match_date']]);
-				}
+				// if (!array_key_exists($res['match']['match_date']], $fixture)) {
+
+				// }
+				// if (!$fixture[$res['match']['match_date']]) {
+				// 	echo $res['match']['match_date'];
+				// 	echo "<br>";
+				// 	array_push($fixture, $fixture[$res['match']['match_date']]);
+				// }
 				array_push($fixture[$res['match']['match_date']], $res['match']);
 			}
 			print_r($fixture);
