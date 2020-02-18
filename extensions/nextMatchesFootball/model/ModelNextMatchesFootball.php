@@ -85,9 +85,9 @@
 				}
 				array_push($fixture[$key], $res['match']);
 			}
-			print_r($fixture);
-			exit;
-			$return = array_merge($fixture, ['slider_position' => $this->sliderPosition]);
+			$return = [];
+			$return['fixture'] = $fixture;
+			$return = array_merge($return, ['slider_position' => $this->sliderPosition]);
 			print_r($return);
 			exit;
 		}
