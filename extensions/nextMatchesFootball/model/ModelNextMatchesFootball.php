@@ -79,6 +79,7 @@
 
 			$fixture = []; 
 			foreach ($array['fixture'] as $res) {
+				echo $res['match']['match_date'];
 				// print_r($res['match']);
 				// if (!array_key_exists($res['match']['match_date']], $fixture)) {
 
