@@ -96,7 +96,7 @@
 										<?php } else {?>
 											<div class="match-divider">
 												<div class="match-divider-content">
-													<div class="time-to-play"><?=date('H:i', $match['hour'])?></div>
+													<div class="time-to-play"><?=$match['hour']?>/<?=date('H:i', strtotime($match['hour']))?></div>
 												</div>
 											</div>
 										<?php }?>
