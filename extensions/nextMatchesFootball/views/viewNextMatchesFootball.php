@@ -39,7 +39,7 @@
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
 							print_r($match);
-							exit;
+							// exit;
 							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
 								$match['status'] = 'to start';
 							} elseif (($match['day'] < date('Y-m-d', now())) || (($match['day'] == date('Y-m-d', now())) && $match['hour'] > date('H:i:s', now()))) {
