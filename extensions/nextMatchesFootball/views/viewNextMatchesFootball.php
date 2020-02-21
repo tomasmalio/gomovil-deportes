@@ -42,16 +42,11 @@
 							exit;
 							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
 								$match['status'] = 'to start';
-								echo "aca";
-							} else {
+							} elseif (($match['day'] < date('Y-m-d', now())) || (($match['day'] == date('Y-m-d', now())) && $match['hour'] > date('H:i:s', now()))) {
 								$match['status'] = 'end';
-								echo "aca2";
+							} else {
+								$match['status'] = 'live';
 							}
-							// } elseif ($match['day'] == date('Y-m-d', now()) && $match['hour'] > date('H:i:s', now())) {
-							// 	$match['status'] = 'end';
-							// } else {
-							// 	$match['status'] = 'live';
-							// }
 							echo $match['status'];
 							exit;
 							/* Switch of each status */
