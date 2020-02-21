@@ -40,18 +40,23 @@
 						foreach ($competitionDays as $match) {
 							// print_r($match);
 							// exit;
-							/* Switch of each status */
-							switch ($match['status']) {
-								case 'Por comenzar':
-									$match['status'] = 'to start';
-									break;
-								case 'En vivo':
-									$match['status'] = 'live';
-									break;
-								case 'Finalizado':
-									$match['status'] = 'end';
-									break;	
+							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i', now())) {
+								$match['status'] = 'to start';
+							} elseif ($match['day'] == date('Y-m-d', now()) && $match['hour'] > date('H:i', now())) {
+								$match['status'] = 'end';
 							}
+							/* Switch of each status */
+							// switch ($match['status']) {
+							// 	case 'Por comenzar':
+							// 		$match['status'] = 'to start';
+							// 		break;
+							// 	case 'En vivo':
+							// 		$match['status'] = 'live';
+							// 		break;
+							// 	case 'Finalizado':
+							// 		$match['status'] = 'end';
+							// 		break;	
+							// }
 					?>
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">
