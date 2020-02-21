@@ -38,8 +38,8 @@
 					<?php 
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
-							// print_r($match);
-							// exit;
+							print_r($match);
+							exit;
 							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
 								$match['status'] = 'to start';
 								echo "aca";
