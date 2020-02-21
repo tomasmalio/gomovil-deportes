@@ -42,6 +42,9 @@
 							// exit;
 							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
 								$match['status'] = 'to start';
+							} else {
+								$match['status'] = 'end';
+							}
 							// } elseif ($match['day'] == date('Y-m-d', now()) && $match['hour'] > date('H:i:s', now())) {
 							// 	$match['status'] = 'end';
 							// } else {
