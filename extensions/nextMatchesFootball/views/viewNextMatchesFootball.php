@@ -47,6 +47,7 @@
 							} else {
 								$match['status'] = 'live';
 							}
+							echo $match['status'];
 							/* Switch of each status */
 							// switch ($match['status']) {
 							// 	case 'Por comenzar':
