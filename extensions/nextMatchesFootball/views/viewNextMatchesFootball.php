@@ -44,6 +44,8 @@
 								$match['status'] = 'to start';
 							} elseif ($match['day'] == date('Y-m-d', now()) && $match['hour'] > date('H:i', now())) {
 								$match['status'] = 'end';
+							} else {
+								$match['status'] = 'live';
 							}
 							/* Switch of each status */
 							// switch ($match['status']) {
