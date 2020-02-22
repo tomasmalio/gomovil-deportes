@@ -53,10 +53,12 @@
 							$dateMatch = $match['day'] . ' '. $match['hour'];
 							$dateToday = date('Y-m-d H:i:s');
 							$hours_difference = differenceInHours($dateMatch, $dateToday);
+							echo $match['day'] . '<br>';
+							echo date('Y-m-d') . '<br>';
 							echo $hours_difference;
 							if ($match['day'] == date('Y-m-d') && $hours_difference < 15) {
 								$match['status'] = 'to start';
-							} elseif (($match['day'] > date('Y-m-d'))) {
+							} elseif (($match['day'] > date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $hours_difference >= 2)) {
 								$match['status'] = 'end';
 							} else {
 								$match['status'] = 'live';
