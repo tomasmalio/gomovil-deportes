@@ -63,6 +63,7 @@
 							} else if ($match['day'] == date('Y-m-d')) {
 								$match['status'] = 'live';
 							}
+							echo $match['status'];
 					?>
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">
