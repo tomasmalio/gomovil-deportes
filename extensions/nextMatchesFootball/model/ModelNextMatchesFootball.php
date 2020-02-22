@@ -80,7 +80,7 @@
 					$fixture[$key] = [];
 					$q++;
 				}
-				if ($res['match']['day'] >= date('Y-m-d') && (!$actualDate || $newDate < $res['match']['day'])) {
+				if ($res['match']['day'] >= date('Y-m-d') && ($newDate < $res['match']['day'])) {
 					self::setSliderPosition($q);
 					$actualDate = true;
 					$newDate = $res['match']['day'];
