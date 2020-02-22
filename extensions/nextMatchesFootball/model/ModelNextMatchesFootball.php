@@ -19,6 +19,7 @@
 				'nombre',
 				'torneo',
 				'campeonato',
+				'fecha_actual'
 				'partido',
 				'fecha',
 				'local',
@@ -35,6 +36,7 @@
 				'name',
 				'tournament',
 				'championship',
+				'actual_date',
 				'match',
 				'match_date',
 				'team_local',
@@ -55,7 +57,7 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							return $this->getFixture($value['division'], $value['championship']);
+							return $this->getFixture($value['actual_date'], $value['division'], $value['championship']);
 						}
 					}
 				}
@@ -69,23 +71,22 @@
 		 * @division int
 		 * @championship int
 		 */
-		private function getFixture ($division, $championship) {
+		private function getFixture ($actual_date, $division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 
 			$fixture = []; 
 			$q = 0;
 			$actualDate = false;
-			$newDate = true;
+			
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 					$q++;
-				}
-				if ($res['match']['day'] >= date('Y-m-d') && ($newDate < $res['match']['day'])) {
-					self::setSliderPosition($q);
-					$actualDate = true;
-					$newDate = $res['match']['day'];
+
+					if ($key == $actual_date && !$actualDate) {
+						self::setSliderPosition($q);
+					}
 				}
 				array_push($fixture[$key], $res['match']);
 			}
