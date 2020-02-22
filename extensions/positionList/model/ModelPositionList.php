@@ -47,7 +47,7 @@
 				'selections',
 				'tournament',
 				'championship',
-				'name',
+				'team',
 				'teams',
 				'team_shield',
 				'actual_date',
