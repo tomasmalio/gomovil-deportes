@@ -1,5 +1,16 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
+
+	function differenceInHours($startdate,$enddate){
+		$starttimestamp = strtotime($startdate);
+		$endtimestamp = strtotime($enddate);
+		$difference = abs($endtimestamp - $starttimestamp)/3600;
+		return $difference;
+	}
+	// if(!empty($_POST["submit"])) {
+	// 	$hours_difference = differenceInHours($_POST["startdate"],$_POST["enddate"]);	
+	// 	$message = "The Difference is " . $hours_difference . " hours";
+	// }
 	// print_r($nextMatches);
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
@@ -39,9 +50,15 @@
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
 							// print_r($match);
+							$dateMatch = $match['day'] . ' '. $match['hour'];
+							$dateToday = date('Y-m-d H:i:s');
+							echo $dateMatch;
+							echo $dateToday;
+							exit;
+							$hours_difference = differenceInHours($dateMatch, $dateToday);
 							if ($match['day'] == date('Y-m-d') && $match['hour'] < date('H:i:s')) {
 								$match['status'] = 'to start';
-							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $match['hour'] > date('H:i:s'))) {
+							} elseif (($match['day'] > date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $match['hour'] > date('H:i:s'))) {
 								$match['status'] = 'end';
 							} else {
 								$match['status'] = 'live';
