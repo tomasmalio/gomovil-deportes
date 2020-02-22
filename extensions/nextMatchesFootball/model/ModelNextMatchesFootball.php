@@ -3,15 +3,11 @@
 	 * Model Position List
 	 */
 	class ModelNextMatchesFootball {
-		// Url JSON
-		private $url = 'http://apiuf.gomovil.co/ligas/';
-		// Url tournaments content JSON
-		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
-
+		// URL JSON
 		private $json = 'http://gomovil.universofutbol.com/data.php?';
-
+		// User
 		private $user = 'gomovil';
-
+		// Password
 		private $pass = 'g0m0v1lc0&';
 
 		// Slider position

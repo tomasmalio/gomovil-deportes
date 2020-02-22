@@ -8,6 +8,15 @@
 		// Url tournaments content JSON
 		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
+		// URL JSON
+		private $json = 'http://gomovil.universofutbol.com/data.php?';
+		// User
+		private $user = 'gomovil';
+		// Password
+		private $pass = 'g0m0v1lc0&';
+
+		//http://gomovil.universofutbol.com/data.php?metodo=posiciones&user=gomovil&pwd=g0m0v1lc0&division=1&campeonato=1355
+
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -16,18 +25,18 @@
 				'selecciones',
 				'nombre',
 				'equipos',
-				'imagen',
+				'escudo',
 				'fecha_actual',
 				'posiciones',
 				'equipo',
 				'escudo',
-				'puesto',
-				'jugados',
-				'ganados',
-				'empatados',
-				'perdidos',
-				'goles_favor',
-				'goles_contra',
+				'ubicacion',
+				'partidos_jugados',
+				'partidos_ganados',
+				'partidos_empatados',
+				'partidos_perdidos',
+				'goles_a_favor',
+				'goles_en_contra',
 				'diferencia',
 				'puntos'
 			],
@@ -55,15 +64,26 @@
 		];
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
-				$typeTournament = $params['type'];
-				$tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
-				$tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				return Widgets::multiRenameKey(self::getPositions($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
+				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+				foreach ($array as $res) {
+					foreach ($res as $value) {
+						if ($value['key'] == $params['tournament']) {
+							return $this->getPositions($value['division'], $value['championship']);
+						}
+					}
+				}
+				// $typeTournament = $params['type'];
+				// $tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
+				// $tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
+				// return Widgets::multiRenameKey(self::getPositions($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 		}
 
 		private function getPositions ($key) {
-			return json_decode(file_get_contents($this->url . $key . '.json'), true);
+			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			print_r($array['positions']);
+			exit;
+			return $array['positions'];
 		}
 
 		private function getTournaments ($type, $name) {
