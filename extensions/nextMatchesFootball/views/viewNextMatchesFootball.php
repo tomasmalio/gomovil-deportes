@@ -39,18 +39,22 @@
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
 							echo "acaaaa";
-							print_r($match);
+							// print_r($match);
+							echo $match['day'];
+							echo date('Y-m-d', now());
+							echo $match['hour'];
+							echo date('H:i:s', now());
 							// exit;
-							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
-								$match['status'] = 'to start';
-								echo "1";
-							} elseif (($match['day'] < date('Y-m-d', now())) || (($match['day'] == date('Y-m-d', now())) && $match['hour'] > date('H:i:s', now()))) {
-								$match['status'] = 'end';
-								echo "2";
-							} else {
-								$match['status'] = 'live';
-								echo "3";
-							}
+							// if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
+							// 	$match['status'] = 'to start';
+							// 	echo "1";
+							// } elseif (($match['day'] < date('Y-m-d', now())) || (($match['day'] == date('Y-m-d', now())) && $match['hour'] > date('H:i:s', now()))) {
+							// 	$match['status'] = 'end';
+							// 	echo "2";
+							// } else {
+							// 	$match['status'] = 'live';
+							// 	echo "3";
+							// }
 							echo "aca:".$match['status'];
 							exit;
 							/* Switch of each status */
