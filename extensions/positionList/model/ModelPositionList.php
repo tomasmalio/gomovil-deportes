@@ -70,7 +70,6 @@
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-				print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
@@ -83,25 +82,21 @@
 		}
 
 		private function getPositions ($division, $championship) {
-			echo $division.'<br>';
-			echo $championship.'<br>';
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			print_r($array);
-			exit;
 			return $array['positions'];
 		}
 
-		private function getTournaments ($type, $name) {
-			$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			foreach ($tournament as $key => $t) {
-				if ($key == $type) {
-					foreach ($t as $value) {
-						if (Widgets::normalizeString($value['name']) == $name) {
-							return $value['key'];
-						}
-					}
-				}
-			}
-		}
+		// private function getTournaments ($type, $name) {
+		// 	$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+		// 	foreach ($tournament as $key => $t) {
+		// 		if ($key == $type) {
+		// 			foreach ($t as $value) {
+		// 				if (Widgets::normalizeString($value['name']) == $name) {
+		// 					return $value['key'];
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 ?>
