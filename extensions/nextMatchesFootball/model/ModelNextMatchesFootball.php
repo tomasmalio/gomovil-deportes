@@ -78,13 +78,13 @@
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 					$q++;
-				}
-				if ($res['match']['day'] >= date('Y-m-d') && !$actualDate) {
-					self::setSliderPosition($q);
-					$actualDate = true;
+					if ($res['match']['day'] >= date('Y-m-d') && !$actualDate) {
+						$actualDate = true;
+					}
 				}
 				array_push($fixture[$key], $res['match']);
 			}
+			self::setSliderPosition($q);
 			$return = [];
 			$return['fixture'] = $fixture;
 			return array_merge($return, ['slider_position' => $this->sliderPosition]);
