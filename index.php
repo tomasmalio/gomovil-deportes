@@ -741,7 +741,8 @@
 	/* Desktop */
 	else {
 		echo "aca:";
-		print_r($customization['import_fonts']);
+		$fonts = json_decode($customization['import_fonts'], true);
+		print_r($fonts);
 		$template 		= $twig->loadTemplate('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
