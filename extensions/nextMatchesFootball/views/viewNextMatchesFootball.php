@@ -65,7 +65,7 @@
 						<div class="col-12">
 							<?php $url = DOMAIN . '/' . (isset($content['section'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['section']['default'])))). '/' . (isset($content['titles']['match'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['titles']['match'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['titles']['match']['default'])))). '/'. $match['id'] . '/'.  ($this->normalizeString($match['team_local'])) . '-vs-' . ($this->normalizeString($match['team_visit']));?>
 							<a href="<?=$url?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
-						<div class="competition-date" <?php if ($match['status'] == 'live') {?>style="padding-bottom:25px;"<?php }?>><?= strftime('%d de %B', strtotime($match['day']));?></div>
+						<div class="competition-date" <?php /*if ($match['status'] == 'live') {?>style="padding-bottom:30px;"<?php }*/?>><?= strftime('%d de %B', strtotime($match['day']));?></div>
 								<div class="row match-teams">
 									<div class="col-5 match-team">
 										<div class="team">
@@ -89,23 +89,27 @@
 									<div class="col-2 match-info">
 										<?php if ($match['status'] == 'live' || $match['status'] == 'end') {?>
 											<?php if ($match['status'] == 'live'){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-										<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']?></time><?php } else {?>Final<?php }?></div>
-											<div class="match-divider">
-												<div class="match-divider-content">
-													<div class="result football">
-														<span class="number"><?=$match['team_result_local'];?></span> - <span class="number"><?=$match['team_result_visit'];?></span>
-													</div>
+										<div class="time-playing">
+											<?php if ($match['status'] == 'live'){?>
+											<?php /*<span><?php if ($match['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']?></time>*/?>
+											<?php } else {?>Final<?php }?>
+										</div>
+										<div class="match-divider">
+											<div class="match-divider-content">
+												<div class="result football">
+													<span class="number"><?=$match['team_result_local'];?></span> - <span class="number"><?=$match['team_result_visit'];?></span>
 												</div>
 											</div>
+										</div>
 											<?php if (isset($match['penalties']) && !empty($match['penalties'])) {?>
-											<div class="penalty-score">(<?=$match['penalties']['team_result_local']?>) - (<?=$match['penalties']['team_result_visit']?>)</div>
+										<div class="penalty-score">(<?=$match['penalties']['team_result_local']?>) - (<?=$match['penalties']['team_result_visit']?>)</div>
 											<?php }?>
 										<?php } else {?>
-											<div class="match-divider">
-												<div class="match-divider-content">
-													<div class="time-to-play"><?=date('H:i', strtotime($match['hour']))?></div>
-												</div>
+										<div class="match-divider">
+											<div class="match-divider-content">
+												<div class="time-to-play"><?=date('H:i', strtotime($match['hour']))?></div>
 											</div>
+										</div>
 										<?php }?>
 									</div>
 									<div class="col-5 match-team">
