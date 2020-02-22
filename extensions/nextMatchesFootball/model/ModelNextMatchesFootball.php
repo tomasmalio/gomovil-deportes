@@ -75,9 +75,11 @@
 			$actualDate = false;
 			foreach ($array['fixture'] as $res) {
 				$key = $res['match']['match_date'];
+				echo $key.'<br>';
 				if (!array_key_exists($res['match']['match_date'], $fixture)) {
 					$fixture[$key] = [];
 					$q++;
+					echo $q.'<br>';
 				}
 				if ($res['match']['day'] >= date('Y-m-d') && !$actualDate) {
 					self::setSliderPosition($q);
