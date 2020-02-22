@@ -27,6 +27,9 @@
 		{% endfor %}
 		<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" crossorigin="anonymous">
 		{{ importFonts }}
+		{% for key, font in importFonts %}
+		<link rel="stylesheet" href="{{ font }}">
+		{% endfor %}
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="/assets/slidebars/slidebars.min.css?v=20190701">

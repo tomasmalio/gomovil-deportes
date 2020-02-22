@@ -706,7 +706,7 @@
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-
+		
 		$htmlContent = $template->render([
 			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
@@ -744,20 +744,13 @@
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
-		$imporFonts 	= json_decode($customization['import_fonts'], true);
-
-		$fonts = '';
-		foreach ($imporFonts as $font) {
-			$fonts .= '<link rel="stylesheet" href="'.$font.'">';
-		}
-
 		echo $template->render([
 			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
 			'globalStyle'				=> $globalStyle,
 			'assetsStyle'				=> $assetsStyle,
 			'assetsJs'					=> $assetsJs,
-			'importFonts'				=> $fonts,
+			'importFonts'				=> json_decode($customization['import_fonts'], true),
 			'metatags'					=> $metatag,
 			'widgets'					=> $widgets,
 			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
