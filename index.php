@@ -740,9 +740,6 @@
 	
 	/* Desktop */
 	else {
-		echo "aca:";
-		$fonts = json_decode($customization['import_fonts'], true);
-		print_r($fonts);
 		$template 		= $twig->loadTemplate('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
@@ -753,6 +750,7 @@
 			'globalStyle'				=> $globalStyle,
 			'assetsStyle'				=> $assetsStyle,
 			'assetsJs'					=> $assetsJs,
+			'importFonts'				=> json_decode($customization['import_fonts'], true),
 			'metatags'					=> $metatag,
 			'widgets'					=> $widgets,
 			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
