@@ -38,6 +38,7 @@
 					<?php 
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
+							echo "acaaaa";
 							print_r($match);
 							// exit;
 							if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
