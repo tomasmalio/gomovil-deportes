@@ -62,10 +62,11 @@
 				'points'
 			],
 		];
-		
+
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+				print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
@@ -78,8 +79,8 @@
 		}
 
 		private function getPositions ($division, $championship) {
-			echo $division;
-			echo $championship;
+			echo $division.'<br>';
+			echo $championship.'<br>';
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			print_r($array);
 			exit;
