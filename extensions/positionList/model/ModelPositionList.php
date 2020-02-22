@@ -4,9 +4,9 @@
 	 */
 	class ModelPositionList {
 		// Url JSON
-		private $url = 'http://apiuf.gomovil.co/ligas/';
-		// Url tournaments content JSON
-		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
+		// private $url = 'http://apiuf.gomovil.co/ligas/';
+		// // Url tournaments content JSON
+		// private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
 		// URL JSON
 		private $json = 'http://gomovil.universofutbol.com/data.php?';
@@ -65,6 +65,7 @@
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+				print_r($array);
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
