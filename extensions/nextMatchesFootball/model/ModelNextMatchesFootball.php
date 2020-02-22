@@ -19,7 +19,7 @@
 				'nombre',
 				'torneo',
 				'campeonato',
-				'fecha_actual'
+				'fecha_actual',
 				'partido',
 				'fecha',
 				'local',
@@ -57,8 +57,6 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							print_r($value);
-							exit;
 							return $this->getFixture($value['actual_date'], $value['division'], $value['championship']);
 						}
 					}
