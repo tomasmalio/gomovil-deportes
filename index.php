@@ -685,79 +685,28 @@
 			],
 		],
 	];
+
 	$metatags = new MetaTags($json);
 	$metatag = $metatags->renderView(); 
 
-	/**
-	 * Render view
-	 */
-	if (isset($client['amp']) && $client['amp']) {
-		
-		$template 		= $twig->load('generateIndexAmp.tpl.html');
-		$assetsGeneral['css'] = [];
-		array_push($assetsGeneral['css'], ['less/bootstrap-amp.min.css']);
-		// array_push($assetsGeneral['css'], ['https://use.fontawesome.com/releases/v5.7.0/css/all.css']);
-		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
-		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
-		array_push($assetsGeneral['css'], [''.$globalStyle.'']);
-		// $assetsStyle	= '';
-		$assetsStyle	= '';
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assetsGeneral['css']);
-		$assetsStyle 	.= $assetsConstructor->generateAssetsAmp($assets['css']);
-		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
+	// Creating the template
+	$template 		= $twig->loadTemplate('generateIndex.html');
+	$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
+	$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
 
-		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-		$htmlContent = $template->render([
-			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
-			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
-			'globalStyle'				=> $globalStyle,
-			'assetsStyle'				=> $assetsStyle,
-			'assetsJs'					=> $assetsJs,
-			'metatags'					=> $metatag,
-			'widgets'					=> $widgets,
-			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
-			'logo'						=> $client['logo'],
-			'menu'						=> $menu,
-			'country'					=> COUNTRY_CODE,
-			'url'						=> $_SERVER['REQUEST_URI'],
-			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
-		]);
-		// print_r($htmlContent);
-		// exit;
-		/* Amp Remove Unused CSS */
-		if ($htmlContent) {
-			$ampRemoveUnusedCSS = new AmpRemoveUnusedCss();
-			$ampRemoveUnusedCSS->process($htmlContent);
-			echo $ampRemoveUnusedCSS->result();
-		}
-		
-		// echo $htmlContent;
-		// $tmp = new AmpRemoveUnusedCss();
-		// $css_minified = $tmp->minify($assetsStyle);
-		// print_r($css_minified);
-
-	} 
-	
-	/* Desktop */
-	else {
-		$template 		= $twig->loadTemplate('generateIndex.html');
-		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
-		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-
-		echo $template->render([
-			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
-			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
-			'globalStyle'				=> $globalStyle,
-			'assetsStyle'				=> $assetsStyle,
-			'assetsJs'					=> $assetsJs,
-			'importFonts'				=> json_decode($customization['import_fonts'], true),
-			'metatags'					=> $metatag,
-			'widgets'					=> $widgets,
-			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
-			'logo'						=> $client['logo'],
-			'menu'						=> $menu,
-			'country'					=> COUNTRY_CODE,
-			'url'						=> $_SERVER['REQUEST_URI'],
-			'urlCanonical'				=> $_SERVER['HTTP_HOST'],
-		]);
-	}
+	echo $template->render([
+		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+		'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
+		'globalStyle'				=> $globalStyle,
+		'assetsStyle'				=> $assetsStyle,
+		'assetsJs'					=> $assetsJs,
+		'importFonts'				=> json_decode($customization['import_fonts'], true),
+		'metatags'					=> $metatag,
+		'widgets'					=> $widgets,
+		'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
+		'logo'						=> $client['logo'],
+		'menu'						=> $menu,
+		'country'					=> COUNTRY_CODE,
+		'url'						=> $_SERVER['REQUEST_URI'],
+		'urlCanonical'				=> $_SERVER['HTTP_HOST'],
+	]);
