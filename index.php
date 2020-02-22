@@ -748,7 +748,7 @@
 
 		$fonts = '';
 		foreach ($imporFonts as $font) {
-			$fonts .= '<link rel="stylesheet" href="'.$font.'">\n';
+			$fonts .= '<link rel="stylesheet" href="'.$font.'">';
 		}
 
 		echo $template->render([
