@@ -746,8 +746,9 @@
 
 		$imporFonts 	= json_decode($customization['import_fonts'], true);
 
+		$fonts = '';
 		foreach ($imporFonts as $font) {
-			print_r($font);
+			$fonts .= '<link rel="stylesheet" href="'.$font.'">\n';
 		}
 
 		echo $template->render([
@@ -756,6 +757,7 @@
 			'globalStyle'				=> $globalStyle,
 			'assetsStyle'				=> $assetsStyle,
 			'assetsJs'					=> $assetsJs,
+			'importFonts'				=> $fonts,
 			'metatags'					=> $metatag,
 			'widgets'					=> $widgets,
 			'template'					=> ($section['age_control'] && !$_SESSION['age_control']) ? '-age-control' : ((isset($section['layout_id'])) ? $section['layout_id'] : 1),
