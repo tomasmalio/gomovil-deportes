@@ -41,9 +41,9 @@
 							echo "acaaaa";
 							// print_r($match);
 							echo $match['day'];
-							echo date('Y-m-d', now());
+							echo date('Y-m-d');
 							echo $match['hour'];
-							echo date('H:i:s', now());
+							echo date('H:i:s');
 							// exit;
 							// if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
 							// 	$match['status'] = 'to start';
