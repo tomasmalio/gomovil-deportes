@@ -60,7 +60,7 @@
 								$match['status'] = 'to start';
 							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $hours_difference >= 2)) {
 								$match['status'] = 'end';
-							} else {
+							} else if ($match['day'] == date('Y-m-d') && ($hours_difference > 0 && $hours_difference <= 2)) {
 								$match['status'] = 'live';
 								echo $hours_difference;
 							}
