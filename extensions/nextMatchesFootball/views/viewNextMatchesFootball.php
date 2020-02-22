@@ -56,7 +56,7 @@
 							echo $match['day'] . '<br>';
 							echo date('Y-m-d') . '<br>';
 							echo $hours_difference;
-							if ($match['day'] == date('Y-m-d') && $hours_difference < 15) {
+							if ($match['day'] == date('Y-m-d') && $hours_difference < 0.25) {
 								$match['status'] = 'to start';
 							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $hours_difference >= 2)) {
 								$match['status'] = 'end';
