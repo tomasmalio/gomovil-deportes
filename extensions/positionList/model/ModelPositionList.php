@@ -82,7 +82,7 @@
 
 		private function getPositions ($division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			print_r($array['positions']);
+			print_r($array);
 			exit;
 			return $array['positions'];
 		}
