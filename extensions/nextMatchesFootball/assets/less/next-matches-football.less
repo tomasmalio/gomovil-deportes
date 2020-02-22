@@ -1,3 +1,9 @@
+@next-matches-title-color: @color-quarter;
+@next-matches-title-font-family: @h3-font-family;
+@next-matches-title-font-size: 12pt;
+@next-matches-title-font-weight: @h3-font-weight;
+@next-matches-title-padding: 0;
+
 section.nextmatchesfootball {
 	margin: 0 0 15px 0;
 	.nextmatchesfootball-content {
@@ -15,11 +21,11 @@ section.nextmatchesfootball {
 		margin-bottom: 15px;
 	}
 	h2 {
-		color: #3b3b3b;
-		font-family: 'Nunito', sans-serif;
-		font-size: 16pt;
-		font-weight: 800;
-		padding: 0 0 10px 0;
+		color: @next-matches-title-color;
+		font-family: @next-matches-title-font-family;
+		font-size: @next-matches-title-font-size;
+		font-weight: @next-matches-title-font-weight;
+		padding: @next-matches-title-padding;
 	}
 	.date-matches {
 		color: #555555;
@@ -233,7 +239,7 @@ section.nextmatchesfootball {
 							right: 0;
 							text-align: center;
 							text-transform: uppercase;
-							top: -30px;
+							top: -13px;
 							position: absolute;
 							.situation {
 								background: #41da41;
