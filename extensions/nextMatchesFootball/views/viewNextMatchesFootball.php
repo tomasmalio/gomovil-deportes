@@ -38,25 +38,16 @@
 					<?php 
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
-							echo "acaaaa";
-							// print_r($match);
-							echo $match['day'];
-							echo date('Y-m-d');
-							echo $match['hour'];
-							echo date('H:i:s');
-							// exit;
-							// if ($match['day'] == date('Y-m-d', now()) && $match['hour'] < date('H:i:s', now())) {
-							// 	$match['status'] = 'to start';
-							// 	echo "1";
-							// } elseif (($match['day'] < date('Y-m-d', now())) || (($match['day'] == date('Y-m-d', now())) && $match['hour'] > date('H:i:s', now()))) {
-							// 	$match['status'] = 'end';
-							// 	echo "2";
-							// } else {
-							// 	$match['status'] = 'live';
-							// 	echo "3";
-							// }
+							
+							if ($match['day'] == date('Y-m-d') && $match['hour'] < date('H:i:s')) {
+								$match['status'] = 'to start';
+							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $match['hour'] > date('H:i:s'))) {
+								$match['status'] = 'end';
+							} else {
+								$match['status'] = 'live';
+							}
 							echo "aca:".$match['status'];
-							exit;
+							// exit;
 							/* Switch of each status */
 							// switch ($match['status']) {
 							// 	case 'Por comenzar':
