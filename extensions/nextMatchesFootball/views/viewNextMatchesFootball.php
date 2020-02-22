@@ -55,28 +55,15 @@
 							$hours_difference = differenceInHours($dateMatch, $dateToday);
 							// echo $match['day'] . '<br>';
 							// echo date('Y-m-d') . '<br>';
-							// echo $hours_difference;
+							echo $hours_difference;
 							if ($match['day'] == date('Y-m-d') && $hours_difference < 15) {
 								$match['status'] = 'to start';
 							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $hours_difference >= 2)) {
 								$match['status'] = 'end';
 							} else {
 								$match['status'] = 'live';
+								echo $hours_difference;
 							}
-							// echo "aca:".$match['status'];
-							// exit;
-							/* Switch of each status */
-							// switch ($match['status']) {
-							// 	case 'Por comenzar':
-							// 		$match['status'] = 'to start';
-							// 		break;
-							// 	case 'En vivo':
-							// 		$match['status'] = 'live';
-							// 		break;
-							// 	case 'Finalizado':
-							// 		$match['status'] = 'end';
-							// 		break;	
-							// }
 					?>
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">

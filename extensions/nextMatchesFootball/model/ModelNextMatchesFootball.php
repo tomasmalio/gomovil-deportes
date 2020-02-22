@@ -67,6 +67,12 @@
 			return null;
 		}
 
+		/**
+		 * Get fixture
+		 * 
+		 * @division int
+		 * @championship int
+		 */
 		private function getFixture ($division, $championship) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=fixture&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 
@@ -91,43 +97,6 @@
 			$return['fixture'] = $fixture;
 			return array_merge($return, ['slider_position' => $this->sliderPosition]);
 		}
-
-		/**
-		 * Get the fixture by the key
-		 */
-		// private function getFixture ($key) {
-		// 	$array = json_decode(file_get_contents($this->url . $key . '.json'), true);
-		// 	print_r($array);
-		// 	if (isset($array['fecha_actual']) && !is_numeric($array['fecha_actual'])) {
-		// 		$q = 1;
-		// 		foreach ($array['fixture'] as $key => $a) {
-		// 			if ($key == $array['fecha_actual']) {
-		// 				self::setSliderPosition($q);
-		// 				break;
-		// 			}
-		// 			$q++;
-		// 		}
-		// 	} elseif (isset($array['fecha_actual']) && is_numeric($array['fecha_actual'])) {
-		// 		self::setSliderPosition($array['fecha_actual']);
-		// 	}
-		// 	return array_merge($array, ['slider_position' => $this->sliderPosition]);
-		// }
-
-		/**
-		 * Get the tournament
-		 */
-		// private function getTournaments ($type, $name) {
-		// 	$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-		// 	foreach ($tournament as $key => $t) {
-		// 		if ($key == $type) {
-		// 			foreach ($t as $value) {
-		// 				if (Widgets::normalizeString($value['name']) == $name) {
-		// 					return $value['key'];
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 
 		/**
 		 * Set the position for the slider
