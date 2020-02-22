@@ -38,7 +38,7 @@
 					<?php 
 						/* Matches of competitions dates */
 						foreach ($competitionDays as $match) {
-							print_r($match);
+							// print_r($match);
 							if ($match['day'] == date('Y-m-d') && $match['hour'] < date('H:i:s')) {
 								$match['status'] = 'to start';
 							} elseif (($match['day'] < date('Y-m-d')) || (($match['day'] == date('Y-m-d')) && $match['hour'] > date('H:i:s'))) {
@@ -94,7 +94,7 @@
 											<div class="match-divider">
 												<div class="match-divider-content">
 													<div class="result football">
-														<span class="number"><?=$match['local_result'];?></span> - <span class="number"><?=$match['visit_result'];?></span>
+														<span class="number"><?=$match['team_result_local'];?></span> - <span class="number"><?=$match['team_result_visit'];?></span>
 													</div>
 												</div>
 											</div>
