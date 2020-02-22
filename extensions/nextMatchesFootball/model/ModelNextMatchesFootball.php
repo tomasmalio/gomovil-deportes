@@ -68,6 +68,7 @@
 		/**
 		 * Get fixture
 		 * 
+		 * @actual_date String
 		 * @division int
 		 * @championship int
 		 */

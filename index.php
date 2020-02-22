@@ -740,6 +740,7 @@
 	
 	/* Desktop */
 	else {
+		print_r($customization['import_fonts']);
 		$template 		= $twig->loadTemplate('generateIndex.html');
 		$assetsStyle 	= $assetsConstructor->generateAssets($assets['css']);
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
