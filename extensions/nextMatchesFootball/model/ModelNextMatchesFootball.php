@@ -57,7 +57,7 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							echo $value['actual_date'];
+							print_r($value);
 							exit;
 							return $this->getFixture($value['actual_date'], $value['division'], $value['championship']);
 						}
