@@ -696,6 +696,7 @@
 		$template 		= $twig->load('generateIndexAmp.tpl.html');
 		$assetsGeneral['css'] = [];
 		array_push($assetsGeneral['css'], ['less/bootstrap-amp.min.css']);
+		// array_push($assetsGeneral['css'], ['https://use.fontawesome.com/releases/v5.7.0/css/all.css']);
 		array_push($assetsGeneral['css'], ['assets/slidebars/slidebars.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], ['assets/swiper/css/swiper.min.css?v=20190701']);
 		array_push($assetsGeneral['css'], [''.$globalStyle.'']);
@@ -706,7 +707,6 @@
 		$assetsStyle 	= str_replace('!important', '', $assetsStyle);
 
 		$assetsJs 		= $assetsConstructor->generateAssets($assets['js']);
-		
 		$htmlContent = $template->render([
 			'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 			'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
