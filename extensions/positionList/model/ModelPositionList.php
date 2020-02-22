@@ -62,6 +62,7 @@
 				'points'
 			],
 		];
+		
 		public function model ($params = []) {
 			if ($params['type'] && $params['tournament']) {
 				$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
@@ -72,11 +73,8 @@
 						}
 					}
 				}
-				// $typeTournament = $params['type'];
-				// $tournamentName = $params['tournaments'][$params['type']][$params['tournament']]['name']['default'];
-				// $tournament = self::getTournaments($typeTournament, Widgets::normalizeString($tournamentName));
-				// return Widgets::multiRenameKey(self::getPositions($tournament), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
+			return null;
 		}
 
 		private function getPositions ($division, $championship) {
