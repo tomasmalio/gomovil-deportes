@@ -77,7 +77,7 @@
 			<div class="col-2 match-info">
 				<?php if ($match['status'] == 'live' || $match['status'] == 'end') {?>
 					<?php if ($match->status == 'live'){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-				<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['minuto'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['minuto'] . ':' . $match['minuto']?></time><?php } else {?>Final<?php }?></div>
+				<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['minutes']?>'</time><?php } else {?>Final<?php }?></div>
 					<div class="match-divider">
 						<div class="match-divider-content">
 							<div class="result football">
