@@ -151,19 +151,19 @@
 				<!-- Total Offside-->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding">0</div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['offsides']?></div>
 						<div class="col-8 stats-progress-description">Posición adelantadas</div>
-						<div class="col-2 stats-progress-result right ng-binding">0</div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['offsides']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100" style="width: NaN%;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['offsides'] * 100) / ($stats['stats']['local_team']['offsides'] + $stats['stats']['visit_team']['offsides']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100" style="width: NaN%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['offsides'] * 100) / ($stats['stats']['local_team']['offsides'] + $stats['stats']['visit_team']['offsides']);?>%"></div>
 							</div>
 						</div>
 					</div>
@@ -172,19 +172,19 @@
 				<!-- Total Yellow cards-->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding">0</div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['yellow_card']?></div>
 						<div class="col-8 stats-progress-description">Tarjetas amarillas</div>
-						<div class="col-2 stats-progress-result right ng-binding">1</div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['yellow_card']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['yellow_card'] * 100) / ($stats['stats']['local_team']['yellow_card'] + $stats['stats']['visit_team']['yellow_card']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['yellow_card'] * 100) / ($stats['stats']['local_team']['yellow_card'] + $stats['stats']['visit_team']['yellow_card']);?>%"></div>
 							</div>
 						</div>
 					</div>
@@ -193,19 +193,19 @@
 				<!-- Total Red cards-->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding">0</div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['yellow_card']?></div>
 						<div class="col-8 stats-progress-description">Tarjetas Rojas</div>
-						<div class="col-2 stats-progress-result right ng-binding">0</div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['yellow_card']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100" style="width: NaN%;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['red_card'] * 100) / ($stats['stats']['local_team']['red_card'] + $stats['stats']['visit_team']['red_card']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="NaN" aria-valuemin="0" aria-valuemax="100" style="width: NaN%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['red_card'] * 100) / ($stats['stats']['local_team']['red_card'] + $stats['stats']['visit_team']['red_card']);?>%"></div>
 							</div>
 						</div>
 					</div>
