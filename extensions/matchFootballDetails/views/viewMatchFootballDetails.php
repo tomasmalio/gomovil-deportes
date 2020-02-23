@@ -24,8 +24,8 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="match-info">
-					<?php if (isset($match['time']) && $math['time'] !== '') {?>
-					<span><?= $match['time']?></span>
+					<?php if (isset($match['datetime']) && $math['datetime'] !== '') {?>
+					<span><?= date('d-m-Y H:i', strtotime($match['datetime']))?></span>
 					<?php
 							$before = true; 
 						}
@@ -36,7 +36,7 @@
 					<?php
 							}
 					?>
-					<span><?= $match['datetime']?></span> 
+					<span><?= date('d-m-Y H:i', strtotime($match['datetime']))?></span>
 					<?php
 							$last = true; 
 						}
