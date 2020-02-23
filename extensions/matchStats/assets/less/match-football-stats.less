@@ -1,20 +1,53 @@
+@match-stats-title-font-family: @h2-font-family;
+@match-stats-title-font-size: @h2-font-size;
+@match-stats-title-font-weight: @h2-font-weight;
+@match-stats-title-color: @color-quarter;
+@match-stats-title-padding: 0;
 
+@match-stats-progress-content-padding: 0 0 10px 0;
+
+@match-stats-progress-content-team-shield-width: 25px;
+
+@match-stats-progress-content-team-name-font-family: @p-font-family;
+@match-stats-progress-content-team-name-font-weight: @p-font-weight;
+@match-stats-progress-content-team-name-font-size: @p-font-size;
+@match-stats-progress-content-team-name-color: @color-quarter;
+@match-stats-progress-content-team-name-padding: 5px 0 0 0;
+
+@match-stats-progress-result-font-family: @p-font-family;
+@match-stats-progress-result-font-size: @p-font-size;
+@match-stats-progress-result-font-weight: @p-font-weight;
+@match-stats-progress-result-color: @color-quarter;
+
+@match-stats-progress-result-description-font-family: @p-font-family;
+@match-stats-progress-result-description-font-size: @p-font-size;
+@match-stats-progress-result-description-font-weight: @p-font-weight;
+@match-stats-progress-result-description-color: @color-quarter;
+@match-stats-progress-result-description-text-align: center;
+@match-stats-progress-result-description-padding: 0 0 4px 0;
 
 section.match-stats {
 	margin-top: 30px;
+	h2 {
+		color: @match-stats-title-color;
+		font-family: @match-stats-title-font-family;
+		font-size: @match-stats-title-font-size;
+		font-weight: @match-stats-title-font-weight;
+		padding: @match-stats-title-padding;
+	}
 	.stats-content {
 		.progress-content {
-			padding-bottom: 10px;
+			padding: @match-stats-progress-content-padding;
 			.progress-content-team {
 				position: relative;
 				.progress-content-team-shield-left {
 					position: absolute;
-					width: 25px;
+					width: @match-stats-progress-content-team-shield-width;
 					left: 0;
 				}
 				.progress-content-team-shield-right {
 					position: absolute;
-					width: 25px;
+					width: @match-stats-progress-content-team-shield-width;
 					right: 0;
 				}
 				.progress-content-team-shield-left img,
@@ -23,26 +56,34 @@ section.match-stats {
 					height: auto;
 				}
 				.progress-content-team-name {
-					padding-top: 5px;
-					font-size: 9pt;
-					color: #333;
+					color: @match-stats-progress-content-team-name-color;
+					font-family: @match-stats-progress-content-team-name-font-family;
+					font-weight: @match-stats-progress-content-team-name-font-weight;
+					font-size: @match-stats-progress-content-team-name-font-size;
+					padding: @match-stats-progress-content-team-name-padding;
 				}
 				.left {
-					margin-left: 30px;
+					margin-left: @match-stats-progress-content-team-shield-width + 5px;
 					text-align: left;
 				}
 				.right {
-					margin-right: 30px;
+					margin-right: @match-stats-progress-content-team-shield-width + 5px;
 					text-align: right;
 				}
 			}
 			.stats-progress-result {
-				font-size: 10pt;
+				font-family: @match-stats-progress-result-font-family;
+				font-size: @match-stats-progress-result-font-size;
+				font-weight: @match-stats-progress-result-font-weight;
+				color: @match-stats-progress-result-color;
 			}
 			.stats-progress-description {
-				text-align: center;
-				font-size: 10pt;
-				padding-bottom: 4px;
+				color: @match-stats-progress-result-description-color;
+				font-family: @match-stats-progress-result-description-font-family;
+				font-size: @match-stats-progress-result-description-font-size;
+				font-weight: @match-stats-progress-result-description-font-weight;
+				padding: @match-stats-progress-result-description-padding;
+				text-align: @match-stats-progress-result-description-text-align;
 			}
 			.progress-bars-column {
 				.progress {
