@@ -53,7 +53,7 @@
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['local_gol'] * 100)/ ($stats['local_gol'] + $stats['visit_gol']);?>"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['local_gol'] * 100)/ ($stats['local_gol'] + $stats['visit_gol']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
@@ -74,12 +74,12 @@
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots_on_target'] * 100)/ ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots_on_target'] * 100) / ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots_on_target'] * 100)/ ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots_on_target'] * 100) / ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
 							</div>
 						</div>
 					</div>
@@ -95,12 +95,12 @@
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots'] * 100)/ ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots'] * 100) / ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots'] * 100)/ ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots'] * 100) / ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
 							</div>
 						</div>
 					</div>
@@ -109,19 +109,19 @@
 				<!-- Total Saves -->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding">1</div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['tied']?></div>
 						<div class="col-8 stats-progress-description">Atajadas</div>
-						<div class="col-2 stats-progress-result right ng-binding">1</div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['tied']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: 50%;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['tied'] * 100) / ($stats['stats']['local_team']['tied'] + $stats['stats']['visit_team']['tied']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: 50%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['tied'] * 100) / ($stats['stats']['local_team']['tied'] + $stats['stats']['visit_team']['tied']);?>%"></div>
 							</div>
 						</div>
 					</div>
