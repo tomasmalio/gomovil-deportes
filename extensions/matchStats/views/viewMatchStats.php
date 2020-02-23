@@ -1,7 +1,7 @@
 <?php
 	$stats = $content['content'];
 ?>
-<section class="match-stats">
+<section class="matchstats">
 	<!-- Match stats / Stats / Match / Match container -->
 	<!-- <div class="title-section">Estadísticas del partido</div> -->
 	<h2><?php if (isset($content['titles']['match_statistics'][COUNTRY_CODE])) { echo $content['titles']['match_statistics'][COUNTRY_CODE]; } else { echo $content['titles']['match_statistics']['default'];}?></h2>
