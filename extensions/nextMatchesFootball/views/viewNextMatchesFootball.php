@@ -7,11 +7,7 @@
 		$difference = abs($endtimestamp - $starttimestamp)/3600;
 		return $difference;
 	}
-	// if(!empty($_POST["submit"])) {
-	// 	$hours_difference = differenceInHours($_POST["startdate"],$_POST["enddate"]);	
-	// 	$message = "The Difference is " . $hours_difference . " hours";
-	// }
-	// print_r($nextMatches);
+
 	if (isset($nextMatches) && is_array($nextMatches) && count($nextMatches) > 0) {
 ?>
 <!-- Next matches football -->
