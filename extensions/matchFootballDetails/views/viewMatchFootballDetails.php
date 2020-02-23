@@ -10,6 +10,7 @@
 			$match['status'] = 'to start';
 			break;
 		case 'En vivo':
+		case 'En Juego':
 			$match['status'] = 'live';
 			break;
 		case 'Finalizado':
@@ -80,12 +81,12 @@
 					<div class="match-divider">
 						<div class="match-divider-content">
 							<div class="result football">
-								<span class="number"><?=$match['gol_local'];?></span> - <span class="number"><?=$match['gol_visit'];?></span>
+								<span class="number"><?=$match['local_gol'];?></span> - <span class="number"><?=$match['visit_gol'];?></span>
 							</div>
 						</div>
 					</div>
-					<?php if ((isset($match['penal_local']) && !empty($match['penal_local'])) && (isset($match['penal_visit']) && !empty($match['penal_visit']))) {?>
-					<div class="penalty-score">(<?=$match['gol_local']?>) - (<?=$match['gol_visit']?>)</div>
+					<?php if ((isset($match['local_penalty']) && !empty($match['local_penalty'])) && (isset($match['visit_penalty']) && !empty($match['visit_penalty']))) {?>
+					<div class="penalty-score">(<?=$match['local_gol']?>) - (<?=$match['visit_gol']?>)</div>
 					<?php }?>
 				<?php } else {?>
 					<div class="match-divider">
@@ -97,10 +98,10 @@
 			</div>
 			<div class="col-5 match-team">
 				<div class="team">
-					<div class="shield right"><img src="<?=$match['team_image_visit']?>" name="visit" title="" alt=""></div>
+					<div class="shield right"><img src="<?=$match['visit_image']?>" name="visit" title="" alt=""></div>
 					<div class="team-name right">
 						<div class="team-name-container">
-							<div class="cell"><?=$match['team_visit']?></div>
+							<div class="cell"><?=$match['visit_team']?></div>
 						</div>
 					</div>
 				</div>
