@@ -504,7 +504,8 @@
 			$externalContent = $CachedExternalContent->get();
 		}
 
-		$extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
+		// $extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
+		$extensionName 	= $extension['directory'];
 		$objetName 		= str_replace(' ', '', $extension['name']);
 		$variable 		= lcfirst($objetName);
 		$widget			= 'widget'.$objetName;
