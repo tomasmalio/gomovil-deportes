@@ -8,6 +8,18 @@
 		// Url tournaments content JSON
 		private $urlTournaments = 'http://apiuf.gomovil.co/ligas/ligas.json';
 
+
+
+		// URL JSON
+		private $json = 'http://gomovil.universofutbol.com/partido_detalle.php?';
+		// User
+		private $user = 'gomovil';
+		// Password
+		private $pass = 'g0m0v1lc0&';
+
+		//http://gomovil.universofutbol.com/partido_detalle.php?id=207642
+
+
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -22,11 +34,11 @@
 				'fecha_actual',
 				'posiciones',
 				'local',
-				'local_img',
+				'escudo_local',
 				'goles_local',
 				'penal_local',
 				'visitante',
-				'visitante_img',
+				'escudo_visitante',
 				'goles_visitante',
 				'penal_visitante',
 				'dt_visitante',
@@ -75,6 +87,8 @@
 				'player'
 			],
 		];
+
+
 		
 		public function model ($params = []) {
 			if ($params['match']) {
@@ -84,8 +98,8 @@
 			}
 		}
 
-		private function getMatchDetails ($key) {
-			$json = @file_get_contents($this->url . $key . '.json');
+		private function getMatchDetails ($match_id) {
+			$json = @file_get_contents($this->json . 'id=' . $match_id . '&user=' . $this->user . '&pwd=' . $this->pass);
 			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json, true);
 			} else { 
