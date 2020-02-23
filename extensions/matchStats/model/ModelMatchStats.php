@@ -9,7 +9,7 @@
 		private $user = 'gomovil';
 		// Password
 		private $pass = 'g0m0v1lc0&';
-		
+
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -79,6 +79,7 @@
 		];
 
 		public function model ($params = []) {
+			echo "aca";
 			if ($params['match']) {
 				$match = Widgets::multiRenameKey(self::getMatchDetails($params['match']), $this->mappingName['wrong'], $this->mappingName['verify']);
 				return $match['match'];
