@@ -1,7 +1,5 @@
 <?php
-
 	$match = $content['content'];
-	print_r($match);
 	$interactions = $content['content']['interaction'];
 
 	/* Switch of each status */
