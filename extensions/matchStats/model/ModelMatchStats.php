@@ -1,19 +1,15 @@
 <?php
 	/**
-	 * Model Match Football Details
+	 * Model Match Stats
 	 */
-	class ModelMatchFootballDetails {
-
+	class ModelMatchStats {
 		// URL JSON
 		private $json = 'http://gomovil.universofutbol.com/partido_detalle.php?';
 		// User
 		private $user = 'gomovil';
 		// Password
 		private $pass = 'g0m0v1lc0&';
-
-		//http://gomovil.universofutbol.com/partido_detalle.php?id=207642
-
-
+		
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -82,7 +78,6 @@
 			],
 		];
 
-		
 		public function model ($params = []) {
 			if ($params['match']) {
 				$match = Widgets::multiRenameKey(self::getMatchDetails($params['match']), $this->mappingName['wrong'], $this->mappingName['verify']);
@@ -100,6 +95,4 @@
 				return null;
 			}
 		}
-
 	}
-?>
