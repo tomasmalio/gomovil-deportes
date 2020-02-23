@@ -28,14 +28,14 @@
 					<?php
 							$before = true; 
 						}
-						if (isset($match['date']) && $math['date'] !== '') {
+						if (isset($match['datime']) && $math['datime'] !== '') {
 							if ($before) {
 					?>
 						|
 					<?php
 							}
 					?>
-					<span><?= $match['date']?></span> 
+					<span><?= $match['datetime']?></span> 
 					<?php
 							$last = true; 
 						}
@@ -56,10 +56,10 @@
 		<div class="row match-teams">
 			<div class="col-5 match-team">
 				<div class="team">
-					<div class="shield left"><img src="<?=$match['team_image_local']?>" name="local" title="" alt=""></div>
+					<div class="shield left"><img src="<?=$match['local_image']?>" name="local" title="" alt=""></div>
 					<div class="team-name left">
 						<div class="team-name-container">
-							<div class="cell"><?=$match['team_local']?></div>
+							<div class="cell"><?=$match['local_team']?></div>
 						</div>
 					</div>
 				</div>
