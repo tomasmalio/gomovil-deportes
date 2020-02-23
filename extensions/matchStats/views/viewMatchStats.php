@@ -4,7 +4,7 @@
 <div class="col-12 match-stats center-block">
 	<!-- Match stats / Stats / Match / Match container -->
 	<!-- <div class="title-section">Estadísticas del partido</div> -->
-	<h2><?php if (isset($content['titles']['match_statistics'][$key][COUNTRY_CODE])) { echo $content['titles']['match_statistics'][$key][COUNTRY_CODE]; } else { echo $content['titles']['match_statistics'][$key]['default'];}?></h2>
+	<h2><?php if (isset($content['titles']['match_statistics'][COUNTRY_CODE])) { echo $content['titles']['match_statistics'][COUNTRY_CODE]; } else { echo $content['titles']['match_statistics']['default'];}?></h2>
 	<div class="stats-content">
 		<div class="card">
 			<div class="row">
