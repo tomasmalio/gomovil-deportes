@@ -1,5 +1,19 @@
+/* Match Stats*/
+@match-stats-title-font-family: @h2-font-family;
+@match-stats-title-font-size: @h2-font-size;
+@match-stats-title-font-weight: @h2-font-weight;
+@match-stats-title-color: @color-quarter;
+@match-stats-title-padding: 0;
+
 section.matchstats {
 	margin-top: 30px;
+	h2 {
+		color: @match-stats-title-color;
+		font-family: @match-stats-title-font-family;
+		font-size: @match-stats-title-font-size;
+		font-weight: @match-stats-title-font-weight;
+		padding: @match-stats-title-padding;
+	}
 	.stats-content {
 		.progress-content {
 			padding-bottom: 10px;
