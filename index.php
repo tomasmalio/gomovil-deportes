@@ -473,6 +473,8 @@
 		}
 		$sectionExtensions = $CachedSectionExtensions->get();
 	}
+
+	print_r($sectionExtensions);
 	
 	// Widgets Constructor
 	$widgets = [];
