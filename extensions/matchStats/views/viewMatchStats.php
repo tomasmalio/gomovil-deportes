@@ -13,32 +13,32 @@
 						<div class="col-6">
 							<div class="progress-content-team d-none d-md-block">
 								<span class="progress-content-team-shield-left"><img ng-src="http://image.futmovil.com/56a26c0c6274c.png" title="Newell's" alt="Newell's" src="http://image.futmovil.com/56a26c0c6274c.png"></span>
-								<div class="progress-content-team-name left ng-binding">Newell's</div>
+								<div class="progress-content-team-name left"><?=$stats['local_team']?></div>
 							</div>
 						</div>
 						<div class="col-6">
 							<div class="progress-content-team d-none d-md-block">
 								<span class="progress-content-team-shield-right"><img ng-src="http://image.futmovil.com/56a26ad5f32a7.png" title="Colón" alt="Colón" src="http://image.futmovil.com/56a26ad5f32a7.png"></span>
-								<div class="progress-content-team-name right ng-binding">Colón</div>
+								<div class="progress-content-team-name right"><?=$stats['visit_team']?></div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['local_team']['possession']?></div>
+						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['possession']?></div>
 						<div class="col-8 stats-progress-description">Posesión de la pelota</div>
-						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['visit_team']['possession']?></div>
+						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['possession']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: <?=$stats['local_team']['possession']?>;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=$stats['stats']['local_team']['possession']?>;"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: <?=$stats['visit_team']['possession']?>;"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=$stats['stats']['visit_team']['possession']?>;"></div>
 							</div>
 						</div>
 					</div>
@@ -67,19 +67,19 @@
 				<!-- Total Shots on gol -->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['local_team']['shots_on_target']?></div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['shots_on_target']?></div>
 						<div class="col-8 stats-progress-description">Tiros al arco</div>
-						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['visit_team']['shots_on_target']?></div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['shots_on_target']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['local_team']['shots_on_target'] * 100)/ ($stats['local_team']['shots_on_target'] + $stats['visit_team']['shots_on_target']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots_on_target'] * 100)/ ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['visit_team']['shots_on_target'] * 100)/ ($stats['local_team']['shots_on_target'] + $stats['visit_team']['shots_on_target']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots_on_target'] * 100)/ ($stats['stats']['local_team']['shots_on_target'] + $stats['stats']['visit_team']['shots_on_target']);?>%"></div>
 							</div>
 						</div>
 					</div>
@@ -88,19 +88,19 @@
 				<!-- Total Shots -->
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
-						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['local_team']['shots']?></div>
+						<div class="col-2 stats-progress-result left ng-binding"><?=$stats['stats']['local_team']['shots']?></div>
 						<div class="col-8 stats-progress-description">Tiros Totales</div>
-						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['visit_team']['shots']?></div>
+						<div class="col-2 stats-progress-result right ng-binding"><?=$stats['stats']['visit_team']['shots']?></div>
 					</div>
 					<div class="row">
 						<div class="col-6 progress-bars-column left">
 							<div class="progress flex-row-reverse">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['local_team']['shots'] * 100)/ ($stats['local_team']['shots'] + $stats['visit_team']['shots']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['shots'] * 100)/ ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
 							</div>
 						</div>
 						<div class="col-6 progress-bars-column right">
 							<div class="progress">
-								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['visit_team']['shots'] * 100)/ ($stats['local_team']['shots'] + $stats['visit_team']['shots']);?>%"></div>
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['shots'] * 100)/ ($stats['stats']['local_team']['shots'] + $stats['stats']['visit_team']['shots']);?>%"></div>
 							</div>
 						</div>
 					</div>
