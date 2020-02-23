@@ -27,7 +27,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['possession']?></div>
-						<div class="col-8 stats-progress-description"><?=$content['possession']?></div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['ball_possession'][COUNTRY_CODE])) { echo $content['titles']['ball_possession'][COUNTRY_CODE]; } else { echo $content['titles']['ball_possession']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['possession']?></div>
 					</div>
 					<div class="row">
@@ -47,7 +47,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left" ng-bind="local_score"><?=$stats['local_gol']?></div>
-						<div class="col-8 stats-progress-description">Goles</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['goals'][COUNTRY_CODE])) { echo $content['titles']['goals'][COUNTRY_CODE]; } else { echo $content['titles']['goals']['default'];}?></div>
 						<div class="col-2 stats-progress-result right" ng-bind="visitor_score"><?=$stats['visit_gol']?></div>
 					</div>
 					<div class="row">
@@ -68,7 +68,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['shots_on_target']?></div>
-						<div class="col-8 stats-progress-description">Tiros al arco</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['shots_on_target'][COUNTRY_CODE])) { echo $content['titles']['shots_on_target'][COUNTRY_CODE]; } else { echo $content['titles']['shots_on_target']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['shots_on_target']?></div>
 					</div>
 					<div class="row">
@@ -89,7 +89,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['shots']?></div>
-						<div class="col-8 stats-progress-description">Tiros Totales</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['total_shots'][COUNTRY_CODE])) { echo $content['titles']['total_shots'][COUNTRY_CODE]; } else { echo $content['titles']['totals_shots']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['shots']?></div>
 					</div>
 					<div class="row">
@@ -110,7 +110,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['tied']?></div>
-						<div class="col-8 stats-progress-description">Atajadas</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['tied'][COUNTRY_CODE])) { echo $content['titles']['tied'][COUNTRY_CODE]; } else { echo $content['titles']['tied']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['tied']?></div>
 					</div>
 					<div class="row">
@@ -131,7 +131,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left">4</div>
-						<div class="col-8 stats-progress-description">Faltas cometidas</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['fouls_committed'][COUNTRY_CODE])) { echo $content['titles']['fouls_committed'][COUNTRY_CODE]; } else { echo $content['titles']['fouls_committed']['default'];}?></div>
 						<div class="col-2 stats-progress-result right">4</div>
 					</div>
 					<div class="row">
@@ -152,7 +152,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['offsides']?></div>
-						<div class="col-8 stats-progress-description">Posición adelantadas</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['offsides'][COUNTRY_CODE])) { echo $content['titles']['offsides'][COUNTRY_CODE]; } else { echo $content['titles']['offsides']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['offsides']?></div>
 					</div>
 					<div class="row">
@@ -173,7 +173,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['yellow_card']?></div>
-						<div class="col-8 stats-progress-description">Tarjetas amarillas</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['yellow_card'][COUNTRY_CODE])) { echo $content['titles']['yellow_card'][COUNTRY_CODE]; } else { echo $content['titles']['yellow_card']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['yellow_card']?></div>
 					</div>
 					<div class="row">
@@ -194,7 +194,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['red_card']?></div>
-						<div class="col-8 stats-progress-description">Tarjetas Rojas</div>
+						<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['red_card'][COUNTRY_CODE])) { echo $content['titles']['red_card'][COUNTRY_CODE]; } else { echo $content['titles']['red_card']['default'];}?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['red_card']?></div>
 					</div>
 					<div class="row">
