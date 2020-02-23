@@ -1,4 +1,5 @@
 /* Match Stats */
+/*
 @match-stats-title-font-family: @h2-font-family;
 @match-stats-title-font-size: @h2-font-size;
 @match-stats-title-font-weight: @h2-font-weight;
@@ -127,6 +128,98 @@ section.matchstats {
 					}
 				}
 			}
+		}
+		.left {
+			text-align: left;
+		}
+		.right {
+			text-align: right;
+		}
+	}
+}
+*/
+section.match-stats {
+	margin-top: 30px;
+	.stats-content {
+		.progress-content {
+			padding-bottom: 10px;
+			.progress-content-team {
+				position: relative;
+				.progress-content-team-shield-left {
+					position: absolute;
+					width: 25px;
+					left: 0;
+				}
+				.progress-content-team-shield-right {
+					position: absolute;
+					width: 25px;
+					right: 0;
+				}
+				.progress-content-team-shield-left img,
+				.progress-content-team-shield-right img {
+					width: 100%;
+					height: auto;
+				}
+				.progress-content-team-name {
+					padding-top: 5px;
+					font-size: 9pt;
+					color: #333;
+				}
+				.left {
+					margin-left: 30px;
+					text-align: left;
+				}
+				.right {
+					margin-right: 30px;
+					text-align: right;
+				}
+			}
+			.stats-progress-result {
+				font-size: 10pt;
+			}
+			.stats-progress-description {
+				text-align: center;
+				font-size: 10pt;
+				padding-bottom: 4px;
+			}
+			.progress-bars-column {
+				.progress {
+					height: 8px;
+					background: #ededed;
+					-webkit-border-radius: 0;
+					-moz-border-radius: 0;
+					border-radius: 0;
+					-webkit-box-shadow: none;
+					-moz-box-shadow: none;
+					box-shadow: none;
+					.progress-bar-success {
+						background: #00d200;
+					}
+				}
+				.left {
+					padding-right: 4px;
+					.progress-bar-success {
+						background: #008c00;
+						animation-name: animateBar;
+						animation-iteration-count: 1;
+						animation-timing-function: ease;
+						animation-duration: 8s;
+					}
+				}
+				.right {
+					padding-left: 4px;
+					.progress-bar-success {
+						background: #00d200;
+						animation-name: animateBarRight;
+						animation-iteration-count: 1;
+						animation-timing-function: ease;
+						animation-duration: 8s;
+					}
+				}
+			}
+		}
+		.stats-progress-result {
+			font-size: 10pt;
 		}
 		.left {
 			text-align: left;
