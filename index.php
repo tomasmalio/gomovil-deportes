@@ -504,7 +504,6 @@
 			$externalContent = $CachedExternalContent->get();
 		}
 
-		// $extensionName 	= str_replace(' ', '', lcfirst($extension['name']));
 		$extensionName 	= $extension['directory'];
 		$objetName 		= str_replace(' ', '', $extension['name']);
 		$variable 		= lcfirst($objetName);
@@ -514,12 +513,10 @@
 			// Directory of the extension
 			$file = __DIR__.'/'.EXTENSIONS_URL.'/'. $extensionName .'/'. basename((glob(__DIR__.'/'.EXTENSIONS_URL.'/'.$extensionName.'/*.php'))[0]);
 			
-			echo $file;
 			/**
 			 * Validate that the extension exists in our server
 			 **/
 			if (file_exists($file)) {
-				echo 'aca'.$file;
 				// Import the extesion
 				require_once $file;
 
