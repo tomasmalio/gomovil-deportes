@@ -3,7 +3,8 @@
 ?>
 <div class="col-12 match-stats center-block">
 	<!-- Match stats / Stats / Match / Match container -->
-	<div class="title-section">Estadísticas del partido</div>
+	<!-- <div class="title-section">Estadísticas del partido</div> -->
+	<h2><?= $content['title'];?></h2>
 	<div class="stats-content">
 		<div class="card">
 			<div class="row">
@@ -26,7 +27,7 @@
 				<div class="col-12 center-block progress-content">
 					<div class="row progress-result-info">
 						<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['possession']?></div>
-						<div class="col-8 stats-progress-description">Posesión de la pelota</div>
+						<div class="col-8 stats-progress-description"><?=$content['possession']?></div>
 						<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['possession']?></div>
 					</div>
 					<div class="row">
