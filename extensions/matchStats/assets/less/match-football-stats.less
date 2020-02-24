@@ -8,6 +8,15 @@
 
 @match-stats-progress-content-padding: 0 0 10px 0;
 
+@match-stats-progress-content-team-shield-width: 25px;
+
+@match-stats-progress-content-team-name-font-family: @p-font-family;
+@match-stats-progress-content-team-name-font-weight: @p-font-weight;
+@match-stats-progress-content-team-name-font-size: @p-font-size;
+@match-stats-progress-content-team-name-font-size-responsive: @p-font-size-responsive;
+@match-stats-progress-content-team-name-color: @color-quarter;
+@match-stats-progress-content-team-name-padding: 5px 0 0 0;
+
 section.matchstats {
 	margin-top: 30px;
 	h2 {
@@ -27,12 +36,12 @@ section.matchstats {
 				position: relative;
 				.progress-content-team-shield-left {
 					position: absolute;
-					width: 25px;
+					width: @match-stats-progress-content-team-shield-width;
 					left: 0;
 				}
 				.progress-content-team-shield-right {
 					position: absolute;
-					width: 25px;
+					width: @match-stats-progress-content-team-shield-width;
 					right: 0;
 				}
 				.progress-content-team-shield-left img,
@@ -41,16 +50,21 @@ section.matchstats {
 					height: auto;
 				}
 				.progress-content-team-name {
-					padding-top: 5px;
-					font-size: 9pt;
-					color: #333;
+					color: @match-stats-progress-content-team-name-color;
+					font-family: @match-stats-progress-content-team-name-font-family;
+					font-weight: @match-stats-progress-content-team-name-font-weight;
+					font-size: @match-stats-progress-content-team-name-font-size;
+					padding: @match-stats-progress-content-team-name-padding;
+					@media (max-width: 768px) {
+						font-size: @match-stats-progress-content-team-name-font-size-responsive;
+					}
 				}
 				.left {
-					margin-left: 30px;
+					margin-left: @match-stats-progress-content-team-shield-width + 5;
 					text-align: left;
 				}
 				.right {
-					margin-right: 30px;
+					margin-right: @match-stats-progress-content-team-shield-width + 5;
 					text-align: right;
 				}
 			}
