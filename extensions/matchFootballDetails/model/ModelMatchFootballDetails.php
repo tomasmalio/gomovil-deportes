@@ -11,9 +11,6 @@
 		// Password
 		private $pass = 'g0m0v1lc0&';
 
-		//http://gomovil.universofutbol.com/partido_detalle.php?id=207642
-
-
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
@@ -93,7 +90,7 @@
 		}
 
 		private function getMatchDetails ($match_id) {
-			$json = @file_get_contents($this->json . 'id=' . $match_id . '&user=' . $this->user . '&pwd=' . $this->pass);
+			$json = @file_get_contents($this->json . 'id=' . $match_id . '&user=' . $this->user . '&pwd=' . $this->pass . '&eventId=0');
 			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json, true);
 			} else { 
