@@ -38,7 +38,7 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							print_r($this->getPositions($value['actual_date'], $value['division'], $value['championship']));
+							print_r($this->getPositions($value['division'], $value['championship']));
 						}
 					}
 				}
