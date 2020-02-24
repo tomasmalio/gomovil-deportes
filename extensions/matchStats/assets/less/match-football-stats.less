@@ -31,6 +31,11 @@
 @match-stats-progress-result-description-text-align: center;
 @match-stats-progress-result-description-padding: 0 0 4px 0;
 
+@match-stats-progress-bar-height: 8px;
+@match-stats-progress-bar-background: #ededed;
+@match-stats-progress-bar-background-success: @color-primary;
+@match-stats-progress-bar-border-radius: 0;
+@match-stats-progress-bar-box-shadow: none;
 
 section.matchstats {
 	margin-top: 30px;
@@ -105,22 +110,22 @@ section.matchstats {
 			}
 			.progress-bars-column {
 				.progress {
-					height: 8px;
-					background: #ededed;
-					-webkit-border-radius: 0;
-					-moz-border-radius: 0;
-					border-radius: 0;
-					-webkit-box-shadow: none;
-					-moz-box-shadow: none;
-					box-shadow: none;
+					height: @match-stats-progress-bar-height;
+					background: @match-stats-progress-bar-background;
+					-webkit-border-radius: @match-stats-progress-bar-border-radius;
+					-moz-border-radius: @match-stats-progress-bar-border-radius;
+					border-radius: @match-stats-progress-bar-border-radius;
+					-webkit-box-shadow: @match-stats-progress-bar-box-shadow;
+					-moz-box-shadow: @match-stats-progress-bar-box-shadow;
+					box-shadow: @match-stats-progress-bar-box-shadow;
 					.progress-bar-success {
-						background: #00d200;
+						background: @match-stats-progress-bar-background-success;
 					}
 				}
 				.left {
 					padding-right: 4px;
 					.progress-bar-success {
-						background: #008c00;
+						background: @match-stats-progress-bar-background-success;
 						animation-name: animateBar;
 						animation-iteration-count: 1;
 						animation-timing-function: ease;
@@ -130,7 +135,7 @@ section.matchstats {
 				.right {
 					padding-left: 4px;
 					.progress-bar-success {
-						background: #00d200;
+						background: @match-stats-progress-bar-background-success;
 						animation-name: animateBarRight;
 						animation-iteration-count: 1;
 						animation-timing-function: ease;
