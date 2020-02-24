@@ -23,6 +23,15 @@
 @match-stats-progress-result-font-weight: @p-font-weight;
 @match-stats-progress-result-color: @color-quarter;
 
+@match-stats-progress-result-description-font-family: @p-font-family;
+@match-stats-progress-result-description-font-size: @p-font-size;
+@match-stats-progress-result-description-font-size-responsive: @p-font-size-responsive;
+@match-stats-progress-result-description-font-weight: @p-font-weight;
+@match-stats-progress-result-description-color: @color-quarter;
+@match-stats-progress-result-description-text-align: center;
+@match-stats-progress-result-description-padding: 0 0 4px 0;
+
+
 section.matchstats {
 	margin-top: 30px;
 	h2 {
@@ -84,9 +93,15 @@ section.matchstats {
 				}
 			}
 			.stats-progress-description {
-				text-align: center;
-				font-size: 10pt;
-				padding-bottom: 4px;
+				color: @match-stats-progress-result-description-color;
+				font-family: @match-stats-progress-result-description-font-family;
+				font-size: @match-stats-progress-result-description-font-size;
+				font-weight: @match-stats-progress-result-description-font-weight;
+				padding: @match-stats-progress-result-description-padding;
+				text-align: @match-stats-progress-result-description-text-align;
+				@media (max-width: 768px) {
+					font-size: @match-stats-progress-result-description-font-size-responsive;
+				}
 			}
 			.progress-bars-column {
 				.progress {
