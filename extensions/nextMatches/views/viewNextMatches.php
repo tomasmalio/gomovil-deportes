@@ -1,7 +1,6 @@
 <!-- Next matches-->
 <?php 
 	$nextMatches = $content['content'];
-	print_r($nextMatches);
 	$date = date('Y-m-d');
 
 	// Validate if we want to show a type of soccer and we've matches
