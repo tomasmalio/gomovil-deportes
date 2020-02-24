@@ -18,35 +18,21 @@
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
-				'ligas',
-				'copas',
-				'selecciones',
 				'nombre',
-				'equipos',
-				'imagen',
+				'torneo',
+				'campeonato',
 				'fecha_actual',
-				'posiciones',
-				'goleadores',
 				'equipo',
 				'escudo',
-				'puesto',
-				'nombre_completo',
 				'goles'
 			],
 			'verify'	=> [
-				'leagues',
-				'cups',
-				'selections',
 				'name',
-				'teams',
-				'image',
+				'tournament',
+				'championship',
 				'actual_date',
-				'positions',
-				'scorers',
 				'team',
 				'team_shield',
-				'position',
-				'complete_name',
 				'goals'
 			],
 		];
