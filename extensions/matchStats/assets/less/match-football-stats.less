@@ -17,6 +17,12 @@
 @match-stats-progress-content-team-name-color: @color-quarter;
 @match-stats-progress-content-team-name-padding: 5px 0 0 0;
 
+@match-stats-progress-result-font-family: @p-font-family;
+@match-stats-progress-result-font-size: @p-font-size;
+@match-stats-progress-result-font-size-responsive: @p-font-size-responsive;
+@match-stats-progress-result-font-weight: @p-font-weight;
+@match-stats-progress-result-color: @color-quarter;
+
 section.matchstats {
 	margin-top: 30px;
 	h2 {
@@ -69,7 +75,13 @@ section.matchstats {
 				}
 			}
 			.stats-progress-result {
-				font-size: 10pt;
+				font-family: @match-stats-progress-result-font-family;
+				font-size: @match-stats-progress-result-font-size;
+				font-weight: @match-stats-progress-result-font-weight;
+				color: @match-stats-progress-result-color;
+				@media (max-width: 768px) {
+					font-size: @match-stats-progress-result-font-size-responsive;
+				}
 			}
 			.stats-progress-description {
 				text-align: center;
