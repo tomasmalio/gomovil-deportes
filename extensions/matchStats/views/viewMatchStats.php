@@ -129,19 +129,19 @@
 			<!-- Total Fouls-->
 			<div class="col-12 center-block progress-content">
 				<div class="row progress-result-info">
-					<div class="col-2 stats-progress-result left">4</div>
+					<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['committed']?></div>
 					<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['fouls_committed'][COUNTRY_CODE])) { echo $content['titles']['fouls_committed'][COUNTRY_CODE]; } else { echo $content['titles']['fouls_committed']['default'];}?></div>
-					<div class="col-2 stats-progress-result right">4</div>
+					<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['committed']?></div>
 				</div>
 				<div class="row">
 					<div class="col-6 progress-bars-column left">
 						<div class="progress flex-row-reverse">
-							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+							<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['fouls_committed'] * 100) / ($stats['stats']['local_team']['fouls_committed'] + $stats['stats']['visit_team']['fouls_committed']);?>%"></div>
 						</div>
 					</div>
 					<div class="col-6 progress-bars-column right">
 						<div class="progress">
-							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+							<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['fouls_committed'] * 100) / ($stats['stats']['local_team']['fouls_committed'] + $stats['stats']['visit_team']['fouls_committed']);?>%"></div>
 						</div>
 					</div>
 				</div>
@@ -168,6 +168,27 @@
 				</div>
 			</div>
 			<!-- EOF Total Offside-->
+			<!-- Corners -->
+			<div class="col-12 center-block progress-content">
+				<div class="row progress-result-info">
+					<div class="col-2 stats-progress-result left"><?=$stats['stats']['local_team']['corners']?></div>
+					<div class="col-8 stats-progress-description"><?php if (isset($content['titles']['corners'][COUNTRY_CODE])) { echo $content['titles']['corners'][COUNTRY_CODE]; } else { echo $content['titles']['corners']['default'];}?></div>
+					<div class="col-2 stats-progress-result right"><?=$stats['stats']['visit_team']['corners']?></div>
+				</div>
+				<div class="row">
+					<div class="col-6 progress-bars-column left">
+						<div class="progress flex-row-reverse">
+							<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['local_team']['corners'] * 100) / ($stats['stats']['local_team']['corners'] + $stats['stats']['visit_team']['corners']);?>%"></div>
+						</div>
+					</div>
+					<div class="col-6 progress-bars-column right">
+						<div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" style="width: <?=($stats['stats']['visit_team']['corners'] * 100) / ($stats['stats']['local_team']['corners'] + $stats['stats']['visit_team']['corners']);?>%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- EOF Corners -->
 			<!-- Total Yellow cards-->
 			<div class="col-12 center-block progress-content">
 				<div class="row progress-result-info">
