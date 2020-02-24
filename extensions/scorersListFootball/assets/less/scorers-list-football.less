@@ -1,18 +1,21 @@
 @scorers-list-football-title-color: @color-quarter;
 @scorers-list-football-title-font-family: @h2-font-family;
-@scorers-list-football-title-font-size: 16pt;
+@scorers-list-football-title-font-size: @h2-font-size;
+@scorers-list-football-title-font-size-responsive: @h2-font-size-responsive;
 @scorers-list-football-title-font-weight: @h2-font-weight;
 @scorers-list-football-title-padding: 0;
 
 @scorers-list-football-content-titles-color: @color-quarter;
 @scorers-list-football-content-titles-font-family: @h3-font-family;
-@scorers-list-football-content-titles-font-size: 12pt;
+@scorers-list-football-content-titles-font-size: @h3-font-size;
+@scorers-list-football-content-titles-font-size-responsive: @h3-font-size-responsive;
 @scorers-list-football-content-titles-font-weight: @h3-font-weight;
 @scorers-list-football-content-titles-padding: 10px 0;
 
 @scorers-list-football-content-results-color: @color-quarter;
 @scorers-list-football-content-results-font-family: @p-font-family;
 @scorers-list-football-content-results-font-size: @p-font-size;
+@scorers-list-football-content-results-font-size-responsive: @p-font-size-responsive;
 @scorers-list-football-content-results-font-weight: @p-font-weight;
 @scorers-list-football-content-results-padding: 0 0 5px 0;
 
@@ -26,6 +29,9 @@ section.scorerslistfootball {
 		font-size: @scorers-list-football-title-font-size;
 		font-weight: @scorers-list-football-title-font-weight;
 		padding: @scorers-list-football-title-padding;
+		@media (max-width: 768px) {
+			font-size: @scorers-list-football-title-font-size-responsive;
+		}
 	}
 	.content-list-teams {
 		background: white;
