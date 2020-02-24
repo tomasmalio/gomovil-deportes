@@ -11,6 +11,10 @@
 @position-list-title-font-weight: @h2-font-weight;
 @position-list-title-padding: 0;
 
+@position-list-content-background: transparent;
+@position-list-content-border-radius: 10px;
+@position-list-content-padding: 0;
+
 @position-list-content-titles-color: @color-quarter;
 @position-list-content-titles-font-family: @h3-font-family;
 @position-list-content-titles-font-size: 12pt;
@@ -42,9 +46,9 @@ section.positionlist {
 		padding: @position-list-title-group-padding;
 	}
 	.content-list-teams {
-		background: white;
-		.border-radius(10px);
-		padding: 10px;
+		background: @position-list-content-background;
+		.border-radius(@position-list-content-border-radius);
+		padding: @position-list-content-padding;
 		.titles-list {
 			color: @position-list-content-titles-color;
 			font-family: @position-list-content-titles-font-family;

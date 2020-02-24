@@ -5,6 +5,11 @@
 @scorers-list-football-title-font-weight: @h2-font-weight;
 @scorers-list-football-title-padding: 0;
 
+@scorers-list-football-content-background: transparent;
+@scorers-list-football-content-border-radius: 0;
+@scorers-list-football-content-box-shadow: none;
+@scorers-list-football-content-padding: 0;
+
 @scorers-list-football-content-titles-color: @color-quarter;
 @scorers-list-football-content-titles-font-family: @h3-font-family;
 @scorers-list-football-content-titles-font-size: @h3-font-size;
@@ -34,9 +39,10 @@ section.scorerslistfootball {
 		}
 	}
 	.content-list-teams {
-		background: white;
-		.border-radius(10px);
-		padding: 10px;
+		background: @scorers-list-football-content-background;
+		.border-radius(@scorers-list-football-content-border-radius);
+		.box-shadow(@scorers-list-football-content-box-shadow);
+		padding: @scorers-list-football-content-padding;
 		.titles-list {
 			color: @scorers-list-football-content-titles-color;
 			font-family: @scorers-list-football-content-titles-font-family;
