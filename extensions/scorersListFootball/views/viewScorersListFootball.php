@@ -11,17 +11,21 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="results-list">
-			<?php 
+			<?php
+				$i = 1;
 				foreach ($scorers as $s => $player) {
 			?>
 			<div class="result">
-				<div class="position"><?=$player['position']?></div>
+				<div class="position"><?=$i?></div>
 				<div class="team-shield"><img src="<?=$player['team_shield']?>" name="" alt="" title=""></div>
 				<div class="team-name"><?=$player['name']?></div>
 				<div class="results-points"><?=$player['goals']?></div>
 				<div class="clearfix"></div>
 			</div>
-			<?php }?>
+			<?php 
+					$i++;
+				}
+			?>
 		</div>
 	</div>
 </section>

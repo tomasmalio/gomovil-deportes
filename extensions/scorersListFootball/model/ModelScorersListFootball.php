@@ -17,6 +17,7 @@
 				'torneo',
 				'campeonato',
 				'fecha_actual',
+				'goleadores',
 				'equipo',
 				'escudo',
 				'goles'
@@ -26,6 +27,7 @@
 				'tournament',
 				'championship',
 				'actual_date',
+				'scorers',
 				'team',
 				'team_shield',
 				'goals'
@@ -38,7 +40,8 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							print_r($this->getPositions($value['division'], $value['championship']));
+							$return = $this->getPositions($value['division'], $value['championship']);
+							return $return['scorers'];
 						}
 					}
 				}
