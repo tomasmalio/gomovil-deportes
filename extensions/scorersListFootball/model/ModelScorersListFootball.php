@@ -56,7 +56,6 @@
 		 * @championship int
 		 */
 		private function getPositions ($division, $championship) {
-			echo "aca";
 			return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=goleadores&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
