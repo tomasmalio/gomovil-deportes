@@ -24,7 +24,7 @@
 			</div>
 			<?php
 					if (isset($content['max_players']) && $content['max_players'] == $i) {
-						exit();
+						break;
 					}
 					$i++;
 				}
