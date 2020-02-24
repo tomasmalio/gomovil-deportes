@@ -1,5 +1,7 @@
 <?php
+echo "<pre>";
 print_r($content);
+echo "</pre>";
 // exit;
 ?>
 <section class="leagueslist">
