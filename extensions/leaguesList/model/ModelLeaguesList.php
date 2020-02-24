@@ -3,35 +3,30 @@
 	 * Model Leagues List
 	 */
 	class ModelLeaguesList {
-		// Url 
-		private $url = 'http://apiuf.gomovil.co/ligas/ligas.json';
+		// URL JSON
+		private $json = 'http://gomovil.universofutbol.com/data.php?';
+		// User
+		private $user = 'gomovil';
+		// Password
+		private $pass = 'g0m0v1lc0&';
 		
 		// Mapping name JSON
 		private $mappingName = [
 			'wrong' 	=> [
-				'ligas',
-				'copas',
-				'selecciones',
-				'nombre',
-				'equipos',
-				'escudo',
-				'imagen'
+				'torneo',
+				'torneos',
+				'campeonato'
 			],
 			'verify'	=> [
-				'leagues',
-				'cups',
-				'selections',
-				'name',
-				'teams',
-				'shield_team',
-				'image'
+				'tournament',
+				'tournaments',
+				'championship'
 			],
 		];
 
 		public function model ($params = []) {
-			$json = json_decode(file_get_contents($this->url), true);
-			$array['tournaments'] = Widgets::multiRenameKey($json, $this->mappingName['wrong'], $this->mappingName['verify']);
-			return $params;
+			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			return $array['championship'];
 		}
 	}
 ?>
