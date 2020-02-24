@@ -11,13 +11,13 @@
 				<div class="row">
 					<div class="col-6">
 						<div class="progress-content-team d-none d-md-block">
-							<span class="progress-content-team-shield-left"><img src="http://image.futmovil.com/56a26c0c6274c.png" title="Newell's" alt="Newell's"></span>
+							<span class="progress-content-team-shield-left"><img src="<?=$stats['local_image']?>" name="localimage" title="<?=$stats['local_team']?>" alt="<?=$stats['local_team']?>"></span>
 							<div class="progress-content-team-name left"><?=$stats['local_team']?></div>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="progress-content-team d-none d-md-block">
-							<span class="progress-content-team-shield-right"><img src="http://image.futmovil.com/56a26ad5f32a7.png" title="Colón" alt="Colón"></span>
+							<span class="progress-content-team-shield-right"><img src="<?=$stats['visit_image']?>" name="visitimage" title="<?=$stats['visit_team']?>" alt="<?=$stats['visit_team']?>"></span>
 							<div class="progress-content-team-name right"><?=$stats['visit_team']?></div>
 						</div>
 					</div>
