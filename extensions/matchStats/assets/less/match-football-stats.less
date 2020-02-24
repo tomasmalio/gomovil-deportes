@@ -1,9 +1,12 @@
 /* Match Stats*/
 @match-stats-title-font-family: @h2-font-family;
 @match-stats-title-font-size: @h2-font-size;
+@match-stats-title-font-size-responsive: @h2-font-size-responsive;
 @match-stats-title-font-weight: @h2-font-weight;
 @match-stats-title-color: @color-quarter;
-@match-stats-title-padding: 0;
+@match-stats-title-padding: 0 0 10px 0;
+
+@match-stats-progress-content-padding: 0 0 10px 0;
 
 section.matchstats {
 	margin-top: 30px;
@@ -13,10 +16,13 @@ section.matchstats {
 		font-size: @match-stats-title-font-size;
 		font-weight: @match-stats-title-font-weight;
 		padding: @match-stats-title-padding;
+		@media (max-width: 768px) {
+			font-size: @h2-font-size-responsive;
+		}
 	}
 	.stats-content {
 		.progress-content {
-			padding-bottom: 10px;
+			padding: @match-stats-progress-content-padding;
 			.progress-content-team {
 				position: relative;
 				.progress-content-team-shield-left {
