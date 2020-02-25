@@ -40,7 +40,8 @@
 				switch (strtolower($tournament["type"])) {
 					case 'liga':
 					case 'league':
-						array_push($array['leagues'], array('name' => $tournament['name'], 'key' => $tournament['key']));
+						$add = ['name' => $tournament['name'], 'key' => $tournament['key']];
+						array_push($array['leagues'], $add);
 						break;
 					case 'copa':
 					case 'cups':
