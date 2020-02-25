@@ -40,15 +40,15 @@
 				switch (strtolower($tournament["type"])) {
 					case 'liga':
 					case 'league':
-						array_push($array['leagues'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						array_push($array['leagues'], array('name' => $tournament['name'], 'key' => $tournament['key']));
 						break;
 					case 'copa':
 					case 'cups':
-						array_push($array['cup'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						array_push($array['cup'], array('name' => $tournament['name'], 'key' => $tournament['key']));
 						break;
 					case 'seleccion':
 					case 'selections':
-						array_push($array['selections'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						array_push($array['selections'], array('name' => $tournament['name'], 'key' => $tournament['key']));
 						break;
 				}
 				print_r($array);
