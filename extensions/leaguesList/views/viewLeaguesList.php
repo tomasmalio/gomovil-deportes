@@ -3,6 +3,7 @@ echo "<pre>";
 print_r($content);
 echo "</pre>";
 // exit;
+// $_SESSION['clientConfig']->sports->football->available_tournaments
 ?>
 <section class="leagueslist">
 	<?php if (isset($content['content']['search']['display']) && $content['content']['search']['display']) {?>

@@ -15,18 +15,44 @@
 			'wrong' 	=> [
 				'torneo',
 				'torneos',
-				'campeonato'
+				'campeonato',
+				'tipo'
 			],
 			'verify'	=> [
-				'tournament',
+				'name',
 				'tournaments',
-				'championship'
+				'championship',
+				'type'
 			],
 		];
 
 		public function model ($params = []) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			return $array['tournaments'];
+			return $this->groupByTournamentType($array['tournaments']);
+		}
+
+		private function groupByTournamentType ($tournaments) {
+			$array['leagues'] 		= [];
+			$array['cups'] 			= [];
+			$array['selections'] 	= [];
+
+			foreach ($tournaments as $tournament) {
+				switch (strtolower($tournament["type"])) {
+					case 'liga':
+					case 'league':
+						array_push($array['leagues'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						break;
+					case 'copa':
+					case 'cup':
+						array_push($array['cup'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						break;
+					case 'seleccion':
+					case 'selections':
+						array_push($array['selections'], ['name' => $tournament['name'], 'key' => $tournament['key']]);
+						break;
+				}
+				return $array;
+			}
 		}
 	}
 ?>
