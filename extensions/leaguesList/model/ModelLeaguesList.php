@@ -31,10 +31,16 @@
 			return $this->groupByTournamentType($array['tournaments']);
 		}
 
+		/**
+		 * Group by tournament type
+		 * We go throw the JSON and order by leagues, cups and selections
+		 * @tournaments json
+		 */
 		private function groupByTournamentType ($tournaments) {
 			$array['leagues'] 		= [];
 			$array['cups'] 			= [];
 			$array['selections'] 	= [];
+			
 			foreach ($tournaments as $tournament) {
 				switch (strtolower($tournament["type"])) {
 					case 'liga':
