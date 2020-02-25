@@ -35,7 +35,6 @@
 			$array['leagues'] 		= [];
 			$array['cups'] 			= [];
 			$array['selections'] 	= [];
-			print_r($tournaments);
 			foreach ($tournaments as $tournament) {
 				switch (strtolower($tournament["type"])) {
 					case 'liga':
@@ -51,10 +50,8 @@
 						array_push($array['selections'], array('name' => $tournament['name'], 'key' => $tournament['key']));
 						break;
 				}
-				print_r($array);
-				exit;
-				return $array;
 			}
+			return $array;
 		}
 	}
 ?>
