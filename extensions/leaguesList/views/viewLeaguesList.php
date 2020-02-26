@@ -1,7 +1,7 @@
 <?php
-echo "<pre>";
-print_r($content);
-echo "</pre>";
+// echo "<pre>";
+// print_r($content);
+// echo "</pre>";
 // exit;
 // $_SESSION['clientConfig']->sports->football->available_tournaments
 ?>
@@ -33,7 +33,6 @@ echo "</pre>";
 						}
 					}
 				}
-
 				foreach ($content['content']['leagues'] as $leagues) {
 					$validateName = '';
 					if (isset($leagues['name'][COUNTRY_CODE])){
