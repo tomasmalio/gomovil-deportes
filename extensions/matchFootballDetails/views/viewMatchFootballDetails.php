@@ -2,8 +2,6 @@
 	$match = $content['content'];
 	$interactions = $content['content']['interaction'];
 
-	print_r($content['content']);
-
 	/* Switch of each status */
 	switch ($match['status']) {
 		case 'Por comenzar':
@@ -25,7 +23,7 @@
 			<div class="col-12">
 				<div class="match-info">
 					<?php if (isset($match['datetime']) && $math['datetime'] !== '') {?>
-					<span><?= date('d-m-Y H:i', strtotime($match['datetime']))?></span>
+					<span><?= date('d F, Y H:i', strtotime($match['datetime']))?></span>
 					<?php
 							$before = true; 
 						}
