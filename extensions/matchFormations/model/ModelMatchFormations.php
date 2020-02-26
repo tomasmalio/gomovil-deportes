@@ -2,7 +2,7 @@
 	/**
 	 * Model Match Football Details
 	 */
-	class ModelMatchFormation {
+	class ModelMatchFormations {
 
 		// URL JSON
 		private $json = 'http://gomovil.universofutbol.com/partido_detalle.php?';
