@@ -23,7 +23,7 @@
 			<div class="col-12">
 				<div class="match-info">
 					<?php if (isset($match['datetime']) && $math['datetime'] !== '') {?>
-					<span><?= date('d F, Y H:i', strtotime($match['datetime']))?></span>
+					<span><?= date('d F, Y | H:i', strtotime($match['datetime']))?></span>
 					<?php
 							$before = true; 
 						}
