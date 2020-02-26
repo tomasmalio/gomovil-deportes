@@ -44,6 +44,7 @@
 		}
 
 		private function getNews () {
+			echo $this->json . $endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results;
 			$json = @file_get_contents($this->json . $endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results);
 			if (strpos($http_response_header[0], "200")) {
 				echo 'aca';
