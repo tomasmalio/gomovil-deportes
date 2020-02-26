@@ -44,6 +44,7 @@
 		private $mappingName = [
 			'wrong' 	=> [
 				'torneo',
+				'key_api',
 				'tipo',
 				'local',
 				'local_img',
@@ -77,6 +78,7 @@
 				'saque',
 			],
 			'verify'	=> [
+				'tournament',
 				'tournament',
 				'type',
 				'team_local',
