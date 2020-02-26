@@ -47,7 +47,7 @@
 
 		private function getNews () {
 			if ($this->setEndPoint == 'top-headlines') {
-				if (isset($this->category)) {
+				if (isset($this->category) && ($this->category == 'business' || $this->category == 'entertainment' || $this->category == 'general' || $this->category == 'health' || $this->category == 'science' || $this->category == 'sports' || $this->category == 'technology')) {
 					$url .= '&category='.$this->category;
 				}
 				if (isset($this->country)) {
