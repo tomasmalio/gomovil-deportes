@@ -19,7 +19,8 @@
 				'nombre',
 				'apellido',
 				'numero',
-				'posicion'
+				'posicion',
+				'visitante'
 			],
 			'verify'	=> [
 				'match',
@@ -27,7 +28,8 @@
 				'player_name',
 				'player_last_name',
 				'number',
-				'position'
+				'position',
+				'visit'
 			],
 		];
 
