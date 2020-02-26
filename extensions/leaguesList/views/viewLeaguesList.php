@@ -33,7 +33,8 @@ echo "</pre>";
 						}
 					}
 				}
-				foreach ($content['content']['tournaments']['leagues'] as $key => $leagues) {
+
+				foreach ($content['content']['leagues'] as $leagues) {
 					$validateName = '';
 					if (isset($leagues['name'][COUNTRY_CODE])){
 						$validateName = $this->normalizeString($leagues['name'][COUNTRY_CODE]);
