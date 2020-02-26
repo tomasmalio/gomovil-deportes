@@ -8,7 +8,7 @@
 
 		// Assets files
 		public $files = [
-			'style'		=> [''],
+			'style'		=> ['match-formations.less'],
 			'js'		=> [],
 		];
 		// Options

@@ -1,0 +1,86 @@
+/* Match Formations */
+@match-formations-margin: 0;
+
+@match-formations-title-font-family: @h2-font-family;
+@match-formations-title-font-size: @h2-font-size;
+@match-formations-title-font-size-responsive: @h2-font-size-responsive;
+@match-formations-title-font-weight: @h2-font-weight;
+@match-formations-title-color: @color-quarter;
+@match-formations-title-padding: 0 0 10px 0;
+
+@match-formations-position-player-name-font-family: @p-font-family;
+@match-formations-position-player-name-font-weight: @p-font-weight;
+@match-formations-position-player-name-font-size: @p-font-size;
+@match-formations-position-player-name-color: @color-quarter;
+@match-formations-position-player-name-padding: 5px 0;
+
+@match-formations-position-player-number-font-family: @p-font-family;
+@match-formations-position-player-number-font-weight: @p-font-weight;
+@match-formations-position-player-number-font-size: 8pt;
+@match-formations-position-player-number-color: @color-quarter;
+
+section.matchformations {
+	margin: @match-formations-margin;
+	h2 {
+		color: @match-formations-title-color;
+		font-family: @match-formations-title-font-family;
+		font-size: @match-formations-title-font-size;
+		font-weight: @match-formations-title-font-weight;
+		padding: @match-formations-title-padding;
+		@media (max-width: 768px) {
+			font-size: @match-formations-title-font-size-responsive
+		}
+	}
+	.positions-left,
+	.positions-right {
+		.player {
+			position: relative;
+			i.number {
+				color: @match-formations-position-player-number-color;
+				font-family: @match-formations-position-player-number-font-family;
+				font-weight: @match-formations-position-player-number-font-weight;
+				font-size: @match-formations-position-player-number-font-size;
+				position: absolute;
+				top: 7px;
+			}
+			.player-name {
+				color: @match-formations-position-player-name-color;
+				font-family: @match-formations-position-player-name-font-family;
+				font-weight: @match-formations-position-player-name-font-weight;
+				font-size: @match-formations-position-player-name-font-size;
+				padding: @match-formations-position-player-name-padding;
+			}
+		}
+		
+	}
+	.positions-left {
+		.player {
+			i.number {
+				left: 5px;
+			}
+			.player-name {
+				margin-left: 25px;
+				text-align: left;
+			}
+		}
+	}
+	.positions-right {
+		.player {
+			i.number {
+				right: 5px;
+			}
+			.player-name {
+				margin-right: 25px;
+				text-align: right;
+			}
+		}
+	}
+	.vertical-line {
+		background: #ededed;
+		width: 1px;
+		height: 100%;
+		top: 0;
+		left: 50%;
+		position: absolute;
+	}
+}
