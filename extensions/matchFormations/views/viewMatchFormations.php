@@ -20,7 +20,7 @@
 				// Alignment of the versus icon
 				$(document).ready(function () { 
 					$(".alignment-content .versus").css("left", ($(".alignment-content").innerWidth() / 2) - 15);
-					$(".alignment-content .versus").css("top", ($(".alignment-content").innerHeight()));
+					$(".alignment-content .versus").css("top", ($(".alignment-content").innerHeight() / 2));
 				});
 			</script>
 			<!-- Second team -->
