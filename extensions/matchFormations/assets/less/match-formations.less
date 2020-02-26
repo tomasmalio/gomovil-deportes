@@ -19,6 +19,13 @@
 @match-formations-position-player-number-font-size: 8pt;
 @match-formations-position-player-number-color: @color-quarter;
 
+@match-formations-position-versus-background: @color-first;
+@match-formations-position-versus-color: white;
+@match-formations-position-versus-font-size: 10pt;
+@match-formations-position-versus-border-radius: 50%;
+@match-formations-position-versus-width: 30px;
+@match-formations-position-versus-height: 30px;
+
 section.matchformations {
 	margin: @match-formations-margin;
 	h2 {
@@ -85,16 +92,14 @@ section.matchformations {
 			position: absolute;
 		}
 		.versus {
-			background: #00d200;
-			-webkit-border-radius: 50%;
-			-moz-border-radius: 50%;
-			border-radius: 50%;
-			font-size: 10pt;
-			color: #fff;
+			background: @match-formations-position-versus-background;
+			.border-radius(@match-formations-position-versus-border-radius);
+			color: @match-formations-position-versus-color;
+			font-size: @match-formations-position-versus-font-size;
 			padding: 4pt;
 			position: absolute;
-			width: 30px;
-			height: 30px;
+			width: @match-formations-position-versus-width;
+			height: @match-formations-position-versus-height;
 			text-align: center;
 		}
 	}
