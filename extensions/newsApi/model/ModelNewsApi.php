@@ -46,6 +46,7 @@
 		}
 
 		private function getNews () {
+			$url = $this->json . $this->endpoint . '?q='.$this->search;
 			if ($this->setEndPoint == 'top-headlines') {
 				if (isset($this->category) && ($this->category == 'business' || $this->category == 'entertainment' || $this->category == 'general' || $this->category == 'health' || $this->category == 'science' || $this->category == 'sports' || $this->category == 'technology')) {
 					$url .= '&category='.$this->category;
@@ -54,8 +55,7 @@
 					$url .= '&country='.strtolower($this->country);
 				}
 			}
-			$url .= '&q='.$this->search;
-
+			$url .= '&apiKey=' . $this->key . '&results='.$this->results;
 			//$url = $this->json . $this->endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results;
 			echo $url;
 			$json = @file_get_contents($url);
