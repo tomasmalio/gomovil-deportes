@@ -26,7 +26,7 @@
 					if ($slider) {
 			?>
 				<!-- Slider -->
-					<div class="swiper-slide">
+			<div class="swiper-slide">
 				<?php }?>
 				<div class="date-matches"><?php 
 					if (is_numeric($key)) { 

@@ -3,8 +3,8 @@
 	 * Model Next Matches
 	 */
 	class ModelNextMatches {
-		
-		private $urlFootball 	= 'http://apiuf.gomovil.co/partido/partidos.json';
+		//private $urlFootball 	= 'http://apiuf.gomovil.co/partido/partidos.json';
+		private $urlFootball 	= 'http://gomovil.universofutbol.com/data.php?user=gomovil&pwd=g0m0v1lc0&metodo=partidos';
 		private $urlBasket		= 'http://apiuf.gomovil.co/partido/partidos-basquet.json';
 		private $urlTennis 		= 'http://apiuf.gomovil.co/partido/partidos-tenis.json';
 
@@ -103,7 +103,7 @@
 			self::setContentConstructor($params['sports']);
 			self::setSports($params['sports_display']);
 			self::setDateDisplay($params['date_display']);
-			return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
+			print_r(Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']));
 		}
 
 		public function setDate ($date) {
