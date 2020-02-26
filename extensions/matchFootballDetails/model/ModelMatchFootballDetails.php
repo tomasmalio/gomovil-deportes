@@ -43,7 +43,8 @@
 				'posesion',
 				'amarillas',
 				'rojas',
-				'atajadas'
+				'atajadas',
+				'evento'
 			],
 			'verify'	=> [
 				'match',
@@ -75,7 +76,8 @@
 				'possession',
 				'yellow_card',
 				'red_card',
-				'tied'
+				'tied',
+				'interaction'
 			],
 		];
 
