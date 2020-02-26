@@ -2,7 +2,7 @@
 	$match = $content['content'];
 	$interactions = $content['content']['interaction'];
 
-	// print_r($content['content']);
+	print_r($content['content']);
 
 	/* Switch of each status */
 	switch ($match['status']) {
