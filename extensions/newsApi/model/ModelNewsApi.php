@@ -15,6 +15,8 @@
 		private $endpoint = 'everything';
 		// Search
 		private $search = '';
+		// Category
+		private $category = '';
 		// Date from
 		private $from = '';
 		// Date to
@@ -44,8 +46,19 @@
 		}
 
 		private function getNews () {
-			echo $this->json . $endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results;
-			$json = @file_get_contents($this->json . $endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results);
+			if ($this->setEndPoint == 'top-headlines') {
+				if (isset($this->category)) {
+					$url .= '&category='.$this->category;
+				}
+				if (isset($this->country)) {
+					$url .= '&country='.$this->country;
+				}
+			}
+			$url .= '&q='.$this->search;
+
+			//$url = $this->json . $this->endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results;
+			echo $url;
+			$json = @file_get_contents($url);
 			if (strpos($http_response_header[0], "200")) {
 				echo 'aca';
 				return json_decode($json, true);
