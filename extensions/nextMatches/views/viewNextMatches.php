@@ -3,8 +3,6 @@
 	$nextMatches = $content['content'];
 	$date = date('Y-m-d');
 
-	print_r($nextMatches);
-
 	// Validate if we want to show a type of soccer and we've matches
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
