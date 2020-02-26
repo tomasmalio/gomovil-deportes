@@ -24,7 +24,7 @@
 				});
 			</script>
 			<!-- Second team -->
-			<div class="col-6 positions-left">
+			<div class="col-6 positions-right">
 				<?php foreach ($content['content']['visit'] as $team_visit) {?>
 				<div class="player-account">
 					<div class="player">
