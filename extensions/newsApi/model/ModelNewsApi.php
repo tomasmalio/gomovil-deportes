@@ -51,7 +51,7 @@
 					$url .= '&category='.$this->category;
 				}
 				if (isset($this->country)) {
-					$url .= '&country='.$this->country;
+					$url .= '&country='.strtolower($this->country);
 				}
 			}
 			$url .= '&q='.$this->search;
