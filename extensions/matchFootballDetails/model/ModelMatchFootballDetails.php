@@ -47,7 +47,11 @@
 				'evento',
 				'equipo',
 				'equipo_condicion',
-				'jugador'
+				'jugador',
+				'nombre',
+				'apellido',
+				'numero',
+				'posicion'
 			],
 			'verify'	=> [
 				'match',
@@ -83,7 +87,11 @@
 				'interaction',
 				'team',
 				'team_condition',
-				'player'
+				'player',
+				'player_name',
+				'player_last_name',
+				'number',
+				'position'
 			],
 		];
 
