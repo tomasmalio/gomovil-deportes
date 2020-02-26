@@ -31,56 +31,58 @@ section.matchformations {
 			font-size: @match-formations-title-font-size-responsive
 		}
 	}
-	.positions-left,
-	.positions-right {
-		.player {
-			position: relative;
-			i.number {
-				color: @match-formations-position-player-number-color;
-				font-family: @match-formations-position-player-number-font-family;
-				font-weight: @match-formations-position-player-number-font-weight;
-				font-size: @match-formations-position-player-number-font-size;
-				position: absolute;
-				top: 7px;
+	.alignment-content {
+		.positions-left,
+		.positions-right {
+			.player {
+				position: relative;
+				i.number {
+					color: @match-formations-position-player-number-color;
+					font-family: @match-formations-position-player-number-font-family;
+					font-weight: @match-formations-position-player-number-font-weight;
+					font-size: @match-formations-position-player-number-font-size;
+					position: absolute;
+					top: 7px;
+				}
+				.player-name {
+					color: @match-formations-position-player-name-color;
+					font-family: @match-formations-position-player-name-font-family;
+					font-weight: @match-formations-position-player-name-font-weight;
+					font-size: @match-formations-position-player-name-font-size;
+					padding: @match-formations-position-player-name-padding;
+				}
 			}
-			.player-name {
-				color: @match-formations-position-player-name-color;
-				font-family: @match-formations-position-player-name-font-family;
-				font-weight: @match-formations-position-player-name-font-weight;
-				font-size: @match-formations-position-player-name-font-size;
-				padding: @match-formations-position-player-name-padding;
+			
+		}
+		.positions-left {
+			.player {
+				i.number {
+					left: 5px;
+				}
+				.player-name {
+					margin-left: 25px;
+					text-align: left;
+				}
 			}
 		}
-		
-	}
-	.positions-left {
-		.player {
-			i.number {
-				left: 5px;
-			}
-			.player-name {
-				margin-left: 25px;
-				text-align: left;
-			}
-		}
-	}
-	.positions-right {
-		.player {
-			i.number {
-				right: 5px;
-			}
-			.player-name {
-				margin-right: 25px;
-				text-align: right;
+		.positions-right {
+			.player {
+				i.number {
+					right: 5px;
+				}
+				.player-name {
+					margin-right: 25px;
+					text-align: right;
+				}
 			}
 		}
-	}
-	.vertical-line {
-		background: #ededed;
-		width: 1px;
-		height: 100%;
-		top: 0;
-		left: 50%;
-		position: absolute;
+		.vertical-line {
+			background: #ededed;
+			width: 1px;
+			height: 100%;
+			top: 0;
+			left: 50%;
+			position: absolute;
+		}
 	}
 }
