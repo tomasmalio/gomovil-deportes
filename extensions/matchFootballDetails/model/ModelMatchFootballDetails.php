@@ -44,7 +44,10 @@
 				'amarillas',
 				'rojas',
 				'atajadas',
-				'evento'
+				'evento',
+				'equipo',
+				'equipo_condicion',
+				'jugador'
 			],
 			'verify'	=> [
 				'match',
@@ -77,7 +80,10 @@
 				'yellow_card',
 				'red_card',
 				'tied',
-				'interaction'
+				'interaction',
+				'team',
+				'team_condition',
+				'player'
 			],
 		];
 
