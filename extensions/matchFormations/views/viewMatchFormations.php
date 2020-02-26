@@ -1,4 +1,5 @@
 <section class="matchformations">
+	<h2><?php if (isset($content['titles']['formations'][COUNTRY_CODE])) { echo $content['titles']['formations'][COUNTRY_CODE]; } else { echo $content['titles']['formations']['default'];}?></h2>
 	<div class="alignment-content">
 		<div class="row">
 			<!-- First team -->
