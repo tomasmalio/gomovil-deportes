@@ -3,7 +3,6 @@
 	$nextMatches = $content['content'];
 	$date = date('Y-m-d');
 
-	print_r($content);
 	// Validate if we want to show a type of soccer and we've matches
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
@@ -18,20 +17,56 @@
 	?>
 	<div class="date-matches"><?= strftime('%d de %B', strtotime($keyDate));?></div>
 	<!-- Football Sport / Next matches -->
-	<?php if (isset($content['display_sport_name']) && $content['display_sport_name'] || !isset($content['display_sport_name'])){?>
 	<a href="<?=$nextMatches['football']['url']?>" class="sport football"><i class="<?= $nextMatches['football']['icon_name']?>"></i> <span><?= $nextMatches['football']['name'];?></span></a>
-	<?php }?>
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
 				foreach ($matches as $match) {
-					if (in_array($this->normalizeString($match['tournament']), $_SESSION['clientConfig']->sports->football->available_tournaments)) {
-						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-							$tournaments[$this->normalizeString($match['tournament'])] = [];
-						}
-						array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+					if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+						$tournaments[$this->normalizeString($match['tournament'])] = [];
 					}
+					array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
 				}
+				// print_r($matches);
+				// foreach ($matches as $match) {
+					
+				// 	// print_r(array_key_exists($this->normalizeString($match['tournament']), $tournaments));
+				// 	if (array_key_exists($this->normalizeString($match['tournament']), $tournaments)) {
+
+				// 		if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+				// 			$tournaments[$this->normalizeString($match['tournament'])] = [];
+				// 		}
+				// 		array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+				// 	}
+				// }
+
+				// foreach ($matches as $match) {
+				// 	if (isset($tournaments[Widgets::normalizeString($match['tournament'])])) {
+				// 		if (!is_array($tournaments[Widgets::normalizeString($match['tournament'])])) {
+				// 			$tournaments[Widgets::normalizeString($match['tournament'])] = [];
+				// 		}
+				// 		array_push($tournaments[Widgets::normalizeString($match['tournament'])], $match);
+				// 	}	
+				// }
+
+				// foreach ($matches as $match) {
+				// 	if (isset($match['tournament'])) {
+				// 		print_r($match);
+				// 		echo $this->normalizeString($match['tournament']);
+				// 		echo "ACA";
+				// 		print_r($tournaments[$this->normalizeString($match['tournament'])]);
+				// 		// exit;
+				// 		if (isset($tournaments[$this->normalizeString($match['tournament'])])) {
+				// 			if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
+				// 				$tournaments[$this->normalizeString($match['tournament'])] = [];
+				// 			}
+				// 			array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+				// 		}
+				// 	}
+				// }
+
+				// print_r($tournaments);
+
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
 	?>
@@ -41,6 +76,8 @@
 					$i 		= 0;
 
 					foreach ($tournament as $match) {
+						// print_r($match);
+						// exit;
 						// If First we display info
 						if ($first) {
 		?>
@@ -60,7 +97,6 @@
 							$match['status'] = 'to-start';
 							break;
 						case 'En vivo':
-						case 'En Juego':
 							$match['status'] = 'live';
 							break;
 						case 'Finalizado':
@@ -95,7 +131,7 @@
 							<div class="col-2 match-info">
 								<?php if ($match['status'] == 'live' || $match['status'] == 'end') {?>
 									<?php if ($match['status'] == 'live'){?><div class="playing-status"><span class="situation"></span> En vivo</div><?php }?>
-								<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['minutes']?>:<?php if (isset($match['seconds'])) { echo $match['seconds'];} else { echo '00';}?></time><?php } else {?>Final<?php }?></div>
+								<div class="time-playing"><?php if ($match['status'] == 'live'){?><span><?php if ($match['match_time']['minutes'] < 45) {?>PT<?php } else { ?>ST<?php }?></span> <time><?= $match['match_time']['minutes'] . ':' . $match['match_time']['seconds']?></time><?php } else {?>Final<?php }?></div>
 									<div class="match-divider">
 										<div class="match-divider-content">
 											<div class="result football">
@@ -109,7 +145,7 @@
 								<?php } else {?>
 									<div class="match-divider">
 										<div class="match-divider-content">
-											<div class="time-to-play"><?php if (isset($match['date_begin'])) { echo date('H:i', strtotime($match['date_begin']));}?></div>
+											<div class="time-to-play"><?php if (isset($match['time'])) { echo date('H:i', strtotime($match['time']));}?></div>
 										</div>
 									</div>
 								<?php }?>
