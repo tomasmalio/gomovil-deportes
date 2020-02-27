@@ -55,7 +55,6 @@
 							 * be use for titles, buttons, etc, we obtain and then
 							 * separated from the main content
 							 */
-							print_r($value['words']);
 							if (isset($value['words'])) {
 								unset($this->content['words']);
 								foreach ($value['words'] as $k => $v) {
