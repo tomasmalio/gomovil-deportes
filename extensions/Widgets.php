@@ -42,7 +42,6 @@
 			unset($params['clientName']);
 			unset($params['id']);
 
-			print_r($params);
 			if (isset($params) && count($params) > 0) {
 				foreach ($params['data'] as $key => $value) {
 					if (property_exists(get_class($this), $key)) {
@@ -56,6 +55,7 @@
 							 * be use for titles, buttons, etc, we obtain and then
 							 * separated from the main content
 							 */
+							print_r($value['words']);
 							if (isset($value['words'])) {
 								unset($this->content['words']);
 								foreach ($value['words'] as $k => $v) {
