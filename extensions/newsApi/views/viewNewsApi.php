@@ -2,7 +2,9 @@
 	$news = $content['content'];
 	
 	foreach ($news['articles'] as $article) {
-		print_r($article);
+		echo $article['title'];
+		echo $article['description'];
+		echo '<img src="'.$article['urlToImage'].'" title="">';
 	}
 
 ?>
