@@ -40,11 +40,13 @@
 		public function model ($params = []) {
 			self::setEndPoint($params['endpoint']);
 			self::setSearch($params['search']);
+			self::setCountry($params['country']);
 			
 			return self::getNews();
 		}
 
 		private function getNews () {
+			echo $this->endpoint;
 			$url = $this->json . $this->endpoint . '?q='.$this->search;
 			if ($this->setEndPoint == 'top-headlines') {
 				if (isset($this->category) && ($this->category == 'business' || $this->category == 'entertainment' || $this->category == 'general' || $this->category == 'health' || $this->category == 'science' || $this->category == 'sports' || $this->category == 'technology')) {
@@ -73,6 +75,11 @@
 		public function setSearch ($search) {
 			if (!empty($search)) {
 				$this->search = $search;
+			}
+		}
+		public function setCountry ($country) {
+			if (!empty($country)) {
+				$this->country = strtolower($country);
 			}
 		}
 	}
