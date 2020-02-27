@@ -1,6 +1,7 @@
 <?php
 	$nextMatches = $content['content']['fixture'];
 
+	print_r($content);
 	function differenceInHours($startdate,$enddate){
 		$starttimestamp = strtotime($startdate);
 		$endtimestamp = strtotime($enddate);
