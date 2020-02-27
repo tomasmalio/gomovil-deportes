@@ -14,7 +14,7 @@
 		public $options = [];
 
 		public function __construct($params = []) {
-			parent::__construct($params);
+			// parent::__construct($params);
 		}
 
 		public function renderView () {
