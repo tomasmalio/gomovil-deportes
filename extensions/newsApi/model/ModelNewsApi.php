@@ -55,7 +55,7 @@
 				}
 			}
 			$url .= '&apiKey=' . $this->key . '&results='.$this->results;
-			echo $url;
+			
 			$json = @file_get_contents($url);
 			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json, true);
