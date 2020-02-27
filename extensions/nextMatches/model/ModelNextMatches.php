@@ -115,13 +115,11 @@
 		];
 		
 		public function model ($params = []) {
-			print_r($params);
-			exit;
-			self::setDate($params['date']);
-			self::setContentConstructor($params['sports']);
-			self::setSports($params['sports_display']);
-			self::setDateDisplay($params['date_display']);
-			return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
+			// self::setDate($params['date']);
+			// self::setContentConstructor($params['sports']);
+			// self::setSports($params['sports_display']);
+			// self::setDateDisplay($params['date_display']);
+			// return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
 		public function setDate ($date) {
