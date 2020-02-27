@@ -35,7 +35,6 @@
 				
 			],
 		];
-
 		
 		public function model ($params = []) {
 			self::setEndPoint($params['endpoint']);
@@ -46,7 +45,6 @@
 		}
 
 		private function getNews () {
-			echo $this->endpoint;
 			$url = $this->json . $this->endpoint . '?q='.$this->search;
 			if ($this->setEndPoint == 'top-headlines') {
 				if (isset($this->category) && ($this->category == 'business' || $this->category == 'entertainment' || $this->category == 'general' || $this->category == 'health' || $this->category == 'science' || $this->category == 'sports' || $this->category == 'technology')) {
@@ -57,7 +55,6 @@
 				}
 			}
 			$url .= '&apiKey=' . $this->key . '&results='.$this->results;
-			//$url = $this->json . $this->endpoint . '?q=' . $this->search . '&apiKey=' . $this->key . '&results='.$this->results;
 			echo $url;
 			$json = @file_get_contents($url);
 			if (strpos($http_response_header[0], "200")) {
