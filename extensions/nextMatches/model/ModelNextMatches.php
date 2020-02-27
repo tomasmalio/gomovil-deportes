@@ -115,87 +115,14 @@
 		];
 		
 		public function model ($params = []) {
-			self::setDate($params['date']);
-			self::setContentConstructor($params['sports']);
-			self::setSports($params['sports_display']);
-			self::setDateDisplay($params['date_display']);
-			return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
+			// self::setDate($params['date']);
+			// self::setContentConstructor($params['sports']);
+			// self::setSports($params['sports_display']);
+			// self::setDateDisplay($params['date_display']);
+			// return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
-		public function setDate ($date) {
-			if (!empty($date)) {
-				$this->date = $date;
-			} else {
-				$this->date = date('Y-m-d');
-			}
-		}
-
-		private function setSports ($sports) {
-			if ($sports['footall'] === false) {
-				$this->json['football']['display'] = false;
-			}
-			if ($sports['basket'] === false) {
-				$this->json['basket']['display'] = false;
-			}
-			if ($sports['tennis'] === false) {
-				$this->json['tennis']['display'] = false;
-			}
-		}
-
-		private function setDateDisplay ($dateDisplay) {
-			if (isset($dateDisplay['yesterday']) && $dateDisplay['yesterday']) {
-				$this->dateDisplay['yesterday'] = true;
-			}
-			if (isset($dateDisplay['today']) && !$dateDisplay['today']) {
-				$this->dateDisplay['today'] = false;
-			}
-			if (isset($dateDisplay['tomorrow']) && !$dateDisplay['tomorrow']) {
-				$this->dateDisplay['tomorrow'] = false;
-			}
-		}
-
-		private function setContentConstructor ($sports) {
-			if (count($sports) > 0) {
-				foreach ($sports as $k => $s) {
-					$this->json[$k] = $s;
-				}
-			}
-		}
-
-		private function getContent() {
-			/**
-			 * Creating the content for each sport
-			 * require.
-			 **/ 
-			foreach ($this->json as $sport => $value) {
-				if ($this->json[$sport]['display']) {
-					$url = 'url' . ucfirst($sport);
-					// Getting the info from the JSON
-					$json = @file_get_contents($this->$url);
-					if (strpos($http_response_header[0], "200")) {
-						$matchesDates = (json_decode($json, true));
-						/**
-						 * Validate if the content is require for 
-						 * yesterday, today and tomorrow
-						 **/ 
-						if ($this->dateDisplay['yesterday'] && $this->dateDisplay['today'] && $this->dateDisplay['tomorrow']) {
-							$this->json[$sport]['matches'] = $matchesDates;
-						} else {
-							/**
-							 * Validate which dates we must show
-							 * yesterday, today and tomorrow
-							 **/ 
-							foreach ($matchesDates as $k => $dates) {
-								if ((($k < $this->date) && $this->dateDisplay['yesterday']) || (($k == $this->date) && $this->dateDisplay['today']) || (($k > $this->date) && $this->dateDisplay['tomorrow'])) {
-									$this->json[$sport]['matches'][$k] = $dates;
-								}
-							}
-						}
-					}
-				}
-			}
-			return $this->json;
-		}
+		
 
 	}
 ?>
