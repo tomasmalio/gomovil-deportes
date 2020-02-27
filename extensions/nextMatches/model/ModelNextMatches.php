@@ -120,7 +120,8 @@
 			self::setContentConstructor($params['sports']);
 			self::setSports($params['sports_display']);
 			self::setDateDisplay($params['date_display']);
-			// return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
+			$array['data'] = Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
+			return $array;
 		}
 
 		public function setDate ($date) {
