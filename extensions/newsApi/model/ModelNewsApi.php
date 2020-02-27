@@ -12,7 +12,7 @@
 		// API Key
 		private $key = '508ccd1edfab4f81b802f57879d68273';
 		// Endpoints
-		private $endpoint = '';
+		private $endpoint = 'everything';
 		// Search
 		private $search = '';
 		// Category
