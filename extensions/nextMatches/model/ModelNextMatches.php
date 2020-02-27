@@ -116,12 +116,12 @@
 		
 		public function model ($params = []) {
 			print_r($params);
+			exit;
 			self::setDate($params['date']);
 			self::setContentConstructor($params['sports']);
 			self::setSports($params['sports_display']);
 			self::setDateDisplay($params['date_display']);
-			$array['data'] = Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
-			return $array;
+			return Widgets::multiRenameKey(self::getContent(), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
 
 		public function setDate ($date) {
