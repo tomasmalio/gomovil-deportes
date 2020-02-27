@@ -40,9 +40,7 @@
 		public function model ($params = []) {
 			self::setEndPoint($params['endpoint']);
 			self::setSearch($params['search']);
-			echo "estoy aca";
 			print_r(self::getNews());
-			exit;
 		}
 
 		private function getNews () {
@@ -60,7 +58,6 @@
 			echo $url;
 			$json = @file_get_contents($url);
 			if (strpos($http_response_header[0], "200")) {
-				echo 'aca';
 				return json_decode($json, true);
 			} else { 
 				return null;
