@@ -40,7 +40,8 @@
 		public function model ($params = []) {
 			self::setEndPoint($params['endpoint']);
 			self::setSearch($params['search']);
-			print_r(self::getNews());
+			
+			return self::getNews();
 		}
 
 		private function getNews () {
