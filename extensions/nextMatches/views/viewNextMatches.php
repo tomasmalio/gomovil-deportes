@@ -8,7 +8,6 @@
 ?>
 <section class="nextmatches">
 	<h2><?= (isset($content['titles']['next_matches'][COUNTRY_CODE])) ? $content['titles']['next_matches'][COUNTRY_CODE] : $content['titles']['next_matches']['default'];?></h2>
-	<h2><?= $content['title'];?></h2>
 	<?php 
 		/***************************************
 		 * FOOTBALL
