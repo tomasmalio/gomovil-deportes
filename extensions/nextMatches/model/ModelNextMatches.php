@@ -79,7 +79,7 @@
 			],
 			'verify'	=> [
 				'tournament',
-				'tournament',
+				'tournament_key',
 				'type',
 				'team_local',
 				'team_image_local',

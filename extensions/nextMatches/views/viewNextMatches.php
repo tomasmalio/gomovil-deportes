@@ -45,7 +45,7 @@
 						// If First we display info
 						if ($first) {
 		?>
-		<a href="/<?=$nextMatches['football']['url'];?>/torneos/<?= $this->normalizeString($match['type']);?>/<?= Widgets::normalizeString($match['tournament']);?>" class="competition-name"><span><?= $match['tournament']?></span></a>
+		<a href="/<?=$nextMatches['football']['url'];?>/torneos/<?= $this->normalizeString($match['type']);?>/<?= Widgets::normalizeString($match['tournament_key']);?>" class="competition-name"><span><?= $match['tournament']?></span></a>
 		<div class="competition-divider"></div>
 		<?php 
 							if (isset($match['step']) && !empty($match['step'])) {
