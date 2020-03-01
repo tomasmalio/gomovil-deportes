@@ -24,7 +24,6 @@
 	<?php
 				$tournaments = [];
 
-				print_r($matches);
 				foreach ($matches as $match) {
 					if (in_array($match['tournament_key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
 						if (!is_array($tournaments[$match['tournament_key']])) {
@@ -34,7 +33,6 @@
 					}
 				}
 				// Tournaments
-				print_r($tournaments);
 				foreach ($tournaments as $key => $tournament) {
 	?>
 	<div class="competition">
