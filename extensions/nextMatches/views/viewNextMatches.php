@@ -3,9 +3,6 @@
 	$nextMatches = $content['content'];
 	$date = date('Y-m-d');
 
-	print_r($content);
-	exit;
-
 	// Validate if we want to show a type of soccer and we've matches
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
@@ -26,6 +23,9 @@
 	<!-- Tournament / Football Sport / Next matches -->
 	<?php
 				$tournaments = [];
+
+				print_r($matches);
+				exit;
 				foreach ($matches as $match) {
 					if (in_array($this->normalizeString($match['tournament']), $_SESSION['clientConfig']->sports->football->available_tournaments)) {
 						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
