@@ -175,7 +175,6 @@
 					if (strpos($http_response_header[0], "200")) {
 						$matchesDates = (json_decode($json, true));
 
-						print_r($matchesDates);
 						/**
 						 * Validate if the content is require for 
 						 * yesterday, today and tomorrow
@@ -196,6 +195,8 @@
 					}
 				}
 			}
+			print_r($this->json);
+			exit;
 			return $this->json;
 		}
 
