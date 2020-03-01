@@ -174,6 +174,8 @@
 					$json = @file_get_contents($this->$url);
 					if (strpos($http_response_header[0], "200")) {
 						$matchesDates = (json_decode($json, true));
+
+						print_r($matchesDates);
 						/**
 						 * Validate if the content is require for 
 						 * yesterday, today and tomorrow
