@@ -24,17 +24,16 @@
 	<?php
 				$tournaments = [];
 
-				print_r($matches);
-				exit;
 				foreach ($matches as $match) {
 					if (in_array($this->normalizeString($match['tournament']), $_SESSION['clientConfig']->sports->football->available_tournaments)) {
-						if (!is_array($tournaments[$this->normalizeString($match['tournament'])])) {
-							$tournaments[$this->normalizeString($match['tournament'])] = [];
+						if (!is_array($tournaments[$this->normalizeString($match['tournament_key'])])) {
+							$tournaments[$this->normalizeString($match['tournament_key'])] = [];
 						}
-						array_push($tournaments[$this->normalizeString($match['tournament'])], $match);
+						array_push($tournaments[$this->normalizeString($match['tournament_key'])], $match);
 					}
 				}
 				// Tournaments
+				print_r($tournaments);
 				foreach ($tournaments as $key => $tournament) {
 	?>
 	<div class="competition">
