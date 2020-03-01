@@ -24,10 +24,11 @@
 	<?php
 				$tournaments = [];
 
+				print_r($matches);
 				foreach ($matches as $match) {
-					if (in_array($this->normalizeString($match['tournament']), $_SESSION['clientConfig']->sports->football->available_tournaments)) {
-						if (!is_array($tournaments[$this->normalizeString($match['tournament_key'])])) {
-							$tournaments[$this->normalizeString($match['tournament_key'])] = [];
+					if (in_array($match['tournament_key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
+						if (!is_array($tournaments[$match['tournament_key']])) {
+							$tournaments[$match['tournament_key']] = [];
 						}
 						array_push($tournaments[$this->normalizeString($match['tournament_key'])], $match);
 					}
