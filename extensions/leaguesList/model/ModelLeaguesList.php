@@ -31,6 +31,7 @@
 		public function model ($params = []) {
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			if (isset($params['search']['tournament']) && isset($params['search']['type'])) {
+				echo $params['search']['tournament'];
 				return $this->findTournament($array, $params['search']['tournament']);
 			} else {
 				return $this->groupByTournamentType($array['tournaments']);
@@ -69,6 +70,7 @@
 
 		private function findTournament ($tournaments, $search) {
 			foreach ($tournaments as $tournament) {
+				echo "aca";
 				echo $tournament['key'];
 				echo $search;
 				if ($tournament['key'] == $search) {
