@@ -1,20 +1,7 @@
 <?php 
 	
-	$type = '';
-	switch ($content['search']['type']) {
-		case 'liga':
-		case 'ligas':
-			$type = 'leagues';
-			break;
-		case 'copa':
-		case 'copas':
-			$type = 'cups';
-			break;
-		case 'seleccion':
-		case 'selecciones':
-			$type = 'selections';
-			break;
-	}
+	$type = $content['search']['type'];
+	
 	echo $type;
 	print_r($content);
 ?>
