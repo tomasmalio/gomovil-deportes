@@ -1,5 +1,5 @@
 <?php 
-	print_r($content);
+	
 	$type = '';
 	switch ($content['search']['type']) {
 		case 'liga':
@@ -15,6 +15,8 @@
 			$type = 'selections';
 			break;
 	}
+	echo $type;
+	print_r($content);
 ?>
 <section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
