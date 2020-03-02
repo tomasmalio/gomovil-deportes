@@ -70,6 +70,8 @@
 		private function findTournament ($tournaments, $search) {
 			foreach ($tournaments as $tournament) {
 				if ($tournament['key'] == $search) {
+					echo "aca";
+					print_r($tournament);
 					return $tournament;
 					break;
 				}
