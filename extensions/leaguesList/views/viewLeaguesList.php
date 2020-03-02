@@ -17,7 +17,7 @@
 	}
 ?>
 <section class="leagueslist">
-	<?php if (isset($content['content']['search']['display']) && $content['content']['search']['display']) {?>
+	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<div class="content-league">
 		<div class="league-image"><img src="http://images.degoles.com/tournaments/<?=$content['key']?>.png" name="tournamentlogo" alt=""></div>
 		<div class="league-name"><?= (isset($content['tournaments'][$type][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$type][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type][$leagues['key']]['name']['default'])) ? $content['tournaments'][$type][$leagues['key']]['name']['default'] : $content['content']['name'];?></div>
