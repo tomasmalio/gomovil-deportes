@@ -11,7 +11,7 @@
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
 	<div class="content-league">
 		<div class="league-image"><img src="http://images.degoles.com/tournaments/<?=$content['content']['key']?>.png" name="tournamentlogo" alt=""></div>
-		<div class="league-name"><?= (isset($content['tournaments'][$type]['tournament']['name'][COUNTRY_CODE])) ? $content['tournaments'][$type]['tournament']['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type]['tournament']['name']['default'])) ? $content['tournaments'][$type]['tournament']['name']['default'] : $content['content']['name'];?></div>
+		<div class="league-name"><?= (isset($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type][$content['search']['tournament']]['name']['default'])) ? $content['tournaments'][$type][$content['search']['tournament']]['name']['default'] : $content['content']['name'];?></div>
 	</div>
 	<?php 
 		} else {
