@@ -1,11 +1,5 @@
 <?php 
-	
 	$type = $content['search']['type'];
-	
-	echo $type;
-	echo '<pre>';
-	print_r($content);
-	echo '</pre>';
 ?>
 <section class="leagueslist">
 	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
