@@ -27,10 +27,6 @@
 					}
 				}
 				foreach ($content['content']['leagues'] as $leagues) {
-					print_r($content['tournaments']);
-					echo $leagues['key'];
-					print_r($content['tournaments'][$leagues['key']]);
-					exit;
 					if (in_array($leagues['key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
 						$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']))) . '/' . ((isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['tournaments']['default']))) . '/' . ((isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['leagues']['default']))) . '/' . $leagues['key'];
 			?>
@@ -46,7 +42,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($content['tournaments'][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$leagues['key']]['name']['default'])) ? $content['tournaments'][$leagues['key']]['name']['default'] : $leagues['name'];?></h5>
+					<h5><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['leagues'][$leagues['key']]['name']['default'])) ? $content['tournaments']['leagues'][$leagues['key']]['name']['default'] : $leagues['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
