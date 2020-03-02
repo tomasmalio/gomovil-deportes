@@ -44,7 +44,8 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></h5>
+					
+					<h5><?= (isset($content['tournaments'][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$leagues['key']]['name']['default'])) ? $content['tournaments'][$leagues['key']]['name']['default'] : $leagues['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
