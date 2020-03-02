@@ -43,7 +43,7 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$leagues['key']?>" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$leagues['key']?>.png" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
