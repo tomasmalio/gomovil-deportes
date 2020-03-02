@@ -1,7 +1,7 @@
 <?php
-// echo "<pre>";
-// print_r($content);
-// echo "</pre>";
+echo "<pre>";
+print_r($content);
+echo "</pre>";
 // exit;
 // $_SESSION['clientConfig']->sports->football->available_tournaments
 ?>
