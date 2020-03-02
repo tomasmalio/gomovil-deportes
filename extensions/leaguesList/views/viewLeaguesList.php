@@ -1,4 +1,5 @@
 <?php 
+	print_r($content['content']);
 	$type = '';
 	switch ($content['search']['type']) {
 		case 'liga':
