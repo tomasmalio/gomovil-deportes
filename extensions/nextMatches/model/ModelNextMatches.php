@@ -195,6 +195,8 @@
 					}
 				}
 			}
+			print_r($this->json);
+			exit;
 			return $this->json;
 		}
 

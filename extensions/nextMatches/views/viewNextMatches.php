@@ -40,8 +40,6 @@
 					$first 	= true;
 					$i 		= 0;
 
-					print_r($tournament);
-					exit;
 					foreach ($tournament as $match) {
 						// If First we display info
 						if ($first) {
