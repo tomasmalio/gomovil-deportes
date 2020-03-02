@@ -13,8 +13,6 @@
 	</div>
 	<?php 
 		} else {
-			print_r($content['content']);
-			exit;
 	?>
 	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php } elseif (isset($content['position']) && $content['position'] == 'horizontal') {?>-horizontal<?php }?>">
@@ -36,22 +34,16 @@
 					}
 				}
 				foreach ($content['content']['leagues'] as $leagues) {
-					$validateName = '';
-					if (isset($leagues['name'][COUNTRY_CODE])){
-						$validateName = $this->normalizeString($leagues['name'][COUNTRY_CODE]);
-					} else {
-						$validateName = $this->normalizeString($leagues['name']['default']);
-					}
 				
-					if (in_array($validateName, $_SESSION['clientConfig']->sports->football->available_tournaments)) {
-						$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']))) . '/' . ((isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['tournaments']['default']))) . '/' . ((isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['leagues']['default']))) . '/' . $key;
+					if (in_array($leagues['key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
+						$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']))) . '/' . ((isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['tournaments']['default']))) . '/' . ((isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['leagues']['default']))) . '/' . $leagues['key'];
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?=$url?>" class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>content-league<?php }?>">
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?=$leagues['image']?>" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$leagues['key']?>" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
