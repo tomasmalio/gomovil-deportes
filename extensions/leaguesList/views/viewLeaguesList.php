@@ -1,7 +1,7 @@
 <?php
-echo "<pre>";
-print_r($content);
-echo "</pre>";
+// echo "<pre>";
+// print_r($content);
+// echo "</pre>";
 // exit;
 // $_SESSION['clientConfig']->sports->football->available_tournaments
 ?>
@@ -13,6 +13,8 @@ echo "</pre>";
 	</div>
 	<?php 
 		} else {
+			print_r($content['content']);
+			exit;
 	?>
 	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php } elseif (isset($content['position']) && $content['position'] == 'horizontal') {?>-horizontal<?php }?>">
@@ -79,7 +81,7 @@ echo "</pre>";
 						}
 					}
 				}
-				foreach ($content['content']['tournaments']['cups'] as $key => $cups) {
+				foreach ($content['content']['cups'] as $key => $cups) {
 					$validateName = '';
 					if (isset($cups['name'][COUNTRY_CODE])){
 						$validateName = $this->normalizeString($cups['name'][COUNTRY_CODE]);
@@ -125,7 +127,7 @@ echo "</pre>";
 						}
 					}
 					
-					foreach ($content['content']['tournaments']['selections'] as $key => $selections) {
+					foreach ($content['content']['selections'] as $key => $selections) {
 						$validateName = '';
 						if (isset($selections['name'][COUNTRY_CODE])){
 							$validateName = $this->normalizeString($selections['name'][COUNTRY_CODE]);
