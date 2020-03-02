@@ -1,9 +1,25 @@
-<?php print_r($content['content']);?>
+<?php 
+	$type = '';
+	switch ($content['search']['type']) {
+		case 'liga':
+		case 'ligas':
+			$type = 'leagues';
+			break;
+		case 'copa':
+		case 'copas':
+			$type = 'cups';
+			break;
+		case 'seleccion':
+		case 'selecciones':
+			$type = 'selections';
+			break;
+	}
+?>
 <section class="leagueslist">
 	<?php if (isset($content['content']['search']['display']) && $content['content']['search']['display']) {?>
 	<div class="content-league">
-		<div class="league-image"><img src="<?=$content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['image']?>" name="" alt="<?= (isset($content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$content['search']['type']][$content['content']['search']['tournament']]['name'][COUNTRY_CODE] : $content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name']['default']?>" title="<?= (isset($content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name'][COUNTRY_CODE] : $content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name']['default']?>"></div>
-		<div class="league-name"><?= (isset($content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournaments']]['name'][COUNTRY_CODE] : $content['content']['tournaments'][$content['content']['search']['type']][$content['content']['search']['tournaments']]['name']['default'];?></div>
+		<div class="league-image"><img src="http://images.degoles.com/tournaments/<?=$content['key']?>.png" name="tournamentlogo" alt=""></div>
+		<div class="league-name"><?= (isset($content['tournaments'][$type][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$type][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type][$leagues['key']]['name']['default'])) ? $content['tournaments'][$type][$leagues['key']]['name']['default'] : $content['content']['name'];?></div>
 	</div>
 	<?php 
 		} else {
