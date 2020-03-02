@@ -81,7 +81,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($cups['name'][COUNTRY_CODE])) ? $cups['name'][COUNTRY_CODE] : $cups['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($cups['name'][COUNTRY_CODE])) ? $cups['name'][COUNTRY_CODE] : $cups['name']['default'];?></h5>
+					<h5><?= (isset($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['cups'][$cups['key']]['name']['default'])) ? $content['tournaments']['cups'][$cups['key']]['name']['default'] : $cups['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
@@ -121,7 +121,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></h5>
+					<h5><?= (isset($content['tournaments']['selection'][$selections['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['selections'][$selections['key']]['name']['default'])) ? $content['tournaments']['selections'][$selections['key']]['name']['default'] : $selections['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
