@@ -29,10 +29,14 @@
 		];
 
 		public function model ($params = []) {
-			print_r($params);
-			exit;
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			return $this->groupByTournamentType($array['tournaments']);
+
+			if (isset($params['tournament']) && isset($params['type'])) {
+				return $this->findTournament($array, $params['tournament']);
+			} else {
+				return $this->groupByTournamentType($array['tournaments']);
+			}
+			
 		}
 
 		/**
@@ -62,6 +66,14 @@
 				}
 			}
 			return $array;
+		}
+
+		private function findTournament ($tournaments, $search) {
+			foreach ($tournaments as $tournament) {
+				if ($tournament['key'] == $search) {
+					return $tournament;
+				}
+			}
 		}
 	}
 ?>
