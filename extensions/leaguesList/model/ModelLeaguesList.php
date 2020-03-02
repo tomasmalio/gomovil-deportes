@@ -29,6 +29,8 @@
 		];
 
 		public function model ($params = []) {
+			print_r($params);
+			exit;
 			$array =  Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=torneos'), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			return $this->groupByTournamentType($array['tournaments']);
 		}
