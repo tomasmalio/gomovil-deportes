@@ -69,7 +69,7 @@
 
 		private function findTournament ($tournaments, $search) {
 			foreach ($tournaments as $tournament) {
-				print_r($tournament);
+				print_r($tournament['key']);
 				echo $search;
 				if ($tournament['key'] == $search) {
 					return $tournament;
