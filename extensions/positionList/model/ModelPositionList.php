@@ -75,22 +75,7 @@
 		}
 
 		private function getPositions ($division, $championship) {
-			$array = Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-			print_r($array);
-			return $array;
+			return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 		}
-
-		// private function getTournaments ($type, $name) {
-		// 	$tournament = Widgets::multiRenameKey(json_decode(file_get_contents($this->urlTournaments), true), $this->mappingName['wrong'], $this->mappingName['verify']);
-		// 	foreach ($tournament as $key => $t) {
-		// 		if ($key == $type) {
-		// 			foreach ($t as $value) {
-		// 				if (Widgets::normalizeString($value['name']) == $name) {
-		// 					return $value['key'];
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 	}
 ?>
