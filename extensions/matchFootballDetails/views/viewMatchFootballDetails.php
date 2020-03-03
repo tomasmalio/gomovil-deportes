@@ -15,6 +15,14 @@
 			$match['status'] = 'end';
 			break;	
 	}
+	// Images shield
+	if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['local_team']) .'.png';
+		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['visit_visit']) .'.png';
+	} else {
+		$team_image_local = $match['local_image'];
+		$team_image_visit = $match['visit_image'];
+	}
 ?>
 <section class="matchfootballdetails">
 	<div class="matchfootballdetails-content">
@@ -55,7 +63,7 @@
 		<div class="row match-teams">
 			<div class="col-5 match-team">
 				<div class="team">
-					<div class="shield left"><img src="<?=$match['local_image']?>" name="local" title="" alt=""></div>
+					<div class="shield left"><img src="<?=$team_image_local;?>" name="local" title="" alt=""></div>
 					<div class="team-name left">
 						<div class="team-name-container">
 							<div class="cell"><?=$match['local_team']?></div>
@@ -99,7 +107,7 @@
 					<div class="shield right"><img src="<?=$match['visit_image']?>" name="visit" title="" alt=""></div>
 					<div class="team-name right">
 						<div class="team-name-container">
-							<div class="cell"><?=$match['visit_team']?></div>
+							<div class="cell"><?=$team_image_visit;?></div>
 						</div>
 					</div>
 				</div>
