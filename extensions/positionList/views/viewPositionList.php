@@ -1,5 +1,4 @@
 <?php
-print_r($content);
 	$positions = $content['content']['positions'];
 	// Validate that there're position content
 	if (isset($positions) && count($positions) > 0 && $positions != NULL) {
@@ -10,7 +9,7 @@ print_r($content);
 	/**
 	 * Positions for leagues
 	 */
-	if ($content['type'] == 'leagues'){
+	if ($content['type'] == 'leagues' || $content['type'] == 'liga' || $content['type'] == 'ligas'){
 	?>
 	<div class="content-list-teams">
 		<div class="titles-list">
