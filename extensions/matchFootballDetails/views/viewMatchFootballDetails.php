@@ -104,7 +104,7 @@
 			</div>
 			<div class="col-5 match-team">
 				<div class="team">
-					<div class="shield right"><img src="<?=$match['visit_image']?>" name="visit" title="" alt=""></div>
+					<div class="shield right"><img src="<?=$team_image_visit;?>" name="visit" title="" alt=""></div>
 					<div class="team-name right">
 						<div class="team-name-container">
 							<div class="cell"><?=$match['visit_team'];?></div>
