@@ -32,7 +32,8 @@
 				'goles_a_favor',
 				'goles_en_contra',
 				'diferencia',
-				'puntos'
+				'puntos',
+				'pais'
 			],
 			'verify'	=> [
 				'leagues',
@@ -54,7 +55,8 @@
 				'goals_in_favor',
 				'goals against',
 				'difference',
-				'points'
+				'points',
+				'country'
 			],
 		];
 
