@@ -68,12 +68,12 @@
 							break;	
 					}
 
-					if (isset($content['display_original_image']) && $content['display_original_image']) {
+					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
+						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
+					} else {
 						$team_image_local = $match['team_image_local'];
 						$team_image_visit = $match['team_image_visit'];
-					} else {
-						$team_image_local = 'http://images.degoles.com/' . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
-						$team_image_visit = 'http://images.degoles.com/' . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
 					}
 		?>
 			<!-- Match -->
