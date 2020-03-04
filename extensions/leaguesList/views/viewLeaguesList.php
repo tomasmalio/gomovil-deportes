@@ -11,7 +11,7 @@
 		} else {
 	?>
 	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
-		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php } elseif (isset($content['position']) && $content['position'] == 'horizontal') {?>-horizontal<?php }?>">
+		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php } if (isset($content['position']) && $content['position'] == 'horizontal') {?> horizontal<?php }?>">
 			<?php
 				// Leagues
 				if (!$slider) {
