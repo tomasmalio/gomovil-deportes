@@ -18,12 +18,14 @@
 			'wrong' 	=> [
 				'nombre',
 				'campeonato',
-				'equipos'
+				'equipos',
+				'pais'
 			],
 			'verify'	=> [
 				'name',
 				'championship',
-				'teams'
+				'teams',
+				'country'
 			],
 		];
 		
