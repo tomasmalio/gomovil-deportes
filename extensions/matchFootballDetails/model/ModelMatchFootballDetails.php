@@ -110,7 +110,7 @@
 		}
 
 		private function getMatchDetails ($match_id) {
-			$json = @file_get_contents($this->json . 'id=' . $match_id . '&user=' . $this->user . '&pwd=' . $this->pass . '&eventId=0');
+			$json = @file_get_contents($this->json . 'id=' . $match_id . '&user=' . $this->user . '&pwd=' . $this->pass . '&eventId=1');
 			if (strpos($http_response_header[0], "200")) {
 				return json_decode($json, true);
 			} else { 
