@@ -1,10 +1,8 @@
-<?php print_r($content)?>
-
 <section class="teamslist">
 	<div class="teamlist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-teams<?php if ($slider) {?>-slider swiper-wrapper<?php } if (isset($content['position']) && $content['position'] == 'horizontal') {?> horizontal<?php }?>">
 			<?php
-				foreach ($content as $team) {
+				foreach ($content['content'] as $team) {
 					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 						$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($team['country']) . '/' . Widgets::normalizeString($team['name']) .'.png';
 					} else {
