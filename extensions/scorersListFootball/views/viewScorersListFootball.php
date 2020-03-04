@@ -15,7 +15,7 @@
 				$i = 1;
 				foreach ($scorers as $s => $player) {
 					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
-						$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($player['country']) . '/' . Widgets::normalizeString($player['name']) .'.png';
+						$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($player['country']) . '/' . Widgets::normalizeString($player['team']) .'.png';
 					} else {
 						$team_image = $player['team_shield'];
 					}
