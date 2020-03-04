@@ -14,10 +14,15 @@
 			<?php
 				$i = 1;
 				foreach ($scorers as $s => $player) {
+					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+						$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($player['country']) . '/' . Widgets::normalizeString($player['name']) .'.png';
+					} else {
+						$team_image = $player['team_shield'];
+					}
 			?>
 			<div class="result">
 				<div class="position"><?=$i?></div>
-				<div class="team-shield"><img src="<?=$player['team_shield']?>" name="scorer" alt="<?=$player['team']?>" title="<?=$player['team']?>"></div>
+				<div class="team-shield"><img src="<?=$team_image?>" name="scorer" alt="<?=$player['team']?>" title="<?=$player['team']?>"></div>
 				<div class="team-name"><?=$player['name']?></div>
 				<div class="results-points"><?=$player['goals']?></div>
 				<div class="clearfix"></div>
