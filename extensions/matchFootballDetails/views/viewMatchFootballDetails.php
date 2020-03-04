@@ -17,8 +17,8 @@
 	}
 	// Images shield
 	if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
-		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['local_team']) .'.png';
-		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['visit_vis']) .'.png';
+		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['local_country']) . '/' . Widgets::normalizeString($match['local_team']) .'.png';
+		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['visit_country']) . '/' . Widgets::normalizeString($match['visit_team']) .'.png';
 	} else {
 		$team_image_local = $match['local_image'];
 		$team_image_visit = $match['visit_image'];
