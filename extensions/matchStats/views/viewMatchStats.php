@@ -1,5 +1,13 @@
 <?php
 	$stats = $content['content'];
+	// Images shield
+	if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($stats['local_country']) . '/' . Widgets::normalizeString($stats['local_team']) .'.png';
+		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($stats['visit_country']) . '/' . Widgets::normalizeString($stats['visit_team']) .'.png';
+	} else {
+		$team_image_local = $stats['local_image'];
+		$team_image_visit = $stats['visit_image'];
+	}
 ?>
 <section class="matchstats">
 	<!-- Match stats / Stats / Match / Match container -->
@@ -11,13 +19,13 @@
 				<div class="row">
 					<div class="col-6">
 						<div class="progress-content-team d-none d-md-block">
-							<span class="progress-content-team-shield-left"><img src="<?=$stats['local_image']?>" name="localimage" title="<?=$stats['local_team']?>" alt="<?=$stats['local_team']?>"></span>
+							<span class="progress-content-team-shield-left"><img src="<?=$team_image_local?>" name="localimage" title="<?=$stats['local_team']?>" alt="<?=$stats['local_team']?>"></span>
 							<div class="progress-content-team-name left"><?=$stats['local_team']?></div>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="progress-content-team d-none d-md-block">
-							<span class="progress-content-team-shield-right"><img src="<?=$stats['visit_image']?>" name="visitimage" title="<?=$stats['visit_team']?>" alt="<?=$stats['visit_team']?>"></span>
+							<span class="progress-content-team-shield-right"><img src="<?=$team_image_visit?>" name="visitimage" title="<?=$stats['visit_team']?>" alt="<?=$stats['visit_team']?>"></span>
 							<div class="progress-content-team-name right"><?=$stats['visit_team']?></div>
 						</div>
 					</div>
