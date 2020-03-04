@@ -6,7 +6,7 @@
 					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 						$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($team['country']) . '/' . Widgets::normalizeString($team['name']) .'.png';
 					} else {
-						$team_image = $score['team_shield'];
+						$team_image = $team['team_shield'];
 					}
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>

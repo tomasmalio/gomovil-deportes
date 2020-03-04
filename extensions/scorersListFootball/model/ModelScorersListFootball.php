@@ -20,7 +20,8 @@
 				'goleadores',
 				'equipo',
 				'escudo',
-				'goles'
+				'goles',
+				'pais'
 			],
 			'verify'	=> [
 				'name',
@@ -30,7 +31,8 @@
 				'scorers',
 				'team',
 				'team_shield',
-				'goals'
+				'goals',
+				'country'
 			],
 		];
 
