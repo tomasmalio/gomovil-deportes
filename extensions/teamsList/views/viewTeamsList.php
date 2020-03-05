@@ -1,5 +1,5 @@
 <section class="teamslist">
-	<div class="content-teams <?php if ($slider) {?>swiper-container<?php }?>">
+	<div class="teamslist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-teams<?php if ($slider) {?>-slider swiper-wrapper<?php } if (isset($content['position']) && $content['position'] == 'horizontal') {?> horizontal<?php }?>">
 			<?php
 				foreach ($content['content'] as $team) {
