@@ -16,18 +16,10 @@
 			'slider' => [
 				'desktop' 	=> [
 					'display' 		=> true,
-					'pagination'	=> false,
-					'navigation'	=> true,
 				],
 				'mobile' 	=> [
 					'display' 		=> true,
-					'pagination'	=> false,
-					'navigation'	=> true,
 				],
-				'options' => [
-					'mousewheel' 	=> false
-				],
-				'dynamic' 	=> true,
 			]
 		];
 
