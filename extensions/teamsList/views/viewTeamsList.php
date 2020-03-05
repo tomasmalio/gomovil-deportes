@@ -12,7 +12,7 @@
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?=$url?>" class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>content-league<?php }?>">
 					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>team-image<?php } else {?>card-img<?php }?>">
-						<img src="<?=$team_image?>" name="<?=Widgets::normalizeString($team['name']);?>" alt="" title="">
+						<img src="<?=$team_image?>" name="<?=Widgets::normalizeString($team['name']);?>" alt="<?=$team['name']?>" title="<?=$team['name']?>">
 					</div>
 				</a>
 			</li>
