@@ -31,7 +31,6 @@
 				'visitante_id',
 				'visitante_resultado',
 				'visitante_pais',
-				'vistante_pais',
 				'dia',
 				'hora'
 			],
@@ -50,7 +49,6 @@
 				'team_image_visit',
 				'visitor_id',
 				'team_result_visit',
-				'team_country_visit',
 				'team_country_visit',
 				'day',
 				'hour'
