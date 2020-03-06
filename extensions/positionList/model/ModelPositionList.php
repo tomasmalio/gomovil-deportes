@@ -90,7 +90,7 @@
 					if (strpos($http_response_header[0], "200")) {
 						$array['positions']['GR'.$letter] = $return['positions'];
 					} else {
-						echo "entro";
+						exit;
 						break;
 					}
 				}
