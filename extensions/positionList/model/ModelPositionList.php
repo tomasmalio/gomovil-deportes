@@ -92,7 +92,6 @@
 					} else {
 						break;
 					}
-					print_r($array);
 				}
 				return $array;
 			}
