@@ -55,6 +55,14 @@
 							} else if ($match['day'] == date('Y-m-d') && ($hours_difference > 0 && $hours_difference <= 2)) {
 								$match['status'] = 'live';
 							}
+
+							if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+								$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
+								$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
+							} else {
+								$team_image_local = $match['team_image_local'];
+								$team_image_visit = $match['team_image_visit'];
+							}
 					?>
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">
@@ -65,7 +73,7 @@
 								<div class="row match-teams">
 									<div class="col-5 match-team">
 										<div class="team">
-											<div class="shield left"><img src="<?=$match['team_image_local']?>" name="local" title="" alt=""></div>
+											<div class="shield left"><img src="<?=$team_image_local?>" name="local" title="" alt=""></div>
 											<div class="team-name left" style="width: 101px;">
 												<div class="team-name-container">
 													<div class="cell"><?=$match['team_local']?></div>
@@ -110,7 +118,7 @@
 									</div>
 									<div class="col-5 match-team">
 										<div class="team">
-											<div class="shield right"><img src="<?=$match['team_image_visit']?>" name="visit" title="" alt=""></div>
+											<div class="shield right"><img src="<?=$team_image_visit?>" name="visit" title="" alt=""></div>
 											<div class="team-name right" style="width: 101px;">
 												<div class="team-name-container">
 													<div class="cell"><?=$match['team_visit']?></div>
