@@ -86,23 +86,14 @@
 
 					$return = Widgets::multiRenameKey(json_decode(@file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 					
-					print_r($return);
+					//print_r($return);
 					if (strpos($http_response_header[0], "200")) {
-						array_push($array, $return);
+						$array['GR'.$letter] = $return['positions'];
 					} else {
 						break;
 					}
-					// $json = Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 				}
 				return $array;
-				// &grupo=GRC
-				// GRUX
-				// OF
-				// CUF
-				// SEM
-				// TP
-				// F
-				//return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			}
 			
 		}
