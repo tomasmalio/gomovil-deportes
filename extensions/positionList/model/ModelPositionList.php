@@ -66,7 +66,7 @@
 				foreach ($array as $res) {
 					foreach ($res as $value) {
 						if ($value['key'] == $params['tournament']) {
-							return $this->getPositions($value['division'], $value['championship']);
+							return $this->getPositions($value['division'], $value['championship'], $params['type']);
 						}
 					}
 				}
@@ -74,8 +74,38 @@
 			return null;
 		}
 
-		private function getPositions ($division, $championship) {
-			return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+		private function getPositions ($division, $championship, $type) {
+			if ($type == 'liga' || $type == 'league') {
+				return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			} else {
+				$array = [];
+				$letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
+
+				$end = false;
+				foreach ($letters as $letter) {
+
+					$return = @file_get_contents(Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']));
+					// If there's response we set the suscribe session
+					if (strpos($http_response_header[0], "200")) {
+						array_push($array, $return);
+					} 
+					// Redirect to the page before
+					else {
+						break;
+					}
+					// $json = Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+				}
+				return $array;
+				// &grupo=GRC
+				// GRUX
+				// OF
+				// CUF
+				// SEM
+				// TP
+				// F
+				//return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
+			}
+			
 		}
 	}
 ?>
