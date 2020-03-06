@@ -75,9 +75,7 @@
 		}
 
 		private function getPositions ($division, $championship, $type) {
-			echo $type;
-			exit;
-			if ($type == 'liga' || $type == 'league') {
+			if ($type == 'liga' || $type == 'ligas' || $type == 'leagues' || $type == 'league') {
 				return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			} else {
 				;
