@@ -1,8 +1,6 @@
 <?php
 	$positions = $content['content']['positions'];
 	// Validate that there're position content
-	echo "aca";
-	print_r($positions);
 	if (isset($positions) && count($positions) > 0 && $positions != NULL) {
 ?>
 <section class="positionlist">
