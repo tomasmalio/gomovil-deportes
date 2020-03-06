@@ -84,13 +84,12 @@
 				$end = false;
 				foreach ($letters as $letter) {
 
-					$return = @file_get_contents(Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']));
-					// If there's response we set the suscribe session
+					$return = Widgets::multiRenameKey(json_decode(@file_get_contents(($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']));
+					
+					print_r($return);
 					if (strpos($http_response_header[0], "200")) {
 						array_push($array, $return);
-					} 
-					// Redirect to the page before
-					else {
+					} else {
 						break;
 					}
 					// $json = Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']);
