@@ -1,6 +1,5 @@
 <?php
 	$positions = $content['content']['positions'];
-	print_r($positions);
 	// Validate that there're position content
 	if (isset($positions) && count($positions) > 0 && $positions != NULL) {
 ?>
