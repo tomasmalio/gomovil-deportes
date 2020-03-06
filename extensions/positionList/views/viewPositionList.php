@@ -68,10 +68,15 @@
 				<?php 
 					$positions = $content['content']['positions'];
 					foreach ($group as $score) {
+						if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+							$team_image = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($score['country']) . '/' . Widgets::normalizeString($score['team']) .'.png';
+						} else {
+							$team_image = $score['team_shield'];
+						}
 				?>
 				<div class="result">
 					<div class="position"><?=$score['position']?></div>
-					<div class="team-shield"><img src="<?=$score['team_shield']?>" name="" alt="" title=""></div>
+					<div class="team-shield"><img src="<?=$team_image?>" name="" alt="" title=""></div>
 					<div class="team-name"><?=$score['team']?></div>
 					<div class="results-points"><?=$score['points']?></div>
 					<div class="results-lost"><?=$score['lost']?></div>
