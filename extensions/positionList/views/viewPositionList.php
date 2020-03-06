@@ -51,6 +51,7 @@
 	 * Positions for Cups & Selections
 	 */
 	else {
+		print_r($positions);
 	?>
 		<?php foreach ($positions as $key => $group) {?>
  		<div class="content-list-teams">
