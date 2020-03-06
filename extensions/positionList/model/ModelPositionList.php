@@ -78,7 +78,7 @@
 			if ($type == 'liga' || $type == 'league') {
 				return Widgets::multiRenameKey(json_decode(file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 			} else {
-				$array['positions'] = [];
+				;
 				$letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
 
 				$end = false;
@@ -88,7 +88,7 @@
 					
 					//print_r($return);
 					if (strpos($http_response_header[0], "200")) {
-						$array['GR'.$letter] = $return['positions'];
+						$array['positions']['GR'.$letter] = $return['positions'];
 					} else {
 						break;
 					}

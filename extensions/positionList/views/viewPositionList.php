@@ -1,5 +1,4 @@
 <?php
-	print_r($content);
 	$positions = $content['content']['positions'];
 	// Validate that there're position content
 	if (isset($positions) && count($positions) > 0 && $positions != NULL) {
@@ -52,7 +51,7 @@
 	 * Positions for Cups & Selections
 	 */
 	else {
-		print_r($positions);
+		print_r($content['content']);
 	?>
 		<?php foreach ($positions as $key => $group) {?>
  		<div class="content-list-teams">
