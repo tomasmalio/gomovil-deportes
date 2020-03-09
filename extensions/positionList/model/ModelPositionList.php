@@ -83,14 +83,11 @@
 
 				$end = false;
 				foreach ($letters as $letter) {
-
 					$return = Widgets::multiRenameKey(json_decode(@file_get_contents($this->json . '&user=' . $this->user . '&pwd=' . $this->pass . '&metodo=posiciones&division='. $division .'&campeonato='. $championship.'&grupo=GR'.$letter), true), $this->mappingName['wrong'], $this->mappingName['verify']);
 					
-					//print_r($return);
-					if (strpos($http_response_header[0], "200")) {
+					if ($return['positions'] != null) {
 						$array['positions']['GR'.$letter] = $return['positions'];
 					} else {
-						exit;
 						break;
 					}
 				}
