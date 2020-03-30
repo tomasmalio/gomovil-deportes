@@ -2,13 +2,26 @@
 	$type = $content['search']['type'];
 ?>
 <section class="leagueslist">
-	<?php if (isset($content['search']['display']) && $content['search']['display']) {?>
+	<?php 
+		if (isset($content['search']['display']) && $content['search']['display']) {
+			
+			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+				$league_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/' . $content['content']['key'] .'.png';
+			} else {
+				$league_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/' . $content['content']['key'] .'.png';
+			}
+	?>
 	<div class="content-league">
-		<div class="league-image"><img src="http://images.degoles.com/tournaments/<?=$content['content']['key']?>.png" name="tournamentlogo" alt=""></div>
+		<div class="league-image"><img src="<?=$league_image?>" alt=""></div>
 		<div class="league-name"><?= (isset($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type][$content['search']['tournament']]['name']['default'])) ? $content['tournaments'][$type][$content['search']['tournament']]['name']['default'] : $content['content']['name'];?></div>
 	</div>
 	<?php 
 		} else {
+			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
+				$url_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/';
+			} else {
+				$url_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/';
+			}
 	?>
 	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
 		<ul class="list-leagues<?php if ($slider) {?>-slider swiper-wrapper<?php } if (isset($content['position']) && $content['position'] == 'horizontal') {?> horizontal<?php }?>">
@@ -38,7 +51,7 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$leagues['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?= $url_image . $leagues['key']?>.png" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
@@ -77,7 +90,7 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$cups['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?=$url_image . $cups['key']?>.png" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
@@ -117,7 +130,7 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="http://images.degoles.com/tournaments/<?=$selections['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?=$url_image . $selections['key']?>.png" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>

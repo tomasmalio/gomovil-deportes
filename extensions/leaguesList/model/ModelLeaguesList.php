@@ -9,8 +9,6 @@
 		private $user = 'gomovil';
 		// Password
 		private $pass = 'g0m0v1lc0&';
-		// Url images
-		private $url = 'http://images.degoles.com/tournaments/';
 		
 		// Mapping name JSON
 		private $mappingName = [
