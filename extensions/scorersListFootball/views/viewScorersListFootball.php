@@ -6,8 +6,8 @@
 	<h2><?php if (isset($content['titles']['scorers'][COUNTRY_CODE])) { echo $content['titles']['scorers'][COUNTRY_CODE]; } else { echo $content['titles']['scorers']['default'];}?></h2>
 	<div class="content-list-teams">
 		<div class="titles-list">
-			<div class="title-team"><?php if (isset($content['titles']['player'][COUNTRY_CODE])) { echo utf8_decode($content['titles']['player'][COUNTRY_CODE]); } else { echo $content['titles']['player']['default'];}?></div>
-			<div class="title-points"><?php if (isset($content['titles']['goals'][COUNTRY_CODE])) { echo utf8_decode($content['titles']['goals'][COUNTRY_CODE]); } else { echo $content['titles']['goals']['default'];}?></div>
+			<div class="title-team"><?php if (isset($content['titles']['player'][COUNTRY_CODE])) { echo mb_convert_encoding($content['titles']['player'][COUNTRY_CODE]); } else { echo $content['titles']['player']['default'];}?></div>
+			<div class="title-points"><?php if (isset($content['titles']['goals'][COUNTRY_CODE])) { echo mb_convert_encoding($content['titles']['goals'][COUNTRY_CODE]); } else { echo $content['titles']['goals']['default'];}?></div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="results-list">
