@@ -4,7 +4,7 @@
 	if (isset($positions) && count($positions) > 0 && $positions != NULL) {
 ?>
 <section class="positionlist">
-	<h2><?=$content['title']?></h2>
+	<h2><?php if (isset($content['titles']['positions'][COUNTRY_CODE])) { echo $content['titles']['positions'][COUNTRY_CODE]; } else { echo $content['titles']['positions']['default'];}?></h2>
 	<?php 
 	/**
 	 * Positions for leagues
@@ -13,7 +13,7 @@
 	?>
 	<div class="content-list-teams">
 		<div class="titles-list">
-			<div class="title-team">Equipo</div>
+			<div class="title-team"><?php if (isset($content['titles']['team'][COUNTRY_CODE])) { echo $content['titles']['team'][COUNTRY_CODE]; } else { echo $content['titles']['team']['default'];}?></div>
 			<div class="title-points">Pts</div>
 			<div class="title-lost">PP</div>
 			<div class="title-tied">PE</div>
@@ -56,7 +56,7 @@
  		<div class="content-list-teams">
 			<h3><?=$key?></h3>
 			<div class="titles-list">
-				<div class="title-team">Equipo</div>
+				<div class="title-team"><?php if (isset($content['titles']['team'][COUNTRY_CODE])) { echo $content['titles']['team'][COUNTRY_CODE]; } else { echo $content['titles']['team']['default'];}?></div>
 				<div class="title-points">Pts</div>
 				<div class="title-lost">PP</div>
 				<div class="title-tied">PE</div>
