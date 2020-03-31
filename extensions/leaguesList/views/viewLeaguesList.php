@@ -31,13 +31,13 @@
 					if (isset($content['titles']['leagues'][COUNTRY_CODE]) && $content['titles']['leagues'][COUNTRY_CODE] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=$content['titles']['leagues'][COUNTRY_CODE]?></h2>
+			<h2><?= utf8_decode($content['titles']['leagues'][COUNTRY_CODE])?></h2>
 			<?php 
 						}
 					} else if (isset($content['titles']['leagues']['default']) && $content['titles']['leagues']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=$content['titles']['leagues']['default']?></h2>
+			<h2><?=utf8_decode($content['titles']['leagues']['default'])?></h2>
 			<?php
 						}
 					}
@@ -76,7 +76,7 @@
 					} else if (isset($content['titles']['cups']['default']) && $content['titles']['cups']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=$content['titles']['cups']['default']?></h2>
+			<h2><?=utf8_decode($content['titles']['cups']['default'])?></h2>
 			<?php
 						}
 					}
@@ -109,13 +109,13 @@
 					if (isset($content['titles']['selections'][COUNTRY_CODE]) && $content['titles']['selections'][COUNTRY_CODE] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=$content['titles']['selections'][COUNTRY_CODE]?></h2>
+			<h2><?=utf8_decode($content['titles']['selections'][COUNTRY_CODE])?></h2>
 			<?php 
 						}
 					} else if (isset($content['titles']['selections']['default']) && $content['titles']['selections']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=$content['titles']['selections']['default']?></h2>
+			<h2><?=utf8_decode($content['titles']['selections']['default'])?></h2>
 			<?php
 							}
 						}
