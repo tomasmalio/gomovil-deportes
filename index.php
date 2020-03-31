@@ -668,7 +668,7 @@
 	/**********************************
 	 * 			METATAGS
 	 **********************************/
-
+	
 	require_once __DIR__.''.EXTENSIONS_URL.'/metaTags/MetaTags.php';
 	$json = [
 		'clientName'	=> CLIENT_NAME,
@@ -676,7 +676,7 @@
 			'content' 	=> [
 				'title' 			=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 				'description' 		=> str_replace($keywords, $keywordsChange, utf8_encode($section['description'])),
-				'image'				=> isset($section['image']) ? $_SERVER['HTTP_HOST'] . '/images/social/' . $section['image'] : '',
+				'image'				=> isset($section['image']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . $_SERVER['HTTP_HOST'] . '/images/social/' . $section['image'] : '',
 				'url'				=> $_SERVER['HTTP_HOST'],
 				'keywords'			=> isset($section['keywords']) ? $section['keywords'] : '',
 				'twitterAccount'	=> isset($client['twitter_account']) ? $client['twitter_account'] : '',
