@@ -13,7 +13,7 @@
 	?>
 	<div class="content-league">
 		<div class="league-image"><img src="<?=$league_image?>" alt=""></div>
-		<div class="league-name"><?= (isset($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE])) ? $content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE] : (isset($content['tournaments'][$type][$content['search']['tournament']]['name']['default'])) ? $content['tournaments'][$type][$content['search']['tournament']]['name']['default'] : $content['content']['name'];?></div>
+		<div class="league-name"><?= (isset($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE]) : (isset($content['tournaments'][$type][$content['search']['tournament']]['name']['default'])) ? utf8_decode($content['tournaments'][$type][$content['search']['tournament']]['name']['default']) : $content['content']['name'];?></div>
 	</div>
 	<?php 
 		} else {
@@ -31,13 +31,13 @@
 					if (isset($content['titles']['leagues'][COUNTRY_CODE]) && $content['titles']['leagues'][COUNTRY_CODE] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?= utf8_decode($content['titles']['leagues'][COUNTRY_CODE])?></h2>
+			<h2><?=$content['titles']['leagues'][COUNTRY_CODE]?></h2>
 			<?php 
 						}
 					} else if (isset($content['titles']['leagues']['default']) && $content['titles']['leagues']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=utf8_decode($content['titles']['leagues']['default'])?></h2>
+			<h2><?=$content['titles']['leagues']['default']?></h2>
 			<?php
 						}
 					}
@@ -58,7 +58,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($leagues['name'][COUNTRY_CODE])) ? $leagues['name'][COUNTRY_CODE] : $leagues['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['leagues'][$leagues['key']]['name']['default'])) ? $content['tournaments']['leagues'][$leagues['key']]['name']['default'] : $leagues['name'];?></h5>
+					<h5><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['leagues'][$leagues['key']]['name']['default'])) ? utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name']['default']) : $leagues['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
@@ -76,7 +76,7 @@
 					} else if (isset($content['titles']['cups']['default']) && $content['titles']['cups']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=utf8_decode($content['titles']['cups']['default'])?></h2>
+			<h2><?=$content['titles']['cups']['default']?></h2>
 			<?php
 						}
 					}
@@ -97,7 +97,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($cups['name'][COUNTRY_CODE])) ? $cups['name'][COUNTRY_CODE] : $cups['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['cups'][$cups['key']]['name']['default'])) ? $content['tournaments']['cups'][$cups['key']]['name']['default'] : $cups['name'];?></h5>
+					<h5><?= (isset($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['cups'][$cups['key']]['name']['default'])) ? utf8_decode($content['tournaments']['cups'][$cups['key']]['name']['default']) : $cups['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
@@ -109,13 +109,13 @@
 					if (isset($content['titles']['selections'][COUNTRY_CODE]) && $content['titles']['selections'][COUNTRY_CODE] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=utf8_decode($content['titles']['selections'][COUNTRY_CODE])?></h2>
+			<h2><?=$content['titles']['selections'][COUNTRY_CODE]?></h2>
 			<?php 
 						}
 					} else if (isset($content['titles']['selections']['default']) && $content['titles']['selections']['default'] != '') {
 						if ((isset($content['leagues_display_name']) && $content['leagues_display_name']) || !isset($content['leagues_display_name'])) {
 			?>
-			<h2><?=utf8_decode($content['titles']['selections']['default'])?></h2>
+			<h2><?=$content['titles']['selections']['default']?></h2>
 			<?php
 							}
 						}
@@ -137,7 +137,7 @@
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
 					<div class="league-name"><?= (isset($selections['name'][COUNTRY_CODE])) ? $selections['name'][COUNTRY_CODE] : $selections['name']['default'];?></div>
 					<?php } else {?>
-					<h5><?= (isset($content['tournaments']['selection'][$selections['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE] : (isset($content['tournaments']['selections'][$selections['key']]['name']['default'])) ? $content['tournaments']['selections'][$selections['key']]['name']['default'] : $selections['name'];?></h5>
+					<h5><?= (isset($content['tournaments']['selection'][$selections['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['selections'][$selections['key']]['name']['default'])) ? utf8_decode($content['tournaments']['selections'][$selections['key']]['name']['default']) : $selections['name'];?></h5>
 					<?php }?>
 				</a>
 			</li>
