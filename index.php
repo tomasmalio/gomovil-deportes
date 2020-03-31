@@ -676,7 +676,7 @@
 			'content' 	=> [
 				'title' 			=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
 				'description' 		=> str_replace($keywords, $keywordsChange, utf8_encode($section['description'])),
-				'image'				=> isset($section['image']) ? $section['image'] : '',
+				'image'				=> isset($section['image']) ? $_SERVER['HTTP_HOST'] . '/images/social/' . $section['image'] : '',
 				'url'				=> $_SERVER['HTTP_HOST'],
 				'keywords'			=> isset($section['keywords']) ? $section['keywords'] : '',
 				'twitterAccount'	=> isset($client['twitter_account']) ? $client['twitter_account'] : '',
