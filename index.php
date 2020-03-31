@@ -77,7 +77,9 @@
 	// Delete everything
 	//$InstanceCache->clear();
 	
-	/* Security control */
+	/**********************************
+	 * 		SECURITY CONTROL
+	 **********************************/
 	if (isset($_POST['subscriptionId']) && isset($_POST['token'])) {
 		if (isset($client['security_endpoint']) && $client['security_endpoint'] <> '') {
 			$return = @file_get_contents($client['security_endpoint']);
@@ -696,6 +698,7 @@
 
 	echo $template->render([
 		'title'						=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+		'language'					=> explode('_', $client['language'])[0],
 		'googleAnalytics'			=> isset($client['google_analytics']) ? $client['google_analytics'] : '',
 		'globalStyle'				=> $globalStyle,
 		'assetsStyle'				=> $assetsStyle,
