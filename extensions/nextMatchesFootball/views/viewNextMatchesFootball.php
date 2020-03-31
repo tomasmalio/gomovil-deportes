@@ -30,12 +30,12 @@
 				<?php }?>
 				<div class="date-matches"><?php 
 					if (is_numeric($key)) { 
-						echo 'Fecha '.$key; 
+						echo utf8_decode($content['titles']['date'][COUNTRY_CODE]) . ' ' . $key;
 					} else {
 						if (isset($content['titles']['phases'][$key][COUNTRY_CODE])) {
-							echo $content['titles']['phases'][$key][COUNTRY_CODE];
+							echo utf8_decode($content['titles']['phases'][$key][COUNTRY_CODE]);
 						} else {
-							echo $content['titles']['phases'][$key]['default'];
+							echo utf8_decode($content['titles']['phases'][$key]['default']);
 						}
 					}
 				?></div>
@@ -69,7 +69,7 @@
 						<div class="col-12">
 							<?php $url = DOMAIN . '/' . (isset($content['section'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['section'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['section']['default'])))). '/' . (isset($content['titles']['match'][COUNTRY_CODE]) ? (strtolower($this->normalizeString($content['titles']['match'][COUNTRY_CODE]))) : (strtolower($this->normalizeString($content['titles']['match']['default'])))). '/'. $match['id'] . '/'.  ($this->normalizeString($match['team_local'])) . '-vs-' . ($this->normalizeString($match['team_visit']));?>
 							<a href="<?=$url?>" name="<?php echo $match['team_local'] . ' vs ' . $match['team_visit']?>">
-						<div class="competition-date" <?php /*if ($match['status'] == 'live') {?>style="padding-bottom:30px;"<?php }*/?>><?= strftime('%d de %B', strtotime($match['day']));?></div>
+								<div class="competition-date"><?= utf8_decode(strftime('%d de %B', strtotime($match['day'])));?></div>
 								<div class="row match-teams">
 									<div class="col-5 match-team">
 										<div class="team">
