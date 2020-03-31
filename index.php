@@ -674,8 +674,8 @@
 		'clientName'	=> CLIENT_NAME,
 		'data' => [
 			'content' 	=> [
-				'title' 			=> str_replace($keywords, $keywordsChange, utf8_decode($section['title'])),
-				'description' 		=> str_replace($keywords, $keywordsChange, utf8_decode($section['description'])),
+				'title' 			=> str_replace($keywords, $keywordsChange, utf8_encode($section['title'])),
+				'description' 		=> str_replace($keywords, $keywordsChange, utf8_encode($section['description'])),
 				'image'				=> isset($section['image']) ? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . '://'. $_SERVER['HTTP_HOST'] . '/images/social/' . $section['image'] : '',
 				'url'				=> (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . '://'. $_SERVER['HTTP_HOST'],
 				'keywords'			=> isset($section['keywords']) ? $section['keywords'] : '',
