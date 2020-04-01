@@ -20,9 +20,9 @@
 		<a href="<?=$url?>" title="<?=$news['title']?>">
 			<div class="content" style="background-image: url('<?=$content['content']['image']?>');">
 				<h3>
-					<span><?=$content['label']?></span>
+					<span><?= utf8_decode($content['label'])?></span>
 				</h3>
-				<h2><?=$content['content']['title']?></h2>
+				<h2><?=utf8_decode($content['content']['title'])?></h2>
 			</div>
 		</a>
 	</div>
