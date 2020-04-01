@@ -3,7 +3,7 @@
 		$gifs = $content['content'];
 		if ($gifs) {
 	?>
-	<?php if (isset($content['title'])){?><h3><?=$content['title']?></h3><?php }?>
+	<?php if (isset($content['title'])){?><h3><?=utf8_decode($content['title'])?></h3><?php }?>
 	<div class="row">
 		<?php
 				foreach ($gifs as $gif) {
