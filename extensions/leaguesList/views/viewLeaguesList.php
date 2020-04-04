@@ -2,7 +2,10 @@
 	$type = $content['search']['type'];
 ?>
 <section class="leagueslist">
-	<?php 
+	<?php
+		/******************************
+		 * 		Searching league
+		 ******************************/ 
 		if (isset($content['search']['display']) && $content['search']['display']) {
 			
 			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
@@ -16,7 +19,11 @@
 		<div class="league-name"><?= (isset($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments'][$type][$content['search']['tournament']]['name'][COUNTRY_CODE]) : (isset($content['tournaments'][$type][$content['search']['tournament']]['name']['default'])) ? utf8_decode($content['tournaments'][$type][$content['search']['tournament']]['name']['default']) : $content['content']['name'];?></div>
 	</div>
 	<?php 
-		} else {
+		}
+		/******************************
+		 * 		Searching league
+		 ******************************/ 
+		else {
 			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 				$url_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/';
 			} else {
@@ -42,9 +49,15 @@
 						}
 					}
 				}
+
+				// if (isset($leagues['key'], $_SESSION['clientConfig']->sports->football->order) && $leagues['key'], $_SESSION['clientConfig']->sports->football->order == true) {
+
+				// }
+
+
 				foreach ($content['content']['leagues'] as $leagues) {
 					if (in_array($leagues['key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
-						$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['section'][COUNTRY_CODE])) : strtolower($this->normalizeString($content['section']['default']))) . '/' . ((isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['tournaments']['default']))) . '/' . ((isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['leagues']['default']))) . '/' . $leagues['key'];
+						$url = DOMAIN . '/' . ((isset($content['section'][COUNTRY_CODE])) ? strtolower($this->normalizeString(utf8_decode($content['section'][COUNTRY_CODE]))) : strtolower($this->normalizeString(utf8_decode($content['section']['default'])))) . '/' . ((isset($content['titles']['tournaments'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['tournaments'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['tournaments']['default']))) . '/' . ((isset($content['titles']['leagues'][COUNTRY_CODE])) ? strtolower($this->normalizeString($content['titles']['leagues'][COUNTRY_CODE])) :  strtolower($this->normalizeString($content['titles']['leagues']['default']))) . '/' . $leagues['key'];
 			?>
 			<li <?php if ($slider) {?>class="swiper-slide"<?php }?>>
 				<a href="<?=$url?>" class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>content-league<?php }?>">
