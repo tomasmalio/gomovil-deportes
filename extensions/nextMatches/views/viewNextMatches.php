@@ -7,7 +7,7 @@
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
 <section class="nextmatches">
-	<h2><?= (isset($content['title'])) ? $content['title'] : ((isset($content['titles']['next_matches'][COUNTRY_CODE])) ? $content['titles']['next_matches'][COUNTRY_CODE] : $content['titles']['next_matches']['default']);?></h2>
+	<h2><?= (isset($content['title'])) ? $content['title'] : ((isset($content['titles']['next_matches'][COUNTRY_CODE])) ? utf8_decode($content['titles']['next_matches'][COUNTRY_CODE]) : utf8_decode($content['titles']['next_matches']['default']));?></h2>
 	<?php 
 		/***************************************
 		 * FOOTBALL
