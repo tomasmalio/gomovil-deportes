@@ -4,7 +4,6 @@
 	$date = date('Y-m-d');
 
 	// Validate if we want to show a type of soccer and we've matches
-	print_r($nextMatches);
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
 <section class="nextmatches">
