@@ -241,10 +241,10 @@
 				// Deleting all the files in the list 
 				foreach ($files as $file) { 
 					if (is_file($file)) 
-						echo $file;
 						// Delete the given file 
-						// unlink($file);  
-				} 
+						unlink($file);  
+				}
+				echo "Ended";
 			}
 		}
 	}
