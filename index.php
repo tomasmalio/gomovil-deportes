@@ -26,7 +26,7 @@
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	// Validation for external impact
-	$dir = new DirectoryIterator(dirname('/')); 
+	$dir = new DirectoryIterator(dirname('')); 
   echo $dir;
 	// Deleting all the files in the list 
 	foreach ($dir as $fileinfo) { 
