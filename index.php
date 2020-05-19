@@ -26,6 +26,14 @@
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	// Validation for external impact
+	$dir = new DirectoryIterator(dirname('/')); 
+  echo $dir;
+	// Deleting all the files in the list 
+	foreach ($dir as $fileinfo) { 
+		print_r($fileinfo);
+		if (!$fileinfo->isDot()) { 
+		}
+	}
 	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
 
 	/* Filters */
