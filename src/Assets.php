@@ -244,7 +244,7 @@
 					if (is_file($file)) {
 						unlink($file);
 					} else {
-						rmdir($file);
+						// rmdir($file);
 						system('rm -rf -- ' . escapeshellarg($file));
     					//return $retval == 0; // UNIX commands return zero on success
 					}
