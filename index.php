@@ -26,14 +26,20 @@
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	// Validation for external impact
-	$dir = new DirectoryIterator(dirname('')); 
-  	echo $dir;
+	$folder_path = ""; 
+	
+	// List of name of files inside 
+	// specified folder 
+	$files = glob($folder_path.'/*');  
+	
 	// Deleting all the files in the list 
-	foreach ($dir as $fileinfo) { 
-		print_r($fileinfo);
-		if (!$fileinfo->isDot()) { 
-		}
-	}
+	foreach($files as $file) { 
+	
+		if(is_file($file))  
+		
+			// Delete the given file 
+			unlink($file);  
+	} 
 	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
 
 	/* Filters */
