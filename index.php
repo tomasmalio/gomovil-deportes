@@ -34,13 +34,13 @@
 	
 	// Deleting all the files in the list 
 	foreach($files as $file) { 
-	
-		if(is_file($file))  
+		print_r($files);
+		// if(is_file($file)) 
 		
 			// Delete the given file 
-			unlink($file);  
+			// unlink($file);  
 	} 
-	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
+	// (isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
 
 	/* Filters */
 	$filters = [];
