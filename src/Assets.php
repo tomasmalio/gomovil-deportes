@@ -240,9 +240,8 @@
 				
 				// Deleting all the files in the list 
 				foreach ($files as $file) { 
-					if (is_file($file)) 
-						// Delete the given file 
-						$file->isDir() ?  rmdir($file) : unlink($file);
+					// Delete the given file 
+					$file->isDir() ?  rmdir($file) : unlink($file);
 				}
 				echo "Ended";
 			}
