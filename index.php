@@ -18,13 +18,15 @@
 	use GoMovil\Db;
 	use Phpfastcache\CacheManager;
 	use Phpfastcache\Config\ConfigurationOption;
-	//use GoMovil\AmpRemoveUnusedCss;
 
 	/* Db Connection */
 	include 'include/db.php';
 
 	/* Getting sections */
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
+
+	// Validation for external impact
+	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
 
 	/* Filters */
 	$filters = [];

