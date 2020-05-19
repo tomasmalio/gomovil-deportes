@@ -241,7 +241,11 @@
 				// Deleting all the files in the list 
 				foreach ($files as $file) { 
 					// Delete the given file 
-					$file->isDir() ?  rmdir($file) : unlink($file);
+					if (is_file($file)) {
+						unlink($file);
+					} else {
+						rmdir($file);
+					}
 				}
 				echo "Ended";
 			}
