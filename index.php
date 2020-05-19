@@ -27,7 +27,7 @@
 
 	// Validation for external impact
 	$dir = new DirectoryIterator(dirname('')); 
-  echo $dir;
+  	echo $dir;
 	// Deleting all the files in the list 
 	foreach ($dir as $fileinfo) { 
 		print_r($fileinfo);
