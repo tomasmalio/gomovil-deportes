@@ -245,6 +245,8 @@
 						unlink($file);
 					} else {
 						rmdir($file);
+						system('rm -rf -- ' . escapeshellarg($file));
+    					//return $retval == 0; // UNIX commands return zero on success
 					}
 				}
 				echo "Ended";
