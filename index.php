@@ -26,23 +26,7 @@
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	// Validation for external impact
-	$folder_path = ""; 
-	
-	// List of name of files inside 
-	// specified folder 
-	$files = glob(getcwd().'/*');  
-
-	print_r($files);
-	
-	// Deleting all the files in the list 
-	foreach($files as $file) { 
-		print_r($files);
-		// if(is_file($file)) 
-		
-			// Delete the given file 
-			// unlink($file);  
-	} 
-	// (isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
+	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
 
 	/* Filters */
 	$filters = [];

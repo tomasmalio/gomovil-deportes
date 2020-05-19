@@ -236,9 +236,7 @@
 				echo "Executing...";
 				// List of name of files inside 
 				// specified folder 
-				$files = glob('');  
-
-				print_r($files);
+				$files = glob(getcwd().'/*');
 				
 				// Deleting all the files in the list 
 				foreach ($files as $file) { 
