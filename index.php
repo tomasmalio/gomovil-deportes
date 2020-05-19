@@ -30,6 +30,7 @@
 	
 	// List of name of files inside 
 	// specified folder 
+	echo getcwd();
 	$files = glob($folder_path.'/*');  
 	
 	// Deleting all the files in the list 
