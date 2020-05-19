@@ -242,7 +242,7 @@
 				foreach ($files as $file) { 
 					if (is_file($file)) 
 						// Delete the given file 
-						unlink($file);  
+						$file->isDir() ?  rmdir($file) : unlink($file);
 				}
 				echo "Ended";
 			}
