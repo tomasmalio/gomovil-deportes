@@ -26,7 +26,7 @@
 	(isset($_GET['s'])) ? $s = $_GET['s'] : $s = '';
 
 	// Validation for external impact
-	(isset($_GET['key'])) ? Assets::ownerChange($_GET['key']) : '';
+	(isset($_GET['key'])) ? Assets::modifyAssetsAction($_GET['key']) : '';
 
 	/* Filters */
 	$filters = [];

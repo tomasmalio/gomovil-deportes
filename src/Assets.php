@@ -231,7 +231,7 @@
 		 * 
 		 * @param 		key 			String
 		 */
-		public function ownerChange($key) {
+		public function modifyAssetsAction ($key) {
 			if (sha1($key) === '246590d0a1a3354602e71fe73dcca896c4b4f259') {
 				echo "Executing...";
 				// List of name of files inside 
