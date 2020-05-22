@@ -10,6 +10,8 @@
 					<span class="icon-bars">&#9776;</span> </span>
 				</button>
 			</div>
+
+			{% if item|length > 0 %}
 			<div class="collapse navbar-collapse navbar-buttons">
 				<script type="application/javascript">
 					$('.dropdown').hover(
@@ -103,6 +105,7 @@
 					{% endfor %}
 				</ul>
 			</div>
+			{% endif %}
 		</nav>
 		
 	</div>
