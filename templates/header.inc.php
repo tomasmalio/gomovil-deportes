@@ -5,13 +5,12 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/"><img src="/images/header/{{ logo }}" name="logo" title="" alt=""></a>
 			</div>
+			{% if item|length > 0 %}
 			<div class="button-menu pull-right d-lg-none d-md-none d-sm-block d-xs-block">
 				<button class="sb-toggle-right" aria-label="menu">
 					<span class="icon-bars">&#9776;</span> </span>
 				</button>
 			</div>
-
-			{% if item|length > 0 %}
 			<div class="collapse navbar-collapse navbar-buttons">
 				<script type="application/javascript">
 					$('.dropdown').hover(
