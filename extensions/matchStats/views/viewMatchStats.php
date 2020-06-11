@@ -5,8 +5,8 @@
 		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($stats['local_country']) . '/' . Widgets::normalizeString($stats['local_team']) .'.png';
 		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($stats['visit_country']) . '/' . Widgets::normalizeString($stats['visit_team']) .'.png';
 	} else {
-		$team_image_local = 'https://universofutbol.com/Imagenes/clubes/'. $stats['local_image'];
-		$team_image_visit = 'https://universofutbol.com/Imagenes/clubes/'. $stats['visit_image'];
+		$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . 'clubes/'. $stats['local_image'];
+		$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . 'clubes/'. $stats['visit_image'];
 	}
 ?>
 <section class="matchstats">

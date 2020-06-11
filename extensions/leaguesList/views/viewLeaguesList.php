@@ -11,7 +11,7 @@
 			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 				$league_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/' . $content['content']['key'] .'.png';
 			} else {
-				$league_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/' . $content['content']['key'] .'.png';
+				$league_image = $content['tournaments'][$type][$content['search']['tournament']]['image'];
 			}
 	?>
 	<div class="content-league">
@@ -27,7 +27,7 @@
 			if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 				$url_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/';
 			} else {
-				$url_image = $_SESSION['clientConfig']->sports->football->url_images . 'tournaments/';
+				$url_image = '';
 			}
 	?>
 	<div class="leagueslist-content <?php if ($slider) {?>swiper-container<?php }?>">
@@ -50,11 +50,6 @@
 					}
 				}
 
-				// if (isset($leagues['key'], $_SESSION['clientConfig']->sports->football->order) && $leagues['key'], $_SESSION['clientConfig']->sports->football->order == true) {
-
-				// }
-
-
 				foreach ($content['content']['leagues'] as $leagues) {
 					
 					if (in_array($leagues['key'], $_SESSION['clientConfig']->sports->football->available_tournaments)) {
@@ -65,12 +60,12 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?= $url_image . $leagues['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?= ($url_image == '') ? $content['tournaments']['leagues'][$leagues['key']]['image'] : $url_image . $leagues['key'].'.png';?>" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
-					<div class="league-name"><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE] : $content['tournaments']['leagues'][$leagues['key']]['name']['default'];?></div>
+					<div class="league-name"><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE]) : utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name']['default']);?></div>
 					<?php } else {?>
 					<h5><?= (isset($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['leagues'][$leagues['key']]['name']['default'])) ? utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name']['default']) : $leagues['name'];?></h5>
 					<?php }?>
@@ -104,12 +99,12 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?=$url_image . $cups['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?= ($url_image == '') ? $content['tournaments']['cups'][$cups['key']]['image'] : $url_image . $cups['key'].'.png';?>" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
-					<div class="league-name"><?= (isset($content['cups']['leagues'][$cups['key']][COUNTRY_CODE])) ? $content['cups']['leagues'][$cups['key']['name']][COUNTRY_CODE] : $content['tournaments']['leagues'][$leagues['key']]['name']['default'];?></div>
+					<div class="league-name"><?= (isset($content['cups']['leagues'][$cups['key']][COUNTRY_CODE])) ? utf8_decode($content['cups']['leagues'][$cups['key']['name']][COUNTRY_CODE]) : utf8_decode($content['tournaments']['leagues'][$leagues['key']]['name']['default']);?></div>
 					<?php } else {?>
 					<h5><?= (isset($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['cups'][$cups['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['cups'][$cups['key']]['name']['default'])) ? utf8_decode($content['tournaments']['cups'][$cups['key']]['name']['default']) : $cups['name'];?></h5>
 					<?php }?>
@@ -144,12 +139,12 @@
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					<div class="card">
 					<?php }?>
-					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?=$url_image . $selections['key']?>.png" name="" alt="" title=""></div>
+					<div class="<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>league-image<?php } else {?>card-img<?php }?>"><img src="<?= ($url_image == '') ? $content['tournaments']['selections'][$selections['key']]['image'] : $url_image . $selections['key'].'.png';?>" name="" alt="" title=""></div>
 					<?php if (isset($content['position']) && $content['position'] == 'horizontal') {?>
 					</div>
 					<?php }?>
 					<?php if ((isset($content['position']) && $content['position'] == 'vertical') || !isset($content['position'])) {?>
-					<div class="league-name"><?= (isset($content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE])) ? $content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE] : $content['tournaments']['selections'][$selections['key']]['name']['default'];?></div>
+					<div class="league-name"><?= (isset($content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE]) : utf8_decode($content['tournaments']['selections'][$selections['key']]['name']['default']);?></div>
 					<?php } else {?>
 					<h5><?= (isset($content['tournaments']['selection'][$selections['key']]['name'][COUNTRY_CODE])) ? utf8_decode($content['tournaments']['selections'][$selections['key']]['name'][COUNTRY_CODE]) : (isset($content['tournaments']['selections'][$selections['key']]['name']['default'])) ? utf8_decode($content['tournaments']['selections'][$selections['key']]['name']['default']) : $selections['name'];?></h5>
 					<?php }?>

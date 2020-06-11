@@ -7,7 +7,7 @@
 	if (((isset($nextMatches['football']) && $nextMatches['football']['display']) && $nextMatches['football']['matches'] != null) || ((isset($nextMatches['tennis']) && $nextMatches['tennis']['display']) && $nextMatches['tennis']['matches'] != null)) {
 ?>
 <section class="nextmatches">
-	<h2><?= (isset($content['title'])) ? $content['title'] : ((isset($content['titles']['next_matches'][COUNTRY_CODE])) ? utf8_decode($content['titles']['next_matches'][COUNTRY_CODE]) : utf8_decode($content['titles']['next_matches']['default']));?></h2>
+	<h2><?= (isset($content['title'])) ? utf8_decode($content['title']) : ((isset($content['titles']['next_matches'][COUNTRY_CODE])) ? utf8_decode($content['titles']['next_matches'][COUNTRY_CODE]) : utf8_decode($content['titles']['next_matches']['default']));?></h2>
 	<?php 
 		/***************************************
 		 * FOOTBALL
@@ -72,8 +72,8 @@
 						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
 						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
 					} else {
-						$team_image_local = $match['team_image_local'];
-						$team_image_visit = $match['team_image_visit'];
+						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_local']) .'.png';
+						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_visit']) .'.png';
 					}
 		?>
 			<!-- Match -->
