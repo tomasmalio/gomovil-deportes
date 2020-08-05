@@ -72,6 +72,27 @@
 					if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
 						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
+
+						$ch = curl_init($team_image_local);
+						curl_setopt($ch, CURLOPT_NOBODY, true);
+						curl_exec($ch);
+						$responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+						curl_close($ch);
+
+						// Check the response code
+						if ($responseCode != 200){
+							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_local']) . '/' . 'default.png';
+						}
+
+						$ch = curl_init($team_image_visit);
+						curl_setopt($ch, CURLOPT_NOBODY, true);
+						curl_exec($ch);
+						$responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+						curl_close($ch);
+
+						if ($responseCode != 200){
+							$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_visit']) . '/' .'default.png';
+						}
 					} else {
 						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_local']) .'.png';
 						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_visit']) .'.png';
