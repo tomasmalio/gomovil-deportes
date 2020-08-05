@@ -34,6 +34,7 @@
 					}
 				}
 				// Tournaments
+				print_r($tournaments);
 				foreach ($tournaments as $key => $tournament) {
 	?>
 	<div class="competition">
