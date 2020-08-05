@@ -80,7 +80,9 @@
 						curl_close($ch);
 
 						// Check the response code
-						if ($responseCode != 200){
+						if ($responseCode == 200){
+							echo "aca";
+						} else {
 							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_local']) . '/' . 'default.png';
 						}
 
