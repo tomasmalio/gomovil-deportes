@@ -80,10 +80,7 @@
 						curl_close($ch);
 
 						// Check the response code
-						if ($responseCode == 200){
-							echo "aca";
-							exit();
-						} else {
+						if ($responseCode != 200){
 							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_local']) . '/' . 'default.png';
 						}
 
@@ -99,6 +96,17 @@
 					} else {
 						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_local']) .'.png';
 						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_visit']) .'.png';
+
+						$ch = curl_init($team_image_local);
+						curl_setopt($ch, CURLOPT_NOBODY, true);
+						curl_exec($ch);
+						$responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+						curl_close($ch);
+
+						// Check the response code
+						if ($responseCode != 200){
+							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . 'default.png';
+						}
 					}
 		?>
 			<!-- Match -->
