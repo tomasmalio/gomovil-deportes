@@ -77,6 +77,7 @@
 					} else {
 						$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_local']) .'.png';
 						$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_visit']) .'.png';
+						
 						$content = @file_get_contents($team_image_local);
 						if ($content === FALSE) { 
 							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . '/' . 'default.png';
