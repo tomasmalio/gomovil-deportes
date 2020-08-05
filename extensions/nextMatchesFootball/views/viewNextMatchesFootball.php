@@ -59,21 +59,7 @@
 							if (isset($_SESSION['clientConfig']->sports->football->display_original_image) && $_SESSION['clientConfig']->sports->football->display_original_image) {
 								$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_local']) . '/' . Widgets::normalizeString($match['team_local']) .'.png';
 								$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_visit']) . '/' . Widgets::normalizeString($match['team_visit']) .'.png';
-								
-								echo "holaaa";
-								exit;
-								$content = @file_get_contents($team_image_local);
-								if ($content === FALSE) { 
-									$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . '/' . 'default.png';
-								}
-								$content = @file_get_contents($team_image_visit);
-								if ($content === FALSE) { 
-									$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . '/' .'default.png';
-								}
-
 							} else {
-								echo "no";
-								exit;
 								$team_image_local = $match['team_image_local'];
 								$team_image_visit = $match['team_image_visit'];
 							}
