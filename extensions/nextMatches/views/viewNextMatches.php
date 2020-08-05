@@ -75,11 +75,11 @@
 						
 						$content = @file_get_contents($team_image_local);
 						if ($content === FALSE) { 
-							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_local']) . '/' . 'default.png';
+							$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . 'default.png';
 						}
 						$content = @file_get_contents($team_image_visit);
 						if ($content === FALSE) { 
-							$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['country_visit']) . '/' . '/' .'default.png';
+							$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images .'default.png';
 						}
 
 					} else {
