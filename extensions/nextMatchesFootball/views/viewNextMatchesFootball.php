@@ -75,8 +75,6 @@
 								$team_image_local = $match['team_image_local'];
 								$team_image_visit = $match['team_image_visit'];
 							}
-
-							
 					?>
 					<!-- Match -->
 					<li class="row match <?= $match['status']?>">
