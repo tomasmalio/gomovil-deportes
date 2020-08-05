@@ -33,11 +33,6 @@
 						array_push($tournaments[$this->normalizeString($match['tournament_key'])], $match);
 					}
 				}
-	?>
-	<pre>
-	<?php print_r($matches); ?>
-	</pre>
-	<?php
 				// Tournaments
 				foreach ($tournaments as $key => $tournament) {
 	?>
