@@ -65,10 +65,10 @@
 								$handle_visit = @fopen($team_image_visit, 'r');
 								// Check if file exists
 								if (!$handle_local) {
-									$team_image_local = 'defaul.png';
+									$team_image_local = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_local']) . '/' . 'default.png';
 								}
 								if (!$handle_visit) {
-									$team_image_visit = 'defaul.png';
+									$team_image_visit = $_SESSION['clientConfig']->sports->football->url_images . Widgets::normalizeString($match['team_country_visit']) . '/' .'default.png';
 								}
 
 							} else {
