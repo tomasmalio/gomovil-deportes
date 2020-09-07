@@ -81,9 +81,9 @@
 													</div>
 													<h5 class="card-title">
 														{% if each.name[country] is empty %}
-														{{ each.name.default }}
+														{{ each.name.default|raw }}
 														{% else %}
-														{{ each.name[country] }}
+														{{ each.name[country]|raw }}
 														{% endif %}
 													</h5>
 												</a>
