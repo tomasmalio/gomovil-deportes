@@ -81,9 +81,9 @@
 													</div>
 													<h5 class="card-title">
 														{% if each.name[country] is empty %}
-														{{ each.name.default | raw | convert_encoding('UTF-8', 'ISO-8859-1') }}
+														{{ each.name.default | convert_encoding('UTF-8', 'ISO-8859-1') }}
 														{% else %}
-														{{ each.name[country] | raw | convert_encoding('UTF-8', 'ISO-8859-1') }}
+														{{ each.name[country] | convert_encoding('UTF-8', 'ISO-8859-1') }}
 														{% endif %}
 													</h5>
 												</a>
