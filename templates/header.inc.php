@@ -81,9 +81,13 @@
 													</div>
 													<h5 class="card-title">
 														{% if each.name[country] is empty %}
+														{% autoescape %}
 														{{ each.name.default|raw }}
+														{% endautoescape %}
 														{% else %}
+														{% autoescape %}
 														{{ each.name[country]|raw }}
+														{% endautoescape %}
 														{% endif %}
 													</h5>
 												</a>
