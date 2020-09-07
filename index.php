@@ -369,9 +369,9 @@
 					if ($key == $subitem['url']) {
 						foreach ($items as $k => $value) {
 							if (isset($titles[$k][COUNTRY_CODE])) {
-								$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = $value;
+								$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = utf8_decode($value);
 							} else {
-								$array[$subitem['url']][$titles[$k]['default']] = $value;
+								$array[$subitem['url']][$titles[$k]['default']] = utf8_decode($value);
 							}
 							unset($array[$subitem['url']][$k]);
 						}
