@@ -368,6 +368,7 @@
 				foreach ($array as $key => $items) {
 					if ($key == $subitem['url']) {
 						foreach ($items as $k => $value) {
+							print_r($value);
 							if (isset($titles[$k][COUNTRY_CODE])) {
 								$array[$subitem['url']][$titles[$k][COUNTRY_CODE]] = $value;
 							} else {
