@@ -81,13 +81,9 @@
 													</div>
 													<h5 class="card-title">
 														{% if each.name[country] is empty %}
-														{% autoescape %}
-														{{ each.name.default|raw }}
-														{% endautoescape %}
+														{{ each.name.default | raw | convert_encoding('UTF-8', 'ISO-8859-1') }}
 														{% else %}
-														{% autoescape %}
-														{{ each.name[country]|raw }}
-														{% endautoescape %}
+														{{ each.name[country] | raw | convert_encoding('UTF-8', 'ISO-8859-1') }}
 														{% endif %}
 													</h5>
 												</a>
