@@ -18,7 +18,7 @@
 ?>
 <section class="videosfootballgomovil">
 	<div class="videosfootballgomovil-content">
-		<?php if ($content['title']){?><h2><?=$content['title']?></h2><?php }?>
+		<?php if ($content['title']){?><h2><?=utf8_decode($content['title'])?></h2><?php }?>
 		<div class="row">
 			<?php
 				$videoContent = $content['content'];
